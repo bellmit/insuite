@@ -1,0 +1,10 @@
+.controls-row.control-domain
+  .form-group
+    label(for="value").control-label
+      strong(style="padding-right:4px")
+        != label
+      a(href='#communication_' + type)
+        i.icon.fa.fa-minus
+    input(type='hidden', name='type', value=type).form-control.hidden-field
+    div.controls
+      input(type='text', placeholder=placeholder, name='value', value=value, dcschema='_simple', dctype=validation).form-control.dcvalidate

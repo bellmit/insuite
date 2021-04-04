@@ -1,0 +1,137 @@
+{
+  "employee": {
+    "title": "",
+    "firstname": "Maximilian",
+    "nameaffix": "",
+    "middlename": "",
+    "fk3120": "",
+    "lastname": "Kramp",
+    "specialities": [],
+    "specialisationText": "",
+    "asvTeamNumbers": [
+      "123456789"
+    ],
+    "asvSpecializations": [],
+    "asvMembershipType": "FULL",
+    "arztstempel": "",
+    "fromLDAP": false,
+    "roles": [
+      "Empfang"
+    ],
+    "preferredLanguage": "null",
+    "expertise": [],
+    "bsnrs": [],
+    "accounts": [],
+    "communications": [
+      {
+        "signaling": true,
+        "confirmed": false,
+        "confirmNeeded": false,
+        "type": "EMAILJOB",
+        "preferred": true,
+        "value": "maximilian.kramp@doc-cirrus.com"
+      }
+    ],
+    "addresses": [],
+    "type": "PHYSICIAN",
+    "locations": [
+      {
+        "_id": "000000000000000000000001",
+        "locname": "BS1"
+      }
+    ],
+    "talk": "NONE",
+    "username": "mk",
+    "memberOf": [
+      {
+        "group": "ADMIN"
+      }
+    ],
+    "status": "ACTIVE",
+    "dob": "2018-11-19T09:46:27.758Z",
+    "initials": "MK",
+    "officialNo": "310013801",
+    "countryMode": [
+      "D"
+    ],
+    "qualiDignities": [],
+    "quantiDignities": [],
+    "ownZsrNumber": false,
+    "glnNumber": "9999999999999",
+    "kNumber": "9999999999999"
+  },
+  "patient": {
+    "patientNo": 15,
+    "insuranceStatus": [
+      {
+        "fk4133": null,
+        "fk4110": null,
+        "insuranceKind": "1",
+        "costCarrierBillingSection": "07",
+        "costCarrierBillingGroup": "11",
+        "feeSchedule": "2",
+        "fused": false,
+        "unzkv": [],
+        "bgNumber": "",
+        "address1": "Lichtscheider Str. 89",
+        "address2": "42285 Wuppertal",
+        "zipcode": "",
+        "city": "",
+        "phone": "",
+        "insuranceLink": "",
+        "email": "",
+        "insuranceGLN": "",
+        "recipientGLN": "",
+        "department": "",
+        "isTiersGarant": false,
+        "isTiersPayant": true,
+        "insuranceNo": "M240819600",
+        "insuranceId": "104940005",
+        "insuranceName": "BARMER",
+        "insurancePrintName": "BARMER/BVFG",
+        "insuranceGrpId": "72601",
+        "type": "PUBLIC",
+        "persGroup": "",
+        "dmp": "",
+        "kv": "72",
+        "locationId": "000000000000000000000001",
+        "fusedFrom": null,
+        "fusedToInsuranceId": null
+      },
+      {
+        "fk4133": null,
+        "fk4110": null,
+        "insuranceKind": "",
+        "costCarrierBillingSection": "00",
+        "costCarrierBillingGroup": "",
+        "feeSchedule": "3",
+        "fused": false,
+        "unzkv": [],
+        "bgNumber": "",
+        "address1": "Theodor-Heuss-Straße 96",
+        "address2": "49377 Vechta",
+        "zipcode": "",
+        "city": "",
+        "phone": "",
+        "insuranceLink": "",
+        "email": "",
+        "insuranceGLN": "",
+        "recipientGLN": "",
+        "department": "",
+        "isTiersGarant": false,
+        "isTiersPayant": true,
+        "insuranceNo": "222222",
+        "insuranceId": "168141427",
+        "insuranceName": "ALTE OLDENBURGER Krankenversicherung AG",
+        "insurancePrintName": "ALTE OLDENBURGER",
+        "type": "PRIVATE",
+        "billingFactor": "privatversicherte",
+        "locationId": "000000000000000000000001"
+      }
+    ]
+  },
+  "ldtFiles": [
+    "01380000020\r\n014810000039\r\n01291051  \r\n01380008230\r\n014810000231\r\n0199212LDT1014.01\r\n0180201100714102\r\n0200203TestPraxis1\r\n0180212310013801\r\n0250211Maximilian Kramp\r\n0180222123456789\r\n0180205prac4Str.\r\n014021544444\r\n0150216berlin\r\n01091063\r\n0128312000\r\n0179103DATE\r\n01380008218\r\n014810000414\r\n0228310ce97cjsylwphx\r\n0108609K\r\n01086140\r\n0163101Patient\r\n0133102Test\r\n017310319900101\r\n0193119M240819600\r\n01031081\r\n0202002BARMER/BVFG\r\n014410472601\r\n011410607\r\n011412200\r\n0184111104940005\r\n011310723\r\n0123109123\r\n014311212099\r\n0153113Berlin\r\n0103114D\r\n0103110M\r\n011840515\r\n0184242310013801\r\n01085100\r\n01084031\r\n0439901DCEmployeeName: SU-1213141513Mocha\r\n0329901DCEmployeeId: undefined\r\n01380008231\r\n014810000044\r\n017920200000755\r\n01380000021\r\n014810000027\r\n",
+    "01380000020\r\n014810000039\r\n01291051  \r\n01380008230\r\n014810000231\r\n0199212LDT1014.01\r\n0180201100714102\r\n0200203TestPraxis1\r\n0180212310013801\r\n0250211Maximilian Kramp\r\n0180222123456789\r\n0180205prac4Str.\r\n014021544444\r\n0150216berlin\r\n01091063\r\n0128312000\r\n0179103DATE\r\n01380008218\r\n014810000384\r\n0228310ce97cjsylwphx\r\n0108609P\r\n01086140\r\n0163101Patient\r\n0133102Test\r\n017310319900101\r\n0193119222222    \r\n0252002ALTE OLDENBURGER\r\n011410600\r\n0184111168141427\r\n011310723\r\n0123109123\r\n014311212099\r\n0153113Berlin\r\n0103114D\r\n0103110M\r\n011840515\r\n0184242310013801\r\n01085100\r\n01084033\r\n0439901DCEmployeeName: SU-1213141513Mocha\r\n0329901DCEmployeeId: undefined\r\n01380008231\r\n014810000044\r\n017920200000725\r\n01380000021\r\n014810000027\r\n"
+  ]
+}

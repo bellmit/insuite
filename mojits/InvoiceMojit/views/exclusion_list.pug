@@ -1,0 +1,42 @@
+h4
+  span(data-bind="text: groupExclusionList18n")
+  | &nbsp;
+  small
+    a(name="addExclusionList", href="#", data-bind="click: addGkvExclusionList")
+      i.icon.fa.fa-plus
+// ko foreach: gkvExclusionList
+.panel.panel-default
+  .panel-body
+    .row
+      .col-xs-6
+        div.form-group(data-bind="hasFeedback: { field: title, toggle: title.hasError, messages: title.validationMessages }")
+          label.control-label(data-bind="text: title.i18n")
+          input.form-control( name="title", type="text", data-bind="textInput: title", placeholder="")
+      .col-xs-6
+         button.pull-right.btn-default.btn(style="margin-top: 20px;", data-bind="click: $parent.removeGkvExclusionListEntry.bind($parent)")
+          span.fa.fa-trash-o
+    .row
+      .col-xs-6
+        div.form-group(data-bind="hasFeedback: { field: employees, toggle: employees.hasError, messages: employees.validationMessages }")
+          label.control-label(data-bind="text: employees.i18n")
+          input.form-control(name="physicians", type="text", data-bind="select2: select2Physicians")
+      .col-xs-6
+        div.form-group(data-bind="hasFeedback: { field: locations, toggle: locations.hasError, messages: locations.validationMessages }")
+          label.control-label(data-bind="text: locations.i18n")
+          input.form-control(name="locations", type="text", data-bind="select2: select2Locations")
+    .row
+      .col-xs-12
+        div.form-group(data-bind="hasFeedback: { field: codes, toggle: codes.hasError, messages: codes.validationMessages }")
+          label.control-label(data-bind="text: codes.i18n")
+          input.form-control(name="codes", type="text", data-bind="select2: select2Codes")
+    .row
+      .col-xs-12
+        label.control-label(data-bind="text: excludeFrom.i18n")
+        | &nbsp;
+        span(data-bind="foreach: excludeFrom.list, hasFeedback: { field: excludeFrom, toggle: excludeFrom.hasError, messages: excludeFrom.validationMessages }")
+          label.checkbox-inline
+            span(data-bind="text: i18n")
+            input(type="checkbox", name="excludeFrom", data-bind="value: val, checked: $parent.excludeFrom, readOnly: $parent.excludeFrom.readOnly")
+
+// /ko
+

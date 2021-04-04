@@ -1,0 +1,11 @@
+// ko ifnot: editMode
+span(data-bind="text: subHeadingText")
+// /ko
+// ko if: editMode
+.row
+  .col-sm-9
+    div.form-group(data-bind="hasFeedback: { field: subHeadingText, toggle: subHeadingText.hasError, messages: subHeadingText.validationMessages }")
+      input.form-control(name="subHeadingText", type="text", data-bind="select2: select2subHeadings, readOnly: subHeadingText.readOnly" )
+  .col-sm-3.text-right
+    include KBVMedicationPlan-EditingButtons
+// /ko

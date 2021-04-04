@@ -1,0 +1,28 @@
+div(id=mojit_view_id).container
+  table
+    tr
+      td(valign="top").span2
+        img(src="/static/MT2ITMojit/assets/mt2it_logo.png")
+      td(align="center").span8
+        br
+        br
+        h1(align="center").muted #{data.username}
+            p Ihre Autorisierung ist erforderlich
+        br
+        br
+        br
+        h2(align="center") Der Dienst #{data.client_id} möchte Ihre Daten auf der Private Cloud des Krankenhaus-Informationssystems #{data.hospital} speichern.
+        hr
+        h2(align="center") Möchten Sie dies zulassen?
+        input( id="buttonAuth", type="button", value="Ja!" )
+        input( id="buttonCancel", type="button", value="Nein" )
+        input( id="originalCall", type="hidden", value="#{data.originalCall}" )
+        div#DCAuthMessages(style="display: none")
+          .alert-success.alert.alert-dismissable
+            button.close(aria-hidden='true', data-dismiss='alert', type='button')
+              | &times;
+            p(style='white-space: pre-line;') Vielen Dank. Sie werden nun weitergeleitet...
+      td(valign="top", align="center").span2
+        p &nbsp;
+        a(href="/")
+          img(src="/static/DocCirrus/assets/images/dc_logo_300x103_trans.png", width="400px")

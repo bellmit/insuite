@@ -1,0 +1,32 @@
+div#divBackmappingWizard
+  table(noborder="noborder", width="100%", height="800px")
+    tr
+      td(valign="top", height="500px")
+        div#divDefaultUserContent
+          textarea.form-control(rows="10")#taUserContent
+          br
+
+        div#divSelectActivityFields
+          b(data-bind="text: embedActivityFieldI18n")
+          table(noborder="noborder",width="100%")
+            tr
+              td
+                div.form-group
+                  select.form-control#selActivityFields
+              td
+                div.form-group#inpFoldChars(data-bind="hasFeedback: { field: charsNum, toggle: charsNum.hasError, messages: charsNum.validationMessages }")
+                  input.form-control(style="width: 60px;", data-bind="textInput: charsNum")
+              td(width="100px")
+                div.form-group
+                  button.btn.btn-primary#btnAddActivityField(data-bind="text: btnAddI18n")
+
+        hr
+        div#divBackmappingHint
+          p(data-bind="text: labelExplanationsI18n")
+
+      td(width="10px")
+      td(valign="top", height="800px", width="500px")
+        div#divFormRender
+          img(src="/static/DocCirrus/assets/images/ajax-loader.gif")
+        div.bg-warning(style="display: none")#divFormMissing
+          p(data-bind="text: noFormI18n")

@@ -1,0 +1,32 @@
+div.modal.fade#patientMarkerDialog
+  div.modal-dialog
+    div.modal-content
+      div.modal-header
+        button.close(type="button",data-dismiss="modal",aria-hidden="true")
+          | &times;
+        h4!= title
+      div.modal-body
+        div.markers_config_table(data-bind="with: MarkerArrayModel", style="max-height:267px; overflow-y:auto;")
+          table.table.table-bordered
+            colgroup
+              col(width="32")
+              col(width="100%")
+              col(width="32")
+            thead
+              tr
+                th Symbol
+                th Bezeichnung
+                th Wählen
+            tbody(data-bind='foreach: _data')
+              tr
+                td(style="text-align:center;")
+                  span(data-bind="attr: { class: _iconRel().css }, style: { color: _colorRel }")
+                td
+                  span(data-bind="text: description")
+                td
+                  input(type="checkbox", data-bind="checked: $root.markerIsChecked($data)")
+        div.text-right
+          small maximal 5 wählbar
+      div.modal-footer
+        a.btn.btn-default(data-dismiss="modal")#cancelModal Abbrechen
+        a.btn.btn-primary#acceptModal Speichern

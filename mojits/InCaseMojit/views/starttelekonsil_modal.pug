@@ -1,0 +1,34 @@
+div#start-teleconsult
+  div.row(data-bind="visible: isVisibleOn('step1')")
+    p.col-xs-12(data-bind="text: telekonsilInfoI18n")
+    #partnerTable.col-xs-12(data-bind="template: partnerTable.template")
+
+  div(data-bind="visible: isVisibleOn('step2')")
+    div.row
+      div.col-xs-3.col-md-2
+        div.form-group
+          div.checkbox
+            label.control-label
+              span(data-bind="text: intervalI18n")
+              input(type="checkbox", data-bind="checked: internalChecked")
+      div.col-xs-3.col-md-2
+        div.form-group
+          div.checkbox
+            label.control-label
+              span(data-bind="text: partnersI18n")
+              input(type="checkbox", data-bind="checked: partnerChecked")
+      div.col-xs-3.col-md-2
+        div.form-group
+          div.checkbox
+            label.control-label
+              span(data-bind="text: patientsI18n")
+              input(type="checkbox", data-bind="checked: patientChecked")
+      div.col-xs-3.col-md-2
+        div.form-group
+          div.checkbox
+            label.control-label
+              span(data-bind="text: othersI18n")
+              input(type="checkbox", data-bind="checked: otherChecked")
+
+    div.row
+      #presenceListTable.col-xs-12(data-bind="template: presenceListTable.template")

@@ -1,0 +1,26 @@
+doctype html
+html
+  head
+    title Doc Cirrus Registrierung
+  body(style="width:100%;height:100%;")
+    .main(style="background-color:white; width:75%;min-width:320px;position:relative;margin:auto;margin-top:5%;border-style: solid;border-width: 1px;border-color: #244061;padding:10px;font-style: normal;font-weight: normal;display: block;font-family: Verdana, Geneva, sans-serif;color:#244061;")
+      - if(params.hasLogo || ( params.hasLogo != true && (params.emailFooter == null || params.emailFooter=="") ) )
+        .headercontent(style="width:100%;min-width:320px;background-color:white;text-align:left;padding-top:10px;padding-bottom:10px;")
+          img(style="width:200px;margin-right:0px;", alt=(params && params.logoName != null) ? params.logoName: "Doc Cirrus GmbH", src="cid:logo")
+      .text(style="width:100%;margin-top:5%;")
+        block emailbody
+        - if(params && params.emailBody)
+          p!= params.emailBody
+    - if(!params || (params.hasLogo != true && (params.emailFooter == null || params.emailFooter=="")))
+      .footercontent(style="width:100%;min-width:320px;margin-top:5%;background-color:#DFDFDF;text-align:center;padding-top:10px;padding-bottom:10px;border-style: solid;border-width: 1px;border-color: #244061;")
+        p(style="font-family: Verdana, Geneva, sans-serif;color:#244061;font-size:12px;font-weight: normal;margin-top:0px;margin-bottom:0px;") Doc Cirrus GmbH
+        p(style="font-family: Verdana, Geneva, sans-serif;color:#244061;font-size:12px;font-weight: normal;margin-top:0px;margin-bottom:0px;") Bessemerstraße 82
+        p(style="font-family: Verdana, Geneva, sans-serif;color:#244061;font-size:12px;font-weight: normal;margin-top:0px;margin-bottom:0px;") 12103 Berlin
+        p(style="font-family: Verdana, Geneva, sans-serif;color:#244061;font-size:12px;font-weight: normal;margin-top:0px;margin-bottom:0px;") +49.30.20898729.3
+        p(style="font-family: Verdana, Geneva, sans-serif;color:#244061;font-size:9px;font-weight: normal;margin-top:0px;margin-bottom:0px;") !{(params && params.serialNumber) ? ' (SN: ' + params.serialNumber + ')' : ''}
+    - else if(params.emailFooter != null && params.emailFooter !="")
+      .footercontent(style="width:100%;min-width:320px;margin-top:5%;background-color:#DFDFDF;text-align:center;padding-top:10px;padding-bottom:10px;border-style: solid;border-width: 1px;border-color: #244061;")
+        p(style="font-family: Verdana, Geneva, sans-serif;color:#244061;font-size:12px;font-weight: normal;margin-top:0px;margin-bottom:0px;") !{params.emailFooter}
+        p(style="font-family: Verdana, Geneva, sans-serif;color:#244061;font-size:9px;font-weight: normal;margin-top:0px;margin-bottom:0px;") !{(params && params.serialNumber) ? ' (SN: ' + params.serialNumber + ')' : ''}
+    - else
+      p(style="font-family: Verdana, Geneva, sans-serif;color:#244061;font-size:9px;font-weight: normal;margin-top:0px;margin-bottom:0px;") !{(params && params.serialNumber) ? ' (SN: ' + params.serialNumber + ')' : ''}

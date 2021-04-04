@@ -1,0 +1,101 @@
+div#addMedicationModal(style="margin-top: -10px")
+  div.row
+    div.col-sm-12.col-md-6
+      h4(data-bind="text: patientMedicationTableTitle")
+      div(data-bind="template: patientMedicationKoTable.template")
+    div.col-sm-12.col-md-6
+      div.row
+        div.col-sm-6
+          // ko if: catalogUsageKoTable
+          h4(data-bind="text: catalogUsageTableTitle")
+          // /ko
+          // ko if: inStockTable
+          h4(data-bind="text: inStockTableTitle")
+          // /ko
+        div.col-sm-6.dc-form-flex(style="align-items: center; justify-content: flex-end;")
+          // ko if: isGermany && !swissCaseFolder
+          div
+            h4(data-bind="text: searchTitle")
+          div(style="margin-left: 6px;")
+            span(type="button", name="searchButton", data-bind="template: searchButton.template")
+          // /ko
+          // ko if: isSwissAndSwissCaseFolder
+          div(style="margin-left: 6px;")
+            span(type="button", name="searchButton", data-bind="template: swissSearchButton.template")
+          // /ko
+      // ko if: catalogUsageKoTable
+      div(data-bind="template: catalogUsageKoTable.template")
+      // /ko
+      // ko if: inStockTable
+      div(data-bind="template: inStockTable.template")
+      // /ko
+  div.panel.panel-default
+    div.panel-heading
+      div.row
+        div.col-sm-3
+          span(data-bind="text: tabHeader")
+        div.col-sm-9
+          div.text-right
+            //ko ifnot: editPrescriptionMode
+            label.checkbox-inline(style="margin-left: 0; margin-right: 1em;")
+              input(name="saveMedicationPlanCkb", type="checkbox", data-bind="checked: saveMedicationPlanCkb")
+              small(data-bind="text: saveMedicationPlanCkb.i18n")
+            //ko if: isSwissAndSwissCaseFolder
+            label.checkbox-inline(style="margin-left: 0; margin-right: 1em;")
+              input(name="createDispensing", type="checkbox", data-bind="checked: createDispensing")
+              small(data-bind="text: createDispensing.i18n")
+            // /ko
+            label.checkbox-inline(style="margin-left: 0; margin-right: 1em;")
+              input(name="savePrescriptionCkb", type="checkbox", data-bind="checked: savePrescriptionCkb")
+              small(data-bind="text: savePrescriptionCkb.i18n")
+            // /ko
+            span(data-bind="template: saveBtn.template")
+            span(data-bind="template: quickPrintBtn.template")
+            span(data-bind="template: printTaskBtn.template")
+
+            span(data-bind="template: printBtn.template")
+
+  div.row
+    div.col-sm-12.col-md-6
+      ul.nav.nav-tabs(data-bind="foreach: tabItems")
+        li(data-bind="css: css")
+          a(href="", data-bind="text: title, click: $parent.activateTab")
+    div.col-sm-12.col-md-6
+      div.row
+        div.col-sm-12.col-md-4
+          div.form-group
+            .date-picker.input-group
+              input#inputDate.form-control(name="timestamp", type="text", data-bind="datetimepicker: { value: timestamp }")
+        div.col-sm-12.col-md-4
+          div.form-group(data-bind="hasFeedback: { field: locationId, toggle: locationId.hasError }")
+            input.form-control(name="locationId", type="hidden", data-bind="select2: select2Location")
+        div.col-sm-12.col-md-4
+          div.form-group(data-bind="hasFeedback: { field: employeeId, toggle: employeeId.hasError }")
+            input.form-control(name="employeeId", type="hidden", data-bind="select2: select2Employee")
+  div.row(data-bind="visible: isPrescriptionTableVisible")
+    div.col-sm-12
+      #prescriptionTable(data-bind="template: prescriptionTable.template")
+  //ko if: !isSwissAndSwissCaseFolder && !editPrescriptionMode
+  div.row(data-bind="visible: isMedicationPlanTableVisible")
+    div.col-sm-12
+      #medicationPlanTable(data-bind="with: medicationPlanViewModel")
+        include ../views/KBVMedicationPlan/KBVMedicationPlanViewModel
+  // /ko
+  div.row
+    div.col-sm-12
+      div.form-control(name="selectedMedicationText", data-bind="html: selectedMedicationText", style="height: 112px; background-color: #eeeeee; overflow: scroll;")
+      button.btn.btn-primary.btn-xs.pull-right(data-bind="click: cleanActiveRow, text: seeAllInfosI18n")
+  // ko if: isPrescriptionTableVisible
+  div(data-bind="foreach: prescriptionData")
+    div(data-bind="if: visible")
+      span(data-bind="text: text", style="margin-right: 5px")
+      // ko foreach: fields
+      div.form-group(style="display: inline-block", data-bind="hasFeedback: { field: hasError, toggle: hasError, messages: validationMessages }")
+        label.checkbox-inline(style="margin-left: 0; margin-right: 1em;")
+          input(type="checkbox", data-bind="checked: value")
+          small(data-bind="text: i18n")
+      // /ko
+  // /ko
+
+
+

@@ -1,0 +1,20 @@
+{
+  "start": "2021-01-11T12:55:00.000Z",
+  "end": "2021-01-11T13:10:00.000Z",
+  "title": "",
+  "userDescr": "",
+  "urgency": 0,
+  "severity": "NONE",
+  "calendar": "515ae9604013671c12c1c900",
+  "patient": "5addcc7ad8a71f5cf203f824",
+  "scheduletype": "51b732232e837550c90851fb",
+  "allDay": false,
+  "duration": 15,
+  "plannedDuration": 15,
+  "repetition": "NONE",
+  "interval": 1,
+  "byweekday": [],
+  "arrivalTime": "2115-01-31T23:00:00.000Z",
+  "notConfirmed": true,
+  "skipcheck_": true
+}

@@ -1,0 +1,318 @@
+{
+  "rule": {
+    "parent" : "000000000000000000000002",
+    "isDirectory" : false,
+    "isLocked" : false,
+    "isActive" : true,
+    "caseFolderType" : [
+      "PUBLIC"
+    ],
+    "metaActTypes" : [
+      "TREATMENT"
+    ],
+    "metaActCodes" : [
+      "34291"
+    ],
+    "description" : "Meine test Regel über Alter",
+    "referenceArea" : "PERIOD",
+    "periodType" : "MONTH",
+    "periodCount" : 1,
+    "periodReference" : "punkt",
+    "rules" : [
+      {
+        "ruleId" : "5cda8c713cdb8468fb000015",
+        "description" : "Neue Regel",
+        "isActive" : true,
+        "validations" : {
+          "\\\\$and" : [
+            {
+              "context" : "ACTIVITY",
+              "criteria" : {
+                "actType" : {
+                  "\\\\$eq" : "TREATMENT"
+                },
+                "patientId\\\\-markers" : {
+                  "\\\\$eq" : "000000000000000000000012"
+                },
+                "patientId\\\\-age" : {
+                  "\\\\$gt" : 70
+                }
+              }
+            },
+            {
+              "context" : "ACTIVITY",
+              "criteria" : {
+                "actType" : {
+                  "\\\\$eq" : "TREATMENT"
+                },
+                "code" : {
+                  "\\\\$eq" : "34291",
+                  "\\\\$catalogShort" : "EBM"
+                },
+                "areTreatmentDiagnosesBillable" : {
+                  "\\\\$eq" : "1"
+                }
+              }
+            }
+          ]
+        },
+        "actions" : [
+          {
+            "type" : "WARNING",
+            "template" : {
+              "urgency" : 2,
+              "details" : "",
+              "roles" : [],
+              "candidates" : [],
+              "caseFolder" : "",
+              "diagnosisCert" : "NONE",
+              "toCreate" : 1,
+              "linkActivities" : false,
+              "autoCreate" : false,
+              "tempateID" : "5cda8e7f3cdb8468fb000016",
+              "markers" : [],
+              "type" : ""
+            }
+          },
+          {
+            "type" : "PATIENT",
+            "template" : {
+              "title" : "",
+              "urgency" : 2,
+              "details" : "",
+              "roles" : [],
+              "candidates" : [],
+              "caseFolder" : "",
+              "days" : "",
+              "hours" : "",
+              "minutes" : "",
+              "actType" : "INVOICEREFGKV",
+              "caseFolderType" : null,
+              "catalogShort" : null,
+              "code" : null,
+              "diagnosisCert" : "NONE",
+              "toCreate" : 1,
+              "explanations" : null,
+              "linkActivities" : false,
+              "autoCreate" : false,
+              "tempateID" : "5cda8e873cdb8468fb000017",
+              "markers" : [
+                "000000000000000000000011"
+              ],
+              "type" : "",
+              "taskType" : "5b72ef38996b3f35cfd9e683",
+              "arrayFieldPath" : null
+            }
+          }
+        ],
+        "metaActTypes" : [
+          "TREATMENT"
+        ],
+        "metaCodes" : [
+          "34291"
+        ]
+      }
+    ],
+    "metaCriterias" : [
+      "actType",
+      "areTreatmentDiagnosesBillable",
+      "patientId.markers",
+      "patientId.age",
+      "code"
+    ],
+    "metaFuzzy" : false
+  },
+  "schein": {
+    "actType" : "SCHEIN",
+    "attachments" : [],
+    "subType" : "",
+    "time" : "",
+    "backupEmployeeIds" : [],
+    "userContent" : "ambulante Behandlung (ambulante Behandlung)",
+    "mediaImportError" : "",
+    "partnerInfo" : "",
+    "explanations" : "",
+    "status" : "VALID",
+    "activities" : [],
+    "referencedBy" : [],
+    "formId" : "",
+    "formVersion" : "",
+    "formPdf" : "",
+    "formLang" : "de",
+    "formGender" : "m",
+    "apkState" : "IN_PROGRESS",
+    "unlinkedMirrorIds" : [],
+    "forInsuranceType" : "",
+    "locationFeatures" : "",
+    "scheinRemittor" : "",
+    "scheinEstablishment" : "",
+    "scheinSpecialisation" : "",
+    "scheinOrder" : "",
+    "scheinDiagnosis" : "",
+    "scheinFinding" : "",
+    "scheinNotes" : "This is note",
+    "scheinClinicalTreatmentFrom" : null,
+    "scheinClinicalTreatmentTo" : null,
+    "scheinNextTherapist" : "",
+    "fk4234" : false,
+    "fk4219" : "",
+    "continuousIcds" : [],
+    "createContinuousDiagnosisOnSave" : false,
+    "icds" : [],
+    "icdsExtra" : [],
+    "scheinQuarter" : "2",
+    "scheinYear" : "2019",
+    "scheinBillingArea" : "00",
+    "scheinType" : "0101",
+    "scheinSubgroup" : "00",
+    "scheinTransferTypeInfo" : "",
+    "fk4124" : "",
+    "fk4126" : "",
+    "fk4125from" : null,
+    "fk4125to" : null,
+    "fk4123" : "",
+    "fk4206" : null,
+    "fk4236" : false,
+    "fk4241" : "",
+    "fk4217" : "",
+    "scheinSlipMedicalTreatment" : "",
+    "__t" : "SCHEIN",
+    "attachedMedia" : [],
+    "content" : "This is note",
+    "editor" : [
+      {
+        "name" : "Jhony Dredn04",
+        "employeeNo" : "01234",
+        "initials" : "JD"
+      }
+    ],
+    "debtCollection" : "",
+    "fk4235Set" : [],
+    "invoiceData" : [],
+    "scheinTransferType" : "",
+    "employeeName" : "Dredn04, Jhony",
+    "employeeInitials" : "JD",
+    "patientLastName" : "Nachnamme",
+    "patientFirstName" : "Mann",
+    "code" : null
+  },
+  "treatment":  {
+    "actType" : "TREATMENT",
+    "status" : "VALID",
+    "attachments" : [],
+    "subType" : "",
+    "time" : "",
+    "userContent" : "Herzkatheteruntersuchung mit Koronarangiographie",
+    "areTreatmentDiagnosesBillable" : "1",
+    "catalog" : true,
+    "catalogShort" : "EBM",
+    "code" : "34291"
+  },
+  "patient": {
+    "additionalMirrorPatientIds" : [],
+    "title" : "Alte",
+    "firstname" : "Mann",
+    "nameaffix" : "",
+    "middlename" : "",
+    "fk3120" : "",
+    "lastname" : "Nachnamme",
+    "physicians" : [],
+    "employees" : [],
+    "markers" : [
+      "000000000000000000000012"
+    ],
+    "createPlanned" : false,
+    "accessPRC" : false,
+    "talk" : "MR",
+    "gender" : "MALE",
+    "sendPatientReceipt" : false,
+    "patientNumber" : 147,
+    "attachedSeverity" : "NONE",
+    "crmTags" : [],
+    "edmpTypes" : [],
+    "edmpNotifiedAboutStatementOfParticipationTypes" : [],
+    "ehksDocType" : "EHKSND",
+    "scheinEmployeeIds" : [
+      "100000000000000000000003"
+    ],
+    "confirmedViewFromOtherLocations" : false,
+    "additionalContacts" : [],
+    "countryMode" : [
+      "D"
+    ],
+    "jobTitle" : "Rentner",
+    "isPensioner" : true,
+    "accounts" : [],
+    "communications" : [],
+    "addresses" : [],
+    "kbvDob" : "12.04.1941",
+    "insuranceStatus" : [
+      {
+        "fk4133" : null,
+        "fk4110" : null,
+        "insuranceKind" : "3",
+        "costCarrierBillingSection" : "00",
+        "costCarrierBillingGroup" : "11",
+        "feeSchedule" : "2",
+        "fused" : false,
+        "unzkv" : [],
+        "bgNumber" : "",
+        "address1" : "",
+        "address2" : "10837 Berlin",
+        "zipcode" : "",
+        "city" : "",
+        "phone" : "",
+        "insuranceLink" : "",
+        "email" : "",
+        "insuranceGLN" : "",
+        "recipientGLN" : "",
+        "department" : "",
+        "insuranceId" : "104940005",
+        "insuranceName" : "BARMER",
+        "insurancePrintName" : "BARMER",
+        "insuranceGrpId" : "72601",
+        "type" : "PUBLIC",
+        "persGroup" : "",
+        "dmp" : "",
+        "kv" : "72",
+        "locationId" : "000000000000000000000001",
+        "fusedFrom" : null,
+        "fusedToInsuranceId" : null
+      }
+    ],
+    "dataTransmissionToPVSApproved" : true,
+    "affiliates" : [],
+    "images" : [],
+    "devices" : [],
+    "partnerIds" : [],
+    "careDegree" : "NO",
+    "crmTreatments" : [],
+    "crmCatalogShort" : "GOÄ",
+    "locationId" : "",
+    "latestMedData" : []
+  },
+  "rulelog": {
+    "message" : "Neue Regel",
+    "referenceArea" : "PERIOD",
+    "ruleLogType" : "WARNING",
+    "ruleId" : "5cda8c713cdb8468fb000015",
+    "actCodes" : [
+      "34291"
+    ],
+    "actTypes" : [
+      "TREATMENT"
+    ],
+    "activitiesToCreate" : [],
+    "affectedActivities" : [
+      {
+        "code" : "34291",
+        "actType" : "TREATMENT"
+      }
+    ],
+    "allCodes" : [],
+    "caseFolderType" : [
+      "PUBLIC"
+    ],
+    "requiredCodes" : []
+  }
+}

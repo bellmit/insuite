@@ -1,0 +1,21 @@
+#smbConfigEditorModel
+    div(data-bind="with: data")
+        .row
+            .col-xs-10: .form-group(data-bind="hasFeedback: { field: backupSmbHost, toggle: backupSmbHost.hasError, messages: backupSmbHost.validationMessages, popover: { container: '#smbConfigModal' } }")
+                label.control-label(for='smbHost', data-bind="text: smbHostI18n")
+                input.form-control#smbHost(type='text' data-bind="value: backupSmbHost")
+            .col-xs-2: .form-group(data-bind="hasFeedback: { field: backupSmbPort, toggle: backupSmbPort.hasError, messages: backupSmbPort.validationMessages, popover: { container: '#smbConfigModal' } }")
+                label.control-label(for='smbPort', data-bind="text: smbPortI18n")
+                input.form-control#smbPort(type='text' data-bind="value: backupSmbPort")
+        .row: .col-xs-12: .form-group(data-bind="hasFeedback: { field: backupSmbPath, toggle: backupSmbPath.hasError, messages: backupSmbPath.validationMessages }")
+            label.control-label(for='smbPath', data-bind="text: smbPathI18n")
+            input.form-control#smbPath(type='text' data-bind="value: backupSmbPath")
+        .row: .col-xs-12: .form-group
+            label.control-label(for='smbLogin', data-bind="text: smbLoginI18n")
+            input.form-control#smbLogin(type='text' data-bind="value: backupSmbLogin")
+        .row: .col-xs-12: .form-group
+            label.control-label(for='smbPassword', data-bind="text: smbPasswordI18n")
+            input.form-control#smbPassword(type='password' data-bind="value: backupSmbPassword")
+        .row: .col-xs-12: .form-group
+            label.control-label(for='smbDomain', data-bind="text: smbDomainI18n")
+            input.form-control#smbDomain(type='text' data-bind="value: backupSmbDomain")

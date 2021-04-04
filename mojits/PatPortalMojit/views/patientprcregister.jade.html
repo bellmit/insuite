@@ -1,0 +1,21 @@
+extends patientalert_layout
+block content
+  .container.container-fullscreen#patregister
+    h3 Registrierung
+    -if(true)
+      input(type="hidden",name="patientId",value=patientId)#patientId
+      input(type="hidden",name="customerId",value=customerId)#customerId
+      .control-domain
+        div.col-sm-12.col-md-6
+          input(type="hidden",name="wantsAlert",dctype="PatientAlert_T",dcschema="patientalert",value='wantsAlert')
+          -if(!customerId)
+            .form-group.substitute-icon
+              label(for="pin").control-label PIN
+              .controls.input-group
+                input(type='text', name='pin', placeholder='siehe E-Mail Ihrer Praxis...', dcschema='_simple',dctype='mandatory', tabindex='5')#pin.dcvalidate.form-control
+          hr
+          .btn.btn-primary.btn-lg.btn-block#btnSendReg Registrieren
+
+    -else
+      p Bitte verwenden Sie zur Registrierung den Link aus der E-Mail, die Sie durch Ihre Praxis erhalten haben.
+

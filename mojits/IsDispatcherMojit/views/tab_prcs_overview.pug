@@ -1,0 +1,6 @@
+#prcs-jade.panel-with-table
+    #dispatcherPrcTable(data-bind="template: prcsTable.template")
+
+    div.row
+        div.col-md-12.table-buttons-stack(data-bind="if: isSupportUser()")
+            span(data-bind="template: deleteSystem.template")

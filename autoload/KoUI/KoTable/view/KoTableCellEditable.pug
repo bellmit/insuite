@@ -1,0 +1,8 @@
+div.KoTableCell.KoTableCellEditable
+  div(data-bind="css: { 'input-group': valueEditable.buttons }")
+    input.form-control.input-sm(data-bind="value: valueEditable, attr:{ title: valueEditable() }, event:{ change: col.eventEditableChange }")
+    // ko if: valueEditable.buttons
+    div.input-group-btn(data-bind="foreach: valueEditable.buttons")
+      // ko template: $data.template
+      // /ko
+    // /ko

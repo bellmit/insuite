@@ -1,0 +1,238 @@
+//TRANSLATION INCOMPLETE!! MOJ-3201
+style(type="text/css").
+  .panel-heading{
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+  .panel-heading a {
+    color: #005580;
+    text-decoration: none;
+  }
+  .panel-heading a:hover {
+    color: #005580;
+    text-decoration: underline;
+  }
+  .switch-cr-link:hover {
+    cursor: pointer;
+  }
+  .drivers-table-link:hover {
+    cursor: pointer;
+  }
+  .te {
+    padding-top: 30px;
+  }
+
+div#tab_cardreader
+  .row
+    .col-xs-12.col-md-10.col-md-offset-1
+      div.row
+        div.col-xs-6
+          h4(data-bind="text: headerI18n")
+      div.row
+        #installation-accordion.panel-group
+          .panel.panel-default
+            .panel-heading
+              h2.panel-title
+                a(data-toggle="collapse", data-parent="#installation-accordion", href="#installation-MacOS", data-bind="text: macosHeaderI18n")
+            #installation-MacOS.panel-collapse.collapse
+              .panel-body
+                ol
+                  li(data-bind="text: macos1I18n")
+                  // ko ifnot: CH_countryMode
+                  li(data-bind="html: macos2I18n")
+                  // /ko
+                  li(data-bind="html: macos3I18n")
+                  li(data-bind="text: macos4I18n")
+          .panel.panel-default
+            .panel-heading
+              h2.panel-title
+                a(data-toggle="collapse", data-parent="#installation-accordion", href="#installation-Windows", data-bind="text: windowsHeaderI18n")
+            #installation-Windows.panel-collapse.collapse
+              .panel-body
+                ol
+                  li(data-bind="text: windows1I18n")
+                  // ko ifnot: CH_countryMode
+                  li(data-bind="html: windows2I18n")
+                  // /ko
+                  li(data-bind="html: windows3I18n")
+                  li(data-bind="text: windows4I18n")
+          .panel.panel-default
+            .panel-heading
+              h2.panel-title
+                a(data-toggle="collapse", data-parent="#installation-accordion", href="#installation-Linux", data-bind="text: linuxHeaderI18n")
+            #installation-Linux.panel-collapse.collapse
+              .panel-body
+                ol
+                  li(data-bind="text: linux1I18n")
+                  // ko ifnot: CH_countryMode
+                  li(data-bind="text: linux2I18n")
+                  // /ko
+                  li(data-bind="html: linux3I18n")
+                  li(data-bind="text: linux4I18n")
+      div.row
+        // ko ifnot: CH_countryMode
+        hr
+        #drivers-collapse.panel.panel-default
+          .panel-heading
+            h2.panel-title
+              a(data-toggle="collapse", data-parent="#drivers-collapse", href="#drivers-body")
+                | Freigegebene Kartenleser (und Herstellertreiber, falls notwendig): *
+          #drivers-body.panel-collapse.collapse
+            .panel-body
+              table.table
+                thead
+                  tr
+                    th Hersteller
+                    th Produktbezeichnung
+                    th Typ
+
+                    th Mac Treiber
+                    th Windows Treiber
+                tbody
+                  tr
+                    td
+                      i Cherry
+                    td eHealth-BCS Tastatur G87-1504
+                    td Stationär
+                    td -
+                    td
+                      i
+                        a(href="https://cherry.de/download/de/download.php", target="_blank") Cherry Website
+                  tr
+                    td
+                      i Cherry
+                    td eHealth-BCS Terminal ST-1503
+                    td Stationär
+                    td -
+                    td
+                      i
+                        a(href="https://cherry.de/download/de/download.php", target="_blank") Cherry Website
+                  tr
+                    td
+                      i Cherry
+                    td Mobiles Terminal ST-1530
+                    td Stationär
+                    td -
+                    td
+                      i
+                        a(href="https://cherry.de/download/de/download.php", target="_blank") Cherry Website
+                  tr
+                    td
+                      i germantelematics
+                    td GT90 mobil
+                    td Mobil
+                    td
+                      i
+                        a(href="http://www.germantelematics.de/service/", target="_blank") germantelematics Website
+                    td
+                      i
+                        a(href="http://www.germantelematics.de/service/", target="_blank") germantelematics Website
+                  tr
+                    td
+                      i germantelematics
+                    td GT900
+                    td Stationär
+                    td
+                      i
+                        a(href="http://www.germantelematics.de/service/", target="_blank") germantelematics Website
+                    td
+                      i
+                        a(href="http://www.germantelematics.de/service/", target="_blank") germantelematics Website
+                  tr
+                    td
+                      i Verifon
+                    td medCompact
+                    td Stationär
+                    td -
+                    td
+                      i
+                        a(href="https://www.medline-online.com/service-support/medcompact.html", target="_blank") medCompact Website
+                  tr
+                    td
+                      i Verifon
+                    td medMobile
+                    td Mobil
+                    td -
+                    td
+                      i
+                        a(href="https://www.medline-online.com/service-support/medmobile.html", target="_blank") medMobile Website
+                  tr
+                    td
+                      i Ingenico Healthcare
+                    td Orga 6000
+                    td Stationär
+                    td
+                      i
+                        a(href="https://ingenico.de/healthcare/downloads", target="_blank") Ingenico Website
+                    td
+                      i
+                        a(href="https://ingenico.de/healthcare/downloads", target="_blank") Ingenico Website
+                  tr
+                    td
+                      i Ingenico Healthcare
+                    td Orga 920 M / 930 M
+                    td Mobil
+                    td
+                      i
+                        a(href="https://ingenico.de/healthcare/downloads", target="_blank") Ingenico Website
+                    td
+                      i
+                        a(href="https://ingenico.de/healthcare/downloads", target="_blank") Ingenico Website
+                  tr
+                    td
+                      i CCV Deutschland
+                    td CARDSTAR medic2
+                    td Stationär
+                    td -
+                    td
+                      i
+                        a(href="https://www.celectronic-terminal.de/CT-API-Programmdateien-WIN-/-LINUX-/-MAC", target="_blank") CCV Website
+                  tr
+                    td
+                      i CCV Deutschland
+                    td CARDSTAR memo3
+                    td Mobil
+                    td -
+                    td
+                      i
+                        a(href="https://www.celectronic-terminal.de/CT-API-Programmdateien-WIN-/-LINUX-/-MAC", target="_blank") CCV Website
+                  tr
+                    td
+                      i ZEMO
+                    td VML-GK1 / VML-GK2
+                    td Mobil
+                    td nicht Mac-kompatibel
+                    td
+                      i
+                        a(href="https://www.zemo.de/downloads/downloads.html", target="_blank") ZEMO Website
+                  tr
+                    td
+                      i HID Global
+                    td OMNIKEY 8751 e-Health
+                    td Stationär
+                    td nicht Mac-kompatibel
+                    td
+                      i
+                        a(href="http://www.hidglobal.com/drivers?field_brand_tid=24&product_id=15315&os=All", target="_blank") HID Website***
+
+              hr
+
+              h2.h3 Weitere Hinweise:
+              p
+                i * Sollte Ihr gewünschter Kartenleser mit gematik-Zertifizierung nicht aufgeführt sein, sprechen Sie uns bitte an.
+              p
+                i ** Auf Macs muss die Datei zuerst mit Ctrl+Klick -> Öffnen zum Ausführen freigegeben werden.
+              p
+                i *** Es empfielt sich, "Omnikey 8751" in die Suchleiste einzugegeben, um den richtigen Treiber schneller zu finden.
+        // /ko
+        br
+        h4(data-bind="text: configurationTitle")
+        div(data-bind="template: cardReaderDevicesTable.template")
+        div.pull-right(data-bind="template: saveBtn.template")
+        // ko ifnot: CH_countryMode
+        div.pull-left(data-bind="template: portSearchBtn.template")
+        // /ko
+        //div.pull-left(data-bind="template: confProgramBtn.template", style="margin-left: 20px")
+        br
+        br
+        br

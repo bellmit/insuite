@@ -1,0 +1,128 @@
+image: quay.io/dcc/dev:node-12.20-el7
+
+variables:
+  FF_USE_FASTZIP: 1
+  NPM_CONFIG_LOGLEVEL: warn
+  ESLINT_FORMAT: gitlab
+  ESLINT_CODE_QUALITY_REPORT: codequality.json
+  C8_REPORTER: cobertura --reporter text-summary
+  MOCHA_REPORTER: mocha-junit-reporter
+
+cache: &cache
+  key:
+    files:
+      - package-lock.json
+  paths:
+    - node_modules
+  policy: pull
+
+stages:
+  - build
+  - analyze
+  - test
+
+environment:
+  image: quay.io/dcc/dev:npm-6.14-el7
+  stage: build
+  tags:
+    - docker
+    - container
+  cache:
+    <<: *cache
+    policy: push
+    # policy: pull-push
+  before_script:
+    - if [ -n "$SSH_KEY" ]; then
+        eval $(ssh-agent -s) &&
+        echo "$SSH_KEY" | tr -d '\r' | ssh-add - &&
+        mkdir -p ~/.ssh &&
+        chmod 700 ~/.ssh &&
+        ssh-keyscan gitlab.intra.doc-cirrus.com >> ~/.ssh/known_hosts &&
+        chmod 644 ~/.ssh/known_hosts
+      ; fi
+    - yum -y install libharu-devel
+  script:
+    - npm config set registry http://nexus-proxy.intra.doc-cirrus.com/repository/npm/
+    - npm ci
+  # rules:
+  #  - changes:
+  #      - package-lock.json
+  #  - exists:
+  #      - node_modules
+  #    when: never
+
+manifestation:
+  stage: analyze
+  tags:
+    - docker
+    - container
+  before_script:
+    - yum install -y jq
+  script:
+    - npm prune --dry-run --production --json |
+        jq '.removed[] | select(.path|test("^node_modules/[^/]+$")) | .name' > prune.log
+    - cat package.json | jq '.dependencies |
+        keys | .[]' | cat prune.log - | sort | uniq -d | tee prune.log
+    - (exit $(cat prune.log | wc -l))
+
+sources:
+  stage: analyze
+  artifacts:
+    reports:
+      codequality: codequality.json
+  tags:
+    - docker
+    - container
+  allow_failure: true
+  script:
+    - npm run lint
+
+dependencies:
+  stage: analyze
+  tags:
+    - docker
+    - container
+  allow_failure: true
+  script:
+    - npm audit
+
+server units:
+  stage: test
+  artifacts:
+    reports:
+      cobertura: coverage/cobertura-coverage.xml
+      junit: test-results.xml
+  coverage: /^Statements\s*:\s*([^%]+)/
+  tags:
+    - docker
+    - container
+  script:
+    - npm run test --mojito-affinity=server
+
+client units:
+  stage: test
+  artifacts:
+    reports:
+      cobertura: coverage/cobertura-coverage.xml
+      junit: test-results.xml
+  coverage: /^Statements\s*:\s*([^%]+)/
+  tags:
+    - docker
+    - container
+  script:
+    - npm run test --mojito-affinity=client
+
+# the common code partition currently does not
+# have the quality which is required for context
+common units:
+  stage: test
+  artifacts:
+    reports:
+      cobertura: coverage/cobertura-coverage.xml
+      junit: test-results.xml
+  coverage: /^Statements\s*:\s*([^%]+)/
+  tags:
+    - docker
+    - container
+  script:
+    - npm run test --mojito-affinity=common

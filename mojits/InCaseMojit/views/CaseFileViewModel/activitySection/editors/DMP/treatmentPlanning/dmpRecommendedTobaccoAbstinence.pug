@@ -1,0 +1,7 @@
+div.form-group
+  strong(data-bind="text: dmpRecommendedTobaccoAbstinence.i18n")
+  span(data-bind="dmpField: { field: dmpRecommendedTobaccoAbstinence }")
+  div(data-bind="foreach: dmpRecommendedTobaccoAbstinence.list, hasFeedback: { field: dmpRecommendedTobaccoAbstinence, toggle: dmpRecommendedTobaccoAbstinence.hasError, messages: dmpRecommendedTobaccoAbstinence.validationMessages }")
+    label.radio-inline
+      span(data-bind="text: i18n")
+      input(type="radio", name="dmpRecommendedTobaccoAbstinence", data-bind="value: val, checked: $parent.dmpRecommendedTobaccoAbstinence, readOnly: $parent.dmpRecommendedTobaccoAbstinence.readOnly")

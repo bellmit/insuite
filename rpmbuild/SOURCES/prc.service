@@ -1,0 +1,26 @@
+[Unit]
+Description=Doc Cirrus inSuite
+After=syslog.target mongod.service redis.service
+
+[Service]
+Type=simple
+User=prc
+Group=prc
+WorkingDirectory=/var/lib/prc
+Environment="JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk"
+EnvironmentFile=-/etc/environment
+EnvironmentFile=-/etc/sysconfig/prc
+ExecStart=/var/lib/prc/runtime/bin/node --experimental-modules --experimental-specifier-resolution=node $NODEJS_OPTIONS /var/lib/prc/server.js start 8000 --context environment:production
+Restart=always
+RestartSec=5
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=prc
+UMask=0027
+PIDFile=/var/run/prc/prc.pid
+LimitNOFILE=8000
+LimitNPROC=8000
+
+
+[Install]
+WantedBy=multi-user.target

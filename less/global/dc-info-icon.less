@@ -1,0 +1,32 @@
+& {
+  @import "../variables/bootstrap.less";
+  @import "../variables/font-awesome.less";
+
+  .dc-info-icon {
+    .fa-icon();
+    &:before {
+      content: @fa-var-info-circle;
+    }
+
+    color: @link-color;
+    vertical-align: super;
+    font-size: 10.5px;
+    cursor: pointer;
+
+    &:hover,
+    &:focus {
+      color: @link-hover-color;
+    }
+
+  }
+
+  .dc-info-icon-optional {
+    color: @brand-success;
+
+    &:hover,
+    &:focus {
+      color: darken(@brand-success, 15%);
+    }
+  }
+
+}

@@ -1,0 +1,378 @@
+div.row
+  div.col-xs-12
+    h3.text-center(style="margin: 0;", data-bind="text: editorLabelI18n")
+  div.col-xs-4
+    h5.text-center(style="margin: 0 0 10px;")
+      strong(data-bind="text: eyeRightLabelI18n")
+  div.col-xs-4
+  div.col-xs-4
+    h5.text-center(style="margin: 0 0 10px;")
+      strong(data-bind="text :eyeLeftLabelI18n")
+div(data-bind="notifyBind: { method: initMultiplePanelCollapse }")
+  div#textform-sd_ophthalmology_tonometry-row-nct.row
+    div.col-xs-4
+      div.panel.panel-default(data-bind="panelCollapse: { name: 'textform-sd_ophthalmology_tonometry-panel-body-nct-r' }")
+        div.panel-heading
+          a(href="#textform-sd_ophthalmology_tonometry-panel-body-nct-r", data-toggle="collapse")
+            strong(data-bind="text: groupNCTI18n")
+        div#textform-sd_ophthalmology_tonometry-panel-body-nct-r.panel-collapse.collapse(data-bind="notifyBind: { method: handleUnlikelyCaseNct }")
+          div.panel-body
+            table.textform-sd_ophthalmology_tonometry-measurement-a.dc-tablefieldset-inline
+              colgroup
+                col
+                col
+                col
+                col
+              tbody
+                tr
+                  td.text-right
+                    label.control-label(data-bind="text: otNR1.i18n")
+
+                  td
+                    input.form-control(name="otNR1", data-bind="value: _otNR1, hasFocus: true, readOnly: otNR1.readOnly, attr: { placeholder: otNR1UnitI18n }")
+                  td.text-right
+                    label.control-label(data-bind="text: otNR2.i18n")
+                  td
+                    input.form-control(name="otNR2", data-bind="value: _otNR2, readOnly: otNR2.readOnly, attr: { placeholder: otNR2UnitI18n }")
+                tr
+                  td.text-right
+                    label.control-label(data-bind="text: otNR3.i18n")
+                  td
+                    input.form-control(name="otNR3", data-bind="value: _otNR3, readOnly: otNR3.readOnly, attr: { placeholder: otNR3UnitI18n }")
+                  td.text-right
+                    label.control-label(data-bind="text: otNR4.i18n")
+                  td
+                    input.form-control(name="otNR4", data-bind="value: _otNR4, readOnly: otNR4.readOnly, attr: { placeholder: otNR4UnitI18n }")
+                tr
+                  td.text-right
+                    label.control-label(data-bind="text: otNCCTR.i18n")
+                  td
+                    input.form-control(name="otNCCTR", data-bind="value: _otNCCTR, readOnly: otNCCTR.readOnly, attr: { placeholder: otNCCTRUnitI18n }")
+                  td.text-right
+                    label.control-label(data-bind="text: otNFacR.i18n")
+                  td
+                    input.form-control(name="otNFacR", data-bind="value: _otNFacR, readOnly: otNFacR.readOnly, attr: { placeholder: otNFacRUnitI18n }")
+    div.col-xs-4
+      div.center-block(style="max-width: 250px;")
+        div.panel.panel-sd_ophthalmology_tonometry-middle(data-bind="panelCollapse: { name: 'textform-sd_ophthalmology_tonometry-panel-body-nct-c' }")
+          div.panel-heading
+            a(href="#textform-sd_ophthalmology_tonometry-panel-body-nct-c", data-toggle="collapse")
+          div#textform-sd_ophthalmology_tonometry-panel-body-nct-c.panel-collapse.collapse(data-bind="notifyBind: { method: handleUnlikelyCaseNct }")
+            div.panel-body(style="padding: 0;")
+              div.form-group
+                button.btn.btn-default.btn-block(name="otNDeviceRead", type="button", style="margin-bottom: 5px;", data-bind="click: otNDeviceRead, enable: otNDeviceEnabled, text: readFromI18n")
+                select.form-control(name="_otNDevices", data-bind="value: otNDevice, options: otNDevices, optionsValue: 'val', optionsText: 'i18n', enable: otNDeviceEnabled", style="margin-bottom: 10px")
+                div(data-bind="hasFeedback: { field: otNRead, toggle: otNRead.hasError, messages: otNRead.validationMessages }")
+                  .date-picker.input-group
+                    input.form-control(name="otNRead", data-bind="datetimepicker: { value: otNRead, valueReset: null, options: { format: 'DD.MM.YYYY HH:mm', sideBySide: true } }, event: { focus: handleOphthalmologyFocusDate }, readOnly: otNRead.readOnly, attr: { placeholder: otNReadDateI18n }")
+                div(data-bind="visible: otNRead", style="padding-top: 10px")
+                  strong(data-bind="text: otNRead.i18n")
+                  div(style="text-indent: 17px;", data-bind="text: _otNRead")
+    div.col-xs-4
+      div.panel.panel-default(data-bind="panelCollapse: { name: 'textform-sd_ophthalmology_tonometry-panel-body-nct-l' }")
+        div.panel-heading
+          a(href="#textform-sd_ophthalmology_tonometry-panel-body-nct-l", data-toggle="collapse")
+            strong(data-bind="text: groupNCTI18n")
+        div#textform-sd_ophthalmology_tonometry-panel-body-nct-l.panel-collapse.collapse(data-bind="notifyBind: { method: handleUnlikelyCaseNct }")
+          div.panel-body
+            table.textform-sd_ophthalmology_tonometry-measurement-a.dc-tablefieldset-inline
+              colgroup
+                col
+                col
+                col
+                col
+              tbody
+                tr
+                  td.text-right
+                    label.control-label(data-bind="text: otNL1.i18n")
+                  td
+                    input.form-control(name="otNL1", data-bind="value: otNL1, readOnly: otNL1.readOnly, attr: { placeholder: otNL1UnitI18n }")
+                  td.text-right
+                    label.control-label(data-bind="text: otNL2.i18n")
+                  td
+                    input.form-control(name="otNL2", data-bind="value: _otNL2, readOnly: otNL2.readOnly, attr: { placeholder: otNL2UnitI18n }")
+                tr
+                  td.text-right
+                    label.control-label(data-bind="text: otNL3.i18n")
+                  td
+                    input.form-control(name="otNL3", data-bind="value: _otNL3, readOnly: otNL3.readOnly, attr: { placeholder: otNL3UnitI18n }")
+                  td.text-right
+                    label.control-label(data-bind="text: otNL4.i18n")
+                  td
+                    input.form-control(name="otNL4", data-bind="value: _otNL4, readOnly: otNL4.readOnly, attr: { placeholder: otNL4UnitI18n }")
+                tr
+                  td.text-right
+                    label.control-label(data-bind="text: otNCCTL.i18n")
+                  td
+                    input.form-control(name="otNCCTL", data-bind="value: _otNCCTL, readOnly: otNCCTL.readOnly, attr: { placeholder: otNCCTLUnitI18n }")
+                  td.text-right
+                    label.control-label(data-bind="text: otNFacL.i18n")
+                  td
+                    input.form-control(name="otNFacL", data-bind="value: _otNFacL, readOnly: otNFacL.readOnly, attr: { placeholder: otNFacLUnitI18n }")
+  div#textform-sd_ophthalmology_tonometry-row-pascal.row
+    div.col-xs-4
+      div.panel.panel-default(data-bind="panelCollapse: { name: 'textform-sd_ophthalmology_tonometry-panel-body-pascal-r' }")
+        div.panel-heading
+          a(href="#textform-sd_ophthalmology_tonometry-panel-body-pascal-r", data-toggle="collapse")
+            strong(data-bind="text: groupPascalI18n")
+        div#textform-sd_ophthalmology_tonometry-panel-body-pascal-r.panel-collapse.collapse(data-bind="notifyBind: { method: handleUnlikelyCasePascal }")
+          div.panel-body
+            table.textform-sd_ophthalmology_tonometry-measurement-a.dc-tablefieldset-inline
+              colgroup
+                col
+                col
+                col
+                col
+              tbody
+                tr
+                  td.text-right
+                    label.control-label(data-bind="text: otPR1.i18n")
+                  td
+                    input.form-control(name="otPR1", data-bind="value: _otPR1, hasFocus: true, readOnly: otPR1.readOnly, attr: { placeholder: otPR1UnitI18n }")
+                  td.text-right
+                    label.control-label(data-bind="text: otPR2.i18n")
+                  td
+                    input.form-control(name="otPR2", data-bind="value: _otPR2, readOnly: otPR2.readOnly, attr: { placeholder: otPR2UnitI18n }")
+                tr
+                  td.text-right
+                    label.control-label(data-bind="text: otPR3.i18n")
+                  td
+                    input.form-control(name="otPR3", data-bind="value: _otPR3, readOnly: otPR3.readOnly, attr: { placeholder: otPR3UnitI18n }")
+                  td.text-right
+                    label.control-label(data-bind="text: otPR4.i18n")
+                  td
+                    input.form-control(name="otPR4", data-bind="value: _otPR4, readOnly: otPR4.readOnly, attr: { placeholder: otPR4UnitI18n }")
+    div.col-xs-4
+      div.center-block(style="max-width: 250px;")
+        div.panel.panel-sd_ophthalmology_tonometry-middle(data-bind="panelCollapse: { name: 'textform-sd_ophthalmology_tonometry-panel-body-pascal-c' }")
+          div.panel-heading
+            a(href="#textform-sd_ophthalmology_tonometry-panel-body-pascal-c", data-toggle="collapse")
+          div#textform-sd_ophthalmology_tonometry-panel-body-pascal-c.panel-collapse.collapse(data-bind="notifyBind: { method: handleUnlikelyCasePascal }")
+            div.panel-body(style="padding: 0;")
+              div.form-group
+                button.btn.btn-default.btn-block(name="otPDeviceRead", type="button", style="margin-bottom: 5px;", data-bind="click: otPDeviceRead, enable: otPDeviceEnabled, text: readFromI18n")
+                select.form-control(name="_otPDevices", data-bind="value: otPDevice, options:otPDevices, optionsValue: 'val', optionsText: 'i18n', enable: otPDeviceEnabled", style="margin-bottom: 10px")
+                div(data-bind="hasFeedback: { field: otPRead, toggle: otPRead.hasError, messages: otPRead.validationMessages }")
+                  .date-picker.input-group
+                    input.form-control(name="otPRead", data-bind="datetimepicker: { value: otPRead, valueReset: null, options: { format: 'DD.MM.YYYY HH:mm', sideBySide: true } }, event: { focus: handleOphthalmologyFocusDate }, readOnly: otPRead.readOnly, attr: { placeholder : otNReadDateI18n }")
+                div(data-bind="visible: otPRead", style="padding-top: 10px")
+                  strong(data-bind="text: otPRead.i18n")
+                  div(style="text-indent: 17px;", data-bind="text: _otPRead")
+    div.col-xs-4
+      div.panel.panel-default(data-bind="panelCollapse: { name: 'textform-sd_ophthalmology_tonometry-panel-body-pascal-l' }")
+        div.panel-heading
+          a(href="#textform-sd_ophthalmology_tonometry-panel-body-pascal-l", data-toggle="collapse")
+            strong(data-bind="text: groupPascalI18n")
+        div#textform-sd_ophthalmology_tonometry-panel-body-pascal-l.panel-collapse.collapse(data-bind="notifyBind: { method: handleUnlikelyCasePascal }")
+          div.panel-body
+            table.textform-sd_ophthalmology_tonometry-measurement-a.dc-tablefieldset-inline
+              colgroup
+                col
+                col
+                col
+                col
+              tbody
+                tr
+                  td.text-right
+                    label.control-label(data-bind="text: otPL1.i18n")
+                  td
+                    input.form-control(name="otPL1", data-bind="value: _otPL1, readOnly: otPL1.readOnly, attr: { placeholder: otPL1UnitI18n }")
+                  td.text-right
+                    label.control-label(data-bind="text: otPL2.i18n")
+                  td
+                    input.form-control(name="otPL2", data-bind="value: _otPL2, readOnly: otPL2.readOnly, attr: { placeholder: otPL2UnitI18n }")
+                tr
+                  td.text-right
+                    label.control-label(data-bind="text: otPL3.i18n")
+                  td
+                    input.form-control(name="otPL3", data-bind="value: _otPL3, readOnly: otPL3.readOnly, attr: { placeholder: otPL3UnitI18n }")
+                  td.text-right
+                    label.control-label(data-bind="text: otPL4.i18n")
+                  td
+                    input.form-control(name="otPL4", data-bind="value: _otPL4, readOnly: otPL4.readOnly, attr: { placeholder: otPL4UnitI18n }")
+  div#textform-sd_ophthalmology_tonometry-row-goldmann.row
+    div.col-xs-4
+      div.panel.panel-default(data-bind="panelCollapse: { name: 'textform-sd_ophthalmology_tonometry-panel-body-goldmann-r' }")
+        div.panel-heading
+          a(href="#textform-sd_ophthalmology_tonometry-panel-body-goldmann-r", data-toggle="collapse")
+            strong(data-bind="text: groupGoldManI18n")
+        div#textform-sd_ophthalmology_tonometry-panel-body-goldmann-r.panel-collapse.collapse(data-bind="notifyBind: { method: handleUnlikelyCaseGoldmann }")
+          div.panel-body
+            table.textform-sd_ophthalmology_tonometry-measurement-a.dc-tablefieldset-inline
+              colgroup
+                col
+                col
+                col
+                col
+              tbody
+                tr
+                  td.text-right
+                    label.control-label(data-bind="text: otGR1.i18n")
+                  td
+                    input.form-control(name="otGR1", data-bind="value: _otGR1, hasFocus: true, readOnly: otGR1.readOnly, attr: { placeholder: otGR1UnitI18n }")
+                  td.text-right
+                    label.control-label(data-bind="text: otGR2.i18n")
+                  td
+                    input.form-control(name="otGR2", data-bind="value: _otGR2, readOnly: otGR2.readOnly, attr: { placeholder: otGR1UnitI18n }")
+    div.col-xs-4
+      div.center-block(style="max-width: 250px;")
+        div.panel.panel-sd_ophthalmology_tonometry-middle(data-bind="panelCollapse: { name: 'textform-sd_ophthalmology_tonometry-panel-body-goldmann-c' }")
+          div.panel-heading
+            a(href="#textform-sd_ophthalmology_tonometry-panel-body-goldmann-c", data-toggle="collapse")
+          div#textform-sd_ophthalmology_tonometry-panel-body-goldmann-c.panel-collapse.collapse(data-bind="notifyBind: { method: handleUnlikelyCaseGoldmann }")
+            div.panel-body(style="padding: 0;")
+              div.form-group
+                button.btn.btn-default.btn-block(name="otGDeviceRead", type="button", style="margin-bottom: 5px;", data-bind="click: otGDeviceRead, enable: otGDeviceEnabled, text: readFromI18n")
+                select.form-control(name="_otGDevices", data-bind="value: otGDevice, options: otGDevices, optionsValue: 'val', optionsText: 'i18n', enable: otGDeviceEnabled", style="margin-bottom: 10px")
+                div(data-bind="hasFeedback: { field: otGRead, toggle: otGRead.hasError, messages: otGRead.validationMessages }")
+                  .date-picker.input-group
+                    input.form-control(name="otGRead", data-bind="datetimepicker: { value: otGRead, valueReset: null, options: { format: 'DD.MM.YYYY HH:mm', sideBySide: true } }, event: { focus: handleOphthalmologyFocusDate }, readOnly: otGRead.readOnly, attr: { placeholder: otNReadDateI18n }")
+                div(data-bind="visible: otGRead", style="padding-top: 10px")
+                  strong(data-bind="text: otGRead.i18n")
+                  div(style="text-indent: 17px;", data-bind="text: _otGRead")
+    div.col-xs-4
+      div.panel.panel-default(data-bind="panelCollapse: { name: 'textform-sd_ophthalmology_tonometry-panel-body-goldmann-l' }")
+        div.panel-heading
+          a(href="#textform-sd_ophthalmology_tonometry-panel-body-goldmann-l", data-toggle="collapse")
+            strong(data-bind="text: groupGoldManI18n")
+        div#textform-sd_ophthalmology_tonometry-panel-body-goldmann-l.panel-collapse.collapse(data-bind="notifyBind: { method: handleUnlikelyCaseGoldmann }")
+          div.panel-body
+            table.textform-sd_ophthalmology_tonometry-measurement-a.dc-tablefieldset-inline
+              colgroup
+                col
+                col
+                col
+                col
+              tbody
+                tr
+                  td.text-right
+                    label.control-label(data-bind="text: otGL1.i18n")
+                  td
+                    input.form-control(name="otGL1", data-bind="value: _otGL1, readOnly: otGL1.readOnly, attr: { placeholder: otGL1UnitI18n }")
+                  td.text-right
+                    label.control-label(data-bind="text: otGL2.i18n")
+                  td
+                    input.form-control(name="otGL2", data-bind="value: _otGL2, readOnly: otGL2.readOnly, attr: { placeholder: otGL2UnitI18n }")
+  div#textform-sd_ophthalmology_tonometry-row-icare.row
+    div.col-xs-4
+      div.panel.panel-default(data-bind="panelCollapse: { name: 'textform-sd_ophthalmology_tonometry-panel-body-icare-r' }")
+        div.panel-heading
+          a(href="#textform-sd_ophthalmology_tonometry-panel-body-icare-r", data-toggle="collapse")
+            strong(data-bind="text: groupInCareI18n")
+        div#textform-sd_ophthalmology_tonometry-panel-body-icare-r.panel-collapse.collapse(data-bind="notifyBind: { method: handleUnlikelyCaseIcare }")
+          div.panel-body
+            table.textform-sd_ophthalmology_tonometry-measurement-a.dc-tablefieldset-inline
+              colgroup
+                col
+                col
+                col
+                col
+              tbody
+                tr
+                  td.text-right
+                    label.control-label(data-bind="text: otIR1.i18n")
+                  td
+                    input.form-control(name="otIR1", data-bind="value: _otIR1, hasFocus: true, readOnly: otIR1.readOnly, attr: { placeholder: otIR1UnitI18n }")
+                  td.text-right
+                    label.control-label(data-bind="text: otIR2.i18n")
+                  td
+                    input.form-control(name="otIR2", data-bind="value: _otIR2, readOnly: otIR2.readOnly, attr: { placeholder: otIR2UnitI18n }")
+    div.col-xs-4
+      div.center-block(style="max-width: 250px;")
+        div.panel.panel-sd_ophthalmology_tonometry-middle(data-bind="panelCollapse: { name: 'textform-sd_ophthalmology_tonometry-panel-body-icare-c' }")
+          div.panel-heading
+            a(href="#textform-sd_ophthalmology_tonometry-panel-body-icare-c", data-toggle="collapse")
+          div#textform-sd_ophthalmology_tonometry-panel-body-icare-c.panel-collapse.collapse(data-bind="notifyBind: { method: handleUnlikelyCaseIcare }")
+            div.panel-body(style="padding: 0;")
+              div.form-group
+                button.btn.btn-default.btn-block(name="otIDeviceRead", type="button", style="margin-bottom: 5px;", data-bind="click: otIDeviceRead, enable: otIDeviceEnabled, text: readFromI18n")
+                select.form-control(name="_otIDevices", data-bind="value: otIDevice, options: otIDevices, optionsValue: 'val', optionsText: 'i18n', enable: otIDeviceEnabled", style="margin-bottom: 10px")
+                div(data-bind="hasFeedback: { field: otIRead, toggle: otIRead.hasError, messages: otIRead.validationMessages }")
+                  .date-picker.input-group
+                    input.form-control(name="otIRead", data-bind="datetimepicker: { value: otIRead, valueReset: null, options: { format: 'DD.MM.YYYY HH:mm', sideBySide: true } }, event: { focus: handleOphthalmologyFocusDate }, readOnly: otIRead.readOnly, attr: { placeholder: otNReadDateI18n }")
+                div(data-bind="visible: otIRead", style="padding-top: 10px")
+                  strong(data-bind="text: otIRead.i18n")
+                  div(style="text-indent: 17px;", data-bind="text: _otIRead")
+    div.col-xs-4
+      div.panel.panel-default(data-bind="panelCollapse: { name: 'textform-sd_ophthalmology_tonometry-panel-body-icare-l' }")
+        div.panel-heading
+          a(href="#textform-sd_ophthalmology_tonometry-panel-body-icare-l", data-toggle="collapse")
+            strong(data-bind="text: groupInCareI18n")
+        div#textform-sd_ophthalmology_tonometry-panel-body-icare-l.panel-collapse.collapse(data-bind="notifyBind: { method: handleUnlikelyCaseIcare }")
+          div.panel-body
+            table.textform-sd_ophthalmology_tonometry-measurement-a.dc-tablefieldset-inline
+              colgroup
+                col
+                col
+                col
+                col
+              tbody
+                tr
+                  td.text-right
+                    label.control-label(data-bind="text: otIL1.i18n")
+                  td
+                    input.form-control(name="otIL1", data-bind="value: _otIL1, readOnly: otIL1.readOnly, attr: { placeholder: otIL1UnitI18n }")
+                  td.text-right
+                    label.control-label(data-bind="text: otIL2.i18n")
+                  td
+                    input.form-control(name="otIL2", data-bind="value: _otIL2, readOnly: otIL2.readOnly, attr: { placeholder: otIL2UnitI18n }")
+div.row
+  div.col-xs-12
+    div.panel.panel-default(data-bind="panelCollapse: { name: 'textform-sd_ophthalmology_tonometry-panel-body-comment' }")
+      div.panel-heading
+        a(href="#textform-sd_ophthalmology_tonometry-panel-body-comment", data-toggle="collapse")
+          strong(data-bind="text: groupCommentI18n")
+      div#textform-sd_ophthalmology_tonometry-panel-body-comment.panel-collapse.collapse(data-bind="notifyBind: { method: initCommentShouldBeOpen }")
+        div.panel-body
+          textarea.form-control(name="comment", data-bind="caretPosition: comment.caretPosition, value: comment, readOnly: comment.readOnly, valueUpdate: 'afterkeydown', attr: { placeholder: placeholderCommentI18n }", style="min-height: 115px;")
+div.row
+  div.col-xs-12
+    div(style="margin: 0 0 10px;")
+      a(name="arrayAdd-otAppliedSet", href="#", data-bind="click: addOtAppliedSet, readOnly: otAppliedSet.readOnly")
+        i.icon.fa.fa-plus
+      h4(style="display:inline", data-bind="text: ' ' + administratedI18n")
+    div#otAppliedSet(data-bind="foreach: otAppliedSet")
+      div.panel.panel-default
+        div.panel-body
+          div.row
+            div.col-xs-4
+              div.form-group(data-bind="hasFeedback: { field: otAppliedAtL, toggle: otAppliedAtL.hasError, messages: otAppliedAtL.validationMessages }")
+                .date-picker.input-group
+                  input.form-control(name="otAppliedAtL", data-bind="datetimepicker: { value: otAppliedAtL, valueReset: null, options: { format: 'DD.MM.YYYY HH:mm', sideBySide: true } }, event: { focus: $parent.handleOphthalmologyFocusDate }, readOnly: otAppliedAtL.readOnly, attr: { placeholder: otAppliedAtL.i18n }")
+              div
+                // ko if: _openMedicationSearchEnableAppliedContentL
+                div.input-group
+                  span.input-group-btn
+                    button.btn.btn-default(type="button", data-bind="click: _openMedicationSearchAppliedContentL, attr: { title: $parent.openMedicationSearchI18n }")
+                      span.glyphicon.glyphicon-search
+                      span.sr-only(data-bind="text: $parent.openMedicationSearchI18n")
+                  input.form-control(name="otAppliedContentL", data-bind="value: otAppliedContentL, attr: { placeholder: otAppliedContentL.i18n }")
+                // /ko
+                // ko ifnot: _openMedicationSearchEnableAppliedContentL
+                input.form-control(name="otAppliedContentL", data-bind="value: otAppliedContentL, readOnly: otAppliedContentL.readOnly, attr: { placeholder: otAppliedContentL.i18n }")
+                // /ko
+            div.col-xs-4
+              div.center-block(style="max-width: 250px; margin-top: 5px;")
+                button.btn.btn-default.btn-block(type="button", data-bind="click: takeoverValues, readOnly: $parent.otAppliedSet.readOnly")
+                  span.glyphicon.glyphicon-chevron-left
+                  span(data-bind="text: ' ' + $parent.copyOverEqualityI18n + ' '")
+                  span.glyphicon.glyphicon-chevron-right
+                button.btn.btn-default.btn-block(type="button", data-bind="click: $parent.removeOtAppliedSet, readOnly: $parent.otAppliedSet.readOnly")
+                  span(data-bind="text: $parent.deleteEntryI18n + ' '")
+                  span.glyphicon.glyphicon-trash
+            div.col-xs-4
+              div.form-group(data-bind="hasFeedback: { field: otAppliedAtR, toggle: otAppliedAtR.hasError, messages: otAppliedAtR.validationMessages }")
+                .date-picker.input-group
+                  input.form-control(name="otAppliedAtR", data-bind="datetimepicker: { value: otAppliedAtR, valueReset: null, options: { format: 'DD.MM.YYYY HH:mm', sideBySide: true } }, event: { focus: $parent.handleOphthalmologyFocusDate }, readOnly: otAppliedAtR.readOnly, attr: { placeholder: otAppliedAtR.i18n }")
+              div
+                // ko if: _openMedicationSearchEnableAppliedContentR
+                div.input-group
+                  span.input-group-btn
+                    button.btn.btn-default(type="button", data-bind="click: _openMedicationSearchAppliedContentR, attr: { title: $parent.openMedicationSearchI18n }")
+                      span.glyphicon.glyphicon-search
+                      span.sr-only(data-bind="text: $parent.openMedicationSearchI18n")
+                  input.form-control(name="otAppliedContentR", data-bind="value: otAppliedContentR, attr: { placeholder: otAppliedAtR.i18n }")
+                // /ko
+                // ko ifnot: _openMedicationSearchEnableAppliedContentR
+                input.form-control(name="otAppliedContentR", data-bind="value: otAppliedContentR, readOnly: otAppliedContentR.readOnly, attr: { placeholder: otAppliedAtR.i18n }")
+                // /ko

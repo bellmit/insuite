@@ -1,0 +1,7 @@
+div.dc-action-buttons.dc-action-buttons-top.dc-action-buttons-left.clearfix
+  button.btn.btn-primary(type="button", data-bind="click: btnClick, disable: btnDisabled")
+    span(data-bind="text: approveValidDocs.i18n")
+    | &nbsp;
+    span(data-bind="if: nValidDocs")
+      span.badge(data-bind="text: nValidDocs")
+div(data-bind="template: table.template")

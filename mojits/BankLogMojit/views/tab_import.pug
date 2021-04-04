@@ -1,0 +1,25 @@
+div#tab_import
+  h3(data-bind="text: 'IMPORT'")
+  div.row
+    div.col-xs-12
+      div#progressbarProcess(data-bind="visible: inProcess")
+        div.progress(style="margin-top: 8px;")
+          div.progress-bar(style="padding-left: 8px; text-align: left;", role="progressbar", aria-valuenow="0", aria-valuemin="0", aria-valuemax="100", data-bind="style: {width: progressBarProcess() + '%'}")
+  div#demoButtons.dc-action-buttons.dc-action-buttons-left(style="margin-bottom: 10px;", data-bind="if: isMocking")
+    div.col-md-12(style="margin-bottom: 10px;")
+      span(data-bind="text: generateBesrTextI18n")
+      i#generateInfo.dc-info-icon(data-bind="click: showInfoDialog")
+      | :
+      | &nbsp;
+      span.btn.btn-primary#generateBesr(type="button", style="display: inline-block;", data-bind="click: generateBesr, text: 'Start'")
+    div.col-md-12(style="margin-bottom: 10px;")
+      span(data-bind="text: medidataPendingTextI18n")
+      i#medidataInfo.dc-info-icon(data-bind="click: showInfoDialog")
+      | :
+      | &nbsp;
+      span.btn.btn-primary#medidataPending(type="button", style="display: inline-block;", data-bind="click: medidataPending, text: 'Start'")
+  form#BESRForm(enctype="multipart/form-data")
+    input.btn.btn-default(type="file", name="BESRFile", style="display: inline-block;", data-bind="enable: fileEnabled, event: { change: fileChange }")
+    span &nbsp;
+    input.btn.btn-primary#uploadLDT(type="button", style="display: inline-block;", data-bind="click: upload, enable: uploadEnabled, attr: {value: importSubmitTextI18n}")
+  div#BESRResult(style="white-space: pre;")

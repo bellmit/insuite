@@ -1,0 +1,143 @@
+div
+  div.row
+    div.col-sm-12
+      h4(data-bind="click: togglePatientParameterVisible")
+        // ko if: patientParameterVisible
+        i.fa.fa-chevron-up
+        // /ko
+        // ko ifnot: patientParameterVisible
+        i.fa.fa-chevron-down
+        // /ko
+        | Patientenparameter
+      // ko if: patientParameterVisible
+      .row
+        .col-sm-2
+          div.form-group(data-bind="hasFeedback: { field: patientWeight, toggle: patientWeight.hasError, messages: patientWeight.validationMessages }")
+            label.control-label(data-bind="text: patientWeight.i18n")
+            input.form-control(name="patientWeight", data-bind="textInput: patientWeight, readOnly: patientWeight.readOnly()")
+        .col-sm-2
+          div.form-group(data-bind="hasFeedback: { field: patientHeight, toggle: patientHeight.hasError, messages: patientHeight.validationMessages }")
+            label.control-label(data-bind="text: patientHeight.i18n")
+            input.form-control(name="patientHeight", data-bind="textInput: patientHeight, readOnly: patientHeight.readOnly()")
+        .col-sm-2
+          div.form-group(data-bind="hasFeedback: { field: patientCreatinineValue, toggle: patientCreatinineValue.hasError, messages: patientCreatinineValue.validationMessages }")
+            label.control-label(data-bind="text: patientCreatinineValue.i18n")
+            input.form-control(name="patientCreatinineValue", data-bind="textInput: patientCreatinineValue, readOnly: patientCreatinineValue.readOnly()")
+        .col-sm-2
+          div.form-group
+            label.control-label(data-bind="text: patientGender.i18n")
+            select.form-control(name="patientGender", data-bind="options: patientGender.list, optionsValue: 'val', optionsText: 'i18n', value: patientGender, readOnly: patientGender.readOnly")
+        .col-sm-4
+          div.form-group(data-bind="hasFeedback: { field: patientAllergiesAndIntolerances, toggle: patientAllergiesAndIntolerances.hasError, messages: patientAllergiesAndIntolerances.validationMessages }")
+            label.control-label(data-bind="text: patientAllergiesAndIntolerances.i18n")
+            input.form-control(name="patientAllergiesAndIntolerances", data-bind="textInput: patientAllergiesAndIntolerances, readOnly: patientAllergiesAndIntolerances.readOnly()")
+      .row
+        .col-sm-3
+          div(style="margin-top: 24px;")
+            div.checkbox-inline
+              label.control-label
+                span(data-bind="text: patientLactation.i18n")
+                input(name="patientLactation", type="checkbox", data-bind="checked: patientLactation, disable: _isModelReadOnly")
+            div.checkbox-inline
+              label.control-label
+                span(data-bind="text: patientPregnant.i18n")
+                input(name="patientPregnant", type="checkbox", data-bind="checked: patientPregnant, disable: _isModelReadOnly")
+        .col-sm-3
+          div.form-group(data-bind="hasFeedback: { field: patientParameter1, toggle: patientParameter1.hasError, messages: patientParameter1.validationMessages }")
+            label.control-label(data-bind="text: patientParameter1.i18n")
+            input.form-control(name="patientParameter1", data-bind="textInput: patientParameter1, readOnly: patientParameter1.readOnly()")
+        .col-sm-3
+          div.form-group(data-bind="hasFeedback: { field: patientParameter2, toggle: patientParameter2.hasError, messages: patientParameter2.validationMessages }")
+            label.control-label(data-bind="text: patientParameter2.i18n")
+            input.form-control(name="patientParameter2", data-bind="textInput: patientParameter2, readOnly: patientParameter2.readOnly()")
+        .col-sm-3
+          div.form-group(data-bind="hasFeedback: { field: patientParameter3, toggle: patientParameter3.hasError, messages: patientParameter3.validationMessages }")
+            label.control-label(data-bind="text: patientParameter3.i18n")
+            input.form-control(name="patientParameter3", data-bind="textInput: patientParameter3, readOnly: patientParameter3.readOnly()")
+      // /ko
+    div.col-sm-12
+      div.row
+        div.col-sm-3
+          h4 Medikamente
+        div.col-sm-9
+          div.form-group(data-bind="hasFeedback: { field: comment, toggle: comment.hasError, messages: comment.validationMessages }")
+            label.control-label(data-bind="text: sourceI18n")
+            input.form-control(name="comment", data-bind="textInput: comment, readOnly: comment.readOnly()")
+      div.table-responsive
+        table.table.table-bordered.dc-kbv-medication-plan-table
+          thead
+            tr
+              th(style="width: 25px;")
+              th(title="Datum", style="width: 100px;") Datum
+              th(title="PZN", style="width: 90px;") PZN
+              th(title="Wirkstoffe", style="width: 14%;") Wirkstoffe
+              th(title="Rezepteintrag", style="width: 20%;") Rezepteintrag
+              th(title="Stärke", style="width: 10%;") Stärke
+              th(title="DRF") DRF
+              th(title="Dosis") Dosis
+              th(title="Einheit") Einheit
+              th(title="Grund") Grund
+              th(title="Hinweis") Hinweis
+              th(style="width: 58px;")
+              th(style="width: 35px;")
+          // ko if: medicationPlanEntries().length === 0
+          tbody(data-bind="with: {}")
+            td
+            td(colspan=10)
+              p Keine Einträge!
+            td(colspan=1, style="overflow: unset!important;")
+              include KBVMedicationPlan-ActionButtons
+            td(colspan=1)
+              include KBVMedicationPlan-DeleteButton
+          // /ko
+          tbody
+            //ko foreach: medicationPlanEntries
+            tr(data-bind="notifyBind: { method: 'rowReady', namespace: $data }, click: $parent.onRowClick.bind($parent), css: {info: hasHighlight, danger: hasDanger, 'dc-kbv-medication-plan-table-row-editMode': !hasDanger() && editMode()}, dropZone: {name: 'medication-plan-entry', drop: $parent.drop}, dragZone: {name: 'medication-plan-entry', element: null, dragStart: $parent.dragStart, dragEnd: $parent.dragEnd}, dragEvents: {accepts: 'medication-plan-entry', dragOver: $parent.dragOver, data: { items: $parent.medicationPlanEntries, item: $data }, dragEnter: $parent.dragEnter}")
+              // ko if: type() === 'MEDICATION'
+              include KBVMedicationPlan-DragHandle
+              include KBVMedicationPlan-Medication
+              td(style="overflow: unset!important;")
+                include KBVMedicationPlan-ActionButtons
+              td(colspan=1)
+                include KBVMedicationPlan-DeleteButton
+              // /ko
+              // ko if: type() === 'BINDTEXT'
+              include KBVMedicationPlan-DragHandle
+              td(colspan=1)
+              td(colspan=9)
+                include KBVMedicationPlan-BindText
+              td(colspan=1, style="overflow: unset!important;")
+                include KBVMedicationPlan-ActionButtons
+              td(colspan=1)
+                include KBVMedicationPlan-DeleteButton
+              // /ko
+              // ko if: type() === 'FREETEXT'
+              include KBVMedicationPlan-DragHandle
+              td.dc-kbv-medication-plan-table-freetext(colspan=10)
+                include KBVMedicationPlan-FreeText
+              td.dc-kbv-medication-plan-table-freetext(colspan=1, style="overflow: unset!important;")
+                include KBVMedicationPlan-ActionButtons
+              td(colspan=1)
+                include KBVMedicationPlan-DeleteButton
+              // /ko
+              // ko if: type() === 'SUB_HEADING'
+              include KBVMedicationPlan-DragHandle
+              td(colspan=10).dc-kbv-medication-plan-table-subheading
+                include KBVMedicationPlan-SubHeading
+              td(colspan=1, style="overflow: unset!important;")
+                include KBVMedicationPlan-ActionButtons
+              td(colspan=1)
+                include KBVMedicationPlan-DeleteButton
+              // /ko
+              // ko if: type() === 'MEDICATION_RECIPE'
+              include KBVMedicationPlan-DragHandle
+              td(colspan=10)
+                include KBVMedicationPlan-MedicationRecipe
+              td(colspan=1, style="overflow: unset!important;")
+                include KBVMedicationPlan-ActionButtons
+              td(colspan=1)
+                include KBVMedicationPlan-DeleteButton
+              // /ko
+            // /ko
+
+

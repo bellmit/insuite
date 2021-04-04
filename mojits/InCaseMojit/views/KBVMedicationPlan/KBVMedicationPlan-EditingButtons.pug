@@ -1,0 +1,4 @@
+// ko ifnot: $parent._isModelReadOnly
+button.btn.btn-sm.btn-default(data-bind="click: $parent.cancelEditing.bind($parent), text: $parent.cancelEditingI18n")
+button.btn.btn-sm.btn-primary(style="margin-left: 5px; border-color: #ccc;", data-bind="click: $parent.saveEditing.bind($parent), text: $parent.saveEditingI18n")
+// /ko

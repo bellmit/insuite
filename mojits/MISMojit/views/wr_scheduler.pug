@@ -1,0 +1,26 @@
+div(style="text-align:center;")
+  .row
+    .col-xs-8.col-xs-offset-2
+      div.waitno#wno
+        != last_no
+      input#wno_hidden(type="hidden")
+      div.waitavg#wavg Nächster Patient
+  .row
+    .col-xs-6(style={'height': '1.5em', 'border-right': '1px solid #707070', 'margin-bottom': '5px'})
+  for item in data
+    .row
+      if !item.adhoc
+        .col-xs-4.timelistleft
+          em
+            != moment(item.start).format('HH:mm')
+      if !item.adhoc
+        .col-xs-4.timelisttype
+          em Termin
+      else
+        .col-xs-4.col-xs-offset-4.timelisttype
+          em
+            != item.number
+      if item.adhoc
+        .col-xs-4.timelistright
+          em
+            != moment(item.start).format('HH:mm')

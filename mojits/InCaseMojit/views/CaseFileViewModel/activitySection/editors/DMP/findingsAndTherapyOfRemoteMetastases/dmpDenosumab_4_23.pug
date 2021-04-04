@@ -1,0 +1,7 @@
+div.form-group.col-xs-4(data-bind="visible: dmpDenosumab_4_23Visible()")
+    strong(data-bind="text: dmpDenosumab_4_23.i18n")
+    span(data-bind="dmpField: { field: dmpDenosumab_4_23 }")
+    div(data-bind="foreach: dmpDenosumab_4_23.list, hasFeedback: { field: dmpDenosumab_4_23, toggle: dmpDenosumab_4_23.hasError, messages: dmpDenosumab_4_23.validationMessages }")
+        label.checkbox-inline
+            span(data-bind="text: i18n")
+            input(type="checkbox", name="dmpDenosumab_4_23", data-bind="value: val, checked: $parent.dmpDenosumab_4_23, readOnly: $parent.dmpDenosumab_4_23.readOnly, attr: { name: $element.name + '-' + val }")

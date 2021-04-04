@@ -1,0 +1,6 @@
+div.PatientGadgetCurrentTasks
+  h4.PatientGadget-headline
+    a(data-bind="attr: { href: _linkToTaskTable }, text: currentTasksI18n", target="_blank")
+    a
+      span#createTask.fa.fa-sm.fa-plus(style="cursor:pointer; margin-left:5px", data-bind="click: _createTask, attr: { title: createTaskI18n }")
+  include PatientGadgetConfigurableTableBase

@@ -1,0 +1,122 @@
+/*!
+ * MISMojit CSS add-ons for Bootstrap 2.2.2
+ * Copyright 2012-2013 Doc Cirrus Berlin
+ * Date: 07.03.2013
+ *
+ */
+
+span.green {
+    color: green;
+}
+
+span.dc-blue {
+    color: #000088;
+}
+
+tr.quarter-break {
+    background-color: #DDDDDD;
+}
+
+/* section with styles for registration.jade.html */
+.showbox {
+    border-left: 1px solid #B7B6B8;
+    border-top: 1px solid #B7B6B8;
+    border-right: 2px solid #B7B6B8;
+    border-bottom: 2px solid #B7B6B8;
+}
+
+/* section with styles for wr_nextnumber.jade */
+.wr-number {
+    text-align: right;
+}
+
+/* section with styles for watingroom.jade.html */
+.hoverbox {
+}
+
+@font-face {
+    font-family: 'digi';
+    src: url('/static/DocCirrus/assets/fonts/digii/DS-DIGII.TTF');
+}
+
+.timelisttype {
+    box-sizing: border-box;
+    font-family: 'Verdana';
+    color: #707070;
+    font-size: 1.1em;
+    color: #707070;
+    text-align: center;
+    border: 1px solid #707070;
+    border-bottom: 1px solid #E54B6B
+}
+
+.timelistleft {
+    box-sizing: border-box;
+    font-family: 'Verdana';
+    color: #707070;
+    font-size: 1em;
+    color: #707070;
+    text-align: right;
+    border-bottom: 0px solid #707070;
+    border-right: 0px solid #707070;
+}
+.timelistright {
+    box-sizing: border-box;
+    font-family: 'Verdana';
+    color: #707070;
+    font-size: 1em;
+    color: #707070;
+    text-align: left;
+    border-bottom: 0px solid #707070;
+    border-left: 0px solid #707070;
+}
+
+.date {
+    font-family: 'Verdana';
+    color: #707070;
+    font-size: 2em;
+    text-align: center;
+    line-height: 40px;
+}
+
+.clock {
+    box-sizing: border-box;
+    font-family: 'digi';
+    font-size: 100%;
+    font-size: 3em;
+    color: #707070;
+    text-align: center;
+    line-height: 80px;
+    border-top: 5px solid #707070;
+}
+
+.waitno {
+    box-sizing: border-box;
+    font-family: 'digi';
+    font-size: 100%;
+    font-size: 6em;
+    color: #707070;
+    text-align: center;
+    margin-top: 30px;
+    line-height: 70px;
+    border-bottom: 5px solid #E54B6B;
+}
+
+.waitavg {
+    box-sizing: border-box;
+    font-family: 'Verdana';
+    font-size: 100%;
+    font-size: 1.1em;
+    color: #707070;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+#licenseScope .popover .popover-content {
+    white-space: pre-wrap;
+}
+
+#licenseScope .popover {
+    max-width: max-content;
+}

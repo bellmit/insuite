@@ -1,0 +1,133 @@
+{
+  "request": {
+    "@xmlns:xsi": "http://www.w3.org/2001/XMLSchema-instance",
+    "@xmlns:invoice": "http://www.xmlData.ch/xmlInvoice/XSD",
+    "@xmlns": "http://www.w3.org/2001/XMLSchema",
+    "@xsi:schemaLocation": "http://www.xmlData.ch/xmlInvoice/XSD InvoiceReminderRequest_400.xsd",
+    "@role": "test",
+    "header": {
+      "sender": { "@ean_party": "str1234" },
+      "intermediate": { "@ean_party": "str1234" },
+      "recipient": { "@ean_party": "str1234" }
+    },
+    "prolog": {
+      "package": {
+        "@version": "1234",
+        "@id": "1234",
+        "#text": "str1234"
+      },
+      "generator": {
+        "software": {
+          "@version": "1234",
+          "@id": "1234",
+          "#text": "str1234"
+        }
+      }
+    },
+    "reminder": {
+      "@invoice_timestamp": "12345",
+      "@invoice_id": "str1234",
+      "@invoice_date": "2012-12-13T12:12:12",
+      "@resend": "true",
+      "@case_id": "str1234",
+      "@reminder_timestamp": "12345",
+      "@reminder_id": "str1234",
+      "@reminder_date": "2012-12-13T12:12:12",
+      "@reminder_level": "1",
+      "remark": "str1234",
+      "balance": {
+        "@currency": "CHF",
+        "@amount": "3.1415926535",
+        "@amount_prepaid": "3.1415926535",
+        "@amount_due": "3.1415926535"
+      },
+      "esr5": {
+        "@type": "15plus",
+        "@participant_number": "str1234",
+        "@reference_number": "str1234",
+        "@coding_line": "str1234",
+        "bank": {
+          "company": {
+            "companyname": "str1234",
+            "department": "str1234",
+            "postal": {
+              "pobox": "str1234",
+              "street": "str1234",
+              "zip": {
+                "@statecode": "str1234",
+                "@countrycode": "str",
+                "#text": "str1234"
+              },
+              "city": "str1234"
+            },
+            "telecom": {
+              "phone": "str1234",
+              "fax": "str1234"
+            },
+            "online": {
+              "email": "str1234",
+              "url": ""
+            }
+          }
+        }
+      },
+      "$tiers_mode": {
+        "@payment_periode": "P5Y2M10D",
+        "biller": {
+          "@ean_party": "str1234",
+          "@zsr": "str1234",
+          "@specialty": "str1234"
+        },
+        "insurance": {
+          "@ean_party": "str1234",
+          "company": {
+            "companyname": "str1234",
+            "department": "str1234",
+            "postal": {
+              "pobox": "str1234",
+              "street": "str1234",
+              "zip": {
+                "@statecode": "str1234",
+                "@countrycode": "str",
+                "#text": "str1234"
+              },
+              "city": "str1234"
+            },
+            "telecom": {
+              "phone": "str1234",
+              "fax": "str1234"
+            },
+            "online": {
+              "email": "str1234",
+              "url": ""
+            }
+          }
+        },
+        "guarantor": {
+          "@unique_id": "str1234",
+          "person": {
+            "@salutation": "MR",
+            "familyname": "Berner",
+            "givenname": "Viktor",
+            "postal": {
+              "street": "Sierenzerstr",
+              "zip": {
+                "@statecode": "6",
+                "#text": "4055"
+              },
+              "city": "Basel"
+            },
+            "telecom": {
+              "phone": "str1234",
+              "fax": "str1234"
+            },
+            "online": {
+              "email": "str1234",
+              "url": ""
+            }
+          }
+        }
+      }
+    }
+  }
+}

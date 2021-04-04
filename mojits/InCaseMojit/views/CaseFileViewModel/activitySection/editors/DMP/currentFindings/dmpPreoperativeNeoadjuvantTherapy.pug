@@ -1,0 +1,9 @@
+div.form-group
+    div.row
+        div.col-xs-3
+            strong(data-bind="text: dmpPreoperativeNeoadjuvantTherapy.i18n")
+            span(data-bind="dmpField: { field: dmpPreoperativeNeoadjuvantTherapy }")
+        div.col-xs-3(data-bind="foreach: dmpPreoperativeNeoadjuvantTherapy.list, hasFeedback: { field: dmpPreoperativeNeoadjuvantTherapy, toggle: dmpPreoperativeNeoadjuvantTherapy.hasError, messages: dmpPreoperativeNeoadjuvantTherapy.validationMessages }")
+            label.radio-inline
+                span(data-bind="text: i18n")
+                input(type="radio", name="dmpPreoperativeNeoadjuvantTherapy", data-bind="value: val, checked: $parent.dmpPreoperativeNeoadjuvantTherapy, readOnly: $parent.dmpPreoperativeNeoadjuvantTherapy.readOnly, attr: { name: $element.name + '-' + val }")

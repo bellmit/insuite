@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- edited with XMLSPY v2004 rel. 3 U (http://www.xmlspy.com) by Frank Weiler (KBV) -->
+<!-- automatische Dokumentation, generiert durch Visual Source Safe 
+	$Workfile: administrative_gender_typelib.xsd $  
+	$Modtime: 15.04.04 12:22 $  
+	$Revision: 2 $  
+	$History: administrative_gender_typelib.xsd $
+ * 
+ * *****************  Version 2  *****************
+ * User: Eusorov      Date: 15.04.04   Time: 12:25
+ * Updated in $/XML-Schnittstellen2/KBV/typelib
+ * Reorganisation, administrative_gender_cd ist jetzt ein complexesTyp mit
+ * 2-Attributen und vordefinierten Werten.
+ * 
+ * *****************  Version 1  *****************
+ * User: Eusorov      Date: 29.03.04   Time: 17:15
+ * Created in $/XML-Schnittstellen2/KBV/typelib
+ * 
+ * *****************  Version 1  *****************
+ * User: Eusorov      Date: 25.03.04   Time: 17:58
+ * Created in $/XML-Schnittstellen2/KBV/typelib
+-->
+<xs:schema targetNamespace="urn:kbv/kbv/typelib/001" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="urn:kbv/kbv/typelib/001" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:complexType name="administrative_gender_cd_typ">
+		<xs:attribute name="V" use="required">
+			<xs:simpleType>
+				<xs:annotation>
+					<xs:documentation>Geschlecht</xs:documentation>
+				</xs:annotation>
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="F">
+						<xs:annotation>
+							<xs:documentation>Female</xs:documentation>
+						</xs:annotation>
+					</xs:enumeration>
+					<xs:enumeration value="M">
+						<xs:annotation>
+							<xs:documentation>Male</xs:documentation>
+						</xs:annotation>
+					</xs:enumeration>
+					<xs:enumeration value="UN">
+						<xs:annotation>
+							<xs:documentation>Undifferentiated</xs:documentation>
+						</xs:annotation>
+					</xs:enumeration>
+					<xs:enumeration value="X">
+						<xs:annotation>
+							<xs:documentation>Undetermined</xs:documentation>
+						</xs:annotation>
+					</xs:enumeration>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="S" type="xs:string" use="optional" fixed="2.16.840.1.113883.5.1"/>
+	</xs:complexType>
+</xs:schema>

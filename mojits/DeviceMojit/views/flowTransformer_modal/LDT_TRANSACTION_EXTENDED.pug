@@ -1,0 +1,112 @@
+div#transformerModel
+  div.form-group
+    label(for="transformerSelect2LdtVersion", data-bind="text: ldtVersionI18n + ':'")
+    input.form-control.input-sm#transformerSelect2LdtVersion(type="hidden", data-bind="select2: select2LdtVersion")
+    span.checkbox
+      label.control-label
+        input(type="checkbox", name="treatmentTypeBox", data-bind="checked: treatmentTypeSel")
+        div.form-group(style="display: inline-block;")
+          input(name="treatmentType", type="radio", style="width:20px; display: inline-block;", value="1", data-bind="enable: treatmentTypeSel, checked: treatmentType")
+          strong(style="margin-right:5px;", data-bind="text: kurativeI18n")
+          input(name="treatmentType", type="radio", style="width:20px; display: inline-block;", value="2", data-bind="enable: treatmentTypeSel, checked: treatmentType")
+          strong(style="margin-right:5px;", data-bind="text: preventiveI18n")
+          input(name="treatmentType", type="radio", style="width:20px; display: inline-block;", value="4", data-bind="enable: treatmentTypeSel, checked: treatmentType")
+          strong(data-bind="text: belegBehandlungI18n")
+      i.dc-info-icon(data-toggle="popover", data-bind="attr: {'data-original-title': treatmentTypePopoverTitle, 'data-content': treatmentTypePopover }", data-html="true", rel="popover", data-placement="auto left", data-trigger="click")
+    h4(data-bind="text: medicineDataI18n + ':'")
+    span(data-bind="text: medicineDataSubText")
+    span.checkbox
+      label.control-label
+        input(style="margin-top:8px;", type="checkbox", name="patientHeightInCmBox", data-bind="checked: patientHeightInCm")
+        input.form-control.input-sm(style="width:50px; display: inline-block; margin-right:5px;", data-bind="value: patientHeightInCmFK, valueUpdate:'afterkeydown', attr: { maxLength: '4'}", disabled)
+        strong(data-bind="text: patientHeightInCmI18n")
+      i.dc-info-icon(data-toggle="popover", data-bind="attr: {'data-original-title': patientHeightInCmPopoverTitle, 'data-content': patientHeightInCmPopover }", data-html="true", rel="popover", data-placement="auto left", data-trigger="click")
+    span.checkbox
+      label.control-label
+        input(style="margin-top:8px;", type="checkbox", name="patientWeightInKgBox", data-bind="checked: patientWeightInKg")
+        input.form-control.input-sm(style="width:50px; display: inline-block; margin-right:5px;", data-bind="value: patientWeightInKgFK, valueUpdate:'afterkeydown', attr: { maxLength: '4'}", disabled)
+        strong(data-bind="text: patientWeightInKgI18n")
+      i.dc-info-icon(data-toggle="popover", data-bind="attr: {'data-original-title': patientWeightInKgPopoverTitle, 'data-content': patientWeightInKgPopover }", data-html="true", rel="popover", data-placement="auto left", data-trigger="click")
+    span.checkbox
+      label.control-label
+        input(style="margin-top:8px;", type="checkbox", name="patientPregnancyBox", data-bind="checked: patientPregnancy")
+        input.form-control.input-sm(style="width:50px; display: inline-block; margin-right:5px;", data-bind="value: patientPregnancyFK, valueUpdate:'afterkeydown', attr: { maxLength: '4'}", disabled)
+        strong(data-bind="text: patientPregnancyI18n")
+      i.dc-info-icon(data-toggle="popover", data-bind="attr: {'data-original-title': patientPregnancyPopoverTitle, 'data-content': patientPregnancyPopover }", data-html="true", rel="popover", data-placement="auto left", data-trigger="click")
+    span.checkbox
+      label.control-label
+        input(style="margin-top:8px;", type="checkbox", name="patientPregnancyGestationLengthBox", data-bind="checked: patientPregnancyGestationLength")
+        input.form-control.input-sm(style="width:50px; display: inline-block; margin-right:5px;", data-bind="value: patientPregnancyGestationLengthFK, valueUpdate:'afterkeydown', attr: { maxLength: '4'}", disabled)
+        strong(data-bind="text: patientPregnancyGestationLengthI18n")
+      i.dc-info-icon(data-toggle="popover", data-bind="attr: {'data-original-title': patientPregnancyGestationLengthPopoverTitle, 'data-content': patientPregnancyGestationLengthPopover }", data-html="true", rel="popover", data-placement="auto left", data-trigger="click")
+    h4(data-bind="text: diagnosisDataI18n + ':'")
+    span(data-bind="text: diagnosisDataSubText")
+    span.checkbox
+      label.control-label
+        input(type="checkbox", name="diagnosisSuspectedBox", data-bind="checked: diagnosisSuspected")
+        div.form-group(style="display: inline-block;")
+          input(name="diagnosisSuspectedFK", type="radio", style="width:20px; display: inline-block;", value="4207", data-bind="enable: diagnosisSuspected, checked: diagnosisSuspectedFK")
+          strong(style="margin-right:5px;", data-bind="text: diagnosis_suspectedI18n")
+          input(name="diagnosisSuspectedFK", type="radio", style="width:20px; display: inline-block;", value="4209", data-bind="enable: diagnosisSuspected, checked: diagnosisSuspectedFK")
+          strong(data-bind="text: order_diagnosis_suspectedI18n")
+      i.dc-info-icon(data-toggle="popover", data-bind="attr: {'data-original-title': diagnosisSuspectedPopoverTitle, 'data-content': diagnosisSuspectedPopover }", data-html="true", rel="popover", data-placement="auto left", data-trigger="click")
+    span.checkbox
+      label.control-label
+        input(style="margin-top:8px;", type="checkbox", name="ICDCodeBox", data-bind="checked: ICDCode")
+        input.form-control.input-sm(style="width:50px; display: inline-block; margin-right:5px;", data-bind="value: ICDCodeFK, valueUpdate:'afterkeydown', attr: { maxLength: '4'}", disabled)
+        strong(data-bind="text: ICDCodeI18n")
+      i.dc-info-icon(data-toggle="popover", data-bind="attr: {'data-original-title': ICDCodePopoverTitle, 'data-content': ICDCodePopover }", data-html="true", rel="popover", data-placement="auto left", data-trigger="click")
+    span.checkbox
+      label.control-label
+        input(style="margin-top:8px;", type="checkbox", name="diagnosisCertaintyBox", data-bind="checked: diagnosisCertainty")
+        input.form-control.input-sm(style="width:50px; display: inline-block; margin-right:5px;", data-bind="value: diagnosisCertaintyFK, valueUpdate:'afterkeydown', attr: { maxLength: '4'}", disabled)
+        strong(data-bind="text: diagnosisCertaintyI18n")
+      i.dc-info-icon(data-toggle="popover", data-bind="attr: {'data-original-title': diagnosisCertaintyPopoverTitle, 'data-content': diagnosisCertaintyPopover }", data-html="true", rel="popover", data-placement="auto left", data-trigger="click")
+    span.checkbox
+      label.control-label
+        input(style="margin-top:8px;", type="checkbox", name="diagnosisLocBox", data-bind="checked: diagnosisLoc")
+        input.form-control.input-sm(style="width:50px; display: inline-block; margin-right:5px;", data-bind="value: diagnosisLocFK, valueUpdate:'afterkeydown', attr: { maxLength: '4'}", disabled)
+        strong(data-bind="text: diagnosisLocI18n")
+      i.dc-info-icon(data-toggle="popover", data-bind="attr: {'data-original-title': diagnosisLocPopoverTitle, 'data-content': diagnosisLocPopover }", data-html="true", rel="popover", data-placement="auto left", data-trigger="click")
+    span.checkbox
+      label.control-label
+        input(style="margin-top:8px;", type="checkbox", name="diagnosisDescBox", data-bind="checked: diagnosisDesc")
+        input.form-control.input-sm(style="width:50px; display: inline-block; margin-right:5px;", data-bind="value: diagnosisDescFK, valueUpdate:'afterkeydown', attr: { maxLength: '4'}", disabled)
+        strong(data-bind="text: diagnosisDescI18n")
+      i.dc-info-icon(data-toggle="popover", data-bind="attr: {'data-original-title': diagnosisDescPopoverTitle, 'data-content': diagnosisDescPopover }", data-html="true", rel="popover", data-placement="auto left", data-trigger="click")
+    span.checkbox
+      label.control-label
+        input(style="margin-top:8px;", type="checkbox", name="diagnosisExceptionDescBox", data-bind="checked: diagnosisExceptionDesc")
+        input.form-control.input-sm(style="width:50px; display: inline-block; margin-right:5px;", data-bind="value: diagnosisExceptionDescFK, valueUpdate:'afterkeydown', attr: { maxLength: '4'}", disabled)
+        strong(data-bind="text: diagnosisExceptionDescI18n")
+      i.dc-info-icon(data-toggle="popover", data-bind="attr: {'data-original-title': diagnosisExceptionDescPopoverTitle, 'data-content': diagnosisExceptionDescPopover }", data-html="true", rel="popover", data-placement="auto left", data-trigger="click")
+    h4(data-bind="text: scheinDataI18n + ':'")
+    span(data-bind="text: scheinDataSubText")
+    span.checkbox
+      label.control-label
+        input(style="margin-top:8px;", type="checkbox", name="initiatorBSNRBox", data-bind="checked: initiatorBSNR")
+        input.form-control.input-sm(style="width:50px; display: inline-block; margin-right:5px;", data-bind="value: initiatorBSNRFK, valueUpdate:'afterkeydown', attr: { maxLength: '4'}", disabled)
+        strong(data-bind="text: initiatorBSNRI18n")
+      i.dc-info-icon(data-toggle="popover", data-bind="attr: {'data-original-title': initiatorBSNRPopoverTitle, 'data-content': initiatorBSNRPopover }", data-html="true", rel="popover", data-placement="auto left", data-trigger="click")
+    span.checkbox
+      label.control-label
+        input(style="margin-top:8px;", type="checkbox", name="initiatorLANRBox", data-bind="checked: initiatorLANR")
+        input.form-control.input-sm(style="width:50px; display: inline-block; margin-right:5px;", data-bind="value: initiatorLANRFK, valueUpdate:'afterkeydown', attr: { maxLength: '4'}", disabled)
+        strong(data-bind="text: initiatorLANRI18n")
+      i.dc-info-icon(data-toggle="popover", data-bind="attr: {'data-original-title': initiatorLANRPopoverTitle, 'data-content': initiatorLANRPopover }", data-html="true", rel="popover", data-placement="auto left", data-trigger="click")
+    span.checkbox
+      label.control-label
+        input(style="margin-top:8px;", type="checkbox", name="refBSNRBox", data-bind="checked: refBSNR")
+        input.form-control.input-sm(style="width:50px; display: inline-block; margin-right:5px;", data-bind="value: refBSNRFK, valueUpdate:'afterkeydown', attr: { maxLength: '4'}", disabled)
+        strong(data-bind="text: refBSNRI18n")
+      i.dc-info-icon(data-toggle="popover", data-bind="attr: {'data-original-title': refBSNRPopoverTitle, 'data-content': refBSNRPopover }", data-html="true", rel="popover", data-placement="auto left", data-trigger="click")
+      strong(style="margin-left: 5px;", data-bind="text: mappedI18n")
+      input.form-control.input-sm(style="width:20px; display: inline-block; margin-left:5px;", type="hidden", data-bind="enable: refBSNR, select2: select2refBSNR")
+    span.checkbox
+      label.control-label
+        input(style="margin-top:8px;", type="checkbox", name="refLANRBox", data-bind="checked: refLANR")
+        input.form-control.input-sm(style="width:50px; display: inline-block; margin-right:5px;", data-bind="value: refLANRFK, valueUpdate:'afterkeydown', attr: { maxLength: '4'}", disabled)
+        strong(data-bind="text: refLANRI18n")
+      i.dc-info-icon(data-toggle="popover", data-bind="attr: {'data-original-title': refLANRPopoverTitle, 'data-content': refLANRPopover }", data-html="true", rel="popover", data-placement="auto left", data-trigger="click")
+      strong(style="margin-left: 5px;", data-bind="text: mappedI18n")
+      input.form-control.input-sm(style="width:20px; display: inline-block; margin-left:5px;", type="hidden", data-bind="enable: refLANR, select2: select2refLANR")

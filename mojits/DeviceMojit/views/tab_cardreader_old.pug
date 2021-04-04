@@ -1,0 +1,297 @@
+//TRANSLATION INCOMPLETE!! MOJ-3201
+style(type="text/css").
+  .panel-heading{
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+  .panel-heading a {
+    color: #005580;
+    text-decoration: none;
+  }
+  .panel-heading a:hover {
+    color: #005580;
+    text-decoration: underline;
+  }
+  .switch-cr-link:hover {
+    cursor: pointer;
+  }
+div#tab_cardreader_old
+  .row
+    .col-xs-12.col-md-10.col-md-offset-1
+      h1 Installation von Kartenlesegeräten
+
+      div.row
+        span Sie können <i>gematik</i>-zertifizierte KVK-/eGK-Kartenleser an ihrem Arbeitsplatz oder Datensafe betreiben.
+          a.pull-right.switch-cr-link(data-bind="click: switchCardreader, text:'Umschalten Kartenlesemanager'")
+      div.row
+        #installation-accordion.panel-group
+          .panel.panel-default
+            .panel-heading
+              h2.panel-title
+                a(data-toggle="collapse", data-parent="#installation-accordion", href="#installation-MacOS")
+                  | Kartenleser Software MacOS X:
+            #installation-MacOS.panel-collapse.collapse
+              .panel-body
+                h3 Systemvoraussetzungen
+                p
+                  | Minimal benötigte Version ist Mac OS X 10.7.<br>
+                  | Nutzer von Apple Produkten mit einem Betriebssystem ab Mac OS X 10.10. (Yosemite) und höher müssen sich noch das Paket <a href="http://support.apple.com/kb/DL1572?viewlocale=de_DE" target="_blank">Java für OS X 2014-001</a> herunterladen und installieren.<br>
+                  | Bei Nutzern von Apple Produkten mit einem Betriebssystem ab Mac OS X 10.11. (El Capitan) können bei der Treiberinstallation Probleme auftreten. Sehen Sie bitte <a href="https://developer.apple.com/library/mac/documentation/Security/Conceptual/System_Integrity_Protection_Guide/ConfiguringSystemIntegrityProtection/ConfiguringSystemIntegrityProtection.html" target="_blank">hier</a> die Hinweise des Herstellers.
+                h3 Schritt 1 Download: Dateien
+                p
+                  // ko if: downloadables_mac.length === 0
+                  b [Keine Dateien gefunden]
+                  br
+                  // /ko
+                  // ko if: downloadables_mac.length !== 0
+                  // ko foreach: { data: downloadables_mac, as: 'entry' }
+                  b
+                    a(data-bind="text: entry, attr: { href: '/download-file/' + entry }")
+                  br
+                  // /ko
+                  // /ko
+                h3 Schritt 2 Vorgehen bei der Installation:
+                ol
+                  li Verbinden Sie Ihr Kartenlesergerät mit einer freien USB-Schnittstelle
+                  li Optional müssen Sie einen Herstellertreiber installieren – prüfen Sie bitte in der Spalte "Mac Treiber" ob dies für Ihr Gerät zutreffend ist
+                  li Laden Sie die obige Mac Kartenleser Software herunter
+                  li Entpacken Sie die Kartenleser Software
+                  li Starten Sie die Kartenleser Software durch Doppelklick auf <i>start.command</i>**
+                    br
+                    i (Fenster vom Start/Stop-Prozess kann nach der Meldung [Prozess beendet] geschlossen werden. Achtung: Wird beim Herunterfahren automatisch beendet. Beim nächsten Hochfahren einfach wieder starten!)
+                h3 Schritt 3 Registrieren des Kartenlesers
+                p
+                  a.btn.btn-primary(data-bind="attr: { href: registerConnectionUrl }", target="_blank") Verbindung registrieren
+                p Nach wenigen Sekunden wird auf der Seite “Patienten” unter dem Auswahlfeld “Karte lesen” eine Option für Ihren Kartenleser angezeigt. Bitte laden Sie die Seite neu wenn der Eintrag nicht erscheint.
+          .panel.panel-default
+            .panel-heading
+              h2.panel-title
+                a(data-toggle="collapse", data-parent="#installation-accordion", href="#installation-Windows")
+                  | Kartenleser Software Windows:
+            #installation-Windows.panel-collapse.collapse
+              .panel-body
+                h3 Schritt 1 Download: Dateien
+                p
+                  // ko if: downloadables_win.length === 0
+                  b [Keine Dateien gefunden]
+                  br
+                  // /ko
+                  // ko if: downloadables_win.length !== 0
+                  // ko foreach: { data: downloadables_win, as: 'entry' }
+                  b
+                    a(data-bind="text: entry, attr: { href: '/download-file/' + entry }")
+                  br
+                  // /ko
+                  // /ko
+                h3 Schritt 2 Vorgehen bei der Installation:
+                ol
+                  li Verbinden Sie Ihr Kartenlesergerät mit einer freien USB-Schnittstelle
+                  li Installieren Sie einen Herstellertreiber von einer mitgelieferten CD
+                  li Laden Sie die obige Windows Kartenleser Software herunter
+                  li Entpacken Sie die Kartenleser Software
+                  li Starten Sie die Kartenleser Software durch Doppelklick auf <i>start</i>
+                h3 Schritt 3 Registrieren des Kartenlesers
+                p
+                  a.btn.btn-primary(data-bind="attr: { href: registerConnectionUrl }", target="_blank") Verbindung registrieren
+                p Nach wenigen Sekunden wird auf der Seite “Patienten” unter dem Auswahlfeld “Karte lesen” eine Option für Ihren Kartenleser angezeigt. Bitte laden Sie die Seite neu wenn der Eintrag nicht erscheint.
+          .panel.panel-default
+            .panel-heading
+              h2.panel-title
+                a(data-toggle="collapse", data-parent="#installation-accordion", href="#installation-Linux")
+                  | Kartenleser Software Linux:
+            #installation-Linux.panel-collapse.collapse
+              .panel-body
+                h3 Schritt 1 Download: Dateien
+                p
+                  // ko if: downloadables_linux.length === 0
+                  b [Keine Dateien gefunden]
+                  br
+                  // /ko
+                  // ko if: downloadables_linux.length !== 0
+                  // ko foreach: { data: downloadables_linux, as: 'entry' }
+                  b
+                    a(data-bind="text: entry, attr: { href: '/download-file/' + entry }")
+                  br
+                  // /ko
+                  // /ko
+                h3 Schritt 2 Vorgehen bei der Installation:
+                ol
+                  li Verbinden Sie Ihr Kartenlesergerät mit einer freien USB-Schnittstelle
+                  li Laden Sie die obige Linux Kartenleser Software herunter
+                  li Entpacken Sie die Kartenleser Software
+                  li Starten Sie die Kartenleser Software durch ausführen von <i>start.sh</i>
+                h3 Schritt 3 Registrieren des Kartenlesers
+                p
+                  a.btn.btn-primary(data-bind="attr: { href: registerConnectionUrl }", target="_blank") Verbindung registrieren
+                p Nach wenigen Sekunden wird auf der Seite “Patienten” unter dem Auswahlfeld “Karte lesen” eine Option für Ihren Kartenleser angezeigt. Bitte laden Sie die Seite neu wenn der Eintrag nicht erscheint.
+
+      hr
+
+      h2.h3 Freigegebene Kartenleser (und Herstellertreiber, falls notwendig): *
+      table.table
+        thead
+          tr
+            th Hersteller
+            th Produktbezeichnung
+            th Typ
+
+            th Mac Treiber
+            th Windows Treiber
+        tbody
+          tr
+            td
+              i Cherry
+            td eHealth-BCS Tastatur G87-1504
+            td Stationär
+            td -
+            td
+              i
+                a(href="https://cherry.de/download/de/download.php", target="_blank") Cherry Website
+          tr
+            td
+              i Cherry
+            td eHealth-BCS Terminal ST-1503
+            td Stationär
+            td -
+            td
+              i
+                a(href="https://cherry.de/download/de/download.php", target="_blank") Cherry Website
+          tr
+            td
+              i Cherry
+            td Mobiles Terminal ST-1530
+            td Stationär
+            td -
+            td
+              i
+                a(href="https://cherry.de/download/de/download.php", target="_blank") Cherry Website
+          tr
+            td
+              i germantelematics
+            td GT90 mobil
+            td Mobil
+            td
+              i
+                a(href="http://www.germantelematics.de/service/", target="_blank") germantelematics Website
+            td
+              i
+                a(href="http://www.germantelematics.de/service/", target="_blank") germantelematics Website
+          tr
+            td
+              i germantelematics
+            td GT900
+            td Stationär
+            td
+              i
+                a(href="http://www.germantelematics.de/service/", target="_blank") germantelematics Website
+            td
+              i
+                a(href="http://www.germantelematics.de/service/", target="_blank") germantelematics Website
+          tr
+            td
+              i Verifon
+            td medCompact
+            td Stationär
+            td -
+            td
+              i
+                a(href="https://www.medline-online.com/service-support/medcompact.html", target="_blank") medCompact Website
+          tr
+            td
+              i Verifon
+            td medMobile
+            td Mobil
+            td -
+            td
+              i
+                a(href="https://www.medline-online.com/service-support/medmobile.html", target="_blank") medMobile Website
+          tr
+            td
+              i Ingenico Healthcare
+            td Orga 6000
+            td Stationär
+            td
+              i
+                a(href="https://ingenico.de/healthcare/downloads", target="_blank") Ingenico Website
+            td
+              i
+                a(href="https://ingenico.de/healthcare/downloads", target="_blank") Ingenico Website
+          tr
+            td
+              i Ingenico Healthcare
+            td Orga 920 M / 930 M
+            td Mobil
+            td
+              i
+                a(href="https://ingenico.de/healthcare/downloads", target="_blank") Ingenico Website
+            td
+              i
+                a(href="https://ingenico.de/healthcare/downloads", target="_blank") Ingenico Website
+          tr
+            td
+              i CCV Deutschland
+            td CARDSTAR medic2
+            td Stationär
+            td -
+            td
+              i
+                a(href="https://www.celectronic-terminal.de/CT-API-Programmdateien-WIN-/-LINUX-/-MAC", target="_blank") CCV Website
+          tr
+            td
+              i CCV Deutschland
+            td CARDSTAR memo3
+            td Mobil
+            td -
+            td
+              i
+                a(href="https://www.celectronic-terminal.de/CT-API-Programmdateien-WIN-/-LINUX-/-MAC", target="_blank") CCV Website
+          tr
+            td
+              i ZEMO
+            td VML-GK1 / VML-GK2
+            td Mobil
+            td nicht Mac-kompatibel
+            td
+              i
+                a(href="https://www.zemo.de/downloads/downloads.html", target="_blank") ZEMO Website
+          tr
+            td
+              i HID Global
+            td OMNIKEY 8751 e-Health
+            td Stationär
+            td nicht Mac-kompatibel
+            td
+              i
+                a(href="http://www.hidglobal.com/drivers?field_brand_tid=24&product_id=15315&os=All", target="_blank") HID Website***
+
+      hr
+
+      h2.h3 Betrieb am Datensafe
+      p Stecken Sie das Kartenlesegerät in einen der freien USB-Anschlüsse Ihres Datensafes. Der Datensafe erkennt dies selbstständig und zeigt Ihnen einige Sekunden nach dem Einstecken im Menü “Patienten” unter dem Auswahlfeld “Karte lesen”, das Gerät an.
+      h3.h4 Freigegebene Kartenleser: *
+      table.table
+        thead
+          tr
+            th Hersteller
+            th Produktbezeichnung
+            th Typ
+        tbody
+          tr
+            td
+              i Cherry
+            td eHealth Terminal G87-1504
+            td Stationär
+          tr
+            td
+              i germantelematics
+            td GT90 mobil
+            td Mobil
+
+      h2.h3 Weitere Hinweise:
+      p
+        i * Sollte Ihr gewünschter Kartenleser mit gematik-Zertifizierung nicht aufgeführt sein, sprechen Sie uns bitte an.
+      p
+        i ** Auf Macs muss die Datei zuerst mit Ctrl+Klick -> Öffnen zum Ausführen freigegeben werden.
+      p
+        i *** Es empfielt sich, "Omnikey 8751" in die Suchleiste einzugegeben, um den richtigen Treiber schneller zu finden.
+      br

@@ -1,0 +1,56 @@
+div.container.container-fullscreen
+  .row
+    .col
+      h3(data-bind="text: tabPatientsHeaderI18n")
+      .alert.alert-warning(role="alert")
+        i.fa.fa-warning(aria-hidden="true")
+        span(data-bind="text: ' ' + tabPatientsWarningI18n")
+  .row
+    .col-md-12
+      br
+      br
+  .row
+    .col-md-4
+      .form-group(data-bind="hasFeedback: { toggle: patient1ErrorMsg, messages: patient1ErrorMsg }")
+        label
+          span(data-bind="text: tabPatientsPrimaryI18n")
+          a(target="_blank", data-bind="attr: { href: patient1Link }, visible: patient1Link")  (
+            span(data-bind="text: ' ' + tabPatientsShowI18n")
+            i.fa.fa-external-link
+            |   )
+        input.form-control(name="patient", type="hidden", data-bind="select2: patient1Autocomplete")
+    .col-md-4.text-center
+      button.btn.btn-primary.hidden-xs.hidden-sm(data-bind="click: startMerge", style="font-size: 16px; margin-top: 19px")
+        i.fa.fa-arrow-left(aria-hidden="true")
+        |  Start
+      button.btn.btn-primary.hidden-md.hidden-lg(data-bind="click: startMerge", style="font-size: 16px;")
+        i.fa.fa-arrow-up(aria-hidden="true")
+        |  Start
+    .col-md-4
+      .form-group(data-bind="hasFeedback: { toggle: patient2ErrorMsg, messages: patient2ErrorMsg }")
+        label
+          span(data-bind="text: tabPatientsSecondaryI18n")
+          a(target="_blank", data-bind="attr: { href: patient2Link }, visible: patient2Link")  (
+            span(data-bind="text: ' ' + tabPatientsShowI18n")
+            i.fa.fa-external-link
+            |   )
+        input.form-control(name="patient", type="hidden", data-bind="select2: patient2Autocomplete")
+  .row
+    .col-md-12
+      br
+      br
+  .row
+    .col-md-12
+      h4(data-bind="text: tabPatientsImportantHeaderI18n")
+      p(data-bind="text: tabPatientsImportantBody1I18n")
+      p(data-bind="text: tabPatientsImportantBody2I18n")
+      p(data-bind="text: tabPatientsImportantBulletHeadI18n")
+      ul
+        li(data-bind="text: tabPatientsImportantBullet1I18n")
+        li(data-bind="text: tabPatientsImportantBullet2I18n")
+        li(data-bind="text: tabPatientsImportantBullet3I18n")
+        li(data-bind="text: tabPatientsImportantBullet4I18n")
+      p(data-bind="text: tabPatientsImportantBody3I18n")
+
+  #incase_tab_configuration_delete_old_data
+    include incase_tab_configuration_delete_old_data

@@ -1,0 +1,43 @@
+div.row#gkvBrowser
+  div.col-xs-12
+    div.row
+      div.col-xs-12(data-bind="with: actionButtons")
+        #actionButtons.dc-action-buttons.dc-action-buttons-top.dc-action-buttons-left.clearfix
+          button#btn_crt.btn.btn-primary(type="button", data-bind="click: create.action, text: buttonGenerateI18n")
+          button#btn_remove.btn.btn-primary(type="button", data-bind="click: remove.action, visible: remove.visible, enable: remove.enabled, text: buttonRemoveI18n")
+          button#btn_replace.btn.btn-primary(type="button", data-bind="click: replace.action, visible: replace.visible, enable: replace.enabled, text: buttonReplaceI18n")
+          button#btn_prevldt.btn.btn-primary(type="button", data-bind="click: preValidate.action, enable: preValidate.enabled, text: buttonPrecheckI18n")
+          button#btn_approve.btn.btn-primary(type="button", data-bind="click: approve.action, visible: approve.visible")
+            span(data-bind="text: buttonApproveI18n")
+            | &nbsp;
+            span#number_approved.glyphicon.glyphicon-exclamation-sign
+          button#btn_vldt.btn.btn-primary(type="button", data-bind="click: validate.action, enable: validate.enabled, text: buttonCheckI18n")
+          button#btn_encr.btn.btn-primary(type="button", data-bind="click: encrypt.action, enable: encrypt.enabled, text: buttonEncodeI18n")
+          span.pull-right.dc-action-buttons-right
+            span.form-inline
+              select#manualShipping.form-control(
+                name="shippingType",
+                data-bind="options: _shippingList, optionsValue: 'val', optionsText: '-de', value: shipping, enable: send.enabled, visible: send.visible, optionsAfterRender: _shippingListOptions, attr: {placeholder: deliveryMethodI18n}"
+              )
+            button#btn_manual.btn.btn-primary(
+              type="button",
+              data-bind="click: manualSend.action, enable: manualSend.enabled, visible: manualSend.visible, text: buttonManualDeliveryI18n"
+            )
+            button#btn_mergeConFile.btn.btn-primary(
+              type="button",
+              data-bind="click: mergeConFile.action, enable: mergeConFile.enabled, visible: mergeConFile.visible, text: buttonMergeConFileI18n"
+            )
+            button#btn_asv.btn.btn-primary(
+              type="button",
+              data-bind="click: asv.action, enable: asv.enabled, visible: asv.visible, text: buttonASVBillingI18n"
+            )
+            button#btn_send.btn.btn-primary(
+              type="button",
+              data-bind="click: send.action, enable: send.enabled, visible: send.visible, text: buttonOneClickDeliveryI18n"
+            )
+      div.col-xs-12(data-bind="with: kbvlogGkvTable")
+        #kbvlogGkvTable.col-xs-12(data-bind="template: template")
+
+
+script(type="text/html", id="fineViewModel")
+  include ../../MediaMojit/views/controls/FineViewModel

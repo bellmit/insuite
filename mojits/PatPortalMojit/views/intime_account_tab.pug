@@ -1,0 +1,35 @@
+//TRANSLATION INCOMPLETE!! MOJ-3201
+div.container.container-fullscreen#intimeAccount
+  div.col-xs-12.col-sm-offset-1.col-sm-10
+    div.panel.panel-info
+      div.panel-heading
+        h4 Mein Konto
+      div.panel-body
+        div.row
+          div.col-md-5
+            a.pull-right(href="#", data-bind="click: requestAccountDeletion") Konto löschen?
+            div.form-group
+              label(for="talk").control-label Anrede
+              select.form-control(id="talk", data-bind="options: talkOptions, optionsValue:'value', optionsText:'label', value: talk, optionsCaption: 'bitte wählen'", name='talk')
+            div.form-group(data-bind="hasFeedback: { field: firstname, toggle: firstname.hasError, messages: firstname.validationMessages }")
+              label(for="firstname").control-label Vorname
+              input.form-control(id="firstname", data-bind="textInput: firstname", name='firstname')
+            div.form-group(data-bind="hasFeedback: { field: lastname, toggle: lastname.hasError, messages: lastname.validationMessages }")
+              label(for="lastname").control-label Nachname
+              input.form-control(id="lastname", data-bind="textInput: lastname", name='lastname')
+            div.form-group(data-bind="hasFeedback: { field: dob, toggle: dob.hasError, messages: dob.validationMessages }")
+              label(for='start_date').control-label Geburtsdatum
+              div.date-picker.input-group
+                input.form-control(id="start_date", data-bind="datetimepicker: { value: dob }", name='dob')
+          div.col-md-5.col-md-offset-1
+            div(data-bind="with: emailObj")
+              div.form-group(data-bind="hasFeedback: { field: value, toggle: value.hasError, messages: value.validationMessages }")
+                label(for="email").control-label E-Mail
+                input.form-control(id="email", data-bind="textInput: value", name='email')
+            div(data-bind="with: phoneObj")
+              div.form-group(data-bind="hasFeedback: { field: value, toggle: value.hasError, messages: value.validationMessages }")
+                label(for="phone").control-label Handynummer
+                input.form-control(id="phone", data-bind="textInput: value", name='email')
+            span.btn.btn-primary.pull-right(data-bind="enable: _isValid() && isModified(), click: saveAccount") Speichern
+br
+br

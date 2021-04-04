@@ -1,0 +1,12 @@
+{
+  "name": "pcl-to-svg",
+  "description": "converts pcl to svg via pdf.",
+  "version": "1.0.0",
+  "author": {
+    "name": "Doc Cirrus GmbH",
+    "email": "info@doc-cirrus.com"
+  },
+  "engines": {
+    "node": ">=0.12.0"
+  }
+}

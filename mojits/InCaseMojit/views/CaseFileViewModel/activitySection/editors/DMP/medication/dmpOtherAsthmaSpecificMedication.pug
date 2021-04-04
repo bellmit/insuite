@@ -1,0 +1,9 @@
+div.form-group
+  div.row
+    div.col-xs-5
+      strong(data-bind="text: dmpOtherAsthmaSpecificMedication.i18n")
+      span(data-bind="dmpField: { field: dmpOtherAsthmaSpecificMedication }")
+    div.col-xs-7(data-bind="foreach: dmpOtherAsthmaSpecificMedication.list, hasFeedback: { field: dmpOtherAsthmaSpecificMedication, toggle: dmpOtherAsthmaSpecificMedication.hasError, messages: dmpOtherAsthmaSpecificMedication.validationMessages }")
+      label.checkbox-inline
+        span(data-bind="text: i18n")
+        input(type="checkbox", name="dmpOtherAsthmaSpecificMedication", data-bind="value: val, checked: $parent.dmpOtherAsthmaSpecificMedication, readOnly: $parent.dmpOtherAsthmaSpecificMedication.readOnly, attr: { name: $element.name + '-' + val }")

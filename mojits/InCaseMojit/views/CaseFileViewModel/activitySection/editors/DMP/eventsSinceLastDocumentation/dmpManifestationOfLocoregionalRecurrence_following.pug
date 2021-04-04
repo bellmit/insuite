@@ -1,0 +1,12 @@
+div(data-bind="visible: dmpManifestationOfLocoregionalRecurrence_followingVisible()")
+    div.row.form-group(data-bind="hasFeedback: { field: dmpManifestationOfLocoregionalRecurrence_following_date, toggle: dmpManifestationOfLocoregionalRecurrence_following_date.hasError, messages: dmpManifestationOfLocoregionalRecurrence_following_date.validationMessages }")
+        div.col-xs-6
+            label.control-label
+                span(data-bind="text: dmpManifestationOfLocoregionalRecurrence_following_date.i18n")
+                span(data-bind="dmpField: { field: dmpManifestationOfLocoregionalRecurrence_following_date }")
+            div(data-bind="foreach: dmpManifestationOfLocoregionalRecurrence_following_text.list, hasFeedback: { field: dmpManifestationOfLocoregionalRecurrence_following_text, toggle: dmpManifestationOfLocoregionalRecurrence_following_text.hasError, messages: dmpManifestationOfLocoregionalRecurrence_following_text.validationMessages }")
+                label.checkbox-inline
+                    span(data-bind="text: i18n")
+                    input(type="checkbox", name="dmpManifestationOfLocoregionalRecurrence_following_text", data-bind="value: val, checked: $parent.dmpManifestationOfLocoregionalRecurrence_following_text, readOnly: $parent.dmpManifestationOfLocoregionalRecurrence_following_text.readOnly, attr: { name: $element.name + '-' + val }")
+        div.col-xs-5.date-picker.input-group
+            input.form-control(name="dmpManifestationOfLocoregionalRecurrence_following_date", data-bind="datetimepicker: { value: dmpManifestationOfLocoregionalRecurrence_following_date }, readOnly: dmpManifestationOfLocoregionalRecurrence_following_date.readOnly")

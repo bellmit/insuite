@@ -1,0 +1,93 @@
+div#taskModel
+  .row(data-bind="if: dispatchRequestId")
+    .col-md-12(class="text-right")
+      a(data-bind="attr: { href: '/iscd/dispatcher#/requests/failed/' + dispatchRequestId(), title: seeInDispatcherI18n }, text: seeInDispatcherI18n", target="_blank")
+  .row(data-bind="if: conferenceId")
+    .col-md-12(class="text-right")
+      a(data-bind="attr: { href: getConferenceLink() }, text: conferenceLinkI18n", target="_blank", title="")
+  .row(data-bind="if: transferEntryId")
+    .col-md-12(class="text-right")
+      a(data-bind="attr: { href: getTransferEntryId(), title: seeInTransferLogI18n }, text: seeInTransferLogI18n", target="_blank")
+  .row(data-bind="if: deviceLogEntryId")
+    .col-md-12(class="text-right")
+      a(data-bind="attr: { href: '/deviceLog#' + deviceLogEntryId(), title: seeInTransferLogI18n }, text: seeInTransferLogI18n", target="_blank")
+  .row(data-bind="if: cardioSerialNumber")
+    .col-md-12(class="text-right")
+      a(data-bind="attr: { href: '/telecardio#/?serialNumber=' + cardioSerialNumber(), title: seeInTransferLogI18n }, text: seeInTransferLogI18n", target="_blank")
+  .row(data-bind="if: formActivityId")
+    .col-md-12(class="text-right")
+      a(data-bind="attr: { href: '/incase#/activity/' + formActivityId() + '/section/formform', title: formActivityId.i18n }, text: formActivityId.i18n", target="_blank")
+  .row(data-bind="if: scheduleId")
+    .col-md-12(class="text-right")
+      a(data-bind="attr: { href: '/calendar#/schedule/' + scheduleId(), title: scheduleId.i18n }, text: scheduleId.i18n", target="_blank")
+  .row(data-bind="if: isShowPatientGenerateIdDialog()")
+    .col-md-12(class="text-right")
+      a(href="#" data-bind="click: showPatientGenerateIdDialog, text: generateIDI18n")
+  div.row(style="margin-top: 5px")
+    div.col-xs-12.col-md-6
+      div.form-group(data-bind="hasFeedback: { field: title, toggle: title.hasError, messages: title.validationMessages, popover: { container: '#task_modal' } }")
+        label(data-bind="text: title.i18n")
+        textarea.form-control(name="title", rows="1", data-bind="textInput: title, autoResize: title")
+      div.form-group(data-bind="hasFeedback: { field: taskType, toggle: taskType.hasError, messages: taskType.validationMessages, popover: { container: '#task_modal' } }")
+        label(for="taskSelect2Type", data-bind="text: labelTypeI18n")
+        input.form-control.input-sm#taskSelect2Type(type="hidden", data-bind="select2: select2TaskType", name="taskType")
+      div.form-group(data-bind="html: scheduleLink, click: onScheduleLinkClick")
+      div.form-group(data-bind="html: documentLink")
+      //ko if: selectedActivities() && selectedActivities().length > 1
+      div.row
+        div.col-md-12.col-sm-6.col-xs-12
+          label.radio-inline
+            span(data-bind="text: singleTaskI18n")
+            input(name="singleTask", type="radio", value="SINGLE", data-bind="checked: tasksCount")
+        div.col-md-12.col-sm-6.col-xs-12
+          label.radio-inline
+            span(data-bind="text: multipleTasksI18n")
+            input(name="multipleTasks", type="radio", value="MULTIPLE", data-bind="checked: tasksCount")
+      // /ko
+      div.row
+        div.col-md-4(data-bind="html: activityLink", style="padding-right: 0")
+        div.col-md-4(data-bind="if: dispatchRequestId" style="text-align: center; padding-right: 0; padding-left: 0;")
+          a(href="#", data-bind="click: showDiffDialog, text: labelChangesI18n")
+        div.col-md-4(style="text-align: right; padding-left: 0;", data-bind="html: addressLink")
+      div.form-group
+        label(data-bind="text: details.i18n")
+        textarea.form-control(name="details", data-bind="value: details, valueUpdate: 'afterkeydown'", rows="12")
+    div.col-xs-12.col-md-6
+      fieldset
+        label(data-bind="text: labelAssignedI18n")
+        div.control-group(style="border: 1px solid #bbb; padding: 5px 10px 5px 10px; border-radius: 5px; margin-bottom: 5px;")
+          div.form-group(data-bind="hasFeedback: { field: roles, toggle: roles.hasError, messages: roles.validationMessages, popover: { container: '#task_modal' } }")
+            label(for="taskSelect2Role", data-bind="text: labelRoleI18n")
+            input.form-control.input-sm#taskSelect2Role(type="hidden", multiple="multiple" data-bind="select2: select2Role", name="role")
+          div.form-group(data-bind="hasFeedback: { field: candidates, toggle: candidates.hasError, messages: candidates.validationMessages, popover: { container: '#task_modal' } }")
+            label(for="taskSelect2Candidates", data-bind="text: candidates.i18n")
+            input.form-control.input-sm#taskSelect2Candidates(type="hidden", multiple="multiple" data-bind="select2: select2Candidates", name="candidates")
+          div.form-group(data-bind="hasFeedback: { field: locations, toggle: locations.hasError, messages: locations.validationMessages, popover: { container: '#task_modal' } }")
+            label(for="select2Locations", data-bind="text: locations.i18n")
+            input.form-control.input-sm#select2Locations(type="hidden", multiple="multiple" data-bind="select2: select2Locations", name="locations")
+    div.col-xs-12.col-md-6
+      div.form-group
+        label(for="taskSelect2Patient", data-bind="text: patientId.i18n")
+        input.form-control.input-sm#taskSelect2Patient(type="hidden", data-bind="select2: select2Patient, disable: !isPatientSelectAllowed", name="patient")
+      div.form-group(data-bind="html: patientLink")
+    div.col-xs-12.col-md-6
+      div.form-group
+        label(for="taskSelect2Employee", data-bind="text: employeeId.i18n")
+        input.form-control.input-sm#taskSelect2Employee(type="hidden", data-bind="select2: select2Employee", name="employee")
+    div.col-xs-12.col-md-6
+      div.form-group
+        label(data-bind="text: urgency.i18n")
+        select.form-control(name="urgency", data-bind="value: urgency, options: urgency.list, optionsValue: 'val', optionsText: 'i18n'")
+  div.row
+    div.col-xs-12.col-md-6
+      label(data-bind="text: labelDurationI18n")
+      div.form-group
+      div.checkbox
+        label
+          strong(data-bind="text: allDay.i18n")
+          input(name="allDay", type="checkbox", data-bind="checked: allDay")
+    div.col-xs-12.col-md-6
+      div.form-group(data-bind="hasFeedback: { field: alertTime, toggle: alertTime.hasError, messages: alertTime.validationMessages }")
+        label(data-bind="text: alertTime.i18n")
+        .date-picker.input-group
+          input.form-control(name="alertTime", data-bind="datetimepicker: { value: alertTime, valueReset: null, options: alertTimeDatetimepickerOptions }")

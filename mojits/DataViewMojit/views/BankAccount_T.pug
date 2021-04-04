@@ -1,0 +1,91 @@
+div.pull-right
+  small Bankverbindung
+  br
+div.control-group
+  label(for="cardType").control-label
+    b Zahlungsart
+  div.controls
+    select(name='cardType',dcschema='_simple',dctype='mandatory', tabindex='5')#selectCardType.dcvalidate
+      option(value='') bitte wählen
+      option(value='BANK',selected) Bankverbindung
+      //option(value='VISA') Visa
+      //option(value='MASTER') Master
+      //option(value='AMEX') Amex
+      //option(value='OTHERCC') Andere Kreditkarte
+    span.help-inline
+div.caccount_bank
+  div.control-group
+    label(for="bankName").control-label
+      b Bankinstitut
+    div.controls
+      input(type='text', name='bankName', dcschema='contact',dctype='BankAccount_T', tabindex='5').dcvalidate
+      input(type='text', name='trial', value='30', dcschema='contact', dctype='BankAccount_T', tabindex='5')#trialVersion.hide.dcvaliate
+      span.help-inline
+  div.control-group
+    label(for="accountOwner").control-label
+      b Kontoinhaber
+    div.controls
+      input(type='text', name='accountOwner',dcschema='contact',dctype='BankAccount_T', tabindex='5').dcvalidate
+      span.help-inline
+  div.control-group
+    label(for="bankIBAN").control-label
+      b Kontonummer/IBAN
+    div.controls
+      input(type='text', name='bankIBAN',dcschema='contact',dctype='BankAccount_T', maxlength=34, tabindex='5').dcvalidate
+      span.help-inline
+  div.control-group
+    label(for="bankBIC").control-label
+      b Bankleitzahl/BIC
+    div.controls
+      input(type='text', name='bankBIC',dcschema='contact',dctype='BankAccount_T', tabindex='5').dcvalidate
+      span.help-inline
+div.caccount_card
+  div.control-group
+    label(for="cardNo").control-label
+      b Kartennummer
+    div.controls
+      input(type='text', name='cardNo',dcschema='contact',dctype='BankAccount_T', tabindex='5').dcvalidate
+      span.help-inline
+  .row-fluid
+    div.control-group
+      label(for="cardValidTo").control-label
+        b Gültig bis
+      div.controls
+        .span4.clearfix
+          span Mo.&nbsp;
+          select(name='cardValidToMonth',dcschema='contact',dctype='BankAccount_T', tabindex='5').span6.dcvalidate
+            option --
+            option 1
+            option 2
+            option 3
+            option 4
+            option 5
+            option 6
+            option 7
+            option 8
+            option 9
+            option 10
+            option 11
+            option 12
+          span.help-inline
+      div.control-group
+        div.controls
+          .span4.clearfix
+            span Ja.&nbsp;
+            select(name='cardValidToYear',dcschema='contact', dctype='BankAccount_T', tabindex='5').span7.dcvalidate
+              option ----
+              option 2013
+              option 2014
+              option 2015
+              option 2016
+              option 2017
+              option 2018
+              option 2019
+              option 2020
+            span.help-inline
+  div.control-group
+    label(for="cardCheckCode").control-label
+      b Prüfsumme
+    div.controls
+      input(type='text', placeholder=' 3 Ziffern, siehe Rückseite', name='cardCheckCode',dcschema='contact',dctype='BankAccount_T', tabindex='5').dcvalidate
+      span.help-inline

@@ -1,0 +1,60 @@
+div#transformerModel
+  div.form-group
+    h4(data-bind="text: parserSettingsI18n + ':'")
+    span.checkbox
+      label.control-label
+        strong(data-bind="text: softValidationI18n")
+        input(type="checkbox", name="softValidationBox", data-bind="checked: softValidation")
+      i.dc-info-icon(data-toggle="popover", data-bind="attr: {'data-original-title': popoverTitleI18n, 'data-content': popoverI18n }", data-html="true", rel="popover", data-placement="auto left", data-trigger="click")
+    span.checkbox
+      label.control-label
+        strong(data-bind="text: checkFileWithLdkPm.i18n")
+        input(type="checkbox", name="checkFileWithLdkPm", data-bind="checked: checkFileWithLdkPm")
+    span.checkbox
+      input(type="checkbox", name="timeRange", data-bind="checked: timeRange")
+      strong(data-bind="text: timeRangeI18n + ':'", style="margin-right:5px;")
+      input(type="number", min="0", max="99", name="timeRangeDays", id="timeRangeDays", data-bind="enable: timeRange(), value: timeRangeDays, valueUpdate: 'afterkeydown'")
+    span.checkbox(style="margin-bottom:-5px;")
+      label.control-label
+        input(type="checkbox", name="useAddInfoForId", data-bind="checked: useAddInfoForId")
+        div.form-group(style="display: inline-block;")
+          input(name="useAddInfoForIdFK", type="radio", style="width:20px; display: inline-block;", value="8310", data-bind="enable: useAddInfoForId(), checked: useAddInfoForIdFK")
+          strong(style="margin-right:5px;", data-bind="text: recordRequestIdI18n")
+          input(name="useAddInfoForIdFK", type="radio", style="width:20px; display: inline-block;", value="8311", data-bind="enable: useAddInfoForId(), checked: useAddInfoForIdFK")
+          strong(style="margin-right:5px;", data-bind="text: labReqIdI18n")
+          input(name="useAddInfoForIdFK", type="radio", style="width:20px; display: inline-block;", value="8405", data-bind="enable: useAddInfoForId(), checked: useAddInfoForIdFK")
+          strong(style="margin-right:5px;", data-bind="text: patientIdI18n")
+          strong(data-bind="text: useAddInfoForIdI18n")
+      i.dc-info-icon(data-toggle="popover", data-bind="attr: {'data-original-title': useAddInfoForIdPopoverTitle, 'data-content': useAddInfoForIdPopover }", data-html="true", rel="popover", data-placement="auto left", data-trigger="click")
+    h4(data-bind="text: billingI18n + ':'")
+    span.checkbox
+      label.control-label
+        strong(data-bind="text: billingFlagI18n")
+        input(type="checkbox", name="billingFlagBox", data-bind="checked: billingFlag")
+    //ko if: billingFlag()
+    span.checkbox(style="margin-left:15px;")
+      label.control-label
+        strong(data-bind="text: disallowGkvBillingI18n")
+        input(type="checkbox", name="disallowGkvBillingBox", data-bind="enable: !allowGkvBilling(), checked: disallowGkvBilling")
+    // /ko
+    span.checkbox
+      label.control-label
+        strong(data-bind="text: allowGkvBillingI18n")
+        input(type="checkbox", name="allowGkvBillingBox", data-bind="enable: !disallowGkvBilling(), checked: allowGkvBilling")
+    span.checkbox
+      label.control-label
+        strong(data-bind="text: useDataFromLabrequestIfPresentI18n")
+        input(type="checkbox", name="useDataFromLabrequestIfPresentBox", data-bind="checked: useDataFromLabrequestIfPresent")
+    br
+    h4(data-bind="text: specialMatchI18n + ':'")
+    h5
+      i.fa.fa-exclamation-triangle(aria-hidden="true")
+      span(data-bind="text: specialMatchNoticeI18n")
+    label(for="specialMatchSource", data-bind="text: specialMatchSourceI18n + ':'")
+    input.form-control.input-md#specialMatchSource(data-bind="value: specialMatchSource, valueUpdate:'afterkeydown'")
+    label(for="specialMatchActivityField", data-bind="text: specialMatchActivityFieldI18n + ':'")
+    input.form-control.input-md#specialMatchActivityField(data-bind="value: specialMatchActivityField, valueUpdate:'afterkeydown'")
+    label(for="specialMatchDays", data-bind="text: specialMatchDaysI18n + ':'")
+    input.form-control.input-md#specialMatchDays(type="number", data-bind="value: specialMatchDays, valueUpdate:'afterkeydown'")
+    label(for="specialMatchActivityType", data-bind="text: specialMatchActivityTypeI18n + ':'")
+    input.form-control.input-md#specialMatchActivityType(data-bind="value: specialMatchActivityType, valueUpdate:'afterkeydown'")

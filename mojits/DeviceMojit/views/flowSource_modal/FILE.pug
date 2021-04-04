@@ -1,0 +1,36 @@
+div#sourceModel
+  div.form-group
+    div.checkbox
+      label.control-label
+        strong(data-bind="text: triggerManuallyI18n")
+        input(type="checkbox", name="triggerManually", data-bind="checked: triggerManually, click: checkKeepFiles")
+    div.checkbox(data-bind="visible: triggerManually")
+      label.control-label
+        strong(data-bind="text: keepFilesI18n")
+        input(type="checkbox", name="keepFiles", data-bind="checked: keepFiles, disable: !triggerManually()")
+  div.form-group(data-bind="hasFeedback: { field: fileType, toggle: fileType.hasError, messages: fileType.validationMessages }")
+    label(for="sourceFileFileType", data-bind="text: fileTypeI18n + ':'")
+    input.form-control.input-sm#sourceFileFileType(type="hidden", data-bind="select2: select2FileType")
+  div(data-bind="if: availableFileTypes.SMBSHARE === fileType()")
+    div.form-group(data-bind="hasFeedback: { field: smbShare, toggle: smbShare.hasError, messages: smbShare.validationMessages }")
+      label(for="sourceFilesmbShare", data-bind="text: smbShare.i18n+ ':'")
+      input#sourceFilesmbShare.form-control(data-bind="value: smbShare, valueUpdate:'afterkeydown', attr: { placeholder: smbShareExampleI18n }")
+    div.form-group(data-bind="hasFeedback: { field: smbUser, toggle: smbUser.hasError, messages: smbUser.validationMessages }")
+      label(for="sourceFileSmbUser", data-bind="text: smbUser.i18n + ':'")
+      input#sourceFileSmbUser.form-control(data-bind="value: smbUser, valueUpdate:'afterkeydown'")
+    div.form-group(data-bind="hasFeedback: { field: smbPw, toggle: smbPw.hasError, messages: smbPw.validationMessages }")
+      label(for="sourceFileSmbPw", data-bind="text: smbPw.i18n + ':'")
+      input#sourceFileSmbPw.form-control(type="password", data-bind="value: smbPw, valueUpdate:'afterkeydown'")
+  div(data-bind="if: availableFileTypes.DEVICE_SERVER === fileType()")
+    div.form-group(data-bind="hasFeedback: { field: deviceServers, toggle: deviceServers.hasError, messages: deviceServers.validationMessages }")
+      label(for="multiDeviceServer", data-bind="text: deviceServerI18n + ':'")
+      input.form-control#multiDeviceServer(type="hidden", name="multiDeviceServer", data-bind="select2: select2MultiDeviceServer")
+  div.form-group(data-bind="hasFeedback: { field: filePath, toggle: filePath.hasError, messages: filePath.validationMessages }")
+    label(for="sourceFileFilePath", data-bind="text: filePath.i18n + ':'")
+    input#sourceFileFilePath.form-control(data-bind="value: filePath, valueUpdate:'afterkeydown', attr: { placeholder: filePathSourceExampleI18n }")
+  div.form-group(data-bind="hasFeedback: { field: filePath, toggle: filter.hasErrorRegex, messages: filter.validationMessagesRegex }")
+    label(for="sourceFileFileFilter")
+      span(data-bind="text: filter.i18n")
+      i.dc-info-icon(data-toggle="popover", data-bind="attr: { 'data-original-title': popoverTitleI18n, 'data-content': filterPopoverI18n }", data-html="true", rel="popover", data-placement="auto left", data-trigger="click")
+      |  :
+    input#sourceFileFileFilter.form-control(data-bind="value: filter, valueUpdate:'afterkeydown', attr: { placeholder: filterExampleI18n }")

@@ -1,0 +1,38 @@
+div(id=mojit_view_id)
+  .container.container-fullscreen(style="margin-top: 10px")
+    nav(style="position: relative")
+      div(data-bind="template: navigation.template")
+      #toggleFullScreenDiv(style="position: absolute; right: 0; top: 0;")
+        button.btn.btn-sm.btn-default(name="toggleFullScreen", type="button", data-bind="click: toggleFullScreenHandler, attr: { title: viewPortBtnI18n }", style="margin-top: 6px;")
+          span.fa.fa-arrows-alt
+    div.insight2Mojit-currentView(data-bind="with: currentView")
+      div(data-bind="template: template")
+include ../../../autoload/KoUI/include
+script(type="text/html", id="Tab1ViewModel")
+  include Tab1ViewModel
+script(type="text/html", id="InSightReportingViewModel")
+  include InSightReportingViewModel
+script(type="text/html", id="InfoTabViewModel")
+  include InfoTabViewModel
+script(type="text/html", id="PredefinedReportsViewModel")
+  include PredefinedReportsViewModel
+script(type="text/html", id="InSightWidgetViewModel")
+  include InSightWidgetViewModel
+script(type="text/html", id="InSightTableViewModel")
+  include InSightTableViewModel
+script(type="text/html", id="PredefinedTableViewModel")
+  include PredefinedTableViewModel
+script(type="text/html", id="InSightColSelectorViewModel")
+  include InSightColSelectorViewModel
+script(type="text/html", id="InSightFilterElementViewModel")
+  include InSightFilterElementViewModel
+script(type="text/html", id="InSightTimelineViewModel")
+  include InSightTimelineViewModel
+script(type="text/html", id="InSightAnalysisViewModel")
+  include InSightAnalysisViewModel
+script(type="text/html", id="InSightImportExportViewModel")
+  include InSightImportExportViewModel
+script(type="text/html", id="InSightSettingsViewModel")
+  include InSightSettingsViewModel
+
+include ../../../autoload/KoUI/include

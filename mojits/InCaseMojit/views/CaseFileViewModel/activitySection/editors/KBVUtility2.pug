@@ -1,0 +1,339 @@
+div
+  // ko if: possibleApprovals().length
+  .alert.alert-info(style="padding: 8px;")
+    strong Folgende Genehmigungen des langfristigen Heilmittelbedarfs liegen vor:
+    ol(data-bind="foreach: possibleApprovals")
+      li
+        // ko if: matches
+        span.glyphicon.glyphicon-ok(data-bind="tooltip: {title: 'Diese Genehmigung ist gültig und begründet einen langfristigen Heilmittelbedarf!'}") &nbsp;
+        // /ko
+        span(data-bind="text: content")
+  // /ko
+  .row
+    .col-xs-12
+      h4(data-bind="hasFeedback: { field: ut2Chapter, toggle: ut2Chapter.hasError, messages: ut2Chapter.validationMessages }")
+        span(data-bind="text: displayChapter")
+        span &nbsp;
+        a.KoTableSelectEditButton(name="kbvutility-chapter-edit-element", href="#", data-bind="visible: chapterEditSelect.canEdit() && !ut2Chapter.readOnly(), click: chapterEditSelect.toggleEditModel.bind(chapterEditSelect), tooltip: {title: 'Kapitel ändern'}")
+          span.fa.fa-pencil
+          span &nbsp;
+
+  .row
+    .col-xs-12
+      div(data-bind="template: chapterEditSelect.template")
+
+  .row
+    .col-xs-12
+      h4
+        span(style="margin-right: 4px;") Behandlungsrelevante Diagnose(n)
+        small
+          span(style="margin-right: 4px;") Ergebnisfarbkodierung
+          span.label.label-default(style="margin-right: 4px;") ICD-10
+          span.label.label-info(style="margin-right: 4px;") Akte
+          span.label.label-success Langfristiger Heilmittelbedarf/Besondere Verordnungsbedarfe
+
+  include KBVUtility2/utIcdCode
+  include KBVUtility2/utSecondIcdCode
+  .row
+    .col-xs-2
+      label(style="padding-top: 8px;")
+        span(data-bind="text: ut2TreatmentRelevantDiagnosisText.i18n")
+        span &nbsp;
+        a(href="#", data-bind="visible: !ut2TreatmentRelevantDiagnosisText.readOnly(), click: toggleShowTreatmentRelevantDiagnosisTexts, tooltip: {title: 'Diagnosen oder Befund Texte aus Akte übernehmen'}")
+          span.fa.fa-pencil
+        span &nbsp;
+        a(href="#", data-bind="visible: !ut2TreatmentRelevantDiagnosisText.readOnly(), click: removeTreatmentRelevantDiagnosisTexts, tooltip: {title: 'Diagnosen oder Befund Texte leeren'}")
+          span.fa.fa-trash-o
+    .col-xs-10
+      div.form-group
+        input.form-control(name="ut2TreatmentRelevantDiagnosisText", placeholder="", data-bind="textInput: ut2TreatmentRelevantDiagnosisText, readOnly: ut2TreatmentRelevantDiagnosisText.readOnly")
+    .col-xs-12(data-bind="if: diagnosisAndFindingTableVisible")
+      div.diagnosisAndFindingTable(data-bind="event: { mouseout: onMouseOutDiagnosisAndFindingTable }")
+        div(data-bind="template: diagnosisAndFindingTable.template")
+        div(data-bind="template: addTreatmentRelevantDiagnosisTextsButton.template", style="display: inline; margin-right: 4px;")
+        div(data-bind="template: overrideTreatmentRelevantDiagnosisTextsButton.template", style="display: inline;")
+
+  include KBVUtility2/utDiagnosisGroup
+  // ko if: ut2PrescriptionCaseId
+  .alert.alert-info(style="padding: 8px;")
+    a(target="_blank", data-bind="attr: {href: prescriptionCaseLink}").alert-link
+      span.glyphicon.glyphicon-link
+      | &nbsp;Ein Verordnungsfall konnte zugeordnet werden!
+    | &nbsp;Einheiten:&nbsp;
+    span(data-bind="text: displayCaseRemedyUnitStats")
+    | &nbsp;Massagen:&nbsp;
+    span(data-bind="text: displayCaseMassageRemedyUnitStats")
+    | &nbsp;Standardisierte Heilmittelkombination:&nbsp;
+    span(data-bind="text: displayCaseStandardizedCombinationUnitsStats")
+  // /ko
+
+  // ko foreach: ut2Agreement
+  .row
+    .col-xs-12
+      h4(data-bind="hasFeedback: { field: acuteEventDate, toggle: $parent.hasAcuteEventWarning, messages: $parent.hasAcuteEventWarningMessages, type: 'warning' }")
+        span Heilmittelvereinbarung
+        // ko if: $parent.hasAcuteEventWarning
+        br
+        small.text-warning(data-bind="text: $parent.hasAcuteEventWarningMessages")
+        // /ko
+    .col-xs-4
+      div.form-group(data-bind="hasFeedback: { field: acuteEventDate, toggle: $parent.hasAcuteEventWarning, messages: $parent.hasAcuteEventWarningMessages, type: 'warning' }")
+        select.form-control(name="ut2AgreementType", placeholder="auto", data-bind="value: type, options: type.list, optionsText: 'i18n', optionsValue: 'val'", disabled)
+    // ko if: $parent.hasAcuteEvent
+    .col-xs-3
+      div.form-group(data-bind="hasFeedback: { field: acuteEventDate, toggle: $parent.hasAcuteEventWarning, messages: $parent.hasAcuteEventWarningMessages, type: 'warning' }")
+        .date-picker.input-group
+          input.form-control(name="acuteEventDate", type="text", placeholder="Datum des Akutereignis", data-bind="datetimepicker: { options: { format: 'DD.MM.YYYY'}, value: acuteEventDate }, readOnly: acuteEventDate.readOnly")
+    // /ko
+    div(data-bind="text: advice, css: {'col-xs-5': $parent.hasAcuteEvent, 'col-xs-8': !$parent.hasAcuteEvent()}")
+  // /ko
+
+  .row
+    .col-xs-6
+      h4(data-bind="hasFeedback: { field: ut2ConductionSymptoms, toggle: ut2ConductionSymptomsHasWarning, messages: ut2ConductionSymptomsHasWarningMessages, type: 'warning' }")
+        span Leitsymptomatik&nbsp;
+        // ko ifnot: ut2PatientSpecificConductionSymptoms
+        small(data-bind="css: {'text-warning': ut2ConductionSymptomsHasWarning()}") gemäß Heilmittelkatalog&nbsp;
+        a.KoTableSelectEditButton(name="kbvutility-leitsymptomatik-edit-element", href="#", data-bind="visible: conductionSymptomsSelect.canEdit() && !ut2ConductionSymptoms.readOnly(), click: conductionSymptomsSelect.toggleEditModel.bind(conductionSymptomsSelect), tooltip: {title: 'Leitsymptomatik ändern'}")
+          span.fa.fa-pencil
+        // /ko
+        // ko if: ut2ConductionSymptomsHasWarning
+        br
+        small.text-warning(data-bind="text: ut2ConductionSymptomsHasWarningMessages")
+        // /ko
+    .col-xs-6
+      .form-group(style="padding-top: 6px;", data-bind="hasFeedback: { field: ut2PatientSpecificConductionSymptoms, toggle: ut2PatientSpecificConductionSymptoms.hasError, messages: ut2PatientSpecificConductionSymptoms.validationMessages }")
+        label.checkbox-inline
+          span(data-bind="text: ut2PatientSpecificConductionSymptoms.i18n")
+          input(type="checkbox", name="ut2PatientSpecificConductionSymptoms", data-bind="checked: ut2PatientSpecificConductionSymptoms, enable: enablePatientSpecificConductionSymptomsCheckbox")
+    // ko if: ut2PatientSpecificConductionSymptoms
+    .col-xs-12(data-bind="hasFeedback: { field: ut2PatientSpecificConductionSymptomsFreeText, toggle: ut2PatientSpecificConductionSymptomsFreeText.hasError, messages: ut2PatientSpecificConductionSymptomsFreeText.validationMessages }")
+      textarea.form-control(data-bind="textInput: ut2PatientSpecificConductionSymptomsFreeText, readOnly: ut2PatientSpecificConductionSymptomsFreeText.readOnly")
+    // /ko
+  // ko ifnot: ut2PatientSpecificConductionSymptoms
+  .row
+    .col-xs-12
+      div(data-bind="template: conductionSymptomsSelect.template")
+  // ko ifnot: conductionSymptomsSelect.editMode
+  // ko foreach: ut2ConductionSymptoms
+  .row
+    .col-xs-1
+      .form-group
+        input.form-control(data-bind="value: code", disabled)
+    .col-xs-11
+      .form-group
+        input.form-control(data-bind="textInput: name, readOnly: name.readOnly")
+  // /ko
+  // /ko
+  // /ko
+
+
+  //ko if: ut2BlankRegulation
+  .alert.alert-info
+    h4 Blankoverordnung
+    span.checkbox(style="margin-top: 0;margin-bottom: 0;")
+      label.control-label
+        span Keine Blankoverordnung ausstellen!
+        input(type="checkbox", name="ut2BlankRegulationIgnored", data-bind="checked: ut2BlankRegulationIgnored, readOnly: ut2BlankRegulationIgnored.readOnly")
+  // /ko
+
+  // ko ifnot: hasBlankRegulation
+  include KBVUtility2/utRemedySelection
+
+  // ko ifnot: remedySelect.editMode
+
+  // ko if: ut2Remedy1List().length
+  .row
+    .col-xs-4
+      strong Heilmittel
+    div(data-bind="css: {'col-xs-4': showPrices, 'col-xs-6': !showPrices}")
+      strong Freitext
+    .col-xs-2
+      strong Einheiten
+    .col-xs-2(data-bind="visible: showPrices")
+      strong Preis
+  // /ko
+
+  //ko with: standardizedCombination
+  .row
+    .col-xs-4
+      div.form-group(data-bind="hasFeedback: { field: name, toggle: name.hasError, messages: name.validationMessages }")
+        input.form-control(data-bind="value: name", disabled)
+    div(data-bind="css: {'col-xs-4': $parent.showPrices, 'col-xs-6': !$parent.showPrices}")
+      div.form-group(data-bind="hasFeedback: { field: text, toggle: text.hasError, messages: text.validationMessages }")
+        textarea.form-control(data-bind="value: text", disabled)
+    .col-xs-2
+      div.form-group(data-bind="hasFeedback: { field: units, toggle: $parent.remediesHaveUnitError, messages: $parent.remediesHaveMaxCaseUnitErrorMessages }")
+        input.form-control(type="number", min="0", data-bind="value: units, readOnly: units.readOnly")
+    .col-xs-2(data-bind="visible: $parent.showPrices")
+      div.form-group(data-bind="hasFeedback: { field: price, toggle: price.hasError, messages: price.validationMessages }")
+        input.form-control(data-bind="value: $parent.displayPrice(price()), readOnly: true")
+  // ko if: $parent.sumRemedyList1Units
+  .row
+    .col-xs-4
+    div(data-bind="css: {'col-xs-4': $parent.showPrices, 'col-xs-6': !$parent.showPrices}")
+    .col-xs-2
+      span.label.label-success(style="display: block;font-size: 14px;", data-bind="text: $parent.displayRemedy1UnitStats, tooltip: {title: $parent.displayRemedyUnitStatsTooltip}")
+    .col-xs-2(data-bind="visible: $parent.showPrices")
+  // /ko
+
+  // /ko
+
+  //ko ifnot: standardizedCombination
+
+  // ko foreach: ut2Remedy1List
+  .row
+    .col-xs-4
+      div.form-group(data-bind="hasFeedback: { field: name, toggle: name.hasError, messages: name.validationMessages }")
+        input.form-control(data-bind="value: name", disabled)
+    div(data-bind="css: {'col-xs-4': $parent.showPrices, 'col-xs-6': !$parent.showPrices}")
+      div.form-group(data-bind="hasFeedback: { field: text, toggle: text.hasError, messages: text.validationMessages }")
+        input.form-control(data-bind="value: text, readOnly: text.readOnly")
+    .col-xs-2
+      div.form-group(data-bind="hasFeedback: { field: units, toggle: $parent.remediesHaveUnitError, messages: $parent.remediesHaveMaxCaseUnitErrorMessages }")
+        input.form-control(type="number", min="0", data-bind="value: units, readOnly: units.readOnly")
+    .col-xs-2(data-bind="visible: $parent.showPrices")
+      div.form-group(data-bind="hasFeedback: { field: price, toggle: price.hasError, messages: price.validationMessages }")
+        input.form-control(data-bind="value: $parent.displayPrice(price()), readOnly: true")
+  // /ko
+
+  // ko if: sumRemedyList1Units
+  .row
+    .col-xs-4
+    div(data-bind="css: {'col-xs-4': $parent.showPrices, 'col-xs-6': !$parent.showPrices}")
+    .col-xs-2
+      span.label.label-success(style="display: block;font-size: 14px;", data-bind="text: displayRemedy1UnitStats, tooltip: {title: displayRemedyUnitStatsTooltip}")
+    .col-xs-2(data-bind="visible: $parent.showPrices")
+  // /ko
+
+  // ko if: ut2Remedy2List().length
+  .row
+    .col-xs-12
+      strong Ergänzendes Heilmittel
+  // /ko
+
+  // ko foreach: ut2Remedy2List
+  .row
+    .col-xs-4
+      div.form-group(data-bind="hasFeedback: { field: name, toggle: name.hasError, messages: name.validationMessages }")
+        input.form-control(data-bind="value: name", disabled)
+    div(data-bind="css: {'col-xs-4': $parent.showPrices, 'col-xs-6': !$parent.showPrices}")
+      div.form-group(data-bind="hasFeedback: { field: text, toggle: text.hasError, messages: text.validationMessages }")
+        input.form-control(data-bind="value: text, readOnly: text.readOnly")
+    .col-xs-2
+      div.form-group(data-bind="hasFeedback: { field: units, toggle: $parent.remediesHaveUnitError, messages: $parent.remediesHaveMaxCaseUnitErrorMessages }")
+        input.form-control(type="number", min="0", data-bind="value: units, readOnly: units.readOnly")
+    .col-xs-2(data-bind="visible: $parent.showPrices")
+      div.form-group(data-bind="hasFeedback: { field: price, toggle: price.hasError, messages: price.validationMessages }")
+        input.form-control(data-bind="value: $parent.displayPrice(price()), readOnly: true")
+  // /ko
+
+  // /ko
+
+  // ko if: sumRemedyList2Units() && displayRemedy2UnitStats() && !standardizedCombination()
+  .row
+    .col-xs-4
+    div(data-bind="css: {'col-xs-4': showPrices, 'col-xs-6': !showPrices}")
+    .col-xs-2
+      span.label.label-success(style="display: block;font-size: 14px;", data-bind="text: displayRemedy2UnitStats, tooltip: {title: displayRemedyUnitStatsTooltip}")
+    .col-xs-2(data-bind="visible: showPrices")
+  // /ko
+
+  //  end of ifnot: hasBlankRegulation
+  // /ko
+
+  // /ko
+  .row
+    .col-xs-12
+      div(data-bind="template: showCreateApprovalButton.template", style="padding-top: 8px;").pull-right
+  .row
+    div.col-xs-3
+      div.checkbox
+        label.control-label
+          span Therapiebericht
+          input(type="checkbox", name="utTherapyReport", data-bind="checked: utTherapyReport, readOnly: utTherapyReport.readOnly")
+    div.col-xs-3
+      div.checkbox
+        label.control-label
+          span Hausbesuch
+          input(type="checkbox", name="utHomeVisit", data-bind="checked: utHomeVisit, readOnly: utHomeVisit.readOnly")
+    div.col-xs-6(style="padding-top: 8px;")
+      // ko ifnot: hasBlankRegulation
+      span Therapiefrequenz
+      // ko if: hasTherapyFrequenciesInCatalog
+      span &nbsp;
+      a.KoTableSelectEditButton(name="kbvutility-therapy-frequence-edit-element", href="#", data-bind="visible: therapyFrequencySelect.canEdit() && !ut2TherapyFrequencyType.readOnly(), click: therapyFrequencySelect.toggleEditModel.bind(therapyFrequencySelect), tooltip: {title: 'Therapiefrequenz ändern'}")
+        span.fa.fa-pencil
+      // /ko
+      // ko if: renderTherapyFrequence
+      span &nbsp;
+      span(data-bind="text: renderTherapyFrequence")
+      // /ko
+      // ko if: showTherapyFrequenciesDirectiveIcon
+      span.glyphicon.glyphicon-certificate(data-bind="style: {color: therapyFrequenceDirectiveIconColor}, tooltip: {title: therapyFrequenceDirectiveIconTooltip}")
+      // /ko
+      // /ko
+  .row
+    div.col-xs-3
+      div.checkbox
+        label.control-label
+          span Unfall, Unfallfolgen
+          input(type="checkbox", name="utUnfall", data-bind="checked: utUnfall, readOnly: utUnfall.readOnly")
+    div.col-xs-3
+      div.checkbox
+        label.control-label
+          span BVG
+          input(type="checkbox", name="utBvg", data-bind="checked: utBvg, readOnly: utBvg.readOnly")
+    div.col-xs-6
+      // ko ifnot: hasBlankRegulation
+      // ko ifnot: therapyFrequencySelect.editMode
+      .row
+        .col-xs-2
+          .form-group(data-bind="hasFeedback: { field: ut2TherapyFrequencyMin, toggle: ut2TherapyFrequencyMin.hasError, messages: ut2TherapyFrequencyMin.validationMessages }")
+            input.form-control(data-bind="value: ut2TherapyFrequencyMin, readOnly: ut2TherapyFrequencyMin.readOnly")
+        .col-xs-1
+          span(style="margin-top: 8px;").glyphicon.glyphicon-minus
+        .col-xs-2
+          .form-group(data-bind="hasFeedback: { field: ut2TherapyFrequencyMax, toggle: ut2TherapyFrequencyMax.hasError, messages: ut2TherapyFrequencyMax.validationMessages }")
+            input.form-control(data-bind="value: ut2TherapyFrequencyMax, readOnly: ut2TherapyFrequencyMax.readOnly")
+        .col-xs-7
+          .form-group(data-bind="hasFeedback: { field: ut2TherapyFrequencyType, toggle: ut2TherapyFrequencyType.hasError, messages: ut2TherapyFrequencyType.validationMessages }")
+            select.form-control(data-bind="options: ut2TherapyFrequencyType.list, optionsValue: 'val', optionsText: 'i18n', value: ut2TherapyFrequencyType, readOnly: ut2TherapyFrequencyType.readOnly")
+
+      // /ko
+      div(data-bind="template: therapyFrequencySelect.template")
+      // /ko
+  .row
+    div.col-xs-6
+      div.form-group.form-inline(style="padding-top: 4px;")
+        label.control-label
+          span(data-bind="text: paidFreeStatusI18n", style="padding-right: 4px;")
+          select.form-control.input-sm(name="paidFreeStatus", placeholder="auto", data-bind="value: paidFreeStatus, options: paidFreeStatus.list, optionsText: 'i18n', optionsValue: 'val', readOnly: paidFreeStatus.readOnly")
+    div.col-xs-6
+      div.checkbox
+        label.control-label
+          span Dringlicher Handlungsbedarf&nbsp;
+          small innerhalb von 14 Tagen
+          input(type="checkbox", name="ut2UrgentNeedForAction", data-bind="checked: ut2UrgentNeedForAction, readOnly: ut2UrgentNeedForAction.readOnly")
+
+
+  .row
+    .col-xs-12
+      span ggf. Therapieziele / weitere med. Befunde und Hinweise
+      span &nbsp;
+      a(href="#", data-bind="visible: !utTherapyGoals.readOnly(), click: toggleTherapyGoalsShowTreatmentRelevantDiagnosisTexts, tooltip: {title: 'Diagnosen oder Befund Texte aus Akte übernehmen'}")
+        span.fa.fa-pencil
+      span &nbsp;
+      a(href="#", data-bind="visible: !utTherapyGoals.readOnly(), click: removeTherapyGoalsTreatmentRelevantDiagnosisTexts, tooltip: {title: 'Diagnosen oder Befund Texte leeren'}")
+        span.fa.fa-trash-o
+    .col-xs-12
+      .form-group(data-bind="hasFeedback: { field: utTherapyGoals, toggle: utTherapyGoals.hasError, messages: utTherapyGoals.validationMessages }")
+        textarea.form-control(data-bind="value: utTherapyGoals, readOnly: utTherapyGoals.readOnly, valueUpdate: 'change'")
+    .col-xs-12(data-bind="if: therapyGoaldiagnosisAndFindingTableVisible")
+      div.diagnosisAndFindingTable(data-bind="event: { mouseout: onMouseOutTherapyGoalDiagnosisAndFindingTable }")
+        div(data-bind="template: therapyGoaldiagnosisAndFindingTable.template")
+        div(data-bind="template: addTherapyGoalTreatmentRelevantDiagnosisTextsButton.template", style="display: inline; margin-right: 4px;")
+        div(data-bind="template: overrideTherapyGoalTreatmentRelevantDiagnosisTextsButton.template", style="display: inline;")
+
+
+

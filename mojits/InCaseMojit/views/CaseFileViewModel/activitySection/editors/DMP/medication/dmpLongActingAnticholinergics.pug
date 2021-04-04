@@ -1,0 +1,9 @@
+div.form-group
+  div.row
+    div.col-xs-5
+      strong(data-bind="text: dmpLongActingAnticholinergics.i18n")
+      span(data-bind="dmpField: { field: dmpLongActingAnticholinergics }")
+    div.col-xs-7(data-bind="foreach: dmpLongActingAnticholinergics.list, hasFeedback: { field: dmpLongActingAnticholinergics, toggle: dmpLongActingAnticholinergics.hasError, messages: dmpLongActingAnticholinergics.validationMessages }")
+      label.checkbox-inline
+        span(data-bind="text: i18n")
+        input(type="checkbox", name="dmpLongActingAnticholinergics", data-bind="value: val, checked: $parent.dmpLongActingAnticholinergics, readOnly: $parent.dmpLongActingAnticholinergics.readOnly, attr: { name: $element.name + '-' + val }")

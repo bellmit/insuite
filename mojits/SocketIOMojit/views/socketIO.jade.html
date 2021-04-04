@@ -1,0 +1,232 @@
+div(id=mojit_view_id, style="margin: 40px")
+    div.col-xs-12
+        div.alert.alert-danger(data-bind="text: warningForDevI18n")
+        div.alert.alert-info
+            span Current Time: &nbsp;
+            span(data-bind="text: currentTime")
+            br
+            span Seconds since page load: &nbsp;
+            span(data-bind="text: timeSincePageLoad")
+    div.col-xs-4
+        div.panel.panel-default
+            div.panel-heading
+                h4 User
+                    button.pull-right.btn-link(data-bind="click: refreshUser", style="display: flex; align-items: center;")
+                        span.glyphicon.glyphicon-repeat
+            div.panel-body
+                b Identity Id:
+                pre
+                    span(data-bind="text: identityId")
+                b Active Session Id:
+                pre
+                    span(data-bind="text: sessionId")
+                b Active Socket Id:
+                pre
+                    span(data-bind="text: activeSocketId")
+        div.panel.panel-default
+            div.panel-heading
+                h4
+                    span(data-bind="text: socketsText")
+                    button.pull-right.btn-link(data-bind="click: refreshSockets", style="display: flex; align-items: center;")
+                        span.glyphicon.glyphicon-repeat
+            div.panel-body
+                // ko if: socketViewerReady
+                table.table(data-bind="foreach: socketsSortedByUser", style="table-layout:fixed")
+                    thead
+                        tr.info
+                            th(data-bind="text: user.text", style="font-weight: bold;", colspan="3")
+                        // ko foreach: sessions
+                        tr.active
+                            td.text-primary(data-bind="text: $data.session.text", style="padding-left: 30px", colspan="3")
+                        // ko foreach: sockets
+                        tr
+                            td.text-info(data-bind="text: $data.text", style="padding-left: 60px; vertical-align: middle; word-wrap:break-word;", colspan="2")
+                            td
+                                div(style="display: flex; flex-direction: column;")
+                                    button.pull-right.btn.btn-default(data-bind="click: $root[`onClickClientEventHandlers${$data.id}`]", style="margin: 3px;") Event Handlers (Client)
+                                    button.pull-right.btn.btn-default(data-bind="click: $root[`onClickServerEventHandlers${$data.id}`]", style="margin: 3px;") Event Handlers (Server)
+                                    button.pull-right.btn.btn-default(data-bind="click: $root[`onClickMongoSubscriptions${$data.id}`]", style="margin: 3px;") Mongo Subscriptions
+                        tr(data-bind = "if: !$data.clientEventHandlers || !Object.getOwnPropertyNames(clientEventHandlers).length, visible: $root[`${$data.id}ClientEventHandlersVisible`]" )
+                            td [Empty]
+                        // ko foreach: $data.clientEventHandlers && Object.getOwnPropertyNames(clientEventHandlers) || []
+                        tr(data-bind="visible: $root[`${$parent.id}ClientEventHandlersVisible`]")
+                            td
+                                span.pull-right(data-bind="text: $parent.clientEventHandlers[$data].length")
+                            td(data-bind="text: $data", style="word-wrap:break-word;")
+                            td(data-bind="text: $parent.clientEventHandlers[$data].join('\\r\\n')", style = "font-size: 6px")
+                        // /ko
+                        tr(data-bind = "if: !$data.serverEventHandlers || !Object.getOwnPropertyNames(serverEventHandlers).length, visible: $root[`${$data.id}ServerEventHandlersVisible`]" )
+                            td [Empty]
+                        // ko foreach: $data.serverEventHandlers && Object.getOwnPropertyNames(serverEventHandlers) || []
+                        tr(data-bind="visible: $root[`${$parent.id}ServerEventHandlersVisible`]")
+                            td
+                                span.pull-right(data-bind="text: $parent.serverEventHandlers[$data].length")
+                            td(data-bind="text: $data", style="word-wrap:break-word;")
+                            td(data-bind="text: $parent.serverEventHandlers[$data].join('\\r\\n')", style = "font-size: 6px")
+                        // /ko
+                        tr(data-bind = "if: !$data.subscriptions || !Object.getOwnPropertyNames(subscriptions).length, visible: $root[`${$data.id}MongoSubscriptionsVisible`]" )
+                            td [Empty]
+                        // ko foreach:  $data.subscriptions && Object.getOwnPropertyNames(subscriptions) || []
+                        tr(data-bind="visible: $root[`${$parent.id}MongoSubscriptionsVisible`]")
+                            td
+                            td(data-bind="text: $data", style="word-wrap:break-word;")
+                            td(data-bind="text: $parent.subscriptions[$data].join(', ')")
+                        // /ko
+                        // /ko
+                        // /ko
+                // /ko
+
+    div.col-xs-4
+        div.panel.panel-default
+            div.panel-heading
+                h4 Heartbeat
+                    span.pull-right.fa.fa-circle(data-bind="css: heartbeatValidationCss")
+            div.panel-body
+                b
+                    u Socket-IO Heartbeat
+                div
+                    i &nbsp;The Socket-IO heartbeat should be emitted and received every 25s.
+                b
+                    u Doc Cirrus Heartbeat
+                div
+                    i &nbsp;The custom Doc Cirrus heartbeat should be received every minute.
+                br
+                table.table
+                    tr
+                        th
+                        th.text-center Time Last
+                        th.text-center Seconds Before Previous
+                    tr(data-bind="css: ioPingValidationCss")
+                        th IO-Ping
+                        td.text-center(data-bind="text: lastPingText")
+                        td.text-center(data-bind="text: timeBeforePreviousPingText")
+                    tr(data-bind="css: ioPongValidationCss")
+                        th IO-Pong
+                        td.text-center(data-bind="text: lastPongText")
+                        td.text-center(data-bind="text: timeBeforePreviousPongText")
+                    tr(data-bind="css: DCHeartbeatValidationCss")
+                        th DC-Heartbeat
+                        td.text-center(data-bind="text: lastDCHeartbeatText")
+                        td.text-center(data-bind="text: timeBeforePreviousDCHeartbeatText")
+
+        div.panel.panel-default
+            div.panel-heading
+                h4 Events for Browser Clients
+                    span.pull-right.fa.fa-circle(data-bind="css: eventTestsValidationCss")
+            div.panel-body
+                div
+                    i Every 10 seconds all different event emitting methods are tested for the active socket.
+                    br
+                    i (NB: that if no data is present, the event is still recorded, but it is not possible to know whether it was triggered by this page or another open /socket-io page)
+                br
+                table.table
+                    tr
+                        th
+                        th.text-center Time Last
+                        th.text-center Seconds Before Previous
+                        th.text-center Responsive Browser Clients
+                        th.text-center Data
+                    // ko foreach: methods
+                    tr(data-bind="css: $parent[`${$data}Css`]")
+                        th
+                            pre(data-bind="text: `${$data}()`")
+                        td.text-center(data-bind="text: $parent[`${$data}LastText`]")
+                        td.text-center(data-bind="text: $parent[`${$data}TimeBeforePreviousText`]")
+                        td.text-center.btn-link(data-bind="text: $parent[`${$data}ResponsiveCountText`]")
+                        td.text-center(data-bind="text: $parent[`${$data}DataText`]")
+                    // ko if: $root.eventTestsValidator() === false
+                    // ko foreach: $root[`${$data}UnresponsiveSockets`]
+                    tr
+                        td
+                        td
+                        td.h6 Unresponsive Client:
+                        td.h6(data-bind="text: $data", colspan="3")
+                    // /ko
+                    // /ko
+                    // /ko
+        div.panel.panel-default
+            div.panel-heading
+                h4 Events for Device Servers
+                    span.pull-right.fa.fa-circle
+            div.panel-body Future work...
+
+    div.col-xs-4
+        div.panel.panel-default
+            div.panel-heading
+                h4 IPC Communication
+                    span.pull-right.fa.fa-circle
+            div.panel-body Future work...
+
+        div.panel.panel-default
+             div.panel-heading
+                 h4 PUC Connection Status
+                     span.pull-right.fa.fa-circle(data-bind="css: pucConnectionStatusTextCss")
+             div.panel-body
+                  table.table
+                      tr
+                          th.text-center ConnectedAt
+                          th.text-center DisconnectedAt
+                          th.text-center Last Retry On
+                      tr(data-bind="css: pucConnectionStatusBgCss")
+                          td.text-center(data-bind="text: pucConnectedAt")
+                          td.text-center(data-bind="text: pucDisconnectedAt")
+                          td.text-center(data-bind="text: pucLastReconnectAttempt")
+
+
+        div.panel.panel-default
+            div.panel-heading
+                h4
+                    span Process Health
+                    button.pull-right.btn-link(data-bind="click: refreshWorkers", style="display: flex; align-items: center;")
+                        span.glyphicon.glyphicon-repeat
+            div.panel-body
+                b
+                    span(data-bind="text: workersText")
+                table.table
+                    tr
+                        th.text-center Instance
+                        th.text-center Created at
+                        th.text-center Block count
+                        th.text-center Redis connection
+                    // ko foreach: {data: workers, as: 'worker'}
+                    tr
+                        td.text-center.text-info(data-bind="text: worker.id")
+                        td.text-center.text-info(data-bind="text: worker.updateTime")
+                        td.text-center.text-info(data-bind="text: worker.blockCount")
+                        td.text-center
+                            span.fa.fa-circle(data-bind="css: worker.redisConnection")
+                    // /ko
+                b
+                    span Dead Instances information
+                    p(data-bind="text: deadWorkersInfo")
+                // ko if: deadWorkers().length
+                table.table
+                    tr
+                        th.text-center Instance
+                        th.text-center Dead time
+                        th.text-center Is reporter
+                        th.text-center Process PID
+                    // ko foreach: {data: deadWorkers, as: 'deadWorker'}
+                    tr
+                        td.text-center.text-info(data-bind="text: deadWorker.worker")
+                        td.text-center.text-info(data-bind="text: deadWorker.timestamp")
+                        td.text-center.text-info(data-bind="text: deadWorker.isReportingWorker")
+                        td.text-center.text-info(data-bind="text: deadWorker.pid")
+                    // /ko
+                // /ko
+                b
+                    span Event loop characteristic
+                    p(data-bind="text: eventLoopMessage")
+                // ko if: eventLoopIssues().length
+                table.table
+                    tr
+                        th.text-center Instance
+                        th.text-center Block time
+                        th.text-center Threshold
+                    // ko foreach: {data: eventLoopIssues, as: 'issue'}
+                    tr
+                        td.text-center.text-info(data-bind="text: issue.workerId")
+                        td.text-center.text-info(data-bind="text: issue.timestamp")
+                        td.text-right.text-info(data-bind="text: issue.blockTime")
+                    // /ko
+                // /ko

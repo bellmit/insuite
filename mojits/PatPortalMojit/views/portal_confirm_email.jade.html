@@ -1,0 +1,8 @@
+extend ../../DocCirrus/views/email_layout
+
+block emailbody
+  div(id=mojit_view_id)
+    p!=params.text
+    br
+    a(href=params.link, style="background: #22405E; color: white; display: inline-block; width: auto; text-align: center;text-decoration:none;border:10px solid #22405E;font-weight: bold;font-size: 15px;font-style: normal")
+      span!=params.buttonText

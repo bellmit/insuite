@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- edited with XMLSPY v2004 rel. 2 U (http://www.xmlspy.com) by sberinguier (KBV) -->
+<!-- automatische Dokumentation, generiert durch Visual Source Safe 
+	$Workfile: patient_typelib.xsd $  
+	$Modtime: 20.06.05 14:02 $  
+	$Revision: 10 $  
+-->
+<xs:schema xmlns:kbvlib="urn:kbv/kbv/typelib/001" xmlns:kbv="urn::hl7-org/kbv" xmlns="urn::hl7-org/cda" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:sciphox="urn::sciphox-org/sciphox" targetNamespace="urn::hl7-org/cda" elementFormDefault="qualified">
+	<xs:include schemaLocation="person_typelib.xsd"/>
+	<xs:import namespace="urn::hl7-org/kbv" schemaLocation="all_kbv_typelib.xsd"/>
+	<xs:import namespace="urn:kbv/kbv/typelib/001" schemaLocation="all_kbvtypelib001_typelib.xsd"/>
+	<xs:import namespace="urn::sciphox-org/sciphox" schemaLocation="insurance_ssu_typelib.xsd"/>
+	<!-- ****************************** dmp_patient_typ ****************************** -->
+	<xs:complexType name="dmp_patient_typ">
+		<xs:annotation>
+			<xs:appinfo>Patient-Informationen</xs:appinfo>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="patient.type_cd" type="patient.type_cd_typ"/>
+			<xs:element name="person" type="dmp_patient_person_typ"/>
+			<xs:element name="birth_dttm" type="birth_dttm_typ"/>
+			<xs:element name="administrative_gender_cd" type="kbvlib:administrative_gender_cd_typ" minOccurs="0"/>
+			<xs:element name="local_header" type="sciphox:dmp_insurance_ssu_typ"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!-- ****************************** Hilfsdatentypen (patient.type_cd_typ, birth_dttm_typ ) ****************************** -->
+	<xs:complexType name="patient.type_cd_typ">
+		<xs:attribute name="V" type="xs:string" use="required" fixed="PATSBJ"/>
+	</xs:complexType>
+	<xs:complexType name="birth_dttm_typ">
+		<xs:annotation>
+			<xs:appinfo>Geburtsdatum</xs:appinfo>
+		</xs:annotation>
+		<xs:attribute name="V" type="kbv:birth_dttm_typ" use="required"/>
+	</xs:complexType>
+	<!--
+	============================================================
+	Datentypen für die Schnittstelle zwischen Datenannahmestellen und gemeinsamen Einrichtungen
+	============================================================-->
+	<!-- ****************************** dmp_patient_typ ****************************** -->
+	<xs:complexType name="dmp_patient_da_typ">
+		<xs:annotation>
+			<xs:appinfo>Patient-Informationen</xs:appinfo>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="patient.type_cd" type="patient.type_cd_typ"/>
+			<xs:element name="person" type="dmp_patient_person_da_typ"/>
+			<xs:element name="birth_dttm" type="birth_dttm_typ"/>
+			<xs:element name="administrative_gender_cd" type="kbvlib:administrative_gender_cd_typ" minOccurs="0"/>
+			<xs:element name="local_header" type="sciphox:dmp_insurance_ssu_da_typ"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--
+	============================================================
+	Datentypen für Koloskopie - 38a
+	============================================================-->
+	<!-- ****************************** koloskopie_patient_typ ****************************** -->
+	<xs:complexType name="koloskopie_patient_typ">
+		<xs:annotation>
+			<xs:appinfo>Patient-Informationen</xs:appinfo>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="patient.type_cd" type="patient.type_cd_typ"/>
+			<xs:element name="person" type="koloskopie_patient_person_typ"/>
+			<xs:element name="birth_dttm" type="birth_dttm_typ"/>
+			<xs:element name="administrative_gender_cd" type="kbvlib:administrative_gender_cd_typ"/>
+			<xs:element name="local_header" type="sciphox:dmp_insurance_ssu_typ"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--
+	============================================================
+	Datentypen für Koloskopie - 38b
+	============================================================-->
+	<!-- ****************************** koloskopie_patient_typ ****************************** -->
+	<xs:complexType name="koloskopie_38b_patient_typ">
+		<xs:annotation>
+			<xs:appinfo>Patient-Informationen</xs:appinfo>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="patient.type_cd" type="patient.type_cd_typ"/>
+			<xs:element name="person" type="koloskopie_38b_patient_person_typ"/>
+			<xs:element name="administrative_gender_cd" type="kbvlib:administrative_gender_cd_typ"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--
+	============================================================
+	Datentypen für AU
+	============================================================-->
+	<xs:complexType name="au_patient_typ">
+		<xs:annotation>
+			<xs:appinfo>Patient-Informationen</xs:appinfo>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="patient.type_cd" type="patient.type_cd_typ"/>
+			<xs:element name="person" type="au_patient_person_typ"/>
+			<xs:element name="birth_dttm" type="birth_dttm_typ"/>
+			<xs:element name="administrative_gender_cd" type="kbvlib:administrative_gender_cd_typ" minOccurs="0"/>
+			<xs:element name="local_header" type="sciphox:dmp_insurance_ssu_typ"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--
+	============================================================
+	Datentypen für eHKS
+	============================================================-->
+	<xs:complexType name="eHKS_patient_typ">
+		<xs:annotation>
+			<xs:appinfo>Patient-Informationen</xs:appinfo>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="patient.type_cd" type="patient.type_cd_typ"/>
+			<xs:element name="person" type="eHKS_patient_person_typ"/>
+			<xs:element name="birth_dttm" type="birth_dttm_typ" minOccurs="0"/>
+			<xs:element name="administrative_gender_cd" type="kbvlib:administrative_gender_cd_typ"/>
+			<xs:element name="local_header" type="sciphox:eHKS_insurance_ssu_typ"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--
+	============================================================
+	Datentypen für qshgv
+	============================================================-->
+	<xs:complexType name="qshgv_patient_typ">
+		<xs:annotation>
+			<xs:appinfo>Patient-Informationen</xs:appinfo>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="person" type="qshgv_patient_person_typ"/>
+			<xs:element name="birth_dttm">
+				<xs:complexType>
+					<xs:attribute name="V" use="required">
+						<xs:simpleType>
+							<xs:restriction base="xs:nonNegativeInteger">
+								<xs:pattern value="\d{4}"/>
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:attribute>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="administrative_gender_cd" type="kbvlib:administrative_gender_cd_typ"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

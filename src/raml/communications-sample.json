@@ -1,0 +1,12 @@
+[
+  {
+    "type": "PHONEJOB",
+    "value": "030-1234567890",
+    "_id": "54be764fc404c1d77a286d51"
+  },
+  {
+    "type": "EMAILJOB",
+    "value": "qa-patient1@doc-cirrus.com",
+    "_id": "54be764fc404c1d77a286d50"
+  }
+]

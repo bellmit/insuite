@@ -1,0 +1,7 @@
+div.config-menu-dropdown#custom-config-menu(data-bind="visible: showCustomConfigMenu" style="display: none")
+  div(data-bind="foreach: weekdayCheckboxProps")
+    div.checkbox
+      label.control-label
+        strong(data-bind="text: text")
+        input(type="checkbox" data-bind="value: value, name: text, checked: $parent.shownDays, readOnly: disable")
+  button(data-bind="click: $root.customiseWeekdaysShown, text: buttonApplyTextI18n, disable: $root.isWeekdayCustomisationProhibited()")

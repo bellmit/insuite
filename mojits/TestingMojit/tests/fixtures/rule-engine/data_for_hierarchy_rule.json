@@ -1,0 +1,1137 @@
+{
+  "rules": [
+    {
+      "isDirectory" : false,
+      "isLocked" : true,
+      "isActive" : true,
+      "caseFolderType" : [
+        "PRIVATE_CH"
+      ],
+      "metaActTypes" : [
+        "TREATMENT"
+      ],
+      "metaActCodes" : [
+        "00.0040"
+      ],
+      "metaCriterias" : [
+        "actType",
+        "timestamp",
+        "patientId.age",
+        "code",
+        "employeeId.quantiDignities",
+        "employeeId.qualiDignities"
+      ],
+      "rules" : [
+        {
+          "isActive" : true,
+          "description" : "Altersbedingung 00.0040 (TARMED)",
+          "validations" : [
+            {
+              "\\\\$or" : [
+                {
+                  "context" : "ACTIVITY",
+                  "criteria" : {
+                    "actType" : "TREATMENT",
+                    "timestamp" : {
+                      "\\\\$gte" : "2017-12-31T23:00:00.000Z"
+                    },
+                    "patientId\\\\-age" : {
+                      "unit" : "years",
+                      "\\\\$gte" : 6
+                    },
+                    "code" : {
+                      "\\\\$eq" : "00.0040",
+                      "\\\\$catalogShort" : "TARMED"
+                    }
+                  }
+                }
+              ]
+            }
+          ],
+          "actions" : [
+            {
+              "type" : "ERROR"
+            }
+          ],
+          "metaActTypes" : [
+            "TREATMENT"
+          ],
+          "ruleId" : "5f6e02a4b73b3d36777ad142"
+        }
+      ],
+      "description" : "TARMED 00.0040 je Leistung",
+      "fromCatalog" : "DC-TARMED-CH-1591102857465.js",
+      "fromCatalogShort" : "TARMED",
+      "referenceArea" : "ENTRY",
+      "actType" : "TREATMENT",
+      "code" : "00.0040",
+      "catalogShort" : "TARMED",
+      "metaFuzzy" : false,
+      "metaCaseOpen" : false
+    },
+    {
+      "isDirectory" : false,
+      "isLocked" : false,
+      "isActive" : true,
+      "caseFolderType" : [
+        "PRIVATE_CH",
+        "PRIVATE_CH_IVG",
+        "PRIVATE_CH_MVG",
+        "PRIVATE_CH_UVG",
+        "PRIVATE_CH_VVG"
+      ],
+      "metaActTypes" : [
+        "TREATMENT",
+        "DIAGNOSIS"
+      ],
+      "metaActCodes" : [],
+      "metaCriterias" : [
+        "actType",
+        "code",
+        "timestamp"
+      ],
+      "description" : "Fall ohne Diagnose",
+      "referenceArea" : "SCHEIN",
+      "periodType" : "MONTH",
+      "periodCount" : 1,
+      "periodReference" : "raum",
+      "rules" : [
+        {
+          "ruleId" : "5f732ec5cd2f6c4997000016",
+          "description" : "Bitte Diagnose eine angeben.",
+          "isActive" : true,
+          "validations" : {
+            "\\\\$and" : [
+              {
+                "context" : "ACTIVITY",
+                "criteria" : {
+                  "actType" : {
+                    "\\\\$eq" : "TREATMENT"
+                  },
+                  "code" : {
+                    "\\\\$exists" : true
+                  },
+                  "\\\\$count" : {
+                    "\\\\$gt" : 0
+                  }
+                }
+              },
+              {
+                "context" : "ACTIVITY",
+                "criteria" : {
+                  "actType" : {
+                    "\\\\$eq" : "DIAGNOSIS"
+                  },
+                  "timestamp" : {
+                    "\\\\$exists" : true
+                  },
+                  "\\\\$count" : {
+                    "\\\\$eq" : 0
+                  }
+                }
+              }
+            ]
+          },
+          "actions" : [
+            {
+              "type" : "ERROR"
+            }
+          ],
+          "metaActTypes" : [
+            "TREATMENT",
+            "DIAGNOSIS"
+          ]
+        }
+      ],
+      "metaFuzzy" : true,
+      "metaCaseOpen" : false
+    },
+    {
+      "isDirectory" : false,
+      "isLocked" : false,
+      "isActive" : true,
+      "caseFolderType" : [
+        "PRIVATE_CH"
+      ],
+      "metaActTypes" : [
+        "TREATMENT"
+      ],
+      "metaActCodes" : [],
+      "metaCriterias" : [
+        "actType",
+        "patientId.age"
+      ],
+      "description" : "Entry without code",
+      "referenceArea" : "ENTRY",
+      "periodType" : "MONTH",
+      "periodCount" : 1,
+      "periodReference" : "raum",
+      "rules" : [
+        {
+          "ruleId" : "5f7b27c5cc763f6d08000017",
+          "description" : "Older than 1",
+          "isActive" : true,
+          "validations" : {
+            "\\\\$and" : [
+              {
+                "context" : "ACTIVITY",
+                "criteria" : {
+                  "actType" : {
+                    "\\\\$eq" : "TREATMENT"
+                  },
+                  "patientId\\\\-age" : {
+                    "\\\\$gt" : 1
+                  }
+                }
+              }
+            ]
+          },
+          "actions" : [
+            {
+              "type" : "ERROR"
+            }
+          ],
+          "metaActTypes" : [
+            "TREATMENT"
+          ]
+        }
+      ],
+      "metaFuzzy" : false,
+      "metaCaseOpen" : false
+    }
+  ],
+  "location": {
+    "emailFooter" : "",
+    "smtpPassword" : "",
+    "smtpUserName" : "",
+    "smtpHost" : "",
+    "smtpEmailFrom" : "",
+    "street" : "Pracstr",
+    "houseno" : "5",
+    "zip" : "1001",
+    "city" : "Zurich",
+    "country" : "Schweiz",
+    "countryCode" : "CH",
+    "addon" : "",
+    "cardType" : "BANK",
+    "isOptional" : false,
+    "isAdditionalLocation" : false,
+    "enabledPrinters" : [],
+    "imapUrl" : "",
+    "imapUserName" : "",
+    "imapPassword" : "",
+    "countryMode" : [
+      "CH"
+    ],
+    "commercialNo" : "111000700",
+    "phone" : "+491111111134",
+    "locname" : "TestPraxis1",
+    "kind" : "BILLING",
+    "openTimes" : [
+      {
+        "days" : [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "colorOfConsults" : " ",
+        "start" : [
+          9,
+          0
+        ],
+        "end" : [
+          18,
+          30
+        ]
+      }
+    ],
+    "email" : "rW@doc-cirrus.com",
+    "fax" : "+491111111134",
+    "kv" : "72",
+    "defaultPrinter" : "",
+    "kbvZip" : "11017",
+    "budgets" : [
+      {
+        "specialities" : [],
+        "type" : "MEDICATION",
+        "startBudget" : null,
+        "startDate" : null,
+        "patientAgeRange1" : 41,
+        "patientAgeRange2" : 42,
+        "patientAgeRange3" : 43,
+        "patientAgeRange4" : 44
+      },
+      {
+        "specialities" : [
+          "050"
+        ],
+        "type" : "MEDICATION",
+        "startBudget" : null,
+        "startDate" : null,
+        "patientAgeRange1" : 41,
+        "patientAgeRange2" : 42,
+        "patientAgeRange3" : 43,
+        "patientAgeRange4" : 44
+      },
+      {
+        "specialities" : [
+          "308"
+        ],
+        "type" : "MEDICATION",
+        "startBudget" : null,
+        "startDate" : null,
+        "patientAgeRange1" : null,
+        "patientAgeRange2" : 42,
+        "patientAgeRange3" : 43,
+        "patientAgeRange4" : 44
+      },
+      {
+        "specialities" : [],
+        "type" : "KBVUTILITY",
+        "startBudget" : 62,
+        "startDate" : "2018-08-31T21:00:00.000Z",
+        "patientAgeRange1" : 63,
+        "patientAgeRange2" : 64,
+        "patientAgeRange3" : 65,
+        "patientAgeRange4" : 66
+      }
+    ],
+    "gkvInvoiceReceiver" : "19",
+    "stockLocations" : [
+      {
+        "title" : "Fridge 1",
+        "description" : "Im Ersten Zimmer rechts"
+      }
+    ],
+    "glnNumber" : "7601002135825",
+    "cantonCode" : "3",
+    "smtpPort" : null,
+    "smtpSsl" : false,
+    "zsrNumber" : "T277419",
+    "bankBIC" : "aewfaewf",
+    "bankIBAN" : "01-162-8",
+    "bankName" : "aewfw",
+    "esrNumber" : "010001628",
+    "firstname" : "",
+    "lastname" : "",
+    "middlename" : "",
+    "nameaffix" : "",
+    "title" : "",
+    "vatNumber" : "234566",
+    "website" : "www.a1.com"
+  },
+  "patient": {
+    "title" : "",
+    "firstname" : "testCh",
+    "nameaffix" : "",
+    "middlename" : "",
+    "fk3120" : "",
+    "lastname" : "1",
+    "physicians" : [],
+    "employees" : [],
+    "markers" : [],
+    "createPlanned" : false,
+    "accessPRC" : false,
+    "talk" : "MR",
+    "gender" : "MALE",
+    "sendPatientReceipt" : false,
+    "patientNumber" : 110879,
+    "attachedSeverity" : "NONE",
+    "crmTags" : [],
+    "edmpTypes" : [],
+    "edmpNotifiedAboutStatementOfParticipationTypes" : [],
+    "ehksDocType" : "EHKSND",
+    "scheinEmployeeIds" : [
+      "100000000000000000000005"
+    ],
+    "confirmedViewFromOtherLocations" : false,
+    "additionalContacts" : [],
+    "countryMode" : [
+      "CH"
+    ],
+    "accounts" : [],
+    "communications" : [
+      {
+        "signaling" : true,
+        "confirmed" : false,
+        "confirmNeeded" : false,
+        "type" : "PHONEPRIV",
+        "value" : "000"
+      },
+      {
+        "signaling" : true,
+        "confirmed" : false,
+        "confirmNeeded" : false,
+        "type" : "EMAILPRIV",
+        "value" : "aaa@aaa.aaa"
+      }
+    ],
+    "addresses" : [
+      {
+        "street" : "prac4Str. 222",
+        "houseno" : "5_5_5",
+        "zip" : "1595",
+        "city" : "Faoug",
+        "country" : "Schweiz",
+        "countryCode" : "CH",
+        "addon" : "",
+        "title" : "",
+        "firstname" : "",
+        "nameaffix" : "",
+        "middlename" : "",
+        "lastname" : "",
+        "kind" : "OFFICIAL",
+        "cantonCode" : "4"
+      }
+    ],
+    "kbvDob" : "01.01.2005",
+    "insuranceStatus" : [
+      {
+        "fk4133" : null,
+        "fk4110" : null,
+        "insuranceKind" : "",
+        "costCarrierBillingSection" : "",
+        "costCarrierBillingGroup" : "",
+        "feeSchedule" : "",
+        "fused" : false,
+        "unzkv" : [],
+        "bgNumber" : "",
+        "address1" : "Route de Verbier 13",
+        "address2" : "",
+        "zipcode" : "1934",
+        "city" : "Le Châble",
+        "phone" : "058 758 60 70",
+        "insuranceLink" : "www.amb-assurance.ch",
+        "email" : "gburnier@groupemutuel.ch",
+        "insuranceGLN" : "7601003000504",
+        "recipientGLN" : "7601003002980",
+        "department" : "",
+        "isTiersGarant" : false,
+        "isTiersPayant" : true,
+        "insuranceId" : "7601003000504",
+        "insuranceName" : "AMB Assurances",
+        "insurancePrintName" : "Groupe Mutuel",
+        "type" : "PRIVATE_CH",
+        "persGroup" : "",
+        "dmp" : "",
+        "locationId" : "000000000000000000000001",
+        "changebillingtypedesc" : true,
+        "mediport" : true
+      }
+    ],
+    "affiliates" : [],
+    "images" : [],
+    "devices" : [],
+    "partnerIds" : [],
+    "careDegree" : "NO",
+    "dob" : "2005-01-01T08:00:00.000Z",
+    "dob_MM" : "01",
+    "dob_DD" : "01",
+    "crmTreatments" : [],
+    "crmCatalogShort" : "GOÄ",
+    "locationId" : "",
+    "patientNo" : "16",
+    "additionalMirrorPatientIds" : [],
+    "additionalFamilyMembers" : [],
+    "inActive" : false,
+    "isDeceased" : false,
+    "jobStatus" : "EMPLOYEE",
+    "latestLabData" : [],
+    "patientsFamilyMembers" : [],
+    "socialSecurityNo" : "1221233122212121",
+    "familyDoctorModel" : false,
+    "confirmedViewFromLocationIds" : [],
+    "treatmentNeeds" : false,
+    "activeCaseFolderId" : "5f773723e5bfc03aa5ebeb68",
+    "latestMedData" : []
+  },
+  "treatment": {
+    "scheinOrder": "",
+    "scheinDiagnosis": "",
+    "reasonType": "",
+    "countryMode": ["CH"],
+    "treatmentCategory": "Hauptleistung",
+    "hierarchyRules": [{
+      "checked": true,
+      "disabled": false,
+      "title": "+ Zuschlag für hausärztliche Leistungen in der Arztpraxis",
+      "seq": "00.0015",
+      "validFrom": "2017-12-31T23:00:00.000Z",
+      "validUntil": null
+    }, {
+      "checked": true,
+      "disabled": false,
+      "title": "+ Konsultation bei Personen über 6 Jahren und unter 75 Jahren, jede weiteren 5 Min. (Konsultationszuschlag)",
+      "seq": "00.0020",
+      "validFrom": "2017-12-31T23:00:00.000Z",
+      "validUntil": null
+    }, {
+      "checked": true,
+      "disabled": false,
+      "title": "+ Zuschlag für Kinder unter 6 Jahren",
+      "seq": "00.0040",
+      "validFrom": "2017-12-31T23:00:00.000Z",
+      "validUntil": null
+    }, {
+      "checked": true,
+      "disabled": false,
+      "title": "+ Konsultation, letzte 5 Min. (Konsultationszuschlag)",
+      "seq": "00.0030",
+      "validFrom": "2017-12-31T23:00:00.000Z",
+      "validUntil": null
+    }
+    ],
+    "divisionCode": 1,
+    "divisionText": "Sprechzimmer",
+    "anaesthesiaText": "",
+    "medicalText": "Beinhaltet alle ärztlichen Leistungen, die der Facharzt in seiner Praxis oder der Arzt bei ambulanten Patienten im Spital ohne oder mit einfachen Hilfsmitteln (etwa Inhalt 'Besuchskoffer',) am Patienten hinsichtlich der Beschwerden und Erscheinungen erbringt, derentwegen dieser zum Facharzt kommt, bzw. gebracht wird und hinsichtlich der Beschwerden und Erscheinungen, die während der gleichen Behandlungsdauer auftreten.\r\n\r\nBeinhaltet Begrüssung, Verabschiedung, nicht besonders tarifierte Besprechungen und Untersuchungen, nicht besonders tarifierte Verrichtungen (z.B.: bestimmte Injektionen, Verbände usw.), Begleitung zu und Übergabe (inkl. Anordnungen) an Hilfspersonal betreffend Administration, technische und kurative Leistungen, Medikamentenabgabe (in Notfallsituation u/o als Starterabgabe), auf Konsultation bezogene unmittelbar vorgängige/anschliessende Akteneinsicht/Akteneinträge.",
+    "technicalText": "",
+    "taxPoints": 0,
+    "medicalTaxPoints": 10.42,
+    "technicalTaxPoints": 8.19,
+    "assistanceTaxPoints": 0,
+    "medicalScalingFactor": 1,
+    "technicalScalingFactor": 1,
+    "internalMedicalScalingFactor": 1,
+    "treatmentTime": 5,
+    "preparationAndFollowUpTime": 0,
+    "reportTime": 0,
+    "roomOccupancyTime": 5,
+    "rotationTime": 0,
+    "assistanceQuantity": 0,
+    "benefitsCode": "01",
+    "benefitsText": "-",
+    "billingRole": ["MEDICAL", "TECHNICAL"],
+    "treatmentTypeCh": "AMBULATORY",
+    "sideMandatory": false,
+    "price": 15.45,
+    "displayPrice": 0,
+    "bstrReferenceCode": "",
+    "tariffType": "",
+    "generalCosts": 0,
+    "specialCosts": 0,
+    "areTreatmentDiagnosesBillable": "1",
+    "billingFactorValue": "1",
+    "omimCodes": [],
+    "costType": "",
+    "gnrAdditionalInfo": ["NONE"],
+    "gnrAdditionalInfoType": "AUSWAHL",
+    "vat": 0,
+    "actType": "TREATMENT",
+    "attachments": [],
+    "attachedMedia": [],
+    "attachedMediaTags": [],
+    "subType": "",
+    "timestamp": "2020-10-05T13:43:47.808Z",
+    "time": "",
+    "patientId": "5ca5cc55aec08238f52c5076",
+    "employeeId": "100000000000000000000005",
+    "backupEmployeeIds": [],
+    "locationId": "000000000000000000000001",
+    "content": "Konsultation, erste 5 Min. (Grundkonsultation)",
+    "userContent": "Konsultation, erste 5 Min. (Grundkonsultation)",
+    "mediaImportError": "",
+    "partnerInfo": "",
+    "explanations": "",
+    "status": "CREATED",
+    "editor": [],
+    "activities": [],
+    "referencedBy": [],
+    "formId": "",
+    "formVersion": "",
+    "formPdf": "",
+    "formLang": "de-ch",
+    "formGender": "m",
+    "u_extra": {
+      "genderRules": [],
+      "ageRules": [],
+      "dignityRules": {
+        "quantDignity": {
+          "code": "FMH05",
+          "text": "FMH 5"
+        },
+        "qualDignity": [{
+          "code": "9999",
+          "description": [{
+            "text": "Alle",
+            "fmh": "0",
+            "validFrom": "2000-12-31T23:00:00.000Z",
+            "validUntil": null,
+            "mutationDate": "11/08/01 00:00:00",
+            "type": "N"
+          }
+          ],
+          "validFrom": "2000-12-31T23:00:00.000Z",
+          "validUntil": null,
+          "mutationDate": "11/08/01 00:00:00",
+          "subDignities": [],
+          "superDignities": []
+        }
+        ]
+      },
+      "frequencyRules": [{
+        "quantity": 1,
+        "timeQuantity": 1,
+        "timeUnit": "07",
+        "applicability": "00",
+        "validFrom": "2000-12-31T23:00:00.000Z",
+        "validUntil": null
+      }
+      ],
+      "hierarchyRules": [],
+      "combinationRules": [],
+      "blocRules": [],
+      "cumulationRules": [],
+      "treatmentGroups": [{
+        "code": "03",
+        "validFrom": "2014-09-30T22:00:00.000Z",
+        "validUntil": null,
+        "mutationDate": "09/01/14 00:00:00",
+        "text": [{
+          "text": "Tarifpositionen bei denen der Zuschlag für hausärztliche Leistungen in der Arztpraxis (00.0015) abgerechnet werden kann.",
+          "interpretation": "",
+          "textValidFrom": "01/01/18 00:00:00",
+          "textValidUntil": "12/31/99 00:00:00",
+          "textMutationDate": "09/01/17 00:00:00"
+        }
+        ],
+        "frequencyRules": []
+      }, {
+        "code": "18",
+        "validFrom": "2000-12-31T23:00:00.000Z",
+        "validUntil": null,
+        "mutationDate": "11/08/01 00:00:00",
+        "text": [{
+          "text": "Allgemeine Grundleistungen",
+          "interpretation": "",
+          "textValidFrom": "01/01/01 00:00:00",
+          "textValidUntil": "12/31/99 00:00:00",
+          "textMutationDate": "11/08/01 00:00:00"
+        }
+        ],
+        "frequencyRules": []
+      }, {
+        "code": "58",
+        "validFrom": "2000-12-31T23:00:00.000Z",
+        "validUntil": null,
+        "mutationDate": "11/08/01 00:00:00",
+        "text": [{
+          "text": "Allgemeine Grundleistungen nicht kumulierbar mit Konsilium",
+          "interpretation": "",
+          "textValidFrom": "01/01/01 00:00:00",
+          "textValidUntil": "12/31/99 00:00:00",
+          "textMutationDate": "11/08/01 00:00:00"
+        }
+        ],
+        "frequencyRules": []
+      }
+      ]
+    },
+    "caseFolderId": "5f773723e5bfc03aa5ebeb68",
+    "apkState": "IN_PROGRESS",
+    "unlinkedMirrorIds": [],
+    "savedEmails": [],
+    "catalog": true,
+    "catalogShort": "TARMED",
+    "catalogRef": "DC-TARMED-CH-1556117162868.js",
+    "code": "00.0010",
+    "forInsuranceType": "",
+    "modifyHomeCat": false,
+    "deleteEntryHomeCat": false,
+    "hasVat": false,
+    "numberOfCopies": 1
+  },
+  "catalogs": [
+    {
+      "seq": "00.0015",
+      "treatmentCategory": "Zuschlagsleistung",
+      "title": "+ Zuschlag für hausärztliche Leistungen in der Arztpraxis",
+      "medicalText": "Darf nur im Zusammenhang mit der Erbringung von hausärztlichen Leistungen abgerechnet werden und wenn dem Patienten am selben Tag keine spezialärztlichen Leistungen durch den gleichen Leistungserbringer verrechnet werden.\r\n\r\nDarf nicht von ambulanten Diensten von Spitälern abgerechnet werden.",
+      "technicalText": "",
+      "divisionCode": "0001",
+      "divisionText": "Sprechzimmer",
+      "benefitsCode": "01",
+      "benefitsText": "-",
+      "medicalTaxPoints": 10.88,
+      "technicalTaxPoints": 0,
+      "assistanceTaxPoints": 0,
+      "assistanceQuantity": 0,
+      "medicalScalingFactor": 1,
+      "technicalScalingFactor": 1,
+      "treatmentTime": 0,
+      "preparationAndFollowUpTime": 0,
+      "reportTime": 0,
+      "roomOccupancyTime": 0,
+      "rotationTime": 0,
+      "chapter": "00.01.01",
+      "sideMandatory": false,
+      "validFrom": "2017-12-31T23:00:00.000Z",
+      "validUntil": null,
+      "u_extra": {
+        "genderRules": [],
+        "ageRules": [],
+        "dignityRules": {
+          "quantDignity": {
+            "code": "FMH05",
+            "text": "FMH 5"
+          },
+          "qualDignity": [{
+            "code": "0500",
+            "description": [{
+              "text": "Innere Medizin",
+              "fmh": "1",
+              "validFrom": "2000-12-31T23:00:00.000Z",
+              "validUntil": null,
+              "mutationDate": "11/08/01 00:00:00",
+              "type": "N"
+            }
+            ],
+            "validFrom": "2014-09-30T22:00:00.000Z",
+            "validUntil": null,
+            "mutationDate": "07/01/14 00:00:00",
+            "subDignities": [],
+            "superDignities": []
+          }, {
+            "code": "1100",
+            "description": [{
+              "text": "Kinder- und Jugendmedizin",
+              "fmh": "1",
+              "validFrom": "2000-12-31T23:00:00.000Z",
+              "validUntil": null,
+              "mutationDate": "11/08/01 00:00:00",
+              "type": "N"
+            }
+            ],
+            "validFrom": "2014-09-30T22:00:00.000Z",
+            "validUntil": null,
+            "mutationDate": "07/01/14 00:00:00",
+            "subDignities": [],
+            "superDignities": []
+          }, {
+            "code": "3000",
+            "description": [{
+              "text": "Praktischer Arzt/praktische Ärztin",
+              "fmh": "0",
+              "validFrom": "2014-06-30T22:00:00.000Z",
+              "validUntil": null,
+              "mutationDate": "07/01/14 00:00:00",
+              "type": "N"
+            }
+            ],
+            "validFrom": "2014-09-30T22:00:00.000Z",
+            "validUntil": null,
+            "mutationDate": "07/01/14 00:00:00",
+            "subDignities": [],
+            "superDignities": []
+          }, {
+            "code": "3010",
+            "description": [{
+              "text": "Allgemeine Innere Medizin",
+              "fmh": "1",
+              "validFrom": "2014-06-30T22:00:00.000Z",
+              "validUntil": null,
+              "mutationDate": "07/01/14 00:00:00",
+              "type": "N"
+            }
+            ],
+            "validFrom": "2014-09-30T22:00:00.000Z",
+            "validUntil": null,
+            "mutationDate": "07/01/14 00:00:00",
+            "subDignities": [],
+            "superDignities": []
+          }, {
+            "code": "9900",
+            "description": [{
+              "text": "Allgemeine Medizin",
+              "fmh": "1",
+              "validFrom": "2000-12-31T23:00:00.000Z",
+              "validUntil": null,
+              "mutationDate": "11/08/01 00:00:00",
+              "type": "N"
+            }
+            ],
+            "validFrom": "2014-09-30T22:00:00.000Z",
+            "validUntil": null,
+            "mutationDate": "07/01/14 00:00:00",
+            "subDignities": [],
+            "superDignities": []
+          }
+          ]
+        },
+        "frequencyRules": [{
+          "quantity": 1,
+          "timeQuantity": 1,
+          "timeUnit": "21",
+          "applicability": "00",
+          "validFrom": "2014-09-30T22:00:00.000Z",
+          "validUntil": null
+        }
+        ],
+        "hierarchyRules": [{
+          "seq": "00.0010",
+          "validFrom": "2014-09-30T22:00:00.000Z",
+          "validUntil": null
+        }
+        ],
+        "combinationRules": [],
+        "blocRules": [],
+        "cumulationRules": [{
+          "slaveSeq": "03",
+          "slaveMaster": "00.0015",
+          "type": "X",
+          "masterType": "L",
+          "slaveType": "G",
+          "display": "L",
+          "validFrom": "2014-09-30T22:00:00.000Z",
+          "validUntil": null,
+          "mutationDate": "09/01/14 00:00:00"
+        }
+        ],
+        "treatmentGroups": [{
+          "code": "03",
+          "validFrom": "2014-09-30T22:00:00.000Z",
+          "validUntil": null,
+          "mutationDate": "09/01/14 00:00:00",
+          "text": [{
+            "text": "Tarifpositionen bei denen der Zuschlag für hausärztliche Leistungen in der Arztpraxis (00.0015) abgerechnet werden kann.",
+            "interpretation": "",
+            "textValidFrom": "2017-12-31T23:00:00.000Z",
+            "textValidUntil": null,
+            "textMutationDate": "09/01/17 00:00:00"
+          }
+          ],
+          "frequencyRules": []
+        }
+        ]
+      },
+      "catalog": "DC-TARMED-CH-1591102857465.js"
+    },
+    {
+      "seq": "00.0020",
+      "treatmentCategory": "Zuschlagsleistung",
+      "title": "+ Konsultation bei Personen über 6 Jahren und unter 75 Jahren, jede weiteren 5 Min. (Konsultationszuschlag)",
+      "medicalText": "Gilt für Personen über 6 Jahren und unter 75 Jahren.",
+      "technicalText": "",
+      "divisionCode": "0001",
+      "divisionText": "Sprechzimmer",
+      "benefitsCode": "01",
+      "benefitsText": "-",
+      "medicalTaxPoints": 10.42,
+      "technicalTaxPoints": 8.19,
+      "assistanceTaxPoints": 0,
+      "assistanceQuantity": 0,
+      "medicalScalingFactor": 1,
+      "technicalScalingFactor": 1,
+      "treatmentTime": 5,
+      "preparationAndFollowUpTime": 0,
+      "reportTime": 0,
+      "roomOccupancyTime": 5,
+      "rotationTime": 0,
+      "chapter": "00.01.01",
+      "sideMandatory": false,
+      "validFrom": "2017-12-31T23:00:00.000Z",
+      "validUntil": null,
+      "u_extra": {
+        "genderRules": [],
+        "ageRules": [{
+          "from": 6,
+          "fromTolerance": 0,
+          "until": 75,
+          "untilTolerance": 0,
+          "unit": "years",
+          "validFrom": "2017-12-31T23:00:00.000Z",
+          "validUntil": null
+        }
+        ],
+        "dignityRules": {
+          "quantDignity": {
+            "code": "FMH05",
+            "text": "FMH 5"
+          },
+          "qualDignity": [{
+            "code": "9999",
+            "description": [{
+              "text": "Alle",
+              "fmh": "0",
+              "validFrom": "2000-12-31T23:00:00.000Z",
+              "validUntil": null,
+              "mutationDate": "11/08/01 00:00:00",
+              "type": "N"
+            }
+            ],
+            "validFrom": "2000-12-31T23:00:00.000Z",
+            "validUntil": null,
+            "mutationDate": "11/08/01 00:00:00",
+            "subDignities": [],
+            "superDignities": []
+          }
+          ]
+        },
+        "frequencyRules": [{
+          "quantity": 2,
+          "timeQuantity": 1,
+          "timeUnit": "07",
+          "applicability": "00",
+          "validFrom": "2017-12-31T23:00:00.000Z",
+          "validUntil": null
+        }
+        ],
+        "hierarchyRules": [{
+          "seq": "00.0010",
+          "validFrom": "2000-12-31T23:00:00.000Z",
+          "validUntil": null
+        }
+        ],
+        "combinationRules": [],
+        "blocRules": [],
+        "cumulationRules": [{
+          "slaveSeq": "00.0025",
+          "slaveMaster": "00.0020",
+          "type": "E",
+          "masterType": "L",
+          "slaveType": "L",
+          "display": "V",
+          "validFrom": "2017-12-31T23:00:00.000Z",
+          "validUntil": null,
+          "mutationDate": "09/01/17 00:00:00"
+        }, {
+          "slaveSeq": "00.0026",
+          "slaveMaster": "00.0020",
+          "type": "E",
+          "masterType": "L",
+          "slaveType": "L",
+          "display": "V",
+          "validFrom": "2017-12-31T23:00:00.000Z",
+          "validUntil": null,
+          "mutationDate": "09/01/17 00:00:00"
+        }
+        ],
+        "treatmentGroups": [{
+          "code": "03",
+          "validFrom": "2014-09-30T22:00:00.000Z",
+          "validUntil": null,
+          "mutationDate": "09/01/14 00:00:00",
+          "text": [{
+            "text": "Tarifpositionen bei denen der Zuschlag für hausärztliche Leistungen in der Arztpraxis (00.0015) abgerechnet werden kann.",
+            "interpretation": "",
+            "textValidFrom": "2017-12-31T23:00:00.000Z",
+            "textValidUntil": null,
+            "textMutationDate": "09/01/17 00:00:00"
+          }
+          ],
+          "frequencyRules": []
+        }
+        ]
+      },
+      "catalog": "DC-TARMED-CH-1591102857465.js"
+    },
+    {
+      "seq": "00.0040",
+      "treatmentCategory": "Zuschlagsleistung",
+      "title": "+ Zuschlag für Kinder unter 6 Jahren",
+      "medicalText": "",
+      "technicalText": "",
+      "divisionCode": "0001",
+      "divisionText": "Sprechzimmer",
+      "benefitsCode": "01",
+      "benefitsText": "-",
+      "medicalTaxPoints": 0,
+      "technicalTaxPoints": 13.11,
+      "assistanceTaxPoints": 0,
+      "assistanceQuantity": 0,
+      "medicalScalingFactor": 1,
+      "technicalScalingFactor": 1,
+      "treatmentTime": 0,
+      "preparationAndFollowUpTime": 0,
+      "reportTime": 0,
+      "roomOccupancyTime": 8,
+      "rotationTime": 0,
+      "chapter": "00.01.01",
+      "sideMandatory": false,
+      "validFrom": "2017-12-31T23:00:00.000Z",
+      "validUntil": null,
+      "u_extra": {
+        "genderRules": [],
+        "ageRules": [{
+          "from": 0,
+          "fromTolerance": 0,
+          "until": 6,
+          "untilTolerance": 30,
+          "unit": "years",
+          "validFrom": "2006-03-31T22:00:00.000Z",
+          "validUntil": null
+        }
+        ],
+        "dignityRules": {
+          "quantDignity": {
+            "code": "FMH05",
+            "text": "FMH 5"
+          },
+          "qualDignity": [{
+            "code": "1100",
+            "description": [{
+              "text": "Kinder- und Jugendmedizin",
+              "fmh": "1",
+              "validFrom": "2000-12-31T23:00:00.000Z",
+              "validUntil": null,
+              "mutationDate": "11/08/01 00:00:00",
+              "type": "N"
+            }
+            ],
+            "validFrom": "2000-12-31T23:00:00.000Z",
+            "validUntil": null,
+            "mutationDate": "11/08/01 00:00:00",
+            "subDignities": [],
+            "superDignities": []
+          }, {
+            "code": "1900",
+            "description": [{
+              "text": "Kinderchirurgie",
+              "fmh": "1",
+              "validFrom": "2000-12-31T23:00:00.000Z",
+              "validUntil": null,
+              "mutationDate": "11/08/01 00:00:00",
+              "type": "N"
+            }
+            ],
+            "validFrom": "2000-12-31T23:00:00.000Z",
+            "validUntil": null,
+            "mutationDate": "11/08/01 00:00:00",
+            "subDignities": [],
+            "superDignities": [{
+              "code": "9995"
+            }
+            ]
+          }
+          ]
+        },
+        "frequencyRules": [{
+          "quantity": 1,
+          "timeQuantity": 1,
+          "timeUnit": "07",
+          "applicability": "00",
+          "validFrom": "2000-12-31T23:00:00.000Z",
+          "validUntil": null
+        }
+        ],
+        "hierarchyRules": [{
+          "seq": "00.0010",
+          "validFrom": "2000-12-31T23:00:00.000Z",
+          "validUntil": null
+        }
+        ],
+        "combinationRules": [],
+        "blocRules": [],
+        "cumulationRules": [],
+        "treatmentGroups": [{
+          "code": "03",
+          "validFrom": "2014-09-30T22:00:00.000Z",
+          "validUntil": null,
+          "mutationDate": "09/01/14 00:00:00",
+          "text": [{
+            "text": "Tarifpositionen bei denen der Zuschlag für hausärztliche Leistungen in der Arztpraxis (00.0015) abgerechnet werden kann.",
+            "interpretation": "",
+            "textValidFrom": "2017-12-31T23:00:00.000Z",
+            "textValidUntil": null,
+            "textMutationDate": "09/01/17 00:00:00"
+          }
+          ],
+          "frequencyRules": []
+        }
+        ]
+      },
+      "catalog": "DC-TARMED-CH-1591102857465.js"
+    },
+    {
+      "seq": "00.0030",
+      "treatmentCategory": "Zuschlagsleistung",
+      "title": "+ Konsultation, letzte 5 Min. (Konsultationszuschlag)",
+      "medicalText": "",
+      "technicalText": "",
+      "divisionCode": "0001",
+      "divisionText": "Sprechzimmer",
+      "benefitsCode": "01",
+      "benefitsText": "-",
+      "medicalTaxPoints": 5.21,
+      "technicalTaxPoints": 4.1,
+      "assistanceTaxPoints": 0,
+      "assistanceQuantity": 0,
+      "medicalScalingFactor": 1,
+      "technicalScalingFactor": 1,
+      "treatmentTime": 5,
+      "preparationAndFollowUpTime": 0,
+      "reportTime": 0,
+      "roomOccupancyTime": 5,
+      "rotationTime": 0,
+      "chapter": "00.01.01",
+      "sideMandatory": false,
+      "validFrom": "2017-12-31T23:00:00.000Z",
+      "validUntil": null,
+      "u_extra": {
+        "genderRules": [],
+        "ageRules": [],
+        "dignityRules": {
+          "quantDignity": {
+            "code": "FMH05",
+            "text": "FMH 5"
+          },
+          "qualDignity": [{
+            "code": "9999",
+            "description": [{
+              "text": "Alle",
+              "fmh": "0",
+              "validFrom": "2000-12-31T23:00:00.000Z",
+              "validUntil": null,
+              "mutationDate": "11/08/01 00:00:00",
+              "type": "N"
+            }
+            ],
+            "validFrom": "2000-12-31T23:00:00.000Z",
+            "validUntil": null,
+            "mutationDate": "11/08/01 00:00:00",
+            "subDignities": [],
+            "superDignities": []
+          }
+          ]
+        },
+        "frequencyRules": [{
+          "quantity": 1,
+          "timeQuantity": 1,
+          "timeUnit": "07",
+          "applicability": "00",
+          "validFrom": "2000-12-31T23:00:00.000Z",
+          "validUntil": null
+        }
+        ],
+        "hierarchyRules": [{
+          "seq": "00.0010",
+          "validFrom": "2000-12-31T23:00:00.000Z",
+          "validUntil": null
+        }
+        ],
+        "combinationRules": [],
+        "blocRules": [],
+        "cumulationRules": [],
+        "treatmentGroups": [{
+          "code": "03",
+          "validFrom": "2014-09-30T22:00:00.000Z",
+          "validUntil": null,
+          "mutationDate": "09/01/14 00:00:00",
+          "text": [{
+            "text": "Tarifpositionen bei denen der Zuschlag für hausärztliche Leistungen in der Arztpraxis (00.0015) abgerechnet werden kann.",
+            "interpretation": "",
+            "textValidFrom": "2017-12-31T23:00:00.000Z",
+            "textValidUntil": null,
+            "textMutationDate": "09/01/17 00:00:00"
+          }
+          ],
+          "frequencyRules": []
+        }
+        ]
+      },
+      "catalog": "DC-TARMED-CH-1591102857465.js"
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+div.form-group
+  strong(data-bind="text: dmpPatientWantsInfos.i18n")
+  span(data-bind="dmpField: { field: dmpPatientWantsInfos }")
+  div(data-bind="foreach: dmpPatientWantsInfos.list, hasFeedback: { field: dmpPatientWantsInfos, toggle: dmpPatientWantsInfos.hasError, messages: dmpPatientWantsInfos.validationMessages }")
+    label.checkbox-inline
+      span(data-bind="text: i18n")
+      input(type="checkbox", name="dmpPatientWantsInfos", data-bind="value: val, checked: $parent.dmpPatientWantsInfos, readOnly: $parent.dmpPatientWantsInfos.readOnly, attr: { name: $element.name + '-' + val }")

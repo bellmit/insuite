@@ -1,0 +1,348 @@
+button.btn.btn-xs.btn-success(style="display: none")#btnFloatSchema float button
+
+table(width="100%")
+  tr
+    td
+      h3#hTitle Loading...
+    td(align="right")
+      span.btn.btn-sm.btn-default(title="Ansicht normal oder breit")#btnToggleLeftCol
+        i.fa.fa-chevron-left
+      span.btn.btn-sm.btn-default(title="Ansicht normal oder breit")#btnToggleViewport
+        i.fa.fa-arrows-alt
+
+table(width="100%")
+  tr
+    td(valign="top",width="390px")#tdLeftCol
+      div.panel-group(style="width: 390px;")#divAccordionFill
+
+        div.panel.panel-default#divAgFilter
+          div.panel-heading
+            h4.panel-title
+              span Filter
+          div.panel
+            div.panel-body#divTreeFilter
+              div.form-group
+                input.form-control.form-control-search(data-bind="value: formSearchText, valueUpdate: 'afterkeydown', attr: { placeholder: formSearchPlaceholder }")
+
+        div.panel.panel-default#divAgFormsTree
+          div.panel-heading
+            h4.panel-title
+              a(data-toggle="collapse",data-parent="#divAccordionFill",href="#collapseTree", data-bind="text: editFormFormTreeI18n")
+
+          div.panel-collapse.collapse.in#collapseTree
+            div.panel-body#divFormsList
+              div(data-bind="with: formsTreeUser")
+                include FormsTreeViewModel.pug
+
+
+        div.panel.panel-default#divAgFormsDefault
+          div.panel-heading
+            h4.panel-title
+              a(data-toggle="collapse",data-parent="#divAccordionFill",href="#collapseTreeDefault", data-bind="text: editFormFormTreeDefaultI18n")
+
+          div.panel-collapse.collapse.in#collapseTreeDefault
+            div.panel-body#divFormsListDefault
+              div(data-bind="template: formsTreeDefault.tree.template")
+
+        div.panel.panel-default(style="display:none;")#divAgFormsTestMapping
+          div.panel-heading
+            h4.panel-title
+              a(data-toggle="collapse",data-parent="#divAccordionFill",href="#collapseTree", data-bind="text: editFormLblTestMapI18n")
+
+          div.panel-collapse.collapse.in#collapseTestMapping
+            div.panel-body#divMapForm
+              textarea(rows="5", type="text").form-control#taMapObj { "schemaMember": "value" }
+              p(data-bind="text: editFormLblMappingTipI18n")
+              span(style="float:right;")
+                button.btn#btnApplyMap(data-bind="text: editFormBtnApplyMapI18n")
+                span &nbsp;
+                button.btn#btnUnMap(data-bind="text: editFormBtnUnmapI18n")
+
+              br
+              br
+              hr
+              button.btn#btnPrintDebug(data-bind="text: editFormBtnPrintDebugI18n")
+
+      div.panel-group(style="display: none; width: 390px;")#divAccordionEdit
+
+        div.panel.panel-default#divAgForm
+          div.panel-heading
+            h4.panel-title
+              a(data-bind="text: editFormLblFormI18n, click: collapseAgForm")
+
+          div(data-bind="visible: showAgForm")
+            div.panel-body(data-bind="text: editFormLblLoadingPropertiesI18n")#divEditForm
+
+        div.panel(style="display: none")#divAgBFB
+          div.panel-heading
+            h4.panel-title
+              a(data-bind="text: editFormLblBfbI18n, click: collapseAgBFB")
+          div(data-bind="visible: showAgBFB")
+            div.panel-body(data-bind="text: editFormLblLoadingPropertiesI18n")#divBFBAtForm
+
+        div.panel#divAgSchema
+          div.panel-heading
+            h4.panel-title
+              a(data-bind="text: editFormLblSchemaI18n, click: collapseAgSchema")
+
+          div.panel(data-bind="visible: showAgSchema")
+            div.panel-body(data-bind="text: editFormLblNoSchemaI18n")#divSchemaList
+
+        div.panel#divAgPdf
+          div.panel-heading
+            h4.panel-title
+              a(data-bind="text: editFormLblPdfOptionsI18n, click: collapseAgPdf")
+
+          div(data-bind="visible: showAgPdf")
+            div.panel-body#divPrintOptions
+
+        div.panel#divAgPage
+          div.panel-heading
+            h4.panel-title
+              a(data-bind="text: editFormLblPageI18n, click: collapseAgPage")
+
+          div(data-bind="visible: showAgPage"  )
+            div.panel-body#divEditPage(data-bind="text: editFormLblSelectPageI18n")
+
+        div.panel#divAgElement
+          div.panel-heading
+            h4.panel-title
+              a(data-bind="text: editFormLblElementI18n, click: collapseAgElement")
+
+          div.panel(data-bind="visible: showAgElement")
+            div.panel-body#divEditElement(data-bind="text: editFormLblSelectFormI18n")
+
+        div.panel#divAgImages
+          div.panel-heading
+            h4.panel-title
+              a(data-bind="text: editFormLblImagesI18n, click: collapseAgImages")
+
+          div.panel(data-bind="visible: showAgImages")
+            div.panel-body#divEditImages(data-bind="text: editFormLblImagesI18n")
+
+        div.panel#divAgDebug
+          div.panel-heading
+            h4.panel-title
+              a(data-bind="text: editFormLblDebugI18n, click: collapseAgDebug")
+
+          div.panel(data-bind="visible: showAgDebug")
+            div.panel-body#divDebugControls
+              label
+                input(type="checkbox", name="chkdevoptions")#chkFormDevOptions
+                | &nbsp;
+                span(data-bind="text: editFormLblShowDebugI18n")
+
+    td(valign="top",width="20px")#tdSpacerCol
+
+    td(valign="top")#tdRightCol
+      div#formButtonsContainer
+        div(style="background-color:#555555;padding:5px;")#formButtons
+
+          span(style="display:none;")#spanFillButtons
+            button.btn(type="button", style="margin-bottom: 5px;")#btnPDF
+              i.fa.fa-print
+              | &nbsp;
+              span(data-bind="text: editFormBtnExportPdfI18n")
+            span &nbsp;
+
+            button.btn(type="button", style="margin-bottom: 5px;")#btnEdit
+              i.fa.fa-edit
+              | &nbsp;
+              span(data-bind="text: editFormBtnEditFormI18n")
+            button.btn(type="button", style="margin-bottom: 5px;")#btnCopyDefault
+              i.fa.fa-edit
+              | &nbsp;
+              span(data-bind="text: editFormBtnCopyDefaultI18n")
+            span &nbsp;
+
+            button.btn(type="button", style="margin-bottom: 5px;")#btnNewForm
+              i.fa.fa-star
+              | &nbsp;
+              span(data-bind="text: editFormNewFoermI18n")
+
+          span(style="display:none;")#spanEditButtons
+            button.btn(type="button", style="margin-bottom: 5px;")#btnFill
+              i.fa.fa-arrow-left
+              | &nbsp;
+              span(data-bind="text: editFormBtnFillFormI18n")
+            span &nbsp;
+
+            button.btn(type="button",style="margin-bottom: 5px;")#btnReset
+              i.fa.fa-rotate-left
+              | &nbsp;
+              span(data-bind="text: editFormBtnResetFormI18n")
+            span &nbsp;
+
+          span(style="display: none; margin-bottom: 15px;").dropdown#spanAddElement
+            button.btn.dropdown-toggle(type="button",data-toggle="dropdown", style="margin-bottom: 5px;")#btnAddElement
+              i.fa.fa-plus
+              | &nbsp;
+              span(data-bind="text: editFormAddFormElementI18n")
+            ul.dropdown-menu(role="menu", aria-labelledby="dLabel", style="z-index:1010;")
+              li
+                a(tabindex="-1",href="javascript:void(0);", data-bind="text: editFormNewPageI18n")#aAddPage
+
+              li.divider
+
+              li
+                a(tabindex="-1",href="javascript:void(0);", data-bind="text: editFormMenuLabelI18n")#aAddLabel
+              li
+                a(tabindex="-1",href="javascript:void(0);", data-bind="text: editFormMenuInputI18n")#aAddInput
+              li
+                a(tabindex="-1",href="javascript:void(0);", data-bind="text: editFormMenuTaI18n")#aAddTextarea
+              li
+                a(tabindex="-1",href="javascript:void(0);", data-bind="text: editFormMenuTextmatrixI18n")#aAddTextMatrix
+              li
+                a(tabindex="-1",href="javascript:void(0);", data-bind="text: editFormMenuHyperlinkI18n")#aAddHyperlink
+              li
+                a(tabindex="-1",href="javascript:void(0);", data-bind="text: editFormMenuCheckboxI18n")#aAddCheckbox
+              li
+                a(tabindex="-1",href="javascript:void(0);", data-bind="text: editFormMenuCheckTransI18n")#aAddCheckboxTrans
+              li
+                a(tabindex="-1",href="javascript:void(0);", data-bind="text: editFormMenuToggleBoxI18n")#aAddTogglebox
+              li
+                a(tabindex="-1",href="javascript:void(0);", data-bind="text: editFormMenuDateI18n")#aAddDate
+              li
+                a(tabindex="-1",href="javascript:void(0);", data-bind="text: editFormMenuRadioI18n")#aAddRadio
+              li
+                a(tabindex="-1",href="javascript:void(0);", data-bind="text: editFormMenuRadiotransI18n")#aAddRadioTrans
+              li
+                a(tabindex="-1",href="javascript:void(0);", data-bind="text: editFormMenuDropdownI18n")#aAddDropdown
+              li
+                a(tabindex="-1",href="javascript:void(0);", data-bind="text: editFormMenuTableI18n")#aAddTable
+              li
+                a(tabindex="-1",href="javascript:void(0);", data-bind="text: editFormMenuReportTableI18n")#aAddReportTable
+              li
+                a(tabindex="-1",href="javascript:void(0);", data-bind="text: editFormMenuLabdataTableI18n")#aAddLabdataTable
+              li
+                a(tabindex="-1",href="javascript:void(0);", data-bind="text: editFormMenuMeddataTableI18n")#aAddMeddataTable
+              li
+                a(tabindex="-1",href="javascript:void(0);", data-bind="text: editFormMenuContactTableI18n")#aAddContactTable
+              li
+                a(tabindex="-1",href="javascript:void(0);", data-bind="text: editFormMenuImageI18n")#aAddImage
+              li
+                a(tabindex="-1",href="javascript:void(0);", data-bind="text: editFormMenuBarcodeI18n")#aAddBarcode
+              li
+                a(tabindex="-1",href="javascript:void(0);", data-bind="text: editFormMenuAudioI18n")#aAddAudio
+              li(style="display:none;")
+                a(tabindex="-1",href="javascript:void(0);", data-bind="text: editFormMenuVideoI18n")#aAddVideo
+              li
+                a(tabindex="-1",href="javascript:void(0);", data-bind="text: editFormSubformI18n")#aAddSubform
+              li
+                a(tabindex="-1",href="javascript:void(0);", data-bind="text: editFormMenuChartMDI18n")#aAddChartMD
+            span &nbsp;
+
+          span(style="margin-bottom: 15px;")#spanExportButton
+            span &nbsp;
+            button.btn(type="button", style="margin-bottom: 5px;")#btnExport
+              i.fa.fa-rocket
+              span &nbsp;
+            span &nbsp;
+
+          span(style="margin-bottom: 15px;").dropdown#spanLangMenu
+            button.btn.dropdown-toggle(type="button",data-toggle="dropdown", style="margin-bottom: 5px;")#btnLangMenu
+              i.fa.fa-language
+              span#spanLangLabel
+            ul.dropdown-menu(role="menu", aria-labelledby="dLabel", style="z-index:1010;")
+              li
+                a(tabindex="-1",href="javascript:void(0);")#aLangEN
+                  i.fa.fa-genderless
+                  | &nbsp;
+                  span(data-bind="text: editFormMenuEnglishI18n")
+              li
+                a(tabindex="-1",href="javascript:void(0);")#aLangDE
+                  i.fa.fa-genderless
+                  | &nbsp;
+                  span(data-bind="text: editFormMenuGermanI18n")
+              li
+                a(tabindex="-1",href="javascript:void(0);")#aLangDEF
+                  i.fa.fa-venus
+                  | &nbsp;
+                  span(data-bind="text: editFormMenuGermanI18n")
+              li
+                a(tabindex="-1",href="javascript:void(0);")#aLangDEM
+                  i.fa.fa-mars
+                  | &nbsp;
+                  span(data-bind="text: editFormMenuGermanI18n")
+
+            //span(style="display:none; margin-bottom: 15px;")#spanLangButtons
+              button.btn(type="button", style="margin-bottom: 5px; display:none;")#btnDE
+                span de
+              button.btn(type="button", style="margin-bottom: 5px; display:none;")#btnEN
+                span en
+
+            span &nbsp;
+
+            button.btn(type="button", style="margin-bottom: 5px;")#btnEditTranslations
+              i.fa.fa-bolt
+              | &nbsp;
+              span(data-bind="text: editFormMenuBtnTranslateI18n")
+            span &nbsp;
+
+
+          span(style="display:none; margin-bottom: 15px;")#spanDebugButtons
+            br
+            button.btn(type="button", style="margin-bottom: 5px;")#btnTest
+              i.fa.fa-bolt
+              | &nbsp;
+              span(data-bind="text: editFormBtnTestformI18n")
+            span &nbsp;
+
+            button.btn(type="button", style="margin-bottom: 5px;", data-bind="text: editFormBtnTestcatsI18n")#btnTestCats
+            span &nbsp;
+
+            button.btn(type="button", style="margin-bottom: 5px;display: none;")#btnSaveDisk
+              i.fa.fa-save
+              | &nbsp;
+              span(data-bind="text: editFormBtnSavediscI18n")
+            span &nbsp;
+
+            span(style="margin-bottom: 15px;")#spanLockButton
+              span &nbsp;
+              button.btn(type="button", style="margin-bottom: 5px;")#btnLock
+                i.fa.fa-lock
+                span &nbsp;
+              span &nbsp;
+
+            span(style="margin-bottom: 15px; display: none;")#spanUnLockButton
+              span &nbsp;
+              button.btn(type="button", style="margin-bottom: 5px;")#btnUnLock
+                i.fa.fa-unlock
+                span &nbsp;
+              span &nbsp;
+
+            button.btn(type="button", style="margin-bottom: 5px;display: none;")#btnResetAll
+              i.fa.fa-rotate-left
+              i.fa.fa-list-ul
+              | &nbsp;
+              span(data-bind="text: editFormBtnResetAllI18n")
+            span &nbsp;
+
+            button.btn(type="button", style="margin-bottom: 5px; display: none;")#btnAddPage
+              i.fa.fa-plus
+              | &nbsp;
+              span(data-bind="text: editFormBtnNewPageI18n")
+            span &nbsp;
+
+          span &nbsp;
+
+          span(style="float:right;color:#aaaaaa;")
+            span(style="position: relative; top: 5px;")#spanStatus
+            img(src="/static/FormEditorMojit/assets/images/throbber.gif",style="float:right;position:relative;top:5px;display:none;")#imgThrobber
+
+          div(data-bind="with: wyswyg")
+            include WYSWYG.pug
+
+      div(style='display:none;')#divFormsEdit
+      div#divPadBase
+
+      div#divFormsCompose
+
+      div#divFormsDownloadBackup
+      div(style="display:none;")#divFormsUploadBackup
+        form(action="/1/formtemplate/:uploadbackup",method="POST",enctype="multipart/form-data",name="frmUserArchive",target="ifUploadTarget")#formUploadArchive
+          input(type="file",name="tgzFile")#fileUploadArchive
+          input(type="hidden",name="action",value="uploadformbackup")
+
+      div(style="display: none;")#divUploadIframe
+        iframe(name="ifUploadTarget",width="10px", height="10px", frameborder="no")#iframeUploadTarget

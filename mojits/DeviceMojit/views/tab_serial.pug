@@ -1,0 +1,109 @@
+//TRANSLATION INCOMPLETE!! MOJ-3201
+div.row
+  .col-xs-12.col-md-10.col-md-offset-1
+    h4(data-bind="text: tabSerialHeaderI18n")
+    ol
+      li(data-bind="text: instructions1I18n")
+      li(data-bind="text: instructions2I18n")
+      li(data-bind="text: instructions3I18n")
+      li(data-bind="text: instructions4I18n")
+      li(data-bind="text: instructions5I18n")
+      li(data-bind="text: instructions6I18n")
+
+    p
+      i(data-bind="text: notes1I18n")
+    p
+      i(data-bind="text: notes2I18n")
+
+    hr
+
+    h4(data-bind="text: macI18n")
+    p(style="margin-left:10px;")
+      // ko if: downloadables_mac.length === 0
+      b [Keine Dateien gefunden]
+      br
+      // /ko
+      // ko if: downloadables_mac.length !== 0
+      // ko foreach: { data: downloadables_mac, as: 'entry' }
+      b
+        a(data-bind="text: entry, attr: { href: '/download-file/' + entry }")
+      br
+      // /ko
+      // /ko
+
+    h4(data-bind="text: windowsI18n")
+    p(style="margin-left:10px;")
+      // ko if: downloadables_win.length === 0
+      b [Keine Dateien gefunden]
+      br
+      // /ko
+      // ko if: downloadables_win.length !== 0
+      // ko foreach: { data: downloadables_win, as: 'entry' }
+      b
+        a(data-bind="text: entry, attr: { href: '/download-file/' + entry }")
+      br
+      // /ko
+      // /ko
+
+    h4(data-bind="text: linuxI18n")
+    p(style="margin-left:10px;")
+      // ko if: downloadables_linux.length === 0
+      b [Keine Dateien gefunden]
+      br
+      // /ko
+      // ko if: downloadables_linux.length !== 0
+      // ko foreach: { data: downloadables_linux, as: 'entry' }
+      b
+        a(data-bind="text: entry, attr: { href: '/download-file/' + entry }")
+      br
+      // /ko
+      // /ko
+
+    h4(data-bind="text: commandLineI18n")
+    p(style="margin-left:10px;")
+      // ko if: downloadables_node.length === 0
+      b [Keine Dateien gefunden]
+      br
+      // /ko
+      // ko if: downloadables_node.length !== 0
+      // ko foreach: { data: downloadables_node, as: 'entry' }
+      b
+        a(data-bind="text: entry, attr: { href: '/download-file/' + entry }")
+      br
+      // /ko
+      // /ko
+    hr
+
+    h4 Nach Installation und Start Geräteadapter:
+    p
+      a.btn.btn-primary(data-bind="attr: { href: registerConnectionUrl }", target="_blank") Verbindung registrieren
+    br
+
+    hr
+
+    h4 Verbunden:
+    // ko if: dsNameList.length === 0
+    p
+      b [Keine Verbindungen vorhanden]
+      br
+    // /ko
+    // ko if: dsNameList.length !== 0
+    p
+      table.table
+        thead
+          tr
+            th Name
+            th Version
+            th IP
+        tbody(data-bind="foreach: { data: dsNameList, as: 'entry' }")
+          tr
+            td(data-bind="text: entry.name")
+            td(data-bind="text: entry.version")
+            // ko if: $parent.isDeviceServerLocal(entry)
+            td
+              a(data-bind="text: entry.ip, attr: { href: $parent.localHostForDeviceServer }", target="_blank")
+            // /ko
+            // ko ifnot: $parent.isDeviceServerLocal(entry)
+            td(data-bind="text: entry.ip")
+            // /ko
+    // /ko

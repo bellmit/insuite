@@ -1,0 +1,11 @@
+div#tiErrorTable.tiErrorTable
+    ul.nav.nav-tabs#tiErrorTable-tabs
+        li#tiCardReader-errors-tab(data-bind="if: tiErrorList().length > 0")
+            a(href="#tiCardReader-errors", data-bind="text: 'Fehler (' + tiErrorList().length + ')'")
+        li#tiCardReader-warnings-tab(data-bind="if: tiWarningList().length > 0")
+            a(href="#tiCardReader-warnings", data-bind="text: 'Warnungen (' + tiWarningList().length + ')'")
+    div.tab-content#tiErrorTable-tab-content
+        div#tiCardReader-errors.tab-pane(data-bind="if: tiErrorList().length > 0")
+            div(data-bind="template: errorTable.template")
+        div#tiCardReader-warnings.tab-pane(data-bind="if: tiWarningList().length > 0")
+            div(data-bind="template: warningTable.template")

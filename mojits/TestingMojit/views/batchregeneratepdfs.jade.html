@@ -1,0 +1,57 @@
+br
+br
+.container.container-fullscreen.content(id=mojit_view_id)
+
+  h3 Regenerate PDF documents created by inCase within a date range
+
+  p This action will recreate PDFs made from activities with attached forms between the given dates.  On instances with a large number of activities between the given dates this operation may take a long time.
+
+  p If only activities using certain forms or versions should be considered then please paste their ids in the text field below, comma separated.  Wildcard '*' will match all forms and versions.  It is recommended that the system be backed up prior to running this operation.
+
+  div#divRegeneratePdfs
+
+    b Allowed forms
+    textarea.form-control(rows="6",style="width: 100%")#taFormIds *
+
+    table(style="width: 100%")
+      tr
+        td
+          b Start Date
+        td
+          b End Date
+      tr
+        td
+          input.form-control(type="text")#txtStartDate
+        td
+          input.form-control(type="text")#txtEndDate
+      tr
+        td
+          span#spnStartDate
+        td
+          span#spnEndDate
+
+  div(style="display:none;")#divProgressArea
+    div#divProgressLabel
+    div.progress
+      div.progress-bar(role="progressbar",aria-valuenow="0",aria-valuemin="0",aria-valuemax="100",style="width:0%;")#divProgressBar
+        span.sr-only#spanProgressSr 0%
+  hr
+
+  div#divStatusbar
+
+  div(style="display: none;")#divConfirm
+    p Ready to regenerate activity PDFs.  This action cannot be undone.  Please check your backup before you proceed.
+    button.btn#btnConfirm Confirm regeneration of PDFs for activites listed below
+    hr
+
+  div(style="display: none;")#divRegenerate
+    button.btn#btnRegenerate Create list of PDF documents to regenerate
+    div#divFormDocList
+    hr
+
+
+
+
+
+
+

@@ -1,0 +1,68 @@
+/*
+   defines consistent minimum container widths
+*/
+.container-min-sm {
+    width: 682px;
+}
+.container-min-md {
+    width: 970px;
+}
+.container-min-lg {
+    width: 1170px;
+}
+.container-fullscreen {
+    width: auto;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+@media (min-width: 700px) {
+    .container-min-sm {
+        width: 682px;
+    }
+    .container-min-md {
+        width: 970px;
+    }
+    .container-min-lg {
+        width: 1170px;
+    }
+    .container-fullscreen {
+        width: auto;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}
+@media (min-width: 992px) {
+    .container-min-sm,
+    .container-min-md {
+        width: 970px;
+    }
+    .container-min-lg {
+        width: 1170px;
+    }
+    .container-fullscreen {
+        width: auto;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}
+@media (min-width: 1200px) {
+    .container-min-sm,
+    .container-min-md,
+    .container-min-lg {
+        width: 1170px;
+    }
+    .container-fullscreen {
+        width: auto;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}
+
+/*
+   navigation background
+*/
+.navbar-inverse {
+    background-image: linear-gradient(to bottom, #254061, #111111);
+    background-repeat: repeat-x;
+    border-color: #252525;
+}

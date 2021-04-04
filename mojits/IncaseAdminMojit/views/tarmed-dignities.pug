@@ -1,0 +1,18 @@
+// ko if: countryModeIncludesSwitzerland
+div(data-bind="if: selectedItem().id === 'TARMED_DIGNITIES'")
+    div.row
+        div.col-md-12
+            h4(data-bind="text: qualiDignitiesI18n")
+        div.col-md-12
+            span(data-bind="template: addDignityBtn_quali.template", style="margin-right: 10px; margin-bottom:10px; display:inline-block;")
+            span(data-bind="template: editDignityBtn_quali.template", style="margin-right: 10px; margin-bottom:10px; display:inline-block;")
+            span(data-bind="template: removeDignityBtn_quali.template", style="margin-right: 10px; margin-bottom:10px; display:inline-block;")
+        div.col-xs-12(data-bind="template: tarmedDignitiesTable_quali.template")
+        div.col-md-12
+            h4(data-bind="text: quantiDignitiesI18n")
+        div.col-md-12
+            span(data-bind="template: addDignityBtn_quanti.template", style="margin-right: 10px; margin-bottom:10px; display:inline-block;")
+            span(data-bind="template: editDignityBtn_quanti.template", style="margin-right: 10px; margin-bottom:10px; display:inline-block;")
+            span(data-bind="template: removeDignityBtn_quanti.template", style="margin-right: 10px; margin-bottom:10px; display:inline-block;")
+        div.col-xs-12(data-bind="template: tarmedDignitiesTable_quanti.template")
+// /ko

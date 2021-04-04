@@ -1,0 +1,56 @@
+div#divTranscriptionModalControls
+
+    div(data-bind="visible: isInitialized").btn-group.btn-group-sm
+        button.btn.btn-small.btn-primary(data-bind="click: onToStartClick")
+            i.fa.fa-fast-backward
+
+        button.btn.btn-small.btn-primary(data-bind="click: skipBackward, css: { active: isLeftSkipDown }")
+            i.fa.fa-step-backward
+            span &nbsp;
+            span(data-bind="text: skipStep")
+
+    span &nbsp;
+    div(data-bind="visible: isInitialized").btn-group.btn-group-sm
+
+        button.btn.btn-small.btn-primary(data-bind="click: onPlayClick, css: { active: isPlaying }")
+            i.fa.fa-play
+
+        button.btn.btn-small.btn-primary(data-bind="click: onPauseClick")
+            i.fa.fa-pause
+
+    span &nbsp;
+    div(data-bind="visible: isInitialized").btn-group.btn-group-sm
+        button.btn.btn-small.btn-primary(data-bind="click: skipForward, css: { active: isRightSkipDown }")
+            i.fa.fa-step-forward
+            span &nbsp;
+            span(data-bind="text: skipStep")
+
+        button.btn.btn-small.btn-primary(data-bind="click: onToEndClick")
+            i.fa.fa-fast-forward
+
+
+    span &nbsp;
+    div(data-bind="visible: isInitialized").btn-group.btn-group-sm
+        button.btn.btn-small(data-bind="click: setSkipStep( 1 ), css: { 'btn-primary': ( skipStep() === 1 ) }")
+            span 1s
+
+        button.btn.btn-small(data-bind="click: setSkipStep( 2 ), css: { 'btn-primary': ( skipStep() === 2 ) }")
+            span 2s
+
+        button.btn.btn-small(data-bind="click: setSkipStep( 5 ), css: { 'btn-primary': ( skipStep() === 5 ) }")
+            span 5s
+
+        button.btn.btn-small(data-bind="click: setSkipStep( 10 ), , css: { 'btn-primary': ( skipStep() === 10 ) }")
+            span 10s
+
+    span &nbsp;
+    span(style="float:right;",data-bind="text: currentTimeText")
+
+    br
+
+
+    div#divAudioPlayerContainer
+        div#divWaveform
+
+    div(data-bind="visible: isLoading")#divAudioPlayerDescription
+        img(src="/static/FormEditorMojit/assets/images/throbber.gif")

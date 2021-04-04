@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="ISO-8859-15"?>
+<konfiguration>
+	<!-- Umgebung für das Prüfsummenmodul
+	   - Mögliche Werte: Praxis/DA -->
+	<umgebung>Praxis</umgebung>
+	<!-- Pfad und Name für die eVersandliste -->
+	<!-- Die Variablen ${DOKUMENTEN_ID} und ${DATUM} werden zur Laufzeit ersetzt -->
+	<e_versand_liste>$LISTS_PATH/eVersandliste_${DOKUMENTEN_ID}_${DATUM}.xml</e_versand_liste>
+	<!-- Pfad und Name für die eVersandliste im PDF Format -->
+	<!-- Die Variablen ${DOKUMENTEN_ID} und ${DATUM} werden zur Laufzeit ersetzt -->
+	<e_versand_liste_pdf>$LISTS_PATH/eVersandliste_${DOKUMENTEN_ID}_${DATUM}.pdf</e_versand_liste_pdf>
+	<!-- Pfad und Name der Bestätigunsschreiben-Datei -->
+	<!-- Die Variablen ${DOKUMENTEN_ID} und ${DATUM} werden zur Laufzeit ersetzt -->
+	<bestaetigung_schreiben>$LISTS_PATH/BestaetigungsSchreiben_${DOKUMENTEN_ID}_${DATUM}.pdf</bestaetigung_schreiben>
+	<!-- Konfigurationsdatei für die Protokollierung -->
+	<log_properties>Konfig/log4j.properties</log_properties>
+	<!-- Reportdatei für das Bestätigungsschreiben -->
+	<bs_report>Kbvtab/BestaetigungsSchreiben.bin</bs_report>
+	<!-- Reportdatei für die eVersandliste -->
+	<evl_report>Kbvtab/eVersandliste.bin</evl_report>
+	<!-- Verzeichnis mit Dokumentationen.
+	   - Nach einer korrekten eVersandlistengenerierung werden
+	   - die Dokumentationen in dieses Verzeichnis verschoben -->
+	<okdaten>Geprueft/NichtAbgelehnt/</okdaten>
+	<!-- Verzeichnis mit Dokumentationen.
+	   - Nach einer fehlerhaften eVersandlistengenerierung werden
+	   - die Dokumentationen in dieses Verzeichnis verschoben -->
+	<fehlerdaten>Geprueft/Abgelehnt/</fehlerdaten>
+	<!-- Dokumentation  -->
+	<dokumentation>Doku/EVL_Modul_Anwenderhandbuch.pdf</dokumentation>
+	<!-- Absenderangaben -->
+	<provider>
+		<!-- Betriebsstättennummer -->
+		<BSNR>$BSNR</BSNR>
+		<!-- Lebenslange Arztnummer -->
+		<LANR>$LANR</LANR>
+		<!-- Krankenhaus-IK -->
+		<IK></IK>
+		<!-- Vorname -->
+		<GIV>$FIRSTNAME</GIV>
+		<!-- Nachname -->
+		<FAM>$LASTNAME</FAM>
+		<!-- Titel -->
+		<PFX>$TITLE</PFX>
+		<!-- Postfach -->
+		<POB>$POB</POB>
+		<!-- Strasse -->
+		<STR>$STREET</STR>
+		<!-- Haus-Nr. -->
+		<HNR>$HOUSE_NO</HNR>
+		<!-- PLZ -->
+		<ZIP>$ZIP</ZIP>
+		<!-- Ort -->
+		<CTY>$CITY</CTY>
+		<!-- Telefon -->
+		<telecom>tel: $PHONE</telecom>
+	</provider>
+	<!-- Empfängerliste -->
+	<recipient_list>$SDDA</recipient_list>
+	<!-- Empfänger-Id aus der Empfängerliste -->
+	<intended_recipient.id>1</intended_recipient.id>
+</konfiguration>

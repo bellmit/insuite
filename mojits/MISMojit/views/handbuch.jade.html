@@ -1,0 +1,10 @@
+div(id=mojit_view_id)
+    .container.container-fullscreen
+        div(style="position: relative")
+            #settingsInSuiteNav(data-bind="template: template", style="margin-bottom: 10px;")
+            #fullScreenToggleInSuiteAdmin(style="position: absolute; right: 0; top: 0;")
+                button.btn.btn-sm.btn-default(name="toggleFullScreen", type="button", data-bind="click: toggleFullScreenHandler, attr: { title: viewPortBtnI18n }",
+                style="margin-top: 5px; font-size:14px")
+                    span.fa.fa-arrows-alt
+    .container.container-fullscreen
+        #upperDiv

@@ -1,0 +1,16 @@
+div#dispensingModal
+    div.col-md-12.col-sm-12.col-xs-12
+        // ko if: showMedication
+        hr
+        h4(data-bind="text: orderListI18n")
+        div.form-group
+            div(data-bind="with: medicationsTable")
+                div(data-bind="template: template")
+        div.form-group
+          div.checkbox(style="display: flex; justify-content: flex-end;")
+            label.control-label
+              span(data-bind="text: printLabelI18n")
+              input(type="checkbox", data-bind="checked: printLabel")
+        // /ko
+        script(type="text/html", id="SupplierSelectViewModel")
+            include ../../InStockMojit/views/SupplierSelectViewModel

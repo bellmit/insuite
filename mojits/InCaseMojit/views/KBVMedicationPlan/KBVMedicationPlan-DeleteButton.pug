@@ -1,0 +1,14 @@
+// ko if: $data.type && $data.type() && !$parent._isModelReadOnly()
+button(type="button", data-bind="attr: { disabled: $parent._isModelReadOnly }, click: $parent.removeRow.bind($parent)").btn.btn-default.btn-xs
+  span.glyphicon.glyphicon-trash
+// /ko
+
+// ko if: $parent._isModelReadOnly
+button(type="button", data-bind="click: $parent.toggleActiveEditor.bind($parent)").btn.btn-default.btn-xs
+  // ko if: $data.editMode
+  span.glyphicon.glyphicon-chevron-down
+  // /ko
+  // ko ifnot: $data.editMode
+  span.glyphicon.glyphicon-chevron-right
+  // /ko
+// /ko

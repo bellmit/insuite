@@ -1,0 +1,2 @@
+tr.KoTable-row(data-bind="foreach: $parentContext.$parent.columns, css: $parentContext.$parent._getCssRow( $context ), attr: { style: $parentContext.$parent._getStyleRow( $context ) } ")
+  td(data-bind="template: { name: getTemplateNameCell( $context ), data: getTemplateDataCell( $context ) }, visible: visible, css: getCss( $context )")

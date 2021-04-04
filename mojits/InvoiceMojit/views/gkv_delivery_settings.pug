@@ -1,0 +1,78 @@
+//
+   User: do
+   Date: 26/07/17  18:31
+   (c) 2012, Doc Cirrus GmbH, Berlin
+
+#gkv_delivery_settings
+  div.row
+    div.col-md-12
+      div.dc-action-buttons.dc-action-buttons-top.dc-action-buttons-left.clearfix
+        button.btn.btn-primary(name="removeBtn", type="button", data-bind="enable: removeButtonEnabled, click: remove, text: translations.buttonDeleteTextI18n")
+        button.btn.btn-primary(name="addBtn", type="button", data-bind="enable: addButtonEnabled, click: add, text: translations.buttonAddTextI18n")
+  div.row
+    div.col-md-12(data-bind="css: {'col-md-6': null !== selectedDeliverySettingsEntry()} ")
+      div(data-bind="template: deliverySettingsTable.template")
+    div.col-md-6(data-bind="if: null !== selectedDeliverySettingsEntry()")
+      div.panel.panel-default(data-bind="with: selectedDeliverySettingsEntry")
+        div.panel-body
+          div.form-group(data-bind="hasFeedback: { field: mainLocationId, toggle: mainLocationId.hasError, messages: mainLocationId.validationMessages }")
+            label.control-label(data-bind="text: mainLocationId.i18n")
+            |&nbsp;
+            i.dc-info-icon(data-bind="tooltip: {title: $parent.translations.onlyLocationsWithBSNRI18n}")
+            input.form-control(type="hidden", name="mainLocationId", data-bind="select2: locationAutoComplete")
+          .row
+            .col-sm-10
+              div.form-group
+                label.control-label(data-bind="text: commercialNo.i18n")
+                input.form-control(name="commercialNo", data-bind="value: commercialNo", disabled="true")
+            .col-sm-2
+              div.form-group
+                label.control-label(data-bind="text: kv.i18n")
+                input.form-control(name="kv", data-bind="value: kv", disabled="true")
+          hr
+          div.form-group
+            div.radio
+              label.control-label
+                strong(data-bind="text: $parent.translations.manualDeliveryI18n")
+                input(type="radio", name="deliveryType", value="MANUAL", data-bind="checked: deliveryType")
+          div.form-group(data-bind="hasFeedback: { field: kvPortalUrl, toggle: kvPortalUrl.hasError, messages: kvPortalUrl.validationMessages }")
+            label.control-label(data-bind="text: $parent.translations.KVBPortalURLI18n")
+            input.form-control(name="kvUrl", data-bind="textInput: kvPortalUrl, readOnly: manualFieldsDisabled")
+
+          div.form-group
+            div.radio
+              label.control-label
+                strong(data-bind="text: $parent.translations.KVConnectDeliveryI18n")
+                input(type="radio", name="deliveryType", value="1CLICK", data-bind="checked: deliveryType")
+          div.form-group(data-bind="hasFeedback: { field: mainLocationId, toggle: mainLocationId.hasError, messages: mainLocationId.validationMessages }")
+            label.control-label(data-bind="text: kvcUsername.i18n")
+            input.form-control(type="hidden", name="kvcUsername", data-bind="select2: kvcAccountAutoComplete")
+          div(data-bind="with: kvcaEntry")
+            h5
+              strong(data-bind="text: $parent.labelDestinationI18n")
+            div.table-responsive
+              table.table.table-bordered
+                colgroup
+                  col(width="30%")
+                  col(width="30%")
+                  col(width="40%")
+                thead
+                  tr
+                    th(data-bind="text: $parent.labelKVTextI18n")
+                    th(data-bind="text: $parent.labelAddressTextI18n")
+                    th(data-bind="text: $parent.labelFunctionsTextI18n")
+                tbody
+                  tr
+                    td(data-bind="text: kvName + ' (' + kv + ')'", style="vertical-align:middle;")
+                    td(data-bind="text: kvcaAddress", style="vertical-align:middle;")
+                    td(data-bind="foreach: functions", style="vertical-align:middle;")
+                      span.badge(data-bind="text: $data.id, tooltip: {title: $data.name}")
+          div(data-bind="if: errorMessages().length")
+            div.alert.alert-danger(data-bind="foreach: errorMessages")
+              p(data-bind="text: $data")
+
+  div.row(data-bind="if: null !== selectedDeliverySettingsEntry()")
+    div.col-sm-12
+      div.dc-action-buttons.dc-action-buttons-right
+        button.btn.btn-default(name="discardBtn", type="button", data-bind="enable: discardBtnEnabled, click: discard, text: translations.buttonDiscardTextI18n")
+        button.btn.btn-primary(name="saveBtn", type="button", data-bind="enable: saveBtnEnabled, click: save, text: translations.buttonSaveTextI18n")

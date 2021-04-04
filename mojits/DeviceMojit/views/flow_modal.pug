@@ -1,0 +1,7 @@
+div#flowModel
+  div.form-group
+    label(data-bind="text: title.i18n")
+    input.form-control.input-sm(data-bind="value: title")
+  div.form-group
+    label(data-bind="text: flowTypeI18n")
+    input.form-control.input-sm(type="hidden", data-bind="select2: select2FlowType")

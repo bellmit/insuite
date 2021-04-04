@@ -1,0 +1,4 @@
+.row
+  .col-xs-12
+    div.form-group(data-bind="hasFeedback: { field: name, toggle: name.hasError, messages: name.validationMessages }")
+      input.form-control(data-bind="value: name", disabled)

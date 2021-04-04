@@ -1,0 +1,38 @@
+div.KoEditableTable(data-bind="css: { 'KoTable-renderFooterNot': !renderFooter()}")
+  div.KoTable-hScroll.table-responsive(data-bind="css: { 'KoTable-minWidth': Boolean(tableMinWidth()) }", style="overflow: visible")
+    table.KoTable-grid.table.table-hover.table-striped.table-bordered(data-bind="\
+        style: {\
+          'margin-bottom': 0,\
+          tableLayout: 'fixed',\
+          minWidth: _computeTableMinWidth\
+        }")
+      colgroup(data-bind="foreach: columns")
+        col(data-bind="visible: visible, style: { width: widthComputed }")
+      thead.KoTableHeader(data-bind="template: header.template")
+      // ko if: groups().length
+      tbody.KoTable-rows(data-bind="click: onBodyClick")
+        // ko foreach: groups
+        // ko if: $parent.showGroups()
+        // ko template: { name: $parent.getTemplateNameGroupRow(), data: $data, afterRender: afterRender }
+        // /ko
+        // /ko
+        // ko template: { name: $parent.getTemplateNameRow, foreach: $data.rows }
+        // /ko
+        // /ko
+      // /ko
+      // ko ifnot: groups().length
+      tbody.KoTable-rows
+        tr.KoTable-row-noDataToShow
+          td.text-center(data-bind="attr: { colspan: columns().length }, text: i18n('KoUI.KoTable.body.noDataToShow')")
+      // /ko
+  // ko if: renderFooter
+  table.KoTable-bottom.table.table-bordered
+    tfoot.KoTableFooter
+      tr
+        td(data-bind="template: $data.footer.template")
+  // /ko
+  div.KoTable-drag-proxy-cursor
+    span.KoTable-drag-proxy-cursor-disabled
+      span.fa.fa-ban
+    span.KoTable-drag-proxy-cursor-enabled
+      span.fa.fa-check

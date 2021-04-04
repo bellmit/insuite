@@ -1,0 +1,25 @@
+[
+  {
+    "kind": "OFFICIAL",
+    "_id": "54be764fc404c1d77a286d4f",
+    "addon": "",
+    "countryCode": "D",
+    "country": "Deutschland",
+    "city": "Berlin",
+    "zip": "12103",
+    "houseno": "82",
+    "street": "Bessemerstr"
+  },
+  {
+    "postbox" : "80639",
+    "kind" : "POSTBOX",
+    "_id" : "541c0492f6fe2a000008cb70",
+    "addon" : "",
+    "countryCode" : "D",
+    "country" : "Deutschland",
+    "city" : "München",
+    "zip" : "81828",
+    "houseno" : "",
+    "street" : ""
+  }
+]

@@ -1,0 +1,72 @@
+include DMP/Dmp-mixin
+
+div.row
+  div.col-xs-4
+    div.form-group
+      label.control-label(data-bind="text: labelPhysicianName")
+      input.form-control(name='physicianName', type="text", data-bind="value: dmpPhysicianName, readOnly: true")
+  div.col-xs-4
+    div.form-group
+      label.control-label(data-bind="text: labelBSNR")
+      input.form-control(name='physicianCommercialNumber', type="text", data-bind="value: dmpPhysicianCommercialNumber, readOnly: true")
+  div.col-xs-4
+    div.form-group
+      ldiv.form-group(data-bind="hasFeedback: { field: dmpExaminationDate, toggle: dmpExaminationDate.hasError, messages: dmpExaminationDate.validationMessages }")
+        label.control-label
+          span(data-bind="text: dmpExaminationDate.i18n")
+        .date-picker.input-group
+          input.form-control(name="dmpExaminationDate", data-bind="datetimepicker: { value: dmpExaminationDate }, readOnly: dmpExaminationDate.readOnly")
+div.row
+  div.col-xs-4
+    div.checkbox
+      label.control-label(data-bind="text: labelPrimaryFinding")
+      input(type="checkbox", name="dmpPrimaryFinding", data-bind="checked: dmpPrimaryFinding, readOnly: dmpPrimaryFinding.readOnly")
+
+div.row
+  div.col-md-6
+    +DmpFieldset('labelZytologicalFinding')
+      div.row
+        div.col-md-4
+          div.form-group(data-bind="foreach: dmpZytologicalFinding.list, hasFeedback: { field: dmpZytologicalFinding, toggle: dmpZytologicalFinding.hasError, messages: dmpZytologicalFinding.validationMessages }")
+            label.radio
+              span(data-bind="text: i18n")
+              input(type="radio", name="dmpZytologicalFinding", data-bind="value: val, checked: $parent.dmpZytologicalFinding, attr: { name: $element.name + '-' + val }, readOnly: $parent.dmpZytologicalFinding.readOnly")
+        div.col-md-8
+          div.form-group(data-bind="foreach: dmpZytologicalFindingSelection.list, visible: isIndividualZytologicalFinding, hasFeedback: { field: dmpZytologicalFindingSelection, toggle: dmpZytologicalFindingSelection.hasError, messages: dmpZytologicalFindingSelection.validationMessages}")
+            div.col-md-3
+              label.radio
+                span(data-bind="text: i18n")
+                input(type="radio", name="dmpZytologicalFindingSelection", data-bind="value: val, checked: $parent.dmpZytologicalFindingSelection, attr: { name: $element.name + '-' + val }, readOnly: $parent.dmpZytologicalFindingSelection.readonly")
+      div.row
+        hr
+        div.col-md-6
+          label.checkbox
+            span(data-bind="text: dmpHistologicalClarification.i18n")
+            input(type="checkbox", name="dmpHistologicalClarification", data-bind="checked: dmpHistologicalClarification, readOnly: dmpHistologicalClarification.readOnly")
+      div.row
+        div.col-md-offset-4.col-md-8
+          div(data-bind="foreach: dmpHistologicalClarificationSelection.list, visible: dmpHistologicalClarification, hasFeedback: { field: dmpHistologicalClarificationSelection, toggle: dmpHistologicalClarificationSelection.hasError, messages: dmpHistologicalClarificationSelection.validationMessages}")
+            label.radio
+              span(data-bind="text: i18n")
+              input(type="radio", name="dmpHistologicalClarificationSelection", data-bind="value: val, checked: $parent.dmpHistologicalClarificationSelection, attr: { name: $element.name + '-' + val }, readOnly: $parent.dmpHistologicalClarificationSelection.readonly")
+  div.col-md-6
+    +DmpFieldset('labelSummary')
+      div.row
+        div.col-md-12
+          div.form-group
+            div.col-md-6
+              h4(data-bind="text: labelFinding")
+            div.col-md-6
+              input.form-control(name='finding', type="text", data-bind="value: summaryFinding, readOnly: true")
+        div.col-xs-12
+          div.form-group
+            div.col-md-6
+              h4(data-bind="text: labelHistologicalClarification")
+            div.col-md-6
+              input.form-control(name='finding', type="text", data-bind="value: dmpHistologicalClarificationSelection, readOnly: true")
+        div.col-xs-12
+          div.form-group
+            div.col-md-6
+              h4(data-bind="text: dmpMedicalPracticeSpecialty.i18n")
+            div.col-md-6
+              input.form-control(name='MedicalPracticeSpecialty', type="text", placeholder="Enter text...", data-bind="value: dmpMedicalPracticeSpecialty")

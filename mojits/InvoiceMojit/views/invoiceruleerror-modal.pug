@@ -1,0 +1,69 @@
+script#ruleElementTemplate(type="text/html")
+  .rule-operator-entry(data-bind="css: {'rule-is-last': $index() === ($parent.content().length - 1) }")
+    // ko if: type() === 'and' || type() === 'or' || type() === 'not'
+    .rule-operator
+      .rule-operator-panel(data-bind="css: {'rule-operator-and': 'and' === type(), 'rule-operator-or': 'or' === type(), 'rule-operator-not': 'not' === type() }")
+        span.rule-operator-panel-text(data-bind="text: operatorName")
+      .rule-operator-content
+        ul(data-bind="template: {name: 'ruleElementTemplate', foreach: content.slice(0, 50)}")
+      // ko if: content.slice(50).length
+      ul
+        | &nbsp;&nbsp;&nbsp;
+        span(data-bind="text: '... (und ' + ('function' === typeof content && content().slice(50).length) + ' mehr)'")
+      // /ko
+    // /ko
+    // ko if: type() === 'validation'
+    .rule-validation
+      div(data-bind="with: content")
+        span &nbsp;
+        // ko if: isActivity
+        span(data-bind="text: displayActType")
+        span :&nbsp;
+        // /ko
+        // ko if: isCaseFolder
+        span Fall:&nbsp;
+        // /ko
+        // ko if: isPatient
+        span Patient:&nbsp;
+        // /ko
+        span(data-bind="if: count")
+          span(data-bind="text: displayCount")
+          span(data-bind="visible: criterionList().length") ,&nbsp;
+        span(data-bind="foreach: criterionList")
+          // ko if: $index !== 0 && !($index() === ($parent.criterionList().length - 1))
+          span &nbsp;
+          // /ko
+          // ko if: $index() > 0 && $index() === ($parent.criterionList().length - 1)
+          span &nbsp;und&nbsp;
+          // /ko
+          span(data-bind="text: getText($parent.actType(), $parent)")
+    // /ko
+
+script(type="text/html", id="rulePreviewTemplate")
+  .dc-rule
+    .panel.panel-default
+      .panel-heading
+        span.rule-description(data-bind="text: description")
+        |&nbsp;&nbsp;&nbsp;(
+        span.rule-description(data-bind="text: $parent.selectedRuleSet().description")
+        |)
+      .panel-collapse.collapse.in
+        .panel-body.panel-body-rule-editor
+          span Wenn:
+          .rule-editor-workspace(data-bind="template: {name:'ruleElementTemplate', foreach: content}")
+          div(style="word-wrap: break-word;")
+            span dann:
+            span &nbsp;&nbsp;
+            // ko foreach: actions
+            // ko if: $index() > 0
+            span ,&nbsp;
+            // /ko
+            span.rule-action.text-primary(data-bind="text: $root.displayAction($data), css: {'text-danger': 'ERROR' === type, 'text-warning': 'WARNING' === type }")
+            // /ko
+div#ruleDeatails
+  // ko if: selectedRuleSet
+  div(data-bind="template: {name: 'rulePreviewTemplate', foreach: selectedRuleSet().rules}", style="margin-top: 5px;")
+  // /ko
+  // ko ifnot: selectedRuleSet
+  div(data-bind="text: pleaseWait")
+  // /ko

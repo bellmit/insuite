@@ -1,0 +1,48 @@
+h4
+  span(data-bind="text: deleteOldDataI18n")
+div.panel.panel-default
+  div.panel-body
+    // ko if: isGetOldPatientsListLoading
+    .text-center
+      img(src="/static/DocCirrus/assets/images/ajax-loader.gif")
+    // /ko
+    // ko ifnot: isGetOldPatientsListLoading
+    .row
+      .col-md-12
+        p
+          span(data-bind="text: sayHowManyPatientsToDeleteTextI18n")
+          strong(data-bind="text: numberOfPatientsToDelete")
+        // ko if: getOldPatientsListFailed
+        p(class="dc-red", data-bind="text: getOldPatientsListFailureMessage")
+        // /ko
+        // ko ifnot: getOldPatientsListFailed && patientsToDelete().length < 1
+        p
+          span(data-bind="text: limitWarningI18n")
+        .patient-list
+          table.table.table-bordered
+            thead
+              tr
+                th.col #
+                th.col lastname
+                th.col firstname
+                th.col kbvDob
+                th.col patientId
+                th.col patientNo
+            tbody(data-bind="foreach: patientsToDeleteDisplay")
+              tr
+                th.row(data-bind="text: $index")
+                td(data-bind="text: lastname")
+                td(data-bind="text: firstname")
+                td(data-bind="text: kbvDob")
+                td
+                  a(data-bind="attr: { href: url, title: url }, text: _id")
+                td(data-bind="text: patientNo")
+        // /ko
+
+    .row
+      .col-md-12
+        // ko if: isSupportUser
+        button.btn.btn-default(style="margin-right: 10px;", data-bind="click: deleteOldPatientData, disable: patientsToDelete().length < 1") Delete
+        // /ko
+        button.btn.btn-default(data-bind="click: downloadOldPatientDataCSV, disable: patientsToDelete().length < 1") Download CSV
+    // /ko

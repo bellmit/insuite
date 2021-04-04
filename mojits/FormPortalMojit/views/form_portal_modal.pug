@@ -1,0 +1,4 @@
+div#formPortal
+  div.form-group(data-bind="hasFeedback: { field: formPortalId, toggle: formPortalId.hasError, messages: formPortalId.validationMessages, popover: { container: '#formportal_modal' } }")
+    label.control-label(data-bind="text: formPortalId.i18n")
+    input.form-control.input-sm#formPortalSelector(type="hidden", data-bind="select2: select2FormPortal", name="formPortal")

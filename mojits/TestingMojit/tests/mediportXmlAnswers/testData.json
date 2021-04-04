@@ -1,0 +1,302 @@
+{
+  "acceptedCommunication": {
+    "actType": "COMMUNICATION",
+    "userContent": "\nErläuterungen: La facture est acceptée et déjà payé.\n\nStatus: Akzeptiert;\nRechnungsnummer: Main_1702943;\nPatient: Herr Peter Muster;\nKassenart: Versicherer, Jaegergasse 3;, Zuerich;, 8021; Telefon: ++41 41 555 54 54;\nBearbeiter: Herr Peter Sachbearbeiter;Telefon: 041 123 45 67; p.sachearbeiter@insurance.ch;",
+    "subType": "Mediport"
+  },
+  "pendingCommunication": {
+    "actType": "COMMUNICATION",
+    "userContent": "\nErläuterungen: \n                    Dies ist eine Einforderung von Unterlagen und einem \"Minimal Clinival Dataset\" Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.\n                \n\nStatus: Ungültig;\nNachricht: Zahlungsverzögerung wegen Abklärungen mit .........\nNachricht: Vorsorgliche Einsprache wegen xyz\nNachricht: MCD zu Rechnung fehlt. Bitte  MCD dem VAD zustellen. Adresse .....\nRechnungsnummer: Main_1702944;\nPatient: Herr Patvorname Patnachname;\nKassenart: Versicherer, Jaegergasse 3;, Zuerich;, 8021; Telefon: ++41 41 555 54 54;\nBearbeiter: Herr Peter Sachbearbeiter;Telefon: 041 123 45 67; p.sachearbeiter@insurance.ch;",
+    "subType": "Mediport"
+  },
+  "rejectedCommunication": {
+    "actType": "COMMUNICATION",
+    "userContent": "\nErläuterungen: \n                    Dies ist eine Rückweisung. Die vertraglichen Abrechnungsgrundsätze werden nicht eingehalten. Siehe Vertrag im Anhang dieser Rechnungs-Rückweisung. Dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren\n                \n\nStatus: Abgelehnt;\nNachricht: Falscher BetragPhysioleistung. Korrekter Betrag 12000\nNachricht: Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elit\nRechnungsnummer: Main_1702944;\nPatient: Frau Patvorname Patnachname;\nKassenart: Versicherer, Jaegergasse 3;, Zuerich;, 8021; Telefon: ++41 41 555 54 54;\nBearbeiter: Herr Peter Sachbearbeiter;Telefon: 041 123 45 67; p.sachearbeiter@insurance.ch;",
+    "subType": "Mediport"
+  },
+  "notFullCommunication": {
+    "actType": "COMMUNICATION",
+    "userContent": "\nErläuterungen: \n\nStatus: Abgelehnt;\nNachricht: Falscher BetragPhysioleistung. Korrekter Betrag 12000\nNachricht: Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elit\nRechnungsnummer: Main_1702999;\nPatient: Patvorname Patnachname;\nKassenart: Versicherer, Jaegergasse 3;, Zuerich;, 8021;",
+    "subType": "Mediport"
+  },
+  "transformer": {
+    "selectedRefBSNR": "Kein",
+    "selectedRefLANR": "Kein",
+    "disallowGkvBilling": false,
+    "hours": 4,
+    "useAddInfoForIdFK": "8310",
+    "timeRangeDays": "30",
+    "exportMedData": false,
+    "exportDiagnosis": false,
+    "patientHeightInCm": true,
+    "patientHeightInCmFK": "3622",
+    "patientWeightInKg": true,
+    "patientWeightInKgFK": "3623",
+    "diagnosisSuspected": true,
+    "diagnosisSuspectedFK": "4207",
+    "initiatorBSNR": true,
+    "initiatorBSNRFK": "4217",
+    "refBSNR": true,
+    "refBSNRFK": "4218",
+    "treatmentType": "1",
+    "treatmentTypeSel": true,
+    "treatmentTypeFK": "4221",
+    "initiatorLANR": true,
+    "initiatorLANRFK": "4241",
+    "refLANR": true,
+    "refLANRFK": "4242",
+    "ICDCode": true,
+    "ICDCodeFK": "6001",
+    "patientPregnancy": true,
+    "patientPregnancyFK": "8510",
+    "patientPregnancyGestationLength": true,
+    "patientPregnancyGestationLengthFK": "8511",
+    "mapPatientLocationAddon": false,
+    "mapPatientLocationAddonTo": "3115",
+    "mapBSNR": false,
+    "mapBSNRTo": "0201",
+    "mapCaseFolderId": false,
+    "mapCaseFolderIdTo": "8310",
+    "mapEmployeeId": false,
+    "mapEmployeeIdTo": "8990",
+    "mapResponsibleDoctor": false,
+    "mapResponsibleDoctorTo": "8491",
+    "hl7CreateTreatments": true,
+    "useDataFromLabrequestIfPresent": false,
+    "_id": "5e6f8d9280296c0c467fbb3c",
+    "transformerType": "MEDIPORT_RES",
+    "name": "Mediport Antwort",
+    "mappingTmpFileRows": []
+  },
+  "INVOICEREF": {
+    "actType" : "INVOICEREF",
+    "attachments" : [
+      "5e722440fe1a781608e36c85",
+      "5e722441fe1a781608e36c8e"
+    ],
+    "subType" : "",
+    "time" : "",
+    "backupEmployeeIds" : [],
+    "userContent" : "Referenznummer: 011628000000000000017029427 Viktor Berner",
+    "mediaImportError" : "",
+    "partnerInfo" : "",
+    "explanations" : "",
+    "status" : "APPROVED",
+    "activities" : [
+      "5e7220c7bb508b0ff001493b"
+    ],
+    "referencedBy" : [],
+    "formId" : "",
+    "formVersion" : "",
+    "formPdf" : "",
+    "formLang" : "de",
+    "formGender" : "f",
+    "apkState" : "VALIDATED",
+    "unlinkedMirrorIds" : [],
+    "receipts" : [],
+    "totalReceiptsOutstanding" : 16.93,
+    "totalReceipts" : 0,
+    "__t" : "INVOICEREF",
+    "timestamp" : "2020-03-18T13:38:07.650Z",
+    "employeeId" : "100000000000000000000003",
+    "caseFolderId" : "5e31bacadb87d263ce4905d8",
+    "content" : "Referenznummer: 011628000000000000017029427 Viktor Berner",
+    "attachedMedia" : [
+      {
+        "mediaId" : "5e722440fe1a781608e36c80",
+        "contentType" : "text/plain",
+        "caption" : "XML",
+        "title" : ""
+      },
+      {
+        "mediaId" : "5e722440fe1a781608e36c89",
+        "contentType" : "application/pdf",
+        "caption" : "PDF",
+        "title" : ""
+      }
+    ],
+    "patientLastName" : "Berner",
+    "patientFirstName" : "Viktor",
+    "kvglogId" : "5e722414f6a5b1160f0cdff4",
+    "invoiceDate" : "2020-03-18T13:38:07.991Z",
+    "total" : 16.93,
+    "invoiceNo" : "Main_1702944",
+    "invoiceRefNo" : "011628000000000000017029427",
+    "referenceNo" : "011628000000000000017029427",
+    "employeeName" : "Dredn04, Jhony",
+    "employeeInitials" : "JD",
+    "price" : 16.93,
+    "editor" : [
+      {
+        "name" : "Jhony Dredn04",
+        "employeeNo" : "01234",
+        "initials" : "JD"
+      }
+    ],
+    "linkedEmployees" : [],
+    "linkedTimestamps" : [],
+    "linkedContents" : [],
+    "lastChanged" : "2020-03-18T13:38:09.595Z"
+  },
+  "INVOICE": {
+    "actType" : "INVOICE",
+    "status" : "APPROVED",
+    "attachments" : [
+      "5e721fff57226c0fe179ac8a",
+      "5e72200ebb508b0ff0014915"
+    ],
+    "subType" : "",
+    "time" : "",
+    "backupEmployeeIds" : [],
+    "userContent" : "Privatrechnung",
+    "mediaImportError" : "",
+    "partnerInfo" : "",
+    "explanations" : "",
+    "activities" : [
+      "5e721feabb508b0ff00148e9",
+      "5e721fe504ceb20fea744849"
+    ],
+    "referencedBy" : [],
+    "formId" : "5e57c51351a5b03504c85eea",
+    "formVersion" : "5e57f3b785cb0a4e7001e31a",
+    "formPdf" : "5e72200ebb508b0ff0014910",
+    "formLang" : "de-ch",
+    "formGender" : "m",
+    "apkState" : "IN_PROGRESS",
+    "unlinkedMirrorIds" : [],
+    "ruleStatus" : "NOT_VALIDATED",
+    "receipts" : [],
+    "scheinOrder" : "",
+    "scheinDiagnosis" : "",
+    "reasonType" : "",
+    "totalReceipts" : 0,
+    "totalPenalties" : 0,
+    "totalReceiptsOutstanding" : 33.86,
+    "continuousIcds" : [],
+    "insuranceName" : "AXA Health",
+    "hasVat" : false,
+    "vat" : 0,
+    "icds" : [],
+    "icdsExtra" : [],
+    "__t" : "INVOICE",
+    "attachedMedia" : [
+      {
+        "mediaId" : "5e72200ebb508b0ff0014910",
+        "contentType" : "application/pdf",
+        "caption" : "PDF",
+        "title" : ""
+      }
+    ],
+    "timestamp" : "2020-03-18T13:19:51.523Z",
+    "employeeId" : "100000000000000000000003",
+    "locationId" : "000000000000000000000001",
+    "content" : "Privatrechnung",
+    "editor" : [
+      {
+        "name" : "Jhony Dredn04",
+        "employeeNo" : "01234",
+        "initials" : "JD"
+      },
+      {
+        "name" : "Jhony Dredn04",
+        "employeeNo" : "01234",
+        "initials" : "JD"
+      }
+    ],
+    "caseFolderId" : "5e31bacadb87d263ce4905d8",
+    "linkedEmployees" : [],
+    "linkedTimestamps" : [],
+    "linkedContents" : [],
+    "employeeName" : "Dredn04, Jhony",
+    "employeeInitials" : "JD",
+    "patientLastName" : "Berner",
+    "patientFirstName" : "Viktor",
+    "lastChanged" : "2020-03-18T13:20:14.954Z",
+    "totalWithoutExpenses" : 33.86,
+    "totalDoc" : 33.86,
+    "total75" : 25.395,
+    "total25" : 8.465,
+    "total15" : 5.079,
+    "totalOwing" : 33.86,
+    "hasOP" : false,
+    "beforetax" : 33.86,
+    "totalVat" : 0,
+    "total" : 33.86,
+    "totalASK" : 0,
+    "totalBSK" : 0,
+    "totalAHB" : 0,
+    "totalBHB" : 0,
+    "price" : 33.86,
+    "totalExpense" : 0,
+    "invoiceNo" : "Main_1702943",
+    "invoiceDate" : "2020-03-18T13:20:12.870Z"
+  },
+  "acceptedFlowlog": {
+    "flowName": "Mediport Receive",
+    "flowComponentName": "Transformierer",
+    "msg": "Abrechnung, die aus der Medidata-Antwort stammt, kann nicht gefunden werden. Suchparameter: Betriebsstätte GLN: 7601001304987, Rechnungsnummer: Main_1702943, Patienten Sozialversicherungsnummer: 7561234567897\n \nErläuterungen: La facture est acceptée et déjà payé.\n\nStatus: Akzeptiert;\nRechnungsnummer: Main_1702943;"
+  },
+  "pendingFlowlog": {
+    "flowName": "Mediport Receive",
+    "flowComponentName": "Transformierer",
+    "msg": "Abrechnung, die aus der Medidata-Antwort stammt, kann nicht gefunden werden. Suchparameter: Betriebsstätte GLN: 7601001304987, Rechnungsnummer: Main_1702944, Patienten Sozialversicherungsnummer: 7561234567897\n \nErläuterungen: \n                    Dies ist eine Einforderung von Unterlagen und einem \"Minimal Clinival Dataset\" Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.\n                \n\nStatus: Ungültig;\nNachricht: Zahlungsverzögerung wegen Abklärungen mit .........\nNachricht: Vorsorgliche Einsprache wegen xyz\nNachricht: MCD zu Rechnung fehlt. Bitte  MCD dem VAD zustellen. Adresse .....\nRechnungsnummer: Main_1702944;"
+  },
+  "rejectedFlowlog": {
+    "flowName": "Mediport Receive",
+    "flowComponentName": "Transformierer",
+    "msg": "Abrechnung, die aus der Medidata-Antwort stammt, kann nicht gefunden werden. Suchparameter: Betriebsstätte GLN: 7601001304987, Rechnungsnummer: Main_1702944, Patienten Sozialversicherungsnummer: 7561234567897\n \nErläuterungen: \n                    Dies ist eine Rückweisung. Die vertraglichen Abrechnungsgrundsätze werden nicht eingehalten. Siehe Vertrag im Anhang dieser Rechnungs-Rückweisung. Dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren\n                \n\nStatus: Abgelehnt;\nNachricht: Falscher BetragPhysioleistung. Korrekter Betrag 12000\nNachricht: Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elit\nRechnungsnummer: Main_1702944;"
+  },
+  "noDataFlowlog": {
+    "flowName": "Mediport Receive",
+    "flowComponentName": "Transformierer",
+    "msg": "Abrechnung, die aus der Medidata-Antwort stammt, kann nicht gefunden werden. Suchparameter: Betriebsstätte GLN: , Rechnungsnummer: Main_1702000, Patienten Sozialversicherungsnummer: \n \nErläuterungen: \n\nStatus: Abgelehnt;\nNachricht: Falscher BetragPhysioleistung. Korrekter Betrag 12000\nRechnungsnummer: Main_1702000;"
+  },
+  "savedAcceptedCommunication": {
+    "actType": "COMMUNICATION",
+    "status": "APPROVED",
+    "subType": "Mediport",
+    "userContent": "\nErläuterungen: La facture est acceptée et déjà payé.\n\nStatus: Akzeptiert;\nRechnungsnummer: Main_1702943;\nPatient: Herr Peter Muster;\nKassenart: Versicherer, Jaegergasse 3;, Zuerich;, 8021; Telefon: ++41 41 555 54 54;\nBearbeiter: Herr Peter Sachbearbeiter;Telefon: 041 123 45 67; p.sachearbeiter@insurance.ch;",
+    "apkState": "IN_PROGRESS",
+    "__t": "COMMUNICATION",
+    "content": "\nErläuterungen: La facture est acceptée et déjà payé.\n\nStatus: Akzeptiert;\nRechnungsnummer: Main_1702943;\nPatient: Herr Peter Muster;\nKassenart: Versicherer, Jaegergasse 3;, Zuerich;, 8021; Telefon: ++41 41 555 54 54;\nBearbeiter: Herr Peter Sachbearbeiter;Telefon: 041 123 45 67; p.sachearbeiter@insurance.ch;"
+  },
+  "savedPeindingCommunication": {
+    "actType": "COMMUNICATION",
+    "status": "APPROVED",
+    "subType": "Mediport",
+    "userContent": "\nErläuterungen: \n                    Dies ist eine Einforderung von Unterlagen und einem \"Minimal Clinival Dataset\" Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.\n                \n\nStatus: Ungültig;\nNachricht: Zahlungsverzögerung wegen Abklärungen mit .........\nNachricht: Vorsorgliche Einsprache wegen xyz\nNachricht: MCD zu Rechnung fehlt. Bitte  MCD dem VAD zustellen. Adresse .....\nRechnungsnummer: Main_1702944;\nPatient: Herr Patvorname Patnachname;\nKassenart: Versicherer, Jaegergasse 3;, Zuerich;, 8021; Telefon: ++41 41 555 54 54;\nBearbeiter: Herr Peter Sachbearbeiter;Telefon: 041 123 45 67; p.sachearbeiter@insurance.ch;",
+    "apkState": "IN_PROGRESS",
+    "__t": "COMMUNICATION",
+    "content": "\nErläuterungen: \n                    Dies ist eine Einforderung von Unterlagen und einem \"Minimal Clinival Dataset\" Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.\n                \n\nStatus: Ungültig;\nNachricht: Zahlungsverzögerung wegen Abklärungen mit .........\nNachricht: Vorsorgliche Einsprache wegen xyz\nNachricht: MCD zu Rechnung fehlt. Bitte  MCD dem VAD zustellen. Adresse .....\nRechnungsnummer: Main_1702944;\nPatient: Herr Patvorname Patnachname;\nKassenart: Versicherer, Jaegergasse 3;, Zuerich;, 8021; Telefon: ++41 41 555 54 54;\nBearbeiter: Herr Peter Sachbearbeiter;Telefon: 041 123 45 67; p.sachearbeiter@insurance.ch;"
+  },
+  "savedRejectedCommunication": {
+    "actType": "COMMUNICATION",
+    "status": "APPROVED",
+    "subType": "Mediport",
+    "userContent": "\nErläuterungen: \n                    Dies ist eine Rückweisung. Die vertraglichen Abrechnungsgrundsätze werden nicht eingehalten. Siehe Vertrag im Anhang dieser Rechnungs-Rückweisung. Dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren\n                \n\nStatus: Abgelehnt;\nNachricht: Falscher BetragPhysioleistung. Korrekter Betrag 12000\nNachricht: Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elit\nRechnungsnummer: Main_1702944;\nPatient: Frau Patvorname Patnachname;\nKassenart: Versicherer, Jaegergasse 3;, Zuerich;, 8021; Telefon: ++41 41 555 54 54;\nBearbeiter: Herr Peter Sachbearbeiter;Telefon: 041 123 45 67; p.sachearbeiter@insurance.ch;",
+    "apkState": "IN_PROGRESS",
+    "__t": "COMMUNICATION",
+    "content": "\nErläuterungen: \n                    Dies ist eine Rückweisung. Die vertraglichen Abrechnungsgrundsätze werden nicht eingehalten. Siehe Vertrag im Anhang dieser Rechnungs-Rückweisung. Dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren\n                \n\nStatus: Abgelehnt;\nNachricht: Falscher BetragPhysioleistung. Korrekter Betrag 12000\nNachricht: Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elit\nRechnungsnummer: Main_1702944;\nPatient: Frau Patvorname Patnachname;\nKassenart: Versicherer, Jaegergasse 3;, Zuerich;, 8021; Telefon: ++41 41 555 54 54;\nBearbeiter: Herr Peter Sachbearbeiter;Telefon: 041 123 45 67; p.sachearbeiter@insurance.ch;"
+  },
+  "pendingTask": {
+    "allDay": true,
+    "urgency": 4,
+    "status": "NEW",
+    "details": "\nErläuterungen: \n                    Dies ist eine Einforderung von Unterlagen und einem \"Minimal Clinival Dataset\" Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.\n                \n\nStatus: Ungültig;\nNachricht: Zahlungsverzögerung wegen Abklärungen mit .........\nNachricht: Vorsorgliche Einsprache wegen xyz\nNachricht: MCD zu Rechnung fehlt. Bitte  MCD dem VAD zustellen. Adresse .....\nRechnungsnummer: Main_1702944;\nPatient: Herr Patvorname Patnachname;\nKassenart: Versicherer, Jaegergasse 3;, Zuerich;, 8021; Telefon: ++41 41 555 54 54;\nBearbeiter: Herr Peter Sachbearbeiter;Telefon: 041 123 45 67; p.sachearbeiter@insurance.ch;",
+    "roles": ["Rechnung"],
+    "title": "Prüfen (Kommunikation)",
+    "activityType": "COMMUNICATION",
+    "taskType": "100000000000000000000001"
+  },
+  "rejectedTask": {
+    "allDay": true,
+    "urgency": 4,
+    "status": "NEW",
+    "details": "\nErläuterungen: \n                    Dies ist eine Einforderung von Unterlagen und einem \"Minimal Clinival Dataset\" Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.\n                \n\nStatus: Ungültig;\nNachricht: Zahlungsverzögerung wegen Abklärungen mit .........\nNachricht: Vorsorgliche Einsprache wegen xyz\nNachricht: MCD zu Rechnung fehlt. Bitte  MCD dem VAD zustellen. Adresse .....\nRechnungsnummer: Main_1702944;\nPatient: Herr Patvorname Patnachname;\nKassenart: Versicherer, Jaegergasse 3;, Zuerich;, 8021; Telefon: ++41 41 555 54 54;\nBearbeiter: Herr Peter Sachbearbeiter;Telefon: 041 123 45 67; p.sachearbeiter@insurance.ch;",
+    "roles": ["Rechnung"],
+    "title": "Prüfen (Kommunikation)",
+    "activityType": "COMMUNICATION",
+    "taskType": "100000000000000000000001"
+  }
+
+}

@@ -1,0 +1,13 @@
+.row
+  .col-md-12
+    .form-group
+      textarea.form-control(name="userContent", data-bind="caretPosition: userContent.caretPosition, attr:{rows: '10'}, value: userContent, valueUpdate: 'afterkeydown', readOnly: userContent.readOnly")
+  .col-xs-6
+    div.form-group
+      label.control-label(data-bind="text: vendorId.i18n")
+      input.form-control(name="manufacture", type="text", data-bind="textInput: vendorId, readOnly: vendorId.readOnly")
+  // ko if: specialDOQUVIDE
+  .col-xs-6
+    div(style="text-align: right")
+      label(data-bind="text: specialDOQUVIDE.i18n")
+  // /ko

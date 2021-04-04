@@ -1,0 +1,7 @@
+div.form-group(data-bind="visible: dmpCurrentAdjuvantEndocrineTherapy_4_23Visible()")
+    strong(data-bind="text: dmpCurrentAdjuvantEndocrineTherapy_4_23.i18n")
+    span(data-bind="dmpField: { field: dmpCurrentAdjuvantEndocrineTherapy_4_23 }")
+    div(data-bind="foreach: dmpCurrentAdjuvantEndocrineTherapy_4_23.list, hasFeedback: { field: dmpCurrentAdjuvantEndocrineTherapy_4_23, toggle: dmpCurrentAdjuvantEndocrineTherapy_4_23.hasError, messages: dmpCurrentAdjuvantEndocrineTherapy_4_23.validationMessages }")
+        label.checkbox-inline
+            span(data-bind="text: i18n")
+            input(type="checkbox", name="dmpCurrentAdjuvantEndocrineTherapy_4_23", data-bind="value: val, checked: $parent.dmpCurrentAdjuvantEndocrineTherapy_4_23, readOnly: $parent.dmpCurrentAdjuvantEndocrineTherapy_4_23.readOnly, attr: { name: $element.name + '-' + val }")

@@ -1,0 +1,18 @@
+extend ../../DocCirrus/views/email_layout
+
+block emailbody
+
+  p The following user wishes to activate their tenant.
+  br
+  br
+  p Full Name: !{params.fullName}
+  br
+  p Email: !{params.email}
+  br
+  p Customer No.: !{params.dcCustomerNo}
+  br
+  p TenantID: !{params.tenantId}
+  br
+  p Tenant login:
+  a(href=params.loginUrl, style="text-decoration:none;")
+    span(style="background: #22405E; color: white; display: inline-block; width: auto; text-align: center;text-decoration:none;border:10px solid #22405E;font-weight: bold;font-size: 15px;font-style: normal") Login

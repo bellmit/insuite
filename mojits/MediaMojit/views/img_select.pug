@@ -1,0 +1,21 @@
+div#divSelectImageContainer
+  div#divSelectImage
+  br
+  button.btn#btnClearImage(data-bind="text: btnIsClearI18n")
+  div(style="display: none;")#divPreviewImage
+    table
+      tr
+        td(valign="top")
+          div(style="border: 1px black; background-color: #dddddd;")#divPreviewCropped
+        td(width='10px')
+        td(valign="top")
+          div(style="border: 1px black; background-color: #dddddd;")#divPreviewScaled
+
+      tr
+        td(align="right")
+          button.btn.btn-primary#btnSelectCropped(data-bind="text: btnIsCropI18n")
+
+        td(width='10px')
+
+        td(align="right")
+          button.btn.btn-primary#btnSelectScaled(data-bind="text: btnIsScaleI18n")

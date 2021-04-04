@@ -1,0 +1,8 @@
+#pkv_settings
+  div.row
+    div.col-md-6(data-bind="with: invoiceconfiguration")
+      include invoiceNumberScheme_item
+  div.row
+    div.col-sm-12
+      div.dc-action-buttons.dc-action-buttons-right(data-bind="with: actions")
+        button.btn.btn-primary(name="saveBtn", type="button", data-bind="enable: saveInvoiceconfigurationEnable, click: saveInvoiceconfiguration, text: buttonSaveI18n")

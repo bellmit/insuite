@@ -1,0 +1,24 @@
+div(id=mojit_view_id)
+  .invoice-context.container.container-fullscreen
+    div(style="position: relative")
+      #mainInvoiceNavigation(data-bind="template: template", style="margin-bottom: 10px;")
+      div#fullScreenToggle(style="position: absolute; right: 0; top: 0;")
+        button.btn.btn-sm.btn-default(
+        name="toggleFullScreen", type="button", data-bind="click: toggleFullScreenHandler, attr: { title: viewPortBtnI18n }",
+        style="margin-top: 6px;")
+          span.fa.fa-arrows-alt
+  .container.container-fullscreen
+    #upperDiv
+      block content
+script(type="text/html", id="template-PadxSettingModel")
+  include PadxSettingModel
+script(type="text/html", id="template-CashSettingModel")
+  include CashSettingModel
+script(type="text/html", id="template-PadxContactsModel")
+  include PadxContactsModel
+script(type="text/html", id="template-PadxAddressModel-POSTBOX")
+  include PadxAddressModel-POSTBOX
+script(type="text/html", id="template-PadxAddressModel-default")
+  include PadxAddressModel-default
+
+include ../../../autoload/KoUI/KoSchemaValue/view/KoSchemaTemplates

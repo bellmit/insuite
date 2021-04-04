@@ -1,0 +1,9 @@
+div.form-group
+  div.row
+    div.col-xs-5
+      strong(data-bind="text: dmpOtherOralAntiDiabetic.i18n")
+      span(data-bind="dmpField: { field: dmpOtherOralAntiDiabetic }")
+    div.col-xs-7(data-bind="foreach: dmpOtherOralAntiDiabetic.list, hasFeedback: { field: dmpOtherOralAntiDiabetic, toggle: dmpOtherOralAntiDiabetic.hasError, messages: dmpOtherOralAntiDiabetic.validationMessages }")
+      label.radio-inline
+        span(data-bind="text: i18n")
+        input(type="radio", name="dmpOtherOralAntiDiabetic", data-bind="value: val, checked: $parent.dmpOtherOralAntiDiabetic, readOnly: $parent.dmpOtherOralAntiDiabetic.readOnly")

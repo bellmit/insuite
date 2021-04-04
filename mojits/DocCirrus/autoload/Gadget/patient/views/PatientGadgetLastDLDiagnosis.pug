@@ -1,0 +1,8 @@
+h4.PatientGadget-headline
+  a(data-bind="text: titleText, attr: { href: titleUrl }")
+// ko if: onlyLastDLDiagnosis
+textarea.form-control(name="content", data-bind="text: activityContent", disabled, style="height: 100%;height: -webkit-calc(100% - 18px);height: -moz-calc(100% - 18px);height: calc(100% - 18px); width: 100%; box-sizing: border-box;")
+// /ko
+// ko ifnot: onlyLastDLDiagnosis
+include PatientGadgetConfigurableTableBase
+// /ko

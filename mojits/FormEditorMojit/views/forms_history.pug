@@ -1,0 +1,36 @@
+div#divFormHistoryContainer
+  div(data-bind="visible: showTable")
+    table(width="100%")
+      thead
+        tr
+          th(data-bind="text: LBL_VERSIONNO")
+          th(data-bind="text: LBL_TITLE")
+          th
+          th
+      tbody(data-bind="foreach: revisions")
+        tr
+          td(valign="top", data-bind="text: versionRevision")
+          td(valign="top", data-bind="html: description")
+          td(valign="top")
+            button.btn.btn-primary
+              i.fa.fa-eye
+              span &nbsp;
+              span(data-bind="text: $parent.BTN_PREVIEW, click: $parent.onPreviewClick")
+          td(valign="top")
+            button.btn.btn-primary
+              i.fa.fa-rotate-left
+              span &nbsp;
+              span(data-bind="text: $parent.BTN_REVERT, click: $parent.onRevertClick")
+
+  div(data-bind="visible: showPreview")
+    div
+      table(noborder=noborder)
+        tr
+          td
+            button.btn(data-bind="click: onBackButtonClick")
+              i.fa.fa-reply
+          td(width="10px")
+          td
+            h4(data-bind="text: previewTitle")
+
+    div#divPreviewEmbedContainer

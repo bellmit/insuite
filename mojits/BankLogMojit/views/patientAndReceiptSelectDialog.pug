@@ -1,0 +1,20 @@
+div.row.childs-bordered#PatientAndActivitySelectModal
+  div.row.patient-block
+    h4(data-bind="text: '1. ' + selectPatientI18n")
+    div#patientTable(data-bind="template: patientTable.template")
+  // ko if: selectedPatientId
+  div.row.activity-block
+    h4(data-bind="text: '2. ' + selectOrCreateActivityI18n")
+    div.row(style="padding: 10px, width: 500px;")
+      div
+        div.col-md-6
+          span(data-bind="text: selectCaseFolderI18n")
+          div(data-bind="foreach: caseFolders")
+            .radio
+              label
+                input(type="radio", name="casefolderRadioBoxes", value="", data-bind="checked: $parent.selectedFolder, value: $data")
+                span(data-bind="text: title")
+    div.dc-action-buttons.dc-action-buttons-right
+      button.btn.btn-default(type="button", data-bind="click: actions.cancel, text: cancelButtonI18n")
+      button.btn.btn-primary(type="button", data-bind="enable: addNewButtonEnable, click: createNewActivity, text: saveButtonI18n")
+  // /ko

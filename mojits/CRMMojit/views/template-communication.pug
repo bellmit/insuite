@@ -1,0 +1,11 @@
+div.panel.panel-default
+  div.panel-body
+    div.form-group
+      input.form-control(name="type", type="hidden", data-bind="readOnly: type.readOnly, select2: select2Type")
+    div.form-group(data-bind='hasFeedback: { field: value, toggle: value.hasError, messages: value.validationMessages }')
+      input.form-control(type='text', name='value', data-bind='readOnly: value.readOnly, value: value, valueUpdate: "afterkeydown", attr: { placeholder: valuePlaceholderI18n + ":" }')
+    div.form-group
+      div.checkbox
+        input(type='checkbox', name='preferred', data-bind='readOnly: type.readOnly, checked: preferred')
+        label(data-bind="text: preferred.i18n")
+    a.pull-right.btn.btn-default(href='#', data-bind='visible: showDeleteButton, enable: !value.readOnly(), click: $parent.communications.remove, text: buttonDeleteI18n')

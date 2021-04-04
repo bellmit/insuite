@@ -1,0 +1,110 @@
+script(type="text/html", id="activityTemplate")
+  li(data-bind="event: {mouseover: _onMouseOver, mouseout: _onMouseOut}, style: {'background-color': _mouseIsOver() ? '#f9f9f9' : '' }")
+    a(data-bind="attr: {href: _url}, text: _text, css: {'invoicelogmodal-approved': _approved()}", target="_blank")
+    span &nbsp;
+    button.btn.btn-info.btn-xs.pull-right(type="button", data-bind="click: _onApprove, visible: _showApproveBtn, text: $root.scheinBtnApproveI18n")
+
+
+script(type="text/html", id="scheinTemplate")
+  .panel.panel-default
+    .panel-heading(data-bind="event: {mouseover: schein._onMouseOver, mouseout: schein._onMouseOut}")
+      input(type='checkbox', style="margin-right: 4px;", name='excludeSchein', data-bind="checked: schein._onCheck, disable: schein._disabled ")
+      a(data-bind="attr: {href: schein._url}, text: schein._text, css: {'invoicelogmodal-approved': schein._approved()}", target="_blank")
+      span &nbsp;
+      //ko if: schein.referenceNo
+      span(data-bind="text: $root.referenceNoI18n")
+      | &colon;&nbsp;
+      span(data-bind="text: schein.referenceNo")
+      // /ko
+      //ko if: 'SCHEIN' === schein.actType && 'PUBLIC' === schein.caseFolderTypeSingle  
+      span.glyphicon.glyphicon-tag(title="Karte durchgezogen", data-bind="style: {color: schein._cardSwiped ? 'green' : 'red'}")
+      // /ko
+      button.btn.btn-info.btn-xs.pull-right(type="button", data-bind="click: _onApprove, visible: schein._showApproveBtn, text: $root.scheinBtnApproveI18n")
+    .panel-body
+      dl
+        //ko if: schein.invoiceStatus
+        dt
+          span(data-bind="text: $root.invoiceStatusI18n")
+          | &colon;&nbsp;
+          span(data-bind="attr: {class: 'label label-default ' + schein.statusLabelClass}, text: schein.invoiceStatusTranslated")
+        // /ko
+        dt
+          span(data-bind="text: $root.scheinPatientGadgetTreatmentI18n")
+          | &nbsp;
+          span.badge(data-bind="text: schein.treatments.length")
+          dd
+            ul(data-bind="template: {name: 'activityTemplate', foreach: schein.treatments}")
+        // ko if: $root.isSwiss
+        dt
+          span(data-bind="text: $root.scheinPatientGadgetMedicationI18n")
+          | &nbsp;
+          span.badge(data-bind="text: schein.medications.length")
+          dd
+            ul(data-bind="template: {name: 'activityTemplate', foreach: schein.medications}")
+        // /ko
+        dt
+          span(data-bind="text: $root.scheinPatientGadgetDiagnosisI18n")
+          | &nbsp;
+          span.badge(data-bind="text: schein.diagnoses.length")
+          dd
+            ul(data-bind="template: {name: 'activityTemplate', foreach: schein.diagnoses}")
+        dt
+          span(data-bind="text: $root.scheinPatientGadgetDiagnosisTypeContinuousI18n")
+          | &nbsp;
+          span.badge(data-bind="text: schein.continuousDiagnoses.length")
+          dd
+            ul(data-bind="template: {name: 'activityTemplate', foreach: schein.continuousDiagnoses}")
+
+script(type="text/html", id="quarterTemplate")
+  li
+    h4
+      span(data-bind="text: $parent.textQuarterI18n")
+      | &nbsp;
+      span(data-bind="text: quarter")
+      span &nbsp; / &nbsp;
+      span(data-bind="text: year")
+      span &nbsp;
+      span.badge(data-bind="text: scheine.length")
+    div(data-bind="template: {name: 'scheinTemplate', foreach: scheine, as: 'schein' }")
+
+div#patientLayout
+  div
+    .row
+      .col-md-12(style={'margin-bottom': '5px'})
+        span(data-bind="text: patientsI18n, style: {'padding-right': '10px'}")
+        span.radio-inline
+          input(type="radio", name="scheinRadio" data-bind="checked: filterSchein, value: filterValues.all")
+          span(data-bind="text: showAllI18n")
+        span.radio-inline
+          input(type="radio", name="scheinRadio"  data-bind="checked: filterSchein, value: filterValues.included")
+          span(data-bind="text: showOnlyIncludedI18n")
+        span.radio-inline
+          input(type="radio", name="scheinRadio"  data-bind="checked: filterSchein, value: filterValues.excluded")
+          span(data-bind="text: showOnlyExcludedI18n")
+  div
+    .row
+      #patientList.col-md-12(data-bind="css: {'col-md-6': patientContentVisible()} ")
+        #invoicelogContentTable(data-bind="template: patientTable.template")
+        span.pull-right(data-bind="visible: canCreatePubReceipts")
+          span(data-bind="text: lblPubReceiptAllI18n")
+          //i.dc-info-icon(data-bind="click: showPubreceiptExplanation")
+          span &nbsp;
+          button.btn.btn-info.btn-xs(data-bind="click: createAllPubreceipts, disable: pubreceiptsInProgress, text: btnPubReceiptAllI18n")
+      #patientContent.col-md-6.col-md-12
+        #invoicelogPatientContent(data-bind="if: patientContent.patient")
+          h3
+            a(data-bind="attr: {href: patientContent.patient()._url}, text: patientContent.patient().firstname + ' ' + patientContent.patient().lastname", target="_blank")
+            span &nbsp;
+            //button.btn.btn-info.btn-xs.pull-right(type="button", data-bind="click: patientContent.patient()._printPatientReceipt, visible: patientContent.patient().sendPatientReceipt") #{__i18n('InvoiceMojit.apklog.text.PRINT')}
+            button.btn.btn-info.btn-xs.pull-right(type="button", data-bind="click: patientContent.patient()._createPatientReceipts, disable: pubreceiptsInProgress, visible: canCreatePubReceipts, text: btnPubReceiptPatientI18n")
+
+          div(data-bind="if: patientContent.groupBy() === 'quarter'")
+            ul.list-unstyled(data-bind="template: {name: 'quarterTemplate', foreach: patientContent.quarters }")
+          div(data-bind="if: patientContent.groupBy() === 'schein'")
+            div(data-bind="template: {name: 'scheinTemplate', foreach: patientContent.scheine, as: 'schein' }")
+    .row(data-bind="if: excludedPatientIdsChanged")
+      .col-md-12
+        .alert.alert-warning(data-bind="text: warnChangedPatientsI18n")
+    .row(data-bind="if: excludedScheinIdsInWorkChanged")
+      .col-md-12
+        .alert.alert-warning(data-bind="text: warnChangedInvoiceI18n")

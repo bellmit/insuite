@@ -1,0 +1,9 @@
+div.predefinedReportsListViewModel(data-bind="visible: configData.presetList().length")
+  div.predefinedReportsListViewModel-container(data-bind="foreach: configData.presetList")
+    div.btn-block
+      span.predefinedReportsListViewModel-drag
+        span.predefinedReportsListViewModel-dragHandle
+          span.fa.fa-ellipsis-v
+          span.fa.fa-ellipsis-v
+      button.predefinedReportsListViewModel-button.btn.btn-default.btn-block(type="button", data-bind="text: csvFilename, css: {active: _id === $parent.configData.currentPreset()}, click: function() {$parent.selectPreset($data)}")
+div(data-bind="visible: !configData.presetList().length, text: presetMissingI18n")

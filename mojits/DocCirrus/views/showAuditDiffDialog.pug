@@ -1,0 +1,38 @@
+div.showAuditDiffDialog
+  div(data-bind="foreach: data")
+    div.table-responsive
+      table.table.table-striped.table-condensed
+        colgroup
+          col(style="width: 180px")
+          col
+        tbody
+          tr
+            th(data-bind="text: timestampLabel")
+            td(data-bind="text: timestampValue")
+          tr
+            th(data-bind="text: userLabel")
+            td(data-bind="text: userValue")
+          tr
+            th(data-bind="text: actionLabel")
+            td(data-bind="text: actionValue")
+          tr
+            th(data-bind="text: modelLabel")
+            td(data-bind="text: modelValue")
+          tr
+            th(data-bind="text: modelIdLabel")
+            td(data-bind="text: modelIdValue")
+          tr
+            th(data-bind="text: descrLabel")
+            td(data-bind="text: descValue")
+          tr
+            th(data-bind="text: ipLabel")
+            td(data-bind="text: ipValue")
+          tr
+            th(data-bind="text: entryIdLabel")
+            td(data-bind="text: entryIdValue")
+    // ko ifnot: Array.isArray(rows)
+    p(data-bind="text: text")
+    // /ko
+    // ko if: Array.isArray(rows)
+    include auditDiffDialogTable
+    // /ko

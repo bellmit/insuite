@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- edited with XMLSPY v2004 rel. 3 U (http://www.xmlspy.com) by Frank Weiler (KBV) -->
+<!-- automatische Dokumentation, generiert durch Visual Source Safe 
+	$Workfile: versichertenart_typelib.xsd $  
+	$Modtime: 29.03.04 15:59 $  
+	$Revision: 1 $  
+	$History: versichertenart_typelib.xsd $
+ * 
+ * *****************  Version 1  *****************
+ * User: Eusorov      Date: 29.03.04   Time: 17:17
+ * Created in $/XML-Schnittstellen2/KBV/typelib
+ * 
+ * *****************  Version 1  *****************
+ * User: Eusorov      Date: 25.03.04   Time: 17:58
+ * Created in $/XML-Schnittstellen2/KBV/typelib
+-->
+<xs:schema targetNamespace="urn:kbv/kbv/typelib/001" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="urn:kbv/kbv/typelib/001" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:simpleType name="versichertenart_typ">
+		<xs:annotation>
+			<xs:documentation>VersichertenartMFR</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="1">
+				<xs:annotation>
+					<xs:documentation>Mitglied</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="3">
+				<xs:annotation>
+					<xs:documentation>Familienversicherter</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="5">
+				<xs:annotation>
+					<xs:documentation>Rentner</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

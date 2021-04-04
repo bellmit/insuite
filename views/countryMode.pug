@@ -1,0 +1,10 @@
+// ko if: (Array.isArray(countryMode.filteredList()) && countryMode.filteredList().length > 1) || countryMode.hasError()
+h4(data-bind="text: countryMode.i18n")
+div.panel.panel-default
+    div.panel-body.bg-info
+        div.form-group-inline
+            div(data-bind="foreach: countryMode.invalidCountryModeForPractice ? countryMode.list : countryMode.filteredList, hasFeedback: { field: countryMode, toggle: countryMode.hasError, messages: countryMode.validationMessages }")
+                label.checkbox-inline
+                    span(data-bind="text: i18n")
+                    input(type="checkbox", name="countryMode", data-bind="value: val, checked: $parent.countryMode, readOnly: $parent.countryMode.readOnly")
+// /ko

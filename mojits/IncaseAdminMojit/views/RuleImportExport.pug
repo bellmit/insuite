@@ -1,0 +1,57 @@
+#RuleImportExport.row
+  // ko ifnot: isImportingOrExporting
+  .col-md-6
+    h3(style="margin-top: 0", data-bind="text: labelHDDI18n")
+    // ko if: showLocationMapping
+    select.form-control.input-sm(style="width: auto", data-bind="options: importLocationsList, optionsValue: 'id', optionsText: 'title', value: importLocation")
+    // /ko
+    #importTree(data-bind="template: importTree.template")
+    .row(data-bind="if: importTree.root.children().length")
+      // ko ifnot: showLocationMapping
+      .col-md-4
+        button.btn(data-bind="click: importAll, text: importAllI18n", style="width: 100%")
+      .col-md-4
+        button.btn.btn-danger(data-bind="click: deleteArchive, text: buttonDeleteArchiveI18n", style="width: 100%")
+      // /ko
+  .col-md-6
+    h3(style="margin-top: 0", data-bind="text: labelDBI18n")
+    // ko if: showLocationMapping
+    select.form-control.input-sm(style="width: auto", data-bind="options: exportLocationsList, optionsValue: 'id', optionsText: 'title', value: exportLocation")
+    // /ko
+    #exportTree(data-bind="template: exportTree.template")
+    // ko ifnot: showLocationMapping
+    button.btn.pull-right(data-bind="click: exportAll, text: exportAllI18n")
+    // /ko
+  // /ko
+
+  // ko if: isImportingOrExporting
+  div
+    h3(style="text-align: center", data-bind="text: processingI18n")
+      br
+      br
+      i(class="fa fa-spinner fa-spin fa-2x")
+  // /ko
+
+// ko if: isShowButtons
+.row(style="margin-top: 15px;")
+  div.btn-group.inline.pull-right
+    button.btn.btn-primary#btnDownloadArchive(data-bind="click: downloadArchive, enable: importTree.root.children().length")
+      i.fa.fa-chevron-circle-down
+      | &nbsp;
+      span(data-bind="text: downloadArchiveI18n")
+
+    button.btn.btn-primary#btnUploadArchive(data-bind="click: uploadArchive")
+      i.fa.fa-chevron-circle-up
+      | &nbsp;
+      span(data-bind="text: uploadArchiveI18n")
+// /ko
+
+div(style="display: none;")#divUploadIframe
+  iframe#iframeUploadTarget(name="ifUploadTarget", width="10px", height="10px", frameborder="no")
+
+#ruleSetDownloadIFrame(data-bind="html: downloadIFrame", style="display: none;")
+
+#ruleSetUploadForm(style="display:none;")
+  form#formUploadArchive(action="/1/ruleimportexport/:uploadbackup", method="POST", enctype="multipart/form-data", name="frmUserArchive", target="ifUploadTarget")
+    input#fileUploadArchive(type="file", name="tgzFile")
+    input(type="hidden", name="action", value="uploadformbackup")

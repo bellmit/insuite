@@ -1,0 +1,55 @@
+& {
+  @import "../../variables/bootstrap.less";
+
+  /** DashboardBase */
+
+  .DashboardBaseGadget-drag {
+    opacity: 0.4;
+  }
+
+  .DashboardBaseGadgetSelector-drag {
+    opacity: 0.65;
+  }
+
+  .DashboardBaseGadget-proxy {
+    z-index: 10; /* ensures proxy above */
+  }
+
+  .DashboardBaseGadget-proxy,
+  .DashboardBaseGadgetSelector-proxy {
+    opacity: 0.65;
+  }
+
+  .DashboardBaseGadget-proxy-valid {
+  }
+
+  .DashboardBaseGadget-proxy-invalid {
+  }
+
+  .DashboardBaseGadgetSelector-Gadget {
+    margin-bottom: 10px;
+    background-color: rgba(0, 0, 0, 0.2);
+  }
+
+  .DashboardBaseGadgetSelector-Gadget.DashboardBaseGadgetSelector-Gadget-draggable {
+    cursor: move;
+  }
+
+  .DashboardBaseGadgetSelector-header {
+    padding: 0 3px;
+  }
+
+  .DashboardBaseGadgetSelector-proxy-valid {
+    border: 1px solid @brand-success;
+  }
+
+  .DashboardBaseGadgetSelector-proxy-invalid {
+    border: 1px solid @brand-danger;
+  }
+
+  .DashboardBaseGadgetSelector-proxy .DashboardBaseGadgetSelector-header {
+    padding: 1px 3px;
+    font-size: 10px;
+  }
+
+}

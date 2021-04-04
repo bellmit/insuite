@@ -1,0 +1,171 @@
+script#ValueWidget(type="text/html")
+
+  div(data-bind="if: isEnum")
+    div(data-bind="hasFeedback: { field: _value, toggle: _value.hasError, messages: _value.validationMessages }")
+      input.form-control(data-bind="attr: {placeholder: placeholder}, select2: enumWidgetAutocomplete")
+
+  div(data-bind="if: !isEnum()")
+    // ko if: type() === 'Date' || type() === 'DateTime'
+    div(data-bind="hasFeedback: { field: _value, toggle: _value.hasError, messages: _value.validationMessages }, css: {'form-group': isOnForm()}")
+      div.date-picker.input-group
+        input.form-control(name="tlStartDate", type="text", data-bind="attr: {placeholder: placeholder}, datetimepicker: { value: _value, options: dateSelectorOptions, css: {'input-sm': !isOnForm()}}")
+    // /ko
+
+    // ko if: type() === 'DateRange' || type() === 'DateRangeTime'
+    div(data-bind="hasFeedback: { field: _value, toggle: _value.hasError, messages: _value.validationMessages }, css: {'form-group': isOnForm()}")
+      input.form-control(name="tlStartDate", data-bind="attr: {placeholder: placeholder}, daterangepicker: { value: _value, options: dateRangeSelectorOptions}, css: {'input-sm': !isOnForm()}")
+    // /ko
+
+    // ko if: type() === 'ISODate'
+    div(data-bind="hasFeedback: { field: _value, toggle: _value.hasError, messages: _value.validationMessages }, css: {'form-group': isOnForm()}")
+      div.date-picker.input-group
+        input.form-control(name="tlStartDate", data-bind="attr: {placeholder: placeholder}, datetimepicker: { value: _value, valueReset: null, options: dateSelectorOptions, valueUpdate: valueUpdate()}, css: {'input-sm': !isOnForm()}")
+    // /ko
+
+    // ko if: type() === 'String' || type() === 'RegExOptions'
+    div(data-bind="hasFeedback: { field: _value, toggle: _value.hasError, messages: _value.validationMessages }, css: {'form-group': isOnForm()}")
+      input.form-control(data-bind="attr: {placeholder: placeholder}, value: _value, valueUpdate: valueUpdate(), css: {'input-sm': !isOnForm()}")
+    // /ko
+
+    // ko if: type() === 'Number'
+    div(data-bind="hasFeedback: { field: _value, toggle: _value.hasError, messages: _value.validationMessages }, css: {'form-group': isOnForm()}")
+      input.form-control(data-bind="attr: {placeholder: placeholder}, value: _value, valueUpdate: valueUpdate(), css: {'input-sm': !isOnForm()}", type="number")
+    // /ko
+
+script#EquationWidget(type="text/html")
+  // ko if: $parent.showLabel
+  label(data-bind="text: $parent.tableValueTextI18n")
+  // /ko
+  div(data-bind="template: {name: widget.template, data: widget}")
+
+script#EquationDateTypeWidget(type="text/html")
+  // ko if: $parent.showLabel
+  label(data-bind="text: $parent.tableValueTextI18n")
+  // /ko
+  .row
+    .col-xs-5
+      select.form-control(data-bind="options: dateTypeList, optionsValue: 'val', optionsText: 'i18n', value: type")
+    .col-xs-7
+      div(data-bind="template: {name: widget.template, data: widget}")
+
+script#CompWidget(type="text/html")
+  // ko if: $parent.showLabel
+  label(data-bind="text: $parent.tableValueTextI18n")
+  // /ko
+  .row
+    .col-xs-6
+      select.form-control(data-bind="options: greaterThanList, optionsValue: 'val', optionsText: 'i18n', value: greaterThanOperator")
+    .col-xs-6
+      div(data-bind="template: {name: greaterThanValueWidget.template, data: greaterThanValueWidget}")
+    .col-xs-6
+      select.form-control(data-bind="options: lessThanList, optionsValue: 'val', optionsText: 'i18n', value: lessThanOperator")
+    .col-xs-6
+      div(data-bind="template: {name: lessThanValueWidget.template, data: lessThanValueWidget}")
+
+script#CompDateTypeWidget(type="text/html")
+  // ko if: $parent.showLabel
+  label(data-bind="text: $parent.tableValueTextI18n")
+  // /ko
+  .row
+    .col-xs-5
+      select.form-control(data-bind="options: greaterThanList, optionsValue: 'val', optionsText: 'i18n', value: greaterThanOperator")
+    .col-xs-4
+      select.form-control(data-bind="options: dateTypeList, optionsValue: 'val', optionsText: 'i18n', value: greaterThanType")
+    .col-xs-3
+      div(data-bind="template: {name: greaterThanValueWidget.template, data: greaterThanValueWidget}")
+    .col-xs-5
+      select.form-control(data-bind="options: lessThanList, optionsValue: 'val', optionsText: 'i18n', value: lessThanOperator")
+    .col-xs-4
+      select.form-control(data-bind="options: dateTypeList, optionsValue: 'val', optionsText: 'i18n', value: lessThanType")
+    .col-xs-3
+      div(data-bind="template: {name: lessThanValueWidget.template, data: lessThanValueWidget}")
+
+script#ExistsWidget(type="text/html")
+  // ko if: $parent.showLabel
+  label(data-bind="text: $parent.tableValueTextI18n")
+  // /ko
+  select.form-control(data-bind="options: existsList, optionsValue: 'val', optionsText: 'i18n', value: value")
+
+script#RegExWidget(type="text/html")
+  // ko if: $parent.showLabel
+  .row(style="margin-bottom: -10px")
+    .col-xs-8
+      label(data-bind="text: $parent.tableValueTextI18n")
+      i.dc-info-icon(data-toggle="popover", data-original-title='Info<button type="button" class="close" onclick="$(this).parent().parent().remove();">&times;</button>'
+                                                , data-bind="attr: { 'data-content': $parent.regexpInfoI18n }", data-html="true", data-placement="top", data-trigger="click", data-container= "#wideContainer")
+    .col-xs-4
+      label(data-bind="text: $parent.tableOptionsTextI18n")
+      i.dc-info-icon(data-toggle="popover", data-original-title='Info<button type="button" class="close" onclick="$(this).parent().parent().remove();">&times;</button>'
+                                                , data-bind="attr: { 'data-content': $parent.regexpOptionsI18n }", data-html="true", data-placement="top", data-trigger="click", data-container= "#wideContainer")
+  // /ko
+  .row
+    .col-xs-8
+      div(data-bind="template: {name: regexWidget.template, data: regexWidget}")
+    .col-xs-4
+      div(data-bind="template: {name: optionsWidget.template, data: optionsWidget}")
+
+script#IncludesWidget(type="text/html")
+  // ko if: $parent.showLabel
+  label(data-bind="text: $parent.tableValuesTextI18n")
+  // /ko
+  span.pull-right.glyphicon.glyphicon-plus(data-bind="click: add.bind($data)")
+  div(data-bind="foreach: list")
+    .row
+      .col-xs-10
+        div(data-bind="template: {name: $data.template, data: $data}")
+      .col-xs-2
+        button.btn.btn-default(data-bind="click: $parent.remove.bind($parent)")
+          span.glyphicon.glyphicon-trash
+
+script#CatalogWidget(type="text/html")
+  .row
+    .col-xs-5
+      div.form-group
+        label Katalog
+        div(data-bind="template: {name: catalogShort.template, data: catalogShort}")
+    .col-xs-7
+      div.form-group
+        label Code
+        //div(data-bind="template: {name: code.template, data: code}")
+        input.form-control(data-bind="select2: codeAutocomplete")
+
+script#CatalogShortWidget(type="text/html")
+  .row
+    .col-xs-12
+      div.form-group
+        label Katalog
+        div(data-bind="template: {name: catalogShort.template, data: catalogShort}")
+
+script#CatalogWidgetCode(type="text/html")
+  .row
+    .col-xs-12
+      div.form-group
+        label Code
+        div(data-bind="hasFeedback: { field: value, toggle: value.hasError, messages: value.validationMessages }")
+          input.form-control(data-bind="select2: codeAutocomplete")
+
+script#MarkerWidget(type="text/html")
+  .row
+    .col-xs-12
+      div.form-group
+        label Marker
+        div(data-bind="hasFeedback: { field: value, toggle: value.hasError, messages: value.validationMessages }")
+          input.form-control(data-bind="select2: markersAutocomplete")
+
+script#DignityWidget(type="text/html")
+    .row
+        .col-xs-12
+            div.form-group
+                // ko if: currentCriterion
+                label Dignitäten
+                // /ko
+                div(data-bind="hasFeedback: { field: value, toggle: value.hasError, messages: value.validationMessages }")
+                    input.form-control(data-bind="select2: DignityAutocomplete")
+
+script#TaskTypeWidget(type="text/html")
+  .row
+    .col-xs-12
+      div.form-group
+        label Aufgabentyp
+        div(data-bind="hasFeedback: { field: value, toggle: value.hasError, messages: value.validationMessages }")
+          input.form-control(data-bind="select2: taskTypeAutocomplete")

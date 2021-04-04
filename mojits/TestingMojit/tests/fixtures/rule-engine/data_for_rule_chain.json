@@ -1,0 +1,626 @@
+{
+  "rules": [
+    {
+      "isDirectory" : false,
+      "isLocked" : false,
+      "isActive" : true,
+      "caseFolderType" : [
+        "PUBLIC"
+      ],
+      "metaActTypes" : [
+        "HISTORY"
+      ],
+      "metaActCodes" : [],
+      "description" : "CreateActivity step1 ",
+      "referenceArea" : "ENTRY",
+      "periodType" : "DAY",
+      "periodCount" : 1,
+      "periodReference" : "raum",
+      "rules" : [
+        {
+          "ruleId" : "5d19b1f7a453e41cc0000015",
+          "description" : "firstStep",
+          "isActive" : true,
+          "validations" : {
+            "\\\\$and" : [
+              {
+                "context" : "ACTIVITY",
+                "criteria" : {
+                  "actType" : {
+                    "\\\\$eq" : "HISTORY"
+                  },
+                  "content" : {
+                    "\\\\$regex" : "test2",
+                    "\\\\$options" : "i"
+                  },
+                  "patientId\\\\-markers" : {
+                    "\\\\$eq" : "000000000000000000000013"
+                  }
+                }
+              }
+            ]
+          },
+          "actions" : [
+            {
+              "type" : "ERROR",
+              "template" : {
+                "urgency" : 2,
+                "details" : "",
+                "roles" : [],
+                "candidates" : [],
+                "caseFolder" : "",
+                "diagnosisCert" : "NONE",
+                "toCreate" : 1,
+                "linkActivities" : false,
+                "autoCreate" : false,
+                "tempateID" : "5d19b247a453e41cc0000016",
+                "markers" : [],
+                "type" : ""
+              }
+            },
+            {
+              "type" : "ACTIVITY",
+              "template" : {
+                "urgency" : 2,
+                "details" : "",
+                "roles" : [],
+                "candidates" : [],
+                "caseFolder" : "",
+                "actType" : "COMMUNICATION",
+                "caseFolderType" : null,
+                "catalogShort" : null,
+                "code" : null,
+                "diagnosisCert" : "NONE",
+                "toCreate" : 1,
+                "explanations" : null,
+                "comment" : "Chemotherapie",
+                "linkActivities" : false,
+                "autoCreate" : true,
+                "tempateID" : "5d19b266a453e41cc0000017",
+                "markers" : [],
+                "type" : ""
+              }
+            }
+          ],
+          "metaActTypes" : [
+            "HISTORY"
+          ]
+        }
+      ],
+      "metaCriterias": [
+        "actType",
+        "patientId.markers",
+        "content"
+      ],
+      "metaFuzzy" : true
+    },
+    {
+      "isDirectory" : false,
+      "isLocked" : false,
+      "isActive" : true,
+      "caseFolderType" : [
+        "PUBLIC"
+      ],
+      "metaActTypes" : [
+        "COMMUNICATION"
+      ],
+      "metaActCodes" : [],
+      "description" : "CreateActivity step2",
+      "referenceArea" : "ENTRY",
+      "periodType" : "DAY",
+      "periodCount" : 1,
+      "periodReference" : "raum",
+      "rules" : [
+        {
+          "ruleId" : "5d19b2a7a453e41cc0000018",
+          "description" : "secondStep",
+          "isActive" : true,
+          "validations" : {
+            "\\\\$and" : [
+              {
+                "context" : "ACTIVITY",
+                "criteria" : {
+                  "actType" : {
+                    "\\\\$eq" : "COMMUNICATION"
+                  },
+                  "content" : {
+                    "\\\\$eq" : "Chemotherapie"
+                  }
+                }
+              }
+            ]
+          },
+          "actions" : [
+            {
+              "type" : "ERROR",
+              "template" : {
+                "urgency" : 2,
+                "details" : "",
+                "roles" : [],
+                "candidates" : [],
+                "caseFolder" : "",
+                "diagnosisCert" : "NONE",
+                "toCreate" : 1,
+                "linkActivities" : false,
+                "autoCreate" : false,
+                "tempateID" : "5d19b247a453e41cc0000016",
+                "markers" : [],
+                "type" : ""
+              }
+            },
+            {
+              "type" : "ACTIVITY",
+              "template" : {
+                "urgency" : 2,
+                "details" : "",
+                "roles" : [],
+                "candidates" : [],
+                "caseFolder" : "",
+                "actType" : "TREATMENT",
+                "caseFolderType" : "PUBLIC",
+                "catalogShort" : "EBM",
+                "code" : "20210",
+                "diagnosisCert" : "NONE",
+                "toCreate" : 1,
+                "explanations" : null,
+                "comment" : "test4",
+                "linkActivities" : false,
+                "autoCreate" : true,
+                "tempateID" : "5d19b266a453e41cc0000017",
+                "markers" : [],
+                "type" : ""
+              }
+            }
+          ],
+          "metaActTypes" : [
+            "COMMUNICATION"
+          ]
+        }
+      ],
+      "metaCriterias": [
+        "actType",
+        "content"
+      ],
+      "metaFuzzy" : false
+    }
+  ],
+  "patient": {
+    "title" : "",
+    "firstname" : "c",
+    "nameaffix" : "",
+    "middlename" : "",
+    "fk3120" : "",
+    "lastname" : "c4_2",
+    "physicians" : [],
+    "employees" : [
+    ],
+    "markers" : [
+      "000000000000000000000015",
+      "000000000000000000000014",
+      "000000000000000000000012",
+      "000000000000000000000013"
+    ],
+    "createPlanned" : false,
+    "accessPRC" : false,
+    "talk" : "MR",
+    "gender" : "MALE",
+    "sendPatientReceipt" : false,
+    "patientNumber" : 127,
+    "attachedSeverity" : "NONE",
+    "crmTags" : [],
+    "edmpTypes" : [],
+    "edmpNotifiedAboutStatementOfParticipationTypes" : [],
+    "ehksDocType" : "EHKSND",
+    "scheinEmployeeIds" : [],
+    "confirmedViewFromOtherLocations" : false,
+    "additionalContacts" : [],
+    "accounts" : [],
+    "communications" : [
+      {
+        "signaling" : true,
+        "confirmed" : false,
+        "confirmNeeded" : false,
+        "type" : "OTHER",
+        "value" : "1"
+      }
+    ],
+    "addresses" : [
+      {
+        "street" : "1",
+        "houseno" : "123",
+        "zip" : "10001",
+        "city" : "1",
+        "country" : "Deutschland",
+        "countryCode" : "D",
+        "addon" : "",
+        "kind" : "OFFICIAL"
+      }
+    ],
+    "kbvDob" : "01.01.2001",
+    "insuranceStatus" : [
+      {
+        "fk4133" : null,
+        "fk4110" : null,
+        "insuranceKind" : "1",
+        "costCarrierBillingSection" : "01",
+        "costCarrierBillingGroup" : "11",
+        "feeSchedule" : "2",
+        "fused" : false,
+        "unzkv" : [],
+        "bgNumber" : "",
+        "address1" : "",
+        "address2" : "10837 Berlin",
+        "insuranceId" : "104940007",
+        "insuranceName" : "BARMER",
+        "insurancePrintName" : "BARMER/SVA",
+        "insuranceGrpId" : "72601",
+        "type" : "PUBLIC",
+        "persGroup" : "",
+        "dmp" : "",
+        "kv" : "72",
+        "locationId" : "000000000000000000000001",
+        "fusedFrom" : null,
+        "fusedToInsuranceId" : null,
+        "city" : "",
+        "department" : "",
+        "email" : "",
+        "insuranceGLN" : "",
+        "insuranceLink" : "",
+        "phone" : "",
+        "recipientGLN" : "",
+        "zipcode" : ""
+      }
+    ],
+    "dataTransmissionToPVSApproved" : true,
+    "affiliates" : [],
+    "images" : [],
+    "devices" : [],
+    "partnerIds" : [
+      {
+        "asvTeamNumbers" : [],
+        "partnerId" : "DOQUVIDE",
+        "patientId" : "2002-DQ-00068",
+        "insuranceType" : null,
+        "careType" : null,
+        "isDisabled" : true
+      },
+      {
+        "asvTeamNumbers" : [],
+        "partnerId" : "CARDIO",
+        "patientId" : "t4",
+        "insuranceType" : null,
+        "careType" : null,
+        "isDisabled" : true
+      },
+      {
+        "asvTeamNumbers" : [],
+        "partnerId" : "DQS",
+        "patientId" : "2002-DS-00021",
+        "insuranceType" : null,
+        "careType" : null,
+        "isDisabled" : true,
+        "licenseModifier" : "DQS RS"
+      }
+    ],
+    "careDegree" : "NO",
+    "dob_MM" : "01",
+    "dob_DD" : "01",
+    "crmTreatments" : [],
+    "crmCatalogShort" : "GOÄ",
+    "latestMedData" : [],
+    "locationId" : "",
+    "patientNo" : "127",
+    "localPracticeId" : "2002-DQ-00068",
+    "cardioCryptogenicStroke" : false,
+    "cardioCHD" : false,
+    "cardioHeartFailure" : false,
+    "countryMode" : [
+      "D"
+    ],
+    "additionalMirrorPatientIds" : []
+  },
+  "schein": {
+    "actType" : "SCHEIN",
+    "attachments" : [],
+    "subType" : "",
+    "time" : "",
+    "backupEmployeeIds" : [],
+    "userContent" : "ambulante Behandlung (ambulante Behandlung)",
+    "mediaImportError" : "",
+    "partnerInfo" : "",
+    "explanations" : "",
+    "status" : "VALID",
+    "activities" : [],
+    "referencedBy" : [],
+    "formId" : "",
+    "formVersion" : "",
+    "formPdf" : "",
+    "formLang" : "de",
+    "formGender" : "m",
+    "apkState" : "IN_PROGRESS",
+    "unlinkedMirrorIds" : [],
+    "forInsuranceType" : "",
+    "locationFeatures" : "",
+    "scheinRemittor" : "",
+    "scheinEstablishment" : "",
+    "scheinSpecialisation" : "",
+    "scheinOrder" : "",
+    "scheinDiagnosis" : "",
+    "scheinFinding" : "",
+    "scheinNotes" : "asfffffff",
+    "scheinClinicalTreatmentFrom" : null,
+    "scheinClinicalTreatmentTo" : null,
+    "scheinNextTherapist" : "",
+    "fk4234" : false,
+    "fk4219" : "",
+    "continuousIcds" : [],
+    "createContinuousDiagnosisOnSave" : false,
+    "icds" : [],
+    "icdsExtra" : [],
+    "scheinQuarter" : "2",
+    "scheinYear" : "2019",
+    "scheinBillingArea" : "00",
+    "scheinType" : "0101",
+    "scheinSubgroup" : "00",
+    "scheinTransferTypeInfo" : "",
+    "fk4124" : "",
+    "fk4126" : "",
+    "fk4125from" : null,
+    "fk4125to" : null,
+    "fk4123" : "",
+    "fk4206" : null,
+    "fk4236" : false,
+    "fk4241" : "",
+    "fk4217" : "",
+    "scheinSlipMedicalTreatment" : "",
+    "__t" : "SCHEIN",
+    "attachedMedia" : [],
+    "patientId" : "5cdaa20dff4b5d244d151f43",
+    "employeeId" : "100000000000000000000003",
+    "content" : "asfffffff",
+    "editor" : [
+      {
+        "name" : "Jhony Dredn04",
+        "employeeNo" : "01234",
+        "initials" : "JD"
+      }
+    ],
+    "caseFolderId" : "5cde6456d4d57f19f5fbe445",
+    "debtCollection" : "",
+    "fk4235Set" : [],
+    "invoiceData" : [],
+    "scheinTransferType" : "",
+    "employeeName" : "Dredn04, Jhony",
+    "employeeInitials" : "JD",
+    "patientLastName" : "Nachnamme",
+    "patientFirstName" : "Mann",
+    "code" : null
+  },
+  "anamnese": {
+    "attachments" : [],
+    "subType" : "",
+    "time" : "",
+    "backupEmployeeIds" : [],
+    "userContent" : "d test2 d dtest2d",
+    "mediaImportError" : "",
+    "partnerInfo" : "",
+    "explanations" : "",
+    "status" : "VALID",
+    "activities" : [],
+    "referencedBy" : [],
+    "formId" : "",
+    "formVersion" : "",
+    "formPdf" : "",
+    "formLang" : "de",
+    "formGender" : "m",
+    "apkState" : "IN_PROGRESS",
+    "unlinkedMirrorIds" : [],
+    "__t" : "HISTORY",
+    "actType" : "HISTORY",
+    "attachedMedia" : [],
+    "patientId" : "5b8fba392b713931ffebac6b",
+    "employeeId" : "100000000000000000000003",
+    "content" : "d test2 d dtest2d",
+    "editor" : [
+      {
+        "name" : "Jhony Dredn04",
+        "employeeNo" : "01234",
+        "initials" : "JD"
+      }
+    ],
+    "caseFolderId" : "5c46c582a6ac641ca31cde4b",
+    "employeeName" : "Dredn04, Jhony",
+    "employeeInitials" : "JD",
+    "patientLastName" : "c4_2",
+    "patientFirstName" : "c"
+  },
+  "rulelogs": [
+    {
+      "caseFolderId" : "5d1c5f7c6e002f4d7a68ae33",
+      "factId" : "5d1cb6edb1bd0a199283315d",
+      "message" : "firstStep",
+      "patientId" : "5b8fba392b713931ffebac6b",
+      "referenceArea" : "ENTRY",
+      "ruleLogType" : "ERROR",
+      "actCodes" : [],
+      "actTypes" : [
+        "HISTORY"
+      ],
+      "activitiesToCreate" : [],
+      "affectedActivities" : [],
+      "allCodes" : [],
+      "caseFolderType" : [
+        "PUBLIC"
+      ],
+      "locationId" : "000000000000000000000001",
+      "requiredCodes" : [],
+      "ruleId" : "5d19b1f7a453e41cc0000015"
+    },
+    {
+      "caseFolderId" : "5d1c5f7c6e002f4d7a68ae33",
+      "factId" : "5d1cb6eeeda3ef41f0c5721d",
+      "message" : "secondStep",
+      "patientId" : "5b8fba392b713931ffebac6b",
+      "referenceArea" : "ENTRY",
+      "ruleLogType" : "ERROR",
+      "actCodes" : [],
+      "actTypes" : [
+        "COMMUNICATION"
+      ],
+      "activitiesToCreate" : [],
+      "affectedActivities" : [],
+      "allCodes" : [],
+      "caseFolderType" : [
+        "PUBLIC"
+      ],
+      "locationId" : "000000000000000000000001",
+      "requiredCodes" : [],
+      "ruleId" : "5d19b2a7a453e41cc0000018"
+    }
+  ],
+  "treatment": {
+    "__t" : "TREATMENT",
+    "actType" : "TREATMENT",
+    "activities" : [],
+    "actualPrice" : 0,
+    "anaesthesiaText" : "",
+    "apkState" : "IN_PROGRESS",
+    "areTreatmentDiagnosesBillable" : "1",
+    "assistanceQuantity" : 0,
+    "assistanceTaxPoints" : 0,
+    "attachedMedia" : [],
+    "attachments" : [],
+    "backupEmployeeIds" : [],
+    "benefitsText" : "",
+    "billingRole" : [
+      "MEDICAL",
+      "TECHNICAL"
+    ],
+    "caseFolderId" : "5d1dfa5deb55586c5ffc2557",
+    "catalog" : true,
+    "catalogShort" : "EBM",
+    "code" : "20210",
+    "content" : "Grundpauschale bis 5. Lebensjahr",
+    "costType" : "",
+    "countryMode" : [
+      "D"
+    ],
+    "deleteEntryHomeCat" : false,
+    "displayPrice" : "0",
+    "divisionCode" : null,
+    "divisionText" : "",
+    "editor" : [],
+    "employeeId" : "5d1dfa5deb55586c5ffc2555",
+    "employeeInitials" : "FL",
+    "employeeName" : "Last name, First name",
+    "explanations" : null,
+    "fk5002" : "",
+    "fk5005" : "",
+    "fk5008" : "",
+    "fk5012Set" : [],
+    "fk5013" : "",
+    "fk5015" : "",
+    "fk5016" : "",
+    "fk5017" : "",
+    "fk5018" : "",
+    "fk5019" : "",
+    "fk5020Set" : [],
+    "fk5023" : "",
+    "fk5024" : "",
+    "fk5025" : null,
+    "fk5026" : null,
+    "fk5034" : null,
+    "fk5035Set" : [],
+    "fk5036Set" : [],
+    "fk5037" : "",
+    "fk5038" : "",
+    "fk5040" : "",
+    "fk5042Set" : [],
+    "fk5044" : "",
+    "forInsuranceType" : "",
+    "formGender" : "n",
+    "formId" : "",
+    "formLang" : "de",
+    "formPdf" : "",
+    "formVersion" : "",
+    "generalCosts" : 0,
+    "gnrAdditionalInfo" : [
+      "NONE"
+    ],
+    "gnrAdditionalInfoType" : "AUSWAHL",
+    "hasVat" : false,
+    "icds" : [],
+    "icdsExtra" : [],
+    "materialCosts" : 0,
+    "mediaImportError" : "",
+    "medicalScalingFactor" : 1,
+    "medicalTaxPoints" : 0,
+    "medicalText" : "",
+    "modifyHomeCat" : false,
+    "numberOfCopies" : 1,
+    "omimCodes" : [],
+    "partnerInfo" : "",
+    "patientFirstName" : "c",
+    "patientId" : "5d1dfa5deb55586c5ffc255c",
+    "patientLastName" : "c4_2",
+    "preparationAndFollowUpTime" : 0,
+    "price" : 33.12,
+    "referencedBy" : [],
+    "reportTime" : 0,
+    "roomOccupancyTime" : 0,
+    "rotationTime" : 0,
+    "savedEmails": [],
+    "scheinDiagnosis" : "",
+    "scheinOrder" : "",
+    "sideMandatory" : false,
+    "specialCosts" : 0,
+    "status" : "VALID",
+    "subType" : "",
+    "taxPoints" : 0,
+    "technicalScalingFactor" : 1,
+    "technicalTaxPoints" : 0,
+    "technicalText" : "",
+    "time" : "",
+    "treatmentCategory" : "",
+    "treatmentTime" : 0,
+    "treatmentTypeCh" : "AMBULATORY",
+    "unit" : "Euro",
+    "unlinkedMirrorIds" : [],
+    "userContent" : "Grundpauschale bis 5. Lebensjahr",
+    "vat" : 0,
+    "vatAmount" : 0
+  },
+  "communication": {
+    "__t" : "COMMUNICATION",
+    "actType" : "COMMUNICATION",
+    "activities" : [],
+    "apkState" : "IN_PROGRESS",
+    "attachedMedia" : [],
+    "attachments" : [],
+    "backupEmployeeIds" : [],
+    "caseFolderId" : "5d1dfa5deb55586c5ffc2557",
+    "content" : "Chemotherapie",
+    "editor" : [],
+    "employeeId" : "5d1dfa5deb55586c5ffc2555",
+    "employeeInitials" : "FL",
+    "employeeName" : "Last name, First name",
+    "explanations" : "",
+    "formGender" : "n",
+    "formId" : "",
+    "formLang" : "de",
+    "formPdf" : "",
+    "formVersion" : "",
+    "mediaImportError" : "",
+    "partnerInfo" : "",
+    "patientFirstName" : "c",
+    "patientId" : "5d1dfa5deb55586c5ffc255c",
+    "patientLastName" : "c4_2",
+    "referencedBy" : [],
+    "status" : "VALID",
+    "subType" : "",
+    "time" : "",
+    "unlinkedMirrorIds" : [],
+    "userContent" : "Chemotherapie",
+    "savedEmails": []
+  }
+}

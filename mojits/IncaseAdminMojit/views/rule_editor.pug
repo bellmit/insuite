@@ -1,0 +1,415 @@
+script#ruleElementTemplate(type="text/html")
+  .rule-operator-entry(data-bind="click: $root.ruleSetInspector.inspect.bind($root.ruleSetInspector, 'rule-element'), css: {'rule-dragging': isDragging, 'disabledPanel': $root.ruleSetEditor.isLocked() && !$root.ruleSetEditor.options.isMasterDCFormTenant, 'rule-is-last': $index() === ($parent.content().length - 1) }, dropZone: {name: 'rule-operator-entry'+rule.cid, drop: $root.ruleSetEditor.drop}, dragZone: {name: 'rule-operator-entry'+rule.cid, dragStart: $root.ruleSetEditor.dragStart, dragEnd: $root.ruleSetEditor.dragEnd}, dragEvents: {accepts: 'rule-operator-entry'+rule.cid, dragOver: $root.ruleSetEditor.dragOver, dragEnter: $root.ruleSetEditor.dragEnter}")
+    // ko if: type() === 'and' || type() === 'or' || type() === 'not'
+    .rule-operator
+      .rule-operator-panel(data-bind="css: {'rule-operator-and': 'and' === type(), 'rule-operator-or': 'or' === type(), 'rule-operator-not': 'not' === type() }")
+        span.rule-operator-panel-text(data-bind="text: operatorName")
+      .rule-operator-content
+        ul(data-bind="template: {name: 'ruleElementTemplate', foreach: content.slice(0, 50)}")
+        // ko if: content.slice(50).length
+        ul
+          | &nbsp;&nbsp;&nbsp;
+          span(data-bind="text: '... (und ' + ('function' === typeof content && content().slice(50).length) + ' mehr)'")
+        // /ko
+    // /ko
+    // ko if: type() === 'validation'
+    .rule-validation
+      div(data-bind="with: content")
+        span.rule-validation-error(data-bind="if: !$parent.isValid()")
+          i(data-bind="tooltip: {title: $parent.showErrorMessages}").fa.fa-exclamation-triangle
+        span &nbsp;
+        // ko if: isActivity
+        span(data-bind="text: displayActType")
+        span :&nbsp;
+        // /ko
+        // ko if: isCaseFolder
+        span Fall:&nbsp;
+        // /ko
+        // ko if: isPatient
+        span Patient:&nbsp;
+        // /ko
+        // ko if: isTask
+        span Aufgabe:&nbsp;
+        // /ko
+        span(data-bind="if: count")
+          span(data-bind="text: displayCount")
+          span(data-bind="visible: criterionList().length") ,&nbsp;
+        span(data-bind="foreach: criterionList")
+          // ko if: $index() !== 0 && !($index() === ($parent.criterionList().length - 1))
+          span &nbsp;
+          // /ko
+          // ko if: $index() > 0 && $index() === ($parent.criterionList().length - 1)
+          span &nbsp;und&nbsp;
+          // /ko
+          span(data-bind="text: $data.displayedText")
+    // /ko
+#wideContainer
+#ruleEditorContainer
+  .row
+    .col-xs-12
+  .row
+    div#leftSidePanel(data-bind="sideBar: leftSidePanelConfig", style="display: none;")
+      div.panel-body-rule-editor(data-bind="with: ruleSetList")
+        div.form-group(data-bind="if: !isImporting()")
+          //ko if: options.isMasterDCFormTenant
+          span(style="float: left; margin: 0 5px 5px 0")
+            button.btn.btn-default.btn-xs(data-bind="click: importFromCatalog.bind($data, 'EBM')") EBM
+
+          span(style="float: left; margin: 0 5px 5px 0")
+            button.btn.btn-default.btn-xs(data-bind="click: importFromCatalog.bind($data, 'GOÄ')") GOÄ
+
+          span(style="float: left; margin: 0 5px 5px 0")
+            button.btn.btn-default.btn-xs(data-bind="click: importFromCatalog.bind($data, 'TARMED')") TARMED
+
+          span(style="float: left; margin: 0 5px 5px 0")
+            button.btn.btn-default.btn-xs(data-bind="click: importFromCatalog.bind($data, 'TARMED_UVG_IVG_MVG')") TARMED 1.08
+
+          span(style="float: left; margin: 0 5px 5px 0")
+            button.btn.btn-default.btn-xs(data-bind="click: importFromCatalog.bind($data, 'Pandemieleistungen')") Pandemieleistungen
+
+          // /ko
+          span(style="float: left; margin: 0 5px 5px 0")
+            span(data-bind="text: treeImportExportI18n")
+            | &nbsp;
+            button.btn.btn-default.btn-xs(data-bind="click: showExportImportDialog.bind($data)")
+              i.fa.fa-rocket
+
+          span(style="float: left; margin: 0 5px 5px 0")
+            span(data-bind="text: regenerateI18n")
+            | &nbsp;
+            button.btn.btn-default.btn-xs(data-bind="click: showRegenerateDialog.bind($data)")
+              i.fa.fa-retweet
+
+        div.form-group(data-bind="if: isImporting")
+          div.progress.text-in-center
+            div.progress-bar(data-bind="style: {width: progressBarStatus() + '%'}", role="progressbar", aria-valuemin="0", aria-valuemax="100")
+              span(data-bind="text: progressBarText()")
+        .row
+          div.col-xs-8.leftSidePanelRuleSearch
+            input.form-control(type="hidden", data-bind="select2: $parent.select2RuleSearch")
+          div.col-xs-4.checkbox(style="margin-bottom: 0px; margin-top: -3px")
+            input(type='checkbox', name='inactive' data-bind='checked: $parent.onlyInActive')
+            | Inaktive
+            br
+            input(type='checkbox', name='active' data-bind='checked: $parent.onlyActive')
+            | Aktive
+
+        div(data-bind="template: tree.template")
+
+    div(data-bind="css: columnClassName")
+      #ruleWorkspace
+        div(data-bind="with: ruleSetEditor")
+          // ko if: null !== ruleSet()
+          div.row
+            div.col-xs-12
+              button.pull-right.btn.btn-primary.btn-xs(data-bind="click: save, disable: saveDisabled, text: buttonSaveI18n")
+              span.pull-right &nbsp;&nbsp;
+              span.pull-right.glyphicon.glyphicon-trash(data-bind="click: remove.bind($data), visible: !isLocked() || options.isMasterDCFormTenant")
+              span.pull-right &nbsp;&nbsp;
+              span.pull-right.glyphicon.glyphicon-lock(data-bind="visible: isLocked")
+              span.pull-right &nbsp;&nbsp;
+              div.pull-right
+                div.checkbox(style="margin-top: 0px;")
+                  label.control-label
+                    input(type="checkbox", data-bind="checked: isActive, disable: isLocked() && !options.isMasterDCFormTenant")
+                    strong(data-bind="text: labelActiveI18n")
+          div.row
+            div.col-xs-12
+              h4(data-bind="text: rulesTitleI18n")
+          div.form-group(data-bind="hasFeedback: { field: description, toggle: description.hasError, messages: description.validationMessages }")
+            textarea.form-control(data-bind="textInput: description, disable: isLocked() && !options.isMasterDCFormTenant", rows="2")
+          h4(data-bind="text: referenceAreaI18n")
+          div.panel.panel-default
+            div.panel-body.panel-body-rule-editor
+              label.radio-inline
+                input(type="radio", name="refAreaRadio", value= "ENTRY", data-bind="checked: referenceArea, disable: isLocked() && !options.isMasterDCFormTenant")
+                span(data-bind="text: refRadioEntryI18n")
+
+              label.radio-inline
+                input(type="radio", name="refAreaRadio", value= "APK", data-bind="checked: referenceArea, disable: isLocked() && !options.isMasterDCFormTenant")
+                span APK
+
+              label.radio-inline
+                input(type="radio", name="refAreaRadio", value= "SCHEIN", data-bind="checked: referenceArea, disable: isLocked() && !options.isMasterDCFormTenant")
+                span(data-bind="text: refRadioCertificateI18n")
+
+              label.radio-inline
+                input(type="radio", name="refAreaRadio", value= "PERIOD", data-bind="checked: referenceArea, disable: isLocked() && !options.isMasterDCFormTenant")
+                span(data-bind="text: refRadioTimeI18n")
+              hr.rule-option-divider
+              div
+                h5(data-bind="text: optionsLabelI18n")
+              // ko if: showPeriod
+              .row
+                .col-xs-5
+                  label(data-bind="text: $parent.periodSelection")
+                  input.form-control(data-bind="select2: periodTypeAutocomplete, disable: isLocked() && !options.isMasterDCFormTenant")
+                .col-xs-3
+                  label(data-bind="text: $parent.number")
+                  input.form-control(name="periodCount", data-bind="value: periodCount", type="number",  min="1")
+                .col-xs-3
+                  label(data-bind="text: $parent.time")
+                  label.radio-inline
+                    span(data-bind="text: $parent.period")
+                    input(type="radio", name="periodTypeRadio", value= "raum", data-bind="checked: periodReference, disable: isLocked() && !options.isMasterDCFormTenant")
+                  div
+                    label.radio-inline
+                      span(data-bind="text: $parent.timePoint")
+                      input(type="radio", name="periodTypeRadio", value= "punkt", data-bind="checked: periodReference, disable: isLocked() && !options.isMasterDCFormTenant")
+              hr.rule-option-divider
+              // /ko
+              div.form-group(data-bind="hasFeedback: { field: caseFolderType, toggle: caseFolderType.hasError, messages: caseFolderType.validationMessages }")
+                label(data-bind="text: caseFolderI18n")
+                input.form-control(data-bind="select2: caseFolderAutocomplete, disable: isLocked() && !options.isMasterDCFormTenant")
+
+          h4
+            span(data-bind="text: rulesConfigurationTitleI18n")
+            span.pull-right.glyphicon.glyphicon-plus(data-bind="click: add.bind($data), visible: !isLocked() || options.isMasterDCFormTenant")
+          div(data-bind="foreach: rules")
+            .dc-rule
+              .panel.panel-default
+                .panel-heading
+                  div.col-xs-8.text-ellipsis(data-bind="click: $root.ruleSetInspector.inspect.bind($root.ruleSetInspector, 'rule')", style="padding-left: 0; padding-right: 0;")
+                    span &nbsp;
+                    span.rule-description(data-bind="text: description, attr: { title: description }")
+                  div.col-xs-4.text-right(style="padding-left: 0; padding-right: 0;")
+                    div.checkbox.pull-right(style="margin-top: 0px;")
+                      label.control-label
+                        input(type="checkbox", data-bind="checked: isActive, disable: $parent.isLocked() && !$parent.options.isMasterDCFormTenant")
+                        strong(data-bind="text: $parent.activeLabelI18n")
+                      span &nbsp;&nbsp;
+                      span.glyphicon.glyphicon-trash(data-bind="click: $parent.remove, visible: !$parent.isLocked() || $parent.options.isMasterDCFormTenant")
+                .panel-collapse.collapse.in
+                  .panel-body.panel-body-rule-editor
+                    span(data-bind="text: $parent.ruleEditorIfLabelI18n")
+                    .rule-editor-workspace(data-bind="template: {name:'ruleElementTemplate', foreach: content}")
+                    div(style="word-wrap: break-word;")
+                      span(data-bind="text: $parent.thenOperatorI18n")
+                      span &nbsp;&nbsp;
+                      // ko foreach: actions
+                      // ko if: $index() > 0
+                      span ,&nbsp;
+                      // /ko
+                      span.rule-action.text-primary(data-bind="click: $root.ruleSetInspector.inspectAction.bind($root.ruleSetInspector, 'action', $parent), clickBubble: false, text: $parent.displayAction($data), css: {'text-danger': 'ERROR' === type(), 'text-warning': 'WARNING' === type() }")
+                      // /ko
+                      span.pull-right.glyphicon.glyphicon-plus(data-bind="click: $root.ruleSetInspector.addAction.bind($root.ruleSetInspector), visible: !$parent.isLocked() || $parent.options.isMasterDCFormTenant")
+
+          // /ko
+    div#rightSidePanel(data-bind="sideBar: rightSidePanelConfig, visible: ruleSetInspector && ruleSetInspector.current()", style="display: none;")
+      div.panel-body-rule-editor(data-bind="with: ruleSetInspector")
+        // ko if: isAction
+        span.pull-right.glyphicon.glyphicon-trash(data-bind="click: $root.ruleSetInspector.removeAction.bind($root.ruleSetInspector, $parent, current().data.selectedAction)")
+        div.form-group
+          label Aktion
+          select.form-control(data-bind="options: availableActionsList, optionsText: 'text', optionsValue: 'value', value: current().data.selectedAction.type")
+
+          // ko if: isShowTaskForm
+          div(data-bind="with: current().data.selectedAction.template")
+            // ko if: $parent.isShowTask
+            div.form-group(data-bind="hasFeedback: { field: title, toggle: title.hasError, messages: title.validationMessages, popover: { container: '#task_modal' } }")
+              label(data-bind="text: title.i18n") Title
+              input.form-control(name="title", data-bind="value: title, valueUpdate: 'afterkeydown'")
+            div.form-group
+              label Aufgabentyp
+              input.form-control(data-bind="select2: select2TaskType")
+            fieldset
+              label(data-bind="text: $parent.labelAssignedI18n")
+              div.control-group(style="border: 1px solid #bbb; padding: 5px 10px 5px 10px; border-radius: 5px; margin-bottom: 5px;")
+                div.form-group(data-bind="hasFeedback: { field: roles, toggle: roles.hasError, messages: roles.validationMessages, popover: { container: '#task_modal' } }")
+                  label(for="taskSelect2Role", data-bind="text: $parent.selectValueLabelI18n")
+                  input.form-control.input-sm#taskSelect2Role(type="hidden", multiple="multiple" data-bind="select2: select2Role", name="role")
+                div.form-group(data-bind="hasFeedback: { field: candidates, toggle: candidates.hasError, messages: candidates.validationMessages, popover: { container: '#task_modal' } }")
+                  label(for="taskSelect2Candidates", data-bind="text: candidates.i18n")
+                  input.form-control.input-sm#taskSelect2Candidates(type="hidden", multiple="multiple" data-bind="select2: select2Candidates", name="candidates")
+                div.form-group(data-bind="hasFeedback: { field: locations, toggle: locations.hasError, messages: locations.validationMessages, popover: { container: '#task_modal' } }")
+                  label(for="select2Locations", data-bind="text: locations.i18n")
+                  input.form-control.input-sm#select2Locations(type="hidden", multiple="multiple" data-bind="select2: select2Locations", name="locations")
+            div.form-group
+              label(data-bind="text: urgency.i18n")
+              select.form-control(name="urgency", data-bind="value: urgency, options: urgency.list, optionsValue: 'val', optionsText: 'i18n'")
+            .form-group
+              label Fälligkeit
+              div(style="display: flex; flex-wrap: wrap;")
+                div(style="display: flex; align-items: center;")
+                  input.form-control(data-bind="value: days, valueUpdate: 'afterkeydown'", type="number", name="days", min="0", style="width: 60px; margin:5px;")
+                  label(data-bind="text: days.i18n")
+                div(style="display: flex; align-items: center;")
+                  input.form-control(data-bind="value: hours, valueUpdate: 'afterkeydown'", type="number", name="hours", min="0", style="width: 60px;margin:5px;")
+                  label(data-bind="text: hours.i18n")
+                div(style="display: flex; align-items: center;")
+                  input.form-control(data-bind="value: minutes, valueUpdate: 'afterkeydown'", type="number", name="minutes", min="0", style="width: 60px;margin:5px;")
+                  label(data-bind="text: minutes.i18n")
+            div.form-group
+              label(data-bind="text: details.i18n")
+              i.dc-info-icon(data-toggle="popover", data-bind="attr: {'data-content': $parent.descriptionHelpText}", data-html="true", rel="popover", data-placement="auto top", data-trigger="hover", data-container= "#ruleEditorContainer")
+              textarea.form-control(name="details", data-bind="value: details, valueUpdate: 'afterkeydown'", rows="6")
+            // /ko
+
+            // ko if: $parent.isShowTemplateSelectForm
+            div.form-group(data-bind="hasFeedback: { field: formId, toggle: formId.hasError, messages: formId.validationMessages }")
+              label(data-bind="text: formId.i18n")
+              input.form-control.input-sm#taskTemplateSelect2FormDC(type="hidden", data-bind="select2: select2FormDC", name="formId")
+            div.form-group(data-bind="hasFeedback: { field: formId, toggle: formId.hasError, messages: formId.validationMessages }")
+              input.form-control.input-sm#taskTemplateSelect2FormPRAC(type="hidden", data-bind="select2: select2FormPRAC", name="formId")
+
+            div.form-group
+              label(data-bind="text: caseFolder.i18n")
+              select.form-control(name="caseFolder" data-bind="options: caseFolderList, optionsValue: 'val', optionsText: 'i18n', value: caseFolder, optionsCaption: caseFolderCaption")
+
+            div.form-group
+              label.checkbox-inline
+                span(data-bind="text: notDeletable.i18n")
+                input(name="notDeletable", type="checkbox", data-bind="checked: notDeletable")
+            div.form-group
+              label(data-bind="text: arrayFieldPath.i18n")
+              select.form-control(data-bind="value: arrayFieldPath, options: arrayFieldList, optionsText: 'i18n', optionsValue: 'path'")
+            div.form-group
+              label(data-bind="text: filenameRegexp.i18n")
+              input.form-control(name="filenameRegexp", data-bind="value: filenameRegexp, valueUpdate: 'afterkeydown'")
+            // /ko
+
+            // ko if: $parent.isShowActivitySelect
+            div.form-group(data-bind="hasFeedback: { field: formId, toggle: formId.hasError, messages: formId.validationMessages }")
+              label(data-bind="text: actType.i18n")
+              input.form-control.input-sm#taskTemplateSelect2Activity(type="hidden", data-bind="select2: actTypeAutocomplete", name="actType")
+              // ko if: $parent.isCodeSelection
+              .row
+                .col-xs-6
+                  label Fallart
+                  input.form-control(name="catalogShort" data-bind="select2: caseFolderAutocomplete")
+
+                .col-xs-6
+                  label Katalog
+                  input.form-control(data-bind="select2: catalogShortAutocomplete, disable: $parent.caseFolderTypeNotSelected")
+
+              label Code
+              input.form-control(data-bind="select2: codeAutocomplete, disable: $parent.catalogShortNotSelected")
+              // /ko
+
+              // ko if: $parent.isTreatment
+              label Anzahl
+              input.form-control(name="toCreate", data-bind="value: toCreate", type="number",  min="1")
+
+              label(data-bind="text: $parent.descriptionI18n")
+              textarea.form-control(name="comment", data-bind="value: comment, valueUpdate: 'afterkeydown'", rows="3")
+
+              label Begründung
+              textarea.form-control(name="explanations", data-bind="value: explanations, valueUpdate: 'afterkeydown'", rows="2")
+              // /ko
+
+              // ko if: $parent.isDiagnosis
+              label Sicherheit
+              select.form-control(name="diagnosisCert", data-bind="options: diagnosisCertList, optionsValue: 'val', optionsText: 'i18n', value: diagnosisCert")
+
+              label(data-bind="text: $parent.descriptionI18n")
+              textarea.form-control(name="comment", data-bind="value: comment, valueUpdate: 'afterkeydown'", rows="3")
+
+              label Begründung
+              textarea.form-control(name="explanations", data-bind="value: explanations, valueUpdate: 'afterkeydown'", rows="2")
+              // /ko
+
+              // ko if: $parent.isOtherActivity
+              label(data-bind="text: $parent.descriptionI18n")
+              textarea.form-control(name="comment", data-bind="value: comment, valueUpdate: 'afterkeydown'", rows="3")
+              // /ko
+
+              span &nbsp;<br>
+              label.checkbox-inline
+                span Aktivitäten ohne Rückfrage anlegen
+                input(name="autoCreate", type="checkbox", data-bind="checked: autoCreate")
+              span &nbsp;<br>
+              label.checkbox-inline
+                span Aktivität verlinken
+                input(name="linkActivities", type="checkbox", data-bind="checked: linkActivities")
+              span &nbsp;<br><br>
+              label(data-bind="text: filenameRegexp.i18n")
+              input.form-control(name="filenameRegexp", data-bind="value: filenameRegexp, valueUpdate: 'afterkeydown', readOnly: !autoCreate()")
+            // /ko
+
+          // /ko
+          // ko if: isShowPatient
+          div.form-group(data-bind="with: current().data.selectedAction.template")
+            .row
+              .col-xs-12
+                label Markers
+                input.form-control(data-bind="select2: markersAutocomplete")
+          // /ko
+        // /ko
+
+        // ko if: isValidation
+        div.form-group
+          span.pull-right.glyphicon.glyphicon-trash(data-bind="click: remove.bind($data)")
+        div.form-group(data-bind="if: activityVisible")
+          label(data-bind="text: $parent.activityTypeI18n")
+          input.form-control(data-bind="select2: actTypeAutocomplete")
+        div.form-group(data-bind="if: countVisible")
+          label
+            span Anzahl
+          input(type="checkbox", style="margin-left: 4px;", data-bind="checked: countEnabled")
+          div.row(data-bind="if: countEnabled")
+            div.col-xs-6
+              select.form-control(data-bind="options: countLeftList, optionsValue: 'val', optionsText: 'i18n', value: countLeftOperator")
+            div.col-xs-6
+              div.form-group(data-bind="hasFeedback: { field: countLeftValue, toggle: countLeftValue.hasError, messages: countLeftValue.validationMessages }")
+                input.form-control(data-bind="textInput: countLeftValue")
+          div.row(data-bind="if: countEnabled() && '$eq' !== countLeftOperator()")
+            div.col-xs-6
+              select.form-control(data-bind="options: countRightList, optionsValue: 'val', optionsText: 'i18n', value: countRightOperator")
+            div.col-xs-6
+              div.form-group(data-bind="hasFeedback: { field: countRightValue, toggle: countRightValue.hasError, messages: countRightValue.validationMessages }")
+                input.form-control(data-bind="textInput: countRightValue")
+        div.form-group
+          label
+            span(data-bind="text: $parent.criteriaI18n")
+            span.pull-right.glyphicon.glyphicon-minus(data-bind="click: removeCriterion.bind($data)")
+            span.pull-right.glyphicon.glyphicon-plus(data-bind="click: addCriterion.bind($data)")
+          select.form-control(data-bind="options: current().data.content().criterionList, optionsText: 'displayedText', value: criteriaListValue", size="7")
+        // ko if: criteriaListValue
+        div.form-group
+          label(data-bind="text: $parent.attributesI18n")
+          select.form-control(data-bind="value: attributeListValue, enable: criteriaListValue, optionsAfterRender: setOptionDisable, options: attributeList, optionsText: 'i18n', optionsValue: 'path'", size="7")
+        // ko if: operatorList().length > 0
+        div.form-group
+          label(data-bind="text: $parent.operatorsI18n")
+          select.form-control(data-bind="options: operatorList, optionsText: 'i18n', optionsValue: 'val', value: operatorListValue, enable: criteriaListValue", size="7")
+        // /ko
+        div.form-group(data-bind="if: operatorListValue")
+          div(data-bind="template: current().data.koSchemaValue.template")
+        // /ko
+        // /ko
+        // ko if: isOperator
+        div.form-group
+          label(data-bind="text: $parent.newRuleOperator")
+          span.pull-right.glyphicon.glyphicon-trash(data-bind="click: remove.bind($data), visible: current().data.parent")
+          select.form-control(data-bind="value: current().data.type")
+            option(value="and")(data-bind="text: $parent.andOperatorI18n")
+            option(value="or")(data-bind="text: $parent.orOperatorI18n")
+            // ko if: current().data.content().length < 2
+            option(value="not")(data-bind="text: $parent.notOperatorI18n")
+            // /ko
+        div.form-group
+          label(data-bind="text: $parent.addConfig")
+          div(style="padding-left: 5px;")
+            div(data-bind="click: current().data.addAndOperator.bind(current().data)")
+              span(data-bind="text: $parent.andOperator")
+              span.glyphicon.glyphicon-plus
+            div(data-bind="click: current().data.addOrOperator.bind(current().data)")
+              span(data-bind="text: $parent.orOperator")
+              span.glyphicon.glyphicon-plus
+            div(data-bind="click: current().data.addNotOperator.bind(current().data)")
+              span(data-bind="text: $parent.notOperator")
+              span.glyphicon.glyphicon-plus
+            // ko if: current().data.type() !== 'not' || current().data.content().length === 0
+            div(data-bind="click: current().data.addValidation.bind(current().data, null)")
+              span(data-bind="text: $parent.check")
+              span.glyphicon.glyphicon-plus
+            // /ko
+        // /ko
+        // ko if: isRule
+        div.form-group
+          label(data-bind="text: $parent.descriptionI18n")
+          div.form-group(data-bind="hasFeedback: { field: current().data.description, toggle: current().data.description.hasError, messages: current().data.description.validationMessages }")
+            textarea.form-control(data-bind="textInput: current().data.description", rows="2")
+        // /ko
+
+include ../../../autoload/KoUI/KoSchemaValue/view/KoSchemaTemplates

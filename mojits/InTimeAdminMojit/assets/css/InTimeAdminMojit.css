@@ -1,0 +1,25 @@
+.tab_calendars-editing-consultTimes-container hr:last-child {
+    display: none !important;
+}
+
+.tab_calendars-editing-closeTime-container hr:last-child {
+    display: none !important;
+}
+
+.just-color .minicolors-swatch {
+    border-radius: 5px;
+}
+
+.just-color .minicolors-swatch > span {
+    width: 28px;
+    height: 28px;
+    border-radius: 4px;
+}
+
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+.font-size-16px {
+    font-size: 16px;
+}

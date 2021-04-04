@@ -1,0 +1,7 @@
+div.col-xs-12.form-group(data-bind="visible: dmpSymptomaticLymphedema_4_23Visible()")
+    strong(data-bind="text: dmpSymptomaticLymphedema_4_23.i18n")
+    span(data-bind="dmpField: { field: dmpSymptomaticLymphedema_4_23 }")
+    div(data-bind="foreach: dmpSymptomaticLymphedema_4_23.list, hasFeedback: { field: dmpSymptomaticLymphedema_4_23, toggle: dmpSymptomaticLymphedema_4_23.hasError, messages: dmpSymptomaticLymphedema_4_23.validationMessages }")
+        label.radio-inline
+            span(data-bind="text: i18n")
+            input(type="radio", name="dmpSymptomaticLymphedema_4_23", data-bind="value: val, checked: $parent.dmpSymptomaticLymphedema_4_23, readOnly: $parent.dmpSymptomaticLymphedema_4_23.readOnly, attr: { name: $element.name + '-' + val }")

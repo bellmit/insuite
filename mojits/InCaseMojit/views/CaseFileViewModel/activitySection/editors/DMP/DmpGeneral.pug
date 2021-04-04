@@ -1,0 +1,122 @@
+div.row
+  div.col-xs-3
+    div.radio
+      label.control-label
+        span(data-bind="text: firstI18n")
+        input(type="radio", name="dmpType", value="FIRST", data-bind="checked: dmpType, readOnly: dmpType.readOnly")
+      span(data-bind="dmpField: { field: dmpType }")
+  //- NB: The dmpType "PNP" is specific to actType "BK" and is thus filtered out for other DMPs -------------------------
+  div(data-bind="visible: actType() === 'BK'")
+    div.col-xs-3
+      div.radio
+        label.control-label
+          input(type="radio", name="dmpType", value="PNP", data-bind="checked: dmpType, readOnly: dmpType.readOnly")
+          span(data-bind="text: dmpTypeI18n")
+        span(data-bind="dmpField: { field: dmpType }")
+  //- ------------------------------------------------------------------------------------------------------------------
+  div.col-xs-3
+    div.radio
+      label.control-label
+        span(data-bind="text: followingI18n")
+        input(type="radio", name="dmpType", value="FOLLOWING", data-bind="checked: dmpType, readOnly: dmpType.readOnly")
+      span(data-bind="dmpField: { field: dmpType }")
+  div.col-xs-3
+    div.checkbox
+      label.control-label
+        span(data-bind="text: dmpCreatedInRepresentation.i18n")
+        input(type="checkbox", name="dmpCreatedInRepresentation", data-bind="checked: dmpCreatedInRepresentation, readOnly: dmpCreatedInRepresentation.readOnly")
+      span(data-bind="dmpField: { field: dmpCreatedInRepresentation }")
+.row
+  div.col-xs-3
+    div.checkbox
+      label.control-label
+        span(data-bind="text: dmpPhsicianChanged.i18n")
+        input(type="checkbox", name="dmpPhsicianChanged", data-bind="checked: dmpPhsicianChanged, readOnly: dmpPhsicianChanged.readOnly")
+  div.col-xs-3
+    div.form-group(data-bind="hasFeedback: { field: dmpHeadDate, toggle: dmpHeadDate.hasError, messages: dmpHeadDate.validationMessages }")
+      label.control-label
+        span(data-bind="text: dmpHeadDate.i18n")
+        span(data-bind="dmpField: { field: dmpHeadDate }")
+      .date-picker.input-group
+          input.form-control(name="dmpHeadDate", data-bind="datetimepicker: { value: dmpHeadDate }, readOnly: dmpHeadDateReadOnly")
+  div.col-xs-3
+    div.form-group(data-bind="hasFeedback: { field: dmpSignatureDate, toggle: dmpSignatureDate.hasError, messages: dmpSignatureDate.validationMessages }")
+      label.control-label
+        span(data-bind="text: dmpSignatureDate.i18n")
+        span(data-bind="dmpField: { field: dmpSignatureDate }")
+      .date-picker.input-group
+          input.form-control(name="dmpSignatureDate", data-bind="datetimepicker: { value: dmpSignatureDate }, readOnly: dmpSignatureDate.readOnly")
+  div.col-xs-1
+    div
+      label.control-label Quartal
+      select.form-control(name="dmpQuarter", data-bind="options: availableQuarters, value: dmpQuarter, readOnly: dmpQuarter.readOnly")
+  div.col-xs-2
+    div
+      label.control-label Jahr
+      select.form-control(name="dmpYear", data-bind="options: availableYears, value: dmpYear, valueAllowUnset: true, readOnly: dmpYear.readOnly")
+.row
+  .col-xs-3
+    div.form-group(data-bind="hasFeedback: { field: dmpScheinRef, toggle: dmpScheinRef.hasError, messages: dmpScheinRef.validationMessages }")
+      label.control-label(data-bind="text: dmpScheinRef.i18n")
+      select.form-control(name="dmpScheinRef", type="text", data-bind="options: scheinRefList, optionsText: 'text', optionsValue: 'id', optionsCaption: 'Schein auswählen...', value: dmpScheinRef, valueAllowUnset: true, , readOnly: dmpScheinRef.readOnly")
+  .col-xs-3(data-bind='if: patientShortFilled')
+    label.control-label(data-bind="text: edmpCaseNoI18n")
+    input.form-control(name='shortEdmpCaseNo', type="text", data-bind="value: shortEdmpCaseNo, readOnly: true")
+  .col-xs-6(data-bind='if: patientShortFilled')
+    label.control-label Patientenname
+    input.form-control(name='shortLastname', type="text", data-bind="value: patientShort().title + ' ' + patientShort().nameaffix + ' ' + patientShort().fk3120 + ' ' + patientShort().lastname + ' ' + patientShort().firstname, readOnly: true")
+  .col-xs-12(style="display: none;", data-bind='if: patientShortFilled').eDocPrintOnly
+    label.control-label(data-bind="text: patientAddressI18n")
+    input.form-control(name='shortPatientAddress', type="text", data-bind="value: shortPatientAddress, readOnly: true")
+.row(data-bind='if: patientShortFilled')
+  .col-xs-3
+    div.form-group(data-bind="hasFeedback: { field: edmpDob, toggle: edmpDob.hasError, messages: edmpDob.validationMessages }")
+      label.control-label(data-bind="text: edmpDobI18n")
+      input.form-control(name='edmpDob', type="text", data-bind="value: edmpDob, readOnly: edmpDob.readOnly")
+  .col-xs-3
+    label.control-label(data-bind="text: insuranceNoI18n")
+    input.form-control(name='shortInsuranceNo', type="text", data-bind="value: patientShort().insuranceStatus.insuranceNo, readOnly: true")
+  .col-xs-6
+    label.control-label(data-bind="text: insuranceNameI18n")
+    input.form-control(name='shortInsuranceName', type="text", data-bind="value: patientShort().insuranceStatus.insuranceName, readOnly: true")
+.row(style="display: none;", data-bind='if: patientShortFilled').eDocPrintOnly
+  .col-xs-3
+    label.control-label(data-bind="text: insuranceIdI18n")
+    input.form-control(name='shortInsuranceId', type="text", data-bind="value: patientShort().insuranceStatus.insuranceId, readOnly: true")
+  .col-xs-3
+    label.control-label(data-bind="text: fk4133I18n")
+    input.form-control(name='shortFk4133', type="text", data-bind="value: shortFk4133, readOnly: true")
+  .col-xs-3
+    label.control-label(data-bind="text: fk4110I18n")
+    input.form-control(name='shortFk4110', type="text", data-bind="value: shortFk4110, readOnly: true")
+  .col-xs-3
+    label.control-label(data-bind="text: insuranceKindI18n")
+    input.form-control(name='shortInsuranceKind', type="text", data-bind="value: patientShort().insuranceStatus.insuranceKind, readOnly: true")
+  .col-xs-3
+    label.control-label(data-bind="text: persGroupI18n")
+    input.form-control(name='shortPersGroup', type="text", data-bind="value: patientShort().insuranceStatus.persGroup, readOnly: true")
+  .col-xs-3
+    label.control-label(data-bind="text: genderI18n")
+    input.form-control(name='shortGender', type="text", data-bind="value: shortGender, readOnly: true")
+  .col-xs-6
+    label.control-label(data-bind="text: employeeNameI18n")
+    input.form-control(name='shortEmployeeName', type="text", data-bind="value: shortEmployeeName, readOnly: true")
+  .col-xs-12
+    label.control-label(data-bind="text: employeeAddressI18n")
+    input.form-control(name='shortEmployeeAddress', type="text", data-bind="value: shortEmployeeAddress, readOnly: true")
+.row(data-bind='if: patientShortFilled')
+  .col-xs-3
+    label.control-label(data-bind="text: officialNoI18n")
+    input.form-control(name='shortOfficialNo', type="text", data-bind="value: shortOfficialNo, readOnly: true")
+  .col-xs-3
+    label.control-label BSNR/Krankenhaus-IK
+    input.form-control(name='shortCommercialNo', type="text", data-bind="value: shortCommercialNo, readOnly: true")
+  .col-xs-6
+    div(data-bind="visible: actType() !== 'BK'")
+      label Einschreibung wegen
+      input.form-control(name="shortDmpConcomitantDisease", data-bind="select2: _shortDmpConcomitantDiseaseConfig, readOnly: patientShortFilled")
+.row(data-bind='if: !isAfterQ12018() && patientShortFilled() && actType() !== "BK"')
+  .col-xs-4
+    .form-group: .checkbox
+      label.control-label Modul-Teilnahme Chronische Herzinsuffizienz
+        input(type="checkbox", data-bind="checked: shortEdmpParticipationChronicHeartFailure, readOnly: true")

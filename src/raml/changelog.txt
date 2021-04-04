@@ -1,0 +1,487 @@
+RAML API Changes
+-----------------
+v.11.0.3
+* Includes /2/catalog/:getHouseCatalog
+
+v.11.0.2
+* Added new endpoint to treatment
+     getActivitiesLinkedToContract
+
+v.11.0.1
+* exposed locationName to activity model.
+
+v.11.0.0
+* separate REST API Documentations for Germany and Switzerland, endpoints such as /2/location, /2/patient, /2/user, /2/medication, /2/treatment, /2/diagnosis, /2/contract,
+/2/billing, /2/casefolder of Swiss REST API differ in schemas and/or in examples from German ones
+
+v.10.5.11
+* add amtsSelectiveContractInsuranceId to AMTSSchein_T and expose it
+
+v.10.5.10
+* Exposed copyActivitiesToCaseFolder method in casefolder endpoint.
+
+v.10.5.9
+* Added field phAsNeededMedication to medication schema
+
+v.10.5.8
+* Includes /2/catalog/:getIcd10Catalog
+
+v.10.5.7
+* updated documentation for /2/meddata and /2/tag to explain the handling of the new MEDDATA activity structure and the interplay with tags introduced with inSuite version 4.16
+
+Note:  in inSuite 4.15 we no longer auto-create the  Z01.7 DIAGNOSIS creation with SCHEIN
+
+v.10.5.6
+* Added licenseScope to /2/configuration
+
+v.10.5.5
+* Added description to /2/billing
+
+v.10.5.4
+* Removed /2/reportingjob/:outputCsv
+
+v.10.5.3
+* Added field pznOriginal to packageList for /2/drug
+
+v.10.5.2
+* Corrected API documentation to use the correct schemas
+* Added description to schedule field for /2/calendar
+* Added new field to /2/patient
+    confirmedViewFromLocationIds
+
+v.10.5.1
+* Changed 2/treatment: Catalog information is added on POST request
+
+v.10.5.0
+* Includes /2/reportingjob with new endpoint
+    outputCsv
+
+v.10.4.7
+* Enable query for field caseNumber on /contract
+
+v.10.4.6
+* Added support for eventing for /employee
+* Expose following field for /user
+    memberOf
+    gender
+* Enable query for following fields for /user
+    type
+    talk
+    initials
+
+v.10.4.5
+* Added support for eventing for /casefolder, and /document
+* expose following fields for settings
+    smtpUserName
+    smtpHost
+    smtpPort
+    smtpEmailFrom
+
+v.10.4.4
+* Added medDataType filter query param to /2/meddata
+
+v.10.4.3
+* Added support for eventing for /basecontact, /task and /schedule
+
+v.10.4.2
+* Added new endpoint to medication, diagnosis, simple_activity, labdata, meddata
+     getActivitiesLinkedToContract
+* Added new endpoint to simple_activity
+     initializeFormForActivity
+
+v.10.4.1
+* Added new fields to AmtsSchein
+     caseOfSpecialCare
+     caseOfSpecialCareReason
+
+v.10.4.0
+* Exposed KBVMedicationPlan creation in new endpoint kbvmedicationplan
+
+v.10.3.3
+* Added new field to medication
+     phSampleMed
+
+v.10.3.2
+* Added new endpoint to contract
+     getLinkedActivities
+
+v.10.3.1
+* Added new field to medication
+     phContinuousMed
+* Added new fields in contract
+     scheinTransferArrangementCode
+     scheinTransferDateOfContact
+
+v.10.3.0
+* Optimised endpoint /2/drug and enriched with description
+* Optimised /2/formportal to only show used endpoints
+
+v.10.2.0
+* New endpoint /2/drug
+
+v.10.1.5
+* Added new field to user
+    initials
+
+v.10.1.4
+* Added new field in medication
+   adherence
+
+v.10.1.3
+* Forbidden endpoint document was removed from documentation.
+
+v.10.1.2
+* Added official operators
+* Changelog: changed the order
+* Description of Types: added an example for date "2019-05-28T12:26:00.000Z"
+* Description of Activity Endpoints
+    deleted: cave, prescription, docletter
+    added: labdata
+
+v.10.1.0
+* Added new field in scheduletype
+    requiredResources
+* Added new field in calendar
+    resources
+* Added new fields in schedule
+    resource
+    resourceBased
+    linkByResource
+
+v.10.0.0
+* Removed medications catalogue
+* Removed endpoints:
+   /2/medicationscatalog
+   /2/asvlog
+* Added new field in patient
+   dataTransmissionToPVSApproved
+
+v.9.7.0
+* New endpoint /2/scheduletype
+
+v.9.6.4
+* Added "language" property as a part of /2/configuration API response
+
+v.9.6.0
+* Includes /2/communication
+* Includes /2/formportal
+
+v.9.5.0
+* Includes /2/configuration
+
+v.9.4.0
+* Update the documentation with new/updated/removed API's fields
+* Includes /2/scheduletype
+
+v.9.3.0
+* Update the documentation with new/updated/removed API's fields
+* Includes /2/basecontact
+* Includes /2/medicationscatalog
+* Includes /2/partneridcatalog
+
+v.9.2.0
+* Includes /2/audit
+* Includes /2/partneridcatalog
+* Includes /2/role
+
+v.9.1.1
+* Includes /2/meddata
+
+v.9.1.0
+* Includes /2/complexprescription
+* Include  /3/statuscheck
+
+v.9.0.2
+* Updated the document with the list of "simple_activity" api end points
+
+v.9.0.1
+* /2/patient modified:
+  The query on firstname and lastname is now always case-insensitive. To inSuite the following return identical results:
+    /2/patient/?lastname=MUSTERMANN
+    /2/patient/?lastname=Mustermann
+  The reason is that some devices using the API lose the case of the names, which cannot be reconstructed.
+
+* /2/labdata modified:
+  Added the field labEntries - an internal wellformed JSON representation of various (all) imported LDT versions.
+
+* Added new activity type to the "simple_activity" interface:  THERAPYSTEP
+
+* Additional fields will be delivered via /2/blob are as follows:
+     studyId
+     userContent
+     actType
+     subType
+
+v.9.0.0
+* Includes /2/labdata
+* Removed activity type from the "simple_activity" interface:  LABDATA
+* Additional activity types made available via the "simple_activity" interface
+   CAVE
+   DOCLETTER
+   PRIVPRESCR
+   PUBPRESCR
+* For activities, new fields that will be delivered are as follows
+   content
+   attachments
+   attachedMedia
+   labText (for LABDATA)
+
+v.8.0.0
+* Includes interfaces
+- task
+- schedule
+- scheduletype
+- calendar
+- blob
+* Moved /2/media to deprecated status
+* Fields delivered via /2/blob are as follows
+   usesMedia
+   type
+   data
+   form
+   url
+   publisher
+   content
+   contentType
+   docId
+   attachedTo
+   patientId
+   activityId
+   mediaId
+   printerName
+   locationId
+   accessBy
+   isEditable
+   caption
+   createdOn
+   tags
+   ownerCollection
+   ownerId
+   weight
+   deleteAfter
+   gridfs
+   binary
+   transform
+* Fields delivered via /2/datasafe are as follows
+   practice
+   collections
+   activities
+   errors
+
+v.7.4.2
+* Added curl example call / how-to
+
+v.7.4.1
+* Examples upgraded
+* Fixed errata in doc
+
+v.7.2
+* Include /2/tenant
+  Allows remote control of tenants in multi-tenant structure via CRUD.
+  Must be addressed to https://insuite.tenant-host-fqdn/2/tenant
+* Amended  /3/intouch/:inboundphonecall  no longer needs the extension flag,
+  always searches both variants.
+
+v.7.1.1
+* Includes /2/printer
+* Includes /3/intouch/:inboundphonecall
+* Allows Diagnosis Certainty of "NONE" for private insurances.
+
+V.7.0
+* New "slim" JSONs for contract:  For some Schein types, the fields returned now match the Schein type.  Previously you would get all GKV, PKV and BG fields in the response. Now only the relevant fields are present.
+* For BGSCHEIN:
+  + old fields that used to be delivered
+  - new fields that are delivered
+  [
+  - "_id"
+  - "accidentCompany"
+  - "accidentCompanyCity"
+  - "accidentCompanyHouseno"
+  - "accidentCompanyPLZ"
+  - "accidentCompanyStreet"
+  "actType"
+  - "agencyCost"
+  - "apkState"
+  - "caseFolderId"
+  "comment"
+  - "dayOfAccident"
+  - "dayOfArrival"
+  - "debtCollection"
+  - "editor"
+  "employeeId"
+  - "employeeInitials"
+  - "employeeName"
+  "explanations"
+  + "fk4123"
+  + "fk4124"
+  + "fk4125from"
+  + "fk4125to"
+  + "fk4126"
+  + "fk4206"
+  + "fk4217"
+  "fk4219"
+  + "fk4236"
+  + "fk4241"
+  "locationId"
+  - "orderAccounting"
+  - "partnerInfo"
+  "patientId"
+  + "scheinBillingArea"
+  "scheinDiagnosis"
+  "scheinEstablishment"
+  "scheinFinding"
+  "scheinNotes"
+  "scheinOrder"
+  + "scheinQuarter"
+  "scheinRemittor"
+  "scheinSpecialisation"
+  - "status"
+  - "subType"
+  - "timeOfAccident"
+  - "timeOfArrival"
+  + "scheinSubgroup"
+  + "scheinType"
+  + "scheinYear"
+  "timestamp"
+  "treatmentType"
+  "userContent"
+  - "uvGoaeType"
+  - "workingHoursEnd"
+  - "workingHoursStart"
+    ]
+
+V.6.2
+* Additional activity types made available via the "simple_activity" interface.
+  A new interface for typical text only entries e.g. Anamnesis (HISTORY) etc.
+    HISTORY
+    EXTERNAL
+    FINDING
+    PREVENTION
+    PROCEDERE
+    THERAPY
+    REMINDER
+    CREDITNOTE
+    WARNING1
+    WARNING2
+    COMMUNICATION
+    PROCESS
+    CONTACT
+    MEDICATIONPLAN
+
+V.6.1
+* "Berufsgenossenschaft" Contract ("BGSCHEIN") gets additional fields.
+    dayOfAccident
+    timeOfAccident
+    workingHoursStart
+    workingHoursEnd
+    dayOfArrival
+    timeOfArrival
+    accidentCompany
+    accidentCompanyStreet
+    accidentCompanyHouseno
+    accidentCompanyPLZ
+    accidentCompanyCity
+
+V.6.0
+* Additional logic for handling KBVUtility entries. Refer to the HTML API Doc.
+* Removed unused fields // there is no known productive use of utility.
+    utIcdRef
+    utIcdSecondRef
+    utRemedy1Name
+    utRemedy2Name
+
+V.5.1
+* Additional utility fields that reflect whether a Utility-Prescription is
+  KBV approved for chronic or repeated or longer term than usual.
+    utAgreementApprovedText
+    utAgreementApprovedCode
+    utAgreementApprovedCodeUseDiagnosisGroup
+
+V.5.0
+* Added subType to base activity API.
+* Added employeeInitials to base activity API.
+* Added uvGoaeType to the contract API.
+* Added dispatchActivities.quantity to the dispatchrequest API.
+* Added utTherapyGoalsList to utility API
+* New KBV extension to the Utility API with following fields:
+     utTherapyGoalsList
+     utIndicationCode
+     utIcdCode
+     utIcdText
+     utIcdRef
+     utSecondIcdCode
+     utSecondIcdText
+     utSecondIcdRef
+     utAgreement
+     utRemedy1List
+     utRemedy2List
+  and sub-fields:
+     utRemedy1List.name
+     utRemedy1List.type
+     utRemedy1List.groupTherapyAble
+     utRemedy1List.seasons
+     utRemedy2List.name
+     utRemedy2List.type
+     utRemedy2List.groupTherapyAble
+     utRemedy2List.seasons
+* The KBV Utility API extension is backward compatible with the Utility API,
+  since it is additional, and does not replace the old API.  To use the
+  old API simply specify an actType of "UTILITY" this API should be used read-
+  only, since such utility data are not recognised by the KBV anymore. To use
+  the new extension, specify an actType of "KBVUTILITY".
+* Field semanticschanges:
+    subType now contains the type (e.g. "PHYSIO") instead of catalogshort
+    utIndicationCode  now contains code (e.g. "LYA1c") instead of code
+* Examples in the doc have also been updated.
+
+V.4.4
+* Physician object has connections to Institution type basecontacts.
+* DispatchRequest object allows  prescriptionDate  in the dispatchActivities list.
+
+V.4.3
+* Added three fields to the SCHEIN, PKVSCHEIN, BGSCHEIN for
+   debtCollection
+   agencyCost
+   orderAccounting
+V.4.2
+* Added new types:
+    Casefolder
+    Rulenode (Rule Engine)
+    ASVLog
+* Allow search for 'user' by username
+* Updated styling so that readonly fields appear red
+* Sort type list in menu, except /cardreader.
+
+V.4.1
+* Included documentation explaining how to create activities (contract, treatment, invoice, etc.)
+* Model specific documentation improved.
+
+V.4.0 Several changes:
+* Added new activity types:
+    Assistive / Hilfsmittel
+    Medication
+    Invoice
+* Removed employee API, and replaced it with user
+* User API allows one to create a login, and manipulate employees
+* Minor changes to physician
+
+V.3.1
+* Dispatchrequest restructured.
+
+V.3.0
+* Breaking changes occured to the dispatchrequest
+
+V.2.1  Several changes:
+* Include dispatchrequest and subschema dispatchActivities.
+* Correctly provide JSON Schema types for all array items
+
+V.2.0  Several changes:
+* Removed the /physician resource.
+* Patients now have partnerIds, for partners to note their respective patient ID.
+  Partners may not use the patientNo for this information.
+* It is possible to delete single subdocuments by _id.
+* Some fixes to the documentation, where _id attribute was missing and arrays brackets were missing in examples.
+
+V.1.1  Includes /utility resource
+
+V.1.0  Original release of the API/2

@@ -1,0 +1,117 @@
+{
+  "settings": [
+    "environment:production"
+  ],
+  "description": "Seconds,Minutes,... 0-59/15 every 15 units starting from 0, 55 * * *... run once 5 seconds before next minute",
+  "jobs": [
+    {
+      "name": "NightQueueProcessing",
+      "time": "0 25 3 * * *"
+    },
+    {
+      "description": "This event triggers the communication.server.js every minute to send all unsent message from 'message' collection",
+      "name": "SendMessage",
+      "time": "5,10,15,20,25,30,35,40,45,50,55 * * * * *"
+    },
+    {
+      "name": "RuleImport",
+      "time": "0 19 6 * * *"
+    },
+    {
+      "name": "Noon",
+      "time": "0 0 12 * * *"
+    },
+    {
+      "name": "RealignSchedules",
+      "time": "45 * * * * *"
+    },
+    {
+      "name": "AutoEnding",
+      "time": "59 * * * * *"
+    },
+    {
+      "name": "CloseDay",
+      "time": "0 55 23 * * *"
+    },
+    {
+      "name": "UpgradePRCS",
+      "time": "0 0 22 * * *"
+    },
+    {
+      "name": "CleanupTempFiles",
+      "time": "0 55 2 * * *"
+    },
+    {
+      "name": "RefreshLicenseInfo",
+      "time": "0 0-59/5 * * * *"
+    },
+    {
+      "name": "EndOfQuarter4",
+      "time": "59 59 23 31 11 *"
+    },
+    {
+      "name": "EndOfQuarter1",
+      "time": "59 59 23 31 2 *"
+    },
+    {
+      "name": "EndOfQuarter2",
+      "time": "59 59 23 30 5 *"
+    },
+    {
+      "name": "EndOfQuarter3",
+      "time": "59 59 23 30 8 *"
+    },
+    {
+      "name": "doBilling",
+      "time": "0 0 */1 * * *"
+    },
+    {
+      "name": "reportBillings",
+      "time": "0 0 0 21 */1 *"
+    },
+    {
+      "name": "checkReplSetHealth",
+      "time": "0 */5 * * * *"
+    },
+    {
+      "name": "checkCardioServer",
+      "time": "0 */5 * * * *"
+    },
+    {
+      "name": "checkMemory",
+      "time": "0 23 3 * * *"
+    },
+    {
+      "name": "checkEdmp",
+      "time": "0 0 * * *"
+    },
+    {
+      "name": "checkBackup",
+      "time": "0 7 * * *"
+    },
+    {
+      "name": "exportBackup",
+      "time": "0 5 * * *"
+    },
+    {
+      "name": "checkDiskFreeSize",
+      "time": "0 4 * * *"
+    },
+    {
+      "name": "everyHour",
+      "time": "0 0 * * * *"
+    },
+    {
+      "name": "syncDispatch",
+      "time": "0 */1 * * * *"
+    },
+    {
+      "name": "processReceiveQueue",
+      "time": "0 */1 * * * *"
+    },
+    {
+      "name": "Heartbeat",
+      "time": "59 * * * * *"
+    }
+  ]
+}

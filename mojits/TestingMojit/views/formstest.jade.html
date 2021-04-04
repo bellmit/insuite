@@ -1,0 +1,14 @@
+br
+br
+.container.container-fullscreen.content(id=mojit_view_id)
+
+    div.modal.hide.fade#divModalPopup
+        div.modal-header
+            h3#hModalTitle(data-bind="text: loadingI18n")
+
+        div.modal-body
+            p#pModalBody(data-bind="text: pleaseWaitI18n")
+
+    h3 Embedded Form Example
+
+    div#divFormsEmbed Loading...

@@ -1,0 +1,14 @@
+div(style="margin-top: -10px")
+  .row
+    .col-xs-6
+      h4(data-bind="text: ALL_CONTACTS")
+      div(data-bind="template: allContactsKoTable.template")#allContactsKoTable
+
+    .col-xs-6
+      table(noborder="noborder")
+        tr
+          td
+            h4(data-bind="text: SELECTED")
+          td
+            i.dc-info-icon(data-bind="click: showExplanation")
+      div(data-bind="template: selectedContactsKoTable.template")#selectedContactsKoTable

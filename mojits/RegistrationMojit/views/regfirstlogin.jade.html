@@ -1,0 +1,21 @@
+-//TRANSLATION INCOMPLETE!! MOJ-3201
+div.visible-xs.visible-sm(style="padding: 15px")
+div.visible-md.visible-lg(style="padding: 35px")
+div.container.container-fullscreen(id=mojit_view_id)
+  .jumbotron(style="border-radius: 30px;")
+    .row
+      .col-xs-12.col-md-6
+        div
+          h2 Fehlgeschlagen.
+          -if(403===status)
+            p Sie haben sich bereits über diesen Link angemeldet und Ihr Passwort vergeben.
+            p
+              a(href='/login') Bitte melden Sie sich an.
+          - else if(400===status)
+            p Ihre PIN wurde falsch eingegeben.
+          - else if(404===status)
+            p Ihr Link ist ungültig. Bitte registrieren Sie sich erneut.
+          - else
+            p Ein Fehler ist aufgetreten, bitte versuchen Sie Ihre Erstanmeldung zu einem späteren Zeitpunkt wieder.
+            p
+              a(href='mailto:register@doc-cirrus.com') Kontaktieren Sie ggf. einen Admin.

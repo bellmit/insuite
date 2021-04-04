@@ -1,0 +1,239 @@
+.serial-letter-modal {
+    height: 93%;
+}
+
+.serial-letter-modal .serial-letter-modal__section,
+.serial-letter-modal .serial-letter-modal__form-section,
+.serial-letter-modal .serial-letter-modal__form-select-section {
+    height: 100%;
+}
+
+.serial-letter-modal .serial-letter-modal__form-container {
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden
+}
+
+.active-tasks__button,
+.completed-tasks__button {
+    margin-right: 0.714285714285714em; /* 10px */
+}
+
+.serial-letter-hint {
+    height: 50%;
+    display: flex;
+    align-items: center;
+}
+
+.serial-letter-modal .serial-letter-modal__loading-mask {
+    position: inherit;
+}
+
+.serial-letter-modal__patient-table {
+    overflow: auto;
+    height: inherit;
+}
+
+.filters-list > div {
+    margin-bottom: 10px;
+}
+
+ol.tasks-list {
+    list-style-type: none;
+    padding: 0;
+    display: grid;
+    grid-gap: 5px;
+    grid-template-columns: repeat(10, 180px);
+    overflow-x: auto;
+}
+
+ol.tasks-list li.list .panel {
+   height: 100%;
+}
+
+ol.tasks-list li.list {
+    margin-bottom: 10px;
+}
+
+#tasksListGraphic {
+    position: relative;
+}
+
+#tasksListGraphic .panel > .panel-heading.unassigned {
+    margin-bottom: 15px;
+}
+
+#tasksListGraphic button[name='BTN_CREATE_GRAPHIC'] {
+    border-radius: 35px;
+    margin: 0 10px 0 0;
+    padding: 0;
+    color: #428bca;
+    border-color: transparent;
+    font-size: 18px;
+    width: 30px;
+    height: 30px;
+    background-color: white;
+    box-shadow: none;
+}
+
+#tasksListGraphic ol li.task {
+    word-break: break-word;
+}
+
+#tasksListGraphic ol li.task .user-icon {
+    color: #d3d3d3;
+    background-color: #000000;
+    border-radius: 30px;
+    width: 16px;
+    height: 16px;
+    text-align: center;
+    padding-top: 1px;
+}
+
+#alertTimeSelector {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.dc-triangle::before,
+.dc-triangle::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    border: solid transparent;
+}
+
+.dc-triangle::after {
+    border-width: 1rem;
+}
+
+.dc-urgency-1::after {
+    border-right-color: rgb(0, 0, 0);
+    border-top-color: rgb(0, 0, 0);
+}
+
+.dc-urgency-2::after {
+    border-right-color: rgb(3, 214, 13);
+    border-top-color: rgb(3, 214, 13);
+}
+
+.dc-urgency-3::after {
+    border-right-color: rgb(255, 196, 3);
+    border-top-color: rgb(255, 196, 3);
+}
+
+.dc-urgency-4::after {
+    border-right-color: rgb(214, 3, 3);
+    border-top-color: rgb(214, 3, 3);
+}
+
+.urgency-color-1 {
+    background-color: rgb(0, 0, 0)!important;
+}
+
+.urgency-color-2 {
+    background-color: rgb(3, 214, 13)!important;
+}
+
+.urgency-color-3 {
+    background-color: rgb(255, 196, 3)!important;
+}
+
+.urgency-color-4 {
+    background-color: rgb(214, 3, 3)!important;
+}
+
+.task {
+    border: 1px solid grey;
+    margin-bottom: 10px;
+}
+
+body.dragging, body.dragging * {
+    cursor: move !important;
+}
+
+.dragged {
+    position: absolute;
+    top: 0;
+    opacity: 0.5;
+    z-index: 2000;
+}
+
+li.task.dragged {
+    position: fixed;
+}
+
+ol.prepared-tasks-list.tasks-list-drop {
+    list-style-type: none;
+    padding-left: 0;
+    min-height: 100px;
+}
+
+ol.prepared-tasks-list.tasks-list-drop li {
+    display: block;
+    padding: 5px;
+    border: 1px solid #cccccc;
+}
+
+ol.prepared-tasks-list.tasks-list-drop li.patient.placeholder,
+ol.tasks-list li.list.placeholder {
+    position: relative;
+}
+
+ol.prepared-tasks-list.tasks-list-drop li.patient.placeholder:before,
+ol.tasks-list li.list.placeholder:before {
+    position: absolute;
+    content: "";
+    width: 0;
+    height: 0;
+    border: 5px solid transparent;
+    top: -6px;
+    margin-left: -5px;
+    border-bottom: none ;
+}
+
+ol.prepared-tasks-list.tasks-list-drop li.placeholder,
+ol.tasks-list li.placeholder {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+
+ol.prepared-tasks-list.tasks-list-drop li.placeholder:before,
+ol.tasks-list li.placeholder:before {
+    position: absolute;
+    content: "";
+    width: 0;
+    height: 0;
+    margin-top: -5px;
+    left: -5px;
+    top: -4px;
+    border: 5px solid transparent;
+}
+ol.prepared-tasks-list.tasks-list-drop li.placeholder:before {
+    border-right: none;
+    border-left-color: red;
+}
+ol.tasks-list li.placeholder:before {
+    border-top-color: red;
+}
+
+span.icon-green, span.icon-red {
+    font-size: 17px;
+    padding-top: 1px;
+    margin-left: 5px;
+    vertical-align: text-bottom;
+}
+span.icon-red {
+    color: #CF2A27;
+}
+
+span.icon-green {
+    color: #0DA11B;
+}
+
+.DCWindow.DCWindow-AddNewList .modal-body {
+    overflow-y: visible !important;
+}

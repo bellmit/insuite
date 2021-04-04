@@ -1,0 +1,29 @@
+div.row#activityData
+  div.col-xs-6.col-xs-offset-3
+    div.form-group(data-bind="hasFeedback: { field: timestamp, toggle: timestamp.hasError, messages: timestamp.validationMessages }")
+      .date-picker.input-group
+        input#inputDate.form-control(name="timestamp", type="text", data-bind="datetimepicker: { value: timestamp }, attr: {placeholder: placeholderTimestampI18n}")
+    div.form-group
+      select.form-control(name="locationId", data-bind="options: _locationList, optionsValue: '_id', optionsText: 'locname', value: locationId, optionsCaption: selectLocationI18n")
+    div.form-group
+      select.form-control(name="employeeId", data-bind="foreach: _employeeListGrouped, value: employeeId, valueAllowUnset: true")
+        optgroup(data-bind="attr: { label: i18n }, foreach: items")
+          option(data-bind="text: lastname + ', ' + firstname, value: _id")
+    div.form-group
+      select.form-control(name="caseFolderId", data-bind="options: _caseFolderList, optionsText: 'title', value: selectedCaseFolder")
+    div#daySeparation-toggle-button.form-group
+      button.btn.btn-default.btn-block(data-bind="click: _toggleDaySeparation, text: _daySeparation")
+    div#daySeparation-toggle-input.form-group(style="display:none;")
+      div.input-group
+        span.input-group-btn
+          button.btn.btn-default(type="button", data-bind="click: _toggleDaySeparation")
+            span.fa.fa-calendar
+            span.sr-only(data-bind="text: daySeparationI18n")
+        input.form-control(name="daySeparation", type="time", data-bind="value: daySeparation, valueUpdate: 'afterkeydown', readOnly: daySeparation.readOnly, attr: {placeholder: placeholderDaySeparationI18n}")
+    div.form-group
+      .checkbox
+        label
+          span(data-bind="text: useOriginalValuesI18n")
+          input(name="useOriginalValues", type="checkbox", data-bind="checked: useOriginalValues")
+  div.col-xs-12(style="margin-top: 15px")
+    div#activitySequenceTable(data-bind="template: activitySequenceTable.template")

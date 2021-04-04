@@ -1,0 +1,34 @@
+div#transformerModel
+  div.form-group
+    h4(data-bind="text: parserSettingsI18n")
+    span.treatment-list(data-bind="text: hl7CreateTreatmentsInfoI18n")
+    span.checkbox
+      label.control-label
+        strong(data-bind="text: hl7CreateTreatmentsI18n")
+        input(type="checkbox", name="hl7CreateTreatments", data-bind="checked: hl7CreateTreatments")
+    hr
+    h4(data-bind="text: internalExternalHeaderI18n + ':'")
+    button.btn.btn-primary(data-bind="click: onAddRowClick")
+      i.fa.fa-plus
+    div.form-group
+      table.table
+        colgroup
+          col(style="width:60%")
+          col(style="width:30%")
+          col(style="width:10%")
+        thead
+          tr
+            th(data-bind="text: labNameI18n")
+            th(data-bind="text: typeI18n")
+            th(data-bind="html: ''")
+        tbody(data-bind="foreach: internalExternalLabTreatments")
+          tr
+            td
+              div.form-group(data-bind="hasFeedback: { field: labName, toggle: labName.hasError, messages: labName.validationMessages }" )
+                input.form-control(type="text", data-bind="textInput: labName")
+            td
+              div.form-group(data-bind="hasFeedback: { field: type, toggle: type.hasError, messages: type.validationMessages }" )
+                input.form-control.input-sm#transformerSelect2HL7AllowBilling(type="hidden", data-bind="select2: select2InternalExternalLabTreatments")
+            td
+              button.btn.btn-primary(data-bind="click: function(data){$parent.onDeleteRowClick($index());}")
+                i.fa.fa-trash

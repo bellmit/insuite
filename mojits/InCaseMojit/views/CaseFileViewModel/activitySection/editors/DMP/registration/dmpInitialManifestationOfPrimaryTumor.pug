@@ -1,0 +1,9 @@
+div(data-bind="visible: dmpInitialManifestationOfPrimaryTumorVisible()")
+    div(data-bind='hasFeedback: { field: dmpInitialManifestationOfPrimaryTumor, toggle: dmpInitialManifestationOfPrimaryTumor.hasError, messages: dmpInitialManifestationOfPrimaryTumor.validationMessages }')
+        div.col-xs-6
+            div.form-group
+                label.control-label
+                    span(data-bind="text: dmpInitialManifestationOfPrimaryTumor.i18n")
+                    span(data-bind="dmpField: { field: dmpInitialManifestationOfPrimaryTumor }")
+        div.col-xs-5.date-picker.input-group
+            input.form-control(name="dmpInitialManifestationOfPrimaryTumor", data-bind="datetimepicker: { value: dmpInitialManifestationOfPrimaryTumor, options: { parseInputDate: parseInputDateBK } }, readOnly: dmpInitialManifestationOfPrimaryTumor.readOnly")

@@ -1,0 +1,7 @@
+div.form-group
+  strong(data-bind="text: dmpKhkRelatedTransferArranged.i18n")
+  span(data-bind="dmpField: { field: dmpKhkRelatedTransferArranged }")
+  div(data-bind="foreach: dmpKhkRelatedTransferArranged.list, hasFeedback: { field: dmpKhkRelatedTransferArranged, toggle: dmpKhkRelatedTransferArranged.hasError, messages: dmpKhkRelatedTransferArranged.validationMessages }")
+    label.radio-inline
+      span(data-bind="text: i18n")
+      input(type="radio", name="dmpKhkRelatedTransferArranged", data-bind="value: val, checked: $parent.dmpKhkRelatedTransferArranged, readOnly: $parent.dmpKhkRelatedTransferArranged.readOnly")

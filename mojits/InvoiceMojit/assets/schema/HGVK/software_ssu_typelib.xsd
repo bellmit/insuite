@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- edited with XMLSPY v2004 rel. 3 U (http://www.xmlspy.com) by Hr. Usorov (KBV) -->
+<!-- automatische Dokumentation, generiert durch Visual Source Safe 
+	$Workfile: software_ssu_typelib.xsd $  
+	$Modtime: 25.05.04 17:41 $  
+	$Revision: 10 $  
+-->
+<xs:schema targetNamespace="urn::sciphox-org/sciphox" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="urn::sciphox-org/sciphox" xmlns:sciphox="urn::sciphox-org/sciphox" xmlns:kbv="urn::hl7-org/kbv" xmlns:kbvlib="urn:kbv/kbv/typelib/001" xmlns:cda="urn::hl7-org/cda" elementFormDefault="qualified">
+	<xs:import namespace="urn::hl7-org/kbv" schemaLocation="all_kbv_typelib.xsd"/>
+	<xs:import namespace="urn:kbv/kbv/typelib/001" schemaLocation="all_kbvtypelib001_typelib.xsd"/>
+	<xs:import namespace="urn::hl7-org/cda" schemaLocation="software_ssu_kontakt_typelib.xsd"/>
+	<!--	******************** local-header-software-typ ******************** -->
+	<xs:complexType name="dmp_software_ssu_typ">
+		<xs:sequence>
+			<xs:element name="sciphox-ssu" type="ssu-software-typ"/>
+		</xs:sequence>
+		<xs:attribute name="ignore" type="xs:string" use="required" fixed="all"/>
+		<xs:attribute name="descriptor" type="xs:string" use="required" fixed="sciphox"/>
+	</xs:complexType>
+	<!--	******************** ssu-software-typ ******************** -->
+	<xs:complexType name="ssu-software-typ">
+		<xs:annotation>
+			<xs:appinfo>sciphox-SSU: software</xs:appinfo>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Software" type="software-typ">
+				<xs:unique name="u_kontakt">
+					<xs:selector xpath="./sciphox:Kontakt/sciphox:Kontakttyp"/>
+					<xs:field xpath="@V"/>
+				</xs:unique>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="type" type="xs:string" fixed="software"/>
+		<xs:attribute name="country" type="xs:string" use="required" fixed="de"/>
+		<xs:attribute name="version" type="xs:string" use="required" fixed="v1"/>
+	</xs:complexType>
+	<!-- ******************** software-typ ******************** -->
+	<xs:complexType name="software-typ">
+		<xs:annotation>
+			<xs:appinfo>Sammelelement fuer Angaben zur eingesetzten Software in der Arztpraxis</xs:appinfo>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="id" type="software-id-typ"/>
+			<xs:element name="SoftwareName" type="SoftwareName_typ"/>
+			<xs:element name="SoftwareVersion" type="SoftwareVersion_typ"/>
+			<xs:element name="SoftwareTyp" type="SoftwareTyp_typ"/>
+			<xs:element name="Kontakt" type="Kontakt_typ" maxOccurs="2"/>
+			<xs:element name="Software" type="software_xsd_typ"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!-- ******************** software_xsd_typ ******************** -->
+	<xs:complexType name="software_xsd_typ">
+		<xs:annotation>
+			<xs:appinfo>Angaben zur verwendeten XML-Schnittstelle</xs:appinfo>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="SoftwareName" type="SoftwareName_xsd_typ"/>
+			<xs:element name="SoftwareVersion" type="SoftwareVersion_xsd_typ"/>
+			<xs:element name="SoftwareTyp">
+				<xs:complexType>
+					<xs:annotation>
+						<xs:appinfo>XSD-Typ</xs:appinfo>
+					</xs:annotation>
+					<xs:attribute name="V" type="kbv:string_max_60_typ" use="required" fixed="XSD"/>
+					<xs:attribute name="DN" type="kbv:string_max_60_typ" use="optional" fixed="XML-Schema"/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="Software" type="software_xpm_typ" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!-- ******************** software_xsd_typ ******************** -->
+	<xs:complexType name="software_xpm_typ">
+		<xs:annotation>
+			<xs:appinfo>Angaben zum verwendeten XPM-Modul</xs:appinfo>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="SoftwareName" type="SoftwareName_xpm_typ"/>
+			<xs:element name="SoftwareVersion" type="SoftwareVersion_xpm_typ"/>
+			<xs:element name="SoftwareTyp">
+				<xs:complexType>
+					<xs:annotation>
+						<xs:appinfo>XPM-Typ</xs:appinfo>
+					</xs:annotation>
+					<xs:attribute name="V" type="kbv:string_max_60_typ" use="required" fixed="XPM"/>
+					<xs:attribute name="DN" type="kbv:string_max_60_typ" use="optional" fixed="XML-Pruefmodul"/>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<!-- ******************** software-id-typ (enthält KBV-Prüfnummer der Software) ******************** -->
+	<!-- Der Typ wird in jedem DMP seperat umdefiniert -->
+	<xs:complexType name="software-id-typ">
+		<xs:attribute name="EX" type="kbv:string_max_60_typ" use="required"/>
+		<xs:attribute name="RT" type="xs:string" use="required" fixed="KBV-Prüfnummer"/>
+	</xs:complexType>
+	<!--******************** SoftwareName_typ ******************** -->
+	<xs:complexType name="SoftwareName_typ">
+		<xs:annotation>
+			<xs:appinfo>Name der Software</xs:appinfo>
+		</xs:annotation>
+		<xs:attribute name="V" type="kbv:string_max_60_typ" use="required"/>
+	</xs:complexType>
+	<!--******************** SoftwareName_xsd_typ ******************** -->
+	<xs:complexType name="SoftwareName_xsd_typ">
+		<xs:annotation>
+			<xs:appinfo>Name der XML-Schnittstelle</xs:appinfo>
+		</xs:annotation>
+		<xs:attribute name="V" type="kbv:string_max_60_typ" use="required"/>
+	</xs:complexType>
+	<!--******************** SoftwareName_xpm_typ ******************** -->
+	<xs:complexType name="SoftwareName_xpm_typ">
+		<xs:annotation>
+			<xs:appinfo>Name des XML-Prüfmoduls</xs:appinfo>
+		</xs:annotation>
+		<xs:attribute name="V" type="kbv:string_max_60_typ" use="required"/>
+	</xs:complexType>
+	<!-- ******************** SoftwareVersion_typ ******************** -->
+	<xs:complexType name="SoftwareVersion_typ">
+		<xs:annotation>
+			<xs:appinfo>Version der eingesetzten Software</xs:appinfo>
+		</xs:annotation>
+		<xs:attribute name="V" type="kbv:string_max_60_typ" use="required"/>
+	</xs:complexType>
+	<!-- ******************** SoftwareVersion_xsd_typ ******************** -->
+	<xs:complexType name="SoftwareVersion_xsd_typ">
+		<xs:annotation>
+			<xs:appinfo>Version der XML-Schnittstelle</xs:appinfo>
+		</xs:annotation>
+		<xs:attribute name="V" type="kbv:string_max_60_typ" use="required"/>
+	</xs:complexType>
+	<!-- ******************** SoftwareVersion_xpm_typ ******************** -->
+	<xs:complexType name="SoftwareVersion_xpm_typ">
+		<xs:annotation>
+			<xs:appinfo>Version der XML-Pruefmoduls</xs:appinfo>
+		</xs:annotation>
+		<xs:attribute name="V" type="kbv:string_max_60_typ" use="required"/>
+	</xs:complexType>
+	<!-- ******************** Type SoftwareTyp ******************** -->
+	<xs:complexType name="SoftwareTyp_typ">
+		<xs:annotation>
+			<xs:appinfo>Typ der eingesetzten Software</xs:appinfo>
+		</xs:annotation>
+		<xs:attribute name="V" type="kbv:string_max_60_typ" use="required" fixed="PVS"/>
+		<xs:attribute name="DN" type="kbv:string_max_60_typ" use="optional" fixed="Arztpraxissoftware"/>
+	</xs:complexType>
+	<!-- ******************** Type Kontakt******************** -->
+	<xs:complexType name="Kontakt_typ">
+		<xs:sequence>
+			<xs:element name="Kontakttyp" type="Kontakttyp_typ"/>
+			<xs:group ref="cda:kontakt_gruppe"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Kontakttyp_typ">
+		<xs:annotation>
+			<xs:appinfo>Rolle der benannten Firma bzw. Person</xs:appinfo>
+		</xs:annotation>
+		<xs:attribute name="V" type="kbvlib:kontakttyp_typ" use="required"/>
+		<xs:attribute name="S" type="xs:string" use="required" fixed="1.2.276.0.76.3.1.1.5.2.3"/>
+		<xs:attribute name="DN" type="xs:string"/>
+	</xs:complexType>
+</xs:schema>

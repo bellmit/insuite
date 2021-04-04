@@ -1,0 +1,47 @@
+//TRANSLATION INCOMPLETE!! MOJ-3201
+.container.container-fullscreen#patienttransfer.dc_shift_top.yui3-js-enabled.yui3-skin-sam
+
+  .row#selectionArea
+    .col-md-5
+      .panel.panel-info
+        .panel-heading
+          h4 Praxis (Quelle)
+        .panel-body
+          .form-group
+            .col-sm-5
+              .row
+                label(for="schedprax").text-center Von
+              .row
+                select(name='sourcePractices').form-control#sourcePractices
+                  option(value='') bitte wählen
+                span.help-inline
+
+              .row(style="margin-top:20px;")
+                #sourceTable
+
+    .col-md-2.td-bottom.form-group.text-center
+      span.btn.btn-primary#btnTransfer Transfer&nbsp;
+        i.icon-white.icon-arrow-right.hidden-sm.hidden-xs
+        i.icon-white.icon-arrow-down.visible-sm.visible-xs
+
+    .col-md-5
+      .panel.panel-info
+        .panel-heading
+          h4 Praxis (Ziel)
+        .panel-body
+          .col-sm-5
+            .row
+              label(for="schedprax").text-center Nach
+            .row
+              select(name='targetPractices').form-control#targetPractices
+                option(value='') bitte wählen
+              span.help-inline
+
+            .row(style="margin-top:20px;")
+              #targetTable
+
+  .col-sm-2
+    #tanForm.hidden
+      .form-group
+        label(for="tan").control-label Transfer TAN
+        input.form-control(type='text', name='tan', dcschema='',dctype='', value='', placeholder='hier TAN eingeben')#tan

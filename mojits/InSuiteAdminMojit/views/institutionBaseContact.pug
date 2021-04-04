@@ -1,0 +1,79 @@
+.row
+  .col-sm-3
+    h4(data-bind="text: generalTextI18n")
+    div.panel.panel-default
+      div.panel-body
+        div.form-group(data-bind="hasFeedback: { field: baseContactType, toggle: baseContactType.hasError, messages: baseContactType.validationMessages }")
+          label.control-label(for="tab_contacts_detail_baseContactType", data-bind="text: baseContactTypeI18n")
+          input#tab_contacts_detail_baseContactType.form-control(name="baseContactType", type="text", data-bind="select2: select2BaseContactType, readOnly: readOnlyBaseContactType" )
+    h4(data-bind="text: baseContactTypeComputed")
+    div.panel.panel-default
+      div.panel-body
+        div.form-group(data-bind="hasFeedback: { field: institutionName, toggle: institutionName.hasError, messages: institutionName.validationMessages }")
+          label.control-label(for="tab_contacts_detail_institutionName", data-bind="text: institutionName.i18n")
+          input#tab_contacts_detail_institutionName.form-control(name="institutionName", type="text", data-bind="textInput: institutionName")
+        div.form-group.has-error(data-bind="visible: showAdditionalVendorFields")
+          label.checkbox-inline
+            span(data-bind="text: statusDeactivatedI18nCapitalised")
+            input(type="checkbox", name="status", data-bind="checked: deactivated")
+        // ko if: showSelect2InstitutionType
+        div.form-group(data-bind="hasFeedback: { field: institutionType, toggle: institutionType.hasError, messages: institutionType.validationMessages }")
+          label.control-label(data-bind="text: institutionType.i18n")
+          input.form-control(name="institutionType", type="hidden", data-bind="select2: select2InstitutionType")
+        // /ko
+        div.form-group
+            label.control-label(data-bind="text: contactsI18n")
+            // ko if: addContact
+            small(style="margin-left: 5px")
+              a(href="#", data-bind="click: addContact")
+                i.icon.fa.fa-plus
+            // /ko
+            input.form-control(name="contacts", type="hidden", data-bind="select2: select2Contacts")
+        // ko if: isSwiss
+        div.form-group(data-bind="if: showAdditionalVendorFields")
+          label.checkbox-inline
+            span(data-bind="text: isMainSupplierI18n")
+            input(type="checkbox", name="isMainSupplier", data-bind="disable: deactivated, value: isMainSupplier, checked: isMainSupplier")
+        div.form-group
+         label.checkbox-inline
+           span(data-bind="text: sendElectronicOrderI18n")
+           input(type="checkbox", name="sendElectronicOrder", data-bind="value: sendElectronicOrder, checked: sendElectronicOrder")
+        // /ko
+        div.form-group(data-bind="if: showAdditionalVendorFields")
+          div.form-group(data-bind="hasFeedback: { field: supplierCustomerId, toggle: supplierCustomerId.hasError, messages: supplierCustomerId.validationMessages }")
+            label.control-label(for="tab_contacts_detail_supplierCustomerId", data-bind="text: supplierCustomerId.i18n")
+            input#tab_contacts_detail_supplierCustomerId.form-control(name="supplierCustomerId", type="text", data-bind="textInput: supplierCustomerId")
+        div.form-group(data-bind="if: showAdditionalVendorFields")
+          label.control-label(for="tab_contacts_detail_defaultForm", data-bind="text: defaultFormId.i18n")
+          input#tab_contacts_detail_defaultForm.form-control(name="defaultForm", type="text", data-bind="textInput: defaultForm")
+          br
+          div.col-12
+            button#btn_form_selectorr.btn.btn-primary.pull-right(type="button",  data-bind="click: selectPdfTemplate, text: orderFormi18n")
+
+  .col-sm-9
+    .row
+      .col-sm-7
+        h4
+          span(data-bind="text: addresses.i18n")
+          | &nbsp;
+          small
+            a(href="#", data-bind="click: addresses.push")
+              i.icon.fa.fa-plus
+        div(data-bind="foreach: addresses")
+          include tab_contacts_address
+      .col-sm-5
+        h4
+          span(data-bind="text: communications.i18n")
+          | &nbsp;
+          small
+            a(href="#", data-bind="click: communications.push")
+              i.icon.fa.fa-plus
+        div(data-bind="foreach: communications")
+          include tab_contacts_communications
+    .row
+      // ko foreach: contactList
+      .col-sm-6.col-md-4
+        div.panel.panel-default
+          div.panel-body
+            p.text-center(data-bind="html: $parent.getContactContent($data)")
+      // /ko

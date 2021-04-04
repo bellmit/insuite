@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- automatische Dokumentation, generiert durch Visual Source Safe 
+	$Workfile: document_relationship_typelib.xsd $  
+	$Modtime: 9.07.04 13:21 $  
+	$Revision: 1 $  
+-->
+<xs:schema targetNamespace="urn::hl7-org/cda" xmlns="urn::hl7-org/cda" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+	<xs:include schemaLocation="id_typelib.xsd"/>
+	<!-- ****************************** document_relationship_dmp ****************************** -->
+	<xs:element name="document_relationship" type="document_relationship_typ"/>
+	<xs:complexType name="document_relationship_typ">
+		<xs:sequence>
+			<xs:element ref="document_relationship.type_cd"/>
+			<xs:element ref="related_document"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!-- ************************ document_relationship.type_cd_typ ********************************* -->
+	<xs:element name="document_relationship.type_cd" type="document_relationship.type_cd_typ">
+		<xs:annotation>
+			<xs:documentation>Art der Dokumentbeziehung ("Anhang", "Ersatz")</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:complexType name="document_relationship.type_cd_typ">
+		<xs:attribute name="V" type="v_document_relationship.type_cd_typ" use="required"/>
+	</xs:complexType>
+	<xs:simpleType name="v_document_relationship.type_cd_typ">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="RPLC"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!-- ************************ related_document_typ ********************************* -->
+	<xs:element name="related_document" type="related_document_typ">
+		<xs:annotation>
+			<xs:documentation>Verweis auf das Original-Dokument</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:complexType name="related_document_typ">
+		<xs:sequence>
+			<xs:element name="id" type="document_id_mit_arztabrechnungsnummer_typ"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

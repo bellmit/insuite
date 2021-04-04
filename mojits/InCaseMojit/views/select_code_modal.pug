@@ -1,0 +1,11 @@
+div#selectCodeModel(style="margin-top: -15px;")
+  div.row
+    div.col-xs-8
+      div.form-group
+        p(data-bind="text: noDataI18n, visible: !showCodes()")
+        div(data-bind="visible: showCodes")
+          div(data-bind="foreach: codes")
+            .radio
+              label
+                input(type="radio", name="codeRadioBoxes", value="", data-bind="checked: $parent.selectedCode, attr: {value: seq}")
+                span(data-bind="text: seq")

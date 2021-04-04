@@ -1,0 +1,14 @@
+{
+  "meta": {
+    "errors": [],
+    "warnings": [],
+    "query": {},
+    "itemsPerPage": null,
+    "page": null,
+    "replyCode": 200,
+    "model": "reportingjob"
+  },
+  "data": [
+    "test.csv"
+  ]
+}

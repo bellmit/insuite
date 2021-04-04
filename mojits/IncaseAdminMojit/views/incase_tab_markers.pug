@@ -1,0 +1,60 @@
+div.container.container-fullscreen
+  div.row
+    div.col-md-8
+      div.panel.panel-default(dc-panel="markers_config_panel", dc-panel-actions="minimize")
+        div.panel-heading
+          strong(data-bind="text: symbolDesignationI18n")
+        div#markers_config_panel.panel-body.in
+          div.markers_config_table(data-bind="with: MarkerArrayModel")
+            table.table.table-bordered
+              colgroup
+                col(width="32")
+                col(width="60%")
+                col(width="40%")
+                col(width="32")
+              thead
+                tr
+                  th(data-bind="text: labelSymbolI18n")
+                  th(data-bind="text: labelDesignationI18n")
+                  th(data-bind="text: $parent.labelClassI18n")
+                  th(data-bind="text: labelActionI18n")
+              tbody(data-bind='foreach: _data')
+                tr
+                  td
+                    input.form-control#select2Icon(name="select2Icon", type="hidden", data-bind="select2: select2Icon")
+                  td
+                    div(data-bind="hasFeedback: { field: description, toggle: description.hasError, messages: description.validationMessages }")
+                      input.form-control(name="description", data-bind="value: description, attr: {placeholder: $parent.labelEnterI18n}")
+                  td
+                    select.form-control(name="severity", data-bind="options: $root.MarkerSeverityArrayModel._data, optionsText: '_name', optionsValue: 'severity', value: severity")
+                  td
+                    button.btn.btn-default.btn-block(data-bind='click: $parent.confirmRemoveItem')
+                      span.glyphicon.glyphicon-trash
+              tfoot
+                tr
+                  td
+                  td
+                  td
+                  td
+                    button.btn.btn-default.btn-block(data-bind="click: addDefaultItem")
+                      span.glyphicon.glyphicon-plus
+    div.col-md-4
+      div.panel.panel-default(dc-panel="marker_colors_panel", dc-panel-actions="minimize")
+        div.panel-heading
+          strong(data-bind="text: colorMappingI18n")
+        div#marker_colors_panel.panel-body.in
+          div.marker_colors_table(data-bind="with: MarkerSeverityArrayModel")
+            table.table.table-bordered
+              colgroup
+                col(width="100%")
+                col(width="32")
+              thead
+                tr
+                  th(data-bind="text: $parent.labelClassI18n")
+                  th(data-bind="text: labelColorI18n")
+              tbody(data-bind="foreach: _data")
+                tr
+                  td
+                    div(data-bind="text: _name", style="padding:7px;")
+                  td
+                    input.form-control.input-color(name="color", type="hidden", data-bind="value: color")

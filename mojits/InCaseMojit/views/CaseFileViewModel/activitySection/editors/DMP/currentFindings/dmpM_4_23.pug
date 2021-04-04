@@ -1,0 +1,9 @@
+div.form-group(data-bind="visible: dmpM_4_23Visible()")
+    div.row
+        div.col-xs-2
+            strong(data-bind="text: dmpM_4_23.i18n")
+            span(data-bind="dmpField: { field: dmpM_4_23 }")
+        div.col-xs-10(data-bind="foreach: dmpM_4_23.list, hasFeedback: { field: dmpM_4_23, toggle: dmpM_4_23.hasError, messages: dmpM_4_23.validationMessages }")
+            label.radio-inline
+                span(data-bind="text: i18n")
+                input(type="radio", name="dmpM_4_23", data-bind="value: val, checked: $parent.dmpM_4_23, readOnly: $parent.dmpM_4_23.readOnly, attr: { name: $element.name + '-' + val }")

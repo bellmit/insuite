@@ -1,0 +1,9 @@
+div
+  p(data-bind="text: createAdditionalInsuranceI18n")
+  div(data-bind="foreach: insurances")
+    div.checkbox
+      label
+        span.glyphicon.glyphicon-ok-circle(style="padding-left: 4px;", data-bind="tooltip: {title: 'Kostenträger existiert bereits!'}, visible: alreadyExists")
+        span.glyphicon.glyphicon-tag(style="padding-left: 4px;", data-bind="tooltip: {title: 'Karte im aktuellen Quartal gelesen?'}, visible: 'PUBLIC' === type, style: {color: cardSwiped ? 'green' : 'red'}")
+        strong(style="padding-left: 4px;", data-bind="text: i18n")
+        input(type="checkbox", data-bind="checked: checked")

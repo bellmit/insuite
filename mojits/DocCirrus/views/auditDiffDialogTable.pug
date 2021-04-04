@@ -1,0 +1,16 @@
+div.table-responsive
+  table.table.table-striped.table-condensed
+    colgroup
+      col(style="width:30%")
+      col(style="width:35%; border-left: 1px solid #ddd;")
+      col(style="width:35%; border-left: 1px solid #ddd;")
+    thead
+      tr
+        th(data-bind="text: columnKeyLabel")
+        th(data-bind="text: columnValueNewLabel")
+        th(data-bind="text: columnValueOldLabel")
+    tbody(data-bind="foreach: rows")
+      tr
+        th(data-bind="text: property")
+        td.bg-newValue(data-bind="text: newValue", style="word-break: break-all;")
+        td.bg-oldValue(data-bind="text: oldValue", style="word-break: break-all;")

@@ -1,0 +1,21 @@
+//TRANSLATION INCOMPLETE!! MOJ-3201
+div.table-responsive
+  table.table.table-condensed
+    colgroup
+      col(style="width:30%")
+      col(style="width:35%; border-left: 1px solid #ddd;")
+      col(style="width:35%; border-left: 1px solid #ddd;")
+    tbody(data-bind="foreach: tables")
+      tr
+        th(colspan="3")
+          h4(data-bind="text: label")
+      tr
+        th
+        th bisher
+        th aktuell
+      // ko foreach: data
+      tr.row-conflict
+        th(data-bind="text: label")
+        td.bg-noconflict(data-bind="text: $root.format(valueOriginal)")
+        td.bg-conflict(data-bind="text: $root.format(valueUpdated)")
+      // /ko

@@ -1,0 +1,34 @@
+tr.KoTableHeader-row.KoTableHeader-row-label(data-bind="foreach: owner.columns, notifyBind: { method: $parent.rowRendered, namespace: $parent }")
+  th.KoTableHeader-cell(data-bind="\
+      visible: visible,\
+      style: computedStyles,\
+      css: {\
+        'KoTableFixedCell': isFixed,\
+        'KoTableHeader-hasTools': hasTools,\
+        'KoTableColumn-isSortable': isSortable,\
+        'KoTableColumn-isDraggable': isDraggable,\
+        'KoTableColumn-isDroppable': isDroppable,\
+        'KoTableColumn-isInSorters': isInSorters(),\
+        'KoTableColumn-isNotMainSortedBy': isNotMainSortedBy()\
+      },\
+      click: clickLabelHandler,\
+      event: { contextmenu: onFilterContextMenu },\
+      template: $data.template\
+    ")
+// ko if: rowWithFiltersIsAvailable
+tr.KoTableHeader-row.KoTableHeader-row-filter(data-bind="foreach: owner.columns, notifyBind: { method: $parent.rowRendered, namespace: $parent }")
+  th.KoTableHeader-cell(data-bind="visible: visible, style: computedStyles, css: { 'KoTableFixedCell': isFixed }",valign="top")
+    // ko switch: $data
+    // ko case: $parent.hasColumnFilterIcon($value)
+    div.text-center
+      span.KoTableHeader-FilterIcon.glyphicon.glyphicon-filter(data-bind="click: $parent.onFilterIconClick, attr: { title: $parent.filterIconTitle }")
+    // /ko
+    // ko case: $value.isFilterable
+    div(data-bind="template: filterField.template, attr: { title: title }")
+    // /ko
+    // ko case: $default
+    span(style="height: 30px; display: block;")
+      br
+    // /ko
+    // /ko
+// /ko

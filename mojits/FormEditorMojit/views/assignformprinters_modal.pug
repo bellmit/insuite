@@ -1,0 +1,8 @@
+div#divAssignFormPrintersModal
+  span(data-bind="html: caption")
+  div(data-bind="foreach: printerButtons")
+    button.btn.form-control(data-bind="click: function() { $root.onPrinterSelect( $root, printerName ); }")
+      i.fa.fa-print-o
+      span(data-bind="text: printerName")
+    br
+    div(style="height: 5px;")

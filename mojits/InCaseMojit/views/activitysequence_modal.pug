@@ -1,0 +1,23 @@
+div#activitySequenceListModel
+  div.row
+    div.col-md-6
+      div.form-group(data-bind="hasFeedback: { field: title, toggle: title.hasError, messages: title.validationMessages, popover: { container: '#activitysequence_modal' } }")
+        label.control-label(data-bind="text: title.i18n")
+        input.form-control(data-bind="value: title, valueUpdate: 'afterkeydown'")
+      div.form-group(data-bind="hasFeedback: { field: description, toggle: description.hasError, messages: description.validationMessages }")
+        label.control-label(data-bind="text: description.i18n")
+        input.form-control(data-bind="value: description, valueUpdate: 'afterkeydown'")
+      div.form-group
+        label.control-label(for="activity_sequence_add_group", data-bind="text: sequenceGroupsI18n")
+        input#activity_sequence_add_group.form-control(name="group", type="hidden", data-bind="select2: select2Group")
+    div.col-md-6
+      span &nbsp;
+      div.form-group(data-bind="hasFeedback: { field: useOriginalValues }")
+        .checkbox
+          label
+            span(data-bind="text: useOriginalValues.i18n")
+            input(name="useOriginalValues", type="checkbox", data-bind="checked: useOriginalValues")
+  div.row
+    div.col-xs-12
+      label(data-bind="text: contentI18n")
+      div#activitySequenceTable(data-bind="template: activitySequenceTable.template")

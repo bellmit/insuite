@@ -1,0 +1,29 @@
+div#divLinkedAttachedImagesModal(data-bind="notifyBind: { method: 'templateReady', namespace: $data }")
+  ul.nav.nav-tabs(role="tablist")
+    // ko if: currentActivity
+
+    li.active#localLinkedTab(role="presentation", data-bind="click: tabNav.clicked, css: {active: tabNav.isActive('localLinkedTab')}")
+      a(href="#", role="tab", data-bind="text: tabsActivityI18n")
+
+    li#casefolderLinkedTab(role="presentation", data-bind="click: tabNav.clicked, css: {active: tabNav.isActive('casefolderLinkedTab')}")
+      a(href="#", role="tab", data-bind="text: casefolderI18n")
+
+    li#patientLinkedTab(role="presentation", data-bind="click: tabNav.clicked, css: {active: tabNav.isActive('patientLinkedTab')}")
+      a(href="#", role="tab", data-bind="text: patientI18n")
+
+    // /ko
+
+    li#allLinkedTab(role="presentation", data-bind="click: tabNav.clicked, css: {active: tabNav.isActive('allLinkedTab')}")
+      a(href="#", role="tab", data-bind="text: tabsAllI18n")
+
+  div.tab-content(style="padding-top: 15px")
+    div.tab-pane.fade.in.active
+      div.row
+        div#imagesKoTable(data-bind="template: imagesTable.template")
+
+  //hr
+  //pre(data-bind="text: debugText, visible: isLoaded")#preDebugText
+
+  //div(style="margin-top: 10px")#divUploadContainer
+  //  // ko template: { name:'fineViewModel', data: fineViewModel }
+  //  // /ko

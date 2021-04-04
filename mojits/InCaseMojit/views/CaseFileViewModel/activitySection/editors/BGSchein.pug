@@ -1,0 +1,216 @@
+div
+  div.row
+    div.col-xs-6
+      div.form-group
+        label.control-label(data-bind="text: scheinNotes.i18n")
+        textarea.form-control(name="scheinNotes", data-bind="value: scheinNotes, valueUpdate: 'afterkeydown', readOnly: scheinNotes.readOnly")
+    .col-xs-6
+      .row
+        .col-xs-6
+          div.form-group
+            label(data-bind="text: invoiceTypeI18n")
+            input.form-control(name="scheinSettledDate", data-bind="readOnly: true, value: _showScheinSettledDate")
+        .col-xs-6
+          label(style="padding-top: 30px;", data-bind="text: scheinSettledDate.i18n")
+      .row
+        .col-xs-6
+          div.form-group
+            select.form-control(name="treatmentType", data-bind="readOnly: treatmentType.readOnly, options: _treatmentTypeList, optionsValue: 'val', optionsText: '-de', value: treatmentType")
+        .col-xs-6
+          div.form-group
+            div.checkbox
+              label.control-label
+                span(data-bind="text: includesBSK.i18n")
+                input(name="includesBSK", type="checkbox", data-bind="readOnly: includesBSK.readOnly, checked: includesBSK")
+            div.checkbox(data-bind="visible: 'STATIONARY' === treatmentType()")
+              label.control-label
+                span(data-bind="text: isChiefPhysician.i18n")
+                input(name="isChiefPhysician", type="checkbox", data-bind="readOnly: isChiefPhysician.readOnly, checked: isChiefPhysician")
+  if mvprc
+    div.row
+      div.col-xs-6
+        label.col-sm-4.control-label
+          span.pull-right Medneo
+        div.col-sm-8.form-group
+          label.control-label(data-bind="text: debtCollection.i18n")
+          div.form-group
+            select.form-control(name="debtCollection", data-bind="options: debtCollection.list, optionsValue: 'val', optionsText: 'i18n', value: debtCollection, readOnly: debtCollection.readOnly")
+      div.col-xs-6
+        div.form-group.col-xs-6
+          label.control-label(data-bind="text: orderAccounting.i18n")
+          div.date-picker.input-group
+            input.form-control(name="orderAccounting", type="text", data-bind="value: orderAccounting, readOnly: orderAccounting.readOnly")
+        div.form-group.col-xs-6
+          label.control-label(data-bind="text: agencyCost.i18n")
+          div.date-picker.input-group
+            input.form-control(name="agencyCost", type="text", data-bind="value: agencyCost, readOnly: agencyCost.readOnly")
+  // ko if: showAssignBgScheinSelect
+  div.row
+    div.col-xs-12
+      div.form-group(data-bind="hasFeedback: { field: assignedBgScheinRef, toggle: assignedBgScheinRef.hasError, messages: assignedBgScheinRef.validationMessages }")
+        label.control-label(data-bind="text: assignedBgScheinRef.i18n")
+        select.form-control(name="assignedBgScheinRef", type="text", data-bind="options: bgScheinRefList, optionsText: 'text', optionsValue: 'id', optionsCaption: 'Neuer BG Schein', value: assignedBgScheinRef, valueAllowUnset: true, readOnly: assignedBgScheinRef.readOnly")
+  // /ko
+  div.row
+    div.col-xs-8
+      div.form-group(data-bind="hasFeedback: { field: continuousIcds, toggle: continuousIcds.hasError, messages: continuousIcds.validationMessages }")
+        label.control-label(data-bind="text: continuousIcds.i18n")
+        input.form-control(name="continuousIcds", type="hidden", data-bind="select2: _select2continuousDiagnoses, readOnly: continuousIcds.readOnly")
+        div.checkbox
+          label.control-label
+            strong(data-bind="text: createContinuousDiagnosisOnSave.i18n")
+            input(type="checkbox", name="createContinuousDiagnosisOnSave", data-bind="checked: createContinuousDiagnosisOnSave, readOnly: continuousIcds.readOnly")
+    div.col-xs-4
+      div.form-group
+        label.control-label(data-bind="text: uvGoaETypeI18n")
+        select.form-control(data-bind="options: _uvGoaeTypeList, optionsValue: 'val', optionsText: '-de', value: uvGoaeType, readOnly: uvGoaeType.readOnly", name="uvGoaeType")
+  // commented for later usage MOJ-13152
+  //div.row
+    div.col-xs-12
+      div.form-group(data-bind="hasFeedback: { field: continuousMedications, toggle: continuousMedications.hasError, messages: continuousMedications.validationMessages }")
+        label.control-label(data-bind="text: continuousMedications.i18n")
+        input.form-control(name="continuousMedications", type="hidden", data-bind="select2: _select2continuousMedications, readOnly: continuousMedications.readOnly")
+        div.checkbox
+          label.control-label
+            strong(data-bind="text: createContinuousMedicationsOnSave.i18n")
+            input(type="checkbox", name="createContinuousMedicationsOnSave", data-bind="checked: createContinuousMedicationsOnSave, readOnly: continuousMedications.readOnly")
+
+  div.row
+    div.col-xs-6
+      div.form-group(data-bind="hasFeedback: { field: dayOfAccident, toggle: dayOfAccident.hasError, messages: dayOfAccident.validationMessages }")
+        label.control-label(data-bind="text: dayOfAccident.i18n")
+        div.date-picker.input-group
+          input.form-control(name="dayOfAccident", type="text", data-bind="datetimepicker: { value: dayOfAccident }, readOnly: dayOfAccident.readOnly")
+    div.col-xs-6
+      div.form-group(data-bind="hasFeedback: { field: timeOfAccident, toggle: timeOfAccident.hasError, messages: timeOfAccident.validationMessages }")
+        label.control-label(data-bind="text: timeOfAccident.i18n")
+        div.date-picker.input-group
+          input.form-control(name="timeOfAccident", type="text", data-bind="datetimepicker:{ options: { format: 'HH:mm'}, value: timeOfAccident, valueReset: null }")
+  div.row
+    div.col-xs-6
+      div.form-group(data-bind="hasFeedback: { field: workingHoursStart, toggle: workingHoursStart.hasError, messages: workingHoursStart.validationMessages }")
+        label.control-label(data-bind="text: workingHoursStart.i18n")
+        div.date-picker.input-group
+          input.form-control(name="workingHoursStart", type="text", data-bind="datetimepicker:{ options: { format: 'HH:mm'}, value: workingHoursStart, valueReset: null }")
+    div.col-xs-6
+      div.form-group(data-bind="hasFeedback: { field: workingHoursEnd, toggle: workingHoursEnd.hasError, messages: workingHoursEnd.validationMessages }")
+        label.control-label(data-bind="text: workingHoursEnd.i18n")
+        div.date-picker.input-group
+          input.form-control(name="workingHoursEnd", type="text", data-bind="datetimepicker:{ options: { format: 'HH:mm'}, value: workingHoursEnd, valueReset: null }")
+  div.row
+    div.col-xs-6
+      div.form-group(data-bind="hasFeedback: { field: dayOfArrival, toggle: dayOfArrival.hasError, messages: dayOfArrival.validationMessages }")
+        label.control-label(data-bind="text: dayOfArrival.i18n")
+        div.date-picker.input-group
+          input.form-control(name="dayOfArrival", type="text", data-bind="datetimepicker: { value: dayOfArrival }, readOnly: dayOfArrival.readOnly")
+    div.col-xs-6
+      div.form-group(data-bind="hasFeedback: { field: timeOfArrival, toggle: timeOfArrival.hasError, messages: timeOfArrival.validationMessages }")
+        label.control-label(data-bind="text: timeOfArrival.i18n")
+        div.date-picker.input-group
+          input.form-control(name="timeOfArrival", type="text", data-bind="datetimepicker:{ options: { format: 'HH:mm' }, value: timeOfArrival, valueReset: null }")
+  div.row
+    div.col-xs-6
+      div.form-group(data-bind="hasFeedback: { field: dayOfFristTreat, toggle: dayOfFristTreat.hasError, messages: dayOfFristTreat.validationMessages }")
+        label.control-label(data-bind="text: dayOfFristTreat.i18n")
+        div.date-picker.input-group
+          input.form-control(name="dayOfFristTreat", type="text", data-bind="datetimepicker: { value: dayOfFristTreat }, readOnly: dayOfFristTreat.readOnly")
+    div.col-xs-6
+      div.form-group(data-bind="hasFeedback: { field: fristTreatPhysician, toggle: fristTreatPhysician.hasError, messages: fristTreatPhysician.validationMessages }")
+        label.control-label(data-bind="text: fristTreatPhysician.i18n")
+        input.form-control(name="fristTreatPhysician", data-bind="value: fristTreatPhysician, readOnly: fristTreatPhysician.readOnly, valueUpdate: 'afterkeydown'")
+  div.row
+    div.col-xs-12
+      h4
+        a(href="#", data-bind="click: selectAccidentCompany, readOnly: accidentCompany.readOnly") Unfallbetrieb
+      hr
+    div.col-xs-6
+      div.form-group(data-bind="hasFeedback: { field: accidentCompany, toggle: accidentCompany.hasError, messages: accidentCompany.validationMessages }")
+        label.control-label(data-bind="text: accidentCompany.i18n")
+        input.form-control(name="accidentCompany", data-bind="value: accidentCompany, readOnly: accidentCompany.readOnly, valueUpdate: 'afterkeydown'")
+  div.row
+    div.col-xs-6
+      div.form-group(data-bind="hasFeedback: { field: accidentCompanyStreet, toggle: accidentCompanyStreet.hasError, messages: accidentCompanyStreet.validationMessages }")
+        label.control-label(data-bind="text: accidentCompanyStreet.i18n")
+        input.form-control(name="accidentCompanyStreet", data-bind="value: accidentCompanyStreet, readOnly: accidentCompanyStreet.readOnly, valueUpdate: 'afterkeydown'")
+    div.col-xs-6
+      div.form-group(data-bind="hasFeedback: { field: accidentCompanyHouseno, toggle: accidentCompanyHouseno.hasError, messages: accidentCompanyHouseno.validationMessages }")
+        label.control-label(data-bind="text: accidentCompanyHouseno.i18n")
+        input.form-control(name="accidentCompanyHouseno", data-bind="value: accidentCompanyHouseno, readOnly: accidentCompanyHouseno.readOnly, valueUpdate: 'afterkeydown'")
+  div.row
+    div.col-xs-4
+      div.form-group(data-bind="hasFeedback: { field: accidentCompanyPLZ, toggle: accidentCompanyPLZ.hasError, messages: accidentCompanyPLZ.validationMessages }")
+        label.control-label(data-bind="text: accidentCompanyPLZ.i18n")
+        input.form-control(name="accidentCompanyPLZ", data-bind="select2: _zipCfgAutoComplete, readOnly: accidentCompanyPLZ.readOnly")
+    div.col-xs-8
+      div.form-group(data-bind="hasFeedback: { field: accidentCompanyCity, toggle: accidentCompanyCity.hasError, messages: accidentCompanyCity.validationMessages }")
+        label.control-label(data-bind="text: accidentCompanyCity.i18n")
+        input.form-control#cityAutoComplete(name="accidentCompanyCity", data-bind="select2: _cityCfgAutoComplete, readOnly: accidentCompanyCity.readOnly")
+  div.row
+    div.col-xs-12
+      hr
+  div.row
+    div.col-xs-12
+      div.form-group(data-bind="hasFeedback: { field: scheinNextTherapist, toggle: scheinNextTherapist.hasError, messages: scheinNextTherapist.validationMessages }")
+        label.control-label(data-bind="text: scheinNextTherapist.i18n")
+        input.form-control(name="scheinNextTherapist", data-bind="value: scheinNextTherapist, valueUpdate: 'afterkeydown', readOnly: scheinNextTherapist.readOnly")
+  h4
+    a(href="javascript:;", data-bind="readOnly: scheinEstablishment.readOnly, click: selectPhysicianRemittor, text: groupRemittorI18n")
+  div.row
+    div.col-xs-6
+      div.form-group(data-bind="hasFeedback: { field: scheinEstablishment, toggle: scheinEstablishment.hasError, messages: scheinEstablishment.validationMessages }")
+        label.control-label(data-bind="text: labelBSNRI18n")
+        input.form-control(name="scheinEstablishment", data-bind="select2: _scheinEstablishmentCfgAutoComplete, readOnly: scheinEstablishment.readOnly")
+    div.col-xs-6
+      div.form-group(data-bind="hasFeedback: { field: scheinRemittor, toggle: scheinRemittor.hasError, messages: scheinRemittor.validationMessages }")
+        label.control-label(data-bind="text: labelLANRI18n")
+        input.form-control(name="scheinRemittor", data-bind="select2: _scheinRemittorCfgAutoComplete, value: scheinRemittor, readOnly: scheinRemittor.readOnly")
+  div.row
+    div.col-xs-6
+      div.form-group(data-bind="hasFeedback: { field: fk4219, toggle: fk4219.hasError, messages: fk4219.validationMessages }")
+        label.control-label(data-bind="text: fk4219.i18n")
+        input.form-control(name="fk4219", maxlength="60", data-bind="value: fk4219, valueUpdate: 'afterkeydown', readOnly: fk4219.readOnly, attr: { placeholder: fk4219.i18n }")
+  div.row
+    div.col-xs-4
+      div.form-group(data-bind="hasFeedback: { field: icds, toggle: icds.hasError, messages: icds.validationMessages }")
+        label.control-label(data-bind="text: labelDSICDI18n")
+        input.form-control(name="icds", type="hidden", data-bind="select2: _select2scheinCaseHistory, readOnly: icds.readOnly")
+    div.col-xs-6.col-xs-offset-2
+      div.form-group(data-bind="hasFeedback: { field: scheinDiagnosis, toggle: scheinDiagnosis.hasError, messages: scheinDiagnosis.validationMessages }")
+        label.control-label(data-bind="text: scheinDiagnosis.i18n")
+        textarea.form-control(name="scheinDiagnosis", data-bind="value: scheinDiagnosis, valueUpdate: 'afterkeydown', readOnly: scheinDiagnosis.readOnly")
+  div.row
+    div.col-xs-6
+      div.form-group(data-bind="hasFeedback: { field: scheinOrder, toggle: scheinOrder.hasError, messages: scheinOrder.validationMessages }")
+        label.control-label(data-bind="text: scheinOrder.i18n")
+        textarea.form-control(name="scheinOrder", data-bind="value: scheinOrder, valueUpdate: 'afterkeydown', readOnly: scheinOrder.readOnly")
+    div.col-xs-6
+      div.form-group(data-bind="hasFeedback: { field: scheinFinding, toggle: scheinFinding.hasError, messages: scheinFinding.validationMessages }")
+        label.control-label(data-bind="text: scheinFinding.i18n")
+        textarea.form-control(name="scheinFinding", data-bind="value: scheinFinding, valueUpdate: 'afterkeydown', readOnly: scheinFinding.readOnly")
+  hr.row
+  h4
+    span(data-bind="text: beilligteLeistungenI18n")
+    a( href="#", data-bind="visible: !isNew() && fk4235Set().length,readOnly: fk4235Set.readOnly, click: _recalculate, text: ' (' + recalculateI18n + ')'")
+  div.row
+    div.col-xs-6
+      div.checkbox
+        label.control-label
+          strong(data-bind="text: accPsyPrivateI18n")
+          input(type="checkbox", name="fk4234", data-bind="checked: fk4234, readOnly: fk4234.readOnly")
+        | &nbsp;
+        a(name="_arrayAdd-fk4235Set", href="#", data-bind="visible: fk4234, click: addFk4235Set, readOnly: fk4235Set.readOnly")
+          i.icon.fa.fa-plus
+  include FK4235Set
+  h4(data-bind="text: groupOperationI18n")
+  div.row
+    div.col-xs-6
+      div.form-group(data-bind="hasFeedback: { field: scheinClinicalTreatmentFrom, toggle: scheinClinicalTreatmentFrom.hasError, messages: scheinClinicalTreatmentFrom.validationMessages }")
+        label.control-label(data-bind="text: scheinClinicalTreatmentFrom.i18n")
+        div.date-picker.input-group
+          input.form-control(name="scheinClinicalTreatmentFrom", data-bind="datetimepicker: { value: scheinClinicalTreatmentFrom }, readOnly: scheinClinicalTreatmentFrom.readOnly")
+    div.col-xs-6
+      div.form-group(data-bind="hasFeedback: { field: scheinClinicalTreatmentTo, toggle: scheinClinicalTreatmentTo.hasError, messages: scheinClinicalTreatmentTo.validationMessages }")
+        label.control-label(data-bind="text: scheinClinicalTreatmentTo.i18n")
+        div.date-picker.input-group
+          input.form-control(name="scheinClinicalTreatmentTo", data-bind="datetimepicker: { value: scheinClinicalTreatmentTo }, readOnly: scheinClinicalTreatmentTo.readOnly")
+                                                                                                                        

@@ -1,0 +1,4 @@
+div#sourceModel
+  div.form-group(data-bind="hasFeedback: { field: eventName, toggle: eventName.hasError, messages: eventName.validationMessages }")
+    label(for="sourceEventEventName", data-bind="text: eventNameI18n + ':'")
+    input.form-control.input-sm#sourceEventEventName(type="hidden", data-bind="select2: select2EventName")

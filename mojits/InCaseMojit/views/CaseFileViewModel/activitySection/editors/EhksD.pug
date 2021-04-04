@@ -1,0 +1,306 @@
+include Ehks
+div.alert.alert-info
+  strong(data-bind="text: sectionDI18n")
+  br
+  span(data-bind="text: helpTextDI18n")
+div.row
+  div.col-xs-6
+    +DmpFieldset('patientHasHKSReferalLabelI18n')
+      div.form-group
+        div.row
+          div.col-xs-8
+            strong(data-bind="text: hksHasReferralI18n")
+          div.col-xs-4(data-bind="foreach: hksHasReferral.list, hasFeedback: { field: hksHasReferral, toggle: hksHasReferral.hasError, messages: hksHasReferral.validationMessages }")
+            label.checkbox-inline
+              span(data-bind="text: i18n")
+              input(type="checkbox", name="hksHasReferral", data-bind="value: val, checked: $parent.hksHasReferral, readOnly: $parent.hksHasReferral.readOnly, attr: { name: $element.name + '-' + val }")
+      // ko if: version_2_3_2
+      div.form-group
+        div.row
+          div.col-xs-8
+            strong(data-bind="text: hksReferralPhysicianPerformedHKSI18n")
+          div.col-xs-4(data-bind="foreach: hksReferralPhysicianPerformedHKS.list, hasFeedback: { field: hksReferralPhysicianPerformedHKS, toggle: hksReferralPhysicianPerformedHKS.hasError, messages: hksReferralPhysicianPerformedHKS.validationMessages }")
+            label.checkbox-inline
+              span(data-bind="text: i18n")
+              input(type="checkbox", name="hksReferralPhysicianPerformedHKS", data-bind="value: val, checked: $parent.hksReferralPhysicianPerformedHKS, readOnly: $parent.hksReferralPhysicianPerformedHKS.readOnly, attr: { name: $element.name + '-' + val }")
+      // /ko
+    +DmpFieldset('hasSuspectedDiagFromDermatologistLabelI18n')
+      // ko if: version_2_3_2
+      div.form-group
+        div.row
+          div.col-xs-8
+            strong(data-bind="text: hksSuspectedDiagnosisDI18n")
+          div.col-xs-4(data-bind="foreach: hksSuspectedDiagnosisD.list, hasFeedback: { field: hksSuspectedDiagnosisD, toggle: hksSuspectedDiagnosisD.hasError, messages: hksSuspectedDiagnosisD.validationMessages }")
+            label.checkbox-inline
+              span(data-bind="text: i18n")
+              input(type="checkbox", name="hksSuspectedDiagnosisD", data-bind="value: val, checked: $parent.hksSuspectedDiagnosisD, readOnly: $parent.hksSuspectedDiagnosisD.readOnly, attr: { name: $element.name + '-' + val }")
+      // /ko
+      div.form-group
+        div.row
+          div.col-xs-8
+            strong(data-bind="text: hksMalignesMelanomI18n")
+          div.col-xs-4(data-bind="foreach: hksMalignesMelanomDermatologists.list, hasFeedback: { field: hksMalignesMelanomDermatologists, toggle: hksMalignesMelanomDermatologists.hasError, messages: hksMalignesMelanomDermatologists.validationMessages }")
+            label.checkbox-inline
+              span(data-bind="text: i18n")
+              input(type="checkbox", name="hksMalignesMelanomDermatologists", data-bind="value: val, checked: $parent.hksMalignesMelanomDermatologists, readOnly: $parent.hksMalignesMelanomDermatologists.readOnly, attr: { name: $element.name + '-' + val }")
+      div.form-group
+        div.row
+          div.col-xs-8
+            strong(data-bind="text: hksBasalzellkarzinomI18n")
+          div.col-xs-4(data-bind="foreach: hksBasalzellkarzinomDermatologists.list, hasFeedback: { field: hksBasalzellkarzinomDermatologists, toggle: hksBasalzellkarzinomDermatologists.hasError, messages: hksBasalzellkarzinomDermatologists.validationMessages }")
+            label.checkbox-inline
+              span(data-bind="text: i18n")
+              input(type="checkbox", name="hksBasalzellkarzinomDermatologists", data-bind="value: val, checked: $parent.hksBasalzellkarzinomDermatologists, readOnly: $parent.hksBasalzellkarzinomDermatologists.readOnly, attr: { name: $element.name + '-' + val }")
+      div.form-group
+        div.row
+          div.col-xs-8
+            strong(data-bind="text: hksSpinozellularesKarzinomI18n")
+          div.col-xs-4(data-bind="foreach: hksSpinozelluläresKarzinomDermatologists.list, hasFeedback: { field: hksSpinozelluläresKarzinomDermatologists, toggle: hksSpinozelluläresKarzinomDermatologists.hasError, messages: hksSpinozelluläresKarzinomDermatologists.validationMessages }")
+            label.checkbox-inline
+              span(data-bind="text: i18n")
+              input(type="checkbox", name="hksSpinozelluläresKarzinomDermatologists", data-bind="value: val, checked: $parent.hksSpinozelluläresKarzinomDermatologists, readOnly: $parent.hksSpinozelluläresKarzinomDermatologists.readOnly, attr: { name: $element.name + '-' + val }")
+      // ko if: version_2_3_2
+      div.form-group
+        div.row
+          div.col-xs-8
+            strong(data-bind="text: hksOtherSkinCancerI18n")
+          div.col-xs-4(data-bind="foreach: hksOtherSkinCancerD.list, hasFeedback: { field: hksOtherSkinCancerD, toggle: hksOtherSkinCancerD.hasError, messages: hksOtherSkinCancerD.validationMessages }")
+            label.checkbox-inline
+              span(data-bind="text: i18n")
+              input(type="checkbox", name="hksOtherSkinCancerD", data-bind="value: val, checked: $parent.hksOtherSkinCancerD, readOnly: $parent.hksOtherSkinCancerD.readOnly, attr: { name: $element.name + '-' + val }")
+      div.form-group
+        div.row
+          div.col-xs-8
+            strong(data-bind="text: hksOthersWithBiopsyInNeedOfClarificationFindingsI18n")
+          div.col-xs-4(data-bind="foreach: hksOthersWithBiopsyInNeedOfClarificationFindings.list, hasFeedback: { field: hksOthersWithBiopsyInNeedOfClarificationFindings, toggle: hksOthersWithBiopsyInNeedOfClarificationFindings.hasError, messages: hksOthersWithBiopsyInNeedOfClarificationFindings.validationMessages }")
+            label.checkbox-inline
+              span(data-bind="text: i18n")
+              input(type="checkbox", name="hksOthersWithBiopsyInNeedOfClarificationFindings", data-bind="value: val, checked: $parent.hksOthersWithBiopsyInNeedOfClarificationFindings, readOnly: $parent.hksOthersWithBiopsyInNeedOfClarificationFindings.readOnly, attr: { name: $element.name + '-' + val }")
+      // /ko
+  div.col-xs-6
+    +DmpFieldset('hasSuspectedDiagFromReferrerLabelI18n')
+      div.form-group
+        div.row
+          div.col-xs-8
+            strong(data-bind="text: hksHasSuspectedDiagI18n")
+          div.col-xs-4(data-bind="foreach: hksHasSuspectedDiag.list, hasFeedback: { field: hksHasSuspectedDiag, toggle: hksHasSuspectedDiag.hasError, messages: hksHasSuspectedDiag.validationMessages }")
+            label.checkbox-inline
+              span(data-bind="text: i18n")
+              input(type="checkbox", name="hksHasSuspectedDiag", data-bind="value: val, checked: $parent.hksHasSuspectedDiag, readOnly: $parent.hksHasSuspectedDiag.readOnly, attr: { name: $element.name + '-' + val }")
+        div.form-group
+          div.row
+            div.col-xs-8
+              strong(data-bind="text: hksMalignesMelanomI18n")
+            div.col-xs-4(data-bind="foreach: hksMalignesMelanom.list, hasFeedback: { field: hksMalignesMelanom, toggle: hksMalignesMelanom.hasError, messages: hksMalignesMelanom.validationMessages }")
+              label.checkbox-inline
+                span(data-bind="text: i18n")
+                input(type="checkbox", name="hksMalignesMelanom", data-bind="value: val, checked: $parent.hksMalignesMelanom, readOnly: $parent.hksMalignesMelanom.readOnly, attr: { name: $element.name + '-' + val }")
+        div.form-group
+          div.row
+            div.col-xs-8
+              strong(data-bind="text: hksBasalzellkarzinomI18n")
+            div.col-xs-4(data-bind="foreach: hksBasalzellkarzinom.list, hasFeedback: { field: hksBasalzellkarzinom, toggle: hksBasalzellkarzinom.hasError, messages: hksBasalzellkarzinom.validationMessages }")
+              label.checkbox-inline
+                span(data-bind="text: i18n")
+                input(type="checkbox", name="hksBasalzellkarzinom", data-bind="value: val, checked: $parent.hksBasalzellkarzinom, readOnly: $parent.hksBasalzellkarzinom.readOnly, attr: { name: $element.name + '-' + val }")
+        div.form-group
+          div.row
+            div.col-xs-8
+              strong(data-bind="text: hksSpinozellularesKarzinomI18n")
+            div.col-xs-4(data-bind="foreach: hksSpinozelluläresKarzinom.list, hasFeedback: { field: hksSpinozelluläresKarzinom, toggle: hksSpinozelluläresKarzinom.hasError, messages: hksSpinozelluläresKarzinom.validationMessages }")
+              label.checkbox-inline
+                span(data-bind="text: i18n")
+                input(type="checkbox", name="hksSpinozelluläresKarzinom", data-bind="value: val, checked: $parent.hksSpinozelluläresKarzinom, readOnly: $parent.hksSpinozelluläresKarzinom.readOnly, attr: { name: $element.name + '-' + val }")
+        // ko if: version_2_3_2
+        div.form-group
+          div.row
+            div.col-xs-8
+              strong(data-bind="text: hksOtherSkinCancerI18n")
+            div.col-xs-4(data-bind="foreach: hksOtherSkinCancer.list, hasFeedback: { field: hksOtherSkinCancer, toggle: hksOtherSkinCancer.hasError, messages: hksOtherSkinCancer.validationMessages }")
+              label.checkbox-inline
+                span(data-bind="text: i18n")
+                input(type="checkbox", name="hksOtherSkinCancer", data-bind="value: val, checked: $parent.hksOtherSkinCancer, readOnly: $parent.hksOtherSkinCancer.readOnly, attr: { name: $element.name + '-' + val }")
+        // /ko
+    +DmpFieldset('biopsieExzisionLabelI18n')
+      div.form-group
+        div.row
+          div.col-xs-8
+            strong(data-bind="text: hksBiopsieOrExzisionI18n")
+          div.col-xs-4(data-bind="foreach: hksBiopsieOrExzision.list, hasFeedback: { field: hksBiopsieOrExzision, toggle: hksBiopsieOrExzision.hasError, messages: hksBiopsieOrExzision.validationMessages }")
+            label.checkbox-inline
+              span(data-bind="text: i18n")
+              input(type="checkbox", name="hksBiopsieOrExzision", data-bind="value: val, checked: $parent.hksBiopsieOrExzision, readOnly: $parent.hksBiopsieOrExzision.readOnly, attr: { name: $element.name + '-' + val }")
+      // ko if: version_2_3_2
+      div.form-group(data-bind="hasFeedback: { field: hksNumberOfBiopsiesTaken, toggle: hksNumberOfBiopsiesTaken.hasError, messages: hksNumberOfBiopsiesTaken.validationMessages }")
+        div.row
+          div.col-xs-8
+            strong(data-bind="text: hksNumberOfBiopsiesTakenI18n")
+          div.col-xs-4
+            input.form-control(type="text", placeholder="0-99", name="hksNumberOfBiopsiesTaken", data-bind="textInput: hksNumberOfBiopsiesTaken, readOnly: hksBasalzellkarzinomHistopathologie.readOnly() || $parent.histopathologyPanelDisabled()")
+      div.form-group
+        div.row
+          div.col-xs-8
+            strong(data-bind="text: hksOtherwiseInitiatedOrInitiatedTherapyOrDiagnosticsI18n")
+          div.col-xs-4(data-bind="foreach: hksOtherwiseInitiatedOrInitiatedTherapyOrDiagnostics.list, hasFeedback: { field: hksOtherwiseInitiatedOrInitiatedTherapyOrDiagnostics, toggle: hksOtherwiseInitiatedOrInitiatedTherapyOrDiagnostics.hasError, messages: hksOtherwiseInitiatedOrInitiatedTherapyOrDiagnostics.validationMessages }")
+            label.checkbox-inline
+              span(data-bind="text: i18n")
+              input(type="checkbox", name="hksOtherwiseInitiatedOrInitiatedTherapyOrDiagnostics", data-bind="value: val, checked: $parent.hksOtherwiseInitiatedOrInitiatedTherapyOrDiagnostics, readOnly: $parent.hksOtherwiseInitiatedOrInitiatedTherapyOrDiagnostics.readOnly, attr: { name: $element.name + '-' + val }")
+      div.form-group
+        div.row
+          div.col-xs-8
+            strong(data-bind="text: hksCurrentlyNoFurtherTherapyOrDiagnosticsI18n")
+          div.col-xs-4(data-bind="foreach: hksCurrentlyNoFurtherTherapyOrDiagnostics.list, hasFeedback: { field: hksCurrentlyNoFurtherTherapyOrDiagnostics, toggle: hksCurrentlyNoFurtherTherapyOrDiagnostics.hasError, messages: hksCurrentlyNoFurtherTherapyOrDiagnostics.validationMessages }")
+            label.checkbox-inline
+              span(data-bind="text: i18n")
+              input(type="checkbox", name="hksCurrentlyNoFurtherTherapyOrDiagnostics", data-bind="value: val, checked: $parent.hksCurrentlyNoFurtherTherapyOrDiagnostics, readOnly: $parent.hksCurrentlyNoFurtherTherapyOrDiagnostics.readOnly, attr: { name: $element.name + '-' + val }")
+      // /ko
+div.row
+  div.col-xs-12
+    +DmpFieldset('histoPathologyLabelI18n')
+      div.row
+        div.col-xs-6
+          div.form-group
+            div.row
+              div.col-xs-8
+                strong(data-bind="text: hksMalignesMelanomHistopathologieI18n")
+                i.dc-info-icon(data-bind="tooltip: {title: mustBeDocumentedI18n}")
+              div.col-xs-4(data-bind="foreach: hksMalignesMelanomHistopathologie.list, hasFeedback: { field: hksMalignesMelanomHistopathologie, toggle: hksMalignesMelanomHistopathologie.hasError, messages: hksMalignesMelanomHistopathologie.validationMessages }")
+                label.checkbox-inline
+                  span(data-bind="text: i18n")
+                  input(type="checkbox", name="hksMalignesMelanomHistopathologie", data-bind="value: val, checked: $parent.hksMalignesMelanomHistopathologie, readOnly: $parent.hksMalignesMelanomHistopathologie.readOnly() || $parent.histopathologyPanelDisabled(), attr: { name: $element.name + '-' + val }")
+        div.col-xs-6
+          div.form-group
+            div.row
+              div.col-xs-5
+                strong(data-bind="text: hksMalignesMelanomClassificationI18n")
+                i.dc-info-icon(data-bind="tooltip: {title: mustBeDocumentedI18n}")
+              div.col-xs-7(data-bind="foreach: hksMalignesMelanomClassification.list, hasFeedback: { field: hksMalignesMelanomClassification, toggle: hksMalignesMelanomClassification.hasError, messages: hksMalignesMelanomClassification.validationMessages }")
+                label.checkbox-inline
+                  span(data-bind="text: i18n")
+                  input(type="checkbox", name="hksMalignesMelanomClassification", data-bind="value: val, checked: $parent.hksMalignesMelanomClassification, readOnly: $parent.hksMalignesMelanomClassification.readOnly() || $parent.histopathologyPanelDisabled(), attr: { name: $element.name + '-' + val }")
+      div.row
+        div.col-xs-12
+          div.form-group
+            div.row
+              div.col-xs-4
+                strong(data-bind="text: hksMalignesMelanomTumorThicknessI18n")
+                i.dc-info-icon(data-bind="tooltip: {title: mustBeDocumentedI18n}")
+              div.col-xs-8(data-bind="foreach: hksMalignesMelanomTumorThickness.list, hasFeedback: { field: hksMalignesMelanomTumorThickness, toggle: hksMalignesMelanomTumorThickness.hasError, messages: hksMalignesMelanomTumorThickness.validationMessages }")
+                label.checkbox-inline
+                  span(data-bind="text: i18n")
+                  input(type="checkbox", name="hksMalignesMelanomTumorThickness", data-bind="value: val, checked: $parent.hksMalignesMelanomTumorThickness, readOnly: $parent.hksMalignesMelanomTumorThickness.readOnly() || $parent.histopathologyPanelDisabled(), attr: { name: $element.name + '-' + val }")
+      div.row
+        div.col-xs-6
+          div.form-group
+            div.row
+              div.col-xs-8
+                strong(data-bind="text: hksBasalzellkarzinomHistopathologieI18n")
+                i.dc-info-icon(data-bind="tooltip: {title: mustBeDocumentedI18n}")
+              div.col-xs-4(data-bind="foreach: hksBasalzellkarzinomHistopathologie.list, hasFeedback: { field: hksBasalzellkarzinomHistopathologie, toggle: hksBasalzellkarzinomHistopathologie.hasError, messages: hksBasalzellkarzinomHistopathologie.validationMessages }")
+                label.checkbox-inline
+                  span(data-bind="text: i18n")
+                  input(type="checkbox", name="hksBasalzellkarzinomHistopathologie", data-bind="value: val, checked: $parent.hksBasalzellkarzinomHistopathologie, readOnly: $parent.hksBasalzellkarzinomHistopathologie.readOnly() || $parent.histopathologyPanelDisabled(), attr: { name: $element.name + '-' + val }")
+      div.row
+        div.col-xs-6
+          div.form-group(data-bind="hasFeedback: { field: hksBasalzellkarzinomHorizontalTumorDiameterClinical, toggle: hksBasalzellkarzinomHorizontalTumorDiameterClinical.hasError, messages: hksBasalzellkarzinomHorizontalTumorDiameterClinical.validationMessages }")
+            div.row
+              div.col-xs-8
+                strong(data-bind="text: hksBasalzellkarzinomHorizontalTumorDiameterClinicalI18n")
+                i.dc-info-icon(data-bind="tooltip: {title: mustBeDocumentedI18n}")
+              div.col-xs-4
+                input.form-control(type="text", placeholder="0,1-999,9", name="hksBasalzellkarzinomHorizontalTumorDiameterClinical", data-bind="textInput: hksBasalzellkarzinomHorizontalTumorDiameterClinical, readOnly: hksBasalzellkarzinomHistopathologie.readOnly() || $parent.histopathologyPanelDisabled()")
+        div.col-xs-6
+          div.form-group(data-bind="hasFeedback: { field: hksBasalzellkarzinomVerticalTumorDiameterHistological, toggle: hksBasalzellkarzinomVerticalTumorDiameterHistological.hasError, messages: hksBasalzellkarzinomVerticalTumorDiameterHistological.validationMessages }")
+            div.row
+              div.col-xs-8
+                strong(data-bind="text: hksBasalzellkarzinomVerticalTumorDiameterHistologicalI18n")
+                i.dc-info-icon(data-bind="tooltip: {title: mustBeDocumentedI18n}")
+              div.col-xs-4
+                input.form-control(type="text", placeholder="0,1-999,9", name="hksBasalzellkarzinomVerticalTumorDiameterHistological", data-bind="textInput: hksBasalzellkarzinomVerticalTumorDiameterHistological, readOnly: hksBasalzellkarzinomHistopathologie.readOnly() || $parent.histopathologyPanelDisabled()")
+      div.row
+        div.col-xs-6
+          div.form-group
+            div.row
+              div.col-xs-8
+                strong(data-bind="text: hksSpinozellularesKarzinomHistopathologieI18n")
+                i.dc-info-icon(data-bind="tooltip: {title: mustBeDocumentedI18n}")
+              div.col-xs-4(data-bind="foreach: hksSpinozelluläresKarzinomHistopathologie.list, hasFeedback: { field: hksSpinozelluläresKarzinomHistopathologie, toggle: hksSpinozelluläresKarzinomHistopathologie.hasError, messages: hksSpinozelluläresKarzinomHistopathologie.validationMessages }")
+                label.checkbox-inline
+                  span(data-bind="text: i18n")
+                  input(type="checkbox", name="hksSpinozelluläresKarzinomHistopathologie", data-bind="value: val, checked: $parent.hksSpinozelluläresKarzinomHistopathologie, readOnly: $parent.hksSpinozelluläresKarzinomHistopathologie.readOnly() || $parent.histopathologyPanelDisabled(), attr: { name: $element.name + '-' + val }")
+        div.col-xs-6
+          div.form-group
+            div.row
+              div.col-xs-5
+                strong(data-bind="text: hksSpinozellularesKarzinomClassificationI18n")
+                i.dc-info-icon(data-bind="tooltip: {title: mustBeDocumentedI18n}")
+              div.col-xs-7(data-bind="foreach: hksSpinozelluläresKarzinomClassification.list, hasFeedback: { field: hksSpinozelluläresKarzinomClassification, toggle: hksSpinozelluläresKarzinomClassification.hasError, messages: hksSpinozelluläresKarzinomClassification.validationMessages }")
+                label.checkbox-inline
+                  span(data-bind="text: i18n")
+                  input(type="checkbox", name="hksSpinozelluläresKarzinomClassification", data-bind="value: val, checked: $parent.hksSpinozelluläresKarzinomClassification, readOnly: $parent.hksSpinozelluläresKarzinomClassification.readOnly() || $parent.histopathologyPanelDisabled(), attr: { name: $element.name + '-' + val }")
+      div.row
+        div.col-xs-12
+          div.form-group
+            div.row
+              div.col-xs-4
+                strong(data-bind="text: hksSpinozellularesKarzinomGradingI18n")
+                i.dc-info-icon(data-bind="tooltip: {title: mustBeDocumentedI18n}")
+              div.col-xs-8(data-bind="foreach: hksSpinozelluläresKarzinomGrading.list, hasFeedback: { field: hksSpinozelluläresKarzinomGrading, toggle: hksSpinozelluläresKarzinomGrading.hasError, messages: hksSpinozelluläresKarzinomGrading.validationMessages }")
+                label.checkbox-inline
+                  span(data-bind="text: i18n")
+                  input(type="checkbox", name="hksSpinozelluläresKarzinomGrading", data-bind="value: val, checked: $parent.hksSpinozelluläresKarzinomGrading, readOnly: $parent.hksSpinozelluläresKarzinomGrading.readOnly() || $parent.histopathologyPanelDisabled(), attr: { name: $element.name + '-' + val }")
+      // ko if: version_2_3_2
+      div.row
+        div.col-xs-6
+          div.form-group
+            div.row
+              div.col-xs-8
+                strong(data-bind="text: hksOtherSkinCancerI18n")
+              div.col-xs-4(data-bind="foreach: hksOtherSkinCancerHistopathologie.list, hasFeedback: { field: hksOtherSkinCancerHistopathologie, toggle: hksOtherSkinCancerHistopathologie.hasError, messages: hksOtherSkinCancerHistopathologie.validationMessages }")
+                label.checkbox-inline
+                  span(data-bind="text: i18n")
+                  input(type="checkbox", name="hksOtherSkinCancerHistopathologie", data-bind="value: val, checked: $parent.hksOtherSkinCancerHistopathologie, readOnly: $parent.hksOtherSkinCancerHistopathologie.readOnly() || $parent.histopathologyPanelDisabled(), attr: { name: $element.name + '-' + val }")
+
+        div.col-xs-6
+          div.form-group
+            div.row
+              div.col-xs-8
+                strong(data-bind="text: hksAtypicalNevusCellNevusI18n")
+              div.col-xs-4(data-bind="foreach: hksAtypicalNevusCellNevus.list, hasFeedback: { field: hksAtypicalNevusCellNevus, toggle: hksAtypicalNevusCellNevus.hasError, messages: hksAtypicalNevusCellNevus.validationMessages }")
+                label.checkbox-inline
+                  span(data-bind="text: i18n")
+                  input(type="checkbox", name="hksAtypicalNevusCellNevus", data-bind="value: val, checked: $parent.hksAtypicalNevusCellNevus, readOnly: $parent.hksAtypicalNevusCellNevus.readOnly() || $parent.histopathologyPanelDisabled(), attr: { name: $element.name + '-' + val }")
+
+      div.row
+        div.col-xs-6
+          div.form-group
+            div.row
+              div.col-xs-8
+                strong(data-bind="text: hksJunctionalCompoundDermalAtypicalNevusCellNevusI18n")
+              div.col-xs-4(data-bind="foreach: hksJunctionalCompoundDermalAtypicalNevusCellNevus.list, hasFeedback: { field: hksJunctionalCompoundDermalAtypicalNevusCellNevus, toggle: hksJunctionalCompoundDermalAtypicalNevusCellNevus.hasError, messages: hksJunctionalCompoundDermalAtypicalNevusCellNevus.validationMessages }")
+                label.checkbox-inline
+                  span(data-bind="text: i18n")
+                  input(type="checkbox", name="hksJunctionalCompoundDermalAtypicalNevusCellNevus", data-bind="value: val, checked: $parent.hksJunctionalCompoundDermalAtypicalNevusCellNevus, readOnly: $parent.hksJunctionalCompoundDermalAtypicalNevusCellNevus.readOnly() || $parent.histopathologyPanelDisabled(), attr: { name: $element.name + '-' + val }")
+
+        div.col-xs-6
+          div.form-group
+            div.row
+              div.col-xs-8
+                strong(data-bind="text: hksActinicKeratosisI18n")
+              div.col-xs-4(data-bind="foreach: hksActinicKeratosis.list, hasFeedback: { field: hksActinicKeratosis, toggle: hksActinicKeratosis.hasError, messages: hksActinicKeratosis.validationMessages }")
+                label.checkbox-inline
+                  span(data-bind="text: i18n")
+                  input(type="checkbox", name="hksActinicKeratosis", data-bind="value: val, checked: $parent.hksActinicKeratosis, readOnly: $parent.hksActinicKeratosis.readOnly() || $parent.histopathologyPanelDisabled(), attr: { name: $element.name + '-' + val }")
+
+      div.row
+        div.col-xs-6
+          div.form-group
+            div.row
+              div.col-xs-8
+                strong(data-bind="text: hksOtherSkinChangeNotRelevantHereI18n")
+              div.col-xs-4(data-bind="foreach: hksOtherSkinChangeNotRelevantHere.list, hasFeedback: { field: hksOtherSkinChangeNotRelevantHere, toggle: hksOtherSkinChangeNotRelevantHere.hasError, messages: hksOtherSkinChangeNotRelevantHere.validationMessages }")
+                label.checkbox-inline
+                  span(data-bind="text: i18n")
+                  input(type="checkbox", name="hksOtherSkinChangeNotRelevantHere", data-bind="value: val, checked: $parent.hksOtherSkinChangeNotRelevantHere, readOnly: $parent.hksOtherSkinChangeNotRelevantHere.readOnly() || $parent.histopathologyPanelDisabled(), attr: { name: $element.name + '-' + val }")
+
+      // /ko

@@ -1,0 +1,19 @@
+div.row
+  div.col-xs-6
+    div.form-group
+      strong(data-bind="text: dmpRecommendedCopdTrainings.i18n")
+      span(data-bind="dmpField: { field: dmpRecommendedCopdTrainings }")
+      div(data-bind="foreach: dmpRecommendedCopdTrainings.list, hasFeedback: { field: dmpRecommendedCopdTrainings, toggle: dmpRecommendedCopdTrainings.hasError, messages: dmpRecommendedCopdTrainings.validationMessages }")
+        label.checkbox-inline
+          span(data-bind="text: i18n")
+          input(type="checkbox", name="dmpRecommendedCopdTrainings", data-bind="value: val, checked: $parent.dmpRecommendedCopdTrainings, readOnly: $parent.dmpRecommendedCopdTrainings.readOnly, attr: { name: $element.name + '-' + val }")
+  // ko if: isAfterQ42017() && !isFollowing()
+  div.col-xs-6
+    div.form-group
+      strong(data-bind="text: dmpAttendedTrainingBeforeSubscription.i18n")
+      span(data-bind="dmpField: { field: dmpAttendedTrainingBeforeSubscription }")
+      div(data-bind="foreach: dmpAttendedTrainingBeforeSubscription.list, hasFeedback: { field: dmpAttendedTrainingBeforeSubscription, toggle: dmpAttendedTrainingBeforeSubscription.hasError, messages: dmpAttendedTrainingBeforeSubscription.validationMessages }")
+        label.checkbox-inline
+          span(data-bind="text: i18n")
+          input(type="checkbox", name="dmpAttendedTrainingBeforeSubscription", data-bind="value: val, checked: $parent.dmpAttendedTrainingBeforeSubscription, readOnly: $parent.dmpAttendedTrainingBeforeSubscription.readOnly, attr: { name: $element.name + '-' + val }")
+  // /ko

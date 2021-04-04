@@ -1,0 +1,43 @@
+//TRANSLATION INCOMPLETE!! MOJ-3201
+.container.container-fullscreen#patlogin
+  .col-lg-6.col-lg-offset-3.col-md-6.col-md-offset-3
+    div#WaitingRoomWithoutAppointment
+      h4 Anzeige der Wartezeit ohne Termin
+      p
+        a(href="/intime#/waitingtime", title="Anzeige der Wartezeit ohne Termin")
+          em Zur Anzeige
+        span &nbsp; (Eine Wartenummer erhalten Sie von Ihrer Praxis.)
+      hr
+    h4 Termin vereinbaren (erfordert Anmeldung)
+    p
+      span
+        | Bitte melden Sie sich mit Ihren Zugangsdaten an.&nbsp;
+      a(href="#")#registerBtn
+        em Noch nicht registriert?
+    span.pull-right
+      a(href="https://www.doc-cirrus.com/de/gesundheitsportal-anleitung-fuer-patienten", target="_blank")
+        em Anleitung
+
+    #loginForm
+      .form-group.control-group
+        label(for="usernameField") E-Mail
+        input(type="text", placeholder="E-Mail").form-control#usernameField
+      .form-group
+        label(for="passwordField") Passwort
+        input(type="password", placeholder="Passwort").form-control#passwordField
+      .form-group
+          a.btn.btn-primary#doPatLoginBtn Anmelden
+          a(data-toggle="tooltip", title="Bitte vorher E-Mail-Adresse eingeben.").pull-right#forgotPatPwBtn
+           em Passwort vergessen?
+
+  //.col-sm-5
+  //  h4 Unsere Praxis nutzt Doc Cirrus
+  //  p Mit der kostenlosen Registrierung haben Sie viele Vorteile:
+  //  ul
+  //    li Online Termine bei uns und anderen Ärzten buchen
+  //    li Schon zuhause etwaige Wartezeiten sehen
+  //    li In Echtzeit sehen wann Sie wirklich an der Reihe sind
+  //    li
+  //      a(href="/intime#/waitingtime") Wartezeit sinnvoll nutzen, statt im Wartezimmer zu sitzen
+  //    li Sich per E-Mail oder SMS an Termine erinnern lassen
+  //    li Stets aktuelle Übersicht Ihrer Termine und Ärzte

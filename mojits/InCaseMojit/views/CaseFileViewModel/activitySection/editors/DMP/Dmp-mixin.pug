@@ -1,0 +1,11 @@
+mixin DmpFieldset(title, hint)
+  div.panel.panel-default
+    div.panel-body(style="padding: 0;")
+      fieldset
+        legend(style="margin: 0; padding: 2px 10px 0;")
+          span(data-bind="text: mixinData['" + title + "']")
+          if hint
+            span(data-bind="dmpField: { field: {hint: '" + hint + "', title: '" + title + "'} }")
+        div.clearfix(style="padding: 20px 10px 10px;")
+          if block
+            block

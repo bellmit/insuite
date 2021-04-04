@@ -1,0 +1,38 @@
+{
+  "_id": {
+    "_id": "5de90c5575f2e10f7cc5dfe6",
+    "MandantId": "Mandant1",
+    "WorkplaceId": "e1anm1",
+    "MandantName": "Mandant1",
+    "WorkplaceName": "e1anm1"
+  },
+  "CtIds": ["KT1"],
+  "profiles": [],
+  "CtNames": ["1"],
+  "context": {
+    "MandantId": "Mandant1",
+    "ClientSystemId": "inSuite",
+    "WorkplaceId": "e1anm1",
+    "MandantName": "Mandant1",
+    "WorkplaceName": "e1anm1"
+  },
+  "SMCBCards": [
+    {
+      "CardHandle": "85b329a4-ee74-456d-80c8-8f31f46e2a3d",
+      "CardType": "SMC-B",
+      "CardVersion": {
+        "COSVersion": {"Major": "4", "Minor": "3", "Revision": "0"},
+        "ObjectSystemVersion": {"Major": "4", "Minor": "3", "Revision": "0"},
+        "CardPTPersVersion": {"Major": "4", "Minor": "4", "Revision": "0"},
+        "LoggingVersion": {"Major": "1", "Minor": "0", "Revision": "0"},
+        "ATRVersion": {"Major": "2", "Minor": "0", "Revision": "0"},
+        "GDOVersion": {"Major": "1", "Minor": "0", "Revision": "0"}
+      },
+      "Iccsn": "80276883110000016161",
+      "CtId": "KT1",
+      "SlotId": "1",
+      "InsertTime": "2019-12-04T17:21:15.601+01:00",
+      "CardHolderName": "Test Praxis Valid",
+      "CertificateExpirationDate": "2048-12-31"
+    }]
+}

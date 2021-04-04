@@ -1,0 +1,42 @@
+div.row.childs-bordered#PatientAndActivitySelectModal
+  div.row.patient-block
+    h4(data-bind="text: '1. ' + selectPatientI18n")
+    div#patientTable(data-bind="template: patientTable.template")
+  // ko if: selectedPatientId
+  div.row.activity-block
+    h4(data-bind="text: '2. ' + selectOrCreateActivityI18n")
+    div.row(style="padding: 10px")
+      #patientActivity-accordion.panel-group
+        .panel.panel-default
+          .panel-heading(style="cursor: pointer")(data-toggle="collapse", data-parent="#patientActivity-accordion", href="#choose-activity")
+            h2.panel-title
+              a(data-bind="text: chooseActivityI18n")
+          #choose-activity.panel-collapse.collapse
+            .panel-body
+              div#activityTable(data-bind="template: activityTable.template")
+              div.dc-action-buttons.dc-action-buttons-right
+                 button.btn.btn-default(type="button", data-bind="click: actions.cancel, text: cancelButtonI18n")
+                 button.btn.btn-primary(type="button", data-bind="enable:  selectedPatientId && selectedActivityId, click: actions.save, text: saveButtonI18n")
+        .panel.panel-default
+          .panel-heading(style="cursor: pointer")(data-toggle="collapse", data-parent="#patientActivity-accordion", href="#new-activity")
+            h2.panel-title
+              a(data-bind="text: newActivityI18n")
+          #new-activity.panel-collapse.collapse
+            .panel-body
+              div.row(style="width: 500px")
+                div
+                  div.col-md-6
+                    span(data-bind="text: selectCaseFolderI18n")
+                    div(data-bind="foreach: caseFolders")
+                      .radio
+                        label
+                          input(type="radio", name="casefolderRadioBoxes", value="", data-bind="checked: $parent.selectedFolder, value: $data")
+                          span(data-bind="text: title")
+                  div.col-md-6
+                    div.form-group
+                    input.form-control(name="actType", type="hidden", data-bind="select2: _select2actType, readOnly: enableSelect2Component")
+              div.dc-action-buttons.dc-action-buttons-right
+                       button.btn.btn-default(type="button", data-bind="click: actions.cancel, text: cancelButtonI18n")
+                       button.btn.btn-primary(type="button", data-bind="enable:  addNewButtonEnable, click: createNewActivity, text: saveButtonI18n")
+
+  // /ko

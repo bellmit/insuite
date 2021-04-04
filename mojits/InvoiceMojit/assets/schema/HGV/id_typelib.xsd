@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- automatische Dokumentation, generiert durch Visual Source Safe 
+	$Workfile: id_typelib.xsd $  
+	$Modtime: 10.01.06 11:02 $  
+	$Revision: 9 $  
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:kbv="urn::hl7-org/kbv" xmlns="urn::hl7-org/cda" targetNamespace="urn::hl7-org/cda" elementFormDefault="qualified">
+	<xs:import namespace="urn::hl7-org/kbv" schemaLocation="all_kbv_typelib.xsd"/>
+	<xs:complexType name="document_id_mit_bsnr_lanr_typ">
+		<xs:annotation>
+			<xs:appinfo>Dokument-ID</xs:appinfo>
+		</xs:annotation>
+		<xs:attribute name="EX" type="kbv:string_max_60_typ" use="required"/>
+		<xs:attribute name="RT" type="kbv:bsnr_lanr_typ" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="document_id_mit_arztabrechnungsnummer_typ">
+		<xs:annotation>
+			<xs:appinfo>Dokument-ID (ID und Vertragsarztnummer)</xs:appinfo>
+		</xs:annotation>
+		<xs:attribute name="EX" type="kbv:string_max_60_typ" use="required"/>
+		<xs:attribute name="RT" type="kbv:arztabrechnungsnummer_typ" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="dmp_provider_person_id_typ">
+		<xs:annotation>
+			<xs:appinfo>Krankenhaus-IK oder BSNR oder LANR</xs:appinfo>
+		</xs:annotation>
+		<xs:attribute name="EX" type="kbv:bsnr_lanr_typ" use="required"/>
+		<xs:attribute name="RT" use="required">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="LANR"/>
+					<xs:enumeration value="BSNR"/>
+					<xs:enumeration value="Krankenhaus-IK"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="dmp_patient_person_id_typ">
+		<xs:annotation>
+			<xs:appinfo>Patientennummer (DMP-Nummer)</xs:appinfo>
+		</xs:annotation>
+		<xs:attribute name="EX" type="kbv:dmp_fallnummer_typ" use="required"/>
+		<xs:attribute name="RT" type="kbv:bsnr_lanr_typ" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="set_id_typ">
+		<xs:annotation>
+			<xs:appinfo>logische Kennung (DMP_Fallnummer und Arztabrechungsnummer)</xs:appinfo>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="document_id_mit_arztabrechnungsnummer_typ"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="au_patient_person_id_typ">
+		<xs:annotation>
+			<xs:appinfo>Patientennummer (AU-Nummer)</xs:appinfo>
+		</xs:annotation>
+		<xs:attribute name="EX" type="kbv:bsnr_lanr_typ" use="required"/>
+		<xs:attribute name="RT" type="kbv:iknummer_typ" use="required"/>
+	</xs:complexType>
+	<!--
+	============================================================
+	Datentypen für Koloskopie 
+	============================================================-->
+	<!-- ************************** koloskopie_38a_provider_person_id_typ *************************************-->
+	<xs:complexType name="koloskopie_38a_provider_person_id_typ">
+		<xs:annotation>
+			<xs:appinfo>Betriebsstättennummer/lebenslange Arztnummer</xs:appinfo>
+		</xs:annotation>
+		<xs:attribute name="EX" type="kbv:bsnr_lanr_typ" use="required"/>
+		<xs:attribute name="RT" use="required">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="LANR"/>
+					<xs:enumeration value="BSNR"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+	</xs:complexType>
+	<!-- ************************** koloskopie_38b_provider_person_id_typ *************************************-->
+	<xs:complexType name="koloskopie_38b_provider_person_id_typ">
+		<xs:annotation>
+			<xs:appinfo>Betriebsstättennummer/lebenslange Arztnummer oder historische BSNR/Vertragsarztnummer</xs:appinfo>
+		</xs:annotation>
+		<xs:attribute name="EX" type="kbv:arztabrechnungsnummer_typ" use="required"/>
+		<xs:attribute name="RT" use="required">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="LANR"/>
+					<xs:enumeration value="BSNR"/>
+					<xs:enumeration value="historische BSNR"/>
+					<xs:enumeration value="historische LANR"/>
+					<xs:enumeration value="historische Vertragsarztnummer"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+	</xs:complexType>
+	<!-- ************************** koloskopie_patient_person_id_typ *************************************-->
+	<xs:complexType name="koloskopie_patient_person_id_typ">
+		<xs:annotation>
+			<xs:appinfo>Patientennummer (Koloskopie-Nummer)</xs:appinfo>
+		</xs:annotation>
+		<xs:attribute name="EX" type="kbv:koloskopie_fallnummer_typ" use="required"/>
+		<xs:attribute name="RT" type="kbv:bsnr_lanr_typ" use="required"/>
+	</xs:complexType>
+	<!--
+	============================================================
+	Datentypen für eHKS 
+	============================================================-->
+	<!-- ************************** eHKS_provider_person_id_typ *************************************-->
+	<xs:complexType name="eHKS_provider_person_id_typ">
+		<xs:annotation>
+			<xs:appinfo>Betriebsstättennummer/lebenslange Arztnummer</xs:appinfo>
+		</xs:annotation>
+		<xs:attribute name="EX" type="kbv:bsnr_lanr_typ" use="required"/>
+		<xs:attribute name="RT" use="required">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="LANR"/>
+					<xs:enumeration value="BSNR"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+	</xs:complexType>
+	<!-- ************************** eHKS_patient_person_id_typ *************************************-->
+	<xs:complexType name="eHKS_patient_person_id_typ">
+		<xs:annotation>
+			<xs:appinfo>Patientennummer (EDV)</xs:appinfo>
+		</xs:annotation>
+		<xs:attribute name="EX" type="kbv:ehks_fallnummer_typ" use="required"/>
+		<xs:attribute name="RT" type="kbv:bsnr_lanr_typ" use="required"/>
+	</xs:complexType>
+	<!--
+	============================================================
+	Datentypen für QSHGV 
+	============================================================-->
+	<!-- ************************** qshgv_provider_person_id_typ *************************************-->
+	<xs:complexType name="qshgv_provider_person_id_typ">
+		<xs:annotation>
+			<xs:appinfo>Betriebsstättennummer/lebenslange Arztnummer</xs:appinfo>
+		</xs:annotation>
+		<xs:attribute name="EX" type="kbv:bsnr_lanr_typ" use="required"/>
+		<xs:attribute name="RT" use="required">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="LANR"/>
+					<xs:enumeration value="BSNR"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+	</xs:complexType>
+	<!-- ************************** qshgv_patient_person_id_typ *************************************-->
+	<xs:complexType name="qshgv_patient_person_id_typ">
+		<xs:annotation>
+			<xs:appinfo>Patientennummer (EDV)</xs:appinfo>
+		</xs:annotation>
+		<xs:attribute name="EX" type="kbv:qshgv_patientennummer_typ" use="required"/>
+		<xs:attribute name="RT" type="kbv:bsnr_lanr_typ" use="required"/>
+	</xs:complexType>
+</xs:schema>

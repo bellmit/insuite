@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xs:schema xmlns:cda="urn::hl7-org/cda" xmlns:sciphox="urn::sciphox-org/sciphox" xmlns="urn::sciphox-org/sciphox" xmlns:kbv="urn::hl7-org/kbv" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="urn::sciphox-org/sciphox" elementFormDefault="qualified">
+	<xs:import namespace="urn::hl7-org/kbv" schemaLocation="all_kbv_typelib.xsd"/>
+	<xs:include schemaLocation="insurance_ssu_typelib.xsd"/>
+	<xs:include schemaLocation="Ergebnistexte_QSHGVK.xsd"/>
+	<xs:include schemaLocation="Parameter_QSHGVK.xsd"/>
+	<xs:include schemaLocation="QSHGVK_software_ssu.xsd"/>
+	<!-- ****************************** body ****************************** -->
+	<xs:element name="sciphox-ssu">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:group ref="observation"/>
+			</xs:sequence>
+			<xs:attribute name="type" type="xs:string" fixed="observation"/>
+			<xs:attribute name="country" type="xs:string" use="required" fixed="de"/>
+			<xs:attribute name="version" type="xs:string" use="required" fixed="v1"/>
+		</xs:complexType>
+	</xs:element>
+	<!--	********************* SSU Observation ********************* -->
+	<xs:group name="observation">
+		<xs:sequence>
+			<xs:element ref="Beobachtungen"/>
+		</xs:sequence>
+	</xs:group>
+	<xs:element name="Beobachtungen">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="Beobachtung" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+		<xs:unique name="u_Parameter">
+			<xs:selector xpath="./sciphox:Beobachtung/sciphox:Parameter"/>
+			<xs:field xpath="@DN"/>
+		</xs:unique>
+	</xs:element>
+	<xs:element name="Beobachtung">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="Parameter"/>
+				<xs:element ref="Ergebnistext" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="Ergebniswert" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="Zeitpunkt_dttm" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+		<xs:unique name="u_Ergebnistext">
+			<xs:selector xpath="./sciphox:Ergebnistext"/>
+			<xs:field xpath="@V"/>
+		</xs:unique>
+	</xs:element>
+	<!-- ***************************** Parameter ******************************** -->
+	<xs:element name="Parameter">
+		<xs:complexType>
+			<xs:attribute name="DN" use="required">
+				<xs:simpleType>
+					<xs:union memberTypes="Vorverordnung Verordnung Nachsorge"/>
+				</xs:simpleType>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<!-- *************************** Ergebnistext ************************** -->
+	<xs:element name="Ergebnistext">
+		<xs:complexType>
+			<xs:attribute name="V" type="kbv:string_max_60_typ" use="required"/>
+		</xs:complexType>
+	</xs:element>
+	<!-- *********************** Ergebniswert ********************** -->
+	<xs:simpleType name="Vorverordnung_txt">
+		<xs:union memberTypes="Hoergeraeteerstversorgung"/>
+	</xs:simpleType>
+	<xs:simpleType name="Verordnung_txt">
+		<xs:union memberTypes="Lokalisation SchweregradHoerstoerung Sprachentwicklungsstörung Luftleitung Knochenleitung"/>
+	</xs:simpleType>
+	<xs:simpleType name="Nachsorge_txt">
+		<xs:union memberTypes="HoergeraeteversorgungsvorschlagEntsprichtVersorgungskonzept HoergeraeteVersorgungserfolgErmittelbar HoergeraeteVersorgungserfolgErmittelbarDurch Luftleitung Knochenleitung VersorgungErfolgteZuzahlungsfrei KooperationErfolgtMit"/>
+	</xs:simpleType>
+	<xs:element name="Ergebniswert">
+		<xs:complexType>
+			<xs:attribute name="V" use="required">
+				<xs:simpleType>
+					<xs:union memberTypes="Vorverordnung_txt Verordnung_txt Nachsorge_txt"/>
+				</xs:simpleType>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<!-- ************************ Zeitpunkt_dttm ************************** -->
+	<xs:element name="Zeitpunkt_dttm">
+		<xs:complexType>
+			<xs:attribute name="V">
+				<xs:simpleType>
+					<xs:union memberTypes="xs:date">
+						<xs:simpleType>
+							<xs:restriction base="xs:nonNegativeInteger">
+								<xs:pattern value="\d{4}"/>
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:union>
+				</xs:simpleType>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<!-- ****************************** ENDE: body ****************************** -->
+</xs:schema>

@@ -1,0 +1,8 @@
+div.row
+    div.col-xs-6.form-group
+        strong(data-bind="text: dmpLymphedema_following.i18n")
+        span(data-bind="dmpField: { field: dmpLymphedema_following }")
+        div(data-bind="foreach: dmpLymphedema_following.list, hasFeedback: { field: dmpLymphedema_following, toggle: dmpLymphedema_following.hasError, messages: dmpLymphedema_following.validationMessages }")
+            label.radio-inline
+                span(data-bind="text: i18n")
+                input(type="radio", name="dmpLymphedema_following", data-bind="value: val, checked: $parent.dmpLymphedema_following, readOnly: $parent.dmpLymphedema_following.readOnly, attr: { name: $element.name + '-' + val }")

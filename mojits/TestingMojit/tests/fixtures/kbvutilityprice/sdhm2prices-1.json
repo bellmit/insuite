@@ -1,0 +1,50 @@
+[
+  {
+    "position" : "X4105",
+    "chapter" : "Ergotherapie",
+    "description" : "Einzelbehandlung bei psychischen StÃ¶rungen",
+    "validFrom" : "2019-07-01",
+    "price" : 65.72,
+    "catalog" : "DC-SDHM2PRICES-D-1607600832694.json"
+  },
+  {
+    "position" : "X4208",
+    "chapter" : "Ergotherapie",
+    "description" : "Gruppenbehandlung bei psychischen StÃ¶rungen (2 Teilnehmer)",
+    "validFrom" : "2019-07-01",
+    "price" : 52,
+    "catalog" : "DC-SDHM2PRICES-D-1607600832694.json"
+  },
+  {
+    "position" : "X4104",
+    "chapter" : "Ergotherapie",
+    "description" : "Einzelbehandlung Ergoth. Hirnleistungstraining",
+    "validFrom" : "2019-07-01",
+    "price" : 43.22,
+    "catalog" : "DC-SDHM2PRICES-D-1607600832694.json"
+  },
+  {
+    "position" : "X4207",
+    "chapter" : "Ergotherapie",
+    "description" : "Gruppenbehandlung Ergotherapeutisches Hirnleistungstraining (2 Teilnehmer)",
+    "validFrom" : "2019-07-01",
+    "price" : 34,
+    "catalog" : "DC-SDHM2PRICES-D-1607600832694.json"
+  },
+  {
+    "position" : "X4103",
+    "chapter" : "Ergotherapie",
+    "description" : "Einzelbehandlung bei sensomotorischen/perzeptiven StÃ¶rungen",
+    "validFrom" : "2019-07-01",
+    "price" : 52.5,
+    "catalog" : "DC-SDHM2PRICES-D-1607600832694.json"
+  },
+  {
+    "position" : "X4206",
+    "chapter" : "Ergotherapie",
+    "description" : "Gruppenbehandlung bei sensomotorischen/perzeptiven StÃ¶rungen (2Teilnehmer)",
+    "validFrom" : "2019-07-01",
+    "price" : 42,
+    "catalog" : "DC-SDHM2PRICES-D-1607600832694.json"
+  }
+]

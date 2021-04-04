@@ -1,0 +1,234 @@
+{
+  "rule": {
+    "isDirectory" : false,
+    "isLocked" : true,
+    "isActive" : true,
+    "caseFolderType" : [
+      "PUBLIC"
+    ],
+    "referenceArea" : "PERIOD",
+    "periodType" : "QUARTER",
+    "periodCount" : 1,
+    "periodReference" : "raum",
+    "metaFuzzy" : false,
+    "metaActTypes" : [
+      "TREATMENT",
+      "DIAGNOSIS"
+    ],
+    "metaActCodes" : [
+      "13505",
+      "D45",
+      "E83.1"
+    ],
+    "metaCriterias" : [
+      "actType",
+      "code",
+      "areTreatmentDiagnosesBillable",
+      "diagnosisTreatmentRelevance",
+      "diagnosisInvalidationDate"
+    ],
+    "rules" : [
+      {
+        "isActive": true,
+        "description": "Die Behandlung ist nur unter Eingabe einer der folgenden Diagnosen berechnungsfähig 13505 (EBM)",
+        "validations": {
+          "\\\\$and": [
+            {
+              "context": "ACTIVITY",
+              "criteria": {
+                "actType": "TREATMENT",
+                "code": "13505",
+                "areTreatmentDiagnosesBillable": "1"
+              }
+            },
+            {
+              "context": "ACTIVITY",
+              "criteria": {
+                "actType": "DIAGNOSIS",
+                "code": {
+                  "\\\\$in": [
+                    "D45",
+                    "E83.1"
+                  ]
+                },
+               "\\\\$count": {
+                  "\\\\$eq": 0
+                },
+                "diagnosisTreatmentRelevance": "TREATMENT_RELEVANT",
+                "diagnosisInvalidationDate" : {
+                  "\\\\$exists" : false
+                }
+              }
+            }
+          ]
+        },
+        "actions" : [
+          {
+            "type" : "WARNING"
+          }
+        ],
+        "ruleId" : "5fd74d2ef214db6eb333536a",
+        "metaCodes" : [
+          "13505",
+          "D45",
+          "E83.1"
+        ],
+        "metaActTypes" : [
+          "TREATMENT",
+          "DIAGNOSIS"
+        ],
+        "metaRequiredCodes" : [
+          "D45",
+          "E83.1"
+        ]
+      }
+    ],
+    "description" : "EBM 13505 im Behandlungsfall",
+    "fromCatalog" : "DC-EBM-D-1607600832694.json",
+    "fromCatalogShort" : "EBM"
+  },
+  "schein": {
+    "actType" : "SCHEIN",
+    "attachments" : [],
+    "subType" : "",
+    "time" : "",
+    "userContent" : "ambulante Behandlung (ambulante Behandlung)",
+    "partnerInfo" : "",
+    "explanations" : "",
+    "status" : "VALID",
+    "activities" : [],
+    "referencedBy" : [],
+    "formId" : "",
+    "formVersion" : "",
+    "formPdf" : "",
+    "formLang" : "de",
+    "formGender" : "m",
+    "apkState" : "IN_PROGRESS",
+    "forInsuranceType" : "",
+    "locationFeatures" : "",
+    "scheinRemittor" : "",
+    "scheinEstablishment" : "",
+    "scheinSpecialisation" : "",
+    "scheinOrder" : "",
+    "scheinDiagnosis" : "",
+    "scheinFinding" : "",
+    "scheinNotes" : "",
+    "scheinClinicalTreatmentFrom" : null,
+    "scheinClinicalTreatmentTo" : null,
+    "scheinNextTherapist" : "",
+    "fk4234" : false,
+    "fk4219" : "",
+    "continuousIcds" : [],
+    "icds" : [],
+    "icdsExtra" : [],
+    "scheinQuarter" : "1",
+    "scheinYear" : "2020",
+    "scheinBillingArea" : "00",
+    "scheinType" : "0101",
+    "scheinSubgroup" : "00",
+    "scheinTransferTypeInfo" : "",
+    "fk4124" : "",
+    "fk4126" : "",
+    "fk4125from" : null,
+    "fk4125to" : null,
+    "fk4123" : "",
+    "fk4206" : null,
+    "fk4236" : false,
+    "fk4241" : "",
+    "fk4217" : "",
+    "scheinSlipMedicalTreatment" : "",
+    "__t" : "SCHEIN",
+    "attachedMedia" : [],
+    "content" : "ambulante Behandlung (ambulante Behandlung)",
+    "debtCollection" : "",
+    "fk4235Set" : [],
+    "invoiceData" : [],
+    "scheinTransferType" : ""
+  },
+  "treatment13505": {
+    "actType" : "TREATMENT",
+    "status" : "VALID",
+    "attachments" : [],
+    "subType" : "",
+    "userContent" : "Aderlass",
+    "areTreatmentDiagnosesBillable" : "1",
+    "catalog" : true,
+    "catalogRef" : "DC-EBM-D-1607600832694.json",
+    "catalogShort" : "EBM",
+    "code" : "13505"
+  },
+  "diagnosisD45": {
+    "actType" : "DIAGNOSIS",
+    "status" : "VALID",
+    "attachments" : [],
+    "subType" : "",
+    "userContent" : "Polycythaemia vera",
+    "catalog" : true,
+    "catalogRef" : "DC-EBM-D-1607600832694.json",
+    "catalogShort" : "EBM",
+    "code" : "D45",
+    "diagnosisCert": "TENTATIVE",
+    "diagnosisType": "ACUTE",
+    "diagnosisTreatmentRelevance": "TREATMENT_RELEVANT"
+  },
+  "diagnosisD45TreatmentRelevanceDokumentativ": {
+    "actType" : "DIAGNOSIS",
+    "status" : "VALID",
+    "attachments" : [],
+    "subType" : "",
+    "userContent" : "Polycythaemia vera",
+    "catalog" : true,
+    "catalogRef" : "DC-EBM-D-1607600832694.json",
+    "catalogShort" : "EBM",
+    "code" : "D45",
+    "diagnosisCert": "TENTATIVE",
+    "diagnosisType": "ACUTE",
+    "diagnosisTreatmentRelevance": "DOKUMENTATIV"
+  },
+  "diagnosisD40": {
+    "actType" : "DIAGNOSIS",
+    "status" : "VALID",
+    "attachments" : [],
+    "subType" : "",
+    "userContent" : "Polycythaemia vera",
+    "catalog" : true,
+    "catalogRef" : "DC-EBM-D-1607600832694.json",
+    "catalogShort" : "EBM",
+    "code" : "D40.0",
+    "diagnosisCert": "TENTATIVE",
+    "diagnosisType": "ACUTE",
+    "diagnosisTreatmentRelevance": "TREATMENT_RELEVANT"
+  },
+  "rulelogExpected": [ {
+    "message": "Die Behandlung ist nur unter Eingabe einer der folgenden Diagnosen berechnungsfähig 13505 (EBM)",
+    "referenceArea" : "PERIOD",
+    "ruleLogType" : "WARNING",
+    "actCodes" : [
+      "13505",
+      "D45",
+      "E83.1"
+    ],
+    "actTypes" : [
+      "TREATMENT",
+      "DIAGNOSIS"
+    ],
+    "activitiesToCreate" : [],
+
+    "allCodes" : [],
+    "caseFolderType" : [
+      "PUBLIC",
+      "PUBLIC_A"
+    ],
+    "requiredCodes" : [
+      "D45",
+      "E83.1"
+    ],
+    "ruleId": "5fd74d2ef214db6eb333536a",
+    "affectedActivities" : [
+      {
+        "code" : "13505",
+        "actType" : "TREATMENT"
+      }
+    ]
+  } ]
+}

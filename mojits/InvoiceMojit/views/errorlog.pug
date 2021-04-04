@@ -1,0 +1,16 @@
+//TRANSLATION INCOMPLETE!! MOJ-3201
+div#kbverror-log-container
+    ul.nav.nav-tabs#kbverror-log-tabs
+        li#kbvlog-errors-tab(data-bind="if: errorsLength() > 0")
+          a(href="#kbvlog-errors", data-bind="text: 'Fehler (' + errorsLength() + ')'")
+        li#kbvlog-warnings-tab(data-bind="if: warningsLength() > 0")
+          a(href="#kbvlog-warnings", data-bind="text: 'Warnungen (' + warningsLength() + ')'")
+        li#kbvlog-advices-tab(data-bind="if: advicesLength() > 0")
+          a(href="#kbvlog-advices", data-bind="text: 'Hinweise (' + advicesLength() + ')'")
+    div.tab-content#tab-content
+        div#kbvlog-errors.tab-pane(data-bind="if: errorsLength() > 0")
+          div(data-bind="template: errorTable.template")
+        div#kbvlog-warnings.tab-pane(data-bind="if: warningsLength() > 0")
+          div(data-bind="template: warningTable.template")
+        div#kbvlog-advices.tab-pane(data-bind="if: advicesLength() > 0")
+          div(data-bind="template: activitiesTable.template")

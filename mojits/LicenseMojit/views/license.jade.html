@@ -1,0 +1,20 @@
+div(id=mojit_view_id)
+  .container.container-fullscreen
+    div(data-bind="with: licensePageModel")
+      div(data-bind="template: { name:'licensePageTemplate', data: $data }")
+script(type="text/html", id="licensePageTemplate")
+  div.row(style="margin-top: 20px")
+    div.col-sm-9
+      p(data-bind="html: intro")
+    div.col-sm-3(data-bind="css: logoCss")
+      img(data-bind="attr: {src: logoUrl}", width="35%", alt="logo", style="margin-right: 5px")
+      span(data-bind="text: licenseType")
+  ul(data-bind="foreach: specialText")
+    li(data-bind="text: $data")
+  div
+    img(data-bind="attr: {src: picUrl}", width="100%", alt="picture")
+  p
+    span(data-bind="html: textBeforeLink")
+    a(href="#", data-bind="text: link, click: showEmailModal")
+    span(data-bind="html: textAfterLink")
+  p(data-bind="html: ending")

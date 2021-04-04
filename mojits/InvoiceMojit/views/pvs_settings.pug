@@ -1,0 +1,19 @@
+#pvs_settings
+  div.row
+    div.col-xs-12(data-bind="with: invoiceconfiguration")
+      div.row
+        div.col-md-6
+          h4
+            span(data-bind="text: padxSettings.i18n")
+            |&nbsp;
+            small
+              a(name="padxSettings_arrayAdd", href="javascript:void(0);", data-bind="click: addPadxSetting")
+                i.icon.fa.fa-plus
+        div.col-md-6
+          div.pull-right
+            h4(data-bind="text: specialVersion")
+      div(data-bind="template: { name: 'template-PadxSettingModel', foreach: padxSettings }")
+  div.row
+    div.col-sm-12
+      div.dc-action-buttons.dc-action-buttons-right(data-bind="with: actions")
+        button.btn.btn-primary(name="saveBtn", type="button", data-bind="enable: saveInvoiceconfigurationEnable, click: saveInvoiceconfiguration, text: buttonSaveI18n")

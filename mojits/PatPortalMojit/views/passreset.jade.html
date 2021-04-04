@@ -1,0 +1,18 @@
+extends patientalert_layout
+block content
+    //TRANSLATION INCOMPLETE!! MOJ-3201
+    .container.container-fullscreen(error=error, user=user, token=token)#data
+      if (!error)
+          .col-sm-5.col-sm-offset-1
+            h4 Neues Passwort setzen
+            hr
+            form(role="form")
+              .control-domain
+                  .form-group.control-group
+                    label(for="pw1") Passwort
+                    input(type="password", placeholder="Passwort").form-control#pw1
+                  .form-group.control-group
+                    label(for="pw2") Passwort wiederholen
+                    input(type="password", placeholder="Passwort").form-control#pw2
+                  .form-group
+                      button(type="submit").btn.btn-primary#doSubmBtn Ändern

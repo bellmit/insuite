@@ -1,0 +1,5 @@
+li.dropdown-submenu
+  a(href="javascript:;", tabindex="-1", data-toggle="dropdown", data-bind="text: text, attr: { name: name }, click: clickHandler, visible: visible")
+  ul.dropdown-menu(data-bind="foreach: menu.items, css: {'dc-dropdown-menu-right': $data.left}")
+    // ko template: template
+    // /ko

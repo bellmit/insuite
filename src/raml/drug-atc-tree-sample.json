@@ -1,0 +1,45 @@
+{
+  "meta": {
+    "errors": [],
+    "warnings": [],
+    "query": {},
+    "itemsPerPage": null,
+    "page": null,
+    "replyCode": 200,
+    "model": "drug"
+  },
+  "data": {
+    "atcCodeList": [
+      {
+        "name": "Spiramycin",
+        "atcCode": "J01FA02",
+        "upperCode": "J01FA",
+        "level": "CS"
+      },
+      {
+        "name": "Makrolide",
+        "atcCode": "J01FA",
+        "upperCode": "J01F",
+        "level": "CTPU"
+      },
+      {
+        "name": "Makrolide, Lincosamide und Streptogramine",
+        "atcCode": "J01F",
+        "upperCode": "J01",
+        "level": "TPU"
+      },
+      {
+        "name": "Antibiotika zur systemischen Anwendung",
+        "atcCode": "J01",
+        "upperCode": "J",
+        "level": "TH"
+      },
+      {
+        "name": "Antiinfektiva zur systemischen Anwendung",
+        "atcCode": "J",
+        "upperCode": "",
+        "level": "AG"
+      }
+    ]
+  }
+}

@@ -1,0 +1,38 @@
+section#tab_inpacs_settings
+  .row
+    section.col-md-6(data-bind="template: { name: 'configTemplate', foreach: configs }")
+  .row
+    .col-md-6.text-left
+      button.btn.btn-primary.pull-right(name="saveConfig", type="button", data-bind="click: onSave, enable: isValid, text: buttonSaveI18n")
+
+
+script#configTemplate(type="text/html")
+  div.panel.panel-default.configTemplate
+    div.panel-heading
+      span(data-bind="text: title")
+      | &nbsp;
+      a.fa.fa-plus(href="javascript:;", data-bind="click: $parent.addConfig")
+    div.panel-body
+      form
+        div.form-group(data-bind="hasFeedback: { field: name, toggle: name.hasError, messages: name.validationMessages }")
+          label.control-label( data-bind="text: name.i18n" )
+          input.form-control(type="text", name="name", data-bind="textInput: name, enable: !$parent.isDefaultConfig( $data )")
+        div.form-group(data-bind="hasFeedback: { field: ip, toggle: ip.hasError, messages: ip.validationMessages }")
+          label.control-label( data-bind="text: ip.i18n" )
+          input.form-control(type="text", name="ip", data-bind="textInput: ip, enable: !$parent.isDefaultConfig( $data )")
+        div.form-group(data-bind="hasFeedback: { field: port, toggle: port.hasError, messages: port.validationMessages }")
+          label.control-label( data-bind="if: $parent.isDefaultConfig( $data )" )
+            span(data-bind="text: $parent.baseConfigPortI18n")
+          label.control-label( data-bind="ifnot: $parent.isDefaultConfig( $data )" )
+            span(data-bind="text: $parent.portI18n")
+          input.form-control(type="text", name="port", data-bind="textInput: port, enable: !$parent.isDefaultConfig( $data )")
+      div.checkbox.pull-left(data-bind="visible: $parent.isDefaultConfig( $data )")
+        input(type="checkbox", data-bind="checked: $parent.isMocking")#isMocking
+        label.control-label(for="isMocking")
+          span(data-bind="text: $parent.isMockingI18n")
+      div.pull-right(data-bind="visible: $parent.isDefaultConfig( $data )", style="width: 170px;")
+        label(style="float: left; margin-top: 10px; font-weight: 400;")
+          span(data-bind="text: $parent.encodingTextI18n")
+        select.form-control#defaultEncodingId(name="defaultEncoding", data-bind="options: $parent._defaultEncodingList, optionsValue: 'val', optionsText: 'val', value: $parent.selectedEncoding", style="float: right; width: 50%; margin-top: 3px;")
+      button.btn.btn-default.pull-left(name="testModalityConnection", type="button", data-bind="visible: !$parent.isDefaultConfig( $data ), click: $parent.testModalityConnection, text: $parent.buttonTestI18n")
+      button.btn.btn-default.pull-right(name="removeItem", type="button", data-bind="visible: !$parent.isDefaultConfig( $data ), click: $parent.removeConfig, text: $parent.buttonDeleteI18n")

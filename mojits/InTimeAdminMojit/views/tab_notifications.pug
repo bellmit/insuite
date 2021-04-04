@@ -1,0 +1,209 @@
+#tab_notifications
+  h4(data-bind="text: notificationsHeadLineI18n")
+  hr
+  div.row
+    div.col-md-6
+      div.panel.panel-default
+        div.panel-heading
+          h3.panel-title(data-bind="text: notificationsAppHandlingI18n")
+        div.panel-body
+          div.form-horizontal
+
+            h4.font-size-16px(data-bind="text: notificationsAppNewI18n")
+            div
+              // ko if: createAlertForPatientByEmail
+              div.form-group(data-bind="with: createAlertForPatientByEmail")
+                label.col-xs-7.control-label(for="createAlertForPatientByEmail", data-bind="text: $parent.emailPatI18n")
+                .col-xs-5
+                  .checkbox
+                    input#createAlertForPatientByEmail(name="createAlertForPatientByEmail", type="checkbox", data-bind="checked: active")
+              // /ko
+              // ko if: createAlertForLocationByEmail
+              div.form-group(data-bind="with: createAlertForLocationByEmail")
+                label.col-xs-7.control-label(for="createAlertForLocationByEmail", data-bind="text: $parent.copyEstI18n ")
+                .col-xs-5
+                  .checkbox
+                    input#createAlertForLocationByEmail(name="createAlertForLocationByEmail", type="checkbox", data-bind="checked: active")
+              // /ko
+              // ko if: createAlertForPatientBySms
+              div.form-group(data-bind="with: createAlertForPatientBySms")
+                label.col-xs-7.control-label(for="createAlertForPatientBySms", data-bind="text: $parent.smsPatI18n")
+                .col-xs-5
+                  .checkbox
+                    input#createAlertForPatientBySms(name="createAlertForPatientBySms", type="checkbox", data-bind="checked: active, click: $parent.showConfirmDialogForCheckBox")
+              // /ko
+
+            hr
+
+            h4.font-size-16px(data-bind="text: appDeletedI18n")
+            div
+              // ko if: deleteAlertForPatientByEmail
+              div.form-group(data-bind="with: deleteAlertForPatientByEmail")
+                label.col-xs-7.control-label(for="deleteAlertForPatientByEmail", data-bind="text: $parent.emailPatI18n")
+                .col-xs-5
+                  .checkbox
+                    input#deleteAlertForPatientByEmail(name="deleteAlertForPatientByEmail", type="checkbox", data-bind="checked: active")
+              // /ko
+              // ko if: deleteAlertForLocationByEmail
+              div.form-group(data-bind="with: deleteAlertForLocationByEmail")
+                label.col-xs-7.control-label(for="deleteAlertForLocationByEmail", data-bind="text: $parent.copyEstI18n")
+                .col-xs-5
+                  .checkbox
+                    input#deleteAlertForLocationByEmail(name="deleteAlertForLocationByEmail", type="checkbox", data-bind="checked: active")
+              // /ko
+              // ko if: deleteAlertForPatientBySms
+              div.form-group(data-bind="with: deleteAlertForPatientBySms")
+                label.col-xs-7.control-label(for="deleteAlertForPatientBySms", data-bind="text: $parent.smsPatI18n")
+                .col-xs-5
+                  .checkbox
+                    input#deleteAlertForPatientBySms(name="deleteAlertForPatientBySms", type="checkbox", data-bind="checked: active, click: $parent.showConfirmDialogForCheckBox")
+              // /ko
+
+            hr
+
+            h4.font-size-16px(data-bind="text: appRescheduledI18n")
+            div
+              // ko if: updateAlertForPatientByEmail
+              div.form-group(data-bind="with: updateAlertForPatientByEmail")
+                label.col-xs-7.control-label(for="updateAlertForPatientByEmail", data-bind="text: $parent.emailPatI18n")
+                .col-xs-5
+                  .checkbox
+                    input#updateAlertForPatientByEmail(name="updateAlertForPatientByEmail", type="checkbox", data-bind="checked: active")
+              // /ko
+              // ko if: updateAlertForLocationByEmail
+              div.form-group(data-bind="with: updateAlertForLocationByEmail")
+                label.col-xs-7.control-label(for="updateAlertForLocationByEmail", data-bind="text: $parent.copyEstI18n")
+                .col-xs-5
+                  .checkbox
+                    input#updateAlertForLocationByEmail(name="updateAlertForLocationByEmail", type="checkbox", data-bind="checked: active")
+              // /ko
+              // ko if: updateAlertForPatientBySms
+              div.form-group(data-bind="with: updateAlertForPatientBySms")
+                label.col-xs-7.control-label(for="updateAlertForPatientBySms", data-bind="text: $parent.smsPatI18n")
+                .col-xs-5
+                  .checkbox
+                    input#updateAlertForPatientBySms(name="updateAlertForPatientBySms", type="checkbox", data-bind="checked: active, click: $parent.showConfirmDialogForCheckBox")
+              // /ko
+
+      h4(data-bind="text: titleNoteI18n")
+      p(data-bind="text: textNoteI18n")
+      hr
+      h4(data-bind="text: titleCostsI18n")
+      p(data-bind="text: textCostsI18n")
+
+    div.col-md-6
+      .panel.panel-default
+        .panel-heading
+          h3.panel-title(data-bind="text: appRemindersI18n")
+        .panel-body
+          div.form-horizontal
+
+            h4.font-size-16px(data-bind="text: appReminder1I18n")
+            div
+              // ko if: reminderAlert1ForPatientByEmail
+              div(data-bind="with: reminderAlert1ForPatientByEmail")
+                div.form-group
+                  label.col-xs-6.control-label(for="reminderAlert1ForPatientByEmail", data-bind="text: $parent.emailPatI18n")
+                  .col-xs-6
+                    .checkbox
+                      input#reminderAlert1ForPatientByEmail(name="reminderAlert1ForPatientByEmail", type="checkbox", data-bind="checked: active")
+                div.form-group
+                  label.col-xs-6.control-label(for="reminderAlert1ForPatientByEmail-minutes", data-bind="text: $parent.labelTimeI18n")
+                  .col-xs-6
+                    select#reminderAlert1ForPatientByEmail-minutes.form-control(name="reminderAlert1ForPatientByEmail-minutes", data-bind="value: minutesinadvance, valueUpdate: 'afterkeydown', options: $parent.minutesinadvanceList, optionsValue: 'val', optionsText: 'i18n'")
+              // /ko
+              // ko if: reminderAlert1ForLocationByEmail
+              div.form-group(data-bind="with: reminderAlert1ForLocationByEmail")
+                label.col-xs-6.control-label(for="reminderAlert1ForLocationByEmail", data-bind="text: $parent.copyEstI18n")
+                .col-xs-6
+                  .checkbox
+                    input#reminderAlert1ForLocationByEmail(name="reminderAlert1ForLocationByEmail", type="checkbox", data-bind="checked: active")
+              // /ko
+              // ko if: reminderAlert1ForPatientBySms
+              div(data-bind="with: reminderAlert1ForPatientBySms")
+                div.form-group
+                  label.col-xs-6.control-label(for="reminderAlert1ForPatientBySms", data-bind="text: $parent.smsPatI18n")
+                  .col-xs-6
+                    .checkbox
+                      input#reminderAlert1ForPatientBySms(name="reminderAlert1ForPatientBySms", type="checkbox", data-bind="checked: active, click: $parent.showConfirmDialogForCheckBox")
+                div.form-group
+                  label.col-xs-6.control-label(for="reminderAlert1ForPatientBySms-minutes", data-bind="text: $parent.labelTimeI18n")
+                  .col-xs-6
+                    select#reminderAlert1ForPatientBySms-minutes.form-control(name="reminderAlert1ForPatientBySms-minutes", data-bind="value: minutesinadvance, valueUpdate: 'afterkeydown', options: $parent.minutesinadvanceList, optionsValue: 'val', optionsText: 'i18n'")
+              // /ko
+
+            hr
+
+            h4.font-size-16px(data-bind="text: appReminder2I18n")
+            div
+              // ko if: reminderAlert2ForPatientByEmail
+              div(data-bind="with: reminderAlert2ForPatientByEmail")
+                div.form-group
+                  label.col-xs-6.control-label(for="reminderAlert2ForPatientByEmail", data-bind="text: $parent.emailPatI18n")
+                  .col-xs-6
+                    .checkbox
+                      input#reminderAlert2ForPatientByEmail(name="reminderAlert2ForPatientByEmail", type="checkbox", data-bind="checked: active")
+                div.form-group
+                  label.col-xs-6.control-label(for="reminderAlert2ForPatientByEmail-minutes", data-bind="text: $parent.labelTimeI18n")
+                  .col-xs-6
+                    select#reminderAlert2ForPatientByEmail-minutes.form-control(name="reminderAlert2ForPatientByEmail-minutes", data-bind="value: minutesinadvance, valueUpdate: 'afterkeydown', options: $parent.minutesinadvanceList, optionsValue: 'val', optionsText: 'i18n'")
+              // /ko
+              // ko if: reminderAlert2ForLocationByEmail
+              div.form-group(data-bind="with: reminderAlert2ForLocationByEmail")
+                label.col-xs-6.control-label(for="reminderAlert2ForLocationByEmail", data-bind="text: $parent.copyEstI18n")
+                .col-xs-6
+                  .checkbox
+                    input#reminderAlert2ForLocationByEmail(name="reminderAlert2ForLocationByEmail", type="checkbox", data-bind="checked: active")
+              // /ko
+              // ko if: reminderAlert2ForPatientBySms
+              div(data-bind="with: reminderAlert2ForPatientBySms")
+                div.form-group
+                  label.col-xs-6.control-label(for="reminderAlert2ForPatientBySms", data-bind="text: $parent.smsPatI18n")
+                  .col-xs-6
+                    .checkbox
+                      input#reminderAlert2ForPatientBySms(name="reminderAlert2ForPatientBySms", type="checkbox", data-bind="checked: active, click: $parent.showConfirmDialogForCheckBox")
+                div.form-group
+                  label.col-xs-6.control-label(for="reminderAlert2ForPatientBySms-minutes", data-bind="text: $parent.labelTimeI18n")
+                  .col-xs-6
+                    select#reminderAlert2ForPatientBySms-minutes.form-control(name="reminderAlert2ForPatientBySms-minutes", data-bind="value: minutesinadvance, valueUpdate: 'afterkeydown', options: $parent.minutesinadvanceList, optionsValue: 'val', optionsText: 'i18n'")
+              // /ko
+
+            hr
+
+            h4.font-size-16px(data-bind="text: appReminder3I18n")
+            div
+              // ko if: reminderAlert3ForPatientByEmail
+              div(data-bind="with: reminderAlert3ForPatientByEmail")
+                div.form-group
+                  label.col-xs-6.control-label(for="reminderAlert3ForPatientByEmail", data-bind="text: $parent.emailPatI18n")
+                  .col-xs-6
+                    .checkbox
+                      input#reminderAlert3ForPatientByEmail(name="reminderAlert3ForPatientByEmail", type="checkbox", data-bind="checked: active")
+                div.form-group
+                  label.col-xs-6.control-label(for="reminderAlert3ForPatientByEmail-minutes", data-bind="text: $parent.labelTimeI18n")
+                  .col-xs-6
+                    select#reminderAlert3ForPatientByEmail-minutes.form-control(name="reminderAlert3ForPatientByEmail-minutes", data-bind="value: minutesinadvance, valueUpdate: 'afterkeydown', options: $parent.minutesinadvanceList, optionsValue: 'val', optionsText: 'i18n'")
+              // /ko
+              // ko if: reminderAlert3ForLocationByEmail
+              div.form-group(data-bind="with: reminderAlert3ForLocationByEmail")
+                label.col-xs-6.control-label(for="reminderAlert3ForLocationByEmail", data-bind="text: $parent.copyEstI18n")
+                .col-xs-6
+                  .checkbox
+                    input#reminderAlert3ForLocationByEmail(name="reminderAlert3ForLocationByEmail", type="checkbox", data-bind="checked: active")
+              // /ko
+              // ko if: reminderAlert3ForPatientBySms
+              div(data-bind="with: reminderAlert3ForPatientBySms")
+                div.form-group
+                  label.col-xs-6.control-label(for="reminderAlert3ForPatientBySms", data-bind="text: $parent.smsPatI18n")
+                  .col-xs-6
+                    .checkbox
+                      input#reminderAlert3ForPatientBySms(name="reminderAlert3ForPatientBySms", type="checkbox", data-bind="checked: active, click: $parent.showConfirmDialogForCheckBox")
+                div.form-group
+                  label.col-xs-6.control-label(for="reminderAlert3ForPatientBySms-minutes", data-bind="text: $parent.labelTimeI18n")
+                  .col-xs-6
+                    select#reminderAlert3ForPatientBySms-minutes.form-control(name="reminderAlert3ForPatientBySms-minutes", data-bind="value: minutesinadvance, valueUpdate: 'afterkeydown', options: $parent.minutesinadvanceList, optionsValue: 'val', optionsText: 'i18n'")
+              // /ko
+
+  div.row
+    div.col-xs-12.text-right
+      button#tab_notifications-save.btn.btn-primary(name="tab_notifications-save", type="button", data-bind="click: save, disable: saveDisabled, text: buttonSaveI18n")

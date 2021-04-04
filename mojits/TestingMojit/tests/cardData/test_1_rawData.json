@@ -1,0 +1,24 @@
+{
+  "status" : {
+    "details" : "005002000000000000009108313930323230313892165a4c535f6d6f624b545f6774475f30303030363620209301",
+    "created" : "2015-10-04T23:24:19.000Z"
+  },
+  "patient" : "<?xml version=\"1.0\" encoding=\"ISO-8859-15\" standalone=\"yes\"?><UC_PersoenlicheVersichertendatenXML CDM_VERSION=\"5.2.0\" xmlns=\"http://ws.gematik.de/fa/vsdm/vsd/v5.2\"><Versicherter><Versicherten_ID>P814800803</Versicherten_ID><Person><Geburtsdatum>19860524</Geburtsdatum><Vorname>Denis</Vorname><Nachname>Oczko</Nachname><Geschlecht>M</Geschlecht><StrassenAdresse><Postleitzahl>12105</Postleitzahl><Ort>Berlin</Ort><Land><Wohnsitzlaendercode>D</Wohnsitzlaendercode></Land><Strasse>Kurfürstenstraße</Strasse><Hausnummer>34</Hausnummer></StrassenAdresse></Person></Versicherter></UC_PersoenlicheVersichertendatenXML>",
+  "insurance" : {
+    "protected" : "<?xml version=\"1.0\" encoding=\"ISO-8859-15\" standalone=\"yes\"?><UC_GeschuetzteVersichertendatenXML CDM_VERSION=\"5.2.0\" xmlns=\"http://ws.gematik.de/fa/vsdm/vsd/v5.2\"><Zuzahlungsstatus><Status>0</Status></Zuzahlungsstatus><Selektivvertraege><Aerztlich>9</Aerztlich><Zahnaerztlich>9</Zahnaerztlich></Selektivvertraege></UC_GeschuetzteVersichertendatenXML>",
+    "common" : "<?xml version=\"1.0\" encoding=\"ISO-8859-15\" standalone=\"yes\"?><UC_AllgemeineVersicherungsdatenXML CDM_VERSION=\"5.2.0\" xmlns=\"http://ws.gematik.de/fa/vsdm/vsd/v5.2\"><Versicherter><Versicherungsschutz><Beginn>20001001</Beginn><Kostentraeger><Kostentraegerkennung>108433248</Kostentraegerkennung><Kostentraegerlaendercode>D</Kostentraegerlaendercode><Name>SBK</Name><AbrechnenderKostentraeger><Kostentraegerkennung>108433248</Kostentraegerkennung><Kostentraegerlaendercode>D</Kostentraegerlaendercode><Name>Siemens Betriebskrankenkasse</Name></AbrechnenderKostentraeger></Kostentraeger></Versicherungsschutz><Zusatzinfos><ZusatzinfosGKV><Versichertenart>1</Versichertenart><Zusatzinfos_Abrechnung_GKV><WOP>72</WOP></Zusatzinfos_Abrechnung_GKV></ZusatzinfosGKV></Zusatzinfos></Versicherter></UC_AllgemeineVersicherungsdatenXML>"
+  },
+  "cardVersion" : "G1+",
+  "deviceType" : "mobile",
+  "issuerData" : {
+    "PreIssuingData" : {
+      "osVersion" : "1ab400010304",
+      "iccManufacturer" : "4445472b44",
+      "chipManufacturer" : "04"
+    }
+  },
+  "serialNo" : {
+    "serial" : "01528852",
+    "issuerId" : "60013700"
+  }
+}

@@ -1,0 +1,17 @@
+div.row
+  div.col-lg-4.col-md-4.col-sm-8.col-xs-12
+    label(data-bind="text: tableFieldTextI18n")
+    div.text-left(data-bind="with: select2Config")
+      input.form-control.input-sm(name="colSelectorSelect", data-bind="select2: select2SearchConfig")
+
+  div.col-lg-2.col-md-2.col-sm-4.col-xs-12
+    label(data-bind="text: tableOperatorTextI18n")
+    select.form-control(data-bind="options: availableOperators, optionsText: 'i18n', optionsValue: 'val', value: currentOperator")
+
+  div.col-lg-5.col-md-5.col-sm-12.col-xs-12
+    div.form-group
+      div(data-bind="template: koSchemaValue.template")
+
+  div.col-lg-1.col-md-1.col-sm-12.col-xs-12.between
+    label
+    select(data-bind="options: availableBetween, optionsText: 'label', optionsValue: 'value', value: between").form-control

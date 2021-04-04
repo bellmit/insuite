@@ -1,0 +1,41 @@
+{
+  "meta": {
+    "errors": [],
+    "warnings": [],
+    "query": {"_id":"57456770383c1ee7b09ec19d"},
+    "itemsPerPage": null,
+    "totalItems": 1,
+    "page": null,
+    "replyCode": 200
+  },
+  "data": [
+  {
+    "_id": "57456770383c1ee7b09ec19d",
+    "employeeName": "Dr.1 admin2, prac2",
+    "actType": "MEDICATION",
+    "adherence": true,
+    "timestamp": "2021-03-26T15:11:38.281Z",
+    "patientId": "54be764fc404c1d77a286d4d",
+    "employeeId": "56f5382c37644678aa923d92",
+    "locationId": "54eb41b878382da863181d3b",
+    "caseFolderId": "56fa30e6b641255602e1b576",
+    "comment": "Any comment",
+    "code": "7611711101424",
+    "phGTIN": "7611711101424",
+    "phSalesStatus": "ONMARKET",
+    "phNLabel": "unit test Medication",
+    "phPZN": "852921",
+    "prdNo": "27491",
+    "phUnit": "Paar",
+    "phCompany": "10825",
+    "insuranceCode": "13",
+    "paidByInsurance": false,
+    "supplyCategory": "",
+    "phAtc": null,
+    "phForm": null,
+    "insuranceDescription": "Mittel- und Gegenständeliste (MiGeL)",
+    "catalogShort": "HCI",
+    "phIngr": []
+  }
+]
+ }

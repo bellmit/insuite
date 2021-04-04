@@ -1,0 +1,5 @@
+div.form-group
+    span(data-bind="dmpField: { field: dmpShowOptionalFields }")
+        label.checkbox-inline
+            span(data-bind="text: dmpShowOptionalFields.i18n")
+            input(type="checkbox", name="dmpShowOptionalFields", data-bind="value: dmpShowOptionalFields, checked: dmpShowOptionalFields")

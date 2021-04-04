@@ -1,0 +1,31 @@
+div.date-selector(style="margin-top: 5px;")
+  div.row
+    div.col-xs-12.datepickers-wrapper
+      div.row.datepickers
+        div.col-lg-4.col-md-4.col-sm-4
+          label(data-bind="text: i18n('InSight2Mojit.timeSelector.customMode.START')", style="display: block;margin-bottom: 5px;min-height: 22px;")
+          div.date-picker.input-group
+            input.form-control(name="tlStartDate", data-bind="datetimepicker: { value: startDate, " +
+                                                             "valueReset: null, " +
+                                                             "options: dateSelectorOptionsStart," +
+                                                             "onInit: dateSelectorInitStart}")
+        div.col-lg-4.col-md-4.col-sm-4.period-selector
+          label(style="display: block;margin-bottom: 5px;min-height: 22px;")
+          select(data-bind="options: periodList, " +
+                           "optionsText: 'label', " +
+                           "optionsValue: 'value', " +
+                           "value: switchMode," +
+                           "event: {change: switchModeChange}",
+                  style="display: inline-block; width: calc(100% - 110px); margin-right: 5px;").form-control
+          div.selector-buttons(style="display: inline-block;")
+            div(data-bind="template: periodButtons.prevBtt.template", style="display: inline-block;")
+            div(data-bind="template: periodButtons.todayBtt.template, style: {display: switchMode() !== 'custom' ? 'inline-block' : 'none'}", style=" margin-left: 4px;")
+            div(data-bind="template: periodButtons.nextBtt.template", style="display: inline-block; margin-left: 4px;")
+
+        div.col-lg-4.col-md-4.col-sm-4
+          label(data-bind="text: i18n('InSight2Mojit.timeSelector.customMode.END')", style="display: block;margin-bottom: 5px;min-height: 22px;")
+          div.date-picker.input-group
+            input.form-control(name="tlEndDate", data-bind="datetimepicker: { value: endDate, " +
+                                                           "valueReset: null, " +
+                                                           "options: dateSelectorOptionsEnd," +
+                                                           "onInit: dateSelectorInitEnd}")

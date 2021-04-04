@@ -1,0 +1,32 @@
+br
+br
+.container.container-fullscreen.content(id=mojit_view_id)
+
+  h3 Bulk PDF Example / Load testing
+
+  p This page is to experiment with ways to improve memory usage by HPDF.js.
+
+  div#divControls
+    p Please enter an activity to test with:
+    b Activity _id:
+    input.form-control(value="")#txtActivityId
+    br
+    b Number of PDFs:
+    input.form-control(value="10")#txtNumPdf
+    br
+    input(type="checkbox")#chkSerial
+    b &nbsp;use rendering queue
+
+    br
+
+    table(noboder="noboder")
+      tr
+        td
+          button.btn#btnLoadActivity Load activity
+        td
+          button.btn(style="display: none;")#btnGenerateSerial Generate serially
+        td
+          button.btn(style="display: none;")#btnGenerateParallel Generate in parallel
+
+  hr
+  div.well#divLog

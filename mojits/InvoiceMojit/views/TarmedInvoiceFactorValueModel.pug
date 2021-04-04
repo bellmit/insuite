@@ -1,0 +1,21 @@
+div.panel.panel-default
+    div.panel-body
+        div.row
+            div.col-md-6
+                div.form-group(data-bind="hasFeedback: { field: qualiDignity, toggle: qualiDignity.hasError, messages: qualiDignity.validationMessages }")
+                    label.control-label(data-bind="text: qualiDignityI18n")
+                    input.form-control(name="qualiDignity", type="text", data-bind="select2: select2QualiDignity")
+            div.col-md-4
+                div.form-group(data-bind="hasFeedback: { field: caseTypes, toggle: caseTypes.hasError, messages: caseTypes.validationMessages }")
+                    label.control-label(data-bind="text: caseTypesI18n")
+                    input.form-control(name="caseTypes", type="text", data-bind="select2: select2CaseTypes")
+            div.col-md-2
+                div.form-group(data-bind="hasFeedback: { field: factor, toggle: factor.hasError, messages: factor.validationMessages }")
+                    label.control-label(data-bind="text: factorI18n")
+                    input.form-control(name="factor", type="text", data-bind="value: factor")
+        div.row
+            div.col-md-12.text-right
+                button.btn.btn-default(name="deleteTarmedInvoiceFactorSetting", type="button", data-bind="click: deleteTarmedInvoiceFactorSetting.bind($context, $parent)")
+                    span.glyphicon.glyphicon-trash
+                    | &nbsp;
+                    span(data-bind="text: buttonDeleteTextI18n")

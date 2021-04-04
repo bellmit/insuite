@@ -1,0 +1,27 @@
+#quarterlyReports.row
+  div.row
+    div.col-md-6.col-xs-4
+      //p.pull-right(style="margin-top: 8px;") #{__i18n( 'InvoiceMojit.rlv_browser.text.CALC_RLV' )}
+    div.col-md-2.col-xs-4
+      div.form-group
+        select.form-control(name="kbvlogsList", data-bind="options: kbvlogsList, optionsValue: '_id', optionsText: 'quarterLocName', value: invoiceLogIdToCalc")
+    //    select.form-control(name="quarterList", data-bind="options: quarterList, optionsValue: 'quarter', optionsText: 'text', value: quarterToCalc")
+    //div.col-md-2.col-xs-4
+    //  select.form-control(name="locationList", data-bind="options: locationList, optionsValue: '_id', optionsText: 'locname', value: locationToCalc")
+    div.col-md-2.col-xs-4
+      div(data-bind="template: calculatePerformaceBtn.template", style="")
+  .panel.panel-default
+    div.panel-heading
+      header(data-bind="text: table1HeaderI18n")
+    div.panel-body
+      div.first-table(data-bind="template: firstTable.template")
+  .panel.panel-default
+    div.panel-heading
+      header(data-bind="text: table3HeaderI18n")
+    div.panel-body
+      div.first-table(data-bind="template: thirdTable.template")
+  .panel.panel-default
+    div.panel-heading
+      header(data-bind="text: table2HeaderI18n")
+    div.panel-body
+      div.first-table(data-bind="template: secondTable.template")

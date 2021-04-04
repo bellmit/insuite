@@ -1,0 +1,7 @@
+div.form-group.col-xs-4(data-bind="visible: dmpLocalisation_4_23Visible()")
+    strong(data-bind="text: dmpLocalisation_4_23.i18n")
+    span(data-bind="dmpField: { field: dmpLocalisation_4_23 }")
+    div(data-bind="foreach: dmpLocalisation_4_23.list, hasFeedback: { field: dmpLocalisation_4_23, toggle: dmpLocalisation_4_23.hasError, messages: dmpLocalisation_4_23.validationMessages }")
+        label.checkbox-inline
+            span(data-bind="text: i18n")
+            input(type="checkbox", name="dmpLocalisation_4_23", data-bind="value: val, checked: $parent.dmpLocalisation_4_23, readOnly: $parent.dmpLocalisation_4_23.readOnly, attr: { name: $element.name + '-' + val }")

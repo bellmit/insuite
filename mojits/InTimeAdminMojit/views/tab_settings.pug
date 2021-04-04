@@ -1,0 +1,121 @@
+div#settings
+  div.row
+    div.col-sm-12.col-md-8.col-md-offset-2.col-lg-6.col-lg-offset-0
+      h4(data-bind="text: commonConfigurationI18n")
+  // ko if: practice
+  // ko with: practice
+  div.row
+    div.col-sm-12.col-md-8.col-md-offset-2.col-lg-6.col-lg-offset-0
+      div.panel.panel-default
+        div.panel-body
+          div.row
+            div.col-sm-6
+              div.form-group(data-bind="hasFeedback: { field: calendarViewDayStart, toggle: calendarViewDayStart.hasError, messages: calendarViewDayStart.validationMessages }")
+                label.control-label(data-bind="text: calendarViewDayStart.i18n")
+                div.date-picker.input-group
+                  input.form-control(name="calendarViewDayStart", type="text", data-bind="datetimepicker:{ options: { format: 'HH:mm' }, value: calendarViewDayStart, valueFormat: 'HH:mm' }")
+            div.col-sm-6
+              div.form-group(data-bind="hasFeedback: { field: calendarViewDayEnd, toggle: calendarViewDayEnd.hasError, messages: calendarViewDayEnd.validationMessages }")
+                label.control-label(data-bind="text: calendarViewDayEnd.i18n")
+                div.date-picker.input-group
+                  input.form-control(name="calendarViewDayEnd", type="text", data-bind="datetimepicker:{ options: { format: 'HH:mm' }, value: calendarViewDayEnd, valueFormat: 'HH:mm' }")
+          div.form-group
+            label.control-label(data-bind="text: $parent.spontaneousAppI18n")
+            div.col-sm-offset-1.col-md-offset-1
+              div.checkbox
+                label.control-label
+                  strong(data-bind="text: $parent.commonConfigurationI18n")
+                  input(name="allowPRCAdhoc", type="checkbox", data-bind="checked: allowPRCAdhoc")
+              div.checkbox
+                label.control-label
+                  strong(data-bind="text: $parent.allowAdhocI18n")
+                  input(name="allowAdhoc", type="checkbox", data-bind="checked: allowAdhoc")
+          div.form-group
+            label.control-label(data-bind="text: hiddenDays.i18n")
+            div.col-sm-offset-1.col-md-offset-1
+              div.checkbox
+                label.control-label
+                  strong(data-bind="text: $parent.saturdayI18n")
+                  input(name="saturday", value=6, type="checkbox", data-bind="checked: hiddenDays")
+              div.checkbox
+                label.control-label
+                  strong(data-bind="text: $parent.sundayI18n")
+                  input(name="sunday", value=0, type="checkbox", data-bind="checked: hiddenDays")
+          div.form-group
+            div.checkbox
+              label.control-label
+                strong(data-bind="text: allowBookingsOutsideOpeningHours.i18n")
+                input(name="allowBookingsOutsideOpeningHours", type="checkbox", data-bind="checked: allowBookingsOutsideOpeningHours")
+          div.form-group
+            div.checkbox
+              label.control-label
+                strong(data-bind="text: $parent.onlyPracticesPatientsCanBookLabelI18n")
+                input(name="onlyPracticesPatientsCanBook", type="checkbox", data-bind="checked: onlyPracticesPatientsCanBook")
+            p(data-bind="text: $parent.onlyPracticesPatientsCanBookInfoI18n")
+
+  div.row
+    div.col-sm-12.col-md-8.col-md-offset-2.col-lg-6.col-lg-offset-0
+      h4(data-bind="text: $parent.automaticConfigurationI18n")
+
+  div.row
+    div.col-sm-12.col-md-8.col-md-offset-2.col-lg-6.col-lg-offset-0
+      div.panel.panel-default
+        div.panel-body
+          div.form-group
+            div.checkbox
+              label.control-label
+                strong(data-bind="text: $parent.autoReloadingI18n")
+                input(name="autoShift", type="checkbox", data-bind="checked: autoShift")
+          div.form-group
+            div.checkbox
+              label.control-label
+                strong(data-bind="text: $parent.autoEndLabelI18n")
+                input(name="autoEnd", type="checkbox", data-bind="checked: autoEnd")
+          div.form-group
+            div.checkbox
+              label.control-label
+                strong(data-bind="text: $parent.updateNoShowAtEodLabelI18n")
+                input(name="autoEnd", type="checkbox", data-bind="checked: updateNoShowAtEod")
+            p(data-bind="text: $parent.updateNoShowAtEodInfoI18n")
+          div.form-group
+            div.checkbox
+              label.control-label
+                strong(data-bind="text: $parent.autoMutateOffI18n")
+                input(name="autoMutateOff", type="checkbox", data-bind="checked: autoMutateOff")
+            p(data-bind="text: $parent.autoMutateOffInfoI18n")
+
+  div.row
+    div.col-sm-12.col-md-8.col-md-offset-2.col-lg-6.col-lg-offset-0
+      h4(data-bind="text: $parent.colorModeI18n")
+
+  div.row
+    div.col-sm-12.col-md-8.col-md-offset-2.col-lg-6.col-lg-offset-0
+      div.panel.panel-default
+        div.panel-body
+          div.form-group
+            label.radio
+              span(data-bind="text: $parent.colorModeCalendarI18n")
+              input(type="radio", name="colorMode", value="CALENDAR", data-bind="checked: colorMode")
+          div.form-group
+            label.radio
+              span(data-bind="text: $parent.colorModeMeetingI18n")
+              input(type="radio", name="colorMode", value="MEETING", data-bind="checked: colorMode")
+  // ko if: $parent.isSupport
+  div.row
+    div.col-sm-12.col-md-8.col-md-offset-2.col-lg-6.col-lg-offset-0
+      h4(data-bind="text: $parent.supportSettingsI18n")
+  div.row
+    div.col-sm-12.col-md-8.col-md-offset-2.col-lg-6.col-lg-offset-0
+      div.panel.panel-default
+        div.panel-body
+          div.form-group
+            div.checkbox
+              label.control-label
+                strong(data-bind="text: activateOverview.i18n")
+                input(name="activateOverview", type="checkbox", data-bind="checked: activateOverview")
+  // /ko
+  div.row
+    div.col-sm-12.col-md-8.col-md-offset-2.col-lg-6.col-lg-offset-0.text-right
+      button.btn.btn-primary(name="practiceSaveButton", type="button", data-bind="click: saveHandler, disable: saveHandlerDisabled, text: $parent.buttonSaveI18n")
+  // /ko
+  // /ko

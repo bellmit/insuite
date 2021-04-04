@@ -1,0 +1,17 @@
+#movetocasefolder.row
+  div.col-xs-4
+    // ko if:copyMode
+    div.form-group
+        .date-picker.input-group
+          input.form-control(name="timestamp", type="text", data-bind="datetimepicker: { value: timestamp }, attr: {placeholder: timestampPlaceholderI18n}")
+    // /ko
+  .col-xs-12
+    p(data-bind="text: selectFolderI18n")
+    div(data-bind="foreach: caseFolders")
+      // ko ifnot: $parent.currentCaseFolderType && 'PREPARED' === $data.type
+      .radio
+        label
+          input(type="radio", name="casefolderRadioBoxes", value="", data-bind="checked: $parent.selected, attr: {value: _id}, disable: $parent.disableCaseFolder( $data )")
+          span(data-bind="text: title")
+      // /ko
+    p(data-bind="text: canOnlyCopy")

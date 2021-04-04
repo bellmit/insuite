@@ -1,0 +1,7 @@
+div.form-group
+  strong(data-bind="text: dmpWrittenSelfManagementPlan.i18n")
+  span(data-bind="dmpField: { field: dmpWrittenSelfManagementPlan }")
+  div(data-bind="foreach: dmpWrittenSelfManagementPlan.list, hasFeedback: { field: dmpWrittenSelfManagementPlan, toggle: dmpWrittenSelfManagementPlan.hasError, messages: dmpWrittenSelfManagementPlan.validationMessages }")
+    label.radio-inline
+      span(data-bind="text: i18n")
+      input(type="radio", name="dmpWrittenSelfManagementPlan", data-bind="value: val, checked: $parent.dmpWrittenSelfManagementPlan, readOnly: $parent.dmpWrittenSelfManagementPlan.readOnly")

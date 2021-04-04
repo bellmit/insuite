@@ -1,0 +1,81 @@
+div.row#deviceConfig
+  div.col-xs-3
+    div.panel.panel-default(dc-panel="sources", dc-panel-actions="minimize")
+      div.panel-heading
+        a(href="#sources", data-toggle="collapse")
+          strong(data-bind="text: sourcesI18n")
+        a(href ='', name="setPassword", type="button", data-bind="click: setSmbPassword").pull-right
+          span.fa.fa-gear
+      div#sources.panel-collapse.in
+        div.panel-body(data-bind="foreach: sources")
+          div.form-group
+            button.btn.btn-default.btn-block(type="button", data-bind="text: name, click: $parent.addSourceToConfig")
+    div.panel.panel-default(dc-panel="transformers", dc-panel-actions="minimize")
+      div.panel-heading
+        a(href="#transformers", data-toggle="collapse")
+          strong(data-bind="text: transformersI18n")
+      div#transformers.panel-collapse.in
+        div.panel-body(data-bind="foreach: transformers")
+          div.form-group
+            button.btn.btn-default.btn-block(type="button", data-bind="text: name, click: $parent.addTransformerToConfig")
+    div.panel.panel-default(dc-panel="sinks", dc-panel-actions="minimize")
+      div.panel-heading
+        a(href="#sinks", data-toggle="collapse")
+          strong(data-bind="text: sinksI18n")
+      div#sinks.panel-collapse.in
+        div.panel-body(data-bind="foreach: sinks")
+          div.form-group
+            button.btn.btn-default.btn-block(type="button", data-bind="text: name, click: $parent.addSinkToConfig")
+  div.col-xs-9
+    div.form-group
+      button.btn.btn-default(type="button", name="addConfig", data-bind="click: addConfig, text: addConfigI18n")
+        i.fa.fa-plus(aria-hidden="true", style="margin-left: 5px")
+      button.btn.btn-default.pull-right(type="button", name="importExport", data-bind="click: showExportImportDialog.bind($data)")
+        i.fa.fa-rocket
+        span &nbsp;
+      button.btn.btn-primary.pull-right(type="button", name="addConfig", data-bind="click: save, enable: saveEnabled, text: buttonSaveI18n", style="margin-right: 5px")
+      button.btn.btn-default.pull-right(type="button", name="testConfig", data-bind="click: testConfig, enable: testConfig.enabled, text: testI18n", style="margin-right: 5px")
+      button.btn.btn-default.pull-right(type="button", name="addConfig", data-bind="click: refresh, text: refreshI18n", style="margin-right: 5px")
+
+    div.row(data-bind="foreach: configurations")
+      div.col-lg-3.col-md-4.col-xs-6
+        div.panel(data-bind="css:{ 'panel-default': _isValid, 'panel-danger': !_isValid(), 'panel-success': active }")
+          div.panel-heading.clearfix(data-bind="attr:{title: flowTypeI18n}, click: $parent.activateConfig", style="cursor: pointer;")
+            a(href="", data-bind="visible: !active()")
+              i.fa.fa-check.dc-grey
+            i.fa.fa-check.dc-green(data-bind="visible: active")
+            span(data-bind="text: title", style="margin-left: 2px")
+            // ko ifnot: flowType()==='KVG'
+            a.pull-right(href="", data-bind="click: $parent.removeConfig")
+              i.fa.fa-trash
+            a.pull-right(href="", data-bind="click: $parent.changeConfig", style="font-size: 1.1em; margin-right: 4%; margin-top: 0.5%;")
+              i.fa.fa-pencil-square-o
+            // /ko
+          div.panel-body
+            div(data-bind="foreach: sources", style="margin-bottom: 5px")
+              div.input-group(data-bind="css:{ 'has-error': !_isValid(), 'is-kvg': $parent.flowType()==='KVG' }")
+                button.btn.btn-default.form-control(data-bind="text: getName(), click: configure")
+                // ko ifnot: $parent.flowType()==='KVG'
+                span.input-group-btn(data-bind="click: $parent.removeSource")
+                  button.btn.btn-default
+                    i.fa.fa-trash
+                // /ko
+            div(data-bind="foreach: transformers")
+              div.text-center
+                i.fa.fa-long-arrow-down
+              div.input-group(data-bind="css:{ 'has-error': !_isValid() }")
+                button.btn.btn-default.form-control(data-bind="text: getName(), click: configure")
+                //button.btn.btn-default.form-control(data-bind="text: getName()")
+                span.input-group-btn(data-bind="click: $parent.removeTransformer")
+                  button.btn.btn-default
+                    i.fa.fa-trash
+            div(data-bind="foreach: sinks", style="margin-top: 5px")
+              div.text-center
+                i.fa.fa-long-arrow-down
+              div.input-group(data-bind="css:{ 'has-error': !_isValid(), 'is-kvg': $parent.flowType()==='KVG' }")
+                button.btn.btn-default.form-control(data-bind="text: getName(), click: configure")
+                // ko ifnot: $parent.flowType()==='KVG'
+                span.input-group-btn(data-bind="click: $parent.removeSink")
+                  button.btn.btn-default
+                    i.fa.fa-trash
+                // /ko

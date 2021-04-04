@@ -1,0 +1,51 @@
+div.KoTable(data-bind="\
+  css: {\
+    'KoTable-renderFooterNot': !renderFooter(),\
+    'KoTable-draggableColumns': draggableColumns,\
+    'KoTable-draggableRows': draggableRows\
+  }")
+
+  // ko if: computedVisibilityOfUsageShortcutsRow
+  div.KoTable-usageShortcutsRow(data-bind="visible: usageShortcutsVisible, css: { 'KoTable-usageShortcutsRow-bordered': bordered }")
+    // ko if: usageShortcuts().length
+    div(style="display: inline-block; margin-right: 4px;")
+      span.KoTableHeader-FilterIcon.glyphicon.glyphicon-filter(style="top: 3px;" data-bind="click: onMultiFilterIconClick, attr: { title: filterIconTitleI18n }")
+    // ko foreach: usageShortcuts
+    button.btn.btn-default.btn-xs(type="button", data-bind="text: text, css: { active: active }, attr: { title: title }, click: $parent.usageShortcutsClickHandler")
+    // /ko
+    // /ko
+    // ko ifnot: usageShortcuts().length
+    div.text-center(data-bind="text: i18n( 'KoUI.KoTableUsageConfiguration.usageShortcutsNoneText' )")
+    // /ko
+  // /ko
+  div.KoTable-hScroll(data-bind="\
+    style: {\
+      paddingLeft: computedPaddingLeft\
+    },\
+    css: {\
+      'KoTable-scrollable': scrollable,\
+      'table-responsive': responsive,\
+      'KoTable-minWidth': Boolean(tableMinWidth())\
+    }")
+    table.KoTable-grid.table(data-bind="css: { 'table-bordered': bordered, 'table-condensed': condensed, 'table-striped': striped },\
+      style: {\
+        tableLayout: fixedTableLayout() ? 'fixed': '',\
+        minWidth: _computeTableMinWidth()\
+      }")
+      // ko if: !haveColumnsAtLeastOneFixed()
+      colgroup(data-bind="foreach: columns")
+        col(data-bind="visible: visible, style: { width: widthComputed }")
+      // /ko
+      thead.KoTableHeader(data-bind="template: header.template")
+      include KoTableBody
+  // ko if: renderFooter
+  table.KoTable-bottom.table(data-bind="css: { 'table-bordered': bordered }")
+    tfoot.KoTableFooter
+      tr
+        td(data-bind="template: $data.footer.template")
+  // /ko
+  div.KoTable-drag-proxy-cursor
+    span.KoTable-drag-proxy-cursor-disabled
+      span.fa.fa-ban
+    span.KoTable-drag-proxy-cursor-enabled
+      span.fa.fa-check

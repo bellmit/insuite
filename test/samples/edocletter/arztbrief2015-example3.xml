@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="../stylesheets/cda.xsl"?>
+<?xml-model href="../schematron/abde-ab2015.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<ClinicalDocument xmlns="urn:hl7-org:v3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:hl7-org:v3 ../schemas/CDA.xsd">
+    <realmCode code="DE"/>
+    <typeId root="2.16.840.1.113883.1.3" extension="POCD_HD000040"/>
+    <templateId root="1.2.276.0.76.10.1013"/>
+    <id extension="60467,36049" root="1.2.276.0.58"/>
+    <code code="11490-0" codeSystem="2.16.840.1.113883.6.1" displayName="Consultation note"/>
+    <title>Arztbrief aus DURIA auf CDA Rel 2 Basis</title>
+    <effectiveTime value="20151031123415"/>
+    <confidentialityCode code="N" codeSystem="2.16.840.1.113883.5.25"/>
+    <languageCode code="de"/>
+    <setId extension="D1" root="2.16.840.1.113883.3.933"/>
+    <versionNumber value="1"/>
+    <recordTarget>
+        <!--- Patienten-Daten -->
+        <patientRole>
+            <id extension="6" root="2.16.840.1.113883.3.933"/>
+            <addr>
+                <streetName>Steinstr.</streetName>
+                <houseNumber>7</houseNumber>
+                <postalCode>52156</postalCode>
+                <city>Monschau</city>
+            </addr>
+            <patient>
+                <name>
+                    <prefix>Dr.</prefix>
+                    <given>Alfred</given>
+                    <family>Hafer</family>
+                </name>
+                <administrativeGenderCode code="M" codeSystem="2.16.840.1.113883.5.1"/>
+                <birthTime value="19450601"/>
+            </patient>
+        </patientRole>
+    </recordTarget>
+    <author>
+        <!--- author -->
+        <time value="20060924"/>
+        <assignedAuthor>
+            <id extension="6319123" root="2.16.840.1.113883.3.933"/>
+            <assignedPerson>
+                <name>
+                    <prefix>Dr.med. </prefix>
+                    <given>Hans</given>
+                    <family>Topp-Glücklich</family>
+                </name>
+            </assignedPerson>
+            <representedOrganization>
+                <name>Dr.med. Hans Topp-Glücklich </name>
+                <telecom use="WP" value="tel:061511111111"/>
+                <telecom use="WP" value="fax:061512222222"/>
+                <addr>
+                    <streetName>Musterstr.</streetName>
+                    <houseNumber>1</houseNumber>
+                    <postalCode>64283</postalCode>
+                    <city>Darmstadt</city>
+                </addr>
+            </representedOrganization>
+        </assignedAuthor>
+    </author>
+    <custodian>
+        <!--- Organisation von der das Dokument stammt -->
+        <assignedCustodian>
+            <representedCustodianOrganization>
+                <id extension="M345" root="1.2.276.0.58"/>
+                <name>Dr.med. Hans Topp-Glücklich </name>
+                <telecom nullFlavor="UNK"/>
+                <addr>
+                    <streetName>Musterstr.</streetName>
+                    <houseNumber>1</houseNumber>
+                    <postalCode>64283</postalCode>
+                    <city>Darmstadt</city>
+                </addr>
+            </representedCustodianOrganization>
+        </assignedCustodian>
+    </custodian>
+    <informationRecipient typeCode="PRCP">
+        <!--- Empfaenger -->
+        <intendedRecipient>
+            <id extension="21233445" root="2.16.840.1.113883.3.933"/>
+            <informationRecipient>
+                <name>
+                    <prefix>Dr.med.</prefix>
+                    <given>Kai</given>
+                    <family>Heitmann</family>
+                </name>
+            </informationRecipient>
+            <receivedOrganization>
+                <name>Praxis Dr. Heitmann</name>
+                <telecom use="WP" value="fax:02473.14233"/>
+                <addr>
+                    <streetName>Mühlenweg</streetName>
+                    <houseNumber>1a</houseNumber>
+                    <postalCode>52152</postalCode>
+                    <city>Simmerath</city>
+                </addr>
+            </receivedOrganization>
+        </intendedRecipient>
+    </informationRecipient>
+    <legalAuthenticator>
+        <!--- legalAuthenticator -->
+        <time value="20060721"/>
+        <signatureCode code="S"/>
+        <assignedEntity>
+            <id extension="6319123" root="2.16.840.1.113883.3.933"/>
+            <assignedPerson>
+                <name>
+                    <prefix>Dr.med. </prefix>
+                    <given>Hans</given>
+                    <family>Topp-Glücklich</family>
+                </name>
+            </assignedPerson>
+            <representedOrganization>
+                <name>Dr.med. Hans Topp-Glücklich </name>
+                <telecom use="WP" value="fax:061512222222"/>
+                <addr>
+                    <streetName>Musterstr.</streetName>
+                    <houseNumber>1</houseNumber>
+                    <postalCode>64283</postalCode>
+                    <city>Darmstadt</city>
+                </addr>
+            </representedOrganization>
+        </assignedEntity>
+    </legalAuthenticator>
+    <component>
+        <structuredBody>
+            <component>
+                <section>
+                    <templateId root="1.2.276.0.76.10.3025"/>
+                    <code code="11493-4" codeSystem="2.16.840.1.113883.6.1"/>
+                    <title>Erhobene Befunde</title>
+                    <text>
+                        <paragraph>Wir berichten kurz zusammenfassend über die Laborergebnisse des obigen Patienten.</paragraph>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Test</th>
+                                    <th>Beschreibung</th>
+                                    <th>Wert</th>
+                                    <th>Einheit</th>
+                                    <th>Normbereich</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <content ID="LAB20060924001">ERY</content>
+                                    </td>
+                                    <td>Erythrozyten</td>
+                                    <td>4.37</td>
+                                    <td>10*12/l</td>
+                                    <td>4.2 - 6.2</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <content ID="LAB20060924002">HB</content>
+                                    </td>
+                                    <td>Hämoglobin</td>
+                                    <td>12.6</td>
+                                    <td>g/dl</td>
+                                    <td>14 - 18</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <content ID="LAB20060924003">HK</content>
+                                    </td>
+                                    <td>Hämatokrit</td>
+                                    <td>37.6</td>
+                                    <td>%</td>
+                                    <td>37 - 40</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <content ID="LAB20060924004">MCV</content>
+                                    </td>
+                                    <td>MCV</td>
+                                    <td>86.0</td>
+                                    <td>fl</td>
+                                    <td>83 - 98</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <content ID="LAB20060924005">MCH</content>
+                                    </td>
+                                    <td>MCH</td>
+                                    <td>28.8</td>
+                                    <td>pg</td>
+                                    <td>28 - 34</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <content ID="LAB20060924006">MCHC</content>
+                                    </td>
+                                    <td>MCHC</td>
+                                    <td>31.5</td>
+                                    <td>g/dl</td>
+                                    <td>32 - 36</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <content ID="LAB200609242007">LEUKO</content>
+                                    </td>
+                                    <td>Leukozyten</td>
+                                    <td>8.49</td>
+                                    <td>10*9/l</td>
+                                    <td>4.4 - 11.2</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <content ID="LAB20060924008">THR</content>
+                                    </td>
+                                    <td>Thrombozyten</td>
+                                    <td>278</td>
+                                    <td>10*9/l</td>
+                                    <td>140 - 440</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <content ID="LAB20060924009">NEUT</content>
+                                    </td>
+                                    <td>Neutrophile</td>
+                                    <td>62.0</td>
+                                    <td>%</td>
+                                    <td>50 - 70</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <content ID="LAB20060924010">LYMP</content>
+                                    </td>
+                                    <td>Lymphozyten</td>
+                                    <td>24.6</td>
+                                    <td>%</td>
+                                    <td>20 - 40</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <content ID="LAB20060924011">MONO</content>
+                                    </td>
+                                    <td>Monozyten</td>
+                                    <td>7.2</td>
+                                    <td>%</td>
+                                    <td>4.7 - 12.5</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <content ID="LAB20060924012">EOS</content>
+                                    </td>
+                                    <td>Eosinophile</td>
+                                    <td>5.7</td>
+                                    <td>%</td>
+                                    <td>2 - 4</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <content ID="LAB20060924013">BASO</content>
+                                    </td>
+                                    <td>Basophile</td>
+                                    <td>0.5</td>
+                                    <td>%</td>
+                                    <td>0 - 1</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <paragraph>Die Homovanillinmandelsäure/Kreatinin Verlaufswerte zeigen tendentiell einen Rückgang. <br/> Die Werte sollten in 14-tägigen Abständen kontrolliert werden</paragraph> Die letzte <content ID="xyz">HVM Messung war mit 5.4 mmol/mol noch leicht erhöht</content>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Test</th>
+                                    <th>Beschreibung</th>
+                                    <th>24.09.2006</th>
+                                    <th>Einheit</th>
+                                    <th>Normbereich</th>
+                                    <th>19.09.2006</th>
+                                    <th>08.09.2006</th>
+                                    <th>01.09.2006</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>HVM</td>
+                                    <td>Homovanillinmandelsäure/Krea</td>
+                                    <td>
+                                        <content ID="LAB20060924090">5.4</content>
+                                    </td>
+                                    <td>mmol/mol</td>
+                                    <td>&lt;5</td>
+                                    <td>
+                                        <content ID="LAB20060924089">5.6</content>
+                                    </td>
+                                    <td>
+                                        <content ID="LAB20060924056">6.0</content>
+                                    </td>
+                                    <td>
+                                        <content ID="LAB20060924045">6.1</content>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </text>
+                </section>
+            </component>
+        </structuredBody>
+    </component>
+</ClinicalDocument>

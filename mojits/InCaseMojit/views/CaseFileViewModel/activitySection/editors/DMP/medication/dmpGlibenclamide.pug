@@ -1,0 +1,9 @@
+div.form-group
+  div.row
+    div.col-xs-5
+      strong(data-bind="text: dmpGlibenclamide.i18n")
+      span(data-bind="dmpField: { field: dmpGlibenclamide }")
+    div.col-xs-7(data-bind="foreach: dmpGlibenclamide.list, hasFeedback: { field: dmpGlibenclamide, toggle: dmpGlibenclamide.hasError, messages: dmpGlibenclamide.validationMessages }")
+      label.checkbox-inline
+        span(data-bind="text: i18n")
+        input(type="checkbox", name="dmpGlibenclamide", data-bind="value: val, checked: $parent.dmpGlibenclamide, readOnly: $parent.dmpGlibenclamide.readOnly, attr: { name: $element.name + '-' + val }")

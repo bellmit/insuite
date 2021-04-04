@@ -1,0 +1,125 @@
+//- Sensibilität / Pulsstatus
+//- Fuss
+div.row
+  div.col-xs-12
+    div.alert.alert-info
+      span Die jeweiligen Angaben zu den Fragekomplexen „Pulsstatus“, „Sensibilitätsstörung“ und „Fußstatus“ sind nur dann verpflichtend, wenn Ihr Patient das 18. Lebensjahr vollendet hat. Bei jüngeren Patienten ist die Angabe optional.
+div.row
+  div.col-xs-6
+    strong(data-bind="text: dmpPulsStatus.i18n")
+    span(data-bind="dmpField: { field: dmpPulsStatus }")
+    div.form-group(data-bind="foreach: dmpPulsStatus.list, hasFeedback: { field: dmpPulsStatus, toggle: dmpPulsStatus.hasError, messages: dmpPulsStatus.validationMessages }")
+      label.radio-inline
+        span(data-bind="text: i18n")
+        input(type="radio", name="dmpPulsStatus", data-bind="value: val, checked: $parent.dmpPulsStatus, readOnly: $parent.dmpPulsStatus.readOnly")
+    strong(data-bind="text: dmpSensitivityTesting.i18n")
+    span(data-bind="dmpField: { field: dmpSensitivityTesting }")
+    div.form-group(data-bind="foreach: dmpSensitivityTesting.list, hasFeedback: { field: dmpSensitivityTesting, toggle: dmpSensitivityTesting.hasError, messages: dmpSensitivityTesting.validationMessages }")
+      label.radio-inline
+        span(data-bind="text: i18n")
+        input(type="radio", name="dmpSensitivityTesting", data-bind="value: val, checked: $parent.dmpSensitivityTesting, readOnly: $parent.dmpSensitivityTesting.readOnly")
+  div.col-xs-6(data-bind="ifnot: isAfterQ22017")
+    strong(data-bind="text: dmpFootStatusText.i18n")
+    span(data-bind="dmpField: { field: dmpFootStatusText }")
+    div.form-group(data-bind="foreach: dmpFootStatusText.list, hasFeedback: { field: dmpFootStatusText, toggle: dmpFootStatusText.hasError, messages: dmpFootStatusText.validationMessages }")
+      label.radio-inline
+        span(data-bind="text: i18n")
+        input(type="radio", name="dmpFootStatusText", data-bind="value: val, checked: $parent.dmpFootStatusText, readOnly: $parent.dmpFootStatusText.readOnly")
+    div
+      strong Grad nach Wagner/Armstrong
+      div.form-group(data-bind="foreach: dmpFootStatusWagnerValue.list, hasFeedback: { field: dmpFootStatusWagnerValue, toggle: dmpFootStatusWagnerValue.hasError, messages: dmpFootStatusWagnerValue.validationMessages }")
+        label.radio-inline
+          span(data-bind="text: i18n")
+          input(type="radio", name="dmpFootStatusWagnerValue", data-bind="value: val, checked: $parent.dmpFootStatusWagnerValue, readOnly: $parent.dmpFootStatusWagnerValue.readOnly() || $parent.footStatusValuesDisabled()")
+      div.form-group(data-bind="foreach: dmpFootStatusArmstrongValue.list, hasFeedback: { field: dmpFootStatusArmstrongValue, toggle: dmpFootStatusArmstrongValue.hasError, messages: dmpFootStatusArmstrongValue.validationMessages }")
+        label.radio-inline
+          span(data-bind="text: i18n")
+          input(type="radio", name="dmpFootStatusArmstrongValue", data-bind="value: val, checked: $parent.dmpFootStatusArmstrongValue, readOnly: $parent.dmpFootStatusArmstrongValue.readOnly() || $parent.footStatusValuesDisabled()")
+  div.col-xs-6(data-bind="if: isAfterQ22017")
+    div.form-group
+      strong(data-bind="text: dmpFurtherRiskUlcus.i18n")
+      span(data-bind="dmpField: { field: dmpFurtherRiskUlcus }")
+      div(data-bind="foreach: dmpFurtherRiskUlcus.list, hasFeedback: { field: dmpFurtherRiskUlcus, toggle: dmpFurtherRiskUlcus.hasError, messages: dmpFurtherRiskUlcus.validationMessages }")
+        label.checkbox-inline
+          span(data-bind="text: i18n")
+          input(type="checkbox", name="dmpFurtherRiskUlcus", data-bind="value: val, checked: $parent.dmpFurtherRiskUlcus, readOnly: $parent.dmpFurtherRiskUlcus.readOnly, attr: { name: $element.name + '-' + val }")
+    div.form-group
+      strong(data-bind="text: dmpUlkus.i18n")
+      span(data-bind="dmpField: { field: dmpUlkus }")
+      div(data-bind="foreach: dmpUlkus.list, hasFeedback: { field: dmpUlkus, toggle: dmpUlkus.hasError, messages: dmpUlkus.validationMessages }")
+        label.radio-inline
+          span(data-bind="text: i18n")
+          input(type="radio", name="dmpUlkus", data-bind="value: val, checked: $parent.dmpUlkus, readOnly: $parent.dmpUlkus.readOnly, attr: { name: $element.name + '-' + val }")
+    div.form-group
+      strong(data-bind="text: dmpWoundInfection.i18n")
+      span(data-bind="dmpField: { field: dmpWoundInfection }")
+      div(data-bind="foreach: dmpWoundInfection.list, hasFeedback: { field: dmpWoundInfection, toggle: dmpWoundInfection.hasError, messages: dmpWoundInfection.validationMessages }")
+        label.radio-inline
+          span(data-bind="text: i18n")
+          input(type="radio", name="dmpWoundInfection", data-bind="value: val, checked: $parent.dmpWoundInfection, readOnly: $parent.dmpWoundInfection.readOnly, attr: { name: $element.name + '-' + val }")
+hr(style="margin-top: 10px;")
+div.row
+  //- Blut
+  div.col-xs-3
+    include dmpBloodPressureSystolic
+  div.col-xs-3
+    include dmpBloodPressureDiastolic
+  //- HbA1c
+  div.col-xs-6
+    div.row
+      div.col-xs-6
+        div.form-group(data-bind="hasFeedback: { field: dmpHbA1cValue, toggle: dmpHbA1cValue.hasError, messages: dmpHbA1cValue.validationMessages }")
+          label.control-label(data-bind="text: dmpHbA1cValue.i18n")
+          span(data-bind="dmpField: { field: dmpHbA1cValue }")
+          input.form-control(name="dmpHbA1cValue", type="text", data-bind="value: dmpHbA1cValueString, readOnly: dmpHbA1cValue.readOnly")
+      div.col-xs-6
+        strong(data-bind="text: dmpHbA1cUnit.i18n")
+        div.form-group(data-bind="foreach: dmpHbA1cUnit.list, hasFeedback: { field: dmpHbA1cUnit, toggle: dmpHbA1cUnit.hasError, messages: dmpHbA1cUnit.validationMessages }")
+          label.radio-inline
+            span(data-bind="text: i18n")
+            input(type="radio", name="dmpHbA1cUnit", data-bind="value: val, checked: $parent.dmpHbA1cUnit, readOnly: $parent.dmpHbA1cUnit.readOnly")
+//- Urin...
+div.row
+  div.col-xs-6
+    strong(data-bind="text: dmpPathoUrinAlbAus.i18n")
+    span(data-bind="dmpField: { field: dmpPathoUrinAlbAus }")
+    div.form-group(data-bind="foreach: dmpPathoUrinAlbAus.list, hasFeedback: { field: dmpPathoUrinAlbAus, toggle: dmpPathoUrinAlbAus.hasError, messages: dmpPathoUrinAlbAus.validationMessages }")
+      label.radio-inline
+        span(data-bind="text: i18n")
+        input(type="radio", name="dmpPathoUrinAlbAus", data-bind="value: val, checked: $parent.dmpPathoUrinAlbAus, readOnly: $parent.dmpPathoUrinAlbAus.readOnly")
+  div.col-xs-6
+    strong(data-bind="text: dmpSequelae.i18n")
+    span(data-bind="dmpField: { field: dmpSequelae }")
+    div.form-group(data-bind="foreach: dmpSequelae.list, hasFeedback: { field: dmpSequelae, toggle: dmpSequelae.hasError, messages: dmpSequelae.validationMessages }")
+      div.checkbox
+        label
+          span(data-bind="text: i18n")
+          input(type="checkbox", name="dmpSequelae", data-bind="value: val, checked: $parent.dmpSequelae, readOnly: $parent.dmpSequelae.readOnly, attr: { name: $element.name + '-' + val }")
+div.row
+  div.col-xs-6
+    div.row
+      div.col-xs-6
+        div.form-group(data-bind="hasFeedback: { field: dmpEGFR, toggle: dmpEGFR.hasError, messages: dmpEGFR.validationMessages }")
+          label.control-label(data-bind="text: dmpEGFR.i18n")
+          span(data-bind="dmpField: { field: dmpEGFR }")
+          input.form-control(name="dmpEGFR", type="text", data-bind="value: dmpEGFRString, readOnly: dmpEGFR.readOnly")
+      div.col-xs-6(data-bind="hasFeedback: { field: dmpEGFRNotDetermined, toggle: dmpEGFRNotDetermined.hasError, messages: dmpEGFRNotDetermined.validationMessages }")
+        span &nbsp;<br>
+        label.checkbox-inline
+          span(data-bind="text: dmpEGFRNotDetermined.i18n")
+          input(type="checkbox", name="dmpEGFRNotDetermined", data-bind="checked: dmpEGFRNotDetermined, readOnly: dmpEGFRNotDetermined.readOnly")
+  div.col-xs-6
+    strong(data-bind="text: dmpInjectionSites.i18n")
+    span(data-bind="dmpField: { field: dmpInjectionSites }")
+    div.form-group(data-bind="foreach: dmpInjectionSites.list, hasFeedback: { field: dmpInjectionSites, toggle: dmpInjectionSites.hasError, messages: dmpInjectionSites.validationMessages }")
+      label.radio-inline
+        span(data-bind="text: i18n")
+        input(type="radio", name="dmpInjectionSites", data-bind="value: val, checked: $parent.dmpInjectionSites, readOnly: $parent.dmpFootStatusArmstrongValue.readOnly() || $parent.injectionSitesDisabled()")
+div.row(data-bind="if: isAfterQ22017")
+  div.col-xs-6
+    strong(data-bind="text: dmpIntervalFutureFootInspections.i18n")
+    span(data-bind="dmpField: { field: dmpIntervalFutureFootInspections }")
+    div.form-group(data-bind="foreach: dmpIntervalFutureFootInspections.list, hasFeedback: { field: dmpIntervalFutureFootInspections, toggle: dmpIntervalFutureFootInspections.hasError, messages: dmpIntervalFutureFootInspections.validationMessages }")
+      label.radio-inline
+        span(data-bind="text: i18n")
+        input(type="radio", name="dmpIntervalFutureFootInspections", data-bind="value: val, checked: $parent.dmpIntervalFutureFootInspections, readOnly: $parent.dmpIntervalFutureFootInspections.readOnly")

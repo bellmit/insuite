@@ -1,0 +1,15 @@
+div
+  div.radio
+    label.control-label
+     span(data-bind="text: 'de'")
+     input(type="radio", name="currentlySelected", value="de", data-bind="checked: currentlySelected")
+  div.radio
+    label.control-label
+      span(data-bind="text: 'en'")
+      input(type="radio", name="currentlySelected", value="en", data-bind="checked: currentlySelected")
+  div.radio
+    label.control-label
+     span(data-bind="text: 'de-CH'")
+     input(type="radio", name="currentlySelected", value="de-CH", data-bind="checked: currentlySelected")
+div
+  span(data-bind="text: languageTextI18n")

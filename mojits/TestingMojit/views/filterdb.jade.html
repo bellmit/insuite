@@ -1,0 +1,21 @@
+script(type="text/javascript")
+| $(document).ready(function() {
+| dcChangeTab("#forms");
+| });
+
+br
+br
+.container.container-fullscreen.content(id=mojit_view_id)
+
+
+div.container.container-fullscreen.dc_container.dc_shift_top
+    .hero-unit.dc_hero-unit
+        .row-fluid
+
+            h3 Apply filter to db
+            p This action will apply XSS filtering to all objects currently in the database.  This is to prevent issues where a string comparison assumes a value has been filtered/escaped because it was loaded from the database.  This action should be run only once per database.
+            p
+                i It is strongly recommended to back up your database before running this action.
+            div#divReport
+            button.btn#btnFilterDatabase Filter Database
+

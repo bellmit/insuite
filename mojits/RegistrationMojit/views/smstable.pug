@@ -1,0 +1,28 @@
+//TRANSLATION INCOMPLETE!! MOJ-3201
+.modal.hide.fade(tabindex="-1", role="dialog", aria-labelledby="myModalLabel", aria-hidden="true")#myModal
+  .modal-header
+    .btn(type="button", class="close", data-dismiss="modal", aria-hidden="true") ×
+    h3#myModalLabel inTime SMS
+  .modal-body
+    table(style="margin: 0 auto;").table-condensed.table-bordered
+      tr
+        td
+          strong.muted Zusatzoption
+        td.inoutcell
+          strong SMS
+      tr(style="background:#eeeeee;")
+        td(valign="top")
+          p
+            span Preis / Monat
+        td.inoutcell
+          p 4,90€
+          p
+            small + 7Ct/SMS
+      tr
+        td(colspan="2").featurecell
+          ul
+            li(style="margin-top:5px;") SMS-Benachrichtigungen&nbsp;für Termine an Ihre Patienten
+            li(style="margin-top:5px;") für&nbsp;alle&nbsp;inTime&nbsp;Editionen
+            li(style="margin-top:5px;") monatlich&nbsp;buchbar/kündbar
+  .modal-footer
+    .btn(data-dismiss="modal", aria-hidden="true") Ok

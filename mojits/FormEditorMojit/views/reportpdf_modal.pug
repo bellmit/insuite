@@ -1,0 +1,11 @@
+#reportPdfProgressModal
+  table(noborder="noborder",width="100%")
+    tr
+      td(width="50px")
+        div#divProgressReportThrobber
+          img(src="/static/DocCirrus/assets/images/ajax-loader.gif")
+
+      td
+        div#divProgressBar
+          div.progress(style="margin-top: 8px;")
+            div.progress-bar(style="padding-left: 8px; text-align: left;", role="progressbar", aria-valuenow="0", aria-valuemin="0", aria-valuemax="100")#divProgressReportPDF

@@ -1,0 +1,319 @@
+body .form-control.form-control-search {
+    background-image: url("../img/bootstrap/icon-search.png");
+    background-position: 6px 7px;
+    background-repeat: no-repeat;
+    text-indent: 18px;
+}
+body .form-control.input-sm.form-control-search {
+    background-position: 6px 6px;
+}
+/* KO-Bindings */
+a.ko-readOnly {
+    color: #eee;
+    cursor: not-allowed;
+}
+/*
+MOJ-2223 ~ do not show placeholder for readOnly
+*/
+.form-control[disabled]::-moz-placeholder,
+.form-control[readonly]::-moz-placeholder {
+    color: transparent;
+    opacity: 1;
+}
+.form-control[disabled]:-ms-input-placeholder,
+.form-control[readonly]:-ms-input-placeholder {
+    color: transparent;
+}
+.form-control[disabled]::-webkit-input-placeholder,
+.form-control[readonly]::-webkit-input-placeholder {
+    color: transparent;
+}
+
+/**************************************
+*** ko select2 styles *****
+***************************************/
+.ko-select2-container.select2-container .select2-choice > .select2-chosen {
+    min-height: 32px;
+}
+
+/*
+    -- START --
+    CSS styles for component with multiple flag,
+    to have the component as a one line input,
+    and display in full view above the content when needed
+ */
+
+.select2-drop-mask {
+    z-index: 9000 !important;
+}
+
+/* When closed */
+.ko-select2-container.select2-container-multi.select2-full-view .select2-choices {
+    height: 34px !important;
+    padding-right: 60px;
+}
+
+.ko-select2-container.select2-container-multi.select2-full-view .select2-choices .select2-search-field:not(:only-child) {
+    background-color: #ffffff;
+    width: 50px;
+    position: absolute;
+    right: 0;
+    top: 1px;
+}
+
+.ko-select2-container.select2-container-multi.select2-full-view .select2-choices .select2-search-field:not(:only-child)::after {
+    position: absolute;
+    content: ' ... ';
+    width: 16px;
+    height: 16px;
+    font-size: 19px;
+    font-weight: bold;
+    left: -10px;
+    bottom: 9px;
+}
+
+.ko-select2-container.select2-container-multi.select2-full-view .select2-choices .select2-search-field:not(:only-child) .select2-input {
+    width: 100% !important;
+}
+
+/* When opened (with class select2-full-view--opened)  */
+.ko-select2-container.select2-container-multi.select2-full-view.select2-full-view--opened .select2-choices {
+    min-height: 34px !important;
+    height: auto !important;
+    padding-right: 0;
+}
+
+.ko-select2-container.select2-container-multi.select2-full-view.select2-full-view--opened .select2-choices .select2-search-field:not(:only-child) {
+    position: relative;
+    width: auto;
+}
+
+.ko-select2-container.select2-container-multi.select2-full-view.select2-full-view--opened .select2-choices .select2-search-field:not(:only-child)::after {
+    display: none;
+}
+
+.ko-select2-container.select2-container-multi.select2-full-view .select2-choices .select2-search-choice {
+    margin-bottom: 8px;
+}
+
+.ko-select2-container.select2-container-multi.select2-full-view.select2-full-view--opened .select2-choices .select2-search-choice {
+    margin-bottom: 2px;
+}
+
+/* -- Finish -- */
+
+.ko-select2-container.select2-container .select2-chosen,
+.ko-select2-container.select2-container-multi .select2-search-field {
+    padding-left: 28px!important;
+    background-image: url("../img/bootstrap/icon-search.png");
+    background-position: 6px 7px;
+    background-repeat: no-repeat;
+}
+.ko-select2-container.select2-container.input-sm .select2-chosen,
+.ko-select2-container.select2-container-multi.input-sm .select2-search-field {
+    background-position: 5px 5px;
+}
+.ko-select2-container.select2-container-multi .select2-search-field .select2-input {
+    padding-left: 0;
+}
+
+.dc-select2-multiline.ko-select2-container.select2-container {
+    height: auto;
+}
+
+.dc-select2-multiline.ko-select2-container.select2-container .select2-choice {
+    height: auto;
+    overflow: visible;
+    white-space: normal;
+}
+
+.dc-select2-multiline.ko-select2-container.select2-container .select2-choice > .select2-chosen {
+    overflow: visible;
+    white-space: normal;
+}
+
+.dc-select2-multiline.ko-select2-container.select2-container .select2-choice abbr {
+    top: 16px;
+}
+
+.hasFeedback .ko-select2-container.form-control {
+    padding-right: 0;
+}
+
+.hasFeedback .ko-select2-container.select2-container .select2-choice abbr {
+    right: 30px;
+}
+.hasFeedback .ko-select2-container.select2-container .select2-choice .select2-arrow {
+    right: 32.5px;
+}
+.hasFeedback .ko-select2-container.select2-container.select2-allowclear .select2-choice .select2-arrow {
+    right: 39.5px;
+}
+
+.hasFeedback .ko-select2-container.select2-container-multi .select2-choices .select2-search-field input.select2-active {
+    background-position: right 32.5px center !important;
+}
+
+.ko-select2-drop .dc-select2-result-replacementValue {
+    border-bottom: 1px solid #ccc;
+}
+
+/**************************************
+*** ko hasFeedback message styles *****
+***************************************/
+.hasFeedback .hasFeedback-container {
+    position: relative;
+}
+
+.hasFeedback select ~ .hasFeedback-icon,
+[class*="col-"] > .form-control ~ .hasFeedback-icon {
+    right: 15px;
+}
+
+.form-horizontal .hasFeedback .form-control-feedback,
+.hasFeedback .hasFeedback-icon {
+    top: auto;
+    bottom: 0;
+    cursor: pointer;
+}
+
+.hasFeedback .input-group-addon .hasFeedback-icon {
+    height: 16px;
+    line-height: 16px;
+    position: static;
+    right: auto;
+    top: auto;
+    bottom: auto;
+    width: 16px;
+}
+
+.hasFeedback label .hasFeedback-icon,
+.hasFeedback [type="checkbox"] ~ .hasFeedback-icon,
+.hasFeedback [type="radio"] ~ .hasFeedback-icon {
+    margin-left: 0.5em;
+    vertical-align: text-top;
+    display: inline-block;
+    height: 16px;
+    line-height: 16px;
+    position: static;
+    right: auto;
+    top: auto;
+    bottom: auto;
+    width: 16px;
+}
+
+.form-horizontal table td > .hasFeedback-container .form-control-feedback {
+    top: auto;
+    right: 0;
+    bottom: 0;
+}
+
+.hasFeedback .form-control {
+    padding-right: 32.5px;
+}
+
+.hasFeedback .input-group .form-control {
+    padding-right: 12px;
+}
+
+.hasFeedback-popover {
+    max-width: 95%;
+}
+
+.hasFeedback-popover.alert-success.top > .arrow:after {
+    border-top-color: #C8E5BC;
+}
+
+.hasFeedback-popover.alert-warning.top > .arrow:after {
+    border-top-color: #F8EFC0;
+}
+
+.hasFeedback-popover.alert-danger.top > .arrow:after {
+    border-top-color: #E7C3C3;
+}
+
+.hasFeedback-popover.alert-success.right > .arrow:after {
+    border-right-color: #DFF0D8;
+}
+
+.hasFeedback-popover.alert-warning.right > .arrow:after {
+    border-right-color: #FCF8E3;
+}
+
+.hasFeedback-popover.alert-danger.right > .arrow:after {
+    border-right-color: #F2DEDE;
+}
+
+.hasFeedback-popover.alert-success.bottom > .arrow:after {
+    border-bottom-color: #DFF0D8;
+}
+
+.hasFeedback-popover.alert-warning.bottom > .arrow:after {
+    border-bottom-color: #FCF8E3;
+}
+
+.hasFeedback-popover.alert-danger.bottom > .arrow:after {
+    border-bottom-color: #F2DEDE;
+}
+
+.hasFeedback-popover.alert-success.left > .arrow:after {
+    border-left-color: #DFF0D8;
+}
+
+.hasFeedback-popover.alert-warning.left > .arrow:after {
+    border-left-color: #FCF8E3;
+}
+
+.hasFeedback-popover.alert-danger.left > .arrow:after {
+    border-left-color: #F2DEDE;
+}
+
+.hasFeedback-popover label {
+    /*for navigating fields*/
+    cursor: pointer;
+}
+
+.hasFeedback-popover .hasFeedback-popover-message {
+    border-bottom: 1px solid;
+    margin-bottom: 9px;
+    margin-left: -15px;
+    margin-right: -15px;
+    padding-bottom: 9px;
+    padding-left: 14px;
+    padding-right: 14px;
+    white-space: pre-line;
+}
+
+.hasFeedback-popover.alert-success .hasFeedback-popover-message {
+    border-color: #B2DBA1;
+}
+
+.hasFeedback-popover.alert-warning .hasFeedback-popover-message {
+    border-color: #F5E79E;
+}
+
+.hasFeedback-popover.alert-danger .hasFeedback-popover-message {
+    border-color: #DCA7A7;
+}
+
+.hasFeedback-popover .hasFeedback-popover-message:last-child {
+    border-bottom: 0 none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+h4.has-error {
+    color: #a94442;
+    background-color: #f2dede;
+    padding: 15px;
+    border: 1px solid #ebccd1;
+    border-radius: 4px;
+}
+
+h4.has-warning {
+    color: #8a6d3b;
+    background-color: #fcf8e3;
+    padding: 15px;
+    border: 1px solid #896d3b;
+    border-radius: 4px;
+}

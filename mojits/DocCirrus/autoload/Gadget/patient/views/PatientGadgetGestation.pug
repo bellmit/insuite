@@ -1,0 +1,19 @@
+div.PatientGadgetGestation
+  h4.PatientGadget-headline
+    a(data-bind="text: gestationI18n")
+    i.dc-info-icon(data-bind="click: showGestationInfo", style="cursor: pointer")
+  // ko if: gestationEnabled
+  div.alert.alert-info(data-bind="visible: gestationInfoVisible", style="margin-bottom: 0;")
+    p(data-bind="if: weekOfGestationText")
+      strong(data-bind="text: weekOfGestationTextI18n")
+      br
+      span(data-bind="text: weekOfGestationText")
+    p(data-bind="if: dueDateText")
+      strong(data-bind="text: dueTextDateI18n")
+      br
+      span(data-bind="text: dueDateText")
+    p(data-bind="if: vacationStartDateText")
+      strong(data-bind="text: vacationStartDateI18n")
+      br
+      span(data-bind="text: vacationStartDateText")
+  // /ko

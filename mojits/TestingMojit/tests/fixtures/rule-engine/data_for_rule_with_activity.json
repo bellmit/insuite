@@ -1,0 +1,372 @@
+{
+  "rule": {
+    "isDirectory" : false,
+    "isLocked" : false,
+    "isActive" : true,
+    "caseFolderType" : [
+      "PUBLIC"
+    ],
+    "metaActTypes" : [
+      "SCHEIN",
+      "TREATMENT"
+    ],
+    "metaActCodes" : [
+      "03362",
+      "03221H",
+      "03221"
+    ],
+    "description" : "03362 Q1/Q3 auto punkten für test",
+    "referenceArea" : "SCHEIN",
+    "periodType" : "MONTH",
+    "periodCount" : 1,
+    "periodReference" : "raum",
+    "rules" : [
+      {
+        "ruleId" : "5cb58b9583a1065acb000015",
+        "description" : "03362 Q1/Q3 auto punkten?",
+        "isActive" : true,
+        "validations" : {
+          "\\\\$and" : [
+            {
+              "context" : "ACTIVITY",
+              "criteria" : {
+                "actType" : {
+                  "\\\\$eq" : "SCHEIN"
+                },
+                "patientId\\\\-markers" : {
+                  "\\\\$eq" : "000000000000000000000011"
+                }
+              }
+            },
+            {
+              "\\\\$and" : [
+                {
+                  "context" : "ACTIVITY",
+                  "criteria" : {
+                    "actType" : {
+                      "\\\\$eq" : "TREATMENT"
+                    },
+                    "code" : {
+                      "\\\\$eq" : "03362",
+                      "\\\\$catalogShort" : "EBM"
+                    },
+                    "\\\\$count" : {
+                      "\\\\$eq" : 0
+                    }
+                  }
+                },
+                {
+                  "\\\\$or" : [
+                    {
+                      "context" : "ACTIVITY",
+                      "criteria" : {
+                        "actType" : {
+                          "\\\\$eq" : "TREATMENT"
+                        },
+                        "code" : {
+                          "\\\\$eq" : "03221H",
+                          "\\\\$catalogShort" : "EBM"
+                        },
+                        "\\\\$count" : {
+                          "\\\\$eq" : 0
+                        }
+                      }
+                    },
+                    {
+                      "context" : "ACTIVITY",
+                      "criteria" : {
+                        "actType" : {
+                          "\\\\$eq" : "TREATMENT"
+                        },
+                        "code" : {
+                          "\\\\$eq" : "03221",
+                          "\\\\$catalogShort" : "EBM"
+                        },
+                        "\\\\$count" : {
+                          "\\\\$eq" : 0
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "actions" : [
+          {
+            "type" : "ACTIVITY",
+            "template" : {
+              "urgency" : 2,
+              "details" : "",
+              "roles" : [],
+              "candidates" : [],
+              "caseFolder" : "",
+              "actType" : "TREATMENT",
+              "caseFolderType" : "PUBLIC",
+              "catalogShort" : "EBM",
+              "code" : "03362",
+              "diagnosisCert" : "NONE",
+              "toCreate" : 1,
+              "explanations" : null,
+              "linkActivities" : false,
+              "autoCreate" : false,
+              "tempateID" : "5baead398f9eef50de000010",
+              "markers" : [],
+              "type" : ""
+            }
+          }
+        ],
+        "metaActTypes" : [
+          "SCHEIN",
+          "TREATMENT"
+        ],
+        "metaRequiredCodes" : [
+          "03362",
+          "03221H",
+          "03221"
+        ]
+      }
+    ],
+    "metaCriterias" : [
+      "actType",
+      "patientId.markers",
+      "code"
+    ],
+    "metaFuzzy" : false
+  },
+  "schein": {
+    "actType" : "SCHEIN",
+    "attachments" : [],
+    "subType" : "",
+    "time" : "",
+    "backupEmployeeIds" : [],
+    "userContent" : "ambulante Behandlung (ambulante Behandlung)",
+    "mediaImportError" : "",
+    "partnerInfo" : "",
+    "explanations" : null,
+    "status" : "VALID",
+    "activities" : [],
+    "referencedBy" : [],
+    "formId" : "",
+    "formVersion" : "",
+    "formPdf" : "",
+    "formLang" : "de",
+    "formGender" : "m",
+    "apkState" : "IN_PROGRESS",
+    "unlinkedMirrorIds" : [],
+    "forInsuranceType" : "",
+    "locationFeatures" : "",
+    "scheinRemittor" : "",
+    "scheinEstablishment" : "",
+    "scheinSpecialisation" : "",
+    "scheinOrder" : "",
+    "scheinDiagnosis" : "",
+    "scheinFinding" : "",
+    "scheinNotes" : "Dass ist fantastisch",
+    "scheinClinicalTreatmentFrom" : null,
+    "scheinClinicalTreatmentTo" : null,
+    "scheinNextTherapist" : "",
+    "fk4234" : false,
+    "fk4219" : "",
+    "continuousIcds" : [],
+    "createContinuousDiagnosisOnSave" : false,
+    "icds" : [],
+    "icdsExtra" : [],
+    "scheinQuarter" : "2",
+    "scheinYear" : "2019",
+    "scheinBillingArea" : "00",
+    "scheinType" : "0101",
+    "scheinSubgroup" : "00",
+    "scheinTransferTypeInfo" : "",
+    "fk4124" : "",
+    "fk4126" : "",
+    "fk4125from" : null,
+    "fk4125to" : null,
+    "fk4123" : "",
+    "fk4206" : null,
+    "fk4236" : false,
+    "fk4241" : "",
+    "fk4217" : "",
+    "scheinSlipMedicalTreatment" : "",
+    "__t" : "SCHEIN",
+    "attachedMedia" : [],
+    "content" : "Dass ist fantastisch",
+    "editor" : [
+      {
+        "name" : "Jhony Dredn04",
+        "employeeNo" : "01234",
+        "initials" : "JD"
+      }
+    ],
+    "debtCollection" : "",
+    "fk4235Set" : [],
+    "invoiceData" : [],
+    "scheinTransferType" : "",
+    "employeeName" : "Dredn04, Jhony",
+    "employeeInitials" : "JD",
+    "patientLastName" : "Nachnamme",
+    "patientFirstName" : "Mann",
+    "code" : null
+  },
+  "rulelog": {
+    "activitiesToCreate" : [
+      {
+        "template" : {
+          "urgency" : 2,
+          "details" : "",
+          "roles" : [],
+          "candidates" : [],
+          "caseFolder" : "",
+          "actType" : "TREATMENT",
+          "caseFolderType" : "PUBLIC",
+          "catalogShort" : "EBM",
+          "code" : "03362",
+          "diagnosisCert" : "NONE",
+          "toCreate" : 1,
+          "explanations" : null,
+          "linkActivities" : false,
+          "autoCreate" : false,
+          "tempateID" : "5baead398f9eef50de000010",
+          "markers" : [],
+          "type" : ""
+        },
+        "ruleSetCaseFolder" : [
+          "PUBLIC"
+        ],
+        "triggeredBy" : [
+          "5cde6458d4d57f19f5fbe44b"
+        ],
+        "ruleId" : "5cb58b9583a1065acb000015",
+        "referenceArea" : "SCHEIN",
+        "caseFolderId" : "5cde6456d4d57f19f5fbe445",
+        "id" : 0
+      }
+    ],
+    "caseFolderType" : [],
+    "affectedActivities" : [],
+    "actTypes" : [
+      "SCHEIN",
+      "TREATMENT"
+    ],
+    "actCodes" : [],
+    "requiredCodes" : [
+      "03362",
+      "03221H",
+      "03221"
+    ],
+    "allCodes" : [],
+    "referenceArea" : "SCHEIN",
+    "ruleLogType" : "ACTIVITY",
+    "message" : "03362 Q1/Q3 auto punkten?",
+    "ruleId" : "5cb58b9583a1065acb000015"
+  },
+  "treatment": {
+    "actType" : "TREATMENT",
+    "status" : "VALID",
+    "attachments" : [],
+    "subType" : "",
+    "time" : "",
+    "taxPoints": 0,
+    "backupEmployeeIds" : [],
+    "userContent" : "",
+    "mediaImportError" : "",
+    "partnerInfo" : "",
+    "explanations" : null,
+    "activities" : [],
+    "referencedBy" : [],
+    "formId" : "",
+    "formVersion" : "",
+    "formPdf" : "",
+    "formLang" : "de",
+    "formGender" : "n",
+    "apkState" : "IN_PROGRESS",
+    "unlinkedMirrorIds" : [],
+    "scheinOrder" : "",
+    "scheinDiagnosis" : "",
+    "countryMode" : [
+      "D"
+    ],
+    "fk5002" : "",
+    "fk5005" : "",
+    "fk5008" : "",
+    "fk5013" : "",
+    "fk5017" : "",
+    "fk5019" : "",
+    "fk5023" : "",
+    "fk5024" : "",
+    "fk5025" : null,
+    "fk5026" : null,
+    "fk5034" : null,
+    "fk5037" : "",
+    "fk5040" : "",
+    "fk5044" : "",
+    "fk5015" : "",
+    "fk5016" : "",
+    "fk5018" : "",
+    "fk5038" : "",
+    "treatmentCategory" : "",
+    "divisionCode" : null,
+    "divisionText" : "",
+    "anaesthesiaText" : "",
+    "medicalText" : "",
+    "technicalText" : "",
+    "medicalTaxPoints" : 0,
+    "technicalTaxPoints" : 0,
+    "assistanceTaxPoints" : 0,
+    "medicalScalingFactor" : 1,
+    "technicalScalingFactor" : 1,
+    "treatmentTime" : 0,
+    "preparationAndFollowUpTime" : 0,
+    "reportTime" : 0,
+    "roomOccupancyTime" : 0,
+    "rotationTime" : 0,
+    "savedEmails": [],
+    "assistanceQuantity" : 0,
+    "benefitsText" : "",
+    "billingRole" : [
+      "MEDICAL",
+      "TECHNICAL"
+    ],
+    "treatmentTypeCh" : "AMBULATORY",
+    "sideMandatory" : false,
+    "price" : 0,
+    "displayPrice" : "0",
+    "areTreatmentDiagnosesBillable" : "1",
+    "costType" : "",
+    "gnrAdditionalInfo" : [
+      "NONE"
+    ],
+    "gnrAdditionalInfoType" : "AUSWAHL",
+    "catalog" : true,
+    "forInsuranceType" : "",
+    "modifyHomeCat" : false,
+    "deleteEntryHomeCat" : false,
+    "hasVat" : false,
+    "icds" : [],
+    "icdsExtra" : [],
+    "numberOfCopies" : 1,
+    "__t" : "TREATMENT",
+    "employeeName" : "Last name, First name",
+    "generalCosts" : 0,
+    "specialCosts" : 0,
+    "unit" : "Euro",
+    "actualPrice" : 0,
+    "vat" : 0,
+    "attachedMedia" : [],
+    "editor" : [],
+    "fk5012Set" : [],
+    "fk5020Set" : [],
+    "fk5035Set" : [],
+    "fk5036Set" : [],
+    "fk5042Set" : [],
+    "omimCodes" : [],
+    "employeeInitials" : "FL",
+    "content" : "",
+    "patientLastName" : "Patient",
+    "patientFirstName" : "Test",
+    "materialCosts" : 0,
+    "vatAmount" : 0,
+    "catalogShort": "EBM"
+  }
+}

@@ -1,0 +1,9 @@
+div.row#editcasefolder
+  div.col-md-12
+    .form-group(data-bind="hasFeedback: { field: title, toggle: title.hasError, messages: title.validationMessages, popover: { container: '#DCWindow-editcasefolder' } }")
+      label(for="title").control-label(data-bind="text: titleI18n")
+      input.form-control(name="title", data-bind="value: title, readOnly: title.readOnly, valueUpdate: 'afterkeydown'")
+  div.col-md-12
+    .form-group(data-bind="hasFeedback: { field: type, toggle: type.hasError, type: title.validationMessages, popover: { container: '#DCWindow-editcasefolder' } }")
+      label(for="type").control-label(data-bind="text: typeI18n")
+      input.form-control(name="type", data-bind="value: _displayType", disabled="true")

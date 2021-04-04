@@ -1,0 +1,17 @@
+table.table.table-bordered
+  colgroup
+    col(width="32")
+    col(width="100%")
+  thead
+    tr
+      th
+        lablel.checkbox-inline
+          input(type="checkbox", data-bind="checked: isAllChecked, event: {change: selectAllChangeHandler}")
+          span(style="font-weight: bold", data-bind="text: i18n('KoUI.KoTable.visibleColumnsConfiguration.window.columns.visibility.header')")
+      th(data-bind="text: i18n('KoUI.KoTable.visibleColumnsConfiguration.window.columns.columnName.header')")
+  tbody(data-bind="foreach: columns, event: { change: visibleChangeHandler }")
+    tr
+      td
+        input(type="checkbox", data-bind="checked: visible")
+      td
+        span(data-bind="text: label")

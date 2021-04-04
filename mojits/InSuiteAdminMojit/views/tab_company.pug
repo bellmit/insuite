@@ -1,0 +1,104 @@
+#tab_company
+  h4(data-bind="text: companyTitleI18n")
+  div.row
+    div.col-xs-6
+      // ko if: isVPRCAdminAppliance
+      div.panel.panel-default
+        div.panel-body
+          div.row
+            div.col-xs-12.col-sm-9
+              div.form-group(data-bind="hasFeedback: { toggle: vprcFQHostName.hasError, messages: vprcFQHostName.validationMessages }")
+                label.control-label(for="tab_company-field-vprcFQHostName", data-bind="text: vprcFQHostName.i18n")
+                input#tab_company-field-vprcFQHostName.form-control(name="vprcFQHostName", type="text", data-bind="value: vprcFQHostName, valueUpdate: 'afterkeydown'")
+            div.col-sm-3
+              div.pull-right(data-bind="template: saveHostName.template", style=" margin-top:20px; display:inline-block;")
+      // /ko
+      div.panel.panel-default
+        div.panel-body
+          div.row
+
+            div.col-xs-12.col-sm-6.col-md-4
+              div.form-group
+                label.control-label(for="tab_company-field-dcCustomerNo", data-bind="text: dcCustomerNo.i18n")
+                input#tab_company-field-dcCustomerNo.form-control(name="dcCustomerNo", type="text", data-bind="value: dcCustomerNo, readOnly: dcCustomerNo.readOnly",)
+
+            div.col-xs-12.col-sm-6.col-md-4
+              div.form-group
+                label.control-label(for="tab_company-field-customerNo", data-bind="text: commercialNo.i18n")
+                input#tab_company-field-customerNo.form-control(name="customerNo", type="text", data-bind="value: customerNo, readOnly: customerNo.readOnly",)
+
+            div.col-xs-12.col-sm-6.col-md-4
+              div.form-group(data-bind="hasFeedback: { field: cotype, toggle: cotype.hasError, messages: cotype.validationMessages }")
+                label.control-label(for="tab_company-field-cotype", data-bind="text: companyTypeI18n")
+                select#tab_company-field-cotype.form-control(name="cotype", data-bind="readOnly: cotype.readOnly, options: cotype.list, optionsValue: 'val', optionsText: 'i18n', value: cotype, valueUpdate: 'afterkeydown', optionsCaption: pleaseSelectI18n")
+
+            div.col-xs-12.col-sm-6.col-md-6
+              div.form-group(data-bind="hasFeedback: { field: coname, toggle: coname.hasError, messages: coname.validationMessages }")
+                label.control-label(for="tab_company-field-coname", data-bind="text: companyNameI18n")
+                input#tab_company-field-coname.form-control(name="coname", type="text", data-bind="readOnly: coname.readOnly, textInput: coname")
+
+            div.col-xs-12.col-sm-6.col-md-6
+              div.form-group
+                strong(data-bind="text: countryMode.i18n")
+                div(data-bind="foreach: countryMode.list, hasFeedback: { field: countryMode, toggle: countryMode.hasError, messages: countryMode.validationMessages }")
+                  label.checkbox-inline
+                    span(data-bind="text: i18n")
+                    input(type="checkbox", name="countryMode", data-bind="value: val, checked: $parent.countryMode, readOnly: $parent.countryMode.readOnly")
+
+      div(data-bind="template: {foreach: communications}")
+        include template-communication-no-buttons
+    div.col-xs-6
+      div(data-bind="template: {foreach: addresses}")
+        include template-address-no-buttons
+
+  div.row(data-bind="with: centralContact")
+    div.col-xs-6
+      h4(data-bind="text: centralContact.i18n")
+      div.panel.panel-default
+        div.panel-body
+          div.row
+            div.col-xs-12.col-sm-6.col-md-4
+              div.form-group
+                label.control-label(data-bind="text: $parent.companyFirstNameI18n")
+                input.form-control(name="firstname", data-bind="value: firstname, readOnly: $parent.centralContact.readOnly",)
+            div.col-xs-12.col-sm-6.col-md-4
+              div.form-group
+                label.control-label(data-bind="text: $parent.companyLastNameI18n")
+                input.form-control(name="lastname", data-bind="value: lastname, readOnly: $parent.centralContact.readOnly",)
+            div.col-xs-12.col-sm-6.col-md-4
+              div.form-group
+                label.control-label
+                span(data-bind="text: title.i18n")
+                input.form-control(name="title", data-bind="value: title, readOnly: $parent.centralContact.readOnly",)
+      div(data-bind="template: {foreach: communications}")
+        include template-communication-no-buttons
+    div.col-xs-6
+      div(data-bind="template: {foreach: addresses}")
+        include template-address-no-buttons
+  div.row(data-bind="with: supportContact")
+    div.col-xs-6
+      h4(data-bind="text: $parent.supportContactI18n")
+      div.panel.panel-default
+        div.panel-body
+          div.row
+            div.col-xs-12.col-sm-6.col-md-4
+              div.form-group
+                label.control-label(data-bind="text: $parent.companyFirstNameI18n")
+                input.form-control(name="firstname", data-bind="value: firstname, readOnly: $parent.supportContact.readOnly",)
+              div.form-group
+                label.control-label(data-bind="text: $parent.companyWorkingAtI18n")
+                input.form-control(name="companyName", data-bind="value: companyName, readOnly: $parent.supportContact.readOnly",)
+            div.col-xs-12.col-sm-6.col-md-4
+              div.form-group
+                label.control-label(data-bind="text: $parent.companyLastNameI18n")
+                input.form-control(name="lastname", data-bind="value: lastname, readOnly: $parent.supportContact.readOnly",)
+            div.col-xs-12.col-sm-6.col-md-4
+              div.form-group
+                label.control-label
+                span(data-bind="text: title.i18n")
+                input.form-control(name="title", data-bind="value: title, readOnly: $parent.supportContact.readOnly",)
+      div(data-bind="template: {foreach: communications}")
+        include template-communication-no-buttons
+    div.col-xs-6
+      div(data-bind="template: {foreach: addresses}")
+        include template-address-no-buttons

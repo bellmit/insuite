@@ -1,0 +1,143 @@
+div
+  div.row
+    //ko if: isPublicCaseFolder
+    .col-xs-12
+      //ko if: !displayETSPanel() && eTSErrorMessage()
+      .alert.alert-warning
+        h4 eTerminservice
+        p(data-bind="html: eTSErrorMessage")
+      // /ko
+      //ko if: displayETSPanel
+      .alert(data-bind="attr: {'class': eTSAlertClass}")
+        h4 eTerminservice
+        .row
+          div.col-xs-6
+            div.form-group(data-bind="hasFeedback: { field: ueberwAn, toggle: ueberwAn.hasError, messages: ueberwAn.validationMessages }")
+              label.control-label(data-bind="text: ueberwAnI18n")
+              input.form-control(name="specialities", type="text", data-bind="select2: select2Specialities, readOnly: ueberwAn.readOnly" )
+          div.col-xs-6
+            div.form-group
+              label(data-bind="text: eTSAdditionalQualifications.i18n")
+              input.form-control(name="eTSAdditionalQualifications", type="text", data-bind="select2: select2AdditionalQualifications, readOnly: eTSAdditionalQualifications.readOnly" )
+          div.col-xs-6
+            div.form-group
+              // TODO: eTS info (i) mit den erklärungen zu den dringlichkeiten
+              label(data-bind="text: urgency.i18n")
+              select.form-control( data-bind="options: urgency.list, optionsValue: 'val', optionsText: 'i18n', value: urgency, optionsCaption: '', readOnly: urgency.readOnly")
+          div.col-xs-3
+            div.form-group
+              label(data-bind="text: eTSArrangementCode.i18n")
+              input.form-control(name="eTSArrangementCode", data-bind="value: eTSArrangementCode", disabled)
+          div.col-xs-3
+            div(style="padding-top: 20px;")
+              span.btn-block(data-bind="template: requestArrangementCodeButton.template")
+        //ko if: pendingRequest
+        img(style="margin-right: 8px;", src="/static/DocCirrus/assets/images/ajax-loader.gif")
+        span(data-bind="text: requestIsPendingI18n")
+        // /ko
+        //ko if: eTSAErrorMessage() && !pendingRequest()
+        strong(data-bind="text: eTSAErrorMessage")
+        p(data-bind="text: additionalErrorHintI18n")
+        // /ko
+      // /ko
+    // /ko
+  div.row
+    div.col-xs-4
+      div.radio(data-bind="highlightError: scheinSlipMedicalTreatment")
+        label.control-label
+          strong(data-bind="text: scheinSlipMedicalTreatment1I18n")
+          input(type="radio", name="scheinSlipMedicalTreatment", value="1", data-bind="checked: scheinSlipMedicalTreatment, readOnly: scheinSlipMedicalTreatment.readOnly")
+    div.col-xs-4
+      div.radio(data-bind="highlightError: scheinSlipMedicalTreatment")
+        label.control-label
+          strong(data-bind="text: scheinSlipMedicalTreatment2I18n")
+          input(type="radio", name="scheinSlipMedicalTreatment", value="2", data-bind="checked: scheinSlipMedicalTreatment, readOnly: scheinSlipMedicalTreatment.readOnly")
+    div.col-xs-4
+      div.radio(data-bind="highlightError: scheinSlipMedicalTreatment")
+        label.control-label
+          strong(data-bind="text: scheinSlipMedicalTreatment4I18n")
+          input(type="radio", name="scheinSlipMedicalTreatment", value="4", data-bind="checked: scheinSlipMedicalTreatment, readOnly: scheinSlipMedicalTreatment.readOnly")
+  div.row
+    div.col-xs-4
+      div(data-bind="if: !_asvContext()")
+        div.checkbox
+          label.control-label
+            strong(data-bind="text: behandlungGemaess.i18n")
+            input(type="checkbox", name="behandlungGemaess", data-bind="checked: behandlungGemaess, readOnly: behandlungGemaess.readOnly")
+      div(data-bind="if: _asvContext")
+        div.checkbox
+          label.control-label
+            strong(data-bind="text: asvTeamReferral.i18n")
+            input(type="checkbox", name="asvTeamReferral", data-bind="checked: asvTeamReferral, readOnly: asvTeamReferral.readOnly")
+    div.col-xs-4
+      div.checkbox
+        label.control-label
+          strong(data-bind="text: fk4204.i18n")
+          input(type="checkbox", name="fk4204", data-bind="checked: fk4204, readOnly: fk4204.readOnly")
+    div.col-xs-4
+      div.checkbox
+        label.control-label
+          strong(data-bind="text: fk4202.i18n")
+          input(type="checkbox", name="fk4202", data-bind="checked: fk4202, readOnly: fk4202.readOnly")
+  div.row
+    div.col-xs-4
+      div.radio
+        label.control-label
+          strong(data-bind="text: auftragsleistungenI18n")
+          input(type="radio", name="untersArt", value="1", data-bind="checked: untersArt, readOnly: untersArt.readOnly")
+    div.col-xs-4
+      div.radio
+        label.control-label
+          strong(data-bind="text: konsiliaruntersuchungI18n")
+          input(type="radio", name="untersArt", value="2", data-bind="checked: untersArt, readOnly: untersArt.readOnly")
+    div.col-xs-4
+      div.radio
+        label.control-label
+          strong(data-bind="text: mitWeiterBehandlungI18n")
+          input(type="radio", name="untersArt", value="3", data-bind="checked: untersArt, readOnly: untersArt.readOnly")
+  div.row
+    div.col-xs-6
+      label.control-label(data-bind="text: auBisI18n")
+      div.form-group(data-bind="hasFeedback: { field: auBis, toggle: auBis.hasError, messages: auBis.validationMessages }")
+        .date-picker.input-group
+          input.form-control(name="auBis", type="text", data-bind="datetimepicker: { value: auBis }, readOnly: auBis.readOnly, attr: { placeholder:auBisI18n }")
+    div.col-xs-6
+      label.control-label(data-bind="text: datumOP.i18n")
+      div.form-group(data-bind="hasFeedback: { field: datumOP, toggle: datumOP.hasError, messages: datumOP.validationMessages }")
+        .date-picker.input-group
+          input.form-control(name="datumOP", type="text", data-bind="datetimepicker: { value: datumOP }, readOnly: datumOP.readOnly, attr: { placeholder: datumOP.i18n }")
+
+  div.row
+    div.col-xs-6
+
+      div.form-group(data-bind="visible: showReferralIdInput")
+        label.control-label(data-bind="text: labRequestId.i18n")
+        input.form-control(name="labRequestId", data-bind="value: labRequestId, readOnly: labRequestId.readOnly")
+
+      div.form-group(data-bind="hasFeedback: { field: ueberwAn, toggle: ueberwAn.hasError, messages: ueberwAn.validationMessages }")
+        label.control-label(data-bind="text: ueberwAnI18n")
+        input#referal_select2_specialities.form-control(name="specialities", type="text", data-bind="select2: select2Specialities, readOnly: ueberwAn.readOnly" )
+
+      div.form-group
+        label.control-label Diagnosen
+        textarea.form-control(name="diagnosesText", rows="6", data-bind="value: diagnosesText, readOnly: diagnosesText.readOnly, event: { focus: onDocTreeFocus, blur: onDocTreeBlur }, caretPosition: diagnosesText.caretPosition")
+
+    div.col-xs-6
+
+      div.form-group(data-bind="css: _findingsTextInvalid, hasFeedback: { field: findingsText, toggle: findingsText.hasError, messages: findingsText.validationMessages }")
+        label.control-label Befund
+        span(style="float: right")
+          small(data-bind="text: _findingsCharsRemaining")
+        textarea.form-control(name="findingsText", rows="2", data-bind="value: findingsText, valueUpdate: 'keyup', readOnly: findingsText.readOnly, event: { focus: onDocTreeFocus, blur: onDocTreeBlur }, caretPosition: findingsText.caretPosition")
+
+      div.form-group(data-bind="css: _medicationsTextInvalid, hasFeedback: { field: medicationsText, toggle: medicationsText.hasError, messages: medicationsText.validationMessages }")
+        label.control-label Medikation
+        span(style="float: right")
+          small(data-bind="text: _medicationsCharsRemaining")
+        textarea.form-control(name="medicationsText", rows="2", data-bind="value: medicationsText, valueUpdate: 'keyup', readOnly: medicationsText.readOnly, event: { focus: onDocTreeFocus, blur: onDocTreeBlur }, caretPosition: medicationsText.caretPosition")
+
+      div.form-group(data-bind="hasFeedback: { field: auftrag, toggle: auftrag.hasError, messages: auftrag.validationMessages }, css: _auftragTextInvalid")
+        label.control-label(data-bind="text: auftrag.i18n")
+        span(style="float: right")
+          small(data-bind="text: _auftragCharsRemaining")
+        textarea.form-control(name="auftrag",rows="4", data-bind="value: auftrag, readOnly: auftrag.readOnly, event: { focus: onDocTreeFocus, blur: onDocTreeBlur }, caretPosition: auftrag.caretPosition, hasFocus: true")

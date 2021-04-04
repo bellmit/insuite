@@ -1,0 +1,7 @@
+div.col-xs-6.form-group(data-bind="visible: dmpRegularPhysicalTrainingRecommended_4_23Visible()")
+    strong(data-bind="text: dmpRegularPhysicalTrainingRecommended_4_23.i18n")
+    span(data-bind="dmpField: { field: dmpRegularPhysicalTrainingRecommended_4_23 }")
+    div(data-bind="foreach: dmpRegularPhysicalTrainingRecommended_4_23.list, hasFeedback: { field: dmpRegularPhysicalTrainingRecommended_4_23, toggle: dmpRegularPhysicalTrainingRecommended_4_23.hasError, messages: dmpRegularPhysicalTrainingRecommended_4_23.validationMessages }")
+        label.radio-inline
+            span(data-bind="text: i18n")
+            input(type="radio", name="dmpRegularPhysicalTrainingRecommended_4_23", data-bind="value: val, checked: $parent.dmpRegularPhysicalTrainingRecommended_4_23, readOnly: $parent.dmpRegularPhysicalTrainingRecommended_4_23.readOnly, attr: { name: $element.name + '-' + val }")

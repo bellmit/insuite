@@ -1,0 +1,91 @@
+.predefined-reports div.date-selector {
+  margin-bottom: 10px; }
+  .predefined-reports div.date-selector .datepickers-wrapper {
+    padding-right: 0; }
+  .predefined-reports div.date-selector .period-selector {
+    padding-right: 0;
+    padding-left: 0; }
+    .predefined-reports div.date-selector .period-selector .selector-buttons {
+      display: inline-block; }
+      .predefined-reports div.date-selector .period-selector .selector-buttons > div {
+        display: inline-block; }
+        .predefined-reports div.date-selector .period-selector .selector-buttons > div + div {
+          margin-left: 4px; }
+    .predefined-reports div.date-selector .period-selector select {
+      width: 107px;
+      display: inline-block;
+      margin-right: 6px;
+      padding-right: 0;
+      padding-left: 5px; }
+    .predefined-reports div.date-selector .period-selector button {
+      padding-left: 6px;
+      padding-right: 6px; }
+  @media (min-width: 992px) {
+    .predefined-reports div.date-selector .datepickers > div {
+      width: 32%; }
+    .predefined-reports div.date-selector .datepickers > .period-selector {
+      width: 36%; }
+      .predefined-reports div.date-selector .datepickers > .period-selector select {
+        width: 92px; } }
+  @media (min-width: 1200px) {
+    .predefined-reports div.date-selector .datepickers-wrapper {
+      width: 45%; }
+    .predefined-reports div.date-selector .timeline-wrapper {
+      width: 55%; }
+    .predefined-reports div.date-selector .datepickers > .period-selector select {
+      width: 107px; } }
+  .predefined-reports div.date-selector .timeline {
+    height: 112px;
+    overflow: hidden; }
+    .predefined-reports div.date-selector .timeline rect.extent {
+      opacity: .2;
+      fill: #3276b1; }
+    .predefined-reports div.date-selector .timeline .nvd3 text {
+      font-size: 11px; }
+.predefined-reports label {
+  display: block;
+  margin-bottom: 5px;
+  min-height: 22px; }
+.predefined-reports .pre-table-box .KoTable {
+  margin: -10px; }
+.predefined-reports table table.nested-list {
+  width: 100%; }
+  .predefined-reports table table.nested-list td {
+    padding: 5px; }
+    .predefined-reports table table.nested-list td:first-child {
+      width: 150px; }
+.predefined-reports .dc-SideBar-container .panel-body {
+  font-size: 14px;
+  background-color: #f5f5f5; }
+.predefined-reports .dc-SideBar-container .predefinedReportsListViewModel-container {
+  position: relative; }
+.predefined-reports .dc-SideBar-container .predefinedReportsListViewModel-drag {
+  display: inline-block;
+  width: 15px; }
+.predefined-reports .dc-SideBar-container .predefinedReportsListViewModel-dragHandle {
+  color: #ccc;
+  cursor: ns-resize; }
+.predefined-reports .dc-SideBar-container .predefinedReportsListViewModel-dragHandle .fa + .fa {
+  margin-left: 1px; }
+.predefined-reports .dc-SideBar-container .predefinedReportsListViewModel-button {
+  display: inline-block;
+  width: calc(100% - 15px);
+  padding-right: 5px;
+  padding-left: 5px;
+  white-space: normal; }
+@media (min-width: 992px) {
+  .predefined-reports .with-sidebarMenu div.date-selector .datepickers-wrapper {
+    width: 60%; }
+  .predefined-reports .with-sidebarMenu div.date-selector .timeline-wrapper {
+    width: 40%; }
+  .predefined-reports .with-sidebarMenu div.date-selector .period-selector select {
+    width: 89px; } }
+@media (min-width: 1200px) {
+  .predefined-reports .with-sidebarMenu div.date-selector .datepickers-wrapper {
+    width: 50%; }
+  .predefined-reports .with-sidebarMenu div.date-selector .timeline-wrapper {
+    width: 50%; }
+  .predefined-reports .with-sidebarMenu div.date-selector .period-selector select {
+    width: 91px; } }
+
+/*# sourceMappingURL=predefined-reportings.css.map */

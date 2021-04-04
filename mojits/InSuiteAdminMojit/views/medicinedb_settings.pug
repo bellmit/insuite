@@ -1,0 +1,40 @@
+// ko if: countryModeIncludesGermany()
+h4(data-bind="text: settingsGroupDBI18n")
+div.panel.panel-default
+  div.panel-body
+    div.form-group(data-bind="hasFeedback: { field: avwgNo, toggle: avwgNo.hasError, messages: avwgNo.validationMessages }")
+      label.control-label(data-bind="text: settingsDBCertI18n")
+      input.form-control(data-bind="value: avwgNo, valueUpdate: 'afterkeydown'")
+      a(data-bind="click: _getDCAvwgCertNumber, text: settingsUseDCAVWGI18n")
+    // ko if: hasInScribeLicence
+    div.form-group
+      div.checkbox
+        label.control-label
+          strong(data-bind="text: useExternalPrescriptionSoftware.i18n")
+          input(type="checkbox", data-bind="checked: useExternalPrescriptionSoftware, valueUpdate: 'afterkeydown'")
+    div.form-group(data-bind="hasFeedback: { field: externalPrescriptionSoftwareUrl, toggle: externalPrescriptionSoftwareUrl.hasError, messages: externalPrescriptionSoftwareUrl.validationMessages }")
+      label.control-label(data-bind="text: externalPrescriptionSoftwareUrl.i18n")
+      input.form-control(data-bind="value: externalPrescriptionSoftwareUrl, valueUpdate: 'afterkeydown'")
+    // /ko
+// /ko
+h4(data-bind="text: settingsSecuritySettingsI18n")
+div.panel.panel-default
+  div.panel-body
+    div.form-group
+      div.checkbox
+        label.control-label
+          strong(data-bind="text: settingsAccountBanCheckboxI18n")
+          input(type="checkbox", data-bind="checked: accountBan, valueUpdate: 'afterkeydown'")
+          i.dc-info-icon(data-bind="click: showAccountBanInfobox")
+        div.form-group(data-bind="hasFeedback: { field: accountBanDelay, toggle: accountBanDelay.hasError, messages: accountBanDelay.validationMessages }")
+          span(data-bind="text: settingsAccountBanPreI18n + ' '")
+          input.form-control(type='text', data-bind="enable: accountBanDelayEnabled, value: accountBanDelay, valueUpdate: 'afterkeydown'", style="display: inline-block; width: 42px;")
+          span(data-bind="text: ' ' + settingsAccountBanPostI18n")
+      div.checkbox
+        label.control-label
+          strong(data-bind="text: settingsAutoLogOutCheckBoxI18n")
+          input(type="checkbox", data-bind="checked: autoLogout, valueUpdate: 'afterkeydown'")
+        div.form-group(data-bind="hasFeedback: { field: timeoutDelay, toggle: timeoutDelay.hasError, messages: timeoutDelay.validationMessages }")
+          span(data-bind="text: settingsTextPreI18n + ' '")
+          input.form-control(type='text', data-bind="enable: timeoutDelayEnabled, value: timeoutDelay, valueUpdate: 'afterkeydown'", style="display: inline-block; width: 42px;")
+          span(data-bind="text: ' ' + settingsTextPostI18n")

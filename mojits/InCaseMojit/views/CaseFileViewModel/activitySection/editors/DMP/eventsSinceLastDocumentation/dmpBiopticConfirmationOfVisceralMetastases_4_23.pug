@@ -1,0 +1,7 @@
+div.form-group(data-bind="visible: dmpBiopticConfirmationOfVisceralMetastases_4_23Visible()")
+    strong(data-bind="text: dmpBiopticConfirmationOfVisceralMetastases_4_23.i18n")
+    span(data-bind="dmpField: { field: dmpBiopticConfirmationOfVisceralMetastases_4_23 }")
+    div(data-bind="foreach: dmpBiopticConfirmationOfVisceralMetastases_4_23.list, hasFeedback: { field: dmpBiopticConfirmationOfVisceralMetastases_4_23, toggle: dmpBiopticConfirmationOfVisceralMetastases_4_23.hasError, messages: dmpBiopticConfirmationOfVisceralMetastases_4_23.validationMessages }")
+        label.radio-inline
+            span(data-bind="text: i18n")
+            input(type="radio", name="dmpBiopticConfirmationOfVisceralMetastases_4_23", data-bind="value: val, checked: $parent.dmpBiopticConfirmationOfVisceralMetastases_4_23, readOnly: $parent.dmpBiopticConfirmationOfVisceralMetastases_4_23.readOnly, attr: { name: $element.name + '-' + val }")

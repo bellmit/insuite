@@ -1,0 +1,78 @@
+{
+  "meta": {
+    "errors": [],
+    "warnings": [],
+    "query": {},
+    "itemsPerPage": null,
+    "totalItems": 2,
+    "page": null,
+    "replyCode": 200,
+    "model": "catalog"
+  },
+  "data": [
+    {
+      "_id": "5fbbddc4dd211565957921db",
+      "seq": "E78.2",
+      "unifiedSeq": "E000000078.2",
+      "title": "Gemischte Hyperlipidämie",
+      "infos": [
+        "Familiäre Dysbetalipoproteinämie",
+        "Kombinierte Hyperlipidämie",
+        "Gemischte Hyperlipoproteinämie",
+        "Familiäre Hyperlipoproteinämie Typ III",
+        "HLP [Hyperlipoproteinämie] Typ III",
+        "Gemischte Hyperlipidämie",
+        "Xanthom der Haut",
+        "Hyperlipoproteinämie Typ IIb",
+        "Hyperlipoproteinämie Typ III",
+        "Hypercholesterinämie mit endogener Hypertriglyzeridämie",
+        "Xanthoma tuberosum",
+        "Hyperlipidämie Typ III nach Fredrickson",
+        "Hyperlipidämie Typ IIb nach Fredrickson",
+        "Hyperlipidämie C",
+        "Mixed Hyperlipidämie",
+        "Betalipoproteinämie mit breiter Beta-Bande",
+        "Familiäre Hyperbetalipoproteinämie mit Präbetalipoproteinämie",
+        "Hypercholesterinämie mit endogener Hyperglyzidämie",
+        "Broad-beta-Lipoproteinämie",
+        "Tuberoeruptives Xanthom",
+        "Xanthoma disseminatum der Haut",
+        "Multiple Xanthome der Haut",
+        "Hyperbetalipoproteinämie mit Präbetalipoproteinämie",
+        "Lipoproteinämie mit breiter Beta-Bande",
+        "Betalipoproteinämie",
+        "Broad-beta disease",
+        "Floating-Betalipoproteinämie"
+      ],
+      "u_extra": {
+        "abrechenbar": "j",
+        "krankheit_in_mitteleuropa_sehr_selten": "n",
+        "schlüsselnummer_mit_inhalt_belegt": "j",
+        "infektionsschutzgesetz_meldepflicht": "n",
+        "infektionsschutzgesetz_abrechnungsbesonderheit": "n"
+      }
+    },
+    {
+      "_id": "5fbbddc4dd211565957921dd",
+      "seq": "E78.4",
+      "unifiedSeq": "E000000078.4",
+      "title": "Sonstige Hyperlipidämien",
+      "infos": [
+        "Familiäre Hyperalphalipoproteinämie",
+        "Cholesterin-Ester-Transfer-Protein-Mangel",
+        "CEPT [Cholesterin-Ester-Transfer-Protein]-Mangel",
+        "Hyperlipidämie durch hepatischen Triglyceridlipase-Mangel",
+        "Familiäre Hyperlipidämie",
+        "Essentielle Hyperlipidämie",
+        "Familiäre kombinierte Hyperlipidämie"
+      ],
+      "u_extra": {
+        "abrechenbar": "j",
+        "krankheit_in_mitteleuropa_sehr_selten": "n",
+        "schlüsselnummer_mit_inhalt_belegt": "j",
+        "infektionsschutzgesetz_meldepflicht": "n",
+        "infektionsschutzgesetz_abrechnungsbesonderheit": "n"
+      }
+    }
+  ]
+}

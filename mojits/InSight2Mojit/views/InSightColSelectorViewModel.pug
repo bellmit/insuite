@@ -1,0 +1,30 @@
+div.text-left(data-bind="with: select2Config")
+  input.form-control.input-sm(name="colSelectorSelect", data-bind="select2: select2SearchConfig")
+  div.form-inline
+    //ko if: $parent.linkOptVisible
+    label.checkbox-inline(style="display: inline-block")
+      input(type="checkbox", data-bind="checked: $parent.renderLink")
+      span(data-bind="text: $parent.renderLinkLabel")
+    // /ko
+    label.checkbox-inline(data-bind="visible: $parent.visibleAtSummaryRowVisible", style="display: inline-block")
+      input(type="checkbox", data-bind="checked: $parent.visibleAtSummaryRow")
+      span(data-bind="text: $parent.tableSumFieldI18n")
+
+div.group-wrapper
+  div.string-type.panel.panel-body.panel-default(data-bind="visible: currentType() === 'String' && isGroup")
+    div.radio(data-bind="foreach: stringGroupOptions")
+      label
+        input(type="radio", data-bind="checked: $parent.currentGroupOptions.String, attr: {'name': $parent.clientId+'_group', 'value': value}")
+        span(data-bind="text: label")
+        // ko if: value == 'stringTruncateList'
+        input.form-control.truncate-limit(type="number" data-bind="value: $parent.currentGroupOptions.truncateListLimit")
+        // /ko
+    label.checkbox-inline(data-bind="visible: true", style="display: inline-block")
+      input(type="checkbox", data-bind="checked: $parent.currentGroupOptions && $parent.currentGroupOptions.stringDistinct")
+      span(data-bind="text: $parent.distinctI18n")
+
+  div.number-type(data-bind="visible: currentType() === 'Number' && isGroup")
+    select(data-bind="options: numberGroupOptions, optionsText: 'label', optionsValue: 'value', value: currentGroupOptions.Number").form-control
+
+  div.date-type(data-bind="visible: currentType() === 'Date' && isGroup")
+    select(data-bind="options: dateGroupOptions, optionsText: 'label', optionsValue: 'value', value: currentGroupOptions.Date").form-control

@@ -1,0 +1,7 @@
+div
+    div.col-xs-12(style="margin-top: 15px")
+        p(data-bind="text: explanationText")
+        p(data-bind="text: confirmHintText")
+
+    div.col-xs-12(style="margin-top: 15px")
+        div#activitySequenceTable(data-bind="template: invalidParentActivitiesTable.template")

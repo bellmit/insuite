@@ -1,0 +1,7 @@
+div.form-group(data-bind="visible: dmpContinuationOfCurrentEndocrineTherapy_4_23Visible()")
+    strong(data-bind="text: dmpContinuationOfCurrentEndocrineTherapy_4_23.i18n")
+    span(data-bind="dmpField: { field: dmpContinuationOfCurrentEndocrineTherapy_4_23 }")
+    div(data-bind="foreach: dmpContinuationOfCurrentEndocrineTherapy_4_23.list, hasFeedback: { field: dmpContinuationOfCurrentEndocrineTherapy_4_23, toggle: dmpContinuationOfCurrentEndocrineTherapy_4_23.hasError, messages: dmpContinuationOfCurrentEndocrineTherapy_4_23.validationMessages }")
+        label.radio
+            span(data-bind="text: i18n")
+            input(type="radio", name="dmpContinuationOfCurrentEndocrineTherapy_4_23", data-bind="value: val, checked: $parent.dmpContinuationOfCurrentEndocrineTherapy_4_23, readOnly: $parent.dmpContinuationOfCurrentEndocrineTherapy_4_23.readOnly, attr: { name: $element.name + '-' + val }")

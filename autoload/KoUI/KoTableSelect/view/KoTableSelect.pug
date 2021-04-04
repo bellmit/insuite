@@ -1,0 +1,27 @@
+div
+  // ko if: editMode
+  table.table.table-condensed.KoTableSelect-table
+    thead
+      tr(data-bind="foreach: headers")
+        th(data-bind="text: title")
+    tbody(data-bind="foreach: rows", style="max-height: 200px;")
+      // ko if: $data.type === 'heading'
+      tr
+        td(data-bind="text: text", colspan="100%")
+      // /ko
+      tr(data-bind="foreach: $data")
+        // ko if: type === 'checkbox'
+        td
+          input(type="checkbox", data-bind="checked: checked, attr: {value: value}")
+        // /ko
+        // ko if: type === 'radio'
+        td
+          input(type="radio", data-bind="checked: checked, attr: {value: value, name: name}")
+        // /ko
+        // ko if: type === 'text'
+        td(data-bind="text: value")
+        // /ko
+  // /ko
+  // ko if: !editMode && displayComponent
+  div(data-bind="template: displayComponent.template")
+  // /ko

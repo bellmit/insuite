@@ -1,0 +1,20 @@
+.fc-head-container th.fc-resource-cell {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.fc-readonly .fc-title,
+.fc-readonly .fc-time {
+    color: #f4f4f4;
+}
+
+.fc-readonly .fc-time i {
+    display: inline-block;
+    margin-left: 0.5em;
+    font-size: 1.5em;
+    vertical-align: middle;
+}
+
+.fc-cutted {
+    display: none;
+}

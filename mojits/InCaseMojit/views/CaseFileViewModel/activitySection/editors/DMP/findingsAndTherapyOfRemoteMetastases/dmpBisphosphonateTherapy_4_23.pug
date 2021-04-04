@@ -1,0 +1,7 @@
+div.form-group
+    strong(data-bind="text: dmpBisphosphonateTherapy_4_23.i18n")
+    span(data-bind="dmpField: { field: dmpBisphosphonateTherapy_4_23 }")
+    div(data-bind="foreach: dmpBisphosphonateTherapy_4_23.list, hasFeedback: { field: dmpBisphosphonateTherapy_4_23, toggle: dmpBisphosphonateTherapy_4_23.hasError, messages: dmpBisphosphonateTherapy_4_23.validationMessages }")
+        label.checkbox-inline
+            span(data-bind="text: i18n")
+            input(type="checkbox", name="dmpBisphosphonateTherapy_4_23", data-bind="value: val, checked: $parent.dmpBisphosphonateTherapy_4_23, readOnly: $parent.dmpBisphosphonateTherapy_4_23.readOnly, attr: { name: $element.name + '-' + val }")

@@ -1,0 +1,28 @@
+div.well.KoFileUploader(data-bind="fileDrop: droppedFiles")
+  div.form-group.row
+    div.col-md-6
+      // ko foreach: {data: filesInProgress, as: 'fileDesc'}
+      div
+        // ko if: $parent.generateDataURL
+        img.img-rounded.thumb(style="height: 125px;", data-bind="attr: { src: fileDesc.dataURL }")
+        // /ko
+        div
+          span(data-bind="text: fileDesc.name")
+          a.dc-red.pull-right(data-bind="click: $parent.cancel", href="#")
+            i.fa.fa-times
+        div.progress(data-bind="if: $parent.showProgressBar")
+          div.progress-bar(style="min-width: '2%'", role="progressbar", aria-valuemin="0", aria-valuemax="100", data-bind="attr: { 'aria-valuenow': $parent.getProgressBarValue($data) }, style: { width: $parent.getProgressBarWidth($data) }, html: $parent.getProgressBarText($data)")
+      // /ko
+      div(data-bind="ifnot: filesInProgress().length")
+        label.drop-label(data-bind="text: dropLabel")
+    div.col-md-6.text-right
+      input#uploadButton.hidden(type="file", multiple, data-bind="fileUploader: uploader")
+      div.btn-group
+        // ko template: uploadFileBtn.template
+        // /ko
+        // ko foreach: buttons
+        // ko template: $data.template
+        // /ko
+        // /ko
+
+

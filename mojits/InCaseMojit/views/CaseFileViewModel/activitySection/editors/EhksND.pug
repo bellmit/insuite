@@ -1,0 +1,79 @@
+include DMP/Dmp-mixin
+include Ehks
+div.alert.alert-info
+  strong(data-bind="text: sectionNDI18n")
+  br
+  span(data-bind="text: helpTextNDI18n")
+div.row
+  div.col-xs-6
+    +DmpFieldset('diagnosisSuspectedLabelI18n')
+      // ko if: version_2_3_2
+      div.form-group
+        div.row
+          div.col-xs-8
+            strong(data-bind="text: hksSuspectedDiagnosisNDI18n")
+          div.col-xs-4(data-bind="foreach: hksSuspectedDiagnosisND.list, hasFeedback: { field: hksSuspectedDiagnosisND, toggle: hksSuspectedDiagnosisND.hasError, messages: hksSuspectedDiagnosisND.validationMessages }")
+            label.checkbox-inline
+              span(data-bind="text: i18n")
+              input(type="checkbox", name="hksSuspectedDiagnosisND", data-bind="value: val, checked: $parent.hksSuspectedDiagnosisND, readOnly: $parent.hksSuspectedDiagnosisND.readOnly, attr: { name: $element.name + '-' + val }")
+      // /ko
+      div.form-group
+        div.row
+          div.col-xs-8
+            strong(data-bind="text: hksMalignesMelanomI18n")
+          div.col-xs-4(data-bind="foreach: hksMalignesMelanom.list, hasFeedback: { field: hksMalignesMelanom, toggle: hksMalignesMelanom.hasError, messages: hksMalignesMelanom.validationMessages }")
+            label.checkbox-inline
+              span(data-bind="text: i18n")
+              input(type="checkbox", name="hksMalignesMelanom", data-bind="value: val, checked: $parent.hksMalignesMelanom, readOnly: $parent.hksMalignesMelanom.readOnly, attr: { name: $element.name + '-' + val }")
+      div.form-group
+        div.row
+          div.col-xs-8
+            strong(data-bind="text: hksBasalzellkarzinomI18n")
+          div.col-xs-4(data-bind="foreach: hksBasalzellkarzinom.list, hasFeedback: { field: hksBasalzellkarzinom, toggle: hksBasalzellkarzinom.hasError, messages: hksBasalzellkarzinom.validationMessages }")
+            label.checkbox-inline
+              span(data-bind="text: i18n")
+              input(type="checkbox", name="hksBasalzellkarzinom", data-bind="value: val, checked: $parent.hksBasalzellkarzinom, readOnly: $parent.hksBasalzellkarzinom.readOnly, attr: { name: $element.name + '-' + val }")
+      div.form-group
+        div.row
+          div.col-xs-8
+            strong(data-bind="text: hksSpinozellularesKarzinomI18n")
+          div.col-xs-4(data-bind="foreach: hksSpinozelluläresKarzinom.list, hasFeedback: { field: hksSpinozelluläresKarzinom, toggle: hksSpinozelluläresKarzinom.hasError, messages: hksSpinozelluläresKarzinom.validationMessages }")
+            label.checkbox-inline
+              span(data-bind="text: i18n")
+              input(type="checkbox", name="hksSpinozelluläresKarzinom", data-bind="value: val, checked: $parent.hksSpinozelluläresKarzinom, readOnly: $parent.hksSpinozelluläresKarzinom.readOnly, attr: { name: $element.name + '-' + val }")
+      // ko if: version_2_3_2
+      div.form-group
+        div.row
+          div.col-xs-8
+            strong(data-bind="text: hksOtherSkinCancerI18n")
+          div.col-xs-4(data-bind="foreach: hksOtherSkinCancer.list, hasFeedback: { field: hksOtherSkinCancer, toggle: hksOtherSkinCancer.hasError, messages: hksOtherSkinCancer.validationMessages }")
+            label.checkbox-inline
+              span(data-bind="text: i18n")
+              input(type="checkbox", name="hksOtherSkinCancer", data-bind="value: val, checked: $parent.hksOtherSkinCancer, readOnly: $parent.hksOtherSkinCancer.readOnly, attr: { name: $element.name + '-' + val }")
+      div.form-group
+        div.row
+          div.col-xs-8
+            strong(data-bind="text: hksOtherDermatologicalClarificationFindingsI18n")
+          div.col-xs-4(data-bind="foreach: hksOtherDermatologicalClarificationFindings.list, hasFeedback: { field: hksOtherDermatologicalClarificationFindings, toggle: hksOtherDermatologicalClarificationFindings.hasError, messages: hksOtherDermatologicalClarificationFindings.validationMessages }")
+            label.checkbox-inline
+              span(data-bind="text: i18n")
+              input(type="checkbox", name="hksOtherDermatologicalClarificationFindings", data-bind="value: val, checked: $parent.hksOtherDermatologicalClarificationFindings, readOnly: $parent.hksOtherDermatologicalClarificationFindings.readOnly, attr: { name: $element.name + '-' + val }")
+      div.form-group
+        div.row
+          div.col-xs-8
+            strong(data-bind="text: hksScreeningParticipantIsReferredToDermatologistTransferredI18n")
+          div.col-xs-4(data-bind="foreach: hksScreeningParticipantIsReferredToDermatologistTransferred.list, hasFeedback: { field: hksScreeningParticipantIsReferredToDermatologistTransferred, toggle: hksScreeningParticipantIsReferredToDermatologistTransferred.hasError, messages: hksScreeningParticipantIsReferredToDermatologistTransferred.validationMessages }")
+            label.checkbox-inline
+              span(data-bind="text: i18n")
+              input(type="checkbox", name="hksScreeningParticipantIsReferredToDermatologistTransferred", data-bind="value: val, checked: $parent.hksScreeningParticipantIsReferredToDermatologistTransferred, readOnly: $parent.hksScreeningParticipantIsReferredToDermatologistTransferred.readOnly, attr: { name: $element.name + '-' + val }")
+      // /ko
+  div.col-xs-6
+    +DmpFieldset('healthExaminationLabelI18n')
+      div.form-group
+        div.row
+          div.col-xs-8
+            strong(data-bind="text: hksHealthExaminationAtSameTimeI18n")
+          div.col-xs-4(data-bind="foreach: hksHealthExaminationAtSameTime.list, hasFeedback: { field: hksHealthExaminationAtSameTime, toggle: hksHealthExaminationAtSameTime.hasError, messages: hksHealthExaminationAtSameTime.validationMessages }")
+            label.checkbox-inline
+              span(data-bind="text: i18n")
+              input(type="checkbox", name="hksHealthExaminationAtSameTime", data-bind="value: val, checked: $parent.hksHealthExaminationAtSameTime, readOnly: $parent.hksHealthExaminationAtSameTime.readOnly, attr: { name: $element.name + '-' + val }")

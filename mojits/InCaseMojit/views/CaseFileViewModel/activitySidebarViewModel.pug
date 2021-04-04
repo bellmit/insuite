@@ -1,0 +1,54 @@
+div.form-group.activitySidebarViewModel
+  div.form-group(data-bind="highlightError: actType")
+    input.form-control(name="actType", type="hidden", data-bind="select2: _select2actType, readOnly: actType.readOnly")#sel2ActType
+  div.form-group(data-bind="hasFeedback: { field: subType, toggle: subType.hasError, messages: subType.validationMessages }")
+    input.form-control(name="model", type="hidden", data-bind="select2: select2SubType, valueUpdate:'afterkeydown', readOnly: subType.readOnly, disable: hasNoActType")
+  // ko ifnot: showActivityActtypeNeeded()
+  div.form-group(data-bind="hasFeedback: { field: timestamp, toggle: timestamp.hasError, messages: timestamp.validationMessages }")
+    .date-picker.input-group
+      input.form-control(name="timestamp", type="text", data-bind="datetimepicker: { value: timestamp }, readOnly: timestamp.readOnly, attr: {placeholder: placeholderTimeStampI18n}")
+  div
+    div.form-group(data-bind="visible: !toggleTimePickerVisible()")
+      button.btn.btn-default.btn-block(name="time-toggle", type="button", data-bind="click: toggleTimePicker, text: timePickerText")
+    div.form-group(data-bind="visible: toggleTimePickerVisible")
+      div.input-group(data-bind="hasFeedback: { field: time, toggle: time.hasError, messages: time.validationMessages }")
+        span.input-group-btn
+          button.btn.btn-default.grey-btn(name="time-toggle", type="button", data-bind="click: toggleTimePicker")
+            span.fa.fa-arrow-left
+            span.sr-only(data-bind="text: activityButtonBackI18n")
+        input.form-control(name="time", data-bind="value: time, valueUpdate: 'change', readOnly: time.readOnly, attr: {placeholder: placeholderDaySeparationI18n}")
+        span.input-group-btn
+          button.btn.btn-default.grey-btn(name="time-toggle", type="button", data-bind="click: setTimeToNow, disable: time.readOnly")
+            span.fa.fa-clock-o
+  //ko if: isDaySeparationAvailable()
+  div
+    div.form-group(data-bind="visible: !_toggleDaySeparationInputVisible()")
+      button.btn.btn-default.btn-block(name="daySeparation-toggle", type="button", data-bind="click: _toggleDaySeparation, text: _daySeparationText, disable: disableDayDivider")
+    div.form-group(data-bind="visible: _toggleDaySeparationInputVisible")
+      div.input-group(data-bind="hasFeedback: { field: daySeparation, toggle: daySeparation.hasError, messages: daySeparation.validationMessages }")
+        span.input-group-btn
+          button.btn.btn-default.grey-btn(name="daySeparation-toggle", type="button", data-bind="click: _toggleDaySeparation, disable: disableDayDivider")
+            span.fa.fa-arrow-left
+            span.sr-only(data-bind="text: activityButtonBackI18n")
+        input.form-control(name="daySeparation", data-bind="value: daySeparation, valueUpdate: 'change', readOnly: daySeparation.readOnly, attr: {placeholder: placeholderDaySeparationI18n}")
+        span.input-group-btn
+          button.btn.btn-default.grey-btn(name="time-toggle", type="button", data-bind="click: setDaySeparationToNow")
+            span.fa.fa-clock-o
+  // /ko
+  div.form-group
+    select.form-control(name="locationId", data-bind="options: _locationList, optionsValue: '_id', optionsText: 'locname', value: locationId, readOnly: locationId.readOnly, optionsCaption: placeholderSelectLocationI18n")
+  div.form-group(data-bind="highlightError: employeeId")
+    select.form-control(name="employeeId", data-bind="foreach: _employeeListGrouped, value: employeeId, readOnly: employeeId.readOnly, valueAllowUnset: true")
+      optgroup(data-bind="attr: { label: i18n }, foreach: items")
+        option(data-bind="text: lastname + ', ' + firstname, value: _id, attr: {disabled: $data.disabled}")
+  div.form-group
+    button.btn.btn-block(name="apkStateBtn", type="button", data-bind="click: onApkStateBtnClicked, css: _apkStateBtnCss, text: _apkStateBtnText, disable: locationId.readOnly")
+  // ko with: krwStatusViewModel
+  div.form-group
+    select.form-control(data-bind="value: _krwValidationStatus")
+      option(name="ALL", data-bind="text: dropDownFieldAllI18n")
+      option(name="ERRORS", data-bind="text: dropDownFieldErrorsI18n")
+  // /ko
+  div.form-group(data-bind="click: showComment")
+    textarea.form-control(name="comment", style="cursor:pointer", data-bind="value: comment, valueUpdate: 'afterkeydown', text: textAreaNoteI18n", readonly, rows="5")
+  // /ko

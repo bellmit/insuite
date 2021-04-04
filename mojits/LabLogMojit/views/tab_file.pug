@@ -1,0 +1,68 @@
+div#tab_file
+  h3(data-bind="text: fileHeadlineI18n, visible: !isModal() || !isNewLabBookRequired()", style="margin-top: 0px;")
+  div.pull-left
+    table.form-group
+      tr
+        th(data-bind="text: timestampI18n + ':'")
+        td(data-bind="text: timestampDisplay", style="padding: 0 1em")
+      tr
+        th(data-bind="text: createdI18n + ':'")
+        td(data-bind="text: createdDisplay", style="padding: 0 1em")
+      tr
+        th(data-bind="text: sourceI18n + ':'")
+        td(data-bind="text: sourceDisplay", style="padding: 0 1em")
+      tr(data-bind="click: openPmResultsModal,visible: pmResults, css: {'text-danger': pmResultsHasError, 'text-success': !pmResultsHasError()}")
+        th(data-bind="text: pmResultsI18n + ':'")
+        td(style="padding: 0 1em")
+          span(data-bind="text: displayPmResultsStats")
+          span &nbsp;
+          span(data-bind="css: {'glyphicon-eye-open': !pmResultsIsOK(), 'glyphicon-ok': pmResultsIsOK}").glyphicon
+  div.pull-left(data-bind="visible: !isModal() || !isNewLabBookRequired()")
+    div.checkbox
+      label
+        span(data-bind="text: billingFlagI18n")
+        input(type="checkbox", name="billingFlag_select", data-bind="checked: billingFlag")
+    div.checkbox
+      label
+        span(data-bind="text: allowGkvBillingI18n")
+        input(type="checkbox", name="allowGkvBilling_select", data-bind="checked: allowGkvBilling")
+    div.checkbox
+      label
+        span(data-bind="text: checkFileWithLdkPmI18n")
+        input(type="checkbox", name="checkFileWithLdkPm", data-bind="checked: checkFileWithLdkPm", disabled="true")
+  div#fileTable(data-bind="with: fileTable")
+    div.table-responsive
+      table.table.table-bordered
+        colgroup
+          col(style="width: 35%")
+          col(style="width: 1%", data-bind="visible: isAssignButtonColumnVisible")
+          col(style="width: 25%")
+          col
+          col(style="width: 1%")
+        thead
+          tr
+            th(data-bind="text: $parent.keyLabelI18n")
+            th(data-bind="visible: isAssignButtonColumnVisible, text: $parent.assignLabelI18n")
+            th(data-bind="text: $parent.valueLabelI18n")
+            th(style="border-right-width: 0", data-bind="text: $parent.patientLabelI18n")
+            th(style="border-left-style: none", data-bind="text: $parent.collapseLabelI18n")
+        tbody(data-bind="foreach: records")
+          tr(data-bind="css: getRowClass( $data ), click: onRowClick")
+            td
+              span(data-bind="text: key")
+              span &nbsp;
+              span.glyphicon.glyphicon-warning-sign.text-warning(data-bind="visible: errorAndAttention, click: showErrorAndAttention")
+            td(data-bind="visible: $parent.isAssignButtonColumnVisible")
+              // ko if: renderAssignButton( $data )
+              button.btn.btn-primary.btn-xs(name="assignPatient", type="button", data-bind="click: assignPatient, text: $parent.assignPatientTextI18n")
+              // /ko
+            td
+              span(data-bind="html: value")
+            td(style="border-right-width: 0")
+              span(data-bind="html: patientDisplay")
+              span &nbsp;
+              span.glyphicon.glyphicon-warning-sign.text-warning(data-bind="visible: patientDiff, click: showPatientDiff")
+            td(style="border-left-style: none; color: #333; cursor: pointer;")
+              span.fa(data-bind="css: { 'fa-chevron-up': detailsVisible, 'fa-chevron-down': !detailsVisible() }")
+          tr(data-bind="visible: detailsVisible")
+            td(colspan=5, data-bind="html: details")

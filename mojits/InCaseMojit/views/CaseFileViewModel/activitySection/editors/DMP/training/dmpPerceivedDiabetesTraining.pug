@@ -1,0 +1,7 @@
+div.form-group
+  strong(data-bind="text: dmpPerceivedDiabetesTrainingI18n")
+  span(data-bind="dmpField: { field: dmpPerceivedDiabetesTraining }")
+  div(data-bind="foreach: dmpPerceivedDiabetesTraining.list, hasFeedback: { field: dmpPerceivedDiabetesTraining, toggle: dmpPerceivedDiabetesTraining.hasError, messages: dmpPerceivedDiabetesTraining.validationMessages }")
+    label.radio-inline
+      span(data-bind="text: i18n")
+      input(type="radio", name="dmpPerceivedDiabetesTraining", data-bind="value: val, checked: $parent.dmpPerceivedDiabetesTraining, readOnly: $parent.dmpPerceivedDiabetesTraining.readOnly")

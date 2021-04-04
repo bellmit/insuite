@@ -1,0 +1,61 @@
+div.TablePropertiesDialog
+  h4(data-bind="text: LBL_COLUMNS")
+  table(width="100%")
+    thead
+      th(data-bind="text: columnsTitleI18n")
+      th(data-bind="text: columnsMemberI18n")
+      th(data-bind="text: columnsTypeI18n")
+      th(data-bind="text: columnsAlignI18n")
+      th(data-bind="text: columnsWidthI18n")
+    tbody(data-bind="foreach: cols")
+      tr
+        td
+          input.form-control(type="text", data-bind="value: title")
+        td
+          select.form-control(data-bind="value: displayedMemberName, options: $parent.reducedSchemaMembers, optionsText: function(item){ return $parent.getSchemaLabel(item); }")
+          input.form-control(type="text", data-bind="value: displayedAdditionalDataKey, visible: isAdditionalDataKeyEnabled, attr: { placeholder: $parent.columnsAdditionalDataKeyI18n }")
+        td(width="100px")
+          input.form-control(type="text", data-bind="value: valueType", disabled="disabled")
+        td(width="100px")
+          select.form-control(data-bind="value: align, options: $parent.alignOptions, optionsText: function(item){ return $parent.getAlignLabel(item); }")
+        td(width="100px")
+          input.form-control(type="text", data-bind="value: fixWidth")
+        td(width="30px")
+          button.btn(data-bind="click: function(item){ $parent.removeColumn(item); }")
+            i.fa.fa-trash-o
+        td(width="30px")
+          button.btn(data-bind="click: function(item){ $parent.promoteColumn(item); }")
+            i.fa.fa-chevron-circle-up
+
+  hr
+
+  h4(data-bind="text: LBL_FILTERS")
+  table(width="100%", data-bind="visible: hasFilters")
+    thead
+      th(data-bind="text: LBL_FILTER_MEMBER")
+      th(data-bind="text: LBL_FILTER_OP")
+      th(data-bind="text: LBL_FILTER_VALUE")
+      th
+    tbody(data-bind="foreach: filters")
+      tr
+        td
+          select.form-control(data-bind="value: displayedMemberName, options: $parent.reducedSchemaMembers, optionsText: function(item){ return $parent.getSchemaLabel(item); }")
+          input.form-control(data-bind="value: displayedAdditionalDataKey, visible: isAdditionalDataKeyEnabled, attr: { placeholder: $parent.LBL_FILTER_ADDITIONALDATAKEY }")
+        td
+          select.form-control(data-bind="value: op, options: $parent.filterTypes, , optionsText: function(item){ return $parent.getOptionLabel(item); }")
+        td
+          input.form-control(data-bind="value: value")
+        td(width="30px")
+          button.btn(data-bind="click: function( item ) { $parent.removeFilter( item ); }")
+            i.fa.fa-trash-o
+
+  button.btn(data-bind="click: addFilter, text: BTN_ADD_FILTER")
+
+  hr
+
+  h4(data-bind="text: LBL_OPTIONS")
+
+  div.checkbox
+    input(type="checkbox", data-bind="checked: isStriped")#chkStripedTable
+    label.checkbox-inline(for="chkStripedTable")
+      span(data-bind="text: stripeI18n")

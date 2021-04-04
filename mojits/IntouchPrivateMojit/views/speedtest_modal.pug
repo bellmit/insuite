@@ -1,0 +1,19 @@
+div#speedTestModel
+  div.row
+    div.col-md-1
+      i.fa.fa-circle(data-bind="css:{ 'dc-green': serverTest() === 1, 'dc-red': serverTest() === -1, 'dc-yellow': !serverTest(), 'dc-fade-animation-rev': animate }")
+    div.col-md-11
+      span(data-bind="text: serverTestI18n")
+  div(data-bind="if: isSocketTest")
+    div.row
+      div.col-md-1
+        i.fa.fa-circle(data-bind="css:{ 'dc-green': socketStatus(), 'dc-red': !socketStatus(), 'dc-fade-animation-rev': animate }")
+      div.col-md-11
+        span(data-bind="text: socketTestI18n")
+    span(data-bind="text: participantsI18n")
+    div(data-bind="foreach: connected", style="margin-left: 10px")
+      div.row
+        div.col-md-1
+          i.fa.fa-circle(data-bind="css:{ 'dc-green': status() === 1, 'dc-red': status() === -1, 'dc-yellow': status() === 0, 'dc-fade-animation-rev': $parent.animate }")
+        div.col-md-11
+          span(data-bind="text: name")

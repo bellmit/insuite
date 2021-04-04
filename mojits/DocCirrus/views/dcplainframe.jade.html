@@ -1,0 +1,29 @@
+script.
+if typeof(loggedInUser) !== 'undefined'
+  div(style="display:none;")#YUIServerLang__=YUI_SERVER_LANG
+div(id=mojit_view_id)
+
+unless noTopMenu
+  div#NavBarHeader-container(style="display: none;", data-bind="visible: Boolean(container)")
+    if isd
+       include NavBarHeaderISD
+    else
+       include NavBarHeader
+    //- If you want to just dump mojit output serially,
+    //- you can use the mojitOutput array and iterate
+    //- through with (order is not guaranteed)
+each output in mojitOutput
+    !=output
+    //- If you want to place specific output into specific
+    //- design elements, do the following:
+    //- Using the following pattern, make Jade a little
+    //- immune to undefined parameters.
+    //- DRGMojit = (DRGMojit || "<!-- No DRGMojit -->");
+    //- ImportMojit = (ImportMojit || "<!-- No Importer -->");
+    //- Insert Mojit output in any order and embedding in the page structure
+    //- as required by the design...
+    //!= DRGMojit
+    //!= ImportMojit
+unless noTopMenu
+  div#NavBarFooter-container(style="display: none;", data-bind="visible: Boolean(container)")
+    include NavBarFooter

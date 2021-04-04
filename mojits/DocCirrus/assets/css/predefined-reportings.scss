@@ -1,0 +1,177 @@
+.predefined-reports {
+
+  div.date-selector {
+    margin-bottom: 10px;
+
+    .datepickers-wrapper {
+      padding-right: 0;
+    }
+
+    .period-selector {
+      padding-right: 0;
+      padding-left: 0;
+
+      .selector-buttons {
+        display: inline-block;
+
+        & > div {
+          display: inline-block;
+
+          & + div {
+            margin-left: 4px;
+          }
+        }
+        
+      }
+
+      select {
+        width: 107px;
+        display: inline-block;
+        margin-right: 6px;
+        padding-right: 0;
+        padding-left: 5px;
+      }
+
+      button {
+        padding-left: 6px;
+        padding-right: 6px;
+      }
+    }
+
+    @media (min-width: 992px) {
+      .datepickers {
+        & > div {
+          width: 32%;
+        }
+
+        & > .period-selector {
+          width: 36%;
+
+          select {
+            width: 92px;
+          }
+        }
+      }
+    }
+
+    @media (min-width: 1200px) {
+      .datepickers-wrapper {
+        width: 45%
+      }
+      .timeline-wrapper {
+        width: 55%
+      }
+      .datepickers {
+        & > .period-selector {
+          select {
+            width: 107px;
+          }
+        }
+      }
+    }
+
+    .timeline {
+      height: 112px;
+      overflow: hidden;
+
+      rect.extent {
+        opacity: .2;
+        fill: #3276b1;
+      }
+
+      .nvd3 text {
+        font-size: 11px;
+      }
+    }
+
+  }
+
+  label {
+    display: block;
+    margin-bottom: 5px;
+    min-height: 22px;
+  }
+
+  .pre-table-box {
+    .KoTable {
+      margin: -10px
+    }
+  }
+
+  table table.nested-list {
+    width: 100%;
+
+    td {
+      padding: 5px;
+
+      &:first-child {
+        width: 150px;
+      }
+    }
+  }
+
+  .dc-SideBar-container {
+    .panel-body {
+      font-size: 14px;
+      background-color: #f5f5f5;
+    }
+
+    .predefinedReportsListViewModel-container {
+      position: relative;
+    }
+
+    .predefinedReportsListViewModel-drag {
+      display: inline-block;
+      width: 15px;
+    }
+
+    .predefinedReportsListViewModel-dragHandle {
+      color: #ccc;
+      cursor: ns-resize;
+    }
+
+    .predefinedReportsListViewModel-dragHandle .fa + .fa {
+      margin-left: 1px;
+    }
+
+    .predefinedReportsListViewModel-button {
+      display: inline-block;
+      width: calc(100% - 15px);
+      padding-right: 5px;
+      padding-left: 5px;
+      white-space: normal;
+    }
+  }
+
+  .with-sidebarMenu {
+    div.date-selector {
+
+      @media (min-width: 992px) {
+        .datepickers-wrapper {
+          width: 60%
+        }
+        .timeline-wrapper {
+          width: 40%
+        }
+        .period-selector select {
+          width: 89px;
+        }
+      }
+
+      @media (min-width: 1200px) {
+        .datepickers-wrapper {
+          width: 50%
+
+        }
+        .timeline-wrapper {
+          width: 50%
+        }
+        .period-selector select {
+          width: 91px;
+        }
+      }
+
+    }
+  }
+
+}

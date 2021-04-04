@@ -1,0 +1,19 @@
+div.PatientGadgetCommentWithNextAppointmentAndTask
+  div.row
+    div.col-xs-6
+      h4.dc-text-crop.PatientGadget-headline
+        span(data-bind="text: noShowCount, attr: {title: noShowCountI18n}", style="margin-right:5px; cursor:pointer; vertical-align: top;")
+        a(data-bind="if: appointmentInfoVisible")
+          span#goToCalendar.glyphicon.glyphicon-time(style="cursor:pointer;", data-bind="click: _doCreateEvent, attr: {title: createAppointmentI18n}")
+          // ko if: _nextEvent
+          span(data-bind="text: nextEventText, attr: { title: nextEventTitle }, click: _doUpdateEvent", style="margin-left:10px; cursor:pointer; vertical-align: top;")
+          // /ko
+        a(data-bind="ifnot: appointmentInfoVisible")
+          span(data-bind="text: labelNotesI18n")
+    div.col-xs-6
+      h4.dc-text-crop.PatientGadget-headline
+        a
+          span#createTask.fa.fa-tasks(style="cursor:pointer;", data-bind="click: _createTask, attr: { title: createTaskI18n }")
+        a
+          span(data-bind="text: _hotTask, attr: { title: _hotTaskTitle }, click: _showHotTask, css: {'dc-fade-animation': _hotTaskAnimation, 'dc-red': _hotTaskAnimation}", style="margin-left:10px; cursor:pointer; vertical-align: top;")
+  textarea.form-control(data-bind="value: _comment", style="height: 110px;background-color:#fafafa;")

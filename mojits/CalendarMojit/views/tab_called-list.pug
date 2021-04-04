@@ -1,0 +1,9 @@
+div#calledListTable
+  div(data-bind="template: calledListTable.template")
+  div
+    span(data-bind="template: calledListTableBtnBackWaiting.template", style="margin-right: 10px")
+    span(data-bind="template: calledListTableBtnBackTreatment.template", style="margin-right: 10px")
+    span(data-bind="template: calledListTableBtnClose.template", style="margin-right: 10px")
+    //span(data-bind="template: calledListTableBtnDelete.template", style="margin-right: 10px")
+  div(data-bind="with: getBinderViewModel()")
+    include snippets/CalendarSelector/horizontal

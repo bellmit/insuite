@@ -1,0 +1,91 @@
+mixin emailTemplate
+  div.form-group
+    label.control-label(data-bind="text: locationTemplateI18n")
+    select.form-control(data-bind="value: locationTemplate, options: locationTemplates, optionsValue: 'val', optionsText: 'i18n'")
+  div.form-group
+    label.control-label(data-bind="text: senderI18n")
+    input.form-control(name="senderName", type="text", data-bind="value: senderName, readOnly: true, attr: {placeholder: senderI18n}")
+  div.form-group
+    label.control-label(data-bind="text: senderEmailI18n")
+    select.form-control(data-bind="value: senderEmail, options: senderEmailAddresses, optionsValue: 'val', optionsText: 'i18n'")
+  div.form-group(data-bind="hasFeedback: { field: subject, toggle: subject.hasError, messages: subject.validationMessages }")
+    label.control-label(data-bind="text: subjectI18n")
+    input.form-control(name="subject", type="text" data-bind="value: subject, valueUpdate: 'afterkeydown', attr: {placeholder: subjectI18n}")
+  div.form-group(data-bind="hasFeedback: { field: emailContent, toggle: emailContent.hasError, messages: emailContent.validationMessages }")
+    textarea.form-control(data-bind="value: emailContent, valueUpdate: 'afterkeydown', attr: {placeholder: titleMessageI18n}", rows="10")
+
+div.serial-mail-modal
+
+  div#divFloatEditor
+
+  //ko if: isPatientTable()
+  //ko if: currentStepIndex() === 0
+  section.serial-mail-modal__section
+    header
+      h4(data-bind="text: step0TitleI18n")
+    div.serial-mail-modal__patient-table#patient-list(data-bind="{template: patientsTable.template}")
+  // /ko
+
+  //ko if: currentStepIndex() === 1
+  header
+    h4(data-bind="text: step1TitleI18n")
+  section.col-md-4.serial-mail-modal__form-select-section
+    div.form-group
+      label.checkbox-inline
+        span(data-bind="text: step3ForEachPatientI18n")
+        input(data-bind="checked: generateActivities", type="checkbox", name="generateActivities")
+    div.form-group
+      label(data-bind="text: step3caseFolderI18n")
+      input.form-control(type="hidden", data-bind="select2: select2Casefolder", name="caseFolder")
+    div.serial-mail-hint
+      div.serial-mail-hint__container
+        p(data-bind="text: step3Text2I18n")
+    //ko if: generateActivities
+    div.form-group
+      label(data-bind="text: documentForI18n")
+      input.form-control(type="hidden", data-bind="select2: select2Doctor", name="doctor")
+    div
+      p(data-bind="text: step3Text3I18n")
+    // /ko
+  section.col-md-8.serial-mail-modal__form-select-section
+    +emailTemplate
+  // /ko
+
+  //ko if: currentStepIndex() === 2
+  section.serial-mail-modal__section
+    header
+      h4(data-bind="text: step2TitleI18n")
+    section.col-md-4.serial-mail-modal__form-select-section
+      label Formular
+      div.form-group
+        input.form-control(type="hidden", data-bind="select2: select2FormDC", name="formId")
+      div.form-group
+        input.form-control(type="hidden", data-bind="select2: select2FormPRAC", name="formId")
+
+      div.serial-mail-hint
+        div.serial-mail-hint__container
+          p(data-bind="text: step2TextI18n")
+
+    section.col-md-8.serial-mail-modal__form-section
+      div#divFormRender.serial-mail-modal__form-container
+  // /ko
+  // /ko
+
+  //  if the modal is in the contacts tab
+
+  //ko if: isContactTable()
+  //ko if: currentStepIndex() === 0
+  section.serial-mail-modal__section
+    header
+      h4(data-bind="text: step0TitleI18n")
+    div.serial-mail-modal__contact-table#contact-list(data-bind="{template: contactsTable.template}")
+  // /ko
+
+  //ko if: currentStepIndex() === 1
+  header.col-md-8.col-md-offset-2
+    h4(data-bind="text: step1TitleI18n")
+
+  section.col-md-8.col-md-offset-2.serial-mail-modal__form-select-section
+    +emailTemplate
+  // /ko
+  // /ko

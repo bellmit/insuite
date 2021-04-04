@@ -1,0 +1,23 @@
+div.btn-group
+  // ko ifnot: $parent._isModelReadOnly
+  div.btn-group
+    button(type="button", data-toggle="dropdown", aria-haspopup="true", aria-expanded="false" data-bind="attr: { disabled: $parent._isModelReadOnly }").pull-left.btn.btn-default.btn-xs.dropdown-toggle
+      span.glyphicon.glyphicon-plus
+    ul.dropdown-menu(style="left:-138px;")
+      li
+        a(href="#", data-bind="click: $parent.addSubHeadingRow.bind($parent)") Zwischenüberschrift
+      li
+        a(href="#", data-bind="click: $parent.addMedicationRow.bind($parent)") Medikament: Leer
+      li
+        a(href="#", data-bind="click: $parent.searchAndAddMedicationRow.bind($parent)") Medikament: Suche
+      li
+        a(href="#", data-bind="click: $parent.addMedicationRecipeRow.bind($parent)") Rezeptur
+      li
+        a(href="#", data-bind="click: $parent.addBindTextRow.bind($parent)") gebundene Zeile
+      li
+        a(href="#", data-bind="click: $parent.addFreeTextRow.bind($parent)") Freitext
+  // ko if: $data.type
+  button(type="button", data-bind="attr: { disabled: $parent._isModelReadOnly }, click: $parent.toggleActiveEditor.bind($parent)").btn.btn-default.btn-xs
+    span.glyphicon.glyphicon-pencil
+  // /ko
+  // /ko

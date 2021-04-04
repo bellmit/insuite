@@ -1,0 +1,61 @@
+#mainDispatcherNavigation {
+    margin-top: 5px;
+}
+
+.employee-section {
+    margin-top: 2em;
+}
+
+.employee-section .employee-location {
+    padding-left: 2em;
+    padding-top: 10px;
+}
+
+.employee-section .employee-itself > div{
+    padding-left: 3em;
+    padding-top: 5px;
+}
+
+label::first-letter {
+    text-transform: capitalize;
+}
+
+.activities > section {
+    margin-bottom: 10px;
+    line-height: 2em;
+}
+
+.col-xs-12.text-right button {
+    margin-left: 10px;
+}
+
+.prc-online-color {
+    color: #40c040;
+}
+
+.panel-with-table header {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.decoration-underline {
+    text-decoration: underline;
+}
+
+.table-buttons-stack button{
+    margin-right: 10px;
+}
+
+#dispatch-activities-table th,
+#dispatch-activities-table td {
+    text-align: right;
+}
+
+#dispatch-activities-table caption {
+    text-align: left;
+    font-weight: bold;
+}
+
+.activityIsNotValid {
+    color: #e60000;
+}

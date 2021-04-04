@@ -1,0 +1,53 @@
+.row
+  div(data-bind="visible: isPanelVisible, css: { 'fullscreen-table': isFullScreenView}")#selectLabdataDateRange
+
+    div.col-xs-12
+      //  necessary to use a table here to prevent select2 from bumping the button down when opened
+      table.lab-data-controls
+        tr
+          td.lab-data-controls__labdata-selectors
+            div
+              input.form-control(name="labDatesShown", type="hidden", data-bind="select2: select2LabDates")#toggleSelectedLabDates
+
+          td.lab-data-controls__date-selectors
+            div.ml-2.mr-2
+              div.form-group(data-bind="hasFeedback: { field: labDataStartDate, toggle: labDataStartDate.hasError, messages: labDataStartDate.validationMessages }")
+                .date-picker.input-group
+                  input.form-control(name="labDataStartDate", type="text", data-bind="datetimepicker: { value: labDataStartDate, options: startDateOptions },  valueUpdate: '', attr: { placeholder: startDatePlaceholderI18n } ")
+              div.form-group(data-bind="hasFeedback: { field: labDataEndDate, toggle: labDataEndDate.hasError, messages: labDataEndDate.validationMessages }")
+                .date-picker.input-group
+                  input.form-control(name="labDataEndDate", type="text", data-bind="datetimepicker: { value: labDataEndDate, options: endDateOptions },  valueUpdate: '', attr: { placeholder: endDatePlaceholderI18n } ")
+
+          td.lab-data-controls__latest-entries
+            div.form-group(data-bind="hasFeedback: { field: latestLabdataEntries, toggle: latestLabdataEntries.hasError, messages: latestLabdataEntries.validationMessages }")
+              input.form-control(name="latestLabdataEntries", type="hidden", data-bind="select2: select2LatestLabdata, valueUpdate:'afterkeydown'")
+
+          td.pb-2.text-right.lab-data-controls__config-btns
+            //  this button bar is duplicated in selectlabdata_modal.pug, changes should be duplicated there
+
+            button.btn.btn-sm.btn-default(style="margin: 0 7px;", data-bind="click: addAllDates, attr: { title: tooltipAllDatesI18n }", data-toggle="tooltip")
+              i.fa.fa-plus-circle
+              | &nbsp;
+              span(data-bind="text: addAllDatesI18n")
+
+            button.btn.btn-sm.btn-default(data-bind="click: togglePathologicalOnly, css: { active: showPathologicalOnly }, attr: { title: tooltipShowPathologicalOnlyI18n }", data-toggle="tooltip")
+              i.fa.fa-exclamation
+            button.btn.btn-sm.btn-default(data-bind="click: toggleShowNotes, css: { active: showNotes }, attr: { title: tooltipShowNotesI18n }", data-toggle="tooltip")
+              i.fa.fa-font
+            button.btn.btn-sm.btn-default(data-bind="click: toggleShowHighLow, css: { active: showHighLow }, attr: { title: tooltipShowHighLowI18n }", data-toggle="tooltip")
+              i.fa.fa-arrows-h
+            button.btn.btn-sm.btn-default(data-bind="click: toggleFullView,  css: { active: fullView }, attr: { title: tooltipShowMiniChartsI18n }", data-toggle="tooltip")
+              i.fa.fa-image
+            button.btn.btn-sm.btn-default(data-bind="click: toggleSpreadColumnsByTime,  css: {active: isSpreadColumnsByTime }, attr: { title: tooltipSpreadColumnsByTimeI18n }", data-toggle="tooltip")
+              i.fa.fa-columns
+            button.btn.btn-sm.btn-default(data-bind="click: toggleFullScreenView,  css: {active: isFullScreenView }, attr: { title: tooltipFullScreenViewI18n }", data-toggle="tooltip")
+              i.fa.fa-arrows-alt
+
+            span &nbsp;&nbsp;
+
+            button.btn.btn-sm.btn-default(data-bind="visible: !isFullScreenView(), click: printCurrentDisplayLandscape, attr: { title: tooltipPDFLandScapeI18n }", data-toggle="tooltip")
+              i.fa.fa-list-alt
+            button.btn.btn-sm.btn-default(data-bind="visible: !isFullScreenView(), click: printCurrentDisplayPortrait, attr: { title: tooltipPDFPortraitI18n }", data-toggle="tooltip")
+              i.fa.fa-file-text-o
+
+    #labdataKoTable.col-xs-12(data-bind="template: labdataKoTable.template")

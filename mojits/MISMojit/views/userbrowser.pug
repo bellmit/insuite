@@ -1,0 +1,23 @@
+script(type="text/x-template")#tmpl-bar
+  <img src="/static/DocCirrus/assets/images/glyphicons_170_step_backward.png" class="pgControls {pageLinkClass}" data-pglink="first" title="Erste Seite" border="0" />
+  <img src="/static/DocCirrus/assets/images/glyphicons_173_backTES.png" class="pgControls {pageLinkClass}" data-pglink="prev" title="Vorherige Seite" border="0" />
+  != inputPage
+  | &nbsp;von
+  | &nbsp;
+  != totalPages
+  <img src="/static/DocCirrus/assets/images/glyphicons_173_play.png" class="pgControls {pageLinkClass}" data-pglink="next" title="Nächste Seite" border="0" />
+  <img src="/static/DocCirrus/assets/images/glyphicons_178_step_forward.png" class="pgControls {pageLinkClass}" data-pglink="last" title="Letzte Seite" border="0" />
+  <span style="float:right;margin-right:50px;">Zeilen pro Seite: {selectRowsPerPage}</span>
+// paginated table
+div#tableBar
+div.yui3-pagview-bar#pagContainerBar
+p &nbsp;
+p.pull-right
+  em Datensätze gesamt:&nbsp;
+  em#records_total [records_total]
+a.btn(href="#")#db_btn_add <i class="icon-plus"></i> Neuer Benutzer
+em &nbsp;
+a.btn(href="#")#db_btn_del <i class="icon-trash"></i> Ausgewählte Benutzer Löschen
+em &nbsp;
+div#processed
+

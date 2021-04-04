@@ -1,0 +1,174 @@
+div(id=mojit_view_id)
+  div.container.container-fullscreen
+    br
+    // dev, testing only
+    //div.row(data-bind="with: userDetails")
+    //  div.col-sm-12.col-md-8.col-md-offset-2.col-lg-6.col-lg-offset-0
+    //    h4 #{__i18n( 'ProfileMojit.UserDetailsViewModel.currentLocationHeadline' )}
+    //    div
+    //      textarea.form-group(data-bind="value: labdataSortOrder",rows="5",style="width: 100%")
+    //    div
+    //      textarea.form-group(data-bind="value: currentLocation",rows="5",style="width: 100%")
+    //    div
+    //      textarea.form-group(data-bind="value: employeeIdDebug",rows="5",style="width: 100%")
+
+    div.row
+      div.col-sm-12.col-md-8.col-md-offset-2.col-lg-6.col-lg-offset-0
+        h4(data-bind="text: headLineI18n")
+        div.panel.panel-default(data-bind="with: onlineStatus")
+          div.panel-body
+            p(data-bind="text: explainerFirstI18n")
+            div(style="padding-left: 10px;")
+              div.form-group
+                div.checkbox
+                  label.control-label
+                    span(data-bind="text: labelEmployeesI18n")
+                    input(name="onlineEmployees", type="checkbox", data-bind="checked: onlineEmployees")
+              div.form-group
+                div.checkbox
+                  label.control-label
+                    span(data-bind="text: labelPatientsI18n")
+                    input(name="onlinePatients", type="checkbox", data-bind="checked: onlinePatients")
+              div.form-group
+                div.checkbox
+                  label.control-label
+                    span(data-bind="text: labelPartnersI18n")
+                    input(name="onlinePartners", type="checkbox", data-bind="checked: onlinePartners")
+    div.row
+      div.col-sm-12.col-md-8.col-md-offset-2.col-lg-6.col-lg-offset-0
+        h4(data-bind="text: phoneHeadlineI18n")
+        div.panel.panel-default(data-bind="with: onlineStatus")
+          div.panel-body
+            p(data-bind="text: explainerFirstI18n")
+            div(style="padding-left: 10px;")
+              div.form-group
+                div.checkbox
+                  label.control-label
+                    span(data-bind="text: signalingI18n")
+                    input(name="signaling", type="checkbox", data-bind="checked: signaling")
+
+    div.row(data-bind="with: userDetails")
+      div.col-sm-12.col-md-8.col-md-offset-2.col-lg-6.col-lg-offset-0
+
+        h4(data-bind="text: userDetailsHeadlineI18n")
+        div.panel.panel-default
+          div.panel-body
+            // - currently hidden on this page but not removed, see MOJ-6975
+            //div.form-group(data-bind="visible: displayNoLocations")
+            //  p(data-bind="html: noLocationsMessage")
+            //div.form-group(data-bind="visible: displayLocationSelect")
+            //  label.control-label(style="font-weight: normal", data-bind="text: emailHeadlineI18n")
+            //  select.form-control(data-bind="options: employeeLocations, optionsText: 'locname', value: currentLocationObj")
+
+            div.form-group
+              label.control-label(style="font-weight: normal", data-bind="text: userLocationLabelFilterI18n")
+              input.form-control(name="userLocationsFilter", data-bind="select2: select2LocationsConfig")
+
+        h4(data-bind="text: emailHeadlineI18n")
+        div.panel.panel-default
+          div.panel-body
+            p(data-bind="text: emailNotificationTextI18n")
+            div.form-group
+              div.checkbox
+                label.control-label
+                  span(data-bind="text: emailNotificationI18n")
+                  input(name="emailNotification", type="checkbox", data-bind="checked: emailNotification")
+          //h4(data-bind="text: preferredLanguageI18n")
+          //div.panel.panel-default
+          //   div.panel-body
+          //      select(name='languageSelect', data-bind="value: preferredLanguage").form-control
+          //        option(value='', data-bind="text: browserDefinedI18n")
+          //        option(value='en', data-bind="text: englishI18n")
+          //        option(value='de', data-bind="text: germanI18n")
+
+    div.row
+      div.col-sm-12.col-md-8.col-md-offset-2.col-lg-6.col-lg-offset-0
+        h4(data-bind="text: debugHeadlineI18n")
+        div.panel.panel-default(data-bind="with: clientDebug")
+          div.panel-body
+            p(data-bind="text: enableClientDebugInfoI18n")
+            div.form-group
+              div.checkbox
+                label.control-label
+                  strong(data-bind="text: enableClientDebugYesI18n")
+                  | &nbsp;
+                  input(name="clientDebug", type="radio", data-bind="checkedValue: true, checked: clientDebug", style="margin-right: 1em;")
+                  strong(data-bind="text: enableClientDebugNoI18n")
+                  | &nbsp;
+                  input(name="clientDebug", type="radio", data-bind="checkedValue: false, checked: clientDebug")
+
+    div.row(data-bind="with: userDetails")
+      div.col-sm-12.col-md-8.col-md-offset-2.col-lg-6.col-lg-offset-0
+        h4(data-bind="text: arztstempelI18n")
+        div.panel.panel-default
+          div.panel-body
+            p(data-bind="text: arztstempelDescriptionI18n")
+            textarea.form-control(rows="9",style="text-align-last: center; -moz-text-align-last: center;",data-bind="value: arztstempel")#taArztstempel
+
+    div.row
+      div.col-sm-12.col-md-8.col-md-offset-2.col-lg-6.col-lg-offset-0
+        h4(data-bind="text: headlineTextI18n")
+        div.panel.panel-default(data-bind="with: presettings")
+          div.panel-body
+            .row
+              .col-sm-12
+                // ko if: showCommonProfiles()
+                p(data-bind="text: infoCommonI18n")
+                // /ko
+            .row
+              .col-sm-7
+                // ko if: showCommonProfiles()
+                select.form-control(name="commonProfilesList", data-bind="options: commonProfiles, optionsValue: 'val', optionsText: 'text', value: selectedCommonProfile")
+                // /ko
+              .col-sm-5
+                button.btn.btn-default.pull-right(type="button", name="importExport", data-bind="click: showExportImportDialog.bind($data)")
+                  i.fa.fa-rocket
+                    span &nbsp;
+                // ko if: showCommonProfiles()
+                button.btn.btn-default.pull-right(style="margin-right:5px" type="button", data-bind="click: function() { reStoreCommonProfile( $parent, this ) }, text: buttonRestoreProfileI18n " )
+                // /ko
+            br
+            p(data-bind="text: infoStoreI18n")
+            .row
+              .col-sm-4
+                input.form-control(data-bind="textInput: profileLabel, attr: { placeholder: profileLabelI18n }")
+              .col-sm-4
+                div.form-group
+                  input.form-control(name="workStation", data-bind="select2: select2WorkStation")
+              div(data-bind="if: hasTiLicense").col-sm-4
+                div.form-group
+                  input.form-control(name="tiCardReaders", data-bind="enable: workStationSelected, select2: select2TiCardReader")
+              div(data-bind="ifnot: hasTiLicense").col-sm-4
+                button.btn.btn-default(type="button", data-bind="click: storeProfile, readOnly: storeProfileDisabled, text: buttonStoreProfileI18n"  )
+            .row
+              .col-sm-4
+              a.col-sm-4(data-bind="text: configureWorkStationI18n", style="padding-left: 15px", href="/admin/insuite#/work-stations", target="_blank") Arbeitsplatz einrichten
+              div(data-bind="if: hasTiLicense").col-sm-4
+                button.btn.btn-default.pull-right(type="button", data-bind="click: storeProfile, readOnly: storeProfileDisabled, text: buttonStoreProfileI18n"  )
+            br
+            h6(data-bind="text: lastActivatedProfileText")
+
+            div(style="overflow-x: hidden; overflow-y: auto; height: 152px;" data-bind="foreach: storedProfiles")
+              .row
+                .col-sm-4
+                  h5(data-bind="text: profileLabel")
+                .col-sm-3
+                  h5(data-bind="text: workStationName")
+                .col-sm-5
+                  button.btn.btn-default(type='button', data-bind='click: function() { $parent.deleteProfile( $parent, this ) }').pull-right
+                    span.glyphicon.glyphicon-trash
+                  button.btn.btn-default.pull-right(style="margin-right:5px" type="button", data-bind="click: function() { $parent.reStoreProfile( $parent, this ) }, text: $parent.buttonRestoreProfileI18n"  )
+                  button.btn.btn-default(style="margin-right:5px" type='button', data-bind='click: function() { $parent.showLocalStoragePopup( $parent, this ) }, text: $parent.contentI18n').pull-right
+
+    div.row
+      div.col-sm-12.col-md-8.col-md-offset-2.col-lg-6.col-lg-offset-0.text-right
+        button.btn.btn-warning(style="margin-right:10px" type="button", data-bind="click: clearLocalStorageForUser, text: buttonClearMyProfileI18n")
+        |
+        button.btn.btn-default(style="margin-right:10px" type="button", data-bind="click: changePasswordClick, text: changePwI18n")
+        |
+        button.btn.btn-primary(type="button", data-bind="click: primarySaveClick, text: buttonSaveI18n")
+    br
+  script(type="text/html", id="template-changePassword")
+    include template-changePassword
+  script(type="text/html", id="template-localStorageInfo")
+    include template-localStorageInfo

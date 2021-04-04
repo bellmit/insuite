@@ -1,0 +1,12 @@
+div#selectCasefolderModel
+  div.row
+    div.col-xs-5
+      div.form-group
+        | &nbsp;
+        p(data-bind="text: noDataI18n, visible: !showCaseFolders()")
+        p(data-bind="text: selectFolderI18n, visible: showCaseFolders")
+          div(data-bind="foreach: caseFolders")
+            .radio
+              label
+                input(type="radio", name="casefolderRadioBoxes", value="", data-bind="checked: $parent.selectedCaseFolder, attr: {value: _id}")
+                span(data-bind="text: title")

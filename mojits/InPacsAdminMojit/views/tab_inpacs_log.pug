@@ -1,0 +1,13 @@
+section#tab_inpacs_log
+  div.panel.panel-default
+    div.panel-heading
+      span( data-bind="text: logFileTitleI18n" )
+    div.panel-body
+      form
+        .form-group
+          textarea#textarea_id.form-control(name="log", data-bind="textInput: logFile.log, readOnly: true, hasFocus: true" , rows="28")
+        .form-group
+          label(for="logLevel", data-bind="text: logLevelTitleI18n")
+          span &nbsp;
+          select(id="logLevel" name="logLevel", data-bind="options: LOGGING_LEVELS, value: selectedLogLevel, optionsText: 'name'" )
+          button.btn.btn-default.pull-right(name="clearLog", type="button", data-bind="click: clearLog, disable: disableClearLogButton, text: buttonDeleteI18n")

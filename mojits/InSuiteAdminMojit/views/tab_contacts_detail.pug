@@ -1,0 +1,12 @@
+#tab_contacts_detail(data-bind="with: editing")
+  div(data-bind="with: contact")
+    include contact_detail
+  div.row
+    div.col-xs-12.text-right
+      button#tab_contacts_detail-button-visitOverview.btn.btn-primary(name="visitOverview", type="button", data-bind="click: $parent.visitOverview")
+        span.glyphicon.glyphicon-chevron-left
+        span(data-bind="text: ' ' + $parent.buttonBackI18n")
+      | &nbsp;
+      button#tab_employees_detail-button-save.btn.btn-primary(name="save", type="button", data-bind="click: save, disable: saveDisabled")
+        span.glyphicon.glyphicon-ok
+        span(data-bind="text: ' ' + $parent.buttonSaveI18n")

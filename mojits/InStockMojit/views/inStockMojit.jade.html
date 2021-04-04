@@ -1,0 +1,14 @@
+div(id=mojit_view_id)
+    .container.container-fullscreen
+        div(style="position: relative")
+            div(data-bind="template: navigation.template")
+            div(style="position: absolute; right: 0; top: 5px;")
+                button.btn.btn-default(
+                name="toggleFullScreen", type="button", data-bind="click: toggleFullScreenHandler, attr: { title: viewPortBtnI18n }",
+                style="")
+                    span.fa.fa-arrows-alt
+    .container.container-fullscreen
+        div.inStockMojit-currentView(data-bind="with: currentView")
+            div(data-bind="template: template")
+script(type="text/html", id="template-SupplierConfigModel")
+    include SupplierConfigModel

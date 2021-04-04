@@ -1,0 +1,11 @@
+{
+  "pin": "51523117",
+  "publicKey": "z+rY15C97pQfvDkoWFJLqbOn8FBBfbQQWRFp/7QUf/yiTaSUC5U4Xkp2R/Sb8t+qfR73UCffj4MOA1TJoWQ/1w==",
+  "fingerprint": "1fc1ae5bef047db9caf34f9a76c798068530eff6",
+  "status": "CONFIRMED",
+  "name": "mochaPartner",
+  "dcId": "mochaTestCustomerNo",
+  "partnerType": "REFERRER",
+  "phone": null,
+  "email": "mocha@doc-cirrus.com"
+}

@@ -1,0 +1,18 @@
+div.PatientCommunicationEditorModel
+  div.panel.panel-default
+    div.panel-body
+      .form-group(data-bind="hasFeedback: { field: type, toggle: type.hasError, messages: type.validationMessages }")
+        select.form-control(name="type", data-bind="options: type.list, optionsValue: 'val', optionsText: 'i18n', value: type, readOnly: type.readOnly")
+      .form-group(data-bind="hasFeedback: { field: value, toggle: value.hasError, messages: value.validationMessages }")
+        input.form-control(name="value", data-bind="value: value, style: valueFieldStyle, tooltip: valueFieldTooltip, valueUpdate: 'afterkeydown', readOnly: value.readOnly, attr: {placeholder: $parent.communicationValuePlaceholderI18n}")
+      .form-group(data-bind="hasFeedback: { field: note, toggle: note.hasError, messages: note.validationMessages }")
+        input.form-control(name="note", data-bind="value: note, readOnly: note.readOnly, valueUpdate: 'afterkeydown', readOnly: note.readOnly, attr: {placeholder: note.i18n}")
+      .checkbox
+        input(type="checkbox", name="preferred", data-bind="checked: preferred, readOnly: preferred.readOnly")
+        label(data-bind="text: preferred.i18n")
+      div.text-right
+        // ko if: sendEmailConfirmationAgainAvailable
+        button.btn.btn-default(name="sendEmailConfirmationAgain", type="button", data-bind="click: _sendEmailConfirmationAgain, tooltip: { title: $parent.communicationOPTInPlaceholderI18n }, readOnly: value.readOnly, text: $parent.communicationButtonOPTInI18n")
+        = " "
+        // /ko
+        button.btn.btn-default(name="removeItem", type="button", data-bind="click: removeItem, readOnly: value.readOnly, text: $parent.generalButtonDeleteI18n")

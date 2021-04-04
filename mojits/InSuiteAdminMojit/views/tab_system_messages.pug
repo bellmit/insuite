@@ -1,0 +1,13 @@
+#tab_system_messages
+  div.panel.panel-default
+    div.panel-heading
+      span( data-bind="text: errorsHeaderI18n" )
+    div.panel-body
+      form(name="systemLogForm")
+        div.form-group
+          textarea#textarea1_id.form-control(name="logError", data-bind="textInput: logFile, readOnly: true, hasFocus: true" , rows="28")
+        div.form-group
+          label(for="logLevel" data-bind="text: logLevelTileI18n ")
+          <span> </span>
+          select#logLevel(name="logLevel",data-bind="options: _selectOptions, optionsText: 'text', optionsValue: '_id', value: selectedId")
+          button.btn.btn-default.pull-right(name="clearLog" type="button" data-bind="click: clearLogView, text: buttonDeleteI18n")

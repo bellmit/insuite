@@ -1,0 +1,74 @@
+div.row
+    div.col-xs-6
+        include SimpleActivity
+    div.panel-body.col-xs-6(data-bind="visible: ebmRelevantFieldsVisible")
+        div.form-group
+            label.control-label(data-bind="text: labelOpsCodesI18n")
+            input.form-control(name="opsCodes", type="hidden", data-bind="select2: select2OpsCodes")
+        div.form-group(data-bind="visible: fk5035Set().length")
+            label.control-label(data-bind="text: sideLocalisationsI18n + ':'")
+            table(width="97%", style="margin-left: 3%")
+                colgroup
+                    col(width="120")
+                    col(width="*")
+                tbody(data-bind="foreach: fk5035Set")
+                    tr
+                        td
+                            div(data-bind="hasFeedback: { field: fk5035, toggle: fk5035.hasError, messages: fk5035.validationMessages }")
+                                div(data-bind="text: fk5035, style:'{margin-left: 100px}'")
+                        td
+                            div(data-bind="hasFeedback: { field: fk5041, toggle: fk5041.hasError, messages: fk5041.validationMessages }")
+                                input.form-control(name="fk5041", data-bind="value: fk5041, valueUpdate: 'afterkeydown', readOnly: fk5041.readOnly, attr: { placeholder: fk5041.i18n }")
+div.row
+    div.form-group.col-xs-6(data-bind="visible: ebmRelevantFieldsVisible, hasFeedback: { field: fk5023, toggle: fk5023.hasError, messages: fk5023.validationMessages }")
+        label.control-label(data-bind="text: fk5023.i18n + ':'")
+        input.form-control(name="fk5023", data-bind="value: fk5023, valueUpdate: 'afterkeydown', readOnly: fk5023.readOnly")
+    div.form-group.col-xs-6(data-bind="visible: ebmRelevantFieldsVisible, hasFeedback: { field: fk5024, toggle: fk5024.hasError, messages: fk5024.validationMessages }")
+        label.control-label(data-bind="text: fk5024.i18n + ':'")
+        input.form-control(name="fk5024", data-bind="value: fk5024, valueUpdate: 'afterkeydown', readOnly: fk5024.readOnly")
+    div.form-group.col-xs-6(data-bind="hasFeedback: { field: fk5025, toggle: fk5025.hasError, messages: fk5025.validationMessages }")
+        label.control-label(data-bind="text: fk5025.i18n + ':'")
+        div.date-picker.input-group
+            input.form-control(name="fk5025", data-bind="datetimepicker: { value: fk5025 }, readOnly: fk5025.readOnly, valueUpdate: '' ")
+    div.form-group.col-xs-6(data-bind="hasFeedback: { field: fk5026, toggle: fk5026.hasError, messages: fk5026.validationMessages }")
+        label.control-label(data-bind="text: fk5026.i18n + ':'")
+        div.date-picker.input-group
+            input.form-control(name="fk5026", data-bind="datetimepicker: { value: fk5026 }, readOnly: fk5026.readOnly, valueUpdate: '' ")
+    div.form-group.col-xs-6(data-bind="hasFeedback: { field: fk5034, toggle: fk5034.hasError, messages: fk5034.validationMessages }")
+        label.control-label(data-bind="text: fk5034.i18n + ':'")
+        div.date-picker.input-group
+            input.form-control(name="fk5034", data-bind="datetimepicker: { value: fk5034 }, readOnly: fk5034.readOnly, valueUpdate: '' ")
+    div.form-group.col-xs-6(data-bind="hasFeedback: { field: fk5037, toggle: fk5037.hasError, messages: fk5037.validationMessages }")
+        label.control-label(data-bind="text: fk5037.i18n + ':'")
+        input.form-control(name="fk5037", data-bind="value: fk5037, valueUpdate: 'afterkeydown', readOnly: fk5037.readOnly, attr: { placeholder: fk5037.i18n }")
+    div.form-group.col-xs-6(data-bind="visible: ebmRelevantFieldsVisible")
+        table(width="100%")
+            colgroup
+                col(width="*")
+                col(width="45")
+            thead
+                tr
+                    th(data-bind="text: labelGnrJustI18n")
+                    th.text-center
+                        a(href="#", data-bind="click: addFk5036Set, readOnly: fk5036Set.readOnly")
+                            i.icon.fa.fa-plus
+            tbody(data-bind="foreach: fk5036Set")
+                tr
+                    td
+                        div(data-bind="hasFeedback: { field: fk5036, toggle: fk5036.hasError, messages: fk5036.validationMessages }")
+                            input.form-control(name="fk5036", data-bind="select2: _fk5036CfgAutoComplete, readOnly: fk5036.readOnly", type="hidden")
+                    td
+                        button.btn.btn-default(type="button", data-bind="click: $parent.removeFk5036Set, focusOnRemove: { parent: 'table', find: 'thead a' }, readOnly: $parent.fk5036Set.readOnly")
+                            span.glyphicon.glyphicon-trash
+    div.form-group.col-xs-6(data-bind="hasFeedback: { field: fk5038, toggle: fk5038.hasError, messages: fk5038.validationMessages }, attr: { placeholder: fk5037.i18n }")
+        label.control-label(data-bind="text: fk5038.i18n + ':'")
+        textarea.form-control(name="fk5038", data-bind="value: fk5038, valueUpdate: 'afterkeydown', readOnly: fk5038.readOnly")
+div.row
+    div(data-bind="template: tableNavigation.template")
+    div(data-bind="if: selectedTable")
+        div(data-bind="template: selectedTable().tableComponent.template")
+div(data-bind="visible: linkedTreatmentsTable.rows().length")
+    hr
+    div.row
+        h4(data-bind="text: linkedTreatmentsI18n")
+        div(data-bind="template: linkedTreatmentsTable.template")

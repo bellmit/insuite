@@ -1,0 +1,170 @@
+div#divEditFormContainer
+  fieldset
+    table(noborder="noborder",width="100%")
+      tr
+        td
+          b(data-bind="text: lblPaperI18n")
+        td
+          span#spanPaperSize
+          button.btn(style="float: right;")#btnResizePaper
+            i.fa.fa-edit
+
+      tr
+        td
+          b(data-bind="text: lblNameI18n")
+        td
+          input.form-control(type="text")#txtFormName
+
+      tr
+        td
+          b(data-bind="text: lblShortnameI18n")
+        td
+          input.form-control(type="text")#txtFormShortName
+
+      tr(style="display: none;")
+        td
+          b(data-bind="text: lblLanguageI18n")
+        td
+          select.form-control(style="width: 120px;")#selFormLang
+            option(value="en") en
+            option(value="de") de
+
+      tr(style="display:none;")#tdFormFileName
+        td
+          b(data-bind="text: lblNameI18n")
+        td
+          input.form-control(type="text")#txtFormFile
+
+      tr
+        td
+          b(data-bind="text: lblGridI18n")
+        td
+          div.form-inline
+            input.form-control(type="text",style="width:60px")#txtFormGrid
+            span &nbsp;mm
+
+      tr(style="display: none;")#tdFormSchema
+        td
+          b(data-bind="text: lblSchemaI18n")
+        td
+          div#divSelFormSchema
+
+      tr
+        td
+          b(data-bind="text: lblDefaultForI18n")
+        td
+          div#divSelDefaultFor
+            select.form-control#selDefaultFor
+              option(value='') loading...
+
+              option(value='casefile-insurance', data-bind="text: lblInsuranceI18n")
+              option(value='casefile-disability', data-bind="text: lblDisabilityI18n")
+              option(value='casefile-referral', data-bind="text: lblTransferI18n")
+              option(value='casefile-privatebill', data-bind="text: lblPrivateBillI18n")
+              option(value='casefile-dkgbill', data-bind="text: lblDKGBillI18n")
+
+      tr
+        td
+          b(data-bind="text: lblActTypeI18n")
+        td
+          div#divSelActType
+            select.form-control#selActType
+              option(value='') (none)
+
+      tr
+        td
+            b &nbsp;
+        td(style="padding-top: 10px;")
+          div.checkbox
+            input(type="checkbox")#chkSubform
+            label.checkbox-inline(for="chkSubform")
+              span(style="margin-left: 15px;", data-bind="text: lblSubFormI18n")
+
+            input(type="checkbox")#chkFixed
+            label.checkbox-inline(for="chkFixed")
+              span(style="margin-left: 15px;", data-bind="text: lblElasticI18n")
+
+      tr(style="display: none;")#tdReadOnly
+        td
+          b &nbsp;
+        td(style="padding-top: 10px;")
+          div.checkbox
+            input(type="checkbox")#chkFormReadOnly
+            label.checkbox-inline(for="chkFormReadOnly")
+              span(style="margin-left: 15px;", data-bind="text: lblReadonlyI18n")
+
+      tr#tdBFB
+        td
+          b &nbsp;
+        td(style="padding-top: 10px;")
+          div.checkbox
+            input(type="checkbox")#chkBFB
+            label.checkbox-inline(for="chkBFB")
+              span(style="margin-left: 15px;", data-bind="text: lblBFbI18n")
+
+      tr#tdInSight2
+        td
+          b &nbsp;
+        td(style="padding-top: 10px;")
+          div.checkbox
+            input(type="checkbox")#chkInSight2
+            label.checkbox-inline(for="chkInSight2")
+              span(style="margin-left: 15px;", data-bind="text: lblInsight2I18n")
+
+      tr#tdUseReporting
+        td
+          b &nbsp;
+        td(style="padding-top: 10px;")
+          div.checkbox
+            input(type="checkbox")#chkUseReporting
+            label.checkbox-inline(for="chkUseReporting")
+              span(style="margin-left: 15px;", data-bind="text: lblUseReportingI18n")
+
+      tr#tdIsLetter
+        td
+          b &nbsp;
+        td(style="padding-top: 10px;")
+          div.checkbox
+            input(type="checkbox")#chkIsLetter
+            label.checkbox-inline(for="chkIsLetter")
+              span(style="margin-left: 15px;", data-bind="text: lblIsLetter")
+
+      tr#tdIsPdfAttached
+        td
+          b &nbsp;
+        td(style="padding-top: 10px;")
+          div.checkbox
+            input(type="checkbox")#chkIsPdfAttached
+            label.checkbox-inline(for="chkIsPdfAttached")
+              span(style="margin-left: 15px;", data-bind="text: lblIsPdfAttachedI18n")
+
+      tr#tdUtf8
+        td
+          b &nbsp;
+        td(style="padding-top: 10px;")
+          div.checkbox
+            input(type="checkbox")#chkUtf8
+            label.checkbox-inline(for="chkUtf8")
+              span(style="margin-left: 15px;", data-bind="text: lblUtf8")
+    br
+    button.btn#btnUpdateFormProperties(data-bind="text: btnUpdateI18n")
+    span &nbsp;
+    button.btn#btnDeleteForm(data-bind="text: btnDeleteFormI18n")
+    span &nbsp;
+    button.btn#btnCopyForm(data-bind="text: btnCopyFormI18n")
+    span &nbsp;
+    button.btn#btnBumpVerison(data-bind="text: btnNewVersionI18n")
+
+    div#divCopyForm
+
+    div(style="display: none;")#divDeleteForm
+      p(data-bind="text: lblConfirmDeleteI18n")
+
+    div(style="display: none;")#divBumpVersion
+      p(data-bind="text: lblConfirmNewVersionI18n")
+        table(noborder="noborder",width="70%")
+          tr
+            td
+              b(data-bind="text: lblRevisionCommentI18n")
+            td
+              input.form-control(type="text")#txtRevCommentTemplate

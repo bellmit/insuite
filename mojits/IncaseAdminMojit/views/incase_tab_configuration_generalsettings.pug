@@ -1,0 +1,282 @@
+h4(data-bind="text: generalSettingsGroupGenSetI18n")
+div.panel.panel-default
+  div.panel-body
+    div.form-group
+      strong(style="white-space: pre-wrap;", data-bind="text: generalSettingsAutoEventsOnCardReadTitleI18n")
+      div.checkbox(style="margin-left: 20px;")
+        label.control-label
+          input(type="checkbox", data-bind="checked: incaseconfiguration.autoEventsOnCardRead")
+          strong(data-bind="text: autoEventsOnCardReadIsAppointmentI18n")
+      div.checkbox(style="margin-left: 20px;")
+        label.control-label
+          input(type="checkbox", name="autoEventsOnCardReadNoAppointment", data-bind="checked: incaseconfiguration.autoEventsOnCardReadNoAppointment")
+          strong(data-bind="text: autoEventsOnCardReadNoAppointmentI18n")
+    div.form-group
+      div.checkbox
+        label.control-label
+          input(type="checkbox", data-bind="checked: incaseconfiguration.showPersGroup9Info")
+          strong(data-bind="text: generalSettingsShowPersGroup9InfoI18n")
+    div.form-group
+      div.checkbox
+        label.control-label
+          input(type="checkbox", data-bind="checked: incaseconfiguration.showPrefillButton")
+          strong(data-bind="text: generalSettingsShowPrefillButtonI18n")
+    div.form-group
+      div.checkbox
+        label.control-label
+          input(type="checkbox", data-bind="checked: incaseconfiguration.canApplyActivitySequencePartly")
+          strong(data-bind="text: generalSettingsCanApplyActivitySequencePartlyI18n")
+    div.form-group
+      div.checkbox
+        label.control-label
+          input(type="checkbox", data-bind="checked: incaseconfiguration.catalogTextHidden ")
+          strong(data-bind="text: generalSettingsCatalogTextHiddenI18n")
+    // ko if: countryModeIncludesGermany()
+    div.form-group
+      div.checkbox
+        label.control-label
+          input(type="checkbox", data-bind="checked: incaseconfiguration.applyPreparedCaseFolder ")
+          strong(data-bind="text: generalSettingsApplyPreparedCaseFolderI18n")
+    // /ko
+    div.form-group
+      div.row
+        div.col-xs-5
+          strong(data-bind="text: generalSettingsAllowCustomCodeForI18n")
+        div.col-xs-7(data-bind="foreach: incaseconfiguration.allowCustomCodeFor.list")
+          label.checkbox-inline(style="margin-left:0; margin-right:10px;")
+            span(data-bind="text: i18n")
+            input(type="checkbox", name="allowCustomCodeFor", data-bind="value: val, checked: $parent.incaseconfiguration.allowCustomCodeFor")
+    div.form-group
+      div.row
+        div.col-xs-5
+          strong(data-bind="text: generalSettingsAllowCustomValueForI18n")
+        div.col-xs-7(data-bind="foreach: incaseconfiguration.allowCustomValueFor.list")
+          label.checkbox-inline(style="margin-left:0; margin-right:10px;")
+            span(data-bind="text: i18n")
+            input(type="checkbox", name="allowCustomValueFor", data-bind="value: val, checked: $parent.incaseconfiguration.allowCustomValueFor")
+
+    div.form-group
+      div.checkbox
+        label.control-label
+          input(type="checkbox", data-bind="checked: incaseconfiguration.allowOwnSubtypes")
+          strong(style="white-space: pre-wrap;", data-bind="text: incaseconfiguration.allowOwnSubtypes.i18n")
+
+    div.form-group
+      div.checkbox
+        label.control-label
+          input(type="checkbox", data-bind="checked: incaseconfiguration.documentMedicationPerLocation")
+          strong(style="white-space: pre-wrap;", data-bind="text: incaseconfiguration.documentMedicationPerLocation.i18n")
+
+    div.form-group
+      div.checkbox
+        label.control-label
+          input(type="checkbox", data-bind="checked: incaseconfiguration.documentContinuousDiagnosisPerLocation")
+          strong(style="white-space: pre-wrap;", data-bind="text: incaseconfiguration.documentContinuousDiagnosisPerLocation.i18n")
+    div.form-group
+      div.checkbox
+        label.control-label
+          input(type="checkbox", data-bind="checked: incaseconfiguration.getImportedContinuousDiagnosisFromCurrentLocation")
+          strong(style="white-space: pre-wrap;", data-bind="text: incaseconfiguration.getImportedContinuousDiagnosisFromCurrentLocation.i18n")
+    div.form-group
+      div.checkbox
+        label.control-label
+          input(type="checkbox", data-bind="checked: incaseconfiguration.showAddendumButton")
+          strong(style="white-space: pre-wrap;", data-bind="text: incaseconfiguration.showAddendumButton.i18n")
+    // ko if: countryModeIncludesSwitzerland()
+    div.form-group
+      div.checkbox
+        label.control-label
+          input(type="checkbox", data-bind="checked: incaseconfiguration.hideMedicationPlanMedications")
+          strong(style="white-space: pre-wrap;", data-bind="text: incaseconfiguration.hideMedicationPlanMedications.i18n")
+    // /ko
+h4(data-bind="text: generalSettingsPatientDataSetI18n")
+div.panel.panel-default
+  div.panel-body
+    div.form-group
+      strong(style="white-space: pre-wrap;", data-bind="text: generalSettingsPatientDataAboutI18n")
+
+      div.checkbox
+        label.control-label
+          input(type="checkbox", data-bind="checked: incaseconfiguration.patientDataLocationMandatory")
+          strong(style="white-space: pre-wrap;", data-bind="text: generalSettingsPatientDataLocationMandatoryI18n")
+      div.checkbox
+        label.control-label
+          input(type="checkbox", data-bind="checked: incaseconfiguration.patientDataAddressMandatory")
+          strong(style="white-space: pre-wrap;", data-bind="text: generalSettingsPatientDataAddressManadatoryI18n")
+      div.checkbox
+        label.control-label
+          input(type="checkbox", data-bind="checked: incaseconfiguration.patientDataPhoneNumberMandatory")
+          strong(style="white-space: pre-wrap;", data-bind="text: generalSettingsPatientDataPhoneNumberMandatoryI18n")
+      div.checkbox
+        label.control-label
+          input(type="checkbox", data-bind="checked: incaseconfiguration.patientDataEmailMandatory")
+          strong(style="white-space: pre-wrap;", data-bind="text: generalSettingsPatientDataEmailMandatoryI18n")
+// ko if: hasTiLicense
+h4(data-bind="text: generalSettingsGroupSettingsForSignaturProcessI18n")
+div.panel.panel-default
+  div.panel-body
+    div.form-group
+      div.checkbox
+        label.control-label
+          input(type="checkbox", data-bind="checked: incaseconfiguration.onSigningReleaseCorrespondingActivity")
+          strong(style="white-space: pre-wrap;", data-bind="text: generalSettingsGroupSettingsForSignaturProcessInputI18n")
+// /ko
+h4(data-bind="text: generalSettingsGroupReferralSetI18n")
+div.panel.panel-default
+  div.panel-body
+    div.form-group
+      div.checkbox
+        label.control-label
+          input(type="checkbox", data-bind="checked: incaseconfiguration.showReferralIdInput")
+          strong(style="white-space: pre-wrap;", data-bind="text: generalSettingsGroupReferralShowReferralIdInputI18n")
+
+h4(data-bind="text: generalSettingsGroupAutoShareSetI18n")
+div.panel.panel-default
+  div.panel-body
+    div.form-group
+      div.checkbox
+        label.control-label
+          input(type="checkbox", data-bind="checked: incaseconfiguration.autoshareCheck")
+          strong(data-bind="text: generalSettingsGroupAutoShareCheckBoxI18n")
+    div.form-group
+      div.checkbox
+        label.control-label
+          input(type="checkbox", data-bind="checked: incaseconfiguration.allowTransfer")
+          strong(data-bind="text: generalSettingsGroupAutoShareTransferI18n")
+    div.form-group
+      div.checkbox
+        label.control-label
+          input(type="checkbox", data-bind="checked: incaseconfiguration.threeFactorAuth")
+          strong(data-bind="text: generalSettingsGroupAutoShareThreeFactorI18n")
+    h4(data-bind="text: notificationI18n")
+    .row
+      .col-md-4
+                strong(data-bind="text: onPatientI18n")
+                div.form-group
+                    div.checkbox
+                        label.control-label
+                            input(type="checkbox", data-bind="checked: incaseconfiguration.onPatientDocumentNew")
+                            strong(data-bind="text: documentNewI18n")
+                div.form-group
+                    div.checkbox
+                        label.control-label
+                            input(type="checkbox", data-bind="checked: incaseconfiguration.onPatientDocumentChanged")
+                            strong(data-bind="text: documentChangedI18n")
+                div.form-group
+                    div.checkbox
+                        label.control-label
+                            input(type="checkbox", data-bind="checked: incaseconfiguration.onPatientDocumentDeleted")
+                            strong(data-bind="text: documentDeletedI18n")
+
+      .col-md-4
+                strong(data-bind="text: onPracticeI18n")
+                div.form-group
+                    div.checkbox
+                        label.control-label
+                            input(type="checkbox", data-bind="checked: incaseconfiguration.onPracticeDocumentNew")
+                            strong(data-bind="text: documentNewI18n")
+                div.form-group
+                    div.checkbox
+                        label.control-label
+                            input(type="checkbox", data-bind="checked: incaseconfiguration.onPracticeDocumentChanged")
+                            strong(data-bind="text: documentChangedI18n")
+                div.form-group
+                    div.checkbox
+                        label.control-label
+                            input(type="checkbox", data-bind="checked: incaseconfiguration.onPracticeDocumentDeleted")
+                            strong(data-bind="text: documentDeletedI18n")
+
+      .col-md-4
+                strong(data-bind="text: taskReceiverInPracticeI18n")
+                div.form-group(data-bind="hasFeedback: { field: incaseconfiguration.roles, toggle: incaseconfiguration.roles.hasError, messages: incaseconfiguration.roles.validationMessages }")
+                    input.form-control.input-sm#taskSelect2Role(type="hidden", multiple="multiple" data-bind="select2: select2Role", name="role")
+
+h4(data-bind="text: generalSettingsGroupPatNrSetI18n")
+div.panel.panel-default
+  div.panel-body
+    div.form-group(data-bind="hasFeedback: { field: incaseconfiguration.nextPatientNo, toggle: incaseconfiguration.nextPatientNo.hasError, messages: incaseconfiguration.nextPatientNo.validationMessages }")
+      label.control-label(data-bind="text: generalSettingsGroupPatNrStartI18n")
+      input.form-control(type="text", data-bind="value: incaseconfiguration.nextPatientNo, valueUpdate: 'afterkeydown'")
+
+// ko if: countryModeIncludesGermany()
+div(data-bind="if: hasEdocs")
+  h4(data-bind="text: generalSettingsGroupDataTransferI18n")
+  div.panel.panel-default
+    div.panel-body
+      div.form-group(data-bind="hasFeedback: { field: incaseconfiguration.medDataEdmpDataTransfer, toggle: incaseconfiguration.medDataEdmpDataTransfer.hasError, messages: incaseconfiguration.medDataEdmpDataTransfer.validationMessages }")
+        div.checkbox
+          label.control-label
+            input(type="checkbox", data-bind="checked: incaseconfiguration.medDataEdmpDataTransfer")
+            strong(data-bind="text: incaseconfiguration.medDataEdmpDataTransfer.i18n")
+
+      div.form-group(data-bind="hasFeedback: { field: incaseconfiguration.dmpAllowHeadDateChange, toggle: incaseconfiguration.dmpAllowHeadDateChange.hasError, messages: incaseconfiguration.dmpAllowHeadDateChange.validationMessages }")
+        div.checkbox
+          label.control-label
+            input(type="checkbox", data-bind="checked: incaseconfiguration.dmpAllowHeadDateChange")
+            strong(data-bind="text: incaseconfiguration.dmpAllowHeadDateChange.i18n")
+div
+  h4(data-bind="text: generalSettingsGroupMedicationPlanI18n")
+  div.panel.panel-default
+    div.panel-body
+      div.form-group(data-bind="hasFeedback: { field: incaseconfiguration.medDataMedicationPlanTransfer, toggle: incaseconfiguration.medDataMedicationPlanTransfer.hasError, messages: incaseconfiguration.medDataMedicationPlanTransfer.validationMessages }")
+        div.checkbox
+          label.control-label
+            input(type="checkbox", data-bind="checked: incaseconfiguration.medDataMedicationPlanTransfer")
+            strong(data-bind="text: incaseconfiguration.medDataMedicationPlanTransfer.i18n")
+div
+  h4(data-bind="text: generalSettingsGroupKbvUtility2I18n")
+  div.panel.panel-default
+    div.panel-body
+      div.form-group(data-bind="hasFeedback: { field: incaseconfiguration.kbvutility2DefaultForTherapyReport, toggle: incaseconfiguration.kbvutility2DefaultForTherapyReport.hasError, messages: incaseconfiguration.kbvutility2DefaultForTherapyReport.validationMessages }")
+        div.checkbox
+          label.control-label
+            input(type="checkbox", data-bind="checked: incaseconfiguration.kbvutility2DefaultForTherapyReport")
+            strong(data-bind="text: incaseconfiguration.kbvutility2DefaultForTherapyReport.i18n")
+      div.form-group(data-bind="hasFeedback: { field: incaseconfiguration.kbvutility2DefaultForHomeVisit, toggle: incaseconfiguration.kbvutility2DefaultForHomeVisit.hasError, messages: incaseconfiguration.kbvutility2DefaultForHomeVisit.validationMessages }")
+        div.checkbox
+          label.control-label
+            input(type="checkbox", data-bind="checked: incaseconfiguration.kbvutility2DefaultForHomeVisit")
+            strong(data-bind="text: incaseconfiguration.kbvutility2DefaultForHomeVisit.i18n")
+      div.form-group(data-bind="hasFeedback: { field: incaseconfiguration.kbvutility2DefaultForChapter, toggle: incaseconfiguration.kbvutility2DefaultForChapter.hasError, messages: incaseconfiguration.kbvutility2DefaultForChapter.validationMessages }")
+        label.control-label(data-bind="text: incaseconfiguration.kbvutility2DefaultForChapter.i18n")
+        select.form-control(data-bind="value: incaseconfiguration.kbvutility2DefaultForChapter, options: kbvUtility2ChapterList, optionsValue: 'val', optionsText: 'i18n'")
+      div.form-group(data-bind="hasFeedback: { field: incaseconfiguration.kbvutility2DeactivatePriceDisplay, toggle: incaseconfiguration.kbvutility2DeactivatePriceDisplay.hasError, messages: incaseconfiguration.kbvutility2DeactivatePriceDisplay.validationMessages }")
+        div.checkbox
+          label.control-label
+            input(type="checkbox", data-bind="checked: incaseconfiguration.kbvutility2DeactivatePriceDisplay")
+            strong(data-bind="text: incaseconfiguration.kbvutility2DeactivatePriceDisplay.i18n")
+// /ko
+// ko if: countryModeIncludesSwitzerland
+div
+  h4(data-bind="text: generalSettingsGroupMediport")
+  div.panel.panel-default
+   div.panel-body
+     div.checkbox
+       label.control-label
+         span(data-bind="text: incaseconfiguration.mediportNeedsApproval.i18n")
+         input(type="checkbox", name="mediportNeedsApproval", data-bind="checked: incaseconfiguration.mediportNeedsApproval")
+// /ko
+div
+  h4(data-bind="text: generalSettingsGroupHomeCatalogI18n")
+  div.panel.panel-default
+    div.panel-body
+      div.form-group
+        div.checkbox
+          label.control-label
+            input(type="checkbox", data-bind="checked: incaseconfiguration.customCodeDataPerLocation")
+            strong(data-bind="text: incaseconfiguration.customCodeDataPerLocation.i18n")
+      div.form-group
+        div.checkbox
+          label.control-label
+            input(type="checkbox", data-bind="checked: incaseconfiguration.restrictSaveInHouseCatalog ")
+            strong(data-bind="text: generalSettingsRestrictSaveInHouseCatalogI18n")
+
+div
+  h4(data-bind="text: generalSettingsGroupFormLanguageI18n")
+  div.panel.panel-default
+    div.panel-body
+      div.form-group
+        div.checkbox
+          label.control-label
+            input(type="checkbox", data-bind="checked: incaseconfiguration.useFormTranslation")
+            strong(data-bind="text: generalSettingsGroupEnabelFormLanguageGenderI18n")

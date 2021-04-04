@@ -1,0 +1,79 @@
+// ko if: isLoading
+.alert.alert-success.text-center
+  img(src="/static/DocCirrus/assets/images/ajax-loader.gif")
+// /ko
+// ko ifnot: isLoading
+.row
+  .col-md-8
+    #incase_tab_configuration_generalsettings
+      include incase_tab_configuration_generalsettings
+      h4(data-bind="text: masterTabConfigTitle")
+      div.panel.panel-default
+        div.panel-body
+          div.form-group
+            strong(data-bind="text: masterTabConfigText", style="white-space: pre-wrap")
+            i.dc-info-icon(data-bind="click: showMasterTabConfigDesc")
+          // ko foreach: masterTabConfigs
+          div.row
+            div.col-sm-2
+              h4(data-bind="text: $parent.getSystemTitle($index())", style="margin-top: 24px")
+            div.col-sm-2
+              div.form-group
+                label.control-label(data-bind="text: loginLinkTitle.i18n")
+                input.form-control(type="text", data-bind="textInput: loginLinkTitle")
+            div.col-sm-3
+              div.form-group
+                label.control-label(data-bind="text: loginLink.i18n")
+                input.form-control(type="text", data-bind="textInput: loginLink")
+            div.col-sm-2
+              div.form-group
+                label.control-label(data-bind="text: patientBrowserLinkTitle.i18n")
+                input.form-control(type="text", data-bind="textInput: patientBrowserLinkTitle")
+            div.col-sm-3
+              div.form-group
+                label.control-label(data-bind="text: patientBrowserLink.i18n")
+                input.form-control(type="text", data-bind="textInput: patientBrowserLink")
+          // /ko
+    #incase_tab_configuration_extendedsettings
+      include incase_tab_configuration_extendedsettings
+    // ko if: hasTiLicense
+    #incase_tab_configuration_electronic_services
+      include incase_tab_configuration_electronic_services
+    // /ko
+    // ko if: countryModeIncludesSwitzerland()
+    h4
+      span(data-bind="text: extendedSettingsCoverCardI18n")
+    div.panel.panel-default
+      div.panel-body
+        div.row
+          div.col-md-4
+            div.form-group
+              label.control-label(data-bind="text: incaseconfiguration.coverCardOfacId.i18n")
+              input.form-control(type="text", data-bind="textInput: incaseconfiguration.coverCardOfacId")
+            div.form-group
+              label.control-label(data-bind="text: incaseconfiguration.coverCardSoftwareId.i18n")
+              input.form-control(type="text", data-bind="textInput: incaseconfiguration.coverCardSoftwareId")
+          div.col-md-4
+            div.form-group
+              label.control-label(data-bind="text: incaseconfiguration.coverCardZsrNo.i18n")
+              input.form-control(type="text", data-bind="textInput: incaseconfiguration.coverCardZsrNo")
+            div.form-group
+              label.control-label(data-bind="text: incaseconfiguration.coverCardSoftwareZsrNo.i18n")
+              input.form-control(type="text", data-bind="textInput: incaseconfiguration.coverCardSoftwareZsrNo")
+          div.col-md-4
+            div.form-group
+              label.control-label(data-bind="text: incaseconfiguration.coverCardUser.i18n")
+              input.form-control(type="text", data-bind="textInput: incaseconfiguration.coverCardUser")
+            div.form-group
+              label.control-label(data-bind="text: incaseconfiguration.coverCardPass.i18n")
+              div.input-group
+                input.form-control(type="password", data-bind="attr: {type: coverCardPassInputType}, textInput: incaseconfiguration.coverCardPass")
+                span.input-group-addon(data-bind="event: {mousedown: showCoverCardPass, mouseup: hideCoverCardPass}")
+                  span.fa.fa-eye
+    // /ko
+.row
+  .col-md-8
+    .dc-action-buttons.dc-action-buttons-right#actionButtons
+      button.btn.btn-primary(type="button", data-bind="enable: actionSaveEnabled, click: saveConfig, text: buttonSaveI18n")
+// /ko
+click: showHubAccessInfoMessage

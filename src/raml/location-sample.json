@@ -1,0 +1,59 @@
+{
+  "meta": {
+    "errors": [],
+    "warnings": [],
+    "query": {"_id":"54eb41b878382da863181d3b"},
+    "itemsPerPage": null,
+    "totalItems": 1,
+    "page": null,
+    "replyCode": 200
+  },
+  "data": [
+  {
+    "_id": "54eb41b878382da863181d3b",
+    "commercialNo": "370103000",
+    "locname": "Dr. Med. M. Schmidt",
+    "phone": "012 345 67 89",
+    "fax": "000",
+    "email": "ein@partner.ch",
+    "openTimes": [
+      {
+        "_id": "555da00e61bffe0000212e8c",
+        "end": [
+          17,
+          0
+        ],
+        "start": [
+          9,
+          0
+        ],
+        "days": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      }
+    ],
+    "addon": "",
+    "countryMode": [
+      "CH"
+    ],
+    "countryCode": "CH",
+    "country": "Schweiz",
+    "city": "Wohlen",
+    "zip": "5000",
+    "houseno": "5",
+    "street": "Einsstrasse",
+    "isAdditionalLocation": true,
+    "mainLocationId": "000000000000000000000001",
+    "defaultPrinter": "Sharp_Empfang_F1_A4",
+    "cantonCode": "1",
+    "esrNumber": "010002333",
+    "glnNumber": "01203000450678",
+    "zsrNumber": "W012345",
+    "vatNumber": "CHE-123.456.789"
+  }
+]
+ }

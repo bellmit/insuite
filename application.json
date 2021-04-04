@@ -1,0 +1,423 @@
+[
+    {
+        "settings": [
+            "environment:production"
+        ],
+        "appTitle": "InSuite",
+        "staticHandling": {
+            "appName": "dcbaseapp",
+            "maxAge": 3600000
+        },
+        "viewEngine": {
+            "cacheTemplates": true,
+            "preloadTemplates": true
+        },
+        "actionTimeout": 45000,
+        "yui": {
+            "config": {
+                "initialClientDebugValue": false,
+                "debug": true,
+                "logLevel": "debug",
+                "logLevelOrder": ["debug", "info", "warn", "error", "fatal"],
+                "base": "/yui3/",
+                "combine": true,
+                "fetchCSS": true,
+                "comboBase": "/yui3/combo?",
+                "comboSep": "&",
+                "root": "/",
+                "gallery": "/yui3-gallery",
+                "lang": "de",
+                "modules": {}
+            }
+        },
+        "express": {
+            "bodyParser": {
+                "limit": 157286400
+            },
+            "multer": {
+                "dest": "/tmp",
+                "limits": {
+                    "fieldNameSize": 100,
+                    "fieldSize": 1048576,
+                    "fields": null,
+                    "fileSize": 157286400,
+                    "files": null,
+                    "parts": null,
+                    "headerPairs": 2000
+                }
+            }
+        },
+        "mojitsDirs": [
+            "mojits",
+            "mojits/Frames"
+        ],
+        "specs": {
+            "NoscriptMojit": {
+                "type": "NoscriptMojit"
+            },
+            "REST": {
+                "type": "RESTFrameMojit",
+                "config": {
+                    "deploy": true,
+                    "title": "Doc Cirrus Medical Information System",
+                    "child": {},
+                    "assets": {},
+                    "bottom": {}
+                }
+            },
+            "Login": {
+                "type": "LoginHTMLFrameMojit",
+                "config": {
+                    "deploy": true,
+                    "title": "Doc Cirrus Medical Information System",
+                    "child": {},
+                    "assets": {
+                        "top": {
+                            "css": [
+                                "/static/dcbaseapp/assets/lib/bootstrap/3.1.1/css/bootstrap.min.css",
+                                "/static/dcbaseapp/assets/lib/bootstrap/3.1.1/css/bootstrap-theme.min.css",
+                                "/static/dcbaseapp/assets/lib/font-awesome/4.7.0/css/font-awesome.min.css",
+                                "/static/dcbaseapp/assets/lib/custom-icons/css/custom-icons.css",
+                                "/static/DocCirrus/assets/css/all.css"
+                            ],
+                            "js": [
+                                "/static/dcbaseapp/assets/lib/polyfix/object-assign-auto.min.js",
+                                "/static/dcbaseapp/assets/lib/polyfix/proxy.min.js",
+                                "/static/dcbaseapp/assets/lib/polyfix/Reflect.js",
+                                "/static/dcbaseapp/assets/lib/polyfix/startswith.js",
+                                "/static/dcbaseapp/assets/lib/polyfix/es5-shim.min.js",
+                                "/static/dcbaseapp/assets/lib/polyfix/es5-sham.min.js",
+                                "/static/dcbaseapp/assets/lib/polyfix/es6-shim.min.js",
+                                "/static/dcbaseapp/assets/lib/polyfix/es6-sham.min.js",
+                                "/static/DocCirrus/assets/js/00jquery191-min.js",
+                                "/static/DocCirrus/assets/js/moment-min.js",
+                                "/static/dcbaseapp/assets/lib/bootstrap/3.1.1/js/bootstrap.min.js",
+                                "/static/DocCirrus/assets/js/dc.js",
+                                "/static/DocCirrus/assets/js/sjcl-28d8573235.js",
+                                "/static/DocCirrus/assets/js/tinySHA1.r4.js",
+                                "/static/dcbaseapp/assets/lib/lodash/3.8.0/lodash.min.js",
+                                "/static/dcbaseapp/assets/lib/he/1.2.0/he.js",
+                                "/static/dcbaseapp/assets/lib/rrule/rrule.min.js"
+                            ]
+                        },
+                        "bottom": {}
+                    }
+                }
+            },
+            "DCHTMLFrameMojit": {
+                "type": "DCHTMLFrameMojit",
+                "propagateFailure": "true",
+                "config": {
+                    "deploy": true,
+                    "child": {},
+                    "assets": {
+                        "top": {
+                            "css": [
+                                "/static/DocCirrus/assets/css/dc.css",
+                                "/static/dcbaseapp/assets/lib/font-awesome/4.7.0/css/font-awesome.min.css",
+                                "/static/dcbaseapp/assets/lib/custom-icons/css/custom-icons.css",
+                                "/static/dcbaseapp/assets/lib/select2/3.5.2/select2.css",
+                                "/static/dcbaseapp/assets/lib/fine-uploader/fine-uploader.css",
+                                "/static/DocCirrus/assets/css/all.css"
+                            ],
+                            "js": [
+                                "/static/dcbaseapp/assets/lib/polyfix/object-assign-auto.min.js",
+                                "/static/dcbaseapp/assets/lib/polyfix/proxy.min.js",
+                                "/static/dcbaseapp/assets/lib/polyfix/Reflect.js",
+                                "/static/dcbaseapp/assets/lib/polyfix/startswith.js",
+                                "/static/dcbaseapp/assets/lib/polyfix/es5-shim.min.js",
+                                "/static/dcbaseapp/assets/lib/polyfix/es5-sham.min.js",
+                                "/static/dcbaseapp/assets/lib/polyfix/es6-shim.min.js",
+                                "/static/dcbaseapp/assets/lib/polyfix/es6-sham.min.js",
+                                "/static/dcbaseapp/assets/lib/polyfix/webrtc-adapter.js",
+                                "/static/DocCirrus/assets/js/00jquery191-min.js",
+                                "/static/DocCirrus/assets/js/jquery-jsonrpcclient.js",
+                                "/static/DocCirrus/assets/js/jqueryui1102custom-min.js",
+                                "/static/DocCirrus/assets/js/dc.js",
+                                "/static/DocCirrus/assets/js/sjcl-28d8573235.js",
+                                "/static/DocCirrus/assets/js/tinySHA1.r4.js",
+                                "/static/DocCirrus/assets/js/jaderuntime-min.js",
+                                "/static/DocCirrus/assets/js/moment-min.js",
+                                "/static/DocCirrus/assets/js/moment-de.js",
+                                "/static/DocCirrus/assets/js/0spin-min.js",
+                                "/static/DocCirrus/assets/js/jquery-spin.js",
+                                "/static/DocCirrus/assets/js/jquery-ui-touch.js",
+                                "/static/dcbaseapp/assets/lib/select2/3.5.2/select2.js",
+                                "/static/dcbaseapp/assets/lib/select2/3.5.2/select2_locale_de.js",
+                                "/static/DocCirrus/assets/js/socket-io-2-1-0.js",
+                                "/static/dcbaseapp/assets/lib/knockout/3.4.0/knockout.js",
+                                "/static/dcbaseapp/assets/lib/knockout/templates.js",
+                                "/static/dcbaseapp/assets/lib/knockout/switch-case/2.1.0/knockout-switch-case.min.js",
+                                "/static/dcbaseapp/assets/lib/fine-uploader/jquery.fine-uploader.js"
+                            ]
+                        },
+                        "bottom": {}
+                    }
+                }
+            },
+            "CupsFrameMojit": {
+                "type": "DCHTMLFrameMojit",
+                "propagateFailure": "true",
+                "config": {
+                    "title": "Cups Proxy",
+                    "child": {}
+                }
+            },
+            "IntouchFrameMojit": {
+                "type": "IntouchFrameMojit",
+                "propagateFailure": "true",
+                "config": {
+                    "deploy": true,
+                    "child": {},
+                    "assets": {
+                        "top": {
+                            "css": [
+                                "/static/dcbaseapp/assets/lib/bootstrap/3.1.1/css/bootstrap.min.css",
+                                "/static/dcbaseapp/assets/lib/bootstrap/3.1.1/css/bootstrap-theme.min.css",
+                                "/static/dcbaseapp/assets/lib/font-awesome/4.7.0/css/font-awesome.min.css",
+                                "/static/dcbaseapp/assets/lib/custom-icons/css/custom-icons.css",
+                                "/static/dcbaseapp/assets/lib/bootstrap/bootstrap-datetimepicker/4.17.45/css/bootstrap-datetimepicker.min.css",
+                                "/static/dcbaseapp/assets/lib/bootstrap/3.1.1/dc-layout.css",
+                                "/static/dcbaseapp/assets/lib/select2/3.5.2/select2.css",
+                                "/static/dcbaseapp/assets/lib/select2/select2-bootstrap-css-bootstrap3/1.4.6/select2-bootstrap.min.css",
+                                "/static/dcbaseapp/assets/css/koBindings.css",
+                                "/static/dcbaseapp/assets/lib/fine-uploader/fine-uploader.css",
+                                "/static/DocCirrus/assets/css/all.css",
+                                "/static/DocCirrus/assets/css/easyrtc.css",
+                                "/static/dcbaseapp/assets/lib/jquery/dateRangePicker/dc/daterangepicker.css"
+                            ],
+                            "js": [
+                                "/static/dcbaseapp/assets/lib/polyfix/webrtc-adapter.js",
+                                "/static/dcbaseapp/assets/lib/polyfix/object-assign-auto.min.js",
+                                "/static/dcbaseapp/assets/lib/polyfix/proxy.min.js",
+                                "/static/dcbaseapp/assets/lib/polyfix/Reflect.js",
+                                "/static/dcbaseapp/assets/lib/polyfix/startswith.js",
+                                "/static/dcbaseapp/assets/lib/polyfix/es5-shim.min.js",
+                                "/static/dcbaseapp/assets/lib/polyfix/es5-sham.min.js",
+                                "/static/dcbaseapp/assets/lib/polyfix/es6-shim.min.js",
+                                "/static/dcbaseapp/assets/lib/polyfix/es6-sham.min.js",
+                                "/static/DocCirrus/assets/js/00jquery191-min.js",
+                                "/static/DocCirrus/assets/js/jquery-jsonrpcclient.js",
+                                "/static/DocCirrus/assets/js/jqueryui1102custom-min.js",
+                                "/static/dcbaseapp/assets/lib/bootstrap/3.1.1/js/bootstrap.min.js",
+                                "/static/DocCirrus/assets/js/dc.js",
+                                "/static/DocCirrus/assets/js/sjcl-28d8573235.js",
+                                "/static/DocCirrus/assets/js/tinySHA1.r4.js",
+                                "/static/DocCirrus/assets/js/jaderuntime-min.js",
+                                "/static/DocCirrus/assets/js/moment-min.js",
+                                "/static/DocCirrus/assets/js/moment-de.js",
+                                "/static/DocCirrus/assets/js/0spin-min.js",
+                                "/static/DocCirrus/assets/js/modernizr.js",
+                                "/static/dcbaseapp/assets/lib/async/1.5.2/async.min.js",
+                                "/static/dcbaseapp/assets/lib/bluebird/3.1.5/bluebird.min.js",
+                                "/static/dcbaseapp/assets/lib/lodash/3.8.0/lodash.min.js",
+                                "/static/dcbaseapp/assets/lib/knockout/3.4.0/knockout.js",
+                                "/static/dcbaseapp/assets/lib/knockout/templates.js",
+                                "/static/dcbaseapp/assets/lib/knockout/switch-case/2.1.0/knockout-switch-case.min.js",
+                                "/static/dcbaseapp/assets/lib/select2/3.5.2/select2.js",
+                                "/static/dcbaseapp/assets/lib/select2/3.5.2/select2_locale_de.js",
+                                "/static/DocCirrus/assets/js/socket-io-2-1-0.js",
+                                "/static/DocCirrus/assets/js/easyrtc.js",
+                                "/static/DocCirrus/assets/js/easyrtc_ft.js",
+                                "/static/dcbaseapp/assets/lib/recordrtc/RecordRTC.js",
+                                "/static/dcbaseapp/assets/lib/wavesurfer/wavesurfer.min.js",
+                                "/static/dcbaseapp/assets/lib/web-audio-recorder/Mp3LameEncoder.js",
+                                "/static/dcbaseapp/assets/lib/fine-uploader/jquery.fine-uploader.js",
+                                "/static/dcbaseapp/assets/lib/he/1.2.0/he.js",
+                                "/static/dcbaseapp/assets/lib/rrule/rrule.min.js"
+                            ]
+                        },
+                        "bottom": {}
+                    }
+                }
+            },
+            "KOHTMLFrameMojit": {
+                "type": "KOHTMLFrameMojit",
+                "propagateFailure": "true",
+                "config": {
+                    "deploy": true,
+                    "child": {},
+                    "assets": {
+                        "top": {
+                            "css": [
+                                "/static/dcbaseapp/assets/lib/bootstrap/3.1.1/css/bootstrap.min.css",
+                                "/static/dcbaseapp/assets/lib/bootstrap/3.1.1/css/bootstrap-theme.min.css",
+                                "/static/dcbaseapp/assets/lib/font-awesome/4.7.0/css/font-awesome.min.css",
+                                "/static/dcbaseapp/assets/lib/custom-icons/css/custom-icons.css",
+                                "/static/dcbaseapp/assets/lib/bootstrap/bootstrap-datetimepicker/4.17.45/css/bootstrap-datetimepicker.min.css",
+                                "/static/dcbaseapp/assets/lib/bootstrap/3.1.1/dc-layout.css",
+                                "/static/dcbaseapp/assets/lib/select2/3.5.2/select2.css",
+                                "/static/dcbaseapp/assets/lib/select2/select2-bootstrap-css-bootstrap3/1.4.6/select2-bootstrap.min.css",
+                                "/static/dcbaseapp/assets/css/koBindings.css",
+                                "/static/dcbaseapp/assets/lib/fine-uploader/fine-uploader.css",
+                                "/static/DocCirrus/assets/css/all.css",
+                                "/static/DocCirrus/assets/css/nvd3min.css",
+                                "/static/DocCirrus/assets/css/predefined-reportings.css",
+                                "/static/dcbaseapp/assets/lib/jquery/dateRangePicker/dc/daterangepicker.css"
+                            ],
+                            "js": [
+                                "/static/dcbaseapp/assets/lib/polyfix/object-assign-auto.min.js",
+                                "/static/dcbaseapp/assets/lib/polyfix/proxy.min.js",
+                                "/static/dcbaseapp/assets/lib/polyfix/Reflect.js",
+                                "/static/dcbaseapp/assets/lib/polyfix/startswith.js",
+                                "/static/dcbaseapp/assets/lib/polyfix/es5-shim.min.js",
+                                "/static/dcbaseapp/assets/lib/polyfix/es5-sham.min.js",
+                                "/static/dcbaseapp/assets/lib/polyfix/es6-shim.min.js",
+                                "/static/dcbaseapp/assets/lib/polyfix/es6-sham.min.js",
+                                "/static/dcbaseapp/assets/lib/polyfix/webrtc-adapter.js",
+                                "/static/DocCirrus/assets/js/00jquery191-min.js",
+                                "/static/DocCirrus/assets/js/jquery-jsonrpcclient.js",
+                                "/static/DocCirrus/assets/js/jqueryui1102custom-min.js",
+                                "/static/dcbaseapp/assets/lib/bootstrap/3.1.1/js/bootstrap.min.js",
+                                "/static/DocCirrus/assets/js/dc.js",
+                                "/static/DocCirrus/assets/js/sjcl-28d8573235.js",
+                                "/static/DocCirrus/assets/js/tinySHA1.r4.js",
+                                "/static/DocCirrus/assets/js/jaderuntime-min.js",
+                                "/static/DocCirrus/assets/js/moment-min.js",
+                                "/static/DocCirrus/assets/js/moment-de.js",
+                                "/static/DocCirrus/assets/js/0spin-min.js",
+                                "/static/DocCirrus/assets/js/jquery-spin.js",
+                                "/static/DocCirrus/assets/js/jquery-ui-touch.js",
+                                "/static/dcbaseapp/assets/lib/bootstrap/bootstrap-datetimepicker/4.17.45/js/bootstrap-datetimepicker.min.js",
+                                "/static/dcbaseapp/assets/lib/bootstrap/bootstrap-datetimepicker/4.17.45/js/bootstrap-datetimepicker-defaults.js",
+                                "/static/DocCirrus/assets/js/modernizr.js",
+                                "/static/dcbaseapp/assets/lib/async/1.5.2/async.min.js",
+                                "/static/dcbaseapp/assets/lib/bluebird/3.1.5/bluebird.min.js",
+                                "/static/dcbaseapp/assets/lib/lodash/3.8.0/lodash.min.js",
+                                "/static/dcbaseapp/assets/lib/knockout/3.4.0/knockout.js",
+                                "/static/dcbaseapp/assets/lib/knockout/templates.js",
+                                "/static/dcbaseapp/assets/lib/knockout/switch-case/2.1.0/knockout-switch-case.min.js",
+                                "/static/dcbaseapp/assets/lib/select2/3.5.2/select2.js",
+                                "/static/dcbaseapp/assets/lib/select2/3.5.2/select2_locale_de.js",
+                                "/static/DocCirrus/assets/js/socket-io-2-1-0.js",
+                                "/static/DocCirrus/assets/js/d3.min.js",
+                                "/static/DocCirrus/assets/js/nvd3min.js",
+                                "/static/dcbaseapp/assets/lib/fine-uploader/jquery.fine-uploader.js",
+                                "/static/dcbaseapp/assets/lib/jquery/dateRangePicker/dc/jquery-daterangepicker.min.js",
+                                "/static/DocCirrus/assets/js/jquery-inputmask-bundle.min.js",
+                                "/static/dcbaseapp/assets/lib/fabric/fabric.js",
+                                "/static/dcbaseapp/assets/lib/recordrtc/RecordRTC.js",
+                                "/static/dcbaseapp/assets/lib/wavesurfer/wavesurfer.min.js",
+                                "/static/dcbaseapp/assets/lib/web-audio-recorder/Mp3LameEncoder.js",
+                                "/static/dcbaseapp/assets/lib/he/1.2.0/he.js",
+                                "/static/dcbaseapp/assets/lib/rrule/rrule.min.js"
+                            ]
+                        },
+                        "bottom": {}
+                    }
+                }
+            },
+            "DynamsoftFrameMojit": {
+                "type": "DynamsoftFrameMojit",
+                "config": {
+                    "deploy": true,
+                    "title": "Doc Cirrus Medical Information System",
+                    "child": {},
+                    "assets": {
+                        "top": {
+                            "css": [
+                                "/static/dcbaseapp/assets/lib/bootstrap/3.1.1/css/bootstrap.min.css",
+                                "/static/dcbaseapp/assets/lib/bootstrap/3.1.1/css/bootstrap-theme.min.css",
+                                "/static/dcbaseapp/assets/lib/font-awesome/4.7.0/css/font-awesome.min.css",
+                                "/static/dcbaseapp/assets/lib/custom-icons/css/custom-icons.css",
+                                "/static/DocCirrus/assets/css/all.css"
+                            ],
+                            "js": [
+                                "/static/dcbaseapp/assets/lib/polyfix/object-assign-auto.min.js",
+                                "/static/dcbaseapp/assets/lib/polyfix/proxy.min.js",
+                                "/static/dcbaseapp/assets/lib/polyfix/Reflect.js",
+                                "/static/dcbaseapp/assets/lib/polyfix/startswith.js",
+                                "/static/dcbaseapp/assets/lib/polyfix/es5-shim.min.js",
+                                "/static/dcbaseapp/assets/lib/polyfix/es5-sham.min.js",
+                                "/static/dcbaseapp/assets/lib/polyfix/es6-shim.min.js",
+                                "/static/dcbaseapp/assets/lib/polyfix/es6-sham.min.js",
+                                "/static/DocCirrus/assets/js/00jquery191-min.js",
+                                "/static/DocCirrus/assets/js/jquery-jsonrpcclient.js",
+                                "/static/DocCirrus/assets/js/moment-min.js",
+                                "/static/dcbaseapp/assets/lib/bootstrap/3.1.1/js/bootstrap.min.js",
+                                "/static/dcbaseapp/assets/lib/bluebird/3.1.5/bluebird.min.js",
+                                "/static/dcbaseapp/assets/lib/lodash/3.8.0/lodash.min.js",
+                                "/static/dcbaseapp/assets/lib/knockout/3.4.0/knockout.js",
+                                "/static/dcbaseapp/assets/lib/knockout/templates.js",
+                                "/static/dcbaseapp/assets/lib/knockout/switch-case/2.1.0/knockout-switch-case.min.js",
+                                "/static/DocCirrus/assets/js/dc.js",
+                                "/static/DocCirrus/assets/js/sjcl-28d8573235.js",
+                                "/static/DocCirrus/assets/js/tinySHA1.r4.js",
+                                "/static/dcbaseapp/assets/lib/he/1.2.0/he.js",
+                                "/static/dcbaseapp/assets/lib/rrule/rrule.min.js"
+                            ]
+                        },
+                        "bottom": {}
+                    }
+                }
+            },
+            "PPHTMLFrameMojit": {
+                "type": "PPHTMLFrameMojit",
+                "propagateFailure": "true",
+                "config": {
+                    "deploy": true,
+                    "child": {},
+                    "assets": {
+                        "top": {
+                            "css": [
+                                "/static/dcbaseapp/assets/lib/bootstrap/3.1.1/css/bootstrap.min.css",
+                                "/static/dcbaseapp/assets/lib/bootstrap/3.1.1/css/bootstrap-theme.min.css",
+                                "/static/dcbaseapp/assets/lib/font-awesome/4.7.0/css/font-awesome.min.css",
+                                "/static/dcbaseapp/assets/lib/custom-icons/css/custom-icons.css",
+                                "/static/dcbaseapp/assets/lib/bootstrap/bootstrap-datetimepicker/4.17.45/css/bootstrap-datetimepicker.min.css",
+                                "/static/DocCirrus/assets/css/all.css",
+                                "/static/dcbaseapp/assets/lib/select2/3.5.2/select2.css",
+                                "/static/dcbaseapp/assets/lib/select2/select2-bootstrap-css-bootstrap3/1.4.6/select2-bootstrap.min.css",
+                                "/static/dcbaseapp/assets/css/koBindings.css",
+                                "/static/dcbaseapp/assets/lib/jquery/dateRangePicker/dc/daterangepicker.css"
+                            ],
+                            "js": [
+                                "/static/dcbaseapp/assets/lib/polyfix/object-assign-auto.min.js",
+                                "/static/dcbaseapp/assets/lib/polyfix/proxy.min.js",
+                                "/static/dcbaseapp/assets/lib/polyfix/Reflect.js",
+                                "/static/dcbaseapp/assets/lib/polyfix/startswith.js",
+                                "/static/dcbaseapp/assets/lib/polyfix/es5-shim.min.js",
+                                "/static/dcbaseapp/assets/lib/polyfix/es5-sham.min.js",
+                                "/static/dcbaseapp/assets/lib/polyfix/es6-shim.min.js",
+                                "/static/dcbaseapp/assets/lib/polyfix/es6-sham.min.js",
+                                "/static/DocCirrus/assets/js/00jquery191-min.js",
+                                "/static/DocCirrus/assets/js/jqueryui1102custom-min.js",
+                                "/static/DocCirrus/assets/js/jquery-jsonrpcclient.js",
+                                "/static/dcbaseapp/assets/lib/bootstrap/3.1.1/js/bootstrap.min.js",
+                                "/static/DocCirrus/assets/js/dc.js",
+                                "/static/DocCirrus/assets/js/sjcl-28d8573235.js",
+                                "/static/DocCirrus/assets/js/tinySHA1.r4.js",
+                                "/static/DocCirrus/assets/js/jaderuntime-min.js",
+                                "/static/DocCirrus/assets/js/moment-min.js",
+                                "/static/DocCirrus/assets/js/moment-de.js",
+                                "/static/dcbaseapp/assets/lib/async/1.5.2/async.min.js",
+                                "/static/DocCirrus/assets/js/0spin-min.js",
+                                "/static/DocCirrus/assets/js/jquery-spin.js",
+                                "/static/DocCirrus/assets/js/jquery-ui-touch.js",
+                                "/static/dcbaseapp/assets/lib/bootstrap/bootstrap-datetimepicker/4.17.45/js/bootstrap-datetimepicker.min.js",
+                                "/static/dcbaseapp/assets/lib/bootstrap/bootstrap-datetimepicker/4.17.45/js/bootstrap-datetimepicker-defaults.js",
+                                "/static/dcbaseapp/assets/lib/bluebird/3.1.5/bluebird.min.js",
+                                "/static/dcbaseapp/assets/lib/lodash/3.8.0/lodash.min.js",
+                                "/static/dcbaseapp/assets/lib/knockout/3.4.0/knockout.js",
+                                "/static/dcbaseapp/assets/lib/knockout/templates.js",
+                                "/static/dcbaseapp/assets/lib/select2/3.5.2/select2.js",
+                                "/static/dcbaseapp/assets/lib/select2/3.5.2/select2_locale_de.js",
+                                "/static/dcbaseapp/assets/lib/knockout/switch-case/2.1.0/knockout-switch-case.min.js",
+                                "/static/DocCirrus/assets/js/modernizr.js",
+                                "/static/dcbaseapp/assets/lib/jquery/dateRangePicker/dc/jquery-daterangepicker.min.js",
+                                "/static/DocCirrus/assets/js/jquery-inputmask-bundle.min.js",
+                                "/static/dcbaseapp/assets/lib/fine-uploader/jquery.fine-uploader.js",
+                                "/static/dcbaseapp/assets/lib/recordrtc/RecordRTC.js",
+                                "/static/dcbaseapp/assets/lib/wavesurfer/wavesurfer.min.js",
+                                "/static/dcbaseapp/assets/lib/web-audio-recorder/Mp3LameEncoder.js",
+                                "/static/dcbaseapp/assets/lib/he/1.2.0/he.js",
+                                "/static/dcbaseapp/assets/lib/rrule/rrule.min.js"
+                            ]
+                        },
+                        "bottom": {}
+                    }
+                }
+            }
+        }
+    }
+]

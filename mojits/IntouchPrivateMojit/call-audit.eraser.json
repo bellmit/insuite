@@ -1,0 +1,10 @@
+[
+  {
+    "name": "MOJ-13537, MOJ-13566",
+    "description": "Erase call audits the night after creation assuming there were not created at night and it is executed at 2:50 AM.",
+    "model": "callaudit",
+    "expiration": {
+      "time":  "PT2H50M"
+    }
+  }
+]

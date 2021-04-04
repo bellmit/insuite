@@ -1,0 +1,4316 @@
+{
+  "version": "0.0.500",
+  "presets": [
+    {
+      "_id": "575154d9719f70f7221d2b55",
+      "csvFilename": "Tageszeitprofile",
+      "country": ["D"],
+      "container": [
+        "inSightStandardReports",
+        "patientGadget"
+      ],
+      "formId": "5757e64798053947ac0dd83c",
+      "displayFields": [
+        {
+          "value": "timestampDate",
+          "type": "Date",
+          "label": {
+            "de": "Datum",
+            "en": "Date"
+          },
+          "rendererName": "dateFormat",
+          "sortInitialIndex": 0,
+          "direction": "DESC",
+          "isFilterable": false,
+          "visible": true
+        },
+        {
+          "value": "pzt",
+          "type": "Number",
+          "label": {
+            "de": "Tagesprüfzeit [min]",
+            "en": "Daily test time [min]"
+          },
+          "rendererName": "pztDisplay",
+          "visible": true
+        },
+        {
+          "value": "employeeTitle",
+          "type": "String",
+          "label": {
+            "de": "Ärzte",
+            "en": "Doctors"
+          },
+          "visible": true
+        },
+        {
+          "value": "employeeOfficialNo",
+          "type": "String",
+          "label": {
+            "de": "LANR",
+            "en": "LANR"
+          },
+          "visible": true
+        }
+      ],
+      "predefined": true,
+      "pipeline": [
+        {
+          "$match": {
+            "actType": "TREATMENT",
+            "status": { "$nin": [ "CANCELLED", "INVALID" ] }
+          }
+        },
+        {
+          "$group": {
+            "_id": {
+              "employeeOfficialNo": "$employeeOfficialNo",
+              "date": "$date"
+            },
+            "pzt": {
+              "$sum": "$pzt"
+            },
+            "timestampDate": {
+              "$first": "$timestampDate"
+            },
+            "employeeTitle": {
+              "$addToSet": "$employeeLastname"
+            }
+          }
+        },
+        {
+          "$match": {
+            "pzt": {
+              "$gt": 0
+            }
+          }
+        },
+        {
+          "$project": {
+            "employeeOfficialNo": "$_id.employeeOfficialNo",
+            "employeeTitle": "$employeeTitle",
+            "pzt": "$pzt",
+            "date": "$_id.date",
+            "timestampDate": "$timestampDate"
+          }
+        }
+      ]
+    },
+    {
+      "_id": "575154d9719f70f7221d2b56",
+      "csvFilename": "Rechnungen stationär",
+      "country": ["D"],
+      "visibility": "CONTROLLER",
+      "container": [
+        "inSightStandardReports",
+        "invoiceReports",
+        "patientGadget"
+      ],
+      "formId": "5757e7a498053947ac0dd83e",
+      "displayFields": [
+        {
+          "value": "invoiceNo",
+          "type": "String",
+          "label": {
+            "de": "Nummer",
+            "en": "Number"
+          },
+          "direction": "ASC",
+          "sortInitialIndex": 1,
+          "visible": true
+        },
+        {
+          "value": "status",
+          "type": "String",
+          "label": {
+            "de": "Status",
+            "en": "Status"
+          },
+          "rendererName": "activityStatus",
+          "visible": true
+        },
+        {
+          "value": "timestampDate",
+          "type": "Date",
+          "label": {
+            "de": "Datum",
+            "en": "Date"
+          },
+          "rendererName": "dateFormat",
+          "sortInitialIndex": 0,
+          "direction": "DESC",
+          "isFilterable": false,
+          "visible": true
+        },
+        {
+          "value": "employeeTitle",
+          "type": "String",
+          "label": {
+            "de": "Arzt",
+            "en": "Doctor"
+          },
+          "visible": true
+        },
+        {
+          "value": "patientName",
+          "type": "String",
+          "label": {
+            "de": "Patient",
+            "en": "Patient"
+          },
+          "rendererName": "patientDetails",
+          "visible": true
+        },
+        {
+          "value": "total",
+          "type": "Number",
+          "colFormat": "currency",
+          "label": {
+            "de": "Summe in €",
+            "en": "Total in €"
+          },
+          "rendererName": "currencyFormat",
+          "visible": true
+        }
+      ],
+      "predefined": true,
+      "pipeline": [
+        {
+          "$match": {
+            "$or": [
+              {
+                "actType": "INVOICE"
+              },
+              {
+                "actType": "FORM"
+              }
+            ],
+            "hasOP": true,
+            "total": {
+              "$gt": 0
+            },
+            "documentId": { "$exists": false },
+            "status": { "$nin": [ "CANCELLED", "INVALID" ] }
+          }
+        },
+        {
+          "$sort": {
+            "timestampDate": 1
+          }
+        },
+        {
+          "$project": {
+            "invoiceNo": "$invoiceNo",
+            "timestampDate": "$timestampDate",
+            "status": "$status",
+            "employeeTitle": "$employeeLastname",
+            "patientName": "$patientName",
+            "patientDbId": "$patientDbId",
+            "total": "$total"
+          }
+        }
+      ]
+    },
+    {
+      "_id": "575eb689ba45eb220605bfb5",
+      "csvFilename": "Summen: Rechnungen stationär",
+      "country": ["D"],
+      "visibility": "CONTROLLER",
+      "container": [
+        "inSightStandardReports",
+        "invoiceReports",
+        "patientGadget"
+      ],
+      "hideSummaryRow": true,
+      "formId": "5757e7a498053947ac0dd83e",
+      "displayFields": [
+        {
+          "value": "total",
+          "type": "Number",
+          "colFormat": "currency",
+          "label": {
+            "de": "Summe in €",
+            "en": "Total in €"
+          },
+          "rendererName": "currencyFormat",
+          "visible": true
+        }
+      ],
+      "predefined": true,
+      "pipeline": [
+        {
+          "$match": {
+            "$or": [
+              {
+                "actType": "INVOICE"
+              },
+              {
+                "actType": "FORM"
+              }
+            ],
+            "hasOP": true,
+            "total": {
+              "$gt": 0
+            },
+            "documentId": { "$exists": false },
+            "status": { "$nin": [ "CANCELLED", "INVALID" ] }
+          }
+        },
+        {
+          "$group": {
+            "_id": 1,
+            "total": {
+              "$sum": "$total"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "_id": "575154d9719f70f7221d2b57",
+      "csvFilename": "Rechnungen stat. mit Sachkosten",
+      "country": ["D"],
+      "visibility": "CONTROLLER",
+      "container": [
+        "inSightStandardReports",
+        "invoiceReports",
+        "patientGadget"
+      ],
+      "formId": "5757e80498053947ac0dd840",
+      "displayFields": [
+        {
+          "value": "invoiceNo",
+          "type": "String",
+          "label": {
+            "de": "Nummer",
+            "en": "Number"
+          },
+          "direction": "ASC",
+          "sortInitialIndex": 1,
+          "visible": true
+        },
+        {
+          "value": "status",
+          "type": "String",
+          "label": {
+            "de": "Status",
+            "en": "Status"
+          },
+          "rendererName": "activityStatus",
+          "visible": true
+        },
+        {
+          "value": "timestampDate",
+          "type": "Date",
+          "label": {
+            "de": "Datum",
+            "en": "Date"
+          },
+          "rendererName": "dateFormat",
+          "sortInitialIndex": 0,
+          "direction": "DESC",
+          "isFilterable": false,
+          "visible": true
+        },
+        {
+          "value": "employeeTitle",
+          "type": "String",
+          "label": {
+            "de": "Arzt",
+            "en": "Doctor"
+          },
+          "visible": true
+        },
+        {
+          "value": "patientName",
+          "type": "String",
+          "label": {
+            "de": "Patient",
+            "en": "Patient"
+          },
+          "rendererName": "patientDetails",
+          "visible": true
+        },
+        {
+          "value": "lstAsk",
+          "type": "Number",
+          "label": {
+            "de": "LST+ASK",
+            "en": "LST+ASK"
+          },
+          "rendererName": "currencyFormat",
+          "visible": true
+        },
+        {
+          "value": "totalASK",
+          "type": "Number",
+          "label": {
+            "de": "ASK",
+            "en": "ASK"
+          },
+          "rendererName": "currencyFormat",
+          "visible": true
+        },
+        {
+          "value": "totalBSK",
+          "type": "Number",
+          "label": {
+            "de": "BSK",
+            "en": "BSK"
+          },
+          "rendererName": "currencyFormat",
+          "visible": true
+        },
+        {
+          "value": "total",
+          "type": "Number",
+          "colFormat": "currency",
+          "label": {
+            "de": "Summe in €",
+            "en": "Total in €"
+          },
+          "rendererName": "currencyFormat",
+          "visible": true
+        }
+      ],
+      "predefined": true,
+      "pipeline": [
+        {
+          "$match": {
+            "$or": [
+              {
+                "actType": "INVOICE"
+              },
+              {
+                "actType": "FORM"
+              }
+            ],
+            "hasOP": true,
+            "total": {
+              "$gt": 0
+            },
+            "documentId": { "$exists": false },
+            "status": { "$nin": [ "CANCELLED", "INVALID" ] },
+            "$or": [
+              {
+                "totalASK": {
+                  "$gt": 0
+                }
+              },
+              {
+                "totalBSK": {
+                  "$gt": 0
+                }
+              }
+            ]
+          }
+        },
+        {
+          "$sort": {
+            "timestampDate": 1
+          }
+        },
+        {
+          "$project": {
+            "invoiceNo": "$invoiceNo",
+            "timestampDate": "$timestampDate",
+            "status": "$status",
+            "employeeTitle": "$employeeLastname",
+            "patientName": "$patientName",
+            "patientDbId": "$patientDbId",
+            "lstAsk": {
+              "$subtract": [
+                "$total",
+                "$totalBSK"
+              ]
+            },
+            "totalASK": "$totalASK",
+            "totalBSK": "$totalBSK",
+            "total": "$total"
+          }
+        }
+      ]
+    },
+    {
+      "_id": "575154d9719f70f7221d2b66",
+      "csvFilename": "Heilmittel",
+      "country": ["D"],
+      "visibility": "CONTROLLER",
+      "container": [
+        "inSightStandardReports"
+      ],
+      "formId": "58ef5275b55169362993dc38",
+      "displayFields": [
+        {
+          "value": "timestampDate",
+          "type": "Date",
+          "label": {
+            "de": "Datum",
+            "en": "Date"
+          },
+          "rendererName": "dateFormat",
+          "sortInitialIndex": 0,
+          "direction": "DESC",
+          "isFilterable": false,
+          "visible": true
+        },
+        {
+          "value": "subType",
+          "type": "String",
+          "label": {
+            "de": "HMV-Typ",
+            "en": "HMV-Typ"
+          },
+          "direction": "ASC",
+          "sortInitialIndex": 1,
+          "visible": true
+        },
+        {
+          "value": "code",
+          "type": "String",
+          "label": {
+            "de": "Indikation",
+            "en": "Indication"
+          },
+          "direction": "ASC",
+          "visible": true
+        },
+        {
+          "value": "utIcdCode",
+          "type": "String",
+          "label": {
+            "de": "ICD",
+            "en": "ICD"
+          },
+          "direction": "ASC",
+          "visible": true
+        },
+        {
+          "value": "utSecondIcdCode",
+          "type": "String",
+          "label": {
+            "de": "Sekundärer ICD",
+            "en": "Secondary ICD"
+          },
+          "direction": "ASC",
+          "visible": true
+        },
+        {
+          "value": "utPrescriptionType",
+          "type": "String",
+          "label": {
+            "de": "Verordnungstyp",
+            "en": "Regulation type"
+          },
+          "direction": "ASC",
+          "visible": true
+        },
+        {
+          "value": "utAgreement",
+          "type": "String",
+          "label": {
+            "de": "Heilmittelvereinbarung",
+            "en": "Treatment"
+          },
+          "direction": "ASC",
+          "visible": true
+        },
+        {
+          "value": "utAgreementApprovedTill",
+          "type": "String",
+          "label": {
+            "de": "Genehmigung des langfristigen Heilmittelbedarfs bis",
+            "en": "Genehmigung des langfristigen Heilmittelbedarfs bis"
+          },
+          "labelPdf": {
+            "de": "Genehmigung...",
+            "en": "Genehmigung..."
+          },
+          "direction": "ASC",
+          "visible": true
+        },
+        {
+          "value": "patientName",
+          "type": "String",
+          "label": {
+            "de": "Patient",
+            "en": "Patient"
+          },
+          "rendererName": "patientDetails",
+          "visible": true
+        }
+      ],
+      "predefined": true,
+      "pipeline": [
+        {
+          "$match": {
+            "actType": "KBVUTILITY",
+            "documentId": { "$exists": false },
+            "status": { "$nin": [ "CANCELLED", "INVALID" ] }
+          }
+        },
+        {
+          "$sort": {
+            "timestampDate": -1
+          }
+        },
+        {
+          "$project": {
+            "timestampDate": 1,
+            "subType": 1,
+            "code": 1,
+            "utIcdCode": 1,
+            "utSecondIcdCode": 1,
+            "utPrescriptionType": 1,
+            "utAgreement": 1,
+            "utAgreementApprovedTill": 1,
+            "patientName": 1,
+            "actType": 1
+          }
+        }
+      ]
+    },
+    {
+      "_id": "5f4ddd3c744aa7885b923132",
+      "csvFilename": "Heilmittel 2.0",
+      "country": ["D"],
+      "visibility": "CONTROLLER",
+      "container": [
+        "inSightStandardReports"
+      ],
+      "displayFields": [
+        {
+          "value": "timestampDate",
+          "type": "Date",
+          "label": {
+            "de": "Datum",
+            "en": "Date"
+          },
+          "rendererName": "dateFormat",
+          "sortInitialIndex": 0,
+          "direction": "DESC",
+          "isFilterable": true,
+          "model": "activity",
+          "renderLink": true,
+          "visible": true
+        },
+        {
+          "value": "patientName",
+          "type": "String",
+          "label": {
+            "de": "Patient",
+            "en": "Patient"
+          },
+          "rendererName": "patientDetails",
+          "visible": true
+        },
+        {
+          "value": "patientDOB",
+          "type": "Date",
+          "label": {
+            "de": "Geburtsdatum",
+            "en": "Geburtsdatum"
+          },
+          "visible": true
+        },
+        {
+          "value": "insuranceNo",
+          "type": "String",
+          "label": {
+            "de": "Versicherungsnummer",
+            "en": "Versicherungsnummer"
+          },
+          "visible": true
+        },
+        {
+          "value": "ut2Chapter",
+          "model": "activity",
+          "type": "String",
+          "label": {
+            "de": "Heilmittelbereich",
+            "en": "Heilmittelbereich"
+          },
+          "renderLink": true,
+          "direction": "ASC",
+          "visible": true
+        },
+        {
+          "value": "ut2DiagnosisGroupCode",
+          "type": "String",
+          "label": {
+            "de": "Diagnosegruppe",
+            "en": "Diagnosegruppe"
+          },
+          "model": "activity",
+          "renderLink": true,
+          "direction": "ASC",
+          "visible": true
+        },
+        {
+          "notVisibleAtSummaryRow" : true,
+          "value": "ut2HasHomeVisit",
+          "type": "Boolean",
+          "rendererName": "boolYesOrNo",
+          "label": {
+            "de": "Hausbesuch",
+            "en": "Hausbesuch"
+          },
+          "direction": "ASC",
+          "visible": true
+        },
+        {
+          "notVisibleAtSummaryRow" : true,
+          "value": "ut2HasAgreementBVB",
+          "type": "Boolean",
+          "rendererName": "boolYesOrNo",
+          "label": {
+            "de": "BVB",
+            "en": "BVB"
+          },
+          "direction": "ASC",
+          "visible": true
+        },
+        {
+          "notVisibleAtSummaryRow" : true,
+          "value": "ut2HasAgreementLHM",
+          "type": "Boolean",
+          "rendererName": "boolYesOrNo",
+          "label": {
+            "de": "LHM",
+            "en": "LHM"
+          },
+          "direction": "ASC",
+          "visible": true
+        },
+        {
+          "notVisibleAtSummaryRow" : true,
+          "value": "ut2HasApproval",
+          "type": "Boolean",
+          "rendererName": "boolYesOrNo",
+          "label": {
+            "de": "Genehmigung",
+            "en": "Genehmigung"
+          },
+          "direction": "ASC",
+          "visible": true
+        },
+        {
+          "notVisibleAtSummaryRow" : true,
+          "value": "ut2HasBlankRegulation",
+          "type": "Boolean",
+          "rendererName": "boolYesOrNo",
+          "label": {
+            "de": "Blanko",
+            "en": "Blanko"
+          },
+          "direction": "ASC",
+          "visible": true
+        },
+        {
+          "notVisibleAtSummaryRow" : true,
+          "value": "ut2HasTherapyReport",
+          "type": "Boolean",
+          "rendererName": "boolYesOrNo",
+          "label": {
+            "de": "Therapiebericht",
+            "en": "Therapiebericht"
+          },
+          "direction": "ASC",
+          "visible": true
+        },
+        {
+          "value": "utIcdCode",
+          "type": "String",
+          "label": {
+            "de": "ICD",
+            "en": "ICD"
+          },
+          "direction": "ASC",
+          "visible": true
+        },
+        {
+          "value": "utSecondIcdCode",
+          "type": "String",
+          "label": {
+            "de": "Sekundärer ICD",
+            "en": "Secondary ICD"
+          },
+          "direction": "ASC",
+          "visible": true
+        },
+
+        {
+          "value": "ut2UnitsSum",
+          "type": "Number",
+          "label": {
+            "de": "Verordnungsmenge",
+            "en": "Verordnungsmenge"
+          },
+          "direction": "ASC",
+          "visible": true
+        },
+        {
+          "value": "ut2PriceSum",
+          "type": "Number",
+          "label": {
+            "de": "Gesamtpreis",
+            "en": "Gesamtpreis"
+          },
+          "direction": "ASC",
+          "rendererName": "currencyFormat",
+          "visible": true
+        },
+        {
+          "value": "ut2PrimaryRemedy",
+          "type": "String",
+          "label": {
+            "de": "Vorranige(s) Heilmittel",
+            "en": "Vorranige(s) Heilmittel"
+          },
+          "direction": "ASC",
+          "visible": true
+        },
+        {
+          "value": "ut2AdditionalRemedy",
+          "type": "String",
+          "label": {
+            "de": "Ergänzendes Heilmittel",
+            "en": "Ergänzendes Heilmittel"
+          },
+          "direction": "ASC",
+          "visible": true
+        },
+        {
+          "value": "ut2RemedyStandardizedCombination",
+          "type": "String",
+          "label": {
+            "de": "Standardisierte Heilmittelkombination",
+            "en": "Standardisierte Heilmittelkombination"
+          },
+          "direction": "ASC",
+          "visible": true
+        }
+      ],
+      "predefined": true,
+      "pipeline": [
+        {
+          "$match": {
+            "actType": "KBVUTILITY2",
+            "documentId": { "$exists": false },
+            "status": { "$nin": [ "CANCELLED", "INVALID" ] }
+          }
+        },
+        {
+          "$sort": {
+            "timestampDate": -1
+          }
+        },
+        {
+          "$project": {
+            "timestampDate": 1,
+            "patientName": 1,
+            "patientDOB": 1,
+            "insuranceNo": 1,
+            "ut2Chapter": 1,
+            "ut2DiagnosisGroupCode": 1,
+
+            "utIcdCode": 1,
+            "utSecondIcdCode": 1,
+
+            "ut2UnitsSum": 1,
+            "ut2PriceSum": 1,
+            "ut2PrimaryRemedy": 1,
+            "ut2AdditionalRemedy": 1,
+            "ut2RemedyStandardizedCombination": 1,
+
+            "ut2HasHomeVisit":  1,
+            "ut2HasTherapyReport":  1,
+
+            "ut2HasAgreementBVB": 1,
+            "ut2HasAgreementLHM": 1,
+            "ut2HasApproval": 1,
+            "ut2HasBlankRegulation": 1,
+
+
+            "actType": 1,
+            "activityId": 1
+
+          }
+        }
+      ]
+    },
+    {
+      "_id": "575154d9719f70f7221d2b5f",
+      "csvFilename": "Summen: Rechnungen stat. mit Sachkosten",
+      "country": ["D"],
+      "visibility": "CONTROLLER",
+      "container": [
+        "inSightStandardReports",
+        "invoiceReports",
+        "patientGadget"
+      ],
+      "hideSummaryRow": true,
+      "formId": "5757e80498053947ac0dd840",
+      "displayFields": [
+        {
+          "value": "lstAsk",
+          "type": "Number",
+          "label": {
+            "de": "LST+ASK",
+            "en": "LST+ASK"
+          },
+          "rendererName": "currencyFormat",
+          "visible": true
+        },
+        {
+          "value": "totalASK",
+          "type": "Number",
+          "label": {
+            "de": "ASK",
+            "en": "ASK"
+          },
+          "rendererName": "currencyFormat",
+          "visible": true
+        },
+        {
+          "value": "totalBSK",
+          "type": "Number",
+          "label": {
+            "de": "BSK",
+            "en": "BSK"
+          },
+          "rendererName": "currencyFormat",
+          "visible": true
+        },
+        {
+          "value": "total",
+          "type": "Number",
+          "colFormat": "currency",
+          "label": {
+            "de": "Summe in €",
+            "en": "Total in €"
+          },
+          "rendererName": "currencyFormat",
+          "visible": true
+        }
+      ],
+      "predefined": true,
+      "pipeline": [
+        {
+          "$match": {
+            "$or": [
+              {
+                "actType": "INVOICE"
+              },
+              {
+                "actType": "FORM"
+              }
+            ],
+            "hasOP": true,
+            "total": {
+              "$gt": 0
+            },
+            "documentId": { "$exists": false },
+            "status": { "$nin": [ "CANCELLED", "INVALID" ] },
+            "$or": [
+              {
+                "totalASK": {
+                  "$gt": 0
+                }
+              },
+              {
+                "totalBSK": {
+                  "$gt": 0
+                }
+              }
+            ]
+          }
+        },
+        {
+          "$group": {
+            "_id": 1,
+            "totalASK": {
+              "$sum": "$totalASK"
+            },
+            "totalBSK": {
+              "$sum": "$totalBSK"
+            },
+            "total": {
+              "$sum": "$total"
+            }
+          }
+        },
+        {
+          "$project": {
+            "_id": 1,
+            "totalASK": "$totalASK",
+            "totalBSK": "$totalBSK",
+            "total": "$total",
+            "lstAsk": {
+              "$subtract": [
+                "$total",
+                "$totalBSK"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "_id": "575154d9719f70f7221d2b58",
+      "csvFilename": "Rechnungen ambulant",
+      "country": ["D","CH"],
+      "visibility": "CONTROLLER",
+      "container": [
+        "inSightStandardReports",
+        "invoiceReports",
+        "patientGadget"
+      ],
+      "formId": "5757e8b798053947ac0dd842",
+      "displayFields": [
+        {
+          "value": "invoiceNo",
+          "type": "String",
+          "label": {
+            "de-ch": "Nummer",
+            "de": "Nummer",
+            "en": "Number"
+          },
+          "direction": "ASC",
+          "sortInitialIndex": 1,
+          "visible": true
+        },
+        {
+          "value": "status",
+          "type": "String",
+          "label": {
+            "de-ch": "Status",
+            "de": "Status",
+            "en": "Status"
+          },
+          "rendererName": "activityStatus",
+          "visible": true
+        },
+        {
+          "value": "timestampDate",
+          "type": "Date",
+          "label": {
+            "de-ch": "Datum",
+            "de": "Datum",
+            "en": "Date"
+          },
+          "rendererName": "dateFormat",
+          "sortInitialIndex": 0,
+          "direction": "DESC",
+          "isFilterable": false,
+          "visible": true
+        },
+        {
+          "value": "employeeTitle",
+          "type": "String",
+          "label": {
+            "de-ch": "Arzt",
+            "de": "Arzt",
+            "en": "Doctor"
+          },
+          "visible": true
+        },
+        {
+          "value": "patientName",
+          "type": "String",
+          "label": {
+            "de-ch": "Patient",
+            "de": "Patient",
+            "en": "Patient"
+          },
+          "rendererName": "patientDetails",
+          "visible": true
+        },
+        {
+          "value": "lstAsk",
+          "type": "Number",
+          "label": {
+            "de-ch": "LST+ASK",
+            "de": "LST+ASK",
+            "en": "LST+ASK"
+          },
+          "rendererName": "currencyFormat",
+          "visible": true
+        },
+        {
+          "value": "totalASK",
+          "type": "Number",
+          "label": {
+            "de-ch": "ASK",
+            "de": "ASK",
+            "en": "ASK"
+          },
+          "rendererName": "currencyFormat",
+          "visible": true
+        },
+        {
+          "value": "totalBSK",
+          "type": "Number",
+          "label": {
+            "de-ch": "BSK",
+            "de": "BSK",
+            "en": "BSK"
+          },
+          "rendererName": "currencyFormat",
+          "visible": true
+        },
+        {
+          "value": "total",
+          "type": "Number",
+          "colFormat": "currency",
+          "label": {
+            "de-ch": "Summe in €",
+            "de": "Summe in €",
+            "en": "Total in €"
+          },
+          "rendererName": "currencyFormat",
+          "visible": true
+        }
+      ],
+      "predefined": true,
+      "pipeline": [
+        {
+          "$match": {
+            "$or": [
+              {
+                "actType": "INVOICE"
+              },
+              {
+                "actType": "FORM"
+              }
+            ],
+            "hasOP": false,
+            "total": {
+              "$gt": 0
+            },
+            "documentId": { "$exists": false },
+            "status": { "$nin": [ "CANCELLED", "INVALID" ] }
+          }
+        },
+        {
+          "$sort": {
+            "timestampDate": 1
+          }
+        },
+        {
+          "$project": {
+            "invoiceNo": "$invoiceNo",
+            "timestampDate": "$timestampDate",
+            "status": "$status",
+            "employeeTitle": "$employeeLastname",
+            "patientName": "$patientName",
+            "patientDbId": "$patientDbId",
+            "lstAsk": {
+              "$subtract": [
+                "$total",
+                "$totalBSK"
+              ]
+            },
+            "totalASK": "$totalASK",
+            "totalBSK": "$totalBSK",
+            "total": "$total"
+          }
+        }
+      ]
+    },
+    {
+      "_id": "575ed12487af345709b6092d",
+      "csvFilename": "Summen: Rechnungen ambulant",
+      "country": ["D","CH"],
+      "visibility": "CONTROLLER",
+      "container": [
+        "inSightStandardReports",
+        "invoiceReports",
+        "patientGadget"
+      ],
+      "hideSummaryRow": true,
+      "formId": "5757e8b798053947ac0dd842",
+      "displayFields": [
+        {
+          "value": "lstAsk",
+          "type": "Number",
+          "label": {
+            "de-ch": "LST+ASK",
+            "de": "LST+ASK",
+            "en": "LST+ASK"
+          },
+          "rendererName": "currencyFormat",
+          "visible": true
+        },
+        {
+          "value": "totalASK",
+          "type": "Number",
+          "label": {
+            "de-ch": "ASK",
+            "de": "ASK",
+            "en": "ASK"
+          },
+          "rendererName": "currencyFormat",
+          "visible": true
+        },
+        {
+          "value": "totalBSK",
+          "type": "Number",
+          "label": {
+            "de-ch": "BSK",
+            "de": "BSK",
+            "en": "BSK"
+          },
+          "rendererName": "currencyFormat",
+          "visible": true
+        },
+        {
+          "value": "total",
+          "type": "Number",
+          "colFormat": "currency",
+          "label": {
+            "de-ch": "Summe in €",
+            "de": "Summe in €",
+            "en": "Total in €"
+          },
+          "rendererName": "currencyFormat",
+          "visible": true
+        }
+      ],
+      "predefined": true,
+      "pipeline": [
+        {
+          "$match": {
+            "$or": [
+              {
+                "actType": "INVOICE"
+              },
+              {
+                "actType": "FORM"
+              }
+            ],
+            "hasOP": false,
+            "total": {
+              "$gt": 0
+            },
+            "documentId": { "$exists": false },
+            "status": { "$nin": [ "CANCELLED", "INVALID" ] }
+          }
+        },
+        {
+          "$group": {
+            "_id": 1,
+            "totalASK": {
+              "$sum": "$totalASK"
+            },
+            "totalBSK": {
+              "$sum": "$totalBSK"
+            },
+            "total": {
+              "$sum": "$total"
+            }
+          }
+        },
+        {
+          "$project": {
+            "lstAsk": {
+              "$subtract": [
+                "$total",
+                "$totalBSK"
+              ]
+            },
+            "totalASK": 1,
+            "totalBSK": 1,
+            "total": 1
+          }
+        }
+      ]
+    },
+    {
+      "_id": "575154d9719f70f7221d2b59",
+      "csvFilename": "Quartalszeitprofile",
+      "country": ["D"],
+      "container": [
+        "inSightStandardReports",
+        "patientGadget"
+      ],
+      "formId": "5757e91298053947ac0dd845",
+      "displayFields": [
+        {
+          "value": "employeeTitle",
+          "type": "String",
+          "label": {
+            "de": "Ärzte",
+            "en": "Doctors"
+          },
+          "visible": true
+        },
+        {
+          "value": "employeeOfficialNo",
+          "type": "String",
+          "label": {
+            "de": "LANR",
+            "en": "LANR"
+          },
+          "visible": true
+        },
+        {
+          "value": "pzq",
+          "type": "Number",
+          "label": {
+            "de": "Quartalsprüfzeit [min]",
+            "en": "Quarterly test time [min]"
+          },
+          "rendererName": "pzqDisplay",
+          "visible": true
+        },
+        {
+          "value": "quarter",
+          "type": "Number",
+          "label": {
+            "de": "Quartal",
+            "en": "Quarter"
+          },
+          "notVisibleAtSummaryRow": true,
+          "visible": true
+        },
+        {
+          "value": "year",
+          "type": "Number",
+          "label": {
+            "de": "Jahr",
+            "en": "Year"
+          },
+          "notVisibleAtSummaryRow": true,
+          "visible": true
+        }
+      ],
+      "predefined": true,
+      "pipeline": [
+        {
+          "$match": {
+            "actType": "TREATMENT",
+            "documentId": { "$exists": false },
+            "status": { "$nin": [ "CANCELLED", "INVALID" ] }
+          }
+        },
+        {
+          "$group": {
+            "_id": {
+              "employeeOfficialNo": "$employeeOfficialNo",
+              "quarter": {
+                "$cond": [
+                  {
+                    "$lte": [
+                      {
+                        "$month": "$timestampDate"
+                      },
+                      3
+                    ]
+                  },
+                  1,
+                  {
+                    "$cond": [
+                      {
+                        "$lte": [
+                          {
+                            "$month": "$timestampDate"
+                          },
+                          6
+                        ]
+                      },
+                      2,
+                      {
+                        "$cond": [
+                          {
+                            "$lte": [
+                              {
+                                "$month": "$timestampDate"
+                              },
+                              9
+                            ]
+                          },
+                          3,
+                          4
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              "year": {
+                "$year": "$timestampDate"
+              }
+            },
+            "employeeTitle": {
+              "$addToSet": "$employeeLastname"
+            },
+            "pzq": {
+              "$sum": "$pzq"
+            }
+          }
+        },
+        {
+          "$match": {
+            "pzq": {
+              "$gt": 0
+            }
+          }
+        },
+        {
+          "$project": {
+            "employeeOfficialNo": "$_id.employeeOfficialNo",
+            "employeeTitle": "$employeeTitle",
+            "pzq": "$pzq",
+            "quarter": "$_id.quarter",
+            "year": "$_id.year"
+          }
+        },
+        {
+          "$sort": {
+            "year": -1,
+            "quarter": -1
+          }
+        }
+      ]
+    },
+    {
+      "_id": "575154d9719f70f7221d2b5a",
+      "csvFilename": "Patienten nach Behandlungstag",
+      "country": ["D","CH"],
+      "visibility": "USER",
+      "container": [
+        "inSightStandardReports",
+        "inCaseReports",
+        "patientGadget"
+      ],
+      "hideSummaryRow": true,
+      "formId": "5757e961deb0694cacc5e6b1",
+      "displayFields": [
+        {
+          "value": "timestampDate",
+          "type": "Date",
+          "label": {
+            "de-ch": "Datum",
+            "de": "Datum",
+            "en": "Date"
+          },
+          "rendererName": "dateFormat",
+          "sortInitialIndex": 0,
+          "direction": "DESC",
+          "isFilterable": false,
+          "visible": true
+        },
+        {
+          "value": "activityCount",
+          "type": "Number",
+          "label": {
+            "de-ch": "Anzahl Einträge",
+            "de": "Anzahl Einträge",
+            "en": "Number of entries"
+          },
+          "visible": true
+        },
+        {
+          "value": "patientName",
+          "type": "String",
+          "label": {
+            "de-ch": "Patient",
+            "de": "Patient",
+            "en": "Patient"
+          },
+          "rendererName": "patientDetails",
+          "visible": true
+        },
+        {
+          "value": "employeeTitle",
+          "type": "String",
+          "label": {
+            "de-ch": "Arzt",
+            "de": "Arzt",
+            "en": "Doctor"
+          },
+          "visible": true
+        },
+        {
+          "value": "caseFolderType",
+          "type": "String",
+          "label": {
+            "de-ch": "Abrechnung",
+            "de": "Abrechnung",
+            "en": "Billing"
+          },
+          "rendererName": "caseFolderType",
+          "visible": true
+        },
+        {
+          "value": "diagnosis",
+          "type": "String",
+          "label": {
+            "de-ch": "Diagnosen",
+            "de": "Diagnosen",
+            "en": "Diagnoses"
+          },
+          "rendererName": "separateCommas",
+          "visible": true
+        },
+        {
+          "value": "treatments",
+          "type": "String",
+          "label": {
+            "de-ch": "Leistungen",
+            "de": "Leistungen",
+            "en": "Treatments"
+          },
+          "rendererName": "separateCommas",
+          "visible": true
+        }
+      ],
+      "predefined": true,
+      "pipeline": [
+        {
+          "$match": {
+            "activityId": { "$exists": true },
+            "documentId": { "$exists": false },
+            "actType": { "$nin": [ "INVOICEREFPVS", "INVOICEREFGKV" ] },
+            "status": { "$nin": [ "CANCELLED", "INVALID" ] }
+          }
+        },
+        { "$project": {
+            "actType": 1,
+            "timestamp": 1,
+            "patientName": 1,
+            "patientDbId": 1,
+            "employeeLastname": 1,
+            "caseFolderType": 1,
+            "timestampDate": 1,
+            "code": 1
+          }
+        },
+        {
+          "$sort": {
+            "timestamp": -1
+          }
+        },
+        {
+          "$group": {
+            "_id": {
+              "patientName": "$patientName",
+              "patientDbId": "$patientDbId",
+              "employeeTitle": "$employeeLastname",
+              "date": "$timestamp",
+              "caseFolderType": "$caseFolderType"
+            },
+            "activityCount": {
+              "$sum": 1
+            },
+            "timestampDate": {
+              "$first": "$timestampDate"
+            },
+            "diagnosis": {
+              "$push": {
+                "$cond": {
+                  "if": {
+                    "$eq": [
+                      "$actType",
+                      "DIAGNOSIS"
+                    ]
+                  },
+                  "then": "$code",
+                  "else": false
+                }
+              }
+            },
+            "treatments": {
+              "$addToSet": {
+                "$cond": {
+                  "if": {
+                    "$eq": [
+                      "$actType",
+                      "TREATMENT"
+                    ]
+                  },
+                  "then": "$code",
+                  "else": false
+                }
+              }
+            }
+          }
+        },
+        {
+          "$project": {
+            "activityCount": "$activityCount",
+            "date": "$_id.date",
+            "patientName": "$_id.patientName",
+            "caseFolderType": "$_id.caseFolderType",
+            "patientDbId": "$_id.patientDbId",
+            "employeeTitle": "$_id.employeeTitle",
+            "timestampDate": "$timestampDate",
+            "treatments": {
+              "$filter": {
+                "input": "$treatments",
+                "as": "treat",
+                "cond": {
+                  "$ne": [
+                    "$$treat",
+                    false
+                  ]
+                }
+              }
+            },
+            "diagnosis": {
+              "$filter": {
+                "input": "$diagnosis",
+                "as": "diag",
+                "cond": {
+                  "$ne": [
+                    "$$diag",
+                    false
+                  ]
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "_id": "575154d9719f70f7221d2b5b",
+      "csvFilename": "Patienten mit Leistungen und Diagnosen",
+      "country": ["D","CH"],
+      "visibility": "USER",
+      "container": [
+        "inSightStandardReports",
+        "inCaseReports",
+        "patientGadget"
+      ],
+      "formId": "5757e9aadeb0694cacc5e6b6",
+      "displayFields": [
+        {
+          "value" : "lastname",
+          "groupOption" : "stringCompleteList",
+          "stringDistinct" : false,
+          "renderLink" : true,
+          "model" : "patient",
+          "notVisibleAtSummaryRow" : true,
+          "visible": true
+        },
+        {
+          "value" : "firstname",
+          "groupOption" : "stringCompleteList",
+          "stringDistinct" : false,
+          "renderLink" : true,
+          "model" : "patient",
+          "notVisibleAtSummaryRow" : true,
+          "visible": true
+        },
+        {
+          "value" : "title",
+          "groupOption" : "stringCompleteList",
+          "stringDistinct" : false,
+          "renderLink" : true,
+          "model" : "patient",
+          "notVisibleAtSummaryRow" : true,
+          "visible": false
+        },
+        {
+          "value": "caseFolderType",
+          "type": "String",
+          "label": {
+            "de-ch": "Abrechnung",
+            "de": "Abrechnung",
+            "en": "Billing"
+          },
+          "rendererName": "caseFolderType",
+          "visible": true
+        },
+        {
+          "value": "catalogShort",
+          "type": "String",
+          "label": {
+            "de-ch": "Katalog",
+            "de": "Katalog",
+            "en": "Catalog"
+          },
+          "visible": true
+        },
+        {
+          "value": "diagnosis",
+          "type": "String",
+          "rendererName": "separateCommas",
+          "isFilterable": true,
+          "label": {
+            "de-ch": "Diagnosen",
+            "de": "Diagnosen",
+            "en": "Diagnoses"
+          },
+          "visible": true
+        },
+        {
+          "value": "treatments",
+          "type": "String",
+          "rendererName": "separateCommas",
+          "isFilterable": true,
+          "label": {
+            "de-ch": "Leistungen",
+            "de": "Leistungen",
+            "en": "Treatments"
+          },
+          "visible": true
+        }
+      ],
+      "predefined": true,
+      "pipeline": [
+        {
+          "$match": {
+            "actType": { "$in": [ "TREATMENT", "DIAGNOSIS" ] },
+            "documentId": { "$exists": false },
+            "status": { "$nin": [ "CANCELLED", "INVALID" ] }
+          }
+        },
+        {
+          "$sort": {
+            "timestampDate": -1
+          }
+        },
+        {
+          "$group": {
+            "_id": {
+              "patientName": "$patientName",
+              "patientDbId": "$patientDbId",
+              "caseFolderType": "$caseFolderType",
+              "catalogShort": "$catalogShort"
+            },
+            "lastname": {
+              "$first": "$lastname"
+            },
+            "firstname": {
+              "$first": "$firstname"
+            },
+            "title": {
+              "$first": "$title"
+            },
+            "diagnosis": {
+              "$push": {
+                "$cond": {
+                  "if": {
+                    "$eq": [
+                      "$actType",
+                      "DIAGNOSIS"
+                    ]
+                  },
+                  "then": "$code",
+                  "else": false
+                }
+              }
+            },
+            "treatments": {
+              "$push": {
+                "$cond": {
+                  "if": {
+                    "$eq": [
+                      "$actType",
+                      "TREATMENT"
+                    ]
+                  },
+                  "then": "$code",
+                  "else": false
+                }
+              }
+            }
+          }
+        },
+        {
+          "$project": {
+            "patientName": "$_id.patientName",
+            "lastname": "$lastname",
+            "firstname": "$firstname",
+            "title": "$title",
+            "patientDbId": "$_id.patientDbId",
+            "caseFolderType": "$_id.caseFolderType",
+            "catalogShort": "$_id.catalogShort",
+            "treatments": {
+              "$filter": {
+                "input": "$treatments",
+                "as": "treat",
+                "cond": {
+                  "$ne": [
+                    "$$treat",
+                    false
+                  ]
+                }
+              }
+            },
+            "diagnosis": {
+              "$filter": {
+                "input": "$diagnosis",
+                "as": "diag",
+                "cond": {
+                  "$ne": [
+                    "$$diag",
+                    false
+                  ]
+                }
+              }
+            }
+          }
+        },
+        {
+          "$sort": {
+            "lastname": 1,
+            "firstname": 1
+          }
+        }
+      ]
+    },
+    {
+      "_id": "575154d9719f70f7221d2b5c",
+      "csvFilename": "Erlöse nach Tag und Art",
+      "country": ["D"],
+      "visibility": "CONTROLLER",
+      "container": [
+        "inSightStandardReports"
+      ],
+      "formId": "5757ea1bdeb0694cacc5e6bf",
+      "displayFields": [
+        {
+          "value": "timestampDate",
+          "type": "Date",
+          "label": {
+            "de": "Datum",
+            "en": "Date"
+          },
+          "rendererName": "dateFormat",
+          "sortInitialIndex": 0,
+          "direction": "DESC",
+          "isFilterable": false,
+          "visible": true
+        },
+        {
+          "value": "actCount",
+          "type": "Number",
+          "label": {
+            "de": "Leistungen",
+            "en": "Treatments"
+          },
+          "notVisibleAtSummaryRow": true,
+          "visible": true
+        },
+        {
+          "value": "ebmSum",
+          "type": "Number",
+          "colFormat": "currency",
+          "label": {
+            "de": "EBM",
+            "en": "EBM"
+          },
+          "rendererName": "currencyFormat",
+          "visible": true
+        },
+        {
+          "value": "goaSum",
+          "type": "Number",
+          "colFormat": "currency",
+          "label": {
+            "de": "GOÄ",
+            "en": "GOÄ"
+          },
+          "rendererName": "currencyFormat",
+          "visible": true
+        },
+        {
+          "value": "uvgoaSum",
+          "type": "Number",
+          "colFormat": "currency",
+          "label": {
+            "de": "UV-GOÄ",
+            "en": "UV-GOÄ"
+          },
+          "rendererName": "currencyFormat",
+          "visible": true
+        },
+        {
+          "value": "gebuhSum",
+          "type": "Number",
+          "colFormat": "currency",
+          "label": {
+            "de": "GebüH",
+            "en": "GebüH"
+          },
+          "rendererName": "currencyFormat",
+          "visible": true
+        },
+        {
+          "value": "patientName",
+          "type": "String",
+          "label": {
+            "de": "Patient",
+            "en": "Patient"
+          },
+          "rendererName": "patientDetails",
+          "visible": true
+        },
+        {
+          "value": "employeeTitle",
+          "type": "String",
+          "label": {
+            "de": "Arzt",
+            "en": "Doctor"
+          },
+          "visible": true
+        }
+      ],
+      "predefined": true,
+      "pipeline": [
+        {
+          "$match": {
+            "actType": "TREATMENT",
+            "documentId": { "$exists": false },
+            "status": { "$nin": [ "CANCELLED", "INVALID" ] }
+          }
+        },
+        {
+          "$project": {
+            "patientName": "$patientName",
+            "patientDbId": "$patientDbId",
+            "date": "$timestamp",
+            "timestampDate": 1,
+            "employeeTitle": "$employeeLastname",
+            "ebmprice": {
+              "$cond": [
+                {
+                  "$eq": [
+                    "$catalogShort",
+                    "EBM"
+                  ]
+                },
+                "$total",
+                0.0
+              ]
+            },
+            "goaprice": {
+              "$cond": [
+                {
+                  "$eq": [
+                    "$catalogShort",
+                    "GOÄ"
+                  ]
+                },
+                "$total",
+                0.0
+              ]
+            },
+            "uvgoaprice": {
+              "$cond": [
+                {
+                  "$eq": [
+                    "$catalogShort",
+                    "UVGOÄ"
+                  ]
+                },
+                "$total",
+                0.0
+              ]
+            },
+            "gebuhprice": {
+              "$cond": [
+                {
+                  "$eq": [
+                    "$catalogShort",
+                    "GebüH"
+                  ]
+                },
+                "$total",
+                0.0
+              ]
+            }
+          }
+        },
+        {
+          "$group": {
+            "_id": {
+              "patientName": "$patientName",
+              "patientDbId": "$patientDbId",
+              "date": "$date",
+              "employeeTitle": "$employeeTitle"
+            },
+            "actCount": {
+              "$sum": 1
+            },
+            "ebmSum": {
+              "$sum": "$ebmprice"
+            },
+            "goaSum": {
+              "$sum": "$goaprice"
+            },
+            "uvgoaSum": {
+              "$sum": "$uvgoaprice"
+            },
+            "gebuhSum": {
+              "$sum": "$gebuhprice"
+            },
+            "timestampDate": {
+              "$first": "$timestampDate"
+            }
+          }
+        },
+        {
+          "$project": {
+            "patientName": "$_id.patientName",
+            "patientDbId": "$_id.patientDbId",
+            "actCount": 1,
+            "ebmSum": 1,
+            "goaSum": 1,
+            "uvgoaSum": 1,
+            "gebuhSum": 1,
+            "date": "$_id.date",
+            "employeeTitle": "$_id.employeeTitle",
+            "timestampDate": "$timestampDate"
+          }
+        }
+      ]
+    },
+    {
+      "_id": "575154d9719f7222221d2b5c",
+      "csvFilename": "Erlöse nach Tag und Art",
+      "country": ["CH"],
+      "visibility": "CONTROLLER",
+      "container": [
+        "inSightStandardReports"
+      ],
+      "formId": "5757ea1bdeb0694cacc5e6bf",
+      "displayFields": [
+        {
+          "value": "timestampDate",
+          "type": "Date",
+          "label": {
+            "de-ch": "Datum",
+            "de": "Datum",
+            "en": "Date"
+          },
+          "rendererName": "dateFormat",
+          "sortInitialIndex": 0,
+          "direction": "DESC",
+          "isFilterable": false,
+          "visible": true
+        },
+        {
+          "value": "actCount",
+          "type": "Number",
+          "label": {
+            "de-ch": "Leistungen",
+            "de": "Leistungen",
+            "en": "Treatments"
+          },
+          "notVisibleAtSummaryRow": true,
+          "visible": true
+        },
+        {
+          "value": "kvgSum",
+          "type": "Number",
+          "colFormat": "currency",
+          "label": {
+            "de-ch": "KVG",
+            "de": "KVG",
+            "en": "KVG"
+          },
+          "rendererName": "currencyFormat",
+          "visible": true
+        },
+        {
+          "value": "patientName",
+          "type": "String",
+          "label": {
+            "de-ch": "Patient",
+            "de": "Patient",
+            "en": "Patient"
+          },
+          "rendererName": "patientDetails",
+          "visible": true
+        },
+        {
+          "value": "employeeTitle",
+          "type": "String",
+          "label": {
+            "de-ch": "Arzt",
+            "de": "Arzt",
+            "en": "Doctor"
+          },
+          "visible": true
+        }
+      ],
+      "predefined": true,
+      "pipeline": [
+        {
+          "$match": {
+            "actType": "TREATMENT",
+            "documentId": { "$exists": false },
+            "status": { "$nin": [ "CANCELLED", "INVALID" ] }
+          }
+        },
+        {
+          "$project": {
+            "patientName": "$patientName",
+            "patientDbId": "$patientDbId",
+            "date": "$timestamp",
+            "timestampDate": 1,
+            "employeeTitle": "$employeeLastname",
+            "kvgprice": {
+              "$cond": [
+                {
+                  "$eq": [
+                    "$catalogShort",
+                    "TARMED"
+                  ]
+                },
+                "$total",
+                0.0
+              ]
+            }
+          }
+        },
+        {
+          "$group": {
+            "_id": {
+              "patientName": "$patientName",
+              "patientDbId": "$patientDbId",
+              "date": "$date",
+              "employeeTitle": "$employeeTitle"
+            },
+            "actCount": {
+              "$sum": 1
+            },
+            "kvgSum": {
+              "$sum": "$kvgprice"
+            },
+            "timestampDate": {
+              "$first": "$timestampDate"
+            }
+          }
+        },
+        {
+          "$project": {
+            "patientName": "$_id.patientName",
+            "patientDbId": "$_id.patientDbId",
+            "actCount": 1,
+            "kvgSum": 1,
+            "date": "$_id.date",
+            "employeeTitle": "$_id.employeeTitle",
+            "timestampDate": "$timestampDate"
+          }
+        }
+      ]
+    },
+    {
+      "_id": "5ace18b9eb0ce49d0d923b91",
+      "csvFilename": "Arzterlöse nach Tag und Art",
+      "country": ["D"],
+      "visibility": "PHYSICIAN",
+      "container": [
+        "inSightStandardReports",
+        "patientGadget",
+        "inCaseReports"
+      ],
+      "formId": "5757ea1bdeb0694cacc5e6bf",
+      "displayFields": [
+        {
+          "value": "timestampDate",
+          "type": "Date",
+          "label": {
+            "de": "Datum",
+            "en": "Date"
+          },
+          "rendererName": "dateFormat",
+          "sortInitialIndex": 0,
+          "direction": "DESC",
+          "isFilterable": false,
+          "visible": true
+        },
+        {
+          "value": "actCount",
+          "type": "Number",
+          "label": {
+            "de": "Leistungen",
+            "en": "Treatments"
+          },
+          "notVisibleAtSummaryRow": true,
+          "visible": true
+        },
+        {
+          "value": "ebmSum",
+          "type": "Number",
+          "colFormat": "currency",
+          "label": {
+            "de": "EBM",
+            "en": "EBM"
+          },
+          "rendererName": "currencyFormat",
+          "visible": true
+        },
+        {
+          "value": "goaSum",
+          "type": "Number",
+          "colFormat": "currency",
+          "label": {
+            "de": "GOÄ",
+            "en": "GOÄ"
+          },
+          "rendererName": "currencyFormat",
+          "visible": true
+        },
+        {
+          "value": "uvgoaSum",
+          "type": "Number",
+          "colFormat": "currency",
+          "label": {
+            "de": "UV-GOÄ",
+            "en": "UV-GOÄ"
+          },
+          "rendererName": "currencyFormat",
+          "visible": true
+        },
+        {
+          "value": "gebuhSum",
+          "type": "Number",
+          "colFormat": "currency",
+          "label": {
+            "de": "GebüH",
+            "en": "GebüH"
+          },
+          "rendererName": "currencyFormat",
+          "visible": true
+        },
+        {
+          "value": "patientName",
+          "type": "String",
+          "label": {
+            "de": "Patient",
+            "en": "Patient"
+          },
+          "rendererName": "patientDetails",
+          "visible": true
+        },
+        {
+          "value": "employeeTitle",
+          "type": "String",
+          "label": {
+            "de": "Arzt",
+            "en": "Doctor"
+          },
+          "visible": true
+        }
+      ],
+      "predefined": true,
+      "pipeline": [
+        {
+          "$match": {
+            "actType": "TREATMENT",
+            "documentId": { "$exists": false },
+            "status": { "$nin": [ "CANCELLED", "INVALID" ] }
+          }
+        },
+        {
+          "$project": {
+            "patientName": "$patientName",
+            "patientDbId": "$patientDbId",
+            "date": "$timestamp",
+            "timestampDate": 1,
+            "employeeTitle": "$employeeLastname",
+            "ebmprice": {
+              "$cond": [
+                {
+                  "$eq": [
+                    "$catalogShort",
+                    "EBM"
+                  ]
+                },
+                "$total",
+                0.0
+              ]
+            },
+            "goaprice": {
+              "$cond": [
+                {
+                  "$eq": [
+                    "$catalogShort",
+                    "GOÄ"
+                  ]
+                },
+                "$total",
+                0.0
+              ]
+            },
+            "uvgoaprice": {
+              "$cond": [
+                {
+                  "$eq": [
+                    "$catalogShort",
+                    "UVGOÄ"
+                  ]
+                },
+                "$total",
+                0.0
+              ]
+            },
+            "gebuhprice": {
+              "$cond": [
+                {
+                  "$eq": [
+                    "$catalogShort",
+                    "GebüH"
+                  ]
+                },
+                "$total",
+                0.0
+              ]
+            }
+          }
+        },
+        {
+          "$group": {
+            "_id": {
+              "patientName": "$patientName",
+              "patientDbId": "$patientDbId",
+              "date": "$date",
+              "employeeTitle": "$employeeTitle"
+            },
+            "actCount": {
+              "$sum": 1
+            },
+            "ebmSum": {
+              "$sum": "$ebmprice"
+            },
+            "goaSum": {
+              "$sum": "$goaprice"
+            },
+            "uvgoaSum": {
+              "$sum": "$uvgoaprice"
+            },
+            "gebuhSum": {
+              "$sum": "$gebuhprice"
+            },
+            "timestampDate": {
+              "$first": "$timestampDate"
+            }
+          }
+        },
+        {
+          "$project": {
+            "patientName": "$_id.patientName",
+            "patientDbId": "$_id.patientDbId",
+            "actCount": 1,
+            "ebmSum": 1,
+            "goaSum": 1,
+            "uvgoaSum": 1,
+            "gebuhSum": 1,
+            "date": "$_id.date",
+            "employeeTitle": "$_id.employeeTitle",
+            "timestampDate": "$timestampDate"
+          }
+        }
+      ]
+    },
+    {
+      "_id": "575ed609371e1c8e0954eec6",
+      "csvFilename": "Summen: Erlöse nach Tag und Art",
+      "country": ["D"],
+      "visibility": "CONTROLLER",
+      "container": [
+        "inSightStandardReports",
+        "patientGadget"
+      ],
+      "hideSummaryRow": true,
+      "formId": "5757ea1bdeb0694cacc5e6bf",
+      "displayFields": [
+        {
+          "value": "ebmSum",
+          "type": "Number",
+          "colFormat": "currency",
+          "label": {
+            "de": "EBM",
+            "en": "EBM"
+          },
+          "rendererName": "currencyFormat",
+          "visible": true
+        },
+        {
+          "value": "goaSum",
+          "type": "Number",
+          "colFormat": "currency",
+          "label": {
+            "de": "GOÄ",
+            "en": "GOÄ"
+          },
+          "rendererName": "currencyFormat",
+          "visible": true
+        },
+        {
+          "value": "uvgoaSum",
+          "type": "Number",
+          "colFormat": "currency",
+          "label": {
+            "de": "UV-GOÄ",
+            "en": "UV-GOÄ"
+          },
+          "rendererName": "currencyFormat",
+          "visible": true
+        },
+        {
+          "value": "gebuhSum",
+          "type": "Number",
+          "colFormat": "currency",
+          "label": {
+            "de": "GebüH",
+            "en": "GebüH"
+          },
+          "rendererName": "currencyFormat",
+          "visible": true
+        },
+        {
+          "value": "total",
+          "type": "Number",
+          "label": {
+            "de": "Gesamtsumme",
+            "en": " Grand Total"
+          },
+          "rendererName": "currencyFormat",
+          "visible": true
+        }
+      ],
+      "predefined": true,
+      "pipeline": [
+        {
+          "$match": {
+            "actType": "TREATMENT",
+            "documentId": { "$exists": false },
+            "status": { "$nin": [ "CANCELLED", "INVALID" ] }
+          }
+        },
+        {
+          "$project": {
+            "patientName": "$patientName",
+            "patientDbId": "$patientDbId",
+            "date": "$timestamp",
+            "employeeTitle": "$employeeLastname",
+            "ebmprice": {
+              "$cond": [
+                {
+                  "$eq": [
+                    "$catalogShort",
+                    "EBM"
+                  ]
+                },
+                "$total",
+                0.0
+              ]
+            },
+            "goaprice": {
+              "$cond": [
+                {
+                  "$eq": [
+                    "$catalogShort",
+                    "GOÄ"
+                  ]
+                },
+                "$total",
+                0.0
+              ]
+            },
+            "uvgoaprice": {
+              "$cond": [
+                {
+                  "$eq": [
+                    "$catalogShort",
+                    "UVGOÄ"
+                  ]
+                },
+                "$total",
+                0.0
+              ]
+            },
+            "gebuhprice": {
+              "$cond": [
+                {
+                  "$eq": [
+                    "$catalogShort",
+                    "GebüH"
+                  ]
+                },
+                "$total",
+                0.0
+              ]
+            }
+          }
+        },
+        {
+          "$group": {
+            "_id": {
+              "patientName": "$patientName",
+              "patientDbId": "$patientDbId",
+              "date": "$date",
+              "employeeTitle": "$employeeTitle"
+            },
+            "actCount": {
+              "$sum": 1
+            },
+            "ebmSum": {
+              "$sum": "$ebmprice"
+            },
+            "goaSum": {
+              "$sum": "$goaprice"
+            },
+            "uvgoaSum": {
+              "$sum": "$uvgoaprice"
+            },
+            "gebuhSum": {
+              "$sum": "$gebuhprice"
+            }
+          }
+        },
+        {
+          "$group": {
+            "_id": 1,
+            "ebmSum": {
+              "$sum": "$ebmSum"
+            },
+            "goaSum": {
+              "$sum": "$goaSum"
+            },
+            "uvgoaSum": {
+              "$sum": "$uvgoaSum"
+            },
+            "gebuhSum": {
+              "$sum": "$gebuhSum"
+            }
+          }
+        },
+        {
+          "$project": {
+            "ebmSum": "$ebmSum",
+            "goaSum": "$goaSum",
+            "uvgoaSum": "$uvgoaSum",
+            "gebuhSum": "$gebuhSum",
+            "total": {
+              "$add": [
+                "$ebmSum",
+                "$goaSum",
+                "$uvgoaSum",
+                "$gebuhSum"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "_id": "575154d9719f70f7221d2b5d",
+      "csvFilename": "Vergleich der Erloese",
+      "country": ["D"],
+      "visibility": "CONTROLLER",
+      "container": [
+        "inSightStandardReports",
+        "patientGadget"
+      ],
+      "formId": "5757e2e098053947ac0dd7d8",
+      "displayFields": [
+        {
+          "value": "timestampDate",
+          "type": "Date",
+          "label": {
+            "de": "Datum",
+            "en": "Date"
+          },
+          "rendererName": "dateFormat",
+          "sortInitialIndex": 0,
+          "direction": "DESC",
+          "isFilterable": false,
+          "visible": true
+        },
+        {
+          "value": "gkvSum",
+          "type": "Number",
+          "colFormat": "currency",
+          "label": {
+            "de": "GKV",
+            "en": "GKV"
+          },
+          "rendererName": "currencyFormat",
+          "visible": true
+        },
+        {
+          "value": "pkvSum",
+          "type": "Number",
+          "colFormat": "currency",
+          "label": {
+            "de": "PKV",
+            "en": "PKV"
+          },
+          "rendererName": "currencyFormat",
+          "visible": true
+        },
+        {
+          "value": "total",
+          "type": "Number",
+          "colFormat": "currency",
+          "label": {
+            "de": "Gesamt",
+            "en": "Total"
+          },
+          "rendererName": "currencyFormat",
+          "visible": true
+        }
+      ],
+      "predefined": true,
+      "pipeline": [
+        {
+          "$match": {
+            "documentId": { "$exists": false },
+            "status": { "$nin": [ "CANCELLED", "INVALID" ] }
+          }
+        },
+        {
+          "$project": {
+            "date": "$timestamp",
+            "timestampDate": "$timestampDate",
+            "gkvprice": {
+              "$cond": [
+                {
+                  "$eq": [
+                    "$catalogShort",
+                    "EBM"
+                  ]
+                },
+                "$total",
+                0
+              ]
+            },
+            "pkvprice": {
+              "$cond": [
+                {
+                  "$or": [
+                    {
+                      "$eq": [
+                        "$catalogShort",
+                        "GOÄ"
+                      ]
+                    },
+                    {
+                      "$eq": [
+                        "$catalogShort",
+                        "UVGOÄ"
+                      ]
+                    },
+                    {
+                      "$eq": [
+                        "$catalogShort",
+                        "GebüH"
+                      ]
+                    }
+                  ]
+                },
+                "$total",
+                0
+              ]
+            }
+          }
+        },
+        {
+          "$group": {
+            "_id": "$date",
+            "gkvSum": {
+              "$sum": "$gkvprice"
+            },
+            "pkvSum": {
+              "$sum": "$pkvprice"
+            },
+            "timestampDate": {
+              "$first": "$timestampDate"
+            }
+          }
+        },
+        {
+          "$sort": {
+            "timestampDate": 1
+          }
+        },
+        {
+          "$project": {
+            "date": "$_id",
+            "gkvSum": 1,
+            "pkvSum": 1,
+            "timestampDate": 1,
+            "total": {
+              "$add": [
+                "$pkvSum",
+                "$gkvSum"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "_id": "575154d9719f70f7221d2b5e",
+      "csvFilename": "Ziffernstatistik",
+      "country": ["D","CH"],
+      "visibility": "USER",
+      "container": [
+        "inSightStandardReports",
+        "invoiceReports",
+        "patientGadget"
+      ],
+      "formId": "5757ea7698053947ac0dd856",
+      "displayFields": [
+        {
+          "value": "employeeTitle",
+          "type": "String",
+          "label": {
+            "de-ch": "Arzt",
+            "de": "Arzt",
+            "en": "Doctor"
+          },
+          "visible": true
+        },
+        {
+          "value": "code",
+          "type": "String",
+          "label": {
+            "de-ch": "Ziffer",
+            "de": "Ziffer",
+            "en": "Number"
+          },
+          "visible": true
+        },
+        {
+          "value": "catalogShort",
+          "type": "String",
+          "label": {
+            "de-ch": "Katalog",
+            "de": "Katalog",
+            "en": "Catalog"
+          },
+          "visible": true
+        },
+        {
+          "value": "caseFolderType",
+          "visible": false,
+          "type": "String",
+          "label": {
+            "de-ch": "Abrechnung",
+            "de": "Abrechnung",
+            "en": "Billing"
+          },
+          "rendererName": "caseFolderType"
+        },
+        {
+          "value": "quarter",
+          "type": "Number",
+          "label": {
+            "de-ch": "Quartal",
+            "de": "Quartal",
+            "en": "Quarter"
+          },
+          "notVisibleAtSummaryRow": true,
+          "visible": true
+        },
+        {
+          "value": "year",
+          "type": "Number",
+          "label": {
+            "de-ch": "Jahr",
+            "de": "Jahr",
+            "en": "Year"
+          },
+          "notVisibleAtSummaryRow": true,
+          "visible": true
+        },
+        {
+          "value": "actCount",
+          "type": "Number",
+          "label": {
+            "de-ch": "Anzahl",
+            "de": "Anzahl",
+            "en": "Number"
+          },
+          "notVisibleAtSummaryRow": true,
+          "visible": true
+        },
+        {
+          "value": "content",
+          "type": "String",
+          "label": {
+            "de-ch": "Beschreibung",
+            "de": "Beschreibung",
+            "en": "Description"
+          },
+          "visible": true
+        },
+        {
+          "value": "locName",
+          "type": "String",
+          "label": {
+            "de-ch": "Praxisname",
+            "de": "Praxisname",
+            "en": "Practice name"
+          },
+          "visible": true
+        },
+        {
+          "value": "total",
+          "type": "Number",
+          "label": {
+            "de-ch": "Preis",
+            "de": "Preis",
+            "en": "Price"
+          },
+          "rendererName": "currencyFormat",
+          "visible": true
+        },
+        {
+          "value": "totalSum",
+          "type": "Number",
+          "label": {
+            "de-ch": "Gesamt",
+            "de": "Gesamt",
+            "en": "Total"
+          },
+          "rendererName": "currencyFormat",
+          "visible": true
+        },
+        {
+          "value": "subType",
+          "type": "String",
+          "label": {
+            "de-ch": "Subtyp",
+            "de": "Subtyp",
+            "en": "Subtype"
+          },
+          "visible": false
+        },
+        {
+          "value": "catalogTags",
+          "type": "String",
+          "label": {
+            "de-ch": "Tags",
+            "de": "Tags",
+            "en": "Tags"
+          },
+          "visible": false
+        }
+      ],
+      "predefined": true,
+      "pipeline": [
+        {
+          "$match": {
+            "actType": "TREATMENT",
+            "documentId": { "$exists": false },
+            "status": { "$nin": [ "CANCELLED", "INVALID" ] }
+          }
+        },
+        {
+          "$group": {
+            "_id": {
+              "employeeTitle": "$employeeLastname",
+              "quarter": {
+                "$cond": [
+                  {
+                    "$lte": [
+                      {
+                        "$month": "$timestampDate"
+                      },
+                      3
+                    ]
+                  },
+                  1,
+                  {
+                    "$cond": [
+                      {
+                        "$lte": [
+                          {
+                            "$month": "$timestampDate"
+                          },
+                          6
+                        ]
+                      },
+                      2,
+                      {
+                        "$cond": [
+                          {
+                            "$lte": [
+                              {
+                                "$month": "$timestampDate"
+                              },
+                              9
+                            ]
+                          },
+                          3,
+                          4
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              "code": "$code",
+              "year": {
+                "$year": "$timestampDate"
+              }
+            },
+            "actCount": {
+              "$sum": 1
+            },
+            "catalogShort": {
+              "$first": "$catalogShort"
+            },
+            "caseFolderType": {
+              "$first": "$caseFolderType"
+            },
+            "content": {
+              "$first": "$content"
+            },
+            "locName": {
+              "$first": "$locName"
+            },
+            "total": {
+              "$first": "$total"
+            },
+            "totalSum": {
+              "$sum": "$total"
+            },
+            "subType": {
+              "$first": "$subType"
+            },
+            "catalogTags": {
+              "$first": "$catalogTags"
+            }
+          }
+        },
+        {
+          "$project": {
+            "employeeTitle": "$_id.employeeTitle",
+            "code": "$_id.code",
+            "quarter": "$_id.quarter",
+            "year": "$_id.year",
+            "catalogShort": "$catalogShort",
+            "caseFolderType": "$caseFolderType",
+            "actCount": "$actCount",
+            "content": "$content",
+            "locName": "$locName",
+            "total": "$total",
+            "totalSum": "$totalSum",
+            "subType": "$subType",
+            "catalogTags": "$catalogTags"
+          }
+        }
+      ]
+    },
+    {
+      "_id": "585ed609371e1c8e0954ffc6",
+      "csvFilename": "Summen: Erträge Tagesstatistik",
+      "country": ["D"],
+      "visibility": "CONTROLLER",
+      "container": [
+        "inSightStandardReports",
+        "patientGadget"
+      ],
+      "hideSummaryRow": true,
+      "formId": "5757ea1bdeb0694cacc5e6bf",
+      "displayFields": [
+        {
+          "value": "ebmSum",
+          "type": "Number",
+          "colFormat": "currency",
+          "label": {
+            "de": "EBM",
+            "en": "EBM"
+          },
+          "rendererName": "currencyFormat",
+          "visible": true
+        },
+        {
+          "value": "goaSum",
+          "type": "Number",
+          "colFormat": "currency",
+          "label": {
+            "de": "GOÄ",
+            "en": "GOÄ"
+          },
+          "rendererName": "currencyFormat",
+          "visible": true
+        },
+        {
+          "value": "uvgoaSum",
+          "type": "Number",
+          "colFormat": "currency",
+          "label": {
+            "de": "UV-GOÄ",
+            "en": "UV-GOÄ"
+          },
+          "rendererName": "currencyFormat",
+          "visible": true
+        },
+        {
+          "value": "gebuhSum",
+          "type": "Number",
+          "colFormat": "currency",
+          "label": {
+            "de": "GebüH",
+            "en": "GebüH"
+          },
+          "rendererName": "currencyFormat",
+          "visible": true
+        },
+        {
+          "value": "total",
+          "type": "Number",
+          "label": {
+            "de": "Gesamtsumme",
+            "en": " Grand Total"
+          },
+          "rendererName": "currencyFormat",
+          "visible": true
+        }
+      ],
+      "predefined": true,
+      "pipeline": [
+        {
+          "$match": {
+            "actType": "TREATMENT",
+            "documentId": { "$exists": false },
+            "status": { "$nin": [ "CANCELLED", "INVALID" ] }
+          }
+        },
+        {
+          "$project": {
+            "patientName": "$patientName",
+            "patientDbId": "$patientDbId",
+            "date": "$timestamp",
+            "employeeTitle": "$employeeLastname",
+            "ebmprice": {
+              "$cond": [
+                {
+                  "$eq": [
+                    "$catalogShort",
+                    "EBM"
+                  ]
+                },
+                "$total",
+                0.0
+              ]
+            },
+            "goaprice": {
+              "$cond": [
+                {
+                  "$eq": [
+                    "$catalogShort",
+                    "GOÄ"
+                  ]
+                },
+                "$total",
+                0.0
+              ]
+            },
+            "uvgoaprice": {
+              "$cond": [
+                {
+                  "$eq": [
+                    "$catalogShort",
+                    "UVGOÄ"
+                  ]
+                },
+                "$total",
+                0.0
+              ]
+            },
+            "gebuhprice": {
+              "$cond": [
+                {
+                  "$eq": [
+                    "$catalogShort",
+                    "GebüH"
+                  ]
+                },
+                "$total",
+                0.0
+              ]
+            }
+          }
+        },
+        {
+          "$group": {
+            "_id": {
+              "patientName": "$patientName",
+              "patientDbId": "$patientDbId",
+              "date": "$date",
+              "employeeTitle": "$employeeTitle"
+            },
+            "actCount": {
+              "$sum": 1
+            },
+            "ebmSum": {
+              "$sum": "$ebmprice"
+            },
+            "goaSum": {
+              "$sum": "$goaprice"
+            },
+            "uvgoaSum": {
+              "$sum": "$uvgoaprice"
+            },
+            "gebuhSum": {
+              "$sum": "$gebuhprice"
+            }
+          }
+        },
+        {
+          "$group": {
+            "_id": 1,
+            "ebmSum": {
+              "$sum": "$ebmSum"
+            },
+            "goaSum": {
+              "$sum": "$goaSum"
+            },
+            "uvgoaSum": {
+              "$sum": "$uvgoaSum"
+            },
+            "gebuhSum": {
+              "$sum": "$gebuhSum"
+            }
+          }
+        },
+        {
+          "$project": {
+            "ebmSum": "$ebmSum",
+            "goaSum": "$goaSum",
+            "uvgoaSum": "$uvgoaSum",
+            "gebuhSum": "$gebuhSum",
+            "total": {
+              "$add": [
+                "$ebmSum",
+                "$goaSum",
+                "$uvgoaSum",
+                "$gebuhSum"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "_id": "575154d9719f70f7221d2b6c",
+      "csvFilename": "Erträge Tagesstatistik",
+      "country": ["D","CH"],
+      "visibility": "CONTROLLER",
+      "container": [
+        "inSightStandardReports",
+        "patientGadget"
+      ],
+      "formId": "59159982335958776117491a",
+      "displayFields": [
+        {
+          "value": "commercialNo",
+          "type": "String",
+          "label": {
+            "de-ch": "BSNR",
+            "de": "BSNR",
+            "en": "BSNR"
+          },
+          "visible": true
+        },
+        {
+          "value": "employeeTitle",
+          "type": "String",
+          "label": {
+            "de-ch": "Arzt",
+            "de": "Arzt",
+            "en": "Doctor"
+          },
+          "visible": true
+        },
+        {
+          "value": "catalogShort",
+          "type": "String",
+          "label": {
+            "de-ch": "Katalog",
+            "de": "Katalog",
+            "en": "Catalog"
+          },
+          "visible": true
+        },
+        {
+          "value": "content",
+          "type": "String",
+          "label": {
+            "de-ch": "Leistungsbezeichnung",
+            "de": "Leistungsbezeichnung",
+            "en": "Service Description"
+          },
+          "visible": true
+        },
+        {
+          "value": "code",
+          "type": "Number",
+          "label": {
+            "de-ch": "Leistungsanzahl",
+            "de": "Leistungsanzahl",
+            "en": "Service Number"
+          },
+          "notVisibleAtSummaryRow": true,
+          "visible": true
+        },
+        {
+          "value": "total",
+          "colFormat": "currency",
+          "type": "Number",
+          "label": {
+            "de-ch": "Einzelpreis",
+            "de": "Einzelpreis",
+            "en": "Unit Price"
+          },
+          "rendererName": "currencyFormat",
+          "visible": true
+        },
+        {
+          "value": "totalSum",
+          "colFormat": "currency",
+          "type": "Number",
+          "label": {
+            "de-ch": "Summe je Anzahl",
+            "de": "Summe je Anzahl",
+            "en": "Total per number"
+          },
+          "rendererName": "currencyFormat",
+          "visible": true
+        }
+      ],
+      "predefined": true,
+      "pipeline": [
+        {
+          "$match": {
+            "actType": "TREATMENT",
+            "documentId": { "$exists": false },
+            "status": { "$nin": [ "CANCELLED", "INVALID" ] }
+          }
+        },
+        {
+          "$project": {
+            "commercialNo": "$commercialNo",
+            "employeeTitle": "$employeeLastname",
+            "catalogShort": "$catalogShort",
+            "content": "$content",
+            "total": "$total",
+            "code": "$code",
+            "employeeOfficialNo": "$employeeOfficialNo"
+          }
+        },
+        {
+          "$group": {
+            "_id": {
+              "commercialNo": "$commercialNo",
+              "employeeOfficialNo": "$employeeOfficialNo",
+              "code": "$code"
+            },
+            "commercialNo": {
+              "$first": "$commercialNo"
+            },
+            "desc": {
+              "$first": "$code"
+            },
+            "content": {
+              "$first": "$content"
+            },
+            "employeeTitle": {
+              "$first": "$employeeTitle"
+            },
+            "catalogShort": {
+              "$first": "$catalogShort"
+            },
+            "code": {
+              "$sum": 1
+            },
+            "total": {
+              "$first": "$total"
+            },
+            "totalSum": {
+              "$sum": "$total"
+            }
+          }
+        },
+        {
+          "$project": {
+            "commercialNo": "$commercialNo",
+            "employeeTitle": "$employeeTitle",
+            "catalogShort": "$catalogShort",
+            "desc": "$desc",
+            "content": "$content",
+            "code": "$code",
+            "total": "$total",
+            "totalSum": "$totalSum"
+          }
+        }
+      ]
+    },
+    {
+      "_id": "575154d9719f70f7221d2b7c",
+      "csvFilename": "Fallstatistik",
+      "country": ["D","CH"],
+      "visibility": "CONTROLLER",
+      "container": [
+        "inSightStandardReports",
+        "inCaseReports",
+        "patientGadget"
+      ],
+      "formId": "58e3a67e53fdfd436b8ae1ad",
+      "displayFields": [
+        {
+          "value": "patientName",
+          "type": "String",
+          "label": {
+            "de-ch": "Patient",
+            "de": "Patient",
+            "en": "Patient"
+          },
+          "rendererName": "patientDetails",
+          "visible": true
+        },
+        {
+          "value": "caseFolderType",
+          "type": "String",
+          "label": {
+            "de-ch": "Abrechnung",
+            "de": "Abrechnung",
+            "en": "Billing"
+          },
+          "rendererName": "caseFolderType",
+          "visible": true
+        },
+        {
+          "value": "actType",
+          "type": "String",
+          "renderLink": true,
+          "model": "activity",
+          "label": {
+            "de-ch": "Aktivitätstyp",
+            "de": "Aktivitätstyp",
+            "en": "Activity Type"
+          },
+          "rendererName": "activityType",
+          "visible": true
+        },
+        {
+          "value": "content",
+          "type": "String",
+          "label": {
+            "de-ch": "Akteninhalt Beschreibung",
+            "de": "Akteninhalt Beschreibung",
+            "en": "Files content description"
+          },
+          "visible": true
+        },
+        {
+          "value": "status",
+          "type": "String",
+          "label": {
+            "de-ch": "Status",
+            "de": "Status",
+            "en": "Status"
+          },
+          "rendererName": "activityStatus",
+          "visible": true
+        },
+        {
+          "value": "commercialNo",
+          "renderLink": true,
+          "model": "location",
+          "type": "String",
+          "label": {
+            "de-ch": "BSNR",
+            "de": "BSNR",
+            "en": "BSNR"
+          },
+          "country": "D",
+          "visible": true
+        },
+        {
+          "value": "zsrNumber",
+          "renderLink": true,
+          "model": "location",
+          "type": "String",
+          "label": {
+            "de-ch": "ZSR-Nummer",
+            "de": "ZSR-Nummer",
+            "en": "ZSR-Number"
+          },
+          "country": "CH",
+          "visible": true
+        },
+        {
+          "value": "employeeTitle",
+          "type": "String",
+          "label": {
+            "de-ch": "Arzt",
+            "de": "Arzt",
+            "en": "Doctor"
+          },
+          "visible": true
+        }
+      ],
+      "predefined": true,
+      "pipeline": [
+        {
+          "$match": {
+            "activityId": { "$exists": true },
+            "documentId": { "$exists": false },
+            "status": { "$nin": [ "CANCELLED", "INVALID" ] }
+          }
+        },
+        {
+          "$project": {
+            "patientName": "$patientName",
+            "patientDbId": "$patientDbId",
+            "locId": "$locId",
+            "activityId": "$activityId",
+            "caseFolderType": "$caseFolderType",
+            "actType": "$actType",
+            "content": "$content",
+            "status": "$status",
+            "commercialNo": "$commercialNo",
+            "zsrNumber": "$zsrNumber",
+            "employeeTitle": "$employeeLastname"
+          }
+        }
+      ]
+    },
+    {
+      "_id": "58f74c99e3dae5f0c37dc039",
+      "csvFilename": "Nicht erschienene Patienten",
+      "country": ["D","CH"],
+      "container": [
+        "calendarReports",
+        "inSightStandardReports"
+      ],
+      "formId": "5757e9aadeb0694cacc5e6b6",
+      "displayFields": [
+        {
+          "value": "start",
+          "type": "DateTime",
+          "label": {
+            "de-ch": "Beginn",
+            "de": "Beginn",
+            "en": "Begin"
+          },
+          "rendererName": "dateTime",
+          "visible": true
+        },
+        {
+          "value": "end",
+          "type": "DateTime",
+          "label": {
+            "de-ch": "Ende",
+            "de": "Ende",
+            "en": "End"
+          },
+          "rendererName": "dateTime",
+          "visible": true
+        },
+        {
+          "value": "calName",
+          "type": "String",
+          "label": {
+            "de-ch": "Kalendername",
+            "de": "Kalendername",
+            "en": "Calendar Name"
+          },
+          "visible": true
+        },
+        {
+          "value": "scheduletypeName",
+          "type": "String",
+          "label": {
+            "de-ch": "Terminart",
+            "de": "Terminart",
+            "en": "Type of activity"
+          },
+          "visible": true
+        },
+        {
+          "value": "userDescr",
+          "type": "String",
+          "label": {
+            "de-ch": "Bezeichnung",
+            "de": "Bezeichnung",
+            "en": "Designation"
+          },
+          "visible": true,
+          "renderLink": true,
+          "model": "schedule"
+        },
+        {
+          "value": "patientName",
+          "type": "String",
+          "label": {
+            "de": "Patient",
+            "en": "patient"
+          },
+          "rendererName": "patientDetails",
+          "renderLink": true,
+          "linkType": "patientDetails",
+          "model": "patient",
+          "visible": true
+        },
+        {
+          "value": "bestPatientPhone",
+          "type": "String",
+          "label": {
+            "de-ch": "Telefon",
+            "de": "Telefon",
+            "en": "Telephone"
+          },
+          "visible": true
+        },
+        {
+          "value": "address",
+          "type": "String",
+          "label": {
+            "de-ch": "Adresse",
+            "de": "Adresse",
+            "en": "Address"
+          },
+          "visible": true
+        },
+        {
+          "value": "patientNo",
+          "type": "String",
+          "label": {
+            "de-ch": "Pat.-Nr.",
+            "de": "Pat.-Nr.",
+            "en": "Pat.-Nr."
+          },
+          "visible": false
+        }
+      ],
+      "predefined": true,
+      "pipeline": [
+        {
+          "$match": {
+            "scheduleId": {
+              "$exists": true
+            },
+            "patientDbId": {
+              "$exists": true
+            },
+            "arrivalTime": {
+              "$eq": null
+            }
+          }
+        },
+        {
+          "$group": {
+            "_id": {
+              "scheduleId": "$scheduleId",
+              "scheduleTitle": "$scheduleTitle"
+            },
+            "patientName": {
+              "$first": "$patientName"
+            },
+            "start": {
+              "$first": "$start"
+            },
+            "end": {
+              "$first": "$end"
+            },
+            "calName": {
+              "$first": "$calName"
+            },
+            "scheduletypeName": {
+              "$first": "$scheduletypeName"
+            },
+            "userDescr": {
+              "$first": "$userDescr"
+            },
+            "bestPatientPhone": {
+              "$first": "$bestPatientPhone"
+            },
+            "address": {
+              "$first": "$address"
+            },
+            "patientNo": {
+              "$first": "$patientNo"
+            },
+            "patientDbId": {
+              "$first": "$patientDbId"
+            }
+          }
+        },
+        {
+          "$project": {
+            "patientName": "$patientName",
+            "patientNo": "$patientNo",
+            "start": "$start",
+            "end": "$end",
+            "calName": "$calName",
+            "scheduletypeName": "$scheduletypeName",
+            "userDescr": "$userDescr",
+            "bestPatientPhone": "$bestPatientPhone",
+            "address": "$address",
+            "patientDbId": "$patientDbId",
+            "scheduleId": "$_id.scheduleId"
+          }
+        }
+      ]
+    },
+    {
+      "_id": "59020cefa54b8b64f4e10831",
+      "csvFilename": "Wartezeit Patienten",
+      "country": ["D","CH"],
+      "container": [
+        "calendarReports",
+        "inSightStandardReports"
+      ],
+      "hideSummaryRow": false,
+      "formId": "5757e9aadeb0694cacc5e6b6",
+      "displayFields": [
+        {
+          "value": "actualWaitingTime",
+          "type": "Number",
+          "label": {
+            "de-ch": "Wartezeit",
+            "de": "Wartezeit",
+            "en": "Waiting Time"
+          },
+          "visible": true
+        },
+        {
+          "value": "start",
+          "type": "DateTime",
+          "label": {
+            "de-ch": "Beginn",
+            "de": "Beginn",
+            "en": "Begin"
+          },
+          "rendererName": "dateTime",
+          "visible": true
+        },
+        {
+          "value": "end",
+          "type": "DateTime",
+          "label": {
+            "de-ch": "Ende",
+            "de": "Ende",
+            "en": "End"
+          },
+          "rendererName": "dateTime",
+          "visible": true
+        },
+        {
+          "value": "calName",
+          "type": "String",
+          "label": {
+            "de-ch": "Kalendername",
+            "de": "Kalendername",
+            "en": "Calendar name"
+          },
+          "visible": true
+        },
+        {
+          "value": "scheduletypeName",
+          "type": "String",
+          "label": {
+            "de-ch": "Terminart",
+            "de": "Terminart",
+            "en": "Type of Activity"
+          },
+          "visible": true
+        },
+        {
+          "value": "userDescr",
+          "type": "String",
+          "label": {
+            "de-ch": "Bezeichnung",
+            "de": "Bezeichnung",
+            "en": "Designation"
+          },
+          "visible": true
+        },
+        {
+          "value": "patientName",
+          "type": "String",
+          "label": {
+            "de-ch": "Patient",
+            "de": "Patient",
+            "en": "Patient"
+          },
+          "renderLink": true,
+          "linkType": "patientDetails",
+          "model": "patient",
+          "visible": true
+        },
+        {
+          "value": "bestPatientPhone",
+          "type": "String",
+          "label": {
+            "de-ch": "Telefon",
+            "de": "Telefon",
+            "en": "Telephone"
+          },
+          "visible": true
+        },
+        {
+          "value": "address",
+          "type": "String",
+          "label": {
+            "de-ch": "Adresse",
+            "de": "Adresse",
+            "en": "Address"
+          },
+          "visible": true
+        },
+        {
+          "value": "patientNo",
+          "type": "String",
+          "label": {
+            "de-ch": "Pat.-Nr.",
+            "de": "Pat.-Nr.",
+            "en": "Pat.-Nr."
+          },
+          "visible": false
+        }
+      ],
+      "predefined": true,
+      "pipeline": [
+        {
+          "$match": {
+            "scheduleId": {
+              "$exists": true
+            },
+            "patientDbId": {
+              "$exists": true
+            }
+          }
+        },
+        {
+          "$group": {
+            "_id": {
+              "scheduleId": "$scheduleId"
+            },
+            "actualWaitingTime": {
+              "$first": "$actualWaitingTime"
+            },
+            "start": {
+              "$first": "$start"
+            },
+            "end": {
+              "$first": "$end"
+            },
+            "calName": {
+              "$first": "$calName"
+            },
+            "scheduletypeName": {
+              "$first": "$scheduletypeName"
+            },
+            "userDescr": {
+              "$first": "$userDescr"
+            },
+            "patientName": {
+              "$first": "$patientName"
+            },
+            "bestPatientPhone": {
+              "$first": "$bestPatientPhone"
+            },
+            "address": {
+              "$first": "$address"
+            },
+            "patientDbId": {
+              "$first": "$patientDbId"
+            },
+            "patientNo": {
+              "$first": "$patientNo"
+            }
+          }
+        },
+        {
+          "$project": {
+            "patientName": "$patientName",
+            "actualWaitingTime": "$actualWaitingTime",
+            "start": "$start",
+            "end": "$end",
+            "calName": "$calName",
+            "scheduletypeName": "$scheduletypeName",
+            "userDescr": "$userDescr",
+            "bestPatientPhone": "$bestPatientPhone",
+            "address": "$address",
+            "patientDbId": "$patientDbId",
+            "patientNo": "$patientNo"
+          }
+        }
+      ]
+    },
+    {
+      "_id": "5909de6d1b5d2b794fc3f2c0",
+      "csvFilename": "Recall gesetzt",
+      "country": ["D","CH"],
+      "container": [
+        "calendarReports",
+        "inSightStandardReports"
+      ],
+      "hideSummaryRow": true,
+      "formId": "5757e9aadeb0694cacc5e6b6",
+      "displayFields": [
+        {
+          "value": "patientName",
+          "type": "String",
+          "label": {
+            "de-ch": "Patient",
+            "de": "Patient",
+            "en": "Patient"
+          },
+          "renderLink": true,
+          "linkType": "patientDetails",
+          "model": "patient",
+          "visible": true
+        },
+        {
+          "value": "bestPatientPhone",
+          "type": "String",
+          "label": {
+            "de-ch": "Telefon",
+            "de": "Telefon",
+            "en": "Telephone"
+          },
+          "visible": true
+        },
+        {
+          "value": "taskTitle",
+          "type": "String",
+          "label": {
+            "de-ch": "Aufgabe Titel",
+            "de": "Aufgabe Titel",
+            "en": "Task Titel"
+          },
+          "model": "task",
+          "renderLink": true,
+          "visible": true
+        },
+        {
+          "value": "timestampDate",
+          "type": "Date",
+          "label": {
+            "de-ch": "Zieldatum",
+            "de": "Zieldatum",
+            "en": "Zieldatum"
+          },
+          "visible": true,
+          "rendererName": "dateFormat"
+        },
+        {
+          "value": "address",
+          "type": "String",
+          "label": {
+            "de-ch": "Adresse",
+            "de": "Adresse",
+            "en": "Address"
+          },
+          "visible": true
+        },
+        {
+          "value": "start",
+          "type": "DateTime",
+          "label": {
+            "de-ch": "Beginn",
+            "de": "Beginn",
+            "en": "Begin"
+          },
+          "rendererName": "dateTime",
+          "visible": true
+        },
+        {
+          "value": "end",
+          "type": "DateTime",
+          "label": {
+            "de-ch": "Ende",
+            "de": "Ende",
+            "en": "End"
+          },
+          "rendererName": "dateTime",
+          "visible": true
+        },
+        {
+          "value": "calName",
+          "type": "String",
+          "label": {
+            "de-ch": "Kalendername",
+            "de": "Kalendername",
+            "en": "Calendar Name"
+          },
+          "visible": true
+        },
+        {
+          "value": "scheduletypeName",
+          "type": "String",
+          "label": {
+            "de-ch": "Terminart",
+            "de": "Terminart",
+            "en": "Type of Activity"
+          },
+          "visible": true
+        },
+        {
+          "value": "userDescr",
+          "type": "String",
+          "label": {
+            "de-ch": "Bezeichnung",
+            "de": "Bezeichnung",
+            "en": "Designation"
+          },
+          "renderLink": true,
+          "model": "schedule",
+          "visible": true
+        },
+        {
+          "value": "patientNo",
+          "type": "String",
+          "label": {
+            "de-ch": "Pat.-Nr.",
+            "de": "Pat.-Nr.",
+            "en": "Pat.-Nr."
+          },
+          "visible": false
+        }
+      ],
+      "predefined": true,
+      "pipeline": [
+        {
+          "$match": {
+            "$or": [
+              {
+                "taskId": {
+                  "$exists": true
+                }
+              },
+              {
+                "scheduleId": {
+                  "$exists": true
+                }
+              }
+            ]
+          }
+        },
+        {
+          "$group": {
+            "_id": {
+              "patientDbId": "$patientDbId",
+              "taskId": "$taskId",
+              "scheduleId": "$scheduleId"
+            },
+            "patientName": {
+              "$first": "$patientName"
+            },
+            "timestampDate": {
+              "$first": "$timestampDate"
+            },
+            "start": {
+              "$first": "$start"
+            },
+            "end": {
+              "$first": "$end"
+            },
+            "calName": {
+              "$first": "$calName"
+            },
+            "scheduletypeName": {
+              "$first": "$scheduletypeName"
+            },
+            "userDescr": {
+              "$first": "$userDescr"
+            },
+            "bestPatientPhone": {
+              "$first": "$bestPatientPhone"
+            },
+            "address": {
+              "$first": "$address"
+            },
+            "taskTitle": {
+              "$first": "$taskTitle"
+            },
+            "patientNo": {
+              "$first": "$patientNo"
+            }
+          }
+        },
+        {
+          "$project": {
+            "patientName": "$patientName",
+            "patientNo": "$patientNo",
+            "taskTitle": "$taskTitle",
+            "timestampDate": {
+              "$cond": [
+                {
+                  "$ne": [
+                    "$taskTitle",
+                    null
+                  ]
+                },
+                "$timestampDate",
+                null
+              ]
+            },
+            "start": "$start",
+            "end": "$end",
+            "calName": "$calName",
+            "scheduletypeName": "$scheduletypeName",
+            "userDescr": "$userDescr",
+            "bestPatientPhone": "$bestPatientPhone",
+            "address": "$address",
+            "patientDbId": "$_id.patientDbId",
+            "taskId": "$_id.taskId",
+            "scheduleId": "$_id.scheduleId"
+          }
+        },
+        {
+          "$match": {
+            "patientDbId": {
+              "$exists": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "_id": "5909f7051b5d2b794fc3f2c6",
+      "csvFilename": "Recall nicht gesetzt",
+      "country": ["D","CH"],
+      "container": [
+        "calendarReports",
+        "inSightStandardReports"
+      ],
+      "hideSummaryRow": true,
+      "formId": "5757e9aadeb0694cacc5e6b6",
+      "displayFields": [
+        {
+          "value": "patientName",
+          "type": "String",
+          "label": {
+            "de-ch": "Patient",
+            "de": "Patient",
+            "en": "Patient"
+          },
+          "renderLink": true,
+          "linkType": "patientDetails",
+          "model": "patient",
+          "visible": true
+        },
+        {
+          "value": "bestPatientPhone",
+          "type": "String",
+          "label": {
+            "de-ch": "Telefon",
+            "de": "Telefon",
+            "en": "Telephone"
+          },
+          "visible": true
+        },
+        {
+          "value": "address",
+          "type": "String",
+          "label": {
+            "de-ch": "Adresse",
+            "de": "Adresse",
+            "en": "Address"
+          },
+          "visible": true
+        },
+        {
+          "value": "patientNo",
+          "type": "String",
+          "label": {
+            "de-ch": "Pat.-Nr.",
+            "de": "Pat.-Nr.",
+            "en": "Pat.-Nr."
+          },
+          "visible": false
+        }
+      ],
+      "predefined": true,
+      "pipeline": [
+        {
+          "$group": {
+            "_id": {
+              "patientDbId": "$patientDbId"
+            },
+            "patientName": {
+              "$first": "$patientName"
+            },
+            "bestPatientPhone": {
+              "$first": "$bestPatientPhone"
+            },
+            "address": {
+              "$first": "$address"
+            },
+            "patientNo": {
+              "$first": "$patientNo"
+            }
+          }
+        },
+        {
+          "$project": {
+            "patientName": "$patientName",
+            "patientNo": "$patientNo",
+            "bestPatientPhone": "$bestPatientPhone",
+            "patientDbId": "$_id.patientDbId",
+            "address": "$address",
+            "foundCount": {
+              "$filter": {
+                "input": "$foundCount",
+                "as": "fc",
+                "cond": {
+                  "$ne": [
+                    "$$fc",
+                    false
+                  ]
+                }
+              }
+            }
+          }
+        },
+        {
+          "$match": {
+            "foundCount": {
+              "$size": 0
+            }
+          }
+        }
+      ]
+    },
+    {
+      "_id" : "5d43ed527d3fffff777be25e",
+      "formId": "5757e9aadeb0694cacc5e6b6",
+      "container" : [
+        "calendarReports",
+        "inSightStandardReports"
+      ],
+      "country" : [
+        "D"
+      ],
+      "countryMode" : [
+        "D"
+      ],
+      "csvFilename" : " E-Mail/Brief an Patienten (Kalender)",
+      "serialEmail": true,
+      "serialLetter": true,
+      "displayFields" : [
+        {
+          "value" : "lastname",
+          "groupOption" : "stringCompleteList",
+          "stringDistinct" : false,
+          "renderLink" : true,
+          "model" : "patient",
+          "notVisibleAtSummaryRow" : true,
+          "visible": true
+        },
+        {
+          "value" : "firstname",
+          "groupOption" : "stringCompleteList",
+          "stringDistinct" : false,
+          "renderLink" : true,
+          "model" : "patient",
+          "notVisibleAtSummaryRow" : true,
+          "visible": true
+        },
+        {
+          "value" : "title",
+          "groupOption" : "stringCompleteList",
+          "stringDistinct" : false,
+          "renderLink" : false,
+          "model" : "patient",
+          "notVisibleAtSummaryRow" : true,
+          "visible": false
+        },
+        {
+          "value" : "calName",
+          "groupOption" : "stringCompleteList",
+          "stringDistinct" : false,
+          "renderLink" : false,
+          "notVisibleAtSummaryRow" : true
+        },
+        {
+          "value" : "scheduletypeName",
+          "groupOption" : "stringCompleteList",
+          "stringDistinct" : false,
+          "renderLink" : false,
+          "notVisibleAtSummaryRow" : true
+        },
+        {
+          "value" : "scheduleDetails",
+          "groupOption" : "stringCompleteList",
+          "stringDistinct" : false,
+          "renderLink" : false,
+          "notVisibleAtSummaryRow" : true
+        },
+        {
+          "value" : "userDescr",
+          "groupOption" : "stringCompleteList",
+          "stringDistinct" : false,
+          "renderLink" : false,
+          "notVisibleAtSummaryRow" : true
+        },
+        {
+          "value" : "start",
+          "stringDistinct" : false,
+          "renderLink" : false,
+          "notVisibleAtSummaryRow" : true
+        },
+        {
+          "value" : "duration",
+          "groupOption" : "numberSum",
+          "stringDistinct" : false,
+          "renderLink" : false,
+          "notVisibleAtSummaryRow" : true
+        },
+        {
+          "value" : "patEmail",
+          "groupOption" : "stringCompleteList",
+          "stringDistinct" : true,
+          "renderLink" : false,
+          "notVisibleAtSummaryRow" : true
+        },
+        {
+          "value" : "patPhone",
+          "groupOption" : "stringCompleteList",
+          "stringDistinct" : true,
+          "renderLink" : false,
+          "notVisibleAtSummaryRow" : true
+        }
+      ],
+      "filterElements" : [
+        {
+          "value" : true,
+          "operator" : "$exists",
+          "field" : "patientName",
+          "between" : "$and"
+        },
+        {
+          "value" : true,
+          "operator" : "$exists",
+          "field" : "calName",
+          "between" : "$and"
+        }
+      ],
+      "filterNotElements" : [],
+      "forContainer" : true,
+      "groupBy" : {
+        "enabled" : true,
+        "value" : "patientName"
+      },
+      "groupVisibility" : false,
+      "predefined" : true,
+      "pipeline" : [{"$match":{"$and":[{"patientName":{"$exists":true,"$nin":["",[]]}},{"calName":{"$exists":true,"$nin":["",[]]}}]}},{"$group":{"_id":{"patientName":"$patientName","calName":"$calName","scheduletypeName":"$scheduletypeName","scheduleId":"$scheduleId"},"scheduleDetails":{"$push":"$scheduleDetails"},"userDescr":{"$push":"$userDescr"},"start":{"$first":"$start"},"duration":{"$sum":"$duration"},"patEmail":{"$addToSet":"$patEmail"},"patPhone":{"$addToSet":"$patPhone"},"lastname":{"$first":"$lastname"},"firstname":{"$first":"$firstname"},"title":{"$first":"$title"},"patientDbId":{"$first":"$patientDbId"}}},{"$project":{"lastname":"$lastname","firstname":"$firstname","title":"$title","calName":"$_id.calName","scheduletypeName":"$_id.scheduletypeName","scheduleDetails":"$scheduleDetails","userDescr":"$userDescr","start":"$start","duration":"$duration","patEmail":"$patEmail","patPhone":"$patPhone","patientDbId":"$patientDbId","scheduleId":"_id.$scheduleId"}},{"$sort":{"lastname":1,"firstname":1,"calName":1,"scheduletypeName":1,"_id":1}},{"$facet":{"extra":[{"$group":{"_id":null,"countEmail":{"$sum":{"$size":{"$filter":{"input":"$patEmail","as":"el","cond":{"$ne":["$$el",""]}}}}}}}]}}]
+    },
+    {
+      "_id": "5e7ddc666497549d75555554",
+      "csvFilename": "E-Mail/Brief an Patienten (Akte)",
+      "country": [
+        "D"
+      ],
+      "serialEmail": true,
+      "serialLetter": true,
+      "isExpertModeActive": false,
+      "predefined": true,
+      "forContainer": true,
+      "groupVisibility": false,
+      "countryMode": [
+        "D"
+      ],
+      "container": [
+        "inSightStandardReports",
+        "inCaseReports"
+      ],
+      "filterElements": [
+        {
+          "value": true,
+          "operator": "$exists",
+          "field": "patEmail",
+          "between": "$and"
+        },
+        {
+          "value": true,
+          "operator": "$exists",
+          "field": "patientName",
+          "between": "$and"
+        },
+        {
+          "value": true,
+          "operator": "$exists",
+          "field": "caseFolderType",
+          "between": "$and"
+        },
+        {
+          "value": true,
+          "operator": "$exists",
+          "field": "actType",
+          "between": "$and"
+        }
+      ],
+      "dateSettings": {
+        "absoluteStartDate": "2019-12-31T23:00:00.000Z",
+        "absoluteEndDate": "2020-03-31T21:59:59.999Z",
+        "relativeOffset": -7473767831,
+        "relativeDuration": 7858799999,
+        "dateMode": "absolute",
+        "relativeMode": "quarter",
+        "relativeModeOffset": 0
+      },
+      "displayFields": [
+        {
+          "value": "patientName",
+          "groupOption": "stringCompleteList",
+          "stringDistinct": true,
+          "renderLink": true,
+          "notVisibleAtSummaryRow": true
+        },
+        {
+          "value": "caseFolderType",
+          "groupOption": "stringCompleteList",
+          "stringDistinct": true,
+          "renderLink": false,
+          "notVisibleAtSummaryRow": true
+        },
+        {
+          "value": "actType",
+          "groupOption": "stringCompleteList",
+          "stringDistinct": true,
+          "renderLink": false,
+          "notVisibleAtSummaryRow": true
+        },
+        {
+          "value": "locName",
+          "groupOption": "stringCompleteList",
+          "stringDistinct": true,
+          "renderLink": false,
+          "notVisibleAtSummaryRow": true
+        },
+        {
+          "value": "employeeLastname",
+          "groupOption": "stringCompleteList",
+          "stringDistinct": true,
+          "renderLink": false,
+          "notVisibleAtSummaryRow": true
+        },
+        {
+          "value": "patEmail",
+          "groupOption": "stringCompleteList",
+          "stringDistinct": true,
+          "renderLink": false,
+          "notVisibleAtSummaryRow": true
+        }
+      ],
+      "filterNotElements": [],
+      "groupBy": {
+        "enabled": true,
+        "value": "patientName"
+      },
+      "visibility": "USER",
+      "pipeline": [{"$match":{"$and":[{"$and":[{"$and":[{"patEmail":{"$exists":true,"$nin":["",[]]}},{"patientName":{"$exists":true,"$nin":["",[]]}}]},{"caseFolderType":{"$exists":true,"$nin":["",[]]}}]},{"actType":{"$exists":true,"$nin":["",[]]}}]}},{"$group":{"_id":{"patientName":"$patientName"},"patientName":{"$addToSet":"$patientName"},"caseFolderType":{"$addToSet":"$caseFolderType"},"actType":{"$addToSet":"$actType"},"locName":{"$addToSet":"$locName"},"employeeLastname":{"$addToSet":"$employeeLastname"},"patEmail":{"$addToSet":"$patEmail"},"patientDbId":{"$first":"$patientDbId"},"activityId":{"$first":"$activityId"},"locId":{"$first":"$locId"},"employeeId":{"$first":"$employeeId"}}},{"$project":{"patientName":"$_id.patientName","caseFolderType":"$caseFolderType","actType":"$actType","locName":"$locName","employeeLastname":"$employeeLastname","patEmail":"$patEmail","patientDbId":"$patientDbId","activityId":"$activityId","locId":"$locId","employeeId":"$employeeId"}},{"$match":{}},{"$sort":{"patientName":1,"_id":1}},{"$facet":{"extra":[{"$group":{"_id":null,"countEmail":{"$sum":{"$size":{"$filter":{"input":"$patEmail","as":"el","cond":{"$ne":["$$el",""]}}}}}}}]}}]
+    }
+  ]
+}
+

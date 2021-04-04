@@ -1,0 +1,24 @@
+div#tab_results_overview
+  div.row
+    p.alert.alert-warning(data-bind="text: resultOwerviewDisclaimerI18n")
+  div.row.form-inline
+    //  datepicker inline l;abels are not working correctly, hence table to force single row
+    table(noborder="noborder")
+      tr
+        td(width="10px")
+        td
+          b(data-bind="text :resultOwerviewStartDateI18n")
+        td(width="10px")
+        td
+          .date-picker.input-group
+            input.form-control(name="startDate", type="text", data-bind="datetimepicker: { value: startDate }, attr: {placeholder: resultOwerviewTimeStampI18n}")#txtStartDate
+        td(width="10px")
+        td
+          b(data-bind="text: resultOwerviewEndDateI18n")
+        td(width="10px")
+        td
+          .date-picker.input-group
+            input.form-control(name="endDate", type="text", data-bind="datetimepicker: { value: endDate }, attr: {placeholder: resultOwerviewTimeStampI18n}")#txtEndDate
+
+  br
+  div#resultsOverviewTable(data-bind="template: resultsOverviewTable.template")

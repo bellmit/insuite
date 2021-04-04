@@ -1,0 +1,41 @@
+{
+  "meta": {
+    "errors": [],
+    "warnings": [],
+    "query": {},
+    "itemsPerPage": null,
+    "page": null,
+    "replyCode": 200,
+    "model": "drug"
+  },
+  "data": {
+    "shortCodeMap": {
+      "atcCodeLevels": {
+        "AG": "Anatomical group",
+        "TH": "Therapeutic group",
+        "TPU": "Therapeutic Pharmacological group",
+        "CTPU": "Chemical Therapeutic Pharmacological group",
+        "CS": "Chemical Substance group",
+        "N/A": "Unknown"
+      },
+      "icd10CodeLevels": {
+        "CHP": "Chapter",
+        "CAT": "Category",
+        "SUB": "Cubcategory",
+        "LOC": "Anatomical site or location of injury",
+        "SPL": "Specific site, severity or other vital clinical details",
+        "EXT": "Specific site with special extension",
+        "GRP": "Group",
+        "N/A": "Unknown"
+      },
+      "documents": {
+        "BI": "Patient information",
+        "SPC": "Professional information"
+      },
+      "moleculeTypeCodes": {
+        "A": "Active ingredient",
+        "I": "Other ingredient"
+      }
+    }
+  }
+}

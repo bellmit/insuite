@@ -1,0 +1,11 @@
+div#tasks.active-tasks
+  div(data-bind="template: tasksKoTable.template")
+  footer.active-tasks__footer
+    span.active-tasks__button(data-bind="template: createTask.template")
+    span.active-tasks__button(data-bind="template: createSerialLetter.template, fadeVisible: isTaskSelected")
+    span.active-tasks__button(data-bind="template: createSerialEMail.template, fadeVisible: isTaskSelected")
+    //ko if: isAdminUser
+    span.active-tasks__button(data-bind="template: deleteTask.template, fadeVisible: isTaskSelected")
+    span.active-tasks__button(data-bind="template: takeTask.template, fadeVisible: allowGroupActions")
+    span.active-tasks__button(data-bind="template: doneTask.template, fadeVisible: allowGroupActions")
+    // /ko

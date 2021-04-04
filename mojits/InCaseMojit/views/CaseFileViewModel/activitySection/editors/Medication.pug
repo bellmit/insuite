@@ -1,0 +1,215 @@
+div.row
+  div.col-xs-8.col-lg-8
+    div.form-group
+      input.form-control(name="content", data-bind="textInput: userContent, enable: editMode() && !userContent.readOnly(), attr: { placeholder: placeholderContentTradenameI18n }")
+    div.form-group
+      label.control-label(data-bind="text: phCompany.i18n")
+      input.form-control(name="phCompany", data-bind="textInput: phCompany, enable: editMode() && !phCompany.readOnly(), attr: { placeholder: phCompany.i18n }")
+    div.form-group(data-bind="highlightError: phNLabel")
+      label.control-label(data-bind="text: labelNDestinationI18n")
+      input.form-control(name="phNLabel", data-bind="textInput: phNLabel, enable: editMode() && !phNLabel.readOnly(), attr: { placeholder: placeholderPhNLabelI18n }")
+    div(data-bind="highlightError: phIngr")
+      label.control-label(data-bind="text: phIngr.i18n")
+      a.pull-right(href="#", data-bind="click: addPhIngr, readOnly: phIngr.readOnly")
+        i.icon.fa.fa-plus
+      div.row
+        // ko foreach: phIngr
+        div.col-xs-12
+          div(style="display: flex;")
+            div.form-group(style="width: 70%", data-bind="highlightError: $data.name")
+              input.form-control(name="ingredientList", type="hidden", data-bind="select2: $data.select2Name, valueUpdate:'afterkeydown', readOnly: $parent.select2IngredientsReadOnly")
+            .input-group(data-bind="highlightError: $data.strength", style="width: 30%;")
+              input.form-control(style="border-top-left-radius: 0; border-bottom-left-radius: 0", data-bind="textInput: $data.strength, readOnly: $parent.select2IngredientsReadOnly, attr: {placeholder: $data.strength.i18n}")
+              .input-group-btn
+                button.btn.btn-default(type="button", data-bind="click: $parent.removePhIngr, readOnly: $parent.phIngr.readOnly")
+                  span.glyphicon.glyphicon-trash
+        // /ko
+    div.form-group
+      label.control-label(data-bind="text: atcNameI18n")
+      input.form-control(name="ATCList", type="hidden", data-bind="select2: _select2AtcCodes, valueUpdate:'afterkeydown', readOnly: _select2AtcCodes.readOnly")
+    div.form-group
+      label.control-label(data-bind="text: formOfAdministrationI18n")
+      input.form-control(name="format", type="hidden", data-bind="select2: _select2Format, valueUpdate:'afterkeydown', readOnly: _select2Format.readOnly")
+    div.form-group
+      label.control-label(data-bind="text: addInfoI18n")
+      input.form-control(name="additionalInfo", type="hidden", data-bind="select2: _select2AdditionalInfo, readOnly: _select2AtcCodes.readOnly")
+    // ko if: phARVContent().length
+    div.panel.panel-default
+      div.panel-heading
+        h3.panel-title(data-bind="text: groupARVI18n")
+      div.panel-body(data-bind="foreach: phARVContent")
+        ul.list-unstyled
+          li
+            strong(data-bind="html: title")
+          li(data-bind="text: datesInfo")
+          li(data-bind="html: hint")
+    // /ko
+    // ko if: phAMRContent().length
+    div.panel.panel-default
+      div.panel-heading
+        h3.panel-title(data-bind="text: groupARMI18n")
+      div.panel-body(data-bind="foreach: phAMRContent")
+        ul
+          li(data-bind="visible: title")
+            // ko if: fileName() && regulationTypeCode()
+            a(target="_blank", data-bind="attr:{ href: 'mmi-download/REG'+regulationTypeCode()+'/' + fileName()}")
+              // ko if: regulationTypeCode() === '7'
+              span AMR Anlage 7:
+              // /ko
+              // ko if: regulationTypeCode() === '12'
+              span AMR Anlage 12 Praxisbesonderheit:
+              // /ko
+              // ko if: regulationTypeCode() === '101'
+              span AMR Anlage 101 Nutzenbewertung:
+              // /ko
+              | &nbsp;
+              span(data-bind="html: title")
+              | &nbsp;
+              span.glyphicon.glyphicon-download
+            // /ko
+            // ko ifnot: fileName() && regulationTypeCode()
+            strong(data-bind="html: title")
+            // /ko
+          li(data-bind="visible: text")
+            span(data-bind="html: text")
+          li(data-bind="visible: limitation")
+            strong(data-bind="text: $parent.limitationI18n")
+            | &nbsp;
+            span(data-bind="text: limitation")
+    // /ko
+    div
+      label.control-label(data-bind="text: labelPhDosisI18n")
+    div.form-group.row(data-bind="foreach: phDosisTypes")
+      div.col-sm-4
+        div.radio(style="margin-bottom: 0;")
+          label
+            input(type="radio", name="dosisType", data-bind="checkedValue: val, checked: $parent.phDosisType, readOnly: $parent.phDosisType.readOnly")
+            strong(data-bind="text: i18n")
+    // ko if: showPhDosisSchedule
+    div.form-group.row
+      div.col-md-3.col-sm-12
+        label.control-label(data-bind="text: phDosisMorning.i18n + ': '")
+        input.form-control(name="phDosisMorning", data-bind="textInput: phDosisMorning, readOnly: phDosisMorning.readOnly()")
+      div.col-md-3.col-sm-12
+        label.control-label(data-bind="text: phDosisAfternoon.i18n + ': '")
+        input.form-control(name="phDosisAfternoon", data-bind="textInput: phDosisAfternoon, readOnly: phDosisMorning.readOnly()")
+      div.col-md-3.col-sm-12
+        label.control-label(data-bind="text: phDosisEvening.i18n + ': '")
+        input.form-control(name="phDosisEvening", data-bind="textInput: phDosisEvening, readOnly: phDosisMorning.readOnly()")
+      div.col-md-3.col-sm-12
+        label.control-label(data-bind="text: phDosisNight.i18n + ': '")
+        input.form-control(name="phDosisNight", data-bind="textInput: phDosisNight, readOnly: phDosisMorning.readOnly()")
+    // /ko
+    // ko if: showPhDosisText
+    div.form-group.row.vertical-align-flex-center
+      div.col-sm-1
+        label.control-label(data-bind="text: dosis.i18n + ': '")
+      div.col-sm-11
+        input.form-control(name="dosis", type="hidden", data-bind="select2: select2Dosis, valueUpdate: 'afterkeydown', readOnly: dosis.readOnly")
+    // /ko
+    div.form-group.row
+      div.col-md-6.col-sm-12(data-bind="hasFeedback: { field: phNote, toggle: phNote.hasError, messages: phNote.validationMessages }")
+        label.control-label(data-bind="text: phNote.i18n + ': '")
+        input.form-control(name="phNote", type="hidden", data-bind="select2: select2PhNote, readOnly: phNote.readOnly")
+      div.col-md-6.col-sm-12
+        label.control-label(data-bind="text: phUnit.i18n + ': '")
+        textarea.vresize.form-control(name="phUnit", data-bind="textInput: phUnit, readOnly: phUnit.readOnly()", rows="1")
+    div.form-group.row
+      div.col-md-6.col-sm-12
+        div.checkbox
+          label.control-label
+            strong(data-bind="text: phSelfMedication.i18n")
+            input(type="checkbox", name="phSelfMedication", data-bind="checked: phSelfMedication, readOnly: phSelfMedication.readOnly")
+      div.col-md-6.col-sm-12(data-bind="hasFeedback: { field: phReason, toggle: phReason.hasError, messages: phReason.validationMessages }")
+        label.control-label(data-bind="text: phReason.i18n + ': '")
+        input.form-control(name="phReason", type="hidden", data-bind="select2: select2PhReason, readOnly: phReason.readOnly")
+  div.col-xs-4.col-lg-4
+    // ko if: isModified() && canModifyHomeCatalog()
+    div.form-group
+      div.checkbox
+        label.control-label
+          strong(data-bind="text: modifyHomeCatI18n")
+          input(type="checkbox", name="modifyHomeCat", data-bind="checked: modifyHomeCat, readOnly: modifyHomeCat.readOnly")
+    // /ko
+    // ko if: showEditModeCheckbox
+    div.form-group
+      div.checkbox
+        label.control-label
+          strong(data-bind="text: editMode.i18n")
+          input(type="checkbox", name="medicationEditMode", data-bind="checked: editMode")
+    // /ko
+    // ko if: countryMode.indexOf('D')!== -1
+    div.form-group
+      span(data-bind="template: mmiSearchBtn.template")
+    div.form-group
+      span(data-bind="event: {'mouseover': onBtnMouseOver}, template: priceComparisonBtn.template")
+    // /ko
+    div.form-group
+      input.form-control(name="tag", type="hidden", data-bind="select2: select2tags, valueUpdate: 'afterkeydown', readOnly: code.readOnly")
+    div.row.form-group
+      div.col-xs-12(data-bind="hasFeedback: { field: code, toggle: code.hasError, messages: code.validationMessages }")
+        label.control-label(data-bind="text: labelAliasI18n")
+        input.form-control(name="code", type="hidden", data-bind="select2: select2Code, readOnly: code.readOnly, hasFocus: true")
+
+      // ko if: countryMode.indexOf('CH')!== -1
+      div.col-xs-5
+         label.control-label(data-bind="text: labelCatalogI18n")
+         select.form-control(name="_catalog", data-bind="options: _catalogBase, optionsValue: 'short', optionsText: 'short', value: catalogShort")
+      // /ko
+    div.form-group
+      div.checkbox
+        label.control-label
+          strong(data-bind="text: phContinuousMed.i18n")
+          input(type="checkbox", name="phContinuousMed", data-bind="checked: phContinuousMed, readOnly: phContinuousMed.phSampleMed")
+    div.form-group
+      div.checkbox
+        label.control-label
+          strong(data-bind="text: phSampleMed.i18n")
+          input(type="checkbox", name="phSampleMed", data-bind="checked: phSampleMed, readOnly: noLongerValid.phSampleMed")
+    div.form-group
+      div.checkbox
+        label.control-label
+          strong(data-bind="text: noLongerValid.i18n")
+          input(type="checkbox", name="noLongerValid", data-bind="checked: noLongerValid, readOnly: noLongerValid.readOnly")
+    div.form-group
+      label.control-label(data-bind="text: labelPriceI18n")
+      input.form-control(name="displayPhPriceSale", data-bind="value: _displayPhPriceSale, enable: editMode() && !phPriceSale.readOnly(), attr: { placeholder: placeholderPriceSaleI18n }")
+    div.form-group
+      div.checkbox
+        label.control-label
+          strong(data-bind="text: checkboxVatI18n")
+          input(type="checkbox", name="hasVat", data-bind="checked: hasVat, readOnly: hasVat.readOnly")
+    div.form-group(data-bind="if: hasVat")
+      select.form-control(name="vat", data-bind="options: _vatList, optionsValue: 'code', optionsText: 'description', value: vat, readOnly: vat.readOnly")
+    div.form-group
+      label.control-label(data-bind="text: labelCoPaymentI18n")
+      input.form-control(name="displayPhPatPay", data-bind="value: _displayPhPatPay, enable: editMode() && !phPatPay.readOnly(), attr: {title: phPatPayHint, placeholder: placeholderPatPayI18n}")
+    div.form-group
+      label.control-label(data-bind="text: referencePriceI18n")
+      input.form-control(name="displayPhFixedPay", data-bind="value: _displayPhFixedPay, enable: editMode() && !phFixedPay.readOnly(), attr: { placeholder: placeholderFixedPayI18n }")
+    div.form-group
+      label.control-label(data-bind="text: recomendedPriceI18n")
+      input.form-control(name="displayPhPriceRecommended", data-bind="value: _displayPhPriceRecommended, enable: editMode() && !phFixedPay.readOnly(), attr: { placeholder: placeholderFixedPayI18n }")
+    div.form-group
+      label.control-label(data-bind="text: phRefundAmount.i18n")
+      input.form-control(name="displayPhRefundAmount", data-bind="value: _displayPhRefundAmount, enable: editMode() && !phRefundAmount.readOnly(), attr: { placeholder: placeholderFixedPayI18n }")
+    div.form-group
+      label.control-label(data-bind="text: fbDiffI18n")
+      input.form-control(name="displayPhFBDiff", data-bind="value: _displayPhFBDiff, enable: false, attr: { placeholder: placeholderFbDiffI18n }")
+    div.form-group
+      label.control-label(data-bind="text: pznI18n")
+      input.form-control(name="phPZN", data-bind="textInput: phPZN, enable: editMode() && !phPZN.readOnly(), attr: { placeholder: placeholderPznI18n }")
+    div.form-group
+      label.control-label(data-bind="text: packSizeI18n")
+      input.form-control(name="phPackSize", data-bind="textInput: phPackSize, enable: editMode() && !phPackSize.readOnly(), attr: { placeholder: placeholderPackSizeI18n }")
+    div.form-group
+      label.control-label(data-bind="text: phNormSize.i18n")
+      select.form-control(name="phNormSize", data-bind="options: phNormSize.list, optionsValue: 'val', optionsText: 'i18n', value: phNormSize, enable: editMode() && !phNormSize.readOnly(), attr: { placeholder: phNormSize.i18n }")
+    div.form-group
+      label.control-label(data-bind="text: phSalesStatus.i18n")
+      select.form-control(name="phSalesStatus", data-bind="options: phSalesStatus.list, optionsValue: 'val', optionsText: 'i18n', value: phSalesStatus, enable: editMode() && !phSalesStatus.readOnly(), attr: { placeholder: phSalesStatus.i18n }")
+div.row
+  div.col-xs-12
+    div.form-group
+      textarea#textform-sd2-explanations.form-control(name="explanations", data-bind="textInput: explanations, readOnly: explanations.readOnly, event: { focus: onDocTreeFocus, blur: onDocTreeBlur }, caretPosition: explanations.caretPosition, attr : { placeholder: placeholderExplanationsI18n }", rows="2")
+

@@ -1,0 +1,219 @@
+{
+  "rule": {
+    "parent" : "to be set",
+    "isDirectory" : false,
+    "isLocked" : false,
+    "isActive" : true,
+    "caseFolderType" : [
+      "PUBLIC"
+    ],
+    "metaActTypes" : [
+      "SCHEIN",
+      "DIAGNOSIS"
+    ],
+    "metaActCodes" : [],
+    "metaCriterias" : [
+      "actType",
+      "status"
+    ],
+    "description" : "Diagnosis count",
+    "referenceArea" : "PERIOD",
+    "periodType" : "DAY",
+    "periodCount" : 1,
+    "periodReference" : "raum",
+    "rules" : [
+      {
+        "ruleId" : "5fe0e821cff32b7574000016",
+        "description" : "more than 2",
+        "isActive" : true,
+        "validations" : {
+          "\\\\$and" : [
+            {
+              "context" : "ACTIVITY",
+              "criteria" : {
+                "actType" : {
+                  "\\\\$eq" : "SCHEIN"
+                },
+                "status" : {
+                  "\\\\$exists" : true
+                }
+              }
+            },
+            {
+              "context" : "ACTIVITY",
+              "criteria" : {
+                "actType" : {
+                  "\\\\$eq" : "DIAGNOSIS"
+                },
+                "status" : {
+                  "\\\\$exists" : true
+                },
+                "\\\\$count" : {
+                  "\\\\$gte" : 2
+                }
+              }
+            }
+          ]
+        },
+        "actions" : [
+          {
+            "type" : "ERROR"
+          }
+        ],
+        "metaActTypes" : [
+          "SCHEIN",
+          "DIAGNOSIS"
+        ]
+      }
+    ],
+    "metaFuzzy" : true,
+    "metaCaseOpen" : false
+  },
+  "schein": {
+    "actType" : "SCHEIN",
+    "attachments" : [],
+    "subType" : "",
+    "time" : "",
+    "userContent" : "ambulante Behandlung (ambulante Behandlung)",
+    "partnerInfo" : "",
+    "explanations" : "",
+    "status" : "VALID",
+    "activities" : [],
+    "referencedBy" : [],
+    "formId" : "",
+    "formVersion" : "",
+    "formPdf" : "",
+    "formLang" : "de",
+    "formGender" : "m",
+    "apkState" : "IN_PROGRESS",
+    "continuousIcds" : "to be set",
+    "icds" : [],
+    "icdsExtra" : [],
+    "scheinQuarter" : "1",
+    "scheinYear" : "2019",
+    "scheinBillingArea" : "00",
+    "scheinType" : "0101",
+    "scheinSubgroup" : "00",
+    "__t" : "SCHEIN",
+    "attachedMedia" : [],
+    "content" : "ambulante Behandlung (ambulante Behandlung)",
+    "debtCollection" : "",
+    "timestamp" : "to be set",
+    "patientId" : "to be set",
+    "employeeId" : "to be set",
+    "locationId" : "to be set"
+  },
+  "diagnosis_1": {
+    "actType" : "DIAGNOSIS",
+    "status" : "VALID",
+    "attachments" : [],
+    "attachedMediaTags" : [],
+    "userContent" : "Akute Chagas-Krankheit mit Herzbeteiligung  (I41.2*, I98.1*)",
+    "activities" : [],
+    "referencedBy" : [],
+    "apkState" : "IN_PROGRESS",
+    "diagnosisCert" : "CONFIRM",
+    "diagnosisType" : "CONTINUOUS",
+    "diagnosisTreatmentRelevance" : "TREATMENT_RELEVANT",
+    "catalog" : true,
+    "catalogShort" : "ICD-10",
+    "catalogRef" : "DC-ICD-10-D,CH-1603091318048.json",
+    "__t" : "DIAGNOSIS",
+    "attachedMedia" : [],
+    "timestamp" : "to be set",
+    "patientId" : "to be set",
+    "employeeId" : "to be set",
+    "locationId" : "to be set",
+    "content" : "Akute Chagas-Krankheit mit Herzbeteiligung  (I41.2*, I98.1*)",
+    "comment" : "Akute Chagas-Krankheit mit Herzbeteiligung [kodiere zusätzlich I98.1*], Akute Chagas-Krankheit mit kardiovaskulärer Beteiligung [kodiere zusätzlich I98.1*], Akute Chagas-Krankheit mit Myokarditis [kodiere zusätzlich I41.2*], Akute Chagas-Krankheit mit Kardiomyopathie [kodiere zusätzlich I41.2*]",
+    "caseFolderId" : "to be set",
+    "code" : "B57.0"
+  },
+  "diagnosis_1": {
+    "actType" : "DIAGNOSIS",
+    "status" : "VALID",
+    "attachments" : [],
+    "attachedMediaTags" : [],
+    "userContent" : "1",
+    "activities" : [],
+    "referencedBy" : [],
+    "apkState" : "IN_PROGRESS",
+    "diagnosisCert" : "CONFIRM",
+    "diagnosisType" : "CONTINUOUS",
+    "diagnosisTreatmentRelevance" : "TREATMENT_RELEVANT",
+    "catalog" : true,
+    "catalogShort" : "ICD-10",
+    "__t" : "DIAGNOSIS",
+    "attachedMedia" : [],
+    "timestamp" : "to be set",
+    "patientId" : "to be set",
+    "employeeId" : "to be set",
+    "locationId" : "to be set",
+    "content" : "1",
+    "caseFolderId" : "to be set",
+    "code" : "B57.0"
+  },
+  "diagnosis_2": {
+    "actType" : "DIAGNOSIS",
+    "status" : "VALID",
+    "attachments" : [],
+    "attachedMediaTags" : [],
+    "userContent" : "2",
+    "activities" : [],
+    "referencedBy" : [],
+    "apkState" : "IN_PROGRESS",
+    "diagnosisCert" : "CONFIRM",
+    "diagnosisType" : "CONTINUOUS",
+    "diagnosisTreatmentRelevance" : "TREATMENT_RELEVANT",
+    "catalog" : true,
+    "catalogShort" : "ICD-10",
+    "__t" : "DIAGNOSIS",
+    "attachedMedia" : [],
+    "timestamp" : "to be set",
+    "patientId" : "to be set",
+    "employeeId" : "to be set",
+    "locationId" : "to be set",
+    "content" : "2",
+    "caseFolderId" : "to be set",
+    "code" : "A02.9"
+  },
+  "rulelogExprected": {
+    "caseFolderId" : "to be set",
+    "message" : "more than 2",
+    "patientId" : "to be set",
+    "referenceArea" : "PERIOD",
+    "ruleLogType" : "ERROR",
+    "actCodes" : [],
+    "actTypes" : [
+      "SCHEIN",
+      "DIAGNOSIS"
+    ],
+    "activitiesToCreate" : [],
+    "affectedActivities" : [
+      {
+        "id" : "to be set",
+        "actType" : "SCHEIN",
+        "locationId" : "to be set"
+      },
+      {
+        "id" : "to be set",
+        "actType" : "DIAGNOSIS",
+        "code": "B57.0"
+      },
+      {
+        "id" : "to be set",
+        "actType" : "DIAGNOSIS",
+        "code": "A02.9"
+      }
+    ],
+    "allCodes" : [],
+    "caseFolderType" : [
+      "PUBLIC",
+      "PUBLIC_A"
+    ],
+    "locationId" : "to be set",
+    "requiredCodes" : [],
+    "ruleId" : "5fe0e821cff32b7574000016",
+    "ruleSetId" : "to be set"
+  }
+}

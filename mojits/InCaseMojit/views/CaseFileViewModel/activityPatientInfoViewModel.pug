@@ -1,0 +1,52 @@
+div#wideContainer.activityPatientInfoViewModel.panel.panel-default(data-bind="notifyBind: { method: 'templateReady' }")
+  div.panel-heading.clearfix(data-bind="css: manageContainerClasses")
+    span(style="font-weight:bold;")
+      span(data-bind="text: panelTitle")
+      | &nbsp;
+      span(data-bind="visible: treatmentNeeds, text: treatmentNeeds", style="display: none; font-family: 'proxima_nova_rgbold'; color: red;")
+      span(data-bind="visible: isDead", style="display: none")
+        span &#10013;
+      | &nbsp;
+      span(data-bind="visible: hasBirthday", style="display: none")
+        span.fa.fa-birthday-cake.dc-fade-animation-rev.dc-red
+      | &nbsp;
+      span(data-bind="html: displayInsuranceTypes")
+      | &nbsp;
+      // ko if: processCardStatus
+      span.glyphicon.glyphicon-tag(
+      data-bind="click: setOrange, style: { color: getPublicCardColor }, visible: hasPublicCard, attr: { title: getPublicCardTitle }",
+      style="vertical-align: middle; display: none"
+      )
+      // /ko
+      // ko ifnot: processCardStatus
+      span.glyphicon.glyphicon-tag(
+      data-bind="style: { color: getPublicCardColor }, visible: hasPublicCard, attr: { title: getPublicCardTitle }",
+      style="vertical-align: middle; display: none"
+      )
+      // /ko
+      | &nbsp;
+    span(data-bind="visible: showAttachedContentHeader", style="display: none")
+      = '| '
+      span.attached-content(data-bind="html: attachedContentText, style: { color: attachedContentColor }")
+      | &nbsp;
+      a(name="detachActivity", href="#", data-bind="click: detachActivity")
+        span.fa.fa-close
+      | &nbsp;|
+    .pull-right.hidden-xs.pin-container
+      span(data-bind="with: dashboardPatient")
+        // ko if: activeDashboard
+        span.fa.fa-wrench(data-bind="click: handlerToggleEditMode, css: { 'text-muted': handlerToggleEditModeDisabled() }, style: { 'cursor': handlerToggleEditModeDisabled() ? '' : 'pointer' }")
+        // ko if: inEditMode
+        i.dc-info-icon(data-bind="click: showEditModeInfo", style="cursor: pointer")
+        | &nbsp;
+        span.fa.fa-plus(data-bind="click: handlerAddGadget, css: { 'text-muted': handlerAddGadgetDisabled() }, style: { 'cursor': handlerAddGadgetDisabled() ? '' : 'pointer' }")
+        // /ko
+        | &nbsp;
+        // /ko
+      a(data-toggle="collapse", tabindex="-1", style="cursor: pointer", data-bind="panelCollapse: { name: 'patient_short_info', isToggle: true }, click: onCollapseButtonClick")
+        i.fa.fa-chevron-down.dc-panel-toggle
+      a#patientInfoPin(name="pin" href="javascript:;" tabindex="-1" data-bind="attr: { class: getPinClasses }, click: onPinClick")
+          span.fa.fa-thumb-tack
+  div.panel-collapse.collapse
+    div.panel-body.hidden-xs.panel-body-with-PatientHeaderDashboard(data-bind="css: dashboardPatient() && dashboardPatient().inEditMode() ? 'panel-body-with-PatientHeaderDashboard-inEditMode':''")
+      div(data-bind="component: { name:'PatientHeaderDashboard', params: dashboardPatientConfig }")

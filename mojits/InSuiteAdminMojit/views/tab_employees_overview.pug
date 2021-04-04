@@ -1,0 +1,24 @@
+#tab_employees_overview
+  #employeesTable(data-bind="template: employeesTable.template")
+  div.text-right
+    button#tab_employees_overview-button-deleteEmployee.btn.btn-primary(name="deleteEmployee", type="button", data-bind="click: deleteEmployee, disable: deleteEmployeeDisabled")
+      span.glyphicon.glyphicon-minus
+      span(data-bind="text: deleteEmployeeButtonI18n")
+    | &nbsp;
+    // ko if: isResetPasswordVisible()
+    button#tab_employees_overview-button-resetPassword.btn.btn-primary(name="resetPassword", type="button", data-bind="click: resetPassword, disable: resetPasswordDisabled")
+      span.glyphicon.glyphicon-lock
+      span(data-bind="text: resetPasswordButtonI18n")
+    | &nbsp;
+    // /ko
+    button#tab_employees_overview-button-activateEmployee.btn.btn-primary(name="activateEmployee", type="button", data-bind="click: activateEmployee, disable: activateEmployeeDisabled")
+      span.glyphicon.glyphicon-ok
+      span(data-bind="text: enableEmployeeButtonI18n")
+    | &nbsp;
+    button#tab_employees_overview-button-deactivateEmployee.btn.btn-primary(name="deactivateEmployee", type="button", data-bind="click: deactivateEmployee, disable: deactivateEmployeeDisabled")
+      span.glyphicon.glyphicon-remove
+      span(data-bind="text: disableEmployeeButtonI18n")
+    | &nbsp;
+    button#tab_employees_overview-button-createEmployee.btn.btn-primary(name="createEmployee", type="button", data-bind="click: createEmployee, disable: createEmployeeDisabled")
+      span.glyphicon.glyphicon-plus
+      span(data-bind="text: newEmployeeButtonI18n")

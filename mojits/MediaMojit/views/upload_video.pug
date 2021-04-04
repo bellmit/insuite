@@ -1,0 +1,10 @@
+div#divUploadVideoContainer
+  div#divVideoUploadStatus
+  span &nbsp;
+  button.btn(data-bind="text: btnUploadAudioI18n")#btnUpload
+
+  div(style="display:none;")#divUploadVideoFile
+    input(type="file",name="videoFile")#fileUploadVideo
+
+    div(style="display: none;")#divUploadIframe
+      iframe(name="ifUploadTarget",width="10px", height="10px", frameborder="no")#iframeUploadTarget

@@ -1,0 +1,9 @@
+div.form-group
+  div.row
+    div.col-xs-5
+      strong(data-bind="text: dmpACE.i18n")
+      span(data-bind="dmpField: { field: dmpACE }")
+    div.col-xs-7(data-bind="foreach: dmpACE.list, hasFeedback: { field: dmpACE, toggle: dmpACE.hasError, messages: dmpACE.validationMessages }")
+      label.checkbox-inline
+        span(data-bind="text: i18n")
+        input(type="checkbox", name="dmpACE", data-bind="value: val, checked: $parent.dmpACE, readOnly: $parent.dmpACE.readOnly, attr: { name: $element.name + '-' + val }")

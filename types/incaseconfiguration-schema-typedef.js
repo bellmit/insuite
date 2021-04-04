@@ -1,0 +1,84 @@
+/**
+ * @module incaseconfigurationSchema
+ */
+
+/**
+ * @typedef {Object} module:incaseconfigurationSchema.incaseconfiguration
+ * @property {Boolean} autoEventsOnCardRead - 
+ * @property {Boolean} autoEventsOnCardReadNoAppointment - 
+ * @property {Boolean} catalogTextHidden - 
+ * @property {Boolean} restrictSaveInHouseCatalog - 
+ * @property {Array.<String>} allowCustomCodeFor - 
+ * @property {Array.<String>} allowCustomValueFor - 
+ * @property {Boolean} documentMedicationPerLocation - 
+ * @property {Boolean} documentContinuousDiagnosisPerLocation - 
+ * @property {Boolean} getImportedContinuousDiagnosisFromCurrentLocation - 
+ * @property {Boolean} showAddendumButton - 
+ * @property {Boolean} hideMedicationPlanMedications - 
+ * @property {String} kbvutility2DefaultForChapter - 
+ * @property {Boolean} kbvutility2DefaultForHomeVisit - 
+ * @property {Boolean} kbvutility2DefaultForTherapyReport - 
+ * @property {Boolean} kbvutility2DeactivatePriceDisplay - 
+ * @property {Boolean} patientDataLocationMandatory - 
+ * @property {Boolean} patientDataAddressMandatory - 
+ * @property {Boolean} patientDataPhoneNumberMandatory - 
+ * @property {Boolean} patientDataEmailMandatory - 
+ * @property {Boolean} quickPrintInvoice - 
+ * @property {Boolean} quickPrintInvoiceBill - 
+ * @property {Boolean} quickPrintPrescription - 
+ * @property {Boolean} showReferralIdInput - 
+ * @property {Boolean} onSigningReleaseCorrespondingActivity - 
+ * @property {Boolean} autoshareCheck - 
+ * @property {Boolean} allowTransfer - 
+ * @property {Boolean} threeFactorAuth - 
+ * @property {number} nextPatientNo - 
+ * @property {Boolean} showPersGroup9Info - 
+ * @property {Boolean} showPrefillButton - 
+ * @property {Boolean} validatePREASSISTIVE - 
+ * @property {Boolean} validatePUBPRESCR - 
+ * @property {Boolean} validatePRIVPRESCR - 
+ * @property {Boolean} validatePRESCRBTM - 
+ * @property {Boolean} validatePRESCRG - 
+ * @property {Boolean} validatePRESCRT - 
+ * @property {Boolean} validateLONGPRESCR - 
+ * @property {Boolean} validateDOCLETTER - 
+ * @property {Boolean} validateQUOTATION - 
+ * @property {Boolean} validatePUBRECEIPT - 
+ * @property {Boolean} validateRECEIPT - 
+ * @property {Boolean} validateLABREQUEST - 
+ * @property {Boolean} validateAU - 
+ * @property {Boolean} validateREFERRAL - 
+ * @property {Boolean} canApplyActivitySequencePartly - 
+ * @property {Boolean} applyPreparedCaseFolder - 
+ * @property {Boolean} activatePrinterSelectionDialogAtPrintingOfForms - 
+ * @property {Boolean} medDataEdmpDataTransfer - 
+ * @property {Boolean} medDataMedicationPlanTransfer - 
+ * @property {Boolean} dmpAllowHeadDateChange - 
+ * @property {Boolean} customCodeDataPerLocation - 
+ * @property {Boolean} useFormTranslation - 
+ * @property {Boolean} autoSubstitutionOfPsychoGroupTherapyCodes - 
+ * @property {Boolean} onPatientDocumentNew - 
+ * @property {Boolean} onPatientDocumentChanged - 
+ * @property {Boolean} onPatientDocumentDeleted - 
+ * @property {Boolean} onPracticeDocumentNew - 
+ * @property {Boolean} onPracticeDocumentChanged - 
+ * @property {Boolean} onPracticeDocumentDeleted - 
+ * @property {Boolean} allowOwnSubtypes - 
+ * @property {Boolean} kimTreatmentAutoCreationOnEDocLetterReceived - 
+ * @property {Array.<String>} kimTreatmentAutoCreationOnEDocLetterReceivedForLocations - 
+ * @property {Boolean} kimTreatmentAutoCreationOnEDocLetterSent - 
+ * @property {Array.<String>} kimTreatmentAutoCreationOnEDocLetterSentLocations - 
+ * @property {Boolean} kimMessagePollingIntervalEnabled - 
+ * @property {Number} kimMessagePollingIntervalHours - 
+ * @property {Date} kimMessagePollingLasttime - 
+ * @property {Boolean} kimIncludeRevocationInfo - 
+ * @property {Array.<String>} roles - 
+ * @property {Boolean} mediportNeedsApproval - 
+ * @property {String} coverCardOfacId - 
+ * @property {String} coverCardZsrNo - 
+ * @property {String} coverCardSoftwareId - 
+ * @property {String} coverCardSoftwareZsrNo - 
+ * @property {String} coverCardUser - 
+ * @property {String} coverCardPass - 
+ * @property {String} coverCardCertPass - 
+ */

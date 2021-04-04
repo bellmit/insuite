@@ -1,0 +1,10 @@
+div.KoTableColumn-label-container
+  span.KoTableColumn-label(data-bind="text: label, attr: {title: title}")
+
+  //ko if: hasTools
+  include KoTableColumnTools
+  span &nbsp;
+  // /ko
+
+  span(data-bind="visible: showFilterConfig",style="float: right;")
+    span(data-bind="template: filterOptionsMenu.template")

@@ -1,0 +1,29 @@
+div.toolbox-modal
+  div#divFloatEditor
+  div#toolBoxModal(style="overflow: hidden;")
+    div.grid
+      div.row
+        div(style="overflow-y: auto;")#preview
+          div(data-bind="foreach: pages")
+            div(data-bind="foreach: canvasses")
+              div(data-bind="click: $root.scrolToPage.bind( $data )", style="border: 1px solid black; margin-bottom: 5px;")
+                canvas(data-bind="value: $root.cloneCanvas( $element, $data )")
+        div#editor
+          div(data-bind="with: wyswyg")#wyswyg
+            include ../../FormEditorMojit/views/WYSWYG.pug
+          div(style="overflow-y: auto; overflow-x: hidden;")#divFormFillToolBox
+            div(data-bind="notifyBind: { method: 'templateReady', namespace: $data }")
+              div(style="display: none;")#divFormMissing
+              div(style="display: table-caption;")#divFormsComposeToolBox
+        div(style="overflow-y: auto;")#toolbox
+          ul.nav.nav-tabs
+            li#textblocks-link.textblocks
+              a(href="#textblocks", data-bind="text: textBlocksNavI18n", data-toggle="tab")
+            li#casefile-link.casefile
+              a.nav-link(href="#casefile" data-bind="text: healthRecordNavI18n", data-toggle="tab")
+          div.tab-content
+            div#textblocks.textblocks.tab-pane.fade.in
+              div.docTree(data-bind="template: activityDocTreeViewModel.template, visible: true")
+            div#casefile.tab-pane.fade
+              div(data-bind="template: caseFolderNav.template")
+              div#activitiesTable.activitiesTable(data-bind="template: activitiesTable.template")

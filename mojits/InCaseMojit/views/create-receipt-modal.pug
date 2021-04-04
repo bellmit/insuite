@@ -1,0 +1,34 @@
+div
+  div.form-group(data-bind="highlightError: timestamp")
+    label(data-bind="text: titleTimestampI18n")
+    .date-picker.input-group
+      input.form-control(name="timestamp", data-bind="datetimepicker: { value: timestamp, valueReset: null, options: timestampDatepickerOptions,  valueUpdate: '' }")
+  div.form-group
+    label(data-bind="text: titleContentI18n")
+    textarea.form-control(name="content", data-bind="value: content, valueUpdate: 'afterkeydown'")
+
+  div.form-group
+    div.row
+      div.col-xs-3
+        div.col-xs-12
+          label.radio-inline( style="margin-top: 15px;")
+            span(data-bind="text: titleDebitI18n")
+            input(type="radio", name="cashOperationTypeRadio", value= "debit", data-bind="checked: cashOperationType")
+        div.col-xs-12
+          label.radio-inline( style="margin-left: 0px;")
+            span(data-bind="text: titleCreditI18n")
+            input(type="radio", name="cashOperationTypeRadio", value= "credit", data-bind="checked: cashOperationType")
+      div.col-xs-9
+        div.form-group(data-bind="hasFeedback: { field: _displayAmount, toggle: _displayAmount.hasError, messages: _displayAmount.validationMessages }")
+          label(data-bind="text: titleAmountI18n")
+          input.form-control(name="amount", type="text", data-bind="value: _displayAmount")
+  // ko if: showPaymentMethod
+  .form-group
+    label(data-bind="text: titlePaymentMethodI18n")
+    select.form-control(name="paymentMethod", data-bind="options: paymentMethodList, optionsValue: 'value', optionsText: 'text', value: paymentMethod")
+  // ko if: showCashbook
+  div.form-group(data-bind="highlightError: cashbookId")
+     label(data-bind="text: titleCashbookI18n")
+     select.form-control(data-bind="value: cashbookId, options: cashbookList, optionsValue: 'value', optionsText: 'text'")
+  // /ko
+  // /ko

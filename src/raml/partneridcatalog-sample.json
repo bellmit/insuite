@@ -1,0 +1,17 @@
+{
+  "meta": {
+    "errors": [],
+    "warnings": [],
+    "query": {},
+    "itemsPerPage": null,
+    "totalItems": 1,
+    "page": null,
+    "replyCode": 200
+  },
+  "data": [
+  {
+    "code": "APPCODE",
+    "name": "test app application"
+  }
+]
+ }

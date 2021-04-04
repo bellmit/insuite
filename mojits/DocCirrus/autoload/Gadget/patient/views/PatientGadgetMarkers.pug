@@ -1,0 +1,7 @@
+div.PatientGadgetMarkers
+  h4.PatientGadget-headline
+    a(name="pickMarkers", data-bind="click: pickMarkers, text: markerI18n")
+  ul.list-unstyled(data-bind="foreach: markers")
+    li.dc-text-crop(data-bind="style: {color: color}, attr: { title: description}")
+      span(data-bind="attr: {class: icon}") &nbsp;
+      span(data-bind="text: description")

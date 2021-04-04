@@ -1,0 +1,22 @@
+div.row.activityDetailsViewModel
+  div.col-md-2(data-bind="template: { name:'mirrorActivitySidebarViewModel', data: activitySidebarViewModel }")
+  div(data-bind="css: { 'col-md-8': !isActivitySectionFullWidth(), 'col-md-10': isActivitySectionFullWidth() }")
+    // ko template: { name:'activityActionButtonsViewModel', data: activityActionButtonsViewModel }
+    // /ko
+    // ko ifnot: showActivityActtypeNeeded()
+    // ko template: { name:'activityHeadingViewModel', data: activityHeadingViewModel }
+    // /ko
+    div(data-bind="template: activityNav.template")
+    div(data-bind="with: currentActivitySectionViewModel")
+      div.currentActivitySectionViewModel(data-bind="template: template")#divCurrentActivitySectionViewModel
+    // /ko
+    // ko if: showActivityActtypeNeeded()
+    div.form-group
+      p Bitte wählen Sie einen Eintragstyp aus!
+    // /ko
+  // ko if: showHouseCatalog
+  div.col-md-2(data-bind="template: activityHouseCatalogViewModel.template")
+  // /ko
+  // ko if: showDocTree
+  div.col-md-2(data-bind="template: activityDocTreeViewModel.template")
+  // /ko

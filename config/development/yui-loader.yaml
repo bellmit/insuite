@@ -1,0 +1,21 @@
+# Base configuration for the YUI loader in the context of
+# unit tests.
+---
+context: [ component:test-runner ]
+exclude: '\.idea|\.git|assets|config|less|middleware|node_modules/(?!mojito).+|rpmbuild|server|smbroot|src|test/api2|types|var|view|yuidoc'
+yui:
+  throwFail: true
+  debug: true
+  logLevel: info
+# Overrides the base configuration using the affinity which is set
+# through the environment variable `MOJITO_AFFINITY`;
+# see also `test/loader.mjs` and npm run scripts.
+---
+context: [ component:test-runner, affinity:client ]
+filter: '[^\/]+\.(client|common)\.js$'
+---
+context: [ component:test-runner, affinity:server ]
+filter: '[^\/]+\.(server|common)\.js$'
+---
+context: [ component:test-runner, affinity:common ]
+filter: '[^\/]+\.(server|common)\.js$'

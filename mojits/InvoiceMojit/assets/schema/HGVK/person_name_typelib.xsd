@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- automatische Dokumentation, generiert durch Visual Source Safe 
+	$Workfile: person_name_typelib.xsd $  
+	$Modtime: 30.04.04 9:42 $  
+	$Revision: 3 $  
+-->
+<xs:schema targetNamespace="urn::hl7-org/cda" xmlns="urn::hl7-org/cda" xmlns:kbv="urn::hl7-org/kbv" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+	<xs:import namespace="urn::hl7-org/kbv" schemaLocation="all_kbv_typelib.xsd"/>
+	<xs:complexType name="dmp_provider_person_name_typ">
+		<xs:annotation>
+			<xs:appinfo>Name des Erstellers</xs:appinfo>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="nm">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="GIV" minOccurs="0">
+							<xs:annotation>
+								<xs:appinfo>Vorname</xs:appinfo>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:attribute name="V" type="kbv:string_max_60_typ" use="required"/>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="FAM">
+							<xs:annotation>
+								<xs:appinfo>Familienname</xs:appinfo>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:attribute name="V" type="kbv:string_max_60_typ" use="required"/>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="PFX" minOccurs="0" maxOccurs="10">
+							<xs:annotation>
+								<xs:appinfo>Namenszusatz</xs:appinfo>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:attribute name="V" type="kbv:string_max_15_typ" use="required"/>
+								<xs:attribute name="QUAL" type="praefix-typ"/>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<!-- ****************************** dmp_patient_person_name_typ ****************************** -->
+	<xs:complexType name="dmp_patient_person_name_typ">
+		<xs:annotation>
+			<xs:appinfo>Patienten-Name</xs:appinfo>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="nm">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="GIV">
+							<xs:annotation>
+								<xs:appinfo>Vorname</xs:appinfo>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:attribute name="V" type="kbv:string_max_28_typ" use="required"/>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="FAM">
+							<xs:annotation>
+								<xs:appinfo>Familienname</xs:appinfo>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:attribute name="V" type="kbv:string_max_28_typ" use="required"/>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="PFX" minOccurs="0" maxOccurs="10">
+							<xs:annotation>
+								<xs:appinfo>Namenszusatz</xs:appinfo>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:attribute name="V" type="kbv:string_max_15_typ" use="required"/>
+								<xs:attribute name="QUAL" type="praefix-typ"/>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<!-- ****************************** praefix-typ ****************************** -->
+	<xs:simpleType name="praefix-typ">
+		<xs:annotation>
+			<xs:documentation>	
+				AC			academic			
+				NB			nobility	
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="AC"/>
+			<xs:enumeration value="NB"/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

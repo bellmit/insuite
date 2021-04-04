@@ -1,0 +1,18 @@
+#edmpSettingsExtSddaEditorModal
+  div(data-bind="with: data")
+    p Geben Sie die Information ein.
+    div.form-group(data-bind="hasFeedback: { field: orgianizationId, toggle: orgianizationId.hasError, messages: orgianizationId.validationMessages }")
+      label.control-label(data-bind="text: $parent.orgianizationIdTextI18n")
+      input.form-control(name="orgianizationId", data-bind="value: orgianizationId, valueUpdate: 'afterkeydown'")
+    div.form-group(data-bind="hasFeedback: { field: orgianizationName, toggle: orgianizationName.hasError, messages: orgianizationName.validationMessages }")
+      label.control-label(data-bind="text: $parent.orgianizationNameTextI18n")
+      input.form-control(name="orgianizationName", data-bind="value: orgianizationName, valueUpdate: 'afterkeydown'")
+    div.form-group(data-bind="hasFeedback: { field: kv, toggle: kv.hasError, messages: kv.validationMessages }")
+      label.control-label KV
+      input.form-control(name="kv", data-bind="value: kv, valueUpdate: 'afterkeydown'")
+    div.form-group(data-bind="hasFeedback: { field: ukv, toggle: ukv.hasError, messages: ukv.validationMessages }")
+      label.control-label UKV
+      input.form-control(name="ukv", data-bind="value: ukv, valueUpdate: 'afterkeydown'")
+    div.form-group(data-bind="hasFeedback: { field: kv_connect, toggle: kv_connect.hasError, messages: kv_connect.validationMessages }")
+      label.control-label(data-bind="text: $parent.kvConnectTextI18n")
+      input.form-control(name="kv_connect", data-bind="value: kv_connect, valueUpdate: 'afterkeydown'")

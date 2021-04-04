@@ -1,0 +1,143 @@
+div.row.childs-bordered#MedDataTagEditModel
+    div.col-xs-12.patient-block
+        h4(data-bind="text: tagsEditableTableTitle")
+        div#MedDataTagEditorTable(data-bind="template: tagsEditableTable.template")
+    div.col-xs-12
+        h4(data-bind="text: tagsCategorySelectionTitle")
+        input.form-control.input-sm(name="categoriesSelect2", data-bind="select2: categoriesSelect2Config")
+    div.col-xs-12
+        h4(data-bind="text: tagsValidationAndFormattingTitle")
+        div.container.container-fullscreen-fluid#MedDataTagValidationAndFormatting
+            .row
+                .col-xs-4
+                    p
+                        i.mr-2.fa.fa-database
+                        span(data-bind="text: tagsDataTypeHeader")
+                    .form-group
+                        input.form-control(name="dataTypeSelect2", type="hidden", data-bind="select2: dataTypeSelect2Config")
+                .col-xs-2(data-bind="visible: dataTypeMaxLength.visible")
+                    p
+                        i.mr-2.fa.fa-arrows-h
+                        span(data-bind="text: lengthHeader")
+                    .form-group(data-bind="visible: dataTypeMinLength.visible")
+                        label.control-label(data-bind="text: tagsMinValueHeader")
+                        input.form-control(name="dataTypeMinLength", type="text", min="0", data-bind="value: dataTypeMinLength.displayValue")
+                    .form-group
+                        label.control-label(data-bind="text: tagsMaxValueHeader")
+                        input.form-control(name="dataTypeMaxLength", type="text", min="0", data-bind="value: dataTypeMaxLength.displayValue")
+                .col-xs-3(data-bind="visible: dateValueMaxDate.visible")
+                    p
+                        i.mr-2.fa.fa-clock-o
+                        span(data-bind="text: tagsDateRangeHeader")
+                    .form-group(data-bind="visible: dateValueMinDate.visible")
+                        label.control-label(data-bind="text: tagsMinDateHeader")
+                        .date-picker.input-group
+                            input.form-control(name="dateValueMinDate", data-bind="datetimepicker: { value: dateValueMinDate, options: datepickerOptions, onInit: dateValueMinDateStart.bind($data) }")
+                    .form-group
+                        label.control-label(data-bind="text: tagsMaxDateHeader")
+                        .date-picker.input-group
+                            input.form-control(name="dateValueMaxDate", data-bind="datetimepicker: { value: dateValueMaxDate, options: datepickerOptions, onInit: dateValueMaxDateStart.bind($data) }")
+                .col-xs-2(data-bind="visible: enumValueCollectionOptions.visible")
+                    p
+                        i.mr-2.fa.fa-search
+                        span(data-bind="text: tagsEnumValuesHeader")
+                    .form-group
+                        input.form-control(name="enumValueCollectionSelect2Config", type="hidden", data-bind="select2: enumValueCollectionSelect2Config")
+                .col-xs-3(data-bind="visible: isFormattingColumnVisible")
+                    p
+                        i.mr-2.fa.fa-magic
+                        span(data-bind="text: tagsFormatHeader")
+                    .form-group(data-bind="visible: valueDigits.visible")
+                        label.control-label(data-bind="text: tagDecimalsHeader")
+                        input.form-control(name="valueDigits", type="number", min="0", data-bind="value: valueDigits")
+                    .form-group(data-bind="visible: valueRoundingMethod.visible")
+                        input.form-control(name="valueRoundingMethodSelect2", type="hidden", data-bind="select2: valueRoundingMethodSelect2")
+                    .form-group.mt-4(data-bind="visible: leadingZeros.visible")
+                        label.control-label(data-bind="text: tagLeadingZerosHeader")
+                        input.form-control(name="leadingZeros", type="number", min="0", data-bind="value: leadingZeros")
+                    .form-group(data-bind="visible: dateValueFormat.visible")
+                        label.control-label(data-bind="text: tagsDateFormatHeader")
+                        input.form-control(name="dateValueFormat", type="text", data-bind="value: dateValueFormat")
+
+                .col-xs-3(data-bind="visible: validationRegeExp.visible")
+                    p
+                        i.mr-2.fa.fa-check-square
+                        span(data-bind="text: tagsExtendedValidationHeader")
+                        sup
+                            i.ml-2.fa.fa-info-circle.text-primary(data-toggle="tooltip" data-placement="bottom" data-bind="tooltip: { title: tagsExtendedValidationTooltip, placement: 'top', trigger:'click', html: true }")
+                    .form-group
+                        input.form-control(name="validationRegeExp", type="text", data-bind="value: validationRegeExp")
+            // ko if: dataType && dataType() === 'NUMBER_FORMULA'
+            .row(data-bind="visible: isFormulaConfigVisible")
+                .col-xs-12
+                    h4(data-bind="text: tagsValueFormulaHeader")
+                .col-xs-4
+                    .form-group
+                        input.form-control(name="valueFormulaScope", type="hidden", data-bind="select2: valueFormulaScopeSelect2")
+                    table.table.mt-4
+                        thead
+                            tr
+                                th(data-bind="text: tagsValueFormulaScopeVariableNameHeader" )
+                                th(data-bind="text: tagsValueFormulaScopeLinkedDataHeader" )
+                                th.test-value-col(data-bind="text: tagsValueFormulaScopeTestValueHeader" )
+                        tbody
+                            // ko foreach: valueFormulaScope
+                            tr
+                                td.row-scope-formula
+                                    p.mt-1.mb-0(data-bind="text: scopeName")
+                                td.row-scope-formula
+                                    p.mt-1.mb-0
+                                        span(data-bind="text: text")
+                                        // ko if: unit
+                                        span.ml-2
+                                            span (
+                                            span(data-bind="text: unit")
+                                            span )
+                                        // /ko
+
+                                td
+                                    input.form-control(data-bind="value: testValue")
+                            // /ko
+                .col-xs-8
+                    .container.container-fullscreen-fluid
+                        .row
+                            .col-xs-2.no-padding
+                                p.mt-2.mb-0
+                                    i.mr-2.fa.fa-terminal
+                                    span(data-bind="text: tagsValueFormulaExpressionHeader")
+                            .col-xs-10
+                                .form-group
+                                    input.form-control(name="formulaExpression", type="text", min="0", data-bind="value: valueFormulaExpression")
+                        .row
+                            .col-xs-2.no-padding
+                                p.mt-2.mb-0
+                                    i.mr-2.fa.fa-calculator
+                                    span(data-bind="text: tagsValueFormulaResultHeader")
+                            .col-xs-10
+                                .form-group(data-bind="css: { 'has-error': valueFormulaResult.hasError }")
+                                    input.form-control(name="valueFormulaResult", type="text", min="0", data-bind="value: valueFormulaResult, readOnly: true")
+                        .row
+                            .col-xs-2.no-padding
+                                p.mt-2.mb-0
+                                    i.mr-2.fa.fa-angle-right
+                                    span(data-bind="text: tagsValueFormulaPrintoutHeader")
+                            .col-xs-10
+                                .form-group
+                                    .form-control.formula-printout(data-bind="notifyBind: { method: notifyBindValueFormulaPrintout }")
+                        .row
+                            .col-xs-2.no-padding
+                                label.control-label(data-bind="text: tagsValueFormulaManualCalculationHeader")
+                            .col-xs-10
+                                input(type="checkbox", name="manualCalculation", data-bind="checked: manualCalculation")
+            // /ko
+            .row(data-bind="visible: isOptionalVisible")
+                div.checkbox
+                    label.control-label
+                        strong(data-bind="text: tagsOptionalValueTitle")
+                        input(type="checkbox", name="isOptional", data-bind="checked: isOptional")
+    div.col-xs-12
+        h4(data-bind="text: tagsAdditionalDataEditableTableTitle")
+        div#MedDataTagAdditionalDataTable(data-bind="template: tagsAdditionalDataEditableTable.template")
+    div.col-xs-12.activity-block
+        h4(data-bind="text: tagsToUpdateTableTitle")
+        div#DistinctMedDataTags(data-bind="template: tagsToUpdateTable.template")

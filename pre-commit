@@ -1,0 +1,69 @@
+#!/usr/bin/env bash
+#
+# Doc Cirrus pre-commit hook. Checks file naming and Eslint
+# lints any Javascript files. Will not allow commit of erroneous
+# files.
+# NB: when git is used from within WebStorm, output is suppressed
+# in case this script exits with code zero (err_success)
+# 
+# Usage:
+# 1. Copy this file to your .git/hooks/ directory.
+# 2. Install eslint globally with `npm i -g eslint`
+# 3. make sure you have the current dc .eslintrc in your project base 
+#    directory or your home
+. "$HOME"/.bashrc
+
+function ck_global_eslint {
+    if [ ! -f "$JSHX" ] || [ ! -x "$JSHX" ]; then
+        JSHX="${NVM_BIN}/eslint"
+        if [ ! -f "$JSHX" ] || [ ! -x "$JSHX" ]; then
+            echo "eslint not found: please install first"
+            exit 1
+        fi
+    fi
+}
+
+# check pre-requisites
+
+if [ ! -f "${NVM_BIN}/node" ] || [ ! -x "${NVM_BIN}/node" ]; then
+    echo "node is not installed, please install via nvm"
+    exit 1
+fi
+
+_ESLINT="$(dirname "$0")/../../node_modules/eslint"
+
+if [ -d "$_ESLINT" ]; then
+    JSHX="${_ESLINT}/../.bin/eslint"
+    ck_global_eslint
+else
+    ck_global_eslint
+fi
+
+# Here we eslint the attempted commit.
+
+# Get a list of the files
+files=$(git diff --staged --name-only | grep ".js$")
+
+if [ -z "$files" ]; then 
+    exit 0 
+fi
+
+pass=true
+
+# lint them. Note: The DC Eslint config is in the package.json file!
+# This config must be present otherwise the lint is invalid.
+# On the server, we use instead a .eslintrc file in the parent directory.
+
+for file in ${files}; do
+    result=$("$NVM_BIN"/node "$JSHX" --quiet "${file}")
+    if [ -n "$result" ]; then
+        echo "\t\033[31mEslint Failed: ${file}\033[0m"
+        echo "$result"
+        pass=false
+    fi
+done
+
+if ! $pass; then
+    echo "\033[41mCOMMIT FAILED:\033[0m Your commit contains files that should pass Eslint but do not. Please fix the Eslint errors and try again.\n"
+    exit 1
+fi

@@ -1,0 +1,7 @@
+div
+    div.col-xs-4
+        div.form-group(data-bind="hasFeedback: { field: code, toggle: code.hasError, messages: code.validationMessages }")
+            input.form-control(name="code", type="text", data-bind="value: code, attr: {placeholder: code.i18n}")
+    div.col-xs-8
+        div.form-group(data-bind="hasFeedback: { field: text, toggle: text.hasError, messages: text.validationMessages }")
+            input.form-control(name="text", type="text", data-bind="value: text, attr: {placeholder: text.i18n}")

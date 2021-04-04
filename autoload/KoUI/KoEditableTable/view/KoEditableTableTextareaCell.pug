@@ -1,0 +1,6 @@
+// ko if: valueUpdate
+textarea.KoEditableTableTextareaCell.form-control(data-bind="value: value, valueUpdate: valueUpdate, css: css, attr: {placeholder: placeholder}, disable:disabled")
+// /ko
+// ko ifnot: valueUpdate
+textarea.KoEditableTableTextareaCell.form-control(data-bind="textInput: value, css: css, attr: {placeholder: placeholder}, disable:disabled")
+// /ko

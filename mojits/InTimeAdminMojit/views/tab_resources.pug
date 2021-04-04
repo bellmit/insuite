@@ -1,0 +1,14 @@
+#tab_resources
+  h4(data-bind="text: headlineI18n")
+  div.row
+    div.col-md-12
+      div.pull-right(data-bind="template: saveResourcesButton.template", style="margin-bottom:10px; display:inline-block;")
+  div.row
+    div.col-md-12(data-bind="template: resourceEditableTable.template")
+  hr
+  h4(data-bind="text: calendarsHeadlineI18n")
+  div.row
+    div.col-md-12
+      div.pull-right(data-bind="template: saveCalendarsButton.template", style="margin-bottom:10px; display:inline-block;")
+  div.row
+    div.col-md-12(data-bind="template: calendarEditableTable.template")

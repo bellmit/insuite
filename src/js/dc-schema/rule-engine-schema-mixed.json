@@ -1,0 +1,160 @@
+{
+  "patientId.insuranceStatus.insuranceNo":{
+    "type":"String",
+    "apiv":{
+      "v":2,
+      "queryParam":true
+    },
+    "validate":[
+      {
+        "msg":"Das Feld \"{PATH}\" darf nicht leer bleiben."
+      },
+      {
+        "msg":"Falls \"Karte gelesen\" vorhanden ist, müssen die Felder \"Versicherungsschutz Ende\", \"{4112}\", \"{4113}\" und mindestens eins der Felder \"KVK Versichertennummer\" und \"Versicherten-Nr.\" vorhanden sein. Zusätzlich gilt: Wenn Feld \"Kartengeneration\" vorhanden ist, muss Feld \"Versicherten-Nr.\" vorhanden sein. Feld \"KVK Versichertennummer\" kann vorhanden sein."
+      }
+    ],
+    "i18n":"Versicherten-Nr.",
+    "-en":"Insurance No.",
+    "-de":"Versicherten-Nr.",
+    "rule-engine":{
+
+    }
+  },
+  "patientId.gender":{
+    "default":"",
+    "type":"String",
+    "required":true,
+    "apiv":{
+      "v":2,
+      "queryParam":false
+    },
+    "dmpHint":"Eine Angabe zum Geschlecht des teilnehmenden Patienten ist verpflichtend.",
+    "version":1,
+    "list":[
+      {
+        "val":"",
+        "i18n":"Bitte wählen …",
+        "-en":"Please choose …",
+        "-de":"Bitte wählen …"
+      },
+      {
+        "val":"MALE",
+        "i18n":"männlich",
+        "-en":"Male",
+        "-de":"männlich"
+      },
+      {
+        "val":"FEMALE",
+        "i18n":"weiblich",
+        "-en":"Female",
+        "-de":"weiblich"
+      },
+      {
+        "val":"UNKNOWN",
+        "i18n":"unbekannt",
+        "-en":"Unknown",
+        "-de":"unbekannt"
+      },
+      {
+        "val":"UNDEFINED",
+        "i18n":"unbestimmt",
+        "-en":"Undefined",
+        "-de":"unbestimmt"
+      }
+    ],
+    "i18n":"Geschlecht",
+    "-en":"Sex",
+    "-de":"Geschlecht",
+    "rule-engine":{
+
+    },
+    "enum":[
+      "",
+      "MALE",
+      "FEMALE",
+      "UNKNOWN",
+      "UNDEFINED"
+    ]
+  },
+  "locationId.commercialNo":{
+    "type":"String",
+    "apiv":{
+      "v":2,
+      "queryParam":false
+    },
+    "i18n":"Betriebsstättennr.",
+    "-en":"Commercial No.",
+    "-de":"Betriebsstättennr.",
+    "rule-engine":{
+
+    }
+  },
+  "explanations":{
+    "default":"",
+    "type":"String",
+    "apiv":{
+      "v":2,
+      "queryParam":false
+    },
+    "i18n":"Erläuterungen",
+    "-en":"Explanations",
+    "-de":"Erläuterungen",
+    "rule-engine":{
+
+    }
+  },
+  "code":{
+    "type":"String",
+    "apiv":{
+      "v":2,
+      "queryParam":true
+    },
+    "validate":[
+      {
+        "msg":"Das Feld \"{PATH}\" darf nicht leer bleiben."
+      }
+    ],
+    "i18n":"Kode",
+    "-en":"code",
+    "-de":"Kode",
+    "rule-engine":{
+
+    }
+  },
+  "ASK":{
+    "type":"Number",
+    "i18n":"ASK",
+    "-en":"ASK",
+    "-de":"ASK",
+    "rule-engine":{
+
+    }
+  },
+  "price":{
+    "apiv":{
+      "v":2,
+      "queryParam":false
+    },
+    "type":"Number",
+    "i18n":"Kosten",
+    "-en":"price",
+    "-de":"Kosten",
+    "rule-engine":{
+
+    }
+  },
+  "areTreatmentDiagnosesBillable":{
+    "default":"1",
+    "type":"String",
+    "apiv":{
+      "v":2,
+      "queryParam":false
+    },
+    "i18n":"Leistung abrechenbar",
+    "-en":"treatment billable",
+    "-de":"Leistung abrechenbar",
+    "rule-engine":{
+
+    }
+  }
+}

@@ -1,0 +1,83 @@
+div
+    section#tab_request_details(data-bind="with: request")
+        section.col-md-6
+            form.form-horizontal
+                .form-group(data-bind="hasFeedback: { field: bsnr, toggle: bsnr.hasError, messages: bsnr.validationMessages, popover: { placement: 'bottom' } }")
+                    label.col-sm-4.control-label(data-bind="text: labelBSNRI18n + ':'")
+                    div.col-sm-8
+                        input.form-control.input-sm#requestSelect2BSNR(type="hidden", data-bind="select2: select2BSNR, disable: readOnly()", name="bsnr")
+                .form-group(data-bind="hasFeedback: { field: lanr, toggle: lanr.hasError, messages: lanr.validationMessages, popover: { placement: 'bottom' } }")
+                    label.col-sm-4.control-label(data-bind="text: labelLANRI18n + ':'")
+                    div.col-sm-8
+                        input.form-control.input-sm#requestSelect2LANR(type="hidden", data-bind="select2: select2LANR, disable: readOnly()", name="lanr")
+                .form-group(data-bind="hasFeedback: { field: patientId, toggle: patientId.hasError, messages: patientId.validationMessages }")
+                    label.col-sm-4.control-label(data-bind="text: labelPatientIdI18n + ':'")
+                    div.col-sm-8
+                        input.form-control.input-sm#requestSelect2Patient(type="hidden", data-bind="select2: select2Patient, disable: readOnly()", name="patientId")
+                .form-group
+                    label.col-sm-4.control-label(data-bind="text: mandateI18n + ':'")
+                    div.col-sm-8
+                        p.form-control-static(data-bind="text: $parent.getMandatType()")
+                .form-group
+                    label.col-sm-4.control-label(data-bind="text: labelStatusI18n + ':'")
+                    div.col-sm-8
+                        p.form-control-static(data-bind="html: formattedStatus")
+
+
+        section.col-md-6
+            form.form-horizontal
+                .form-group
+                    label.col-sm-4.control-label(data-bind="text: labelCareI18n + ':'")
+                    div.col-sm-8
+                        p.form-control-static(data-bind="text: careTitle")
+                .form-group
+                    label.col-sm-4.control-label(data-bind="text: labelTelephoneI18n + ':'")
+                    div.col-sm-8
+                        p.form-control-static(data-bind="text: carePhone")
+                .form-group
+                    label.col-sm-4.control-label(data-bind="text: commentI18n + ':'")
+                    div.col-sm-8
+                        textarea.form-control(data-bind="readOnly: true, value: comment, valueUpdate: 'afterkeydown'")
+
+        div.col-md-12
+            hr
+
+        // ko ifnot: $parent.isDocument()
+        div.col-md-12(data-bind="foreach: dispatchActivities")
+            table.table.table-responsive#dispatch-activities-table
+                caption
+                    span(data-bind="text: actTypeTranslation")
+                    span &nbsp; &nbsp;
+                    a(data-bind="if: activityId(), attr: { href: '/iscd/patients#/activity/' + activityId() }", target="_blank")
+                        i.fa.fa-external-link
+                thead
+                    th(data-bind="text: $parent.codePZNI18n")
+                    th(data-bind="text: $parent.codeHMVI18n")
+                    th(data-bind="text: $parent.labelNoteI18n")
+                    th(data-bind="if: actType() == 'PRESASSISTIVE'")
+                        span(data-bind="text: $parent.prescrPeriodI18n")
+
+                    th(data-bind="text: $parent.labelDoseI18n")
+                    th(data-bind="text: $parent.labelQuantityI18n")
+                    th &nbsp;
+                tbody(data-bind="foreach: activities")
+                    tr(data-bind="css: {'activityIsNotValid': !isValid()}")
+                        td(data-bind="text: codePZN")
+                        td(data-bind="text: codeHMV")
+                        td(data-bind="text: note")
+                        td(data-bind="if: $parent.actType() == 'PRESASSISTIVE'")
+                            span(data-bind="text: prescPeriod")
+
+                        td(data-bind="text: dose")
+                        td(data-bind="text: quantity")
+                        td
+                            span(data-bind="foreach: activityId")
+                                a(data-bind="if: $data, attr: { href: '/iscd/patients#/activity/' + $data }", target="_blank")
+                                    i.fa.fa-external-link
+        // /ko
+
+        // ko if: $parent.isDocument()
+        .col-md-12(style="text-align: center")
+            a(data-bind="attr: { href: fullUrl()}" target='_blank')
+                img(data-bind="attr: { src: thumbUrl() }", width="240", height="240", style="border-radius: 5px;")
+        // /ko

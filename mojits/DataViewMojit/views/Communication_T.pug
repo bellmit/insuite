@@ -1,0 +1,23 @@
+div.pull-right
+  small Kommunikation
+  br
+div.control-group#ctype_cg
+  label(for="type").control-label
+    b Kommunikationsart
+  div.controls
+    select(name='type',dcschema='contact',dctype='Communication_T').dcvalidate
+      option bitte wählen
+      option(value='PHONEJOB') Telefon
+      option(value='FAXJOB') Fax
+      option(value='EMAILJOB') E-Mail
+      option(value='URL') Internetadresse
+    span.help-inline
+    input(type='text', name='value',dcschema='contact',dctype='Communication_T').dcvalidate
+div.control-group
+  label(for="preferred").control-label
+    b Bevorzugt
+  div.controls
+    select(name='preferred',dcschema='contact',dctype='Communication_T').dcvalidate
+      option(value='0') Nein
+      option(value='1') Ja
+    span.help-inline

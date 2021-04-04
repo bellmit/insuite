@@ -1,0 +1,16 @@
+div#navSearchModal.nav-search-modal(style="height: 100%;")
+  div.row(style="height: 100%;")
+    div(data-bind="css: { 'col-sm-12': !togglePreview, 'col-sm-6': togglePreview }")
+      // ko ifnot: toggleMergeMediaByActivity
+      div(data-bind="template: documentKoTable.template")
+      // /ko
+      // ko if: toggleMergeMediaByActivity
+      div(data-bind="template: activityKoTable.template")
+      // /ko
+    div.col-sm-6(data-bind="visible: togglePreview", style="height: 100%;")
+      div.row
+        div.col-sm-12
+          h4(data-bind="text: pictureViewer.caption")
+      div.row(style="height: 100%;")
+        div.col-sm-12(style="height: 100%;")
+          div(data-bind="template: pictureViewer.template")(style="height: 100%;")

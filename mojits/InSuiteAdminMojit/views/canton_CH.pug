@@ -1,0 +1,4 @@
+div.form-group(data-bind="hasFeedback: { field: cantonCode, toggle: cantonCode.hasError, messages: cantonCode.validationMessages }")
+    label.col-xs-4.control-label(for="tab_locations-editing-field-cantonCode", data-bind="text: cantonI18n + ':'")
+    .col-xs-8
+        input#tab_locations-editing-field-cantonCode.form-control(name="cantonCode", data-bind="select2: select2CantonCode")

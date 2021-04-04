@@ -1,0 +1,8 @@
+div.KoTableColumn-label-container
+  // ko if: selectAllCheckbox
+  span.KoTableColumn-label(data-bind="hidden: !label, text: label, attr: { title: title }")
+  input.KoEditableTableTextareaCell(type="checkbox", data-bind="checked: selectAll")
+  // /ko
+  // ko if: !selectAllCheckbox
+  span.KoTableColumn-label(data-bind="text: label, attr: { title: title }")
+  // /ko

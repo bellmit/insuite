@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- automatische Dokumentation, generiert durch Visual Source Safe 
+	$Workfile: person_typelib.xsd $  
+	$Modtime: 10.01.06 11:02 $  
+	$Revision: 10 $  
+-->
+<xs:schema xmlns="urn::hl7-org/cda" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="urn::hl7-org/cda" elementFormDefault="qualified">
+	<xs:include schemaLocation="id_typelib.xsd"/>
+	<xs:include schemaLocation="person_name_typelib.xsd"/>
+	<xs:include schemaLocation="addr_typelib.xsd"/>
+	<xs:include schemaLocation="telecom_typelib.xsd"/>
+	<!-- ************************** dmp_provider_person_typ *************************************-->
+	<xs:complexType name="dmp_provider_person_typ">
+		<xs:annotation>
+			<xs:appinfo>Angaben zum Ersteller</xs:appinfo>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="id" type="dmp_provider_person_id_typ" maxOccurs="3"/>
+			<xs:element name="person_name" type="dmp_provider_person_name_typ"/>
+			<xs:element name="addr" type="person_addr_typ"/>
+			<xs:element name="telecom" type="dmp_telecom_typ" maxOccurs="5"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!-- ************************** dmp_patient_person_typ *************************************-->
+	<xs:complexType name="dmp_patient_person_typ">
+		<xs:annotation>
+			<xs:appinfo>Angaben zum Patienten</xs:appinfo>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="id" type="dmp_patient_person_id_typ"/>
+			<xs:element name="person_name" type="dmp_patient_person_name_typ"/>
+			<xs:element name="addr" type="person_addr_typ"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--
+	============================================================
+	Datentypen für die Schnittstelle zwischen Datenannahmestellen und gemeinsamen Einrichtungen
+	============================================================-->
+	<!-- ************************** dmp_provider_person_da_typ *************************************-->
+	<xs:complexType name="dmp_provider_person_da_typ">
+		<xs:annotation>
+			<xs:appinfo>Angaben zum Ersteller</xs:appinfo>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="id" type="dmp_provider_person_id_typ" maxOccurs="3"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!-- ************************** dmp_patient_person_da_typ *************************************-->
+	<xs:complexType name="dmp_patient_person_da_typ">
+		<xs:annotation>
+			<xs:appinfo>Angaben zum Patienten</xs:appinfo>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="id" type="dmp_patient_person_id_typ"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--
+	============================================================
+	Datentypen für Koloskopie - 38a
+	============================================================-->
+	<!-- ************************** koloskopie_38a_provider_person_typ *************************************-->
+	<xs:complexType name="koloskopie_38a_provider_person_typ">
+		<xs:annotation>
+			<xs:appinfo>Angaben zum Ersteller</xs:appinfo>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="id" type="koloskopie_38a_provider_person_id_typ" minOccurs="2" maxOccurs="2"/>
+			<xs:element name="person_name" type="dmp_provider_person_name_typ"/>
+			<xs:element name="addr" type="person_addr_typ"/>
+			<xs:element name="telecom" type="dmp_telecom_typ" maxOccurs="5"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!-- ************************** koloskopie_patient_person_typ *************************************-->
+	<xs:complexType name="koloskopie_patient_person_typ">
+		<xs:annotation>
+			<xs:appinfo>Angaben zum Patienten</xs:appinfo>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="id" type="koloskopie_patient_person_id_typ"/>
+			<xs:element name="person_name" type="dmp_patient_person_name_typ"/>
+			<xs:element name="addr" type="person_addr_typ"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--
+	============================================================
+	Datentypen für Koloskopie - 38b
+	============================================================-->
+	<!-- ************************** koloskopie_38b_provider_person_typ *************************************-->
+	<xs:complexType name="koloskopie_38b_provider_person_typ">
+		<xs:annotation>
+			<xs:appinfo>Angaben zum Ersteller</xs:appinfo>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="id" type="koloskopie_38b_provider_person_id_typ" minOccurs="2" maxOccurs="4"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!-- ************************** koloskopie_38b_patient_person_typ *************************************-->
+	<xs:complexType name="koloskopie_38b_patient_person_typ">
+		<xs:annotation>
+			<xs:appinfo>Angaben zum Patienten</xs:appinfo>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="id" type="koloskopie_patient_person_id_typ"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--
+	============================================================
+	Datentypen für AU
+	============================================================-->
+	<xs:complexType name="au_patient_person_typ">
+		<xs:annotation>
+			<xs:appinfo>Angaben zum Patienten</xs:appinfo>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="id" type="au_patient_person_id_typ"/>
+			<xs:element name="person_name" type="dmp_patient_person_name_typ"/>
+			<xs:element name="addr" type="person_addr_typ"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--
+	============================================================
+	Datentypen für eHKS
+	============================================================-->
+	<!-- ************************** eHKS_provider_person_typ *************************************-->
+	<xs:complexType name="eHKS_provider_person_typ">
+		<xs:annotation>
+			<xs:appinfo>Angaben zum Ersteller</xs:appinfo>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="id" type="eHKS_provider_person_id_typ" minOccurs="2" maxOccurs="2"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!-- ************************** eHKS_patient_person_typ *************************************-->
+	<xs:complexType name="eHKS_patient_person_typ">
+		<xs:annotation>
+			<xs:appinfo>Angaben zum Patienten</xs:appinfo>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="id" type="eHKS_patient_person_id_typ"/>
+		</xs:sequence>
+	</xs:complexType>
+		<!--
+	============================================================
+	Datentypen für qshgv
+	============================================================-->
+	<!-- ************************** qshgv_provider_person_typ *************************************-->
+	<xs:complexType name="qshgv_provider_person_typ">
+		<xs:annotation>
+			<xs:appinfo>Angaben zum Ersteller</xs:appinfo>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="id" type="qshgv_provider_person_id_typ" minOccurs="2" maxOccurs="2"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!-- ************************** qshgv_patient_person_typ *************************************-->
+	<xs:complexType name="qshgv_patient_person_typ">
+		<xs:annotation>
+			<xs:appinfo>Angaben zum Patienten</xs:appinfo>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="id" type="qshgv_patient_person_id_typ"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

@@ -1,0 +1,12 @@
+div.btn-group(data-bind="visible: visible, event: { 'show.bs.dropdown': onShow, 'hidden.bs.dropdown': onHidden }")
+  button.btn.btn-primary.dropdown-toggle(type="button", data-toggle="dropdown", data-bind="attr: { name: name }, disable: disabled")
+    span(data-bind="text: text")
+    | &nbsp;
+    span.caret
+  div(data-bind="if: name === 'actionMore'")
+    button.btn.btn-default.btn-xs(type="button", data-bind="click: clickHandlerAddButton", style="right: 2%;margin-left: -11px;margin-top: -11px;position: absolute;top: 50%; width: auto; z-index: 2; background: transparent; border: none; box-shadow: none;" +
+                                                                                                 "")
+      span.fa.fa-gear(style="color: white;")
+  ul.dropdown-menu(data-bind="foreach: menu.items")
+    // ko template: template
+    // /ko

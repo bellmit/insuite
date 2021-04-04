@@ -1,0 +1,8 @@
+div#createAdHocEventModal
+  p(data-bind="text: confirmCreationsI18n")
+  div.form-group
+    label(data-bind="text: calendarI18n")
+    select.form-control(data-bind="options: calendars, optionsText: 'name', value: selectedCalendar")
+  div.form-group
+    label(data-bind="text: scheduleTypeI18n")
+    select.form-control(data-bind="options: scheduleTypes, optionsText: 'name', value: selectedScheduleType")

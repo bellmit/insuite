@@ -1,0 +1,17 @@
+//TRANSLATION INCOMPLETE!! MOJ-3201
+.modal.hide.fade(tabindex="-1", role="dialog", aria-labelledby="myModalLabel", aria-hidden="true")#myModal
+  .modal-header
+    .btn(type="button", class="close", data-dismiss="modal", aria-hidden="true") ×
+    h3 Anmeldungsbestätigung
+  .modal-body
+    h4 Herzlich willkommen bei Doc Cirrus!
+    hr
+    p
+      | Ihre Kundennummer lautet
+      | &nbsp;
+      b!= uccode
+    hr
+    p Sie erhalten in Kürze eine E-Mail von uns, sobald Ihr Konto freigeschaltet wurde.
+  .modal-footer
+    a(href='/login').btn.btn-primary Ok
+

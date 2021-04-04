@@ -1,0 +1,25 @@
+{
+  "canton": {
+    "code" : "1",
+    "text" : "AG",
+    "catalog" : "DC-TARMED_CANTON-CH-1578325720366.js"
+  },
+  "insurance": {
+    "insuranceName" : "CSS Versicherung",
+    "department" : "",
+    "address1" : "Tribschenstrasse 21",
+    "address2" : "Postfach 2568",
+    "zipcode" : "6002",
+    "city" : "Luzern",
+    "phone" : "058 277 11 11",
+    "insuranceLink" : "www.css.ch/edi",
+    "email" : "projekte.edi@css.ch",
+    "insuranceGLN" : "7601003001082",
+    "recipientGLN" : "7601003001082",
+    "insurancePrintName" : "CSS Versicherung",
+    "lawCode" : "KVG",
+    "TP_elektronisch" : true,
+    "changebillingtypedesc" : true,
+    "mediport" : true
+  }
+}

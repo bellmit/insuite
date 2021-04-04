@@ -1,0 +1,357 @@
+div(data-bind="notifyBind: { method: 'templateReady', namespace: $data }")#tab_calendars
+  h4(data-bind="text: calendarsHeadLineI18n")
+  hr
+  div(data-bind="visible: !Boolean(editing())")
+    div.row
+      div.col-xs-12
+        div.form-group
+          button#tab_calendars-add.btn.btn-primary(name="tab_calendars-add", type="button", data-bind="click: addItem")
+            span.fa.fa-plus
+            span(data-bind="text: calendarsButtonAddI18n")
+    div.row
+      div.col-xs-12
+        div(data-bind="foreach: items")
+          div.panel.panel-default(data-bind="collapse: collapseBinding")
+            div.panel-heading(data-bind="style: { 'color': foregroundColor, 'background-color': color }", style="background-image: none;")
+              h3.panel-title.clearfix
+                span.collapse-toggler(data-bind="text: name, style: { cursor: collapsible() ? 'pointer' : '' }", style="line-height: 1.4;")
+                span.pull-right
+                  button.btn.btn-link(name="tab_calendars-editItem", type="button", data-bind="click: $parent.editItem, style: { 'color': foregroundColor }", style="padding: 0; margin: 0;")
+                    span.fa.fa-edit
+                  // ko if: deleteable
+                  span(style="display: inline-block; height: 14px; margin: 0 4px; vertical-align: middle; border-right: 1px solid #ddd;", data-bind="style: { 'border-color': foregroundColor }")
+                  button.btn.btn-link(name="tab_calendars-confirmDeleteItem", type="button", data-bind="click: $parent.confirmDeleteItem, style: { 'color': foregroundColor }", style="padding: 0; margin: 0;")
+                    span.fa.fa-trash
+                  // /ko
+                  // ko if: collapsible
+                  span(style="display: inline-block; height: 14px; margin: 0 4px; vertical-align: middle; border-right: 1px solid #ddd;", data-bind="style: { 'border-color': foregroundColor }")
+                  button.btn.btn-link.collapse-toggler(name="tab_calendars-collapse", type="button", data-bind="style: { 'color': foregroundColor }", style="padding: 0; margin: 0;")
+                    span.fa.fa-chevron-down
+                  // /ko
+            div.panel-collapse.collapse
+              div.panel-body
+                // ko ifnot: isInformal
+                div.row
+                  div.col-md-4
+                    dl.dl-horizontal
+                      dt(data-bind="text: $parent.calendarsHealthPortalI18n")
+                      dd
+                        // ko if: isPublic
+                        span.text-success
+                          span.fa.fa-unlock
+                          span(data-bind="text: $parent.calendarsVisibleI18n")
+                        // /ko
+                        // ko ifnot: isPublic
+                        span.text-danger
+                          span.fa.fa-lock
+                          span(data-bind="text: $parent.calendarsNotVisibleI18n")
+                        // /ko
+                        | &nbsp;
+                      dt(data-bind="text: $parent.calendarsPartnerPortalI18n")
+                      dd
+                        // ko if: isShared
+                        span.text-success
+                          span.fa.fa-unlock
+                          span(data-bind="text: $parent.calendarsIsSharedTrueI18n")
+                        // /ko
+                        // ko ifnot: isShared
+                        span.text-danger
+                          span.fa.fa-lock
+                          span(data-bind="text: $parent.calendarsIsSharedFalseI18n")
+                        // /ko
+                        | &nbsp;
+                      dt(data-bind="text: $parent.calendarsLabelEstablishmentI18n")
+                      dd
+                        span(data-bind="text: displayLocationName")
+                        | &nbsp;
+                      dt(data-bind="text: $parent.calendarsLabelGroupI18n")
+                      dd
+                        span(data-bind="text: displayGroupName")
+                        | &nbsp;
+                      dt(data-bind="text: $parent.calendarsLabelEmployeeI18n")
+                      dd
+                        span(data-bind="text: displayEmployeeName")
+                        | &nbsp;
+                      // this item should be last in the list because of its' big label length
+                      dt(data-bind="text: $parent.calendarsLabelRandomModeI18n")
+                      dd
+                        input(type="checkbox", data-bind="checked: isRandomMode, readOnly: true")
+                        | &nbsp;
+                  div.col-md-8
+                    div.row
+                      div.col-xs-3
+                        h5
+                          strong(data-bind="text: $parent.calendarsConsultTimesI18n")
+                        div.panel.panel-default
+                          div.panel-body
+                            table(style="width: auto")
+                              tbody(data-bind="foreach: displayConsultTimes")
+                                tr
+                                  th.text-center(data-bind="text: alias", style="width: 40px; vertical-align: top")
+                                  // ko if: $parent.displayNonConsultTimes($data)
+                                  td.text-center(colspan="3")
+                                    span(data-bind="text: times[0]")
+                                    br
+                                  // /ko
+                                  // ko ifnot: $parent.displayNonConsultTimes($data)
+                                  td.text-right(data-bind="foreach: times")
+                                    span(data-bind="text: start")
+                                    br
+                                  td.text-center(data-bind="foreach: times", style="padding: 0 8px;")
+                                    | -
+                                    br
+                                  td.text-left(data-bind="foreach: times")
+                                    span(data-bind="text: end")
+                                    br
+                                  // /ko
+                      div.col-xs-8(data-bind="visible: displaySpecificConsultTimes().length")
+                        h5
+                          strong(data-bind="text: $parent.calendarsSpecificConsultTimesI18n")
+                        div.panel.panel-default
+                          div.panel-body
+                           div(data-bind="foreach: displaySpecificConsultTimes", style="display: flex; flex-flow: row nowrap; justify-content: space-between; overflow-x: auto")
+                             table(style=" margin-right: 50px;")
+                               tbody(data-bind="foreach: chunk")
+                                    tr
+                                      td.text-center(data-bind="text: date", style="width: 40px; vertical-align: top")
+                                      td.text-center(data-bind="text: day", style="width: 40px; vertical-align: top")
+                                      td.text-right
+                                        span(data-bind="text: start")
+                                        br
+                                      td.text-center(style="padding: 0 8px;")
+                                        | -
+                                        br
+                                      td.text-left
+                                        span(data-bind="text: end")
+                                        br
+
+                // /ko
+    div.row(data-bind="visible: items().length>4")
+      div.col-xs-12
+        div.form-group
+          button#tab_calendars-add-bottom.btn.btn-primary(name="tab_calendars-add-bottom", type="button", data-bind="click: addItem")
+            span.fa.fa-plus
+            span(data-bind="text: calendarsButtonAddI18n")
+  div(data-bind="visible: Boolean(editing())")
+    // ko if: editing
+    div.row
+      div.col-xs-12
+        div#tab_calendars-editing.panel.panel-default(data-bind="with: editing")
+          div.panel-heading(data-bind="style: { 'background-color': color }", style="background-image: none;")
+            h3.panel-title.clearfix
+              span.form-inline(data-bind="highlightError: name")
+                input#tab_calendars-editing-field-name.form-control.input-sm(name="name", type="text", data-bind="textInput: name, hasFocus: isNew(), attr: {placeholder: $parent.calendarsNameI18n}", style="display: inline-block; width: auto;")
+              span.pull-right
+                button#tab_calendars-editing-button-closeEditingItem.btn.btn-link(name="tab_calendars-editing-button-closeEditingItem", type="button", data-bind="click: $parent.closeEditingItem, hasFocus: !isNew(), style: { 'color': foregroundColor }", style="padding: 0; margin: 0;")
+                  span.fa.fa-remove
+          div.panel-body
+            // ko if: isInformal
+            div.row
+              div.col-md-6
+                .form-horizontal
+                  // ko if: isNew()
+                  div.form-group
+                    label.col-sm-5.control-label(for="tab_calendars-editing-field-type-new", data-bind="text: $parent.calendarsTypeI18n")
+                    .col-sm-7
+                      input#tab_calendars-editing-field-type-new.form-control(name="type", type="hidden", data-bind="select2: select2Type")
+                  // /ko
+                  div.form-group
+                    label.col-sm-5.control-label(for="tab_calendars-editing-field-color-new", data-bind="text: $parent.calendarsLabelColorI18n")
+                    .col-sm-7
+                      input.minicolors.minicolors-inline.form-control(name="color", type="input", data-bind="minicolors: { value: color }")#tab_calendars-editing-field-color-new
+
+              div.col-md-6
+                .form-horizontal
+            // /ko
+            // ko ifnot: isInformal
+            div
+              ul.nav.nav-tabs
+                li.active
+                  a(href="javascript:;", data-target="#tab_calendars-editing-panel-general", data-toggle="tab")
+                    span(data-bind="css: { 'text-danger': generalIsInvalid }, text: $parent.calendarsSubmenuTextI18n")
+                li
+                  a(href="javascript:;", data-target="#tab_calendars-editing-panel-consultTimes", data-toggle="tab")
+                    span(data-bind="css: { 'text-danger':  tabIsInvalid }, text: $parent.calendarsConsultTimesI18n")
+              div.tab-content(style="padding-top: 15px")
+                div#tab_calendars-editing-panel-general.tab-pane.fade.in.active
+                  div.row
+                    div.col-md-6
+                      .form-horizontal
+                        // ko if: isNew()
+                        div.form-group
+                          label.col-sm-5.control-label(for="tab_calendars-editing-field-type", data-bind="text: $parent.calendarsTypeI18n")
+                          .col-sm-7
+                            input#tab_calendars-editing-field-type.form-control(name="type", type="hidden", data-bind="select2: select2Type")
+                        // /ko
+                        div.form-group
+                          label.col-sm-5.control-label(for="tab_calendars-editing-field-isPublic", data-bind="text: $parent.calendarsHealthPortalI18n")
+                          .col-sm-7
+                            .checkbox
+                              label
+                                input#tab_calendars-editing-field-isPublic(name="isPublic", type="checkbox", data-bind="checked: isPublic")
+                                span(data-bind="css: { 'text-success': isPublic(), 'text-danger': !isPublic() }")
+                                  // ko if: isPublic
+                                  span.fa.fa-unlock
+                                  span(data-bind="text: $parent.calendarsIsPublicTrueI18n")
+                                  // /ko
+                                  // ko ifnot: isPublic
+                                  span.fa.fa-lock
+                                  span(data-bind="text: $parent.calendarsIsPublicFalseI18n")
+                                  // /ko
+                        div.form-group
+                          label.col-sm-5.control-label(for="tab_calendars-editing-field-isRandom", data-bind="text: $parent.calendarsLabelRandomModeI18n")
+                          .col-sm-7
+                            .checkbox
+                              label
+                                input#tab_calendars-editing-field-isRandom(name="isRandomMode", type="checkbox", data-bind="checked: isPublic() ? isRandomMode : isRandomMode(false)&&false, readOnly: !isPublic()")
+                        div.form-group
+                          label.col-sm-5.control-label(for="tab_calendars-editing-field-isShared", data-bind="text: $parent.calendarsPartnerPortalI18n")
+                          .col-sm-7
+                            .checkbox
+                              label
+                                input#tab_calendars-editing-field-isShared(name="isShared", type="checkbox", data-bind="checked: isShared")
+                                span(data-bind="css: { 'text-success': isShared(), 'text-danger': !isShared() }")
+                                  // ko if: isShared
+                                  span.fa.fa-unlock
+                                  span(data-bind="text: $parent.calendarsIsSharedTrueI18n")
+                                  // /ko
+                                  // ko ifnot: isShared
+                                  span.fa.fa-lock
+                                  span(data-bind="text: $parent.calendarsIsSharedFalseI18n")
+                                  // /ko
+                        div.form-group
+                          label.col-sm-5.control-label(for="tab_calendars-editing-field-color", data-bind="text: $parent.calendarsLabelColorI18n")
+                          .col-sm-7
+                            //div.form-inline
+                            input.minicolors.minicolors-inline.form-control(name="color", type="input", data-bind="minicolors: { value: color }")#tab_calendars-editing-field-color
+                    div.col-md-6
+                      .form-horizontal
+                        div.form-group
+                          label.col-sm-5.control-label(for="tab_calendars-editing-field-locationId", data-bind="text: $parent.calendarsLabelEstablishmentI18n")
+                          .col-sm-7
+                            input#tab_calendars-editing-field-locationId.form-control(name="locationId", type="hidden", data-bind="select2: select2LocationId")
+                        div.form-group
+                          label.col-sm-5.control-label(for="tab_calendars-editing-field-employee", data-bind="text: $parent.calendarsLabelEmployeeI18n")
+                          .col-sm-7
+                            input#tab_calendars-editing-field-employee.form-control(name="employee", type="hidden", data-bind="select2: select2Employee")
+                        div.form-group
+                          label.col-sm-5.control-label(for="tab_calendars-editing-field-group", data-bind="text: $parent.calendarsLabelGroupI18n")
+                          .col-sm-7
+                            input#tab_calendars-editing-field-group.form-control(name="group", type="hidden", data-bind="select2: select2Group")
+                div#tab_calendars-editing-panel-consultTimes.tab-pane.fade
+                  div.form-group
+                    button#tab_calendars-editing-button-addConsultTime.btn.btn-default(name="tab_calendars-editing-button-addConsultTime", type="button", data-bind="click: addConsultTime")
+                      span.fa.fa-plus
+                      span(data-bind="text: $parent.calendarsButtonAddI18n")
+                  // ko if: consultTimes().length
+                  div.tab_calendars-editing-consultTimes-container
+                    div.row
+                      div.col-xs-12.col-md-3
+                        label(data-bind="text: $parent.daysI18n")
+                      div.col-xs-6.col-md-2
+                        label(data-bind="text:$parent.startI18n")
+                      div.col-xs-6.col-md-2
+                        label(data-bind="text: $parent.endI18n")
+                      div.col-xs-6.col-md-2
+                        label(data-bind="text: $parent.scheduleTypesI18n")
+                      div.col-xs-6.col-md-1
+                        label(data-bind="text: $parent.colorI18n")
+                    div.form-horizontal(data-bind="foreach: consultTimes")
+                      div.row
+                        div.col-xs-12.col-md-3
+                          div.form-group(data-bind="hasFeedback: { field: days, toggle: days.hasError, messages: days.validationMessages }")
+                            .col-md-12
+                              input.form-control(name="days", type="hidden", data-bind="select2: select2Days, disable: isDaysFieldDisabled, attr: { id: 'tab_calendars-editing-consultTimes-field-days-' + $index() }")
+                          // ko if: repetitionDescription
+                          div
+                            em(data-bind="text: repetitionDescription")
+                          // /ko
+                        div.col-xs-6.col-md-2
+                          div.form-group(data-bind="hasFeedback: { field: start, toggle: start.hasError, messages: start.validationMessages }")
+                            .col-md-12
+                              div.date-picker.input-group
+                                input.form-control(name="start", type="text", data-bind="datetimepicker:{ options: { format: 'HH:mm'}, value: isoStart }, attr: { id: 'tab_calendars-editing-consultTimes-field-start-' + $index() }")
+                        div.col-xs-6.col-md-2
+                          div.form-group(data-bind="hasFeedback: { field: end, toggle: end.hasError, messages: end.validationMessages }")
+                            .col-md-12
+                              div.date-picker.input-group
+                                input.form-control(name="end", type="text", data-bind="datetimepicker:{ options: { format: 'HH:mm'}, value: isoEnd }, attr: { id: 'tab_calendars-editing-consultTimes-field-end-' + $index() }")
+                        div.col-xs-6.col-md-2
+                          div.form-group
+                            .col-md-12
+                              input.form-control(name="scheduleTypes", type="hidden", data-bind="select2: select2ScheduleTypes")
+                        div.col-xs-6.col-md-1
+                          div.form-group(data-bind="hasFeedback: { field: colorOfConsults, toggle: colorOfConsults.hasError, messages: colorOfConsults.validationMessages }")
+                            .col-md-12(style="width: 148px")
+                              input.form-control.minicolors.minicolors-inline(name="color", type="input", data-bind="minicolors: { value: colorOfConsults }" )
+
+                        div.col-xs-6.col-md-2.text-right
+                          button.btn.btn-default(name="tab_calendars-editing-consultTimes-button-showRepetitionsModal", type="button", data-bind="click: $parent.openRepetitionsModal.bind($data), attr:{title: $parent.repetitionsI18n}", style="margin-right: 10px;")
+                            span.fa.fa-refresh
+                            span.hidden-md.hidden-lg(data-bind="text: $parent.repetitionsI18n")
+                          button.btn.btn-default(name="tab_calendars-editing-consultTimes-button-deleteConsultTime", type="button", data-bind="click: $parent.deleteConsultTime")
+                            span.fa.fa-trash
+                            span.hidden-md.hidden-lg(data-bind="text: $parent.calendarsButtonDeleteI18n")
+                    hr.visible-xs.visible-sm
+                  // /ko
+                  // ko if: !consultTimes().length
+                  div.text-center(data-bind="text: $parent.calendarsNoVisitingHoursI18n")
+                  // /ko
+                  hr
+                  h4(data-bind="text: $parent.calendarsSpecificConsultTimesI18n")
+                  div.form-group
+                    button#tab_calendars-editing-button-addSpecificConsultTimes.btn.btn-default(name="tab_calendars-editing-button-addSpecificConsultTimes", type="button", data-bind="click: addSpecificConsultTimes")
+                      span.fa.fa-plus
+                      span(data-bind="text: $parent.calendarsButtonAddI18n")
+                  // ko if: specificConsultTimes().length
+                  div.tab_calendars-editing-consultTimes-container
+                    div.row
+                      div.col-xs-12.col-md-2
+                        label(data-bind="text: calendarsSpecificConsultTimesRangeI18n")
+                      div.col-xs-12.col-md-2
+                        label(data-bind="text: $parent.daysI18n")
+                      div.col-xs-6.col-md-2
+                        label(data-bind="text:$parent.startI18n")
+                      div.col-xs-6.col-md-2
+                        label(data-bind="text: $parent.endI18n")
+                      div.col-xs-6.col-md-2
+                        label(data-bind="text: $parent.scheduleTypesI18n")
+                      div.col-xs-6.col-md-1
+                        label(data-bind="text: $parent.colorI18n")
+                    div.form-horizontal(data-bind="foreach: specificConsultTimes")
+                      div.row
+                        div.col-xs-12.col-md-2(style="margin-bottom: 10px;")
+                          div(data-bind="hasFeedback: { field: range, toggle: range.hasError, messages: range.validationMessages }")
+                            input.form-control(name="range", type="text", data-bind="daterangepicker: { options: dateRangePickerOptions, value: isoRange  }, attr: { id: 'tab_calendars-editing-specificConsultTimes-field-range-' + $index() }")
+                        div.col-xs-12.col-md-2(style="margin-bottom: 10px;")
+                          div(data-bind="hasFeedback: { field: days, toggle: days.hasError, messages: days.validationMessages }")
+                            input.form-control(name="days", type="hidden", data-bind="select2: select2Days, attr: { id: 'tab_calendars-editing-specificConsultTimes-field-days-' + $index() }")
+                        div.col-xs-6.col-md-2(style="margin-bottom: 10px;")
+                          div(data-bind="hasFeedback: { field: start, toggle: start.hasError, messages: start.validationMessages }")
+                            div.date-picker.input-group
+                              input.form-control(name="start", type="text", data-bind="datetimepicker:{ options: { format: 'HH:mm'}, value: isoStart }, attr: { id: 'tab_calendars-editing-specificConsultTimes-field-start-' + $index() }")
+                        div.col-xs-6.col-md-2(style="margin-bottom: 10px;")
+                          div(data-bind="hasFeedback: { field: end, toggle: end.hasError, messages: end.validationMessages }")
+                            div.date-picker.input-group
+                              input.form-control(name="end", type="text", data-bind="datetimepicker:{ options: { format: 'HH:mm'}, value: isoEnd }, attr: { id: 'tab_calendars-editing-specificConsultTimes-field-end-' + $index() }")
+                        div.col-xs-6.col-md-2(style="margin-bottom: 10px;")
+                          input.form-control(name="scheduleTypes", type="hidden", data-bind="select2: select2ScheduleTypes")
+                        div.col-xs-3.col-md-1(style="margin-bottom: 10px;")
+                          div(data-bind="hasFeedback: { field: colorOfConsults, toggle: colorOfConsults.hasError, messages: colorOfConsults.validationMessages }")
+                            div(style="width: 120px")
+                              input.form-control.minicolors.minicolors-inline(name="color", type="input", data-bind="minicolors: { value: colorOfConsults }" )
+                        div.col-xs-3.col-md-1.text-right(style="margin-bottom: 10px;")
+                          button.btn.btn-default(name="tab_calendars-editing-consultTimes-button-deleteSpecificConsultTimes", type="button", data-bind="click: $parent.deleteSpecificConsultTimes")
+                            span.fa.fa-trash
+                            span.hidden-md.hidden-lg(data-bind="text: $parent.calendarsButtonDeleteI18n")
+                    hr.visible-xs.visible-sm
+                  // /ko
+                  // ko if: !specificConsultTimes().length
+                  div.text-center(data-bind="text: $parent.calendarsNoVisitingHoursI18n")
+                  // /ko
+            // /ko
+            hr
+            div.row
+              div.col-xs-12.text-right
+                button#tab_calendars-editing-button-save.btn.btn-primary(name="tab_calendars-editing-button-save", type="button", data-bind="click: save, disable: saveDisabled, text: $parent.calendarsButtonSaveI18n")
+    // /ko

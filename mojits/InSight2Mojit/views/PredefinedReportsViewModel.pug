@@ -1,0 +1,27 @@
+div(data-bind="if: configLoaded").predefined-reports
+
+  // ko with: predefinedReportsListViewModel
+  div(data-bind="sideBar: sideBarConfig", style="display: none;")
+    div#predefinedReportsListView(data-bind="template: template")
+  // /ko
+
+  div(data-bind="css: columnClassName")
+    div.row
+      div.col-lg-12
+        div(data-bind="template: timeline.template")
+
+    div.row(data-bind="if: tableReady").table-wrapper
+      // ko if: infoText
+      div.col-lg-12
+        div.alert.alert-info(data-bind="text: infoText")
+      // /ko
+      div.col-lg-12(data-bind="template: table.template")
+
+script(type="text/html", id="InSightTimelineViewModel")
+  include InSightTimelineViewModel
+script(type="text/html", id="PredefinedTableViewModel")
+  include PredefinedTableViewModel
+script(type="text/html", id="PredefinedSideTableViewModel")
+  include PredefinedSideTableViewModel
+script(type="text/html", id="predefinedReportsListViewModel")
+  include predefinedReportsListViewModel

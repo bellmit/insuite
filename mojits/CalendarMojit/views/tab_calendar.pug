@@ -1,0 +1,98 @@
+#tab_calendar(data-bind="attr: { 'class': 'tab_calendar-' + screenWidth() }")
+  div.row
+    div.col-compressor(data-bind="css: { 'col-compressor-compress': CalendarQuickChoice.pinned() }")
+      div.col-md-2
+        // ko if: screenWidth() === 'xs' || screenWidth() === 'sm'
+        div.row
+          div.col-xs-4
+            .form-group
+              button.btn.btn-sm.btn-block.btn-default(name="nextNumber", type="button", data-bind="click: nextNumberActionHandler, disable: nextNumberActionDisabled, visible: nextNumberActionVisible, text: newNumberI18n")
+              button.btn.btn-sm.btn-block.btn-default(name="nextAppointment", type="button", data-bind="click: nextAppointmentActionHandler, visible: nextAppointmentActionVisible, text: newAppointmentI18n")
+          div.col-xs-2
+            // ko if: patientFromCache
+            div.form-group
+              label.control-label(data-bind="text: patientInCacheI18n")
+              div.patientbadge
+                i.fa.fa-times(data-bind="click: unsetPreselectPatientId")
+                  | &nbsp;
+                span(data-bind="html: patientLink")
+            // /ko
+          div.col-xs-6
+            div.text-center(style="padding: 6px")
+              em(data-bind="text: nextLabelI18n + ':'")
+              | &nbsp;
+              strong
+                span(data-bind="text: topAppointmentNumber")
+                | ,&nbsp;
+                span(data-bind="text: topAppointmentTitle")
+        // /ko
+        // ko if: screenWidth() === 'lg' || screenWidth() === 'md'
+        button.btn.btn-sm.btn-block.btn-default(name="nextNumber", type="button", data-bind="click: nextNumberActionHandler, disable: nextNumberActionDisabled, visible: nextNumberActionVisible, text: newNumberI18n")
+        button.btn.btn-sm.btn-block.btn-default(name="nextAppointment", type="button", data-bind="click: nextAppointmentActionHandler, visible: nextAppointmentActionVisible, text: newAppointmentI18n")
+        | &nbsp;
+        // ko if: patientFromCache
+        div.form-group
+          label.control-label(data-bind="text: patientInCacheI18n")
+          div.patientbadge
+            i.fa.fa-times(data-bind="click: unsetPreselectPatientId")
+              | &nbsp;
+            span(data-bind="html: patientLink")
+        // /ko
+        div.theclock(data-bind="text: clock")
+        div.text-center
+          div.nextone(data-bind="text: topAppointmentNumber")
+          div
+            small
+              em(data-bind="text: nextLabelI18n")
+          div
+            strong.nexttitle(data-bind="text: topAppointmentTitle")
+        div(style="margin-top:10px;")
+          button.btn.btn-block.btn-default(name="admitPatient", type="button", data-bind="click: admitPatientActionHandler, disable: admitPatientActionDisabled, visible: admitPatientActionVisible")
+            i.fa.fa-bell
+            | &nbsp;
+            span(data-bind="text: callUpI18n")
+          button.btn.btn-block.btn-default(name="patientArrived", type="button", data-bind="click: patientArrivedActionHandler, disable: patientArrivedActionDisabled, visible: patientArrivedActionVisible")
+            i.fa.fa-arrow-down
+            | &nbsp;
+            span(data-bind="text: arrivedI18n")
+        div(data-bind="with: getBinderViewModel()")
+          div(style="margin-top:50px;")
+          hr
+          include snippets/CalendarSelector/vertical
+        // /ko
+      div.col-md-10
+        #calbase
+          #fullCalendar(data-bind="fullCalendar: calendar")
+        div
+          // ko if: screenWidth() === 'xs' || screenWidth() === 'sm'
+          div(data-bind="with: getBinderViewModel()")
+            include snippets/CalendarSelector/horizontal
+          // /ko
+        div
+          br
+          .text-muted
+            u(data-bind="text: calendarViewOptionsI18n")
+          div.form-inline
+            label.checkbox-inline(style="margin-left: 0; margin-right: 1em;")
+              input(name="showConsultTimes", type="checkbox", data-bind="checked: showConsultTimes")
+              small(data-bind="text: showConsultTimesLabelI18n")
+            label.checkbox-inline(style="margin-left: 0; margin-right: 1em;")
+              input(name="showCloseTimes", type="checkbox", data-bind="checked: showCloseTimes")
+              small(data-bind="text: showCloseTimesLabelI18n")
+            label.checkbox-inline(style="margin-left: 0; margin-right: 1em;")
+              input(name="showCombinedConsultTimes", type="checkbox", data-bind="checked: showCombinedConsultTimes")
+              small(data-bind="text: showCombinedConsultTimesLabelI18n")
+    div(data-bind="sideBar: rightSideBarConfig", style="display: none;")
+      div(data-bind="with: CalendarQuickChoice")
+        div.form-group
+          button.btn.btn-default.btn-block(name="subtract3Months", type="button", data-bind="click: subtract3MonthsClickHandler")
+            span.fa.fa-arrow-up(data-bind="text:  ' ' + subtract3MonthsI18n")
+        div(name="firstCalendar", data-bind="with: first")
+          include snippets/DCMiniCalendarView/default
+        div(name="secondCalendar", data-bind="with: second")
+          include snippets/DCMiniCalendarView/default
+        div(name="thirdCalendar", data-bind="with: third")
+          include snippets/DCMiniCalendarView/default
+        div
+          button.btn.btn-default.btn-block(name="add3Months", type="button", data-bind="click: add3MonthsClickHandler")
+            span.fa.fa-arrow-down(data-bind="text: ' ' + add3MonthsI18n")

@@ -1,0 +1,7 @@
+#tab_organisational-units
+  div.col-md-6(style="padding: 0")
+    h4(data-bind="text: pageTitle")
+  div.col-md-6(style="padding: 0")
+    .pull-right(data-bind="template: reloadButton.template", style="margin-right: 10px; margin-bottom:10px;padding: 0")
+  p.col-md-12.alert.alert-warning(data-bind="text: warningTextI18n")
+  div.col-md-12(data-bind="template: tiSmcbsTable.template", style="padding: 0")

@@ -1,0 +1,7 @@
+div.SelectPvsInsuranceialog
+    div#divPvsInsuranceTable.col-xs-12(data-bind="template: insuranceTable.template, visible: true")
+    div.checkbox
+        label(data-bind="text: unspecifiedInsuranceLabelI18n")
+            input(name="unspecifiedInsurance", type="checkbox", data-bind="checked: unspecifiedInsurance")
+
+    //p Description here

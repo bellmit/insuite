@@ -1,0 +1,17 @@
+div(id=mojit_view_id)
+  .container.container-fullscreen(style="display: none;", data-bind="visible: $data")
+    div(data-bind="template: navigation.template")
+    // ko switch: route
+    // ko case: 'dashboard'
+    div(data-bind="component: { name:'ExampleDashboard', params: dashboard }")
+    // /ko
+    // ko case: 'dashboard2'
+    div(data-bind="component: { name:'ExampleDashboard', params: dashboard2 }")
+    // /ko
+    // ko case: 'something'
+    div something
+    // /ko
+    // ko case: 'anything'
+    div anything
+    // /ko
+    // /ko

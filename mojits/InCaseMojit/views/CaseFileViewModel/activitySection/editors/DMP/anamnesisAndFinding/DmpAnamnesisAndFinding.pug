@@ -1,0 +1,35 @@
+div.form-group
+  div.row
+    div.col-xs-3
+      strong
+        span(data-bind="text: dmpSmoker.i18n")
+        span(data-bind="dmpField: { field: dmpSmoker }")
+        div.form-group(data-bind="hasFeedback: { field: dmpSmoker, toggle: dmpSmoker.hasError, messages: dmpSmoker.validationMessages }")
+          span(data-bind="foreach: dmpSmoker.list")
+            label.radio-inline
+              span(data-bind="text: i18n")
+              input(type="radio", name="dmpSmoker", data-bind="value: val, checked: $parent.dmpSmoker, readOnly: $parent.dmpSmoker.readOnly")
+          span.glyphicon.glyphicon-repeat(style="padding-left: 4px;", data-bind="click: resetDmpSmoker, visible: !dmpSmoker.readOnly()")
+    div.col-xs-3
+      div(data-bind="hasFeedback: { field: dmpGender, toggle: dmpGender.hasError, messages: dmpGender.validationMessages }")
+        label.control-label(data-bind="text: dmpGender.i18n")
+        span(data-bind="dmpField: { field: dmpGender }")
+        select.form-control(name="gender", data-bind="options: dmpGender.list, optionsValue: 'val', optionsText: 'i18n', value: dmpGender, readOnly: dmpGender.readOnly")
+    div.col-xs-3
+      div(data-bind="hasFeedback: { field: dmpHeight, toggle: dmpHeight.hasError, messages: dmpHeight.validationMessages }")
+        label.control-label(data-bind="text: dmpHeight.i18n")
+        span(data-bind="dmpField: { field: dmpHeight }")
+        input.form-control(name="dmpHeight", type="text", data-bind="value: dmpHeightString, readOnly: dmpHeight.readOnly")
+    div.col-xs-3
+      div(data-bind="hasFeedback: { field: dmpWeight, toggle: dmpWeight.hasError, messages: dmpWeight.validationMessages }")
+        label.control-label(data-bind="text: dmpWeight.i18n")
+        span(data-bind="dmpField: { field: dmpWeight }")
+        input.form-control(name="dmpWeight", type="text", data-bind="value: dmpWeightString, readOnly: dmpWeight.readOnly")
+div.form-group
+  strong(data-bind="text: dmpConcomitantDisease.i18n")
+  span(data-bind="dmpField: { field: dmpConcomitantDisease }")
+  div.row(data-bind="foreach: dmpConcomitantDisease.list, hasFeedback: { field: dmpConcomitantDisease, toggle: dmpConcomitantDisease.hasError, messages: dmpConcomitantDisease.validationMessages }")
+    div.col-xs-4
+      label.checkbox-inline
+        span(data-bind="text: i18n")
+        input(type="checkbox", name="dmpConcomitantDisease", data-bind="value: val, checked: $parent.dmpConcomitantDisease, attr: { name: $element.name + '-' + val }, readOnly: $parent.dmpConcomitantDisease.readOnly")

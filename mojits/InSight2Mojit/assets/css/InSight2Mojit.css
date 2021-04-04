@@ -1,0 +1,227 @@
+.insight2Mojit-currentView {
+  padding-top: 15px;
+}
+
+.widget-wrapper .chart-root {
+  height: 220px;
+}
+
+.widget-wrapper .sub-navigation > div {
+  display: inline-block;
+}
+
+.reports-table-wrapper h3 {
+  margin-top: 0;
+}
+.reports-table-wrapper h4 {
+  margin-top: 20px;
+}
+.reports-table-wrapper h4 .btt-add {
+  font-size: 0.7em;
+  margin-left: 5px;
+}
+.reports-table-wrapper h4.top {
+  margin-top: 0;
+}
+.reports-table-wrapper h4 > input[type=checkbox] {
+  margin-left: 5px;
+}
+.reports-table-wrapper h5 .btt-add {
+  font-size: 0.7em;
+  margin-left: 5px;
+}
+.reports-table-wrapper label {
+  display: block;
+  margin-bottom: 5px;
+  min-height: 22px;
+}
+.reports-table-wrapper .KoTable {
+  margin: -10px;
+}
+.reports-table-wrapper .row + .row {
+  margin-top: 10px;
+}
+.reports-table-wrapper .template-wrapper + .template-wrapper {
+  margin-top: 5px;
+}
+.reports-table-wrapper > .btt-add {
+  margin-bottom: 10px;
+  display: inline-block;
+}
+.reports-table-wrapper > .btt-add i {
+  margin-right: 5px;
+}
+.reports-table-wrapper .btt-remove,
+.reports-table-wrapper .btt-add {
+  cursor: pointer;
+}
+.reports-table-wrapper .btt-remove:hover,
+.reports-table-wrapper .btt-add:hover {
+  text-decoration: none;
+}
+.reports-table-wrapper .col-selector {
+  margin-bottom: 10px;
+}
+.reports-table-wrapper .col-selector .btt-remove {
+  float: right;
+  margin: 6px 3px 0 0;
+}
+.reports-table-wrapper .col-selector .template-wrapper {
+  margin-right: 30px;
+}
+.reports-table-wrapper .col-selector .truncate-limit {
+  height: 28px;
+  padding: 3px 6px;
+  width: 53px;
+  display: inline;
+  margin-left: 7px;
+}
+.reports-table-wrapper .col-selector div.col-options div.checkbox {
+  min-height: 24px;
+  margin-bottom: 0;
+}
+.reports-table-wrapper .col-selector div.col-options div.checkbox label {
+  margin: 0;
+}
+.reports-table-wrapper .filter-group {
+  padding: 10px;
+  margin: 10px 0 0;
+  background-color: #f5f5f5;
+  border-radius: 5px;
+}
+.reports-table-wrapper .filter-group h5 {
+  font-weight: bold;
+  margin-top: 0;
+}
+.reports-table-wrapper .filter-group h5 .btt-remove {
+  float: right;
+}
+.reports-table-wrapper .filter-group h5 select {
+  margin-left: 5px;
+}
+.reports-table-wrapper .filter-element {
+  margin-bottom: 5px;
+}
+.reports-table-wrapper .filter-element .btt-remove {
+  float: right;
+  margin: 32px 10px 0 0;
+}
+.reports-table-wrapper .filter-element .template-wrapper {
+  margin-right: 40px;
+}
+.reports-table-wrapper .filter-list .filter-element:last-child .between {
+  display: none;
+}
+.reports-table-wrapper div.action {
+  margin-top: 15px;
+}
+.reports-table-wrapper div.action > div {
+  display: inline-block;
+}
+.reports-table-wrapper div.action > div + div {
+  margin-left: 10px;
+}
+.reports-table-wrapper div.action > div.remove {
+  float: right;
+}
+.reports-table-wrapper div.date-selector {
+  margin-bottom: 10px;
+}
+.reports-table-wrapper div.date-selector .datepickers-wrapper {
+  padding-right: 0;
+}
+.reports-table-wrapper div.date-selector .period-selector {
+  padding-right: 0;
+  padding-left: 0;
+}
+.reports-table-wrapper div.date-selector .period-selector .selector-buttons {
+  display: inline-block;
+}
+.reports-table-wrapper div.date-selector .period-selector .selector-buttons > div {
+  display: inline-block;
+}
+.reports-table-wrapper div.date-selector .period-selector .selector-buttons > div + div {
+  margin-left: 4px;
+}
+.reports-table-wrapper div.date-selector .period-selector select {
+  width: 107px;
+  display: inline-block;
+  margin-right: 6px;
+  padding-right: 0;
+  padding-left: 5px;
+}
+.reports-table-wrapper div.date-selector .period-selector button {
+  padding-left: 6px;
+  padding-right: 6px;
+}
+@media (min-width: 992px) {
+  .reports-table-wrapper div.date-selector .datepickers > div {
+    width: 32%;
+  }
+  .reports-table-wrapper div.date-selector .datepickers > .period-selector {
+    width: 36%;
+  }
+  .reports-table-wrapper div.date-selector .datepickers > .period-selector select {
+    width: 92px;
+  }
+}
+@media (min-width: 1200px) {
+  .reports-table-wrapper div.date-selector .datepickers-wrapper {
+    width: 45%;
+  }
+  .reports-table-wrapper div.date-selector .timeline-wrapper {
+    width: 55%;
+  }
+  .reports-table-wrapper div.date-selector .datepickers > .period-selector select {
+    width: 107px;
+  }
+}
+.reports-table-wrapper div.date-selector .timeline {
+  height: 112px;
+  overflow: hidden;
+}
+.reports-table-wrapper div.date-selector .timeline rect.extent {
+  opacity: 0.2;
+  fill: #3276b1;
+}
+.reports-table-wrapper div.date-selector .timeline .nvd3 text {
+  font-size: 11px;
+}
+.reports-table-wrapper .group-wrapper {
+  margin-bottom: 15px;
+  margin-top: 15px;
+}
+.reports-table-wrapper .date-range-config div.radio label {
+  display: inline;
+}
+.reports-table-wrapper .date-range-config div.radio .input-group {
+  display: inline-table;
+  width: 200px;
+}
+
+.pre-table-box .KoTable {
+  margin: -10px;
+}
+.pre-table-box .side-table .KoTable-bottom {
+  display: none;
+}
+
+table table.nested-list {
+  width: 100%;
+}
+table table.nested-list td {
+  padding: 5px;
+}
+table table.nested-list td:first-child {
+  width: 150px;
+}
+
+.predefined-reports .table-wrapper {
+  margin-top: 15px;
+}
+
+.display-fields .col-md-4:nth-child(3n+1) {
+  clear: left;
+}
+
+/*# sourceMappingURL=InSight2Mojit.css.map */

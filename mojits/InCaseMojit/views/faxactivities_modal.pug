@@ -1,0 +1,18 @@
+div#FaxActivities
+  div.row
+    div.row(data-bind="visible: isVisibleOn('step1')")
+      div.col-xs-12
+        div.form-group(data-bind="hasFeedback: { toggle: faxModel.faxType.hasError, messages: faxModel.faxType.errorMessage }")
+          label.control-label(data-bind="text: faxModel.targetI18n")
+          select.form-control(data-bind="value: faxModel.faxType, options: faxModel.faxTypes, optionsValue: 'val', optionsText: 'i18n'")
+        div.form-group(data-bind="hasFeedback: { toggle: faxModel.faxNumber.hasError, messages: faxModel.faxNumber.validationMessages }")
+          label.control-label(data-bind="text: faxModel.faxNuberI18n")
+          input.form-control(name="faxNumber", type="string", data-bind="value: faxModel.faxNumber, valueUpdate: 'afterkeydown', readOnly: faxModel.faxNumber.readOnly")
+        div.form-group(data-bind="hasFeedback: { toggle: faxModel.gateway.hasError, messages: faxModel.gateway.validationMessages }")
+          label.control-label(data-bind="text: faxModel.emailGatewayI18n")
+          input.form-control(name="gateway", readonly="true", type="email", data-bind="value: faxModel.gateway, valueUpdate: 'afterkeydown', attr: {placeholder: faxModel.emailGatewayI18n}")
+        div.form-group
+          textarea.form-control(data-bind="value: faxModel.content, valueUpdate: 'afterkeydown', readOnly: faxModel.content.ReadOnly, attr: {placeholder: faxModel.messageI18n", rows="13")
+    div.row(data-bind="visible: isVisibleOn('step2')")
+      .col-md-12
+        p(data-bind="text: step2_messageI18n")

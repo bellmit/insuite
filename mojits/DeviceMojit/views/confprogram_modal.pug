@@ -1,0 +1,9 @@
+div#confprogramModal.text-center(style="margin-top: -10px")
+    h4 Bitte schließen sie vor der Ausführung alle Kartenlesegeräte des spezifischen Herstellers an, die sie zur gleichen Zeit verwenden wollen, und entfernen sie al
+    h5 Sollte das Orga Programm nicht Zeilen wie "<<< Response from Card Terminal" oder ähnliches enthalten, probieren sie bitte "sudo mct-check" im Terminal auszuführen.
+    br
+    h4 Verfügbare Programme:
+    div(data-bind="template: gtBtn.template")
+    div(data-bind="template: orgaBtn.template")
+    h4 Ausgabe:
+    code(id="genConfOutput", style="display: block; height: 250px; overflow: auto; text-align: left;", data-bind="text: codeText")

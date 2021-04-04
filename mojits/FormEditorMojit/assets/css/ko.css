@@ -1,0 +1,97 @@
+/*************************
+*** DATATABLE STYLES *****
+**************************/
+.table {
+    margin-bottom: 5px;
+}
+/**##############**/
+
+
+.table-bordered thead td.checkbox-row {
+    width: 30px;
+    padding: 8px 3px 3px;
+}
+
+.table-bordered tbody td.checkbox-row {
+    width: 30px;
+    padding: 3px;
+}
+
+.table-condensed td.checkbox-row {
+    width: 20px;
+}
+
+table .checkbox {
+    padding: 0;
+    margin: 0;
+    min-height: 42px
+}
+
+.table-condensed .checkbox  {
+    margin-top: 3px;
+    padding-top: 5px;
+}
+
+table .checkbox input[type="checkbox"] {
+    visibility: hidden;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, .2);
+}
+
+table .checkbox label {
+    display: inline-block;
+    cursor: pointer;
+    position: relative;
+    padding-left: 25px;
+    margin-right: 15px;
+    font-size: 13px;
+}
+
+table .checkbox label:before {
+    background-color: #EBEBEB;
+    top: -9px;
+    box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.3) inset, 0 1px 0 0 rgba(255, 255, 255, 0.8);
+    content: "";
+    display: inline-block;
+    height: 32px;
+    left: 0;
+    position: absolute;
+    width: 32px;
+    border-radius: 4px;
+    margin-left: 3px;
+    margin-top: 1px;
+}
+
+table .checkbox input[type="checkbox"] + label:before {
+    font-size: 26px;
+    text-align: center;
+    line-height: 36px;
+}
+
+table .checkbox input[type="checkbox"]:hover + label:before {
+    content: "\2713";
+    color: #bbbbbb;
+}
+
+table .checkbox input[type="checkbox"]:checked + label:before {
+    content: "\2713";
+    color: #666666;
+    opacity: 1;
+}
+
+table.table-condensed .checkbox label {
+    padding-left: 13px;
+    margin-right: 7px;
+    font-size: 16px;
+}
+
+table.table-condensed .checkbox label:before {
+    height: 16px;
+    width: 16px;
+    margin-left: 2px;
+}
+
+table.table-condensed input[type="checkbox"] + label:before {
+    font-size: 16px;
+    text-align: center;
+    line-height: 18px;
+}

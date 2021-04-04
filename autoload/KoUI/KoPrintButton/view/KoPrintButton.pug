@@ -1,0 +1,15 @@
+div.KoPrintButton.btn-group(data-bind="visible: visible, css: { dropup: menu.dropup }",style="display: inline-block; z-index: 1025;")
+    button.btn.btn-default(data-bind="css: css, disable: disabledOrMissing, attr: { title: title, name: name }, click: onDefaultPrintClick")
+      // ko if: (icon && icon.iconName)
+      span.KoPrintButton-icon(data-bind="template: $data.icon.template")
+      // /ko
+      span &nbsp;
+      // ko if: text
+      span.KoPrintButton-text(data-bind="text: text")
+      // /ko
+    div.btn-group
+      button.btn.btn-default.dropdown-toggle(type="button", data-bind="css: css, disable: disabled, attr: { title: title, name: name }", data-toggle="dropdown")
+        | &nbsp;
+        span.caret
+      // ko template: menu.template
+      // /ko

@@ -1,0 +1,495 @@
+@font-face {
+    font-family: 'digi';
+    src: url('/static/DocCirrus/assets/fonts/digii/DS-DIGII.TTF');
+}
+
+.theclock {
+    text-align: center;
+    width: 100%;
+    font-family: 'Verdana';
+    color: #707070;
+    font-size: 2em;
+}
+
+.patientbadge {
+    width: 100%;
+    text-align: left;
+    border: 1px solid #adadad;
+    padding: 2px 5px;
+    font-size: 14px;
+    margin-top: 5px;
+    border-radius: 3px;
+}
+.patientbadge .fa{
+    color: #adadad;
+}
+
+.CalendarMojit-screenWidth-lg .theclock,
+.CalendarMojit-screenWidth-md .theclock {
+    margin-top: 50px;
+}
+
+.nextone {
+    box-sizing: border-box;
+    font-family: 'digi';
+    width: 100%;
+    color: #707070;
+    text-align: center;
+    border-top: 5px solid #E54B6B;
+}
+
+.CalendarMojit-screenWidth-lg .nextone,
+.CalendarMojit-screenWidth-md .nextone {
+    margin-top: 20px;
+    height: 100px;
+    font-size: 47px;
+    line-height: 100px;
+}
+#addNewRoom .minicolors-swatch {
+    width: 28px;
+    height: 28px;
+    border-radius: 5px;
+}
+
+#addNewRoom .minicolors-swatch > span {
+    border-radius: 4px;
+}
+
+.CalendarMojit-screenWidth-xs .nextone,
+.CalendarMojit-screenWidth-sm .nextone {
+    font-size: 24px;
+}
+
+.nextonemodal {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+    font-family: 'digi';
+    font-size: 76%;
+    width: 100%;
+    height: 100px;
+    font-size: 4em;
+    color: #707070;
+    text-align: center;
+    line-height: 100px;
+    border-top: 5px solid #E54B6B;
+    border-bottom: 5px solid #E54B6B;
+}
+
+#tab_calendar .nexttitle {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.fc-event-inner {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.popover .popover-title {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* dc common */
+.dc-nav {
+    margin-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.dc-nav-flex-container {
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-flex-wrap: nowrap;
+    -ms-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+    -webkit-justify-content: space-between;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -webkit-align-content: stretch;
+    -ms-flex-line-pack: stretch;
+    align-content: stretch;
+    -webkit-align-items: flex-start;
+    -ms-flex-align: start;
+    align-items: flex-start;
+}
+
+.dc-nav-flex-left {
+    -webkit-order: 0;
+    -ms-flex-order: 0;
+    width: 100%;
+    order: 0;
+    -webkit-flex: 1 1 auto;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    -webkit-align-self: auto;
+    -ms-flex-item-align: auto;
+    align-self: auto;
+    width: 100%;
+}
+
+.dc-nav-flex-right {
+    -webkit-order: 0;
+    -ms-flex-order: 0;
+    order: 0;
+    -webkit-flex: 0 1 auto;
+    -ms-flex: 0 1 auto;
+    flex: 0 1 auto;
+    -webkit-align-self: auto;
+    -ms-flex-item-align: auto;
+    align-self: auto;
+    width: 100%;
+}
+
+.dc-nav #mainCalendarNavigation .nav-tabs {
+    border-bottom: 0 none;
+}
+
+.dc-nav-tools {
+    margin-top: 6px;
+    white-space: nowrap;
+}
+
+.dc-nav-tools .appointmentSearch {
+    display: inline-block;
+    vertical-align: middle;
+    width: 250px;
+}
+
+.CalendarMojit-screenWidth-xs .dc-nav-tools .appointmentSearch,
+.CalendarMojit-screenWidth-sm .dc-nav-tools .appointmentSearch {
+    width: 200px;
+}
+
+.CalendarMojit-tab_reports .dc-nav-tools .appointmentSearch,
+.CalendarMojit-tab_tasks .dc-nav-tools .appointmentSearch {
+    display: none;
+}
+
+.dc-nav-tools [name="slotDuration"] {
+    margin-left: 10px;
+    display: inline-block;
+    width: auto;
+}
+
+.CalendarMojit-tab_waiting-list .dc-nav-tools [name="slotDuration"],
+.CalendarMojit-tab_called-list .dc-nav-tools [name="slotDuration"],
+.CalendarMojit-tab_reports .dc-nav-tools [name="slotDuration"],
+.CalendarMojit-tab_tasks .dc-nav-tools [name="slotDuration"],
+.CalendarMojit-tab_graphic-waiting-list .dc-nav-tools [name="slotDuration"] {
+    display: none;
+}
+
+.dc-nav-tools [name="toggleFullScreen"] {
+    margin-left: 10px;
+}
+
+.CalendarMojit-screenWidth-xs .dc-nav-tools [name="toggleFullScreen"],
+.CalendarMojit-screenWidth-sm .dc-nav-tools [name="toggleFullScreen"] {
+    display: none;
+}
+
+.CalendarMojit-screenWidth-xs .fc-toolbar h2,
+.CalendarMojit-screenWidth-sm .fc-toolbar h2 {
+    font-size: 20px;
+}
+
+.fc-time-grid .fc-bgevent.BlockingEventSource {
+    z-index: 1;
+}
+
+.fc-time-grid .fc-bgevent.ConsultTimeEventSource {
+    z-index: 10;
+}
+
+.fc-time-grid .fc-bgevent.CloseTimeEventSource {
+    z-index: 15;
+    background-repeat: repeat;
+    background-attachment: fixed;
+}
+
+.fc-time-grid .fc-bgevent.CloseTimeEventSource-background-dark {
+    background-image: url("../images/CloseTimeEventSourceBackgroundDark.png");
+}
+
+.fc-time-grid .fc-bgevent.CloseTimeEventSource-background-light {
+    background-image: url("../images/CloseTimeEventSourceBackgroundLight.png");
+}
+
+/* views/snippets/CalendarSelector */
+.CalendarSelector {
+}
+
+.CalendarSelector-horizontal {
+    margin-top: 20px;
+}
+
+.CalendarSelector-vertical {
+}
+
+.CalendarSelector-heading {
+    margin-bottom: 5px;
+    text-decoration: underline;
+}
+
+.CalendarSelector-item {
+    position: relative;
+    margin: 0 -20px 2px 0;
+}
+
+.CalendarSelector-horizontal .CalendarSelector-item {
+    white-space: nowrap;
+}
+
+.CalendarSelector-item-color {
+    display: inline-block;
+    border-radius: 3px;
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+    margin-right: 5px;
+}
+
+.CalendarSelector-item-label {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 81%;
+}
+
+.CalendarSelector-toggler {
+    display: inline-block;
+}
+
+.CalendarSelector-vertical .CalendarSelector-toggler {
+    margin-bottom: 5px;
+}
+
+.CalendarSelector-horizontal .CalendarSelector-heading {
+    display: inline-block;
+}
+
+.CalendarSelector-horizontal .CalendarSelector-toggler {
+    margin-left: 1.5em;
+}
+
+.dc-SideBar-container-unpinned.dc-SideBar-container {
+    z-index: 2000; /* workaround screen blocker (MOJ-600) */
+}
+
+.dc-SideBar-container-right.dc-SideBar-container-pinned {
+    float: left;
+    width: 292px;
+    margin: 0 10px;
+}
+
+.col-compressor.col-compressor-compress {
+    float: left;
+    width: calc(100% - 312px);
+}
+
+.btn-text {
+    border: none;
+    cursor: text;
+    outline: none;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.btn-text:focus,
+.btn-text:active,
+.btn-text:active:focus {
+    outline: none;
+    outline: 0;
+}
+
+.suggested-dates__button {
+    width: 100%;
+    margin-bottom: 0.357142857142857em; /* 5px */
+}
+
+.find-appointment .find-appointment__selected-date-input {
+    text-align: center;
+    background-color: #e6f2ff;
+    font-size: 1.142857142857143em; /* 16px */
+}
+
+.dc-triangle::before,
+.dc-triangle::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    border: solid transparent;
+}
+
+.white-tooltip + .tooltip > .tooltip-inner {
+    background-color: #fff;
+    color: #000;
+    border: 1px solid #062e56;
+    max-width: none;
+    white-space: nowrap;
+}
+.white-tooltip + .tooltip > .tooltip-arrow {
+    background-color: #fff;
+}
+
+.DCMiniCalendarView .selected-btn {
+    border: 1px solid #00CC00;
+    box-shadow: none;
+}
+
+#resourcesCalendar {
+    overflow: hidden;
+    position: relative;
+}
+
+#resourcesCalendar .wrapper {
+    width: 200%;
+}
+
+#resourcesCalendarMain {
+    display: inline-block;
+}
+
+#resourcesCalendarLeftBar {
+    display: none;
+}
+
+#resourcesCalendarLeftBar.opened {
+    display: inline-block;
+}
+
+button .awesome-icon {
+    font-family: 'FontAwesome';
+}
+
+#custom-config-menu button {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin: 0 auto 5px;
+    width: 100%;
+}
+
+.config-menu-dropdown {
+    text-align: left;
+    position: absolute;
+    top: 35px;
+    right: 0;
+    z-index: 2;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 5px 15px;
+    border-radius: 4px;
+}
+
+#waitingListGraphic {
+    position: relative;
+}
+
+.patient {
+    border: 1px solid grey;
+    margin-bottom: 10px;
+}
+
+body.dragging, body.dragging * {
+  cursor: move !important;
+}
+
+.dragged {
+    position: absolute;
+    top: 0;
+    opacity: 0.5;
+    z-index: 2000;
+}
+
+ol.patients-list.patients-list-drop {
+    list-style-type: none;
+    padding-left: 0;
+    min-height: 100px;
+}
+ol.rooms-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+ol.patients-list.patients-list-drop li {
+    display: block;
+    padding: 5px;
+    border: 1px solid #cccccc;
+}
+
+ol.patients-list.patients-list-drop li.patient.placeholder,
+ol.rooms-list li.room.placeholder {
+     position: relative;
+}
+
+ol.patients-list.patients-list-drop li.patient.placeholder:before,
+ol.rooms-list li.room.placeholder:before {
+    position: absolute;
+    content: "";
+    width: 0;
+    height: 0;
+    border: 5px solid transparent;
+    top: -6px;
+    margin-left: -5px;
+    border-bottom: none ;
+}
+
+ol.patients-list.patients-list-drop li.placeholder,
+ol.rooms-list li.placeholder {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+
+ol.patients-list.patients-list-drop li.placeholder:before,
+ol.rooms-list li.placeholder:before {
+    position: absolute;
+    content: "";
+    width: 0;
+    height: 0;
+    margin-top: -5px;
+    left: -5px;
+    top: -4px;
+    border: 5px solid transparent;
+}
+ol.patients-list.patients-list-drop li.placeholder:before {
+    border-right: none;
+    border-left-color: red;
+}
+ol.rooms-list li.placeholder:before {
+    border-top-color: red;
+}
+.filters-list > div,
+.permanent-filter > div {
+    position: relative;
+    margin-bottom: 10px;
+    padding: 0 5px 0 5px;
+}
+.filters-list > div input,
+.permanent-filter > div input {
+    padding-left: 28px;
+}
+.filters-list > div i,
+.permanent-filter > div i {
+    position: absolute;
+    color: #999;
+    top: 7px;
+    left: 12px;
+    font-size: 20px;
+    opacity: .5;
+}
+.filters-list .select2-default,
+.permanent-filter .select2-default {
+    font-size: 13px !important;
+}
+.filters-list .select2-chosen,
+.permanent-filter .select2-chosen {
+    line-height: 1.7 !important;
+}

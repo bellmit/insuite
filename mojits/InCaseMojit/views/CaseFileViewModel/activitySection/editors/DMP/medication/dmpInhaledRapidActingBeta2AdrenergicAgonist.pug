@@ -1,0 +1,9 @@
+div.form-group
+  div.row
+    div.col-xs-5
+      strong(data-bind="text: dmpInhaledRapidActingBeta2AdrenergicAgonist.i18n")
+      span(data-bind="dmpField: { field: dmpInhaledRapidActingBeta2AdrenergicAgonist }")
+    div.col-xs-7(data-bind="foreach: dmpInhaledRapidActingBeta2AdrenergicAgonist.list, hasFeedback: { field: dmpInhaledRapidActingBeta2AdrenergicAgonist, toggle: dmpInhaledRapidActingBeta2AdrenergicAgonist.hasError, messages: dmpInhaledRapidActingBeta2AdrenergicAgonist.validationMessages }")
+      label.checkbox-inline
+        span(data-bind="text: i18n")
+        input(type="checkbox", name="dmpInhaledRapidActingBeta2AdrenergicAgonist", data-bind="value: val, checked: $parent.dmpInhaledRapidActingBeta2AdrenergicAgonist, readOnly: $parent.dmpInhaledRapidActingBeta2AdrenergicAgonist.readOnly, attr: { name: $element.name + '-' + val }")

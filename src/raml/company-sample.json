@@ -1,0 +1,19 @@
+{
+  "meta": {
+    "errors": [],
+    "warnings": [],
+    "query": {"_id":"54eb41b878382da863181d3b"},
+    "itemsPerPage": null,
+    "totalItems": 1,
+    "page": null,
+    "replyCode": 200
+  },
+  "data": [
+  {
+    "_id": "54eb41b878382da863181d3b",
+    "medneoId": "X",
+    "coname": "Klinikum Eins",
+    "tenantId": "12837887dddd"
+  }
+]
+ }

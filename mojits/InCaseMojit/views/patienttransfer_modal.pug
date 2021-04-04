@@ -1,0 +1,6 @@
+div#transfer
+  div.row(data-bind="visible: isVisibleOn('step1')")
+    #partnerTable.col-xs-12(data-bind="template: partnerTable.template")
+  div.row(data-bind="visible: isVisibleOn('step2')")
+    .col-md-12
+      p(data-bind="text: message")

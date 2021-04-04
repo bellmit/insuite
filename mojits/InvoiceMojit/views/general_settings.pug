@@ -1,0 +1,51 @@
+#general_settings
+  div.row
+    div.col-md-6(data-bind="with: invoiceconfiguration")
+      include invoicegeneralsettings
+      div(data-bind="visible: $parent.isMVPRC")
+        h4(data-bind="text: $parent.translation.groupMedneoI18n")
+        div.panel.panel-default
+          div.panel-body
+            div.checkbox
+              label.control-label
+                span(data-bind="text: $parent.translation.iAmMedneoCustomerI18n")
+                input(type="checkbox", name="isMedneoCustomer", data-bind="checked: isMedneoCustomer")
+
+      h4(data-bind="text: $parent.translation.groupPVSI18n")
+      div.panel.panel-default
+        div.panel-body
+          div.checkbox
+            label.control-label
+              span(data-bind="text: $parent.translation.isPVSNeedsApproval")
+              input(type="checkbox", name="pvsNeedsApproval", data-bind="checked: pvsNeedsApproval")
+
+      h4(data-bind="text: $parent.translation.groupGKVI18n")
+      div.panel.panel-default
+        div.panel-body
+          div.checkbox
+            label.control-label
+              span(data-bind="text: $parent.translation.createUniqCaseIdentNoOnInvoice")
+              input(type="checkbox", name="createUniqCaseIdentNoOnInvoice", data-bind="checked: createUniqCaseIdentNoOnInvoice")
+          div.checkbox
+            label.control-label
+              span(data-bind="text: $parent.translation.conFileSplicing")
+              input(type="checkbox", name="conFileSplicing", data-bind="checked: conFileSplicing")
+      h4(data-bind="text: $parent.translation.vatI18n")
+      div.panel.panel-default
+        div.panel-body
+          .row
+            div.col-xs-5
+              div.checkbox
+                label.control-label
+                  span(data-bind="text: $parent.translation.preselectVatI18n")
+                  input(type="checkbox", name="addVat", data-bind="checked: addVat")
+            div.col-xs-3
+              //ko if: shouldDisplayVatSelect
+              div.form-group
+                select.form-control(name="vat", data-bind="options: vatList, optionsValue: 'code', optionsText: 'description', value: vat")
+              // /ko
+
+  div.row
+    div.col-sm-12
+      div.dc-action-buttons.dc-action-buttons-right(data-bind="with: actions")
+        button.btn.btn-primary(name="saveBtn", type="button", data-bind="enable: saveInvoiceconfigurationEnable, click: saveInvoiceconfiguration, text: $parent.translation.buttonTextSaveI18n")

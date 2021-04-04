@@ -1,0 +1,30 @@
+div
+
+  //  text area
+
+  textarea.form-control(style="width: 95%", rows="5", data-bind="value: currentLanguageValue")
+  br
+
+  //  maximum length
+
+  span
+    span(data-bind="text: maxLengthLabel")
+    input.form-control(type="text", data-bind="value: maxLen")
+  br
+
+  //  further options
+
+  div.checkbox(data-bind="visible: showMoreOptions")
+    input(type="checkbox", data-bind="checked: scaleOverflow")#chkScaleText
+    label.checkbox(for="chkScaleText")
+      span(style="margin-left: 15px;", data-bind="text: scaleOverflowLabel")
+
+  div.checkbox
+    input(type="checkbox", data-bind="checked: omitFromPDFIfEmpty")#cbHideTextWhenEmpty
+    label.checkbox-inline(for="cbHideTextWhenEmpty")
+      span(style="margin-left: 15px;", data-bind="text: LBL_EE_OMITIFEMPTY")
+
+  div.checkbox(data-bind="visible: showMoreOptions")
+    input(type="checkbox", data-bind="checked: useMarkdownEditor")#cbTextUseMarkdownEditor
+    label.checkbox-inline(for="cbTextUseMarkdownEditor")
+      span(style="margin-left: 15px;", data-bind="text: LBL_EE_LARGETEXT")

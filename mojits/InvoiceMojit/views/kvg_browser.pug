@@ -1,0 +1,25 @@
+div.row
+    .col-xs-12
+        #actionButtons.dc-action-buttons.dc-action-buttons-top.dc-action-buttons-left.clearfix
+            button#btn_crt.btn.btn-primary(type="button", data-bind="click: create.action, text: buttonGenerateI18n")
+            button#btn_remove.btn.btn-primary(type="button", data-bind="click: remove.action, visible: remove.visible, enable: remove.enabled, text: buttonRemoveI18n")
+            button#btn_prevldt.btn.btn-primary(type="button", data-bind="click: preValidate.action, enable: preValidate.enabled, text: buttonPrecheckI18n")
+            button#btn_batch.btn.btn-primary(type="button", data-bind="click: generateInvoices.action, enable: generateInvoices.enabled, visible: generateInvoices.visible")
+              i.fa.fa-files-o
+              | &nbsp;
+              span(data-bind="text: approveAndGenerateInvoicesTextI18n")
+            span.pull-right.dc-action-buttons-right
+                snap.form-inline
+                    select#manualShipping.form-control(
+                        name="shippingType",
+                        data-bind="options: _shippingList, optionsValue: 'val', optionsText: '-de', value: shipping, enable: optionsEnable"
+                    )
+                button.btn.btn-primary(type="button" data-bind="enable: send.enabled, click: send.action, visible: send.visible")
+                    span(data-bind="text: shippingButton")
+                //button#btn_batch_pdf.btn.btn-primary(type="button", data-bind="click: invoiceBatchCreationPDF.action, enable: invoiceBatchCreationPDF.enabled, visible: invoiceBatchCreationPDF.visible")
+                    i.fa.fa-file-pdf-o
+                    | &nbsp;
+                    span(data-bind="text: generateInvoicesPDFI18n")
+
+div.row
+    #tarmedlogTable.col-xs-12(data-bind="template: template")

@@ -1,0 +1,16 @@
+div
+  div.row
+    div.col-md-12
+      div.form-group
+        textarea.form-control(name="userContent", data-bind="caretPosition: userContent.caretPosition, textInput: userContent, readOnly: userContent.readOnly, hasFocus: true, textareaRows: { from: userContent, minRows: 2, maxRows: 10 }")
+  // ko ifnot: showTable
+  div.row
+    div.col-md-12
+      div.form-group
+        textarea.form-control(name="labText", readonly="readonly", data-bind="value: labText, textareaRows: { from: labText, minRows: 5 }", style="font-family: monospace; font-size: 13px;")
+  // /ko
+  // ko if: showTable
+  div.row
+    div.col-md-12
+      div#testsEditableTable(data-bind="template: testsEditableTable.template")
+  // /ko

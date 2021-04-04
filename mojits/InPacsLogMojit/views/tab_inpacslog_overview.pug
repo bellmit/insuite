@@ -1,0 +1,4 @@
+div#tab_inpacslog_overview
+    h3(data-bind="text: titleI18n")
+    div#inpacslogOverviewTable(data-bind="template: inpacsOverviewTable.template")
+    button.btn.btn-primary.pull-right(name="pullDataFromOrthanc", type="button", data-bind="click: getDataFromOrthanc, enable: pullDataFromOrthancButtonEnabled, text: refreshFromPacsI18n")

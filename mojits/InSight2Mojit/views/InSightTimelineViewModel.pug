@@ -1,0 +1,49 @@
+div.date-selector
+
+  //div.row
+  //  div.col-lg-3.col-md-3.col-sm-4
+  //    label #{__i18n( 'InSight2Mojit.timeSelector.range.START' )}
+  //    p(data-bind="text: dateSelectorHelperData.rangeDisplayStart")
+  //  div.col-lg-3.col-md-3.col-sm-4
+  //    label #{__i18n( 'InSight2Mojit.timeSelector.range.END' )}
+  //    p(data-bind="text: dateSelectorHelperData.rangeDisplayEnd")
+
+
+  div.row
+    div.col-lg-5.col-md-6.col-sm-12.col-xs-6.datepickers-wrapper
+      div.row.datepickers
+        div.col-lg-4.col-md-4.col-sm-4
+          label(data-bind="text: timeSelectorStartI18n")
+          div.date-picker.input-group
+            input.form-control(name="tlStartDate", data-bind="datetimepicker: { value: dateSelectorHelperData.pickerStartDate, " +
+                                                             "valueReset: null, " +
+                                                             "options: dateSelectorOptionsStart," +
+                                                             "onInit: dateSelectorInitStart}")
+        div.col-lg-4.col-md-4.col-sm-4.period-selector(style="padding: 0 10px")
+          label
+          select(style="width: 83px" data-bind="options: periodList, " +
+                           "optionsText: 'label', " +
+                           "optionsValue: 'value', " +
+                           "value: config.switchMode," +
+                           "event: {change: switchModeChange}").form-control
+          div.selector-buttons
+            div(data-bind="template: periodButtons.prevBtt.template")
+            div(data-bind="template: periodButtons.todayBtt.template, visible: config.switchMode() !== 'custom'")
+            div(data-bind="template: periodButtons.nextBtt.template")
+
+        div.col-lg-4.col-md-4.col-sm-4
+          label(data-bind="text: timeSelectorEndI18n")
+          div.date-picker.input-group
+            input.form-control(name="tlEndDate", data-bind="datetimepicker: { value: dateSelectorHelperData.pickerEndDate, " +
+                                                             "valueReset: null, " +
+                                                             "options: dateSelectorOptionsEnd," +
+                                                           "onInit: dateSelectorInitEnd}")
+      // ko if: hasActualData()
+      div.row.datepickers
+        div.col-lg-4.col-md-4.col-sm-4(style="padding: 10px 10px 0")
+          a.btn.btn-block.btn-sm.btn-primary(data-bind="text: applyChangesI18n, click: applyChanges, disable: datesNotChanged")
+      // /ko
+    div.col-lg-7.col-md-6.hidden-sm.hidden-xs.timeline-wrapper
+      div.timeline
+        div#timelineChart(data-bind="inSightTimeline: timelineData")
+          svg

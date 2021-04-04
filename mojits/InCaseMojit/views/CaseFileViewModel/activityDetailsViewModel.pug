@@ -1,0 +1,24 @@
+div.row.activityDetailsViewModel(data-bind="notifyBind: { method: notifyActivityDetailsViewModel }")
+  // ko ifnot: isFrameView
+  div.col-md-2.scrollMarginItem(data-bind="template: { name: activitySidebarTemplateToUse, data: activitySidebarViewModel }")
+  // /ko
+  div#activityDetailsContent(data-bind="css: { 'col-md-8': !isActivitySectionFullWidth(), 'col-md-10': isActivitySectionFullWidth() }")
+    // ko template: { name:'activityActionButtonsViewModel', data: activityActionButtonsViewModel }
+    // /ko
+    // ko ifnot: showActivityActtypeNeeded()
+    // ko template: { name:'activityHeadingViewModel', data: activityHeadingViewModel }
+    // /ko
+    div(data-bind="template: activityNav.template")
+    div.row(data-bind="with: currentActivitySectionViewModel")
+      div.col-md-12.currentActivitySectionViewModel(data-bind="template: template")#divCurrentActivitySectionViewModel
+    // /ko
+    // ko if: showActivityActtypeNeeded()
+    div.form-group
+      p(data-bind="text: warnSelectMSGI18n")
+    // /ko
+  // ko if: showHouseCatalog
+  div.col-md-2.scrollMarginItem(data-bind="template: activityHouseCatalogViewModel.template")
+  // /ko
+  // ko if: showDocTree
+  div.col-md-2.scrollMarginItem.docTree(data-bind="template: activityDocTreeViewModel.template, visible: hasDocTree")
+  // /ko

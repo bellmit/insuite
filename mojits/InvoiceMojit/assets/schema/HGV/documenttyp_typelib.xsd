@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- edited with XMLSPY v2004 rel. 3 U (http://www.xmlspy.com) by Frank Weiler (KBV) -->
+<!-- automatische Dokumentation, generiert durch Visual Source Safe 
+	$Workfile: documenttyp_typelib.xsd $  
+	$Modtime: 30.03.04 12:19 $  
+	$Revision: 2 $  
+	$History: documenttyp_typelib.xsd $
+ * 
+ * *****************  Version 2  *****************
+ * User: Eusorov      Date: 30.03.04   Time: 12:23
+ * Updated in $/XML-Schnittstellen2/KBV/typelib
+ * enumeration zu 2a-Datensätzen (DM1, DM2, KHK, Bruskrebs) hinzugefuegt.
+ * 
+ * *****************  Version 1  *****************
+ * User: Eusorov      Date: 29.03.04   Time: 17:15
+ * Created in $/XML-Schnittstellen2/KBV/typelib
+ * 
+ * *****************  Version 1  *****************
+ * User: Eusorov      Date: 25.03.04   Time: 17:58
+ * Created in $/XML-Schnittstellen2/KBV/typelib
+-->
+<xs:schema targetNamespace="urn:kbv/kbv/typelib/001" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="urn:kbv/kbv/typelib/001" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<!-- ******************** documenttyp_typ ******************************-->
+	<xs:simpleType name="documenttyp_typ">
+		<xs:annotation>
+			<xs:documentation xml:lang="de">Kodierter Wert der Kontakttypen</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Muster_38a">
+				<xs:annotation>
+					<xs:documentation xml:lang="de">Koloskopie-Bericht</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="DMP_011">
+				<xs:annotation>
+					<xs:documentation xml:lang="de">Erst-Dokumentation Diabetes mellitus Typ 2</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="DMP_012">
+				<xs:annotation>
+					<xs:documentation xml:lang="de">Folge-Dokumentation Diabetes mellitus Typ 2</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="DMP_011a">
+				<xs:annotation>
+					<xs:documentation xml:lang="de">Erst-Dokumentation Diabetes mellitus Typ 2 (01.05.2004)</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="DMP_011a_2a">
+				<xs:annotation>
+					<xs:documentation xml:lang="de">Erst-Dokumentation Diabetes mellitus Typ 2 (01.05.2004) 2a-Datensatz</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>			
+			<xs:enumeration value="DMP_012a">
+				<xs:annotation>
+					<xs:documentation xml:lang="de">Folge-Dokumentation Diabetes mellitus Typ 2 (01.05.2004)</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="DMP_012a_2a">
+				<xs:annotation>
+					<xs:documentation xml:lang="de">Folge-Dokumentation Diabetes mellitus Typ 2 (01.05.2004) 2a-Datensatz</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="DMP_021">
+				<xs:annotation>
+					<xs:documentation xml:lang="de">Erst-Dokumentation Brustkrebs</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="DMP_022">
+				<xs:annotation>
+					<xs:documentation xml:lang="de">Folge-Dokumentation Brustkrebs</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="DMP_021_2a">
+				<xs:annotation>
+					<xs:documentation xml:lang="de">Erst-Dokumentation Brustkrebs 2a-Datensatz</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="DMP_022_2a">
+				<xs:annotation>
+					<xs:documentation xml:lang="de">Folge-Dokumentation Brustkrebs 2a-Datensatz</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>			
+			<xs:enumeration value="DMP_031">
+				<xs:annotation>
+					<xs:documentation xml:lang="de">Erst-Dokumentation Koronare Herzkrankheit</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="DMP_032">
+				<xs:annotation>
+					<xs:documentation xml:lang="de">Folge-Dokumentation Koronare Herzkrankheit</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="DMP_031_2a">
+				<xs:annotation>
+					<xs:documentation xml:lang="de">Erst-Dokumentation Koronare Herzkrankheit  2a-Datensatz</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="DMP_032_2a">
+				<xs:annotation>
+					<xs:documentation xml:lang="de">Folge-Dokumentation Koronare Herzkrankheit  2a-Datensatz</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>			
+			<xs:enumeration value="DMP_041">
+				<xs:annotation>
+					<xs:documentation xml:lang="de">Erst-Dokumentation Diabetes mellitus Typ 1</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="DMP_042">
+				<xs:annotation>
+					<xs:documentation xml:lang="de">Folge-Dokumentation Diabetes mellitus Typ 1</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="DMP_041_2a">
+				<xs:annotation>
+					<xs:documentation xml:lang="de">Erst-Dokumentation Diabetes mellitus Typ 1 2a-Datensatz</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="DMP_042_2a">
+				<xs:annotation>
+					<xs:documentation xml:lang="de">Folge-Dokumentation Diabetes mellitus Typ 1 2a-Datensatz</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>			
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

@@ -1,0 +1,9 @@
+div.form-group
+  strong(data-bind="text: dmpDocumentationInterval.i18n")
+  span(data-bind="dmpField: { field: dmpDocumentationInterval }")
+  div(data-bind="foreach: dmpDocumentationInterval.list, hasFeedback: { field: dmpDocumentationInterval, toggle: dmpDocumentationInterval.hasError, messages: dmpDocumentationInterval.validationMessages }")
+    // ko if: ($parent.allowDocumentationIntervalEveryFourthQuarter || val !== 'EVERY_FOURTH_QUARTER')
+    label.radio-inline
+      span(data-bind="text: i18n")
+      input(type="radio", name="dmpDocumentationInterval", data-bind="value: val, checked: $parent.dmpDocumentationInterval, readOnly: $parent.dmpDocumentationInterval.readOnly")
+    // /ko

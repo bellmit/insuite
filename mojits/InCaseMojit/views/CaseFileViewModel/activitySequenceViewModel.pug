@@ -1,0 +1,58 @@
+div
+  div.row
+    div.col-md-12
+      p.text-center(data-bind="visible: canChangeMode")
+        a#sequenceLocation(href="#", data-bind="css: {hide:isEditMode()}, click: changeMode, text: buttonChangeI18n")
+  div.row(data-bind="visible: !isEditMode()")
+    div.col-md-12
+      div.input-group
+        input.form-control.form-control-search(data-bind="value: filter, attr: {placeholder: placeholderSearchI18n, title: placeholderSearchTitleI18n}, valueUpdate: 'afterkeydown'")
+        div.input-group-btn
+          button.btn.btn-default(data-bind="click: changeViewMode, visible: !isEditMode()")
+            span.fa.fa-exchange
+  div.row(data-bind="visible: isEditMode")
+    div.col-xs-12
+      div.input-group
+        span.input-group-btn
+          button.btn.btn-primary(data-bind="click: back")
+            span.fa.fa-arrow-left
+        button.btn.btn-primary.btn-block(data-bind="click: save, text: activityButtonSaveI18n")
+        span.input-group-btn(data-bind="click: addFirst, visible: !filter()")
+          button.btn.btn-primary
+            span.icon.fa.fa-plus
+  div#sequencesBlock
+    div.row.sequenceList-container(data-bind="foreach: sequenceList, visible: !groupViewMode()")
+      div.col-xs-12.sequenceList-block(data-bind="visible: !isDeleted() && isVisible()", style="margin-top: 5px;")
+        span.activitySequenceViewModel-drag(data-bind="visible: !($parent.isEditMode())")
+          span.activitySequenceViewModel-dragHandle
+            span.fa.fa-ellipsis-v
+            span.fa.fa-ellipsis-v
+        button.btn.btn-default.btn-block.dc-btn-ellipsis.activitySequenceViewModel-button(data-bind="text: title, attr:{ title: description }, visible: !($parent.isEditMode()), click: $parent.applySequence", style="width: calc(100% - 15px);")
+        div.input-group(data-bind="visible: $parent.isEditMode")
+          span.input-group-btn(data-bind="click: function(data){$parent.addSequence(data, $index());}")
+            button.btn.btn-default
+              span.fa.fa-plus
+          button.btn.btn-default.btn-block.dc-btn-ellipsis(data-bind="text: title, attr:{ title: description }, click: function(data){$parent.changeSequence(data, $index());}")
+          span.input-group-btn(data-bind="click: function(data){$parent.deleteSequence(data, $index());}")
+            button.btn.btn-default
+              span.fa.fa-trash-o
+    div#accordion.row.groupsList-container(data-bind="foreach: sequenceGroups, visible: groupViewMode")
+      div.col-xs-12.groupsList-block.panel(data-bind="if: itemsVisible")
+        span.activitySequenceViewModel-drag
+          span.activitySequenceViewModel-group-dragHandle
+            span.fa.fa-ellipsis-v
+            span.fa.fa-ellipsis-v
+        button.btn.btn-basic.btn-block.dc-btn-ellipsis.activitySequenceViewModel-button.group-button(data-bind="text: name, attr:{ title: name, 'data-toggle': 'collapse', 'data-target': '#collapse-' + $index(), 'aria-controls': 'collapse-' + $index() }, click: $parent.itemCollapsed", aria-expanded="false", data-parent="#accordion", style="width: calc(100% - 15px);")
+        div(data-bind="foreach: sequenceList, visible: $parent.groupViewMode, attr: { class: 'collapse row sequenceList-docs-container', id: 'collapse-' + $index() }")
+          div(data-bind="visible: isVisible").col-xs-12.sequenceList-docs-block
+            span.activitySequenceViewModel-drag
+              span.activitySequenceViewModel-docs-dragHandle
+                span.fa.fa-ellipsis-v
+                span.fa.fa-ellipsis-v
+            button.btn.btn-default.btn-block.dc-btn-ellipsis.activitySequenceViewModel-button(data-bind="text: title, attr:{ title: description }, click: $parents[1].applySequence", style="width: calc(100% - 15px);")
+    div.row.nogroupList-block(data-bind="visible: groupViewMode")
+      div.sequenceList-nogroup-container(data-bind="foreach: sequenceList")
+        //ko if: sequenceGroups.length === 0
+        div(data-bind="visible: isVisible").col-xs-12.sequenceList-nogroup-block
+          button.btn.btn-default.btn-block.dc-btn-ellipsis.activitySequenceViewModel-button(data-bind="text: title, attr:{ title: description }, click: $parents[1].applySequence", style="width: calc(100% - 15px); margin-left: 15px")
+        // /ko

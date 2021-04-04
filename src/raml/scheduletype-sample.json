@@ -1,0 +1,37 @@
+{
+  "meta": {
+    "errors": [],
+    "warnings": [],
+    "query": {"_id":"51b732232e837550c90851fb"},
+    "itemsPerPage": null,
+    "totalItems": 1,
+    "page": null,
+    "replyCode": 200
+  },
+  "data": [
+  {
+    "_id": "51b732232e837550c90851fb",
+    "calendarRefs": [
+      {
+        "_id": "59d4041ae909ae0e4e7360be",
+        "calendarId": "515ae9604013671c12c1c900"
+      }
+    ],
+    "duration": 10,
+    "requiredResources": [
+      {
+        "_id": "5d8b2dd11aa6db695de72db3",
+        "resourceType": "doctor"
+      }
+    ],
+    "durationUnit": "MINUTES",
+    "isPublic": false,
+    "name": "Standard",
+    "capacity": 0,
+    "numberOfSuggestedAppointments": 10,
+    "isPreconfigured": false,
+    "color": "#254061",
+    "type": "STANDARD"
+  }
+]
+ }

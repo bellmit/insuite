@@ -1,0 +1,249 @@
+{
+  "rule": {
+    "parent" : "59cf1b3c1e876259e1736559",
+    "isDirectory" : false,
+    "isLocked" : true,
+    "isActive" : true,
+    "caseFolderType" : [
+      "PRIVATE"
+    ],
+    "metaActTypes" : [
+      "TREATMENT"
+    ],
+    "metaActCodes" : [
+      "1028"
+    ],
+    "rules" : [
+      {
+        "isActive" : true,
+        "description" : "Geschlechtsbezug 1028 (GOÄ)",
+        "validations" : [
+          {
+            "context" : "ACTIVITY",
+            "criteria" : {
+              "actType" : "TREATMENT",
+              "areTreatmentDiagnosesBillable" : "1",
+              "patientId\\\\-gender" : "MALE",
+              "code" : {
+                "\\\\$eq" : "1028",
+                "\\\\$catalogShort" : "GOÄ"
+              }
+            }
+          }
+        ],
+        "actions" : [
+          {
+            "type" : "ERROR"
+          }
+        ],
+        "ruleId" : "5ba3b1cb815a7a0fc8146bfa",
+        "metaCodes" : [
+          "1028"
+        ],
+        "metaActTypes" : [
+          "TREATMENT"
+        ]
+      }
+    ],
+    "description" : "GOÄ 1028 je Leistung",
+    "fromCatalog" : "DC-GOÄ-D-1536832129430.json",
+    "fromCatalogShort" : "GOÄ",
+    "referenceArea" : "ENTRY",
+    "actType" : "TREATMENT",
+    "code" : "1028",
+    "catalogShort" : "GOÄ",
+    "metaCriterias" : [
+      "actType",
+      "areTreatmentDiagnosesBillable",
+      "patientId.gender",
+      "code"
+    ],
+    "metaFuzzy" : false
+  },
+  "casefolder": {
+    "type" : "PRIVATE",
+    "start" : "2017-09-07T12:44:15.798Z",
+    "title" : "PKV 1",
+    "disabled" : false,
+    "ruleActivities" : 0,
+    "ruleWarnings" : 0,
+    "ruleErrors" : 0
+  },
+  "schein": {
+    "patientFirstName" : "A001-PKV-DV",
+    "patientLastName" : "A001-PKV-DV",
+    "content" : "Privat Schein",
+    "employeeInitials" : "MSP",
+    "employeeName" : "Dr. Schwerz, Martin",
+    "timestamp" : "2017-09-06T22:00:00.001Z",
+    "patientId" : "59ababc3a11ce2e160318996",
+    "employeeId" : "56dfebd78843fef825b3fae5",
+    "locationId" : "536a0c999d65454115efbb6a",
+    "caseFolderId" : "59b13f1fd3471849e2a6505c",
+    "treatmentType" : "AMBULANT",
+    "__t" : "PKVSCHEIN",
+    "icdsExtra" : [],
+    "icds" : [],
+    "agencyCost" : null,
+    "orderAccounting" : "",
+    "debtCollection" : "",
+    "isChiefPhysician" : false,
+    "includesBSK" : false,
+    "continuousIcds" : [],
+    "fk4219" : "",
+    "fk4235Set" : [],
+    "fk4234" : false,
+    "scheinNextTherapist" : "",
+    "scheinClinicalTreatmentTo" : null,
+    "scheinClinicalTreatmentFrom" : null,
+    "scheinNotes" : "",
+    "scheinFinding" : "",
+    "scheinDiagnosis" : "",
+    "scheinOrder" : "",
+    "scheinSpecialisation" : "",
+    "scheinEstablishment" : "",
+    "scheinRemittor" : "",
+    "locationFeatures" : "",
+    "forInsuranceType" : "",
+    "apkState" : "IN_PROGRESS",
+    "formGender" : "n",
+    "formLang" : "de",
+    "formPdf" : "",
+    "formVersion" : "",
+    "formId" : "",
+    "activities" : [],
+    "editor" : [
+      {
+        "name" : "Martin Schwerz",
+        "initials" : "MSP"
+      }
+    ],
+    "status" : "VALID",
+    "explanations" : "",
+    "partnerInfo" : "",
+    "userContent" : "",
+    "time" : "",
+    "subType" : "",
+    "attachedMedia" : [],
+    "attachments" : [],
+    "actType" : "PKVSCHEIN",
+    "patientName" : "Herr A001-PKV-DV A001-PKV-DV"
+  },
+  "treatment": {
+    "actType" : "TREATMENT",
+    "status" : "VALID",
+    "attachments" : [],
+    "subType" : "",
+    "areTreatmentDiagnosesBillable" : "1",
+    "catalog" : true,
+    "catalogRef" : "DC-GOÄ-D-1541506572227.json",
+    "catalogShort" : "GOÄ",
+    "code" : "1028"
+  },
+  "rulelog": {
+    "message" : "Geschlechtsbezug 1028 (GOÄ)",
+    "referenceArea" : "ENTRY",
+    "ruleLogType" : "ERROR",
+    "actCodes" : [
+      "1028"
+    ],
+    "actTypes" : [
+      "TREATMENT"
+    ],
+    "activitiesToCreate" : [],
+    "allCodes" : [],
+    "caseFolderType" : [
+      "PRIVATE"
+    ],
+    "requiredCodes" : [],
+    "ruleId" : "5ba3b1cb815a7a0fc8146bfa"
+  },
+  "patient": {
+    "localPracticeId" : "1012DQ2374",
+    "kbvDob" : "25.01.1991",
+    "careDegree" : "NO",
+    "dob" : "1991-01-25T09:00:00.000Z",
+    "dob_MM" : "01",
+    "dob_DD" : "25",
+    "patientSince" : "2017-09-03T07:13:13.278Z",
+    "crmCatalogShort" : "GOÄ",
+    "latestMedData" : [],
+    "edmpTypes" : [],
+    "crmTreatments" : [],
+    "crmTags" : [],
+    "attachedSeverity" : "NONE",
+    "patientNumber" : 2371,
+    "sendPatientReceipt" : false,
+    "gender" : "MALE",
+    "talk" : "MR",
+    "partnerIds" : [],
+    "accessPRC" : false,
+    "createPlanned" : false,
+    "devices" : [],
+    "markers" : [],
+    "physicians" : [],
+    "images" : [],
+    "affiliates" : [],
+    "insuranceStatus" : [
+      {
+        "fk4133" : null,
+        "fk4110" : null,
+        "insuranceKind" : "",
+        "costCarrierBillingSection" : "00",
+        "costCarrierBillingGroup" : "",
+        "feeSchedule" : "3",
+        "fused" : false,
+        "unzkv" : [],
+        "bgNumber" : "",
+        "address1" : "Hollerithstraße 11",
+        "address2" : "81829 München",
+        "insuranceId" : "168141121",
+        "insuranceName" : "ARAG",
+        "insurancePrintName" : "ARAG",
+        "type" : "PRIVATE",
+        "billingFactor" : "privatversicherte",
+        "cardSwipe" : null,
+        "persGroup" : "",
+        "dmp" : "",
+        "locationId" : "536a0c999d65454115efbb6a"
+      }
+    ],
+    "addresses" : [
+      {
+        "street" : "Am Schloß",
+        "houseno" : "10a",
+        "zip" : "10585",
+        "city" : "Berlin",
+        "country" : "Deutschland",
+        "countryCode" : "D",
+        "addon" : "",
+        "kind" : "OFFICIAL"
+      }
+    ],
+    "communications" : [
+      {
+        "signaling" : true,
+        "confirmed" : false,
+        "confirmNeeded" : false,
+        "type" : "PHONEPRIV",
+        "value" : "030303"
+      }
+    ],
+    "accounts" : [],
+    "lastname" : "A001-PKV-DV",
+    "fk3120" : "",
+    "middlename" : "",
+    "nameaffix" : "",
+    "firstname" : "A001-PKV-DV",
+    "title" : "fefewf",
+    "activeCaseFolderId" : "59b13f1fd3471849e2a6505c",
+    "dataTransmissionToPVSApproved" : true,
+    "additionalContacts" : [],
+    "confirmedViewFromOtherLocations" : false,
+    "edmpNotifiedAboutStatementOfParticipationTypes" : [],
+    "ehksDocType" : "EHKSND",
+    "locationId" : "",
+    "scheinEmployeeIds" : [],
+    "countryMode": [ "D" ]
+  }
+}

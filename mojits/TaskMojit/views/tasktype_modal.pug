@@ -1,0 +1,52 @@
+div#taskModel
+  div.row(style="margin-top: 5px")
+    div.col-xs-12.col-md-6
+      div.form-group(data-bind="hasFeedback: { field: title, toggle: title.hasError, messages: title.validationMessages, popover: { container: '#tasktype_modal' } }")
+        label(data-bind="text: title.i18n")
+        input.form-control(name="title", data-bind="value: title, valueUpdate: 'afterkeydown'")
+      div.form-group(data-bind="hasFeedback: { field: name, toggle: name.hasError, messages: name.validationMessages, popover: { container: '#tasktype_modal' } }")
+        label(data-bind="text: name.i18n")
+        input.form-control(name="name", data-bind="value: name, valueUpdate: 'afterkeydown'")
+      div.form-group
+        label(data-bind="text: details.i18n")
+        textarea.form-control(name="details", data-bind="value: details, valueUpdate: 'afterkeydown'", rows="12")
+    div.col-xs-12.col-md-6
+      fieldset
+        label(data-bind="text: labelAssignedI18n")
+        div.control-group(style="border: 1px solid #bbb; padding: 5px 10px 5px 10px; border-radius: 5px; margin-bottom: 5px;")
+          div.form-group(data-bind="hasFeedback: { field: roles, toggle: roles.hasError, messages: roles.validationMessages, popover: { container: '#tasktype_modal' } }")
+            label(for="taskSelect2Role", data-bind="text: labelRoleI18n")
+            input.form-control.input-sm#taskSelect2Role(type="hidden", multiple="multiple" data-bind="select2: select2Role", name="role")
+          div.form-group(data-bind="hasFeedback: { field: candidates, toggle: candidates.hasError, messages: candidates.validationMessages, popover: { container: '#tasktype_modal' } }")
+            label(for="taskSelect2Candidates", data-bind="text: candidates.i18n")
+            input.form-control.input-sm#taskSelect2Candidates(type="hidden", multiple="multiple" data-bind="select2: select2Candidates", name="candidates")
+    div.col-xs-12.col-md-6
+      div.form-group
+        label(for="taskSelect2Employee", data-bind="text: employeeId.i18n")
+        input.form-control.input-sm#taskSelect2Employee(type="hidden", data-bind="select2: select2Employee", name="employee")
+    div.col-xs-12.col-md-6
+      div.form-group
+        label(data-bind="text: urgency.i18n")
+        select.form-control(name="urgency", data-bind="value: urgency, options: urgency.list, optionsValue: 'val', optionsText: 'i18n'")
+  div.row
+    div.col-xs-12.col-md-4
+      label(data-bind="text: labelDurationI18n")
+      div.form-group
+      div.checkbox
+        label
+          strong(data-bind="text: allDay.i18n")
+          input(name="allDay", type="checkbox", data-bind="checked: allDay")
+    div.col-xs-12.col-md-8
+      .form-group
+        label
+          strong(data-bind="text: dueDate")
+        div(style="display: flex; flex-wrap: wrap;")
+          div(style="display: flex; align-items: center;")
+            input.form-control(data-bind="value: days, valueUpdate: 'afterkeydown'", type="number", name="days", min="0", style="width: 60px; margin:5px;")
+            label(data-bind="text: days.i18n")
+          div(style="display: flex; align-items: center;")
+            input.form-control(data-bind="value: hours, valueUpdate: 'afterkeydown'", type="number", name="hours", min="0", style="width: 60px;margin:5px;")
+            label(data-bind="text: hours.i18n")
+          div(style="display: flex; align-items: center;")
+            input.form-control(data-bind="value: minutes, valueUpdate: 'afterkeydown'", type="number", name="minutes", min="0", style="width: 60px;margin:5px;")
+            label(data-bind="text: minutes.i18n")

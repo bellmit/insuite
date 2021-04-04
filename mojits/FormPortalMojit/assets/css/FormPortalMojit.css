@@ -1,0 +1,7 @@
+.FormPortalMojit {
+    min-height: 300px
+}
+
+.FormPortalMojit #divFormRender {
+    overflow: hidden;
+}

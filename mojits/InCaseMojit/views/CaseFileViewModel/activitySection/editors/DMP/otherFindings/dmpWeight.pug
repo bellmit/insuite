@@ -1,0 +1,5 @@
+div.col-xs-3(data-bind="visible: dmpWeightVisible()")
+    div(data-bind="hasFeedback: { field: dmpWeight, toggle: dmpWeight.hasError, messages: dmpWeight.validationMessages }")
+        label.control-label(data-bind="text: dmpWeight.i18n")
+        span(data-bind="dmpField: { field: dmpWeight }")
+        input.form-control(name="dmpWeight", type="text", data-bind="value: dmpWeightString, readOnly: dmpWeight.readOnly")

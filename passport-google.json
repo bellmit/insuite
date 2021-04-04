@@ -1,0 +1,15 @@
+[
+    {
+        "settings": [ "environment:production" ],
+        "description": "parameters for google oauth2 service",
+        "config": {
+            "GOOGLE_CLIENT_ID": "",
+            "GOOGLE_CLIENT_SECRET": "",
+            "authorizationURL": "https://accounts.google.com/o/oauth2/auth",
+            "tokenURL": "https://accounts.google.com/o/oauth2/token",
+            "scope": [
+                "https://www.googleapis.com/auth/plus.profile.emails.read"
+            ]
+        }
+    }
+]

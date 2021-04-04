@@ -1,0 +1,20 @@
+//TRANSLATION INCOMPLETE!! MOJ-3201
+.container.container-fullscreen.dc_shift_top.yui3-js-enabled.yui3-skin-sam#documentTabContainer
+  .panel.panel-info#divDocumentPanel
+    .panel-heading
+      h4 Meine Dokumente
+    .panel-body#divDocumentPanelBody
+  .panel.panel-info(style="display: none")#divQuestionnairePanel
+    .panel-heading
+      div(style="width: 720px;")#divMobileWidthHack
+      h4
+        a(href='#/documents')#aQuestionnaireBack &lt;&lt; Zurück
+    .panel-body#divQuestionnairePanelBody
+  br
+  br
+  br
+
+#pinModal.hidden
+  .form-group
+    p(data-bind="text: pinConfirmationI18n")
+    input.form-control(type="text", name="pin", data-bind="attr: { placeholder: placeholderPinI18n }")

@@ -1,0 +1,29 @@
+extend ../../DocCirrus/views/email_layout
+
+block emailbody
+    .container.container-fullscreen(id=mojit_view_id): .row: .col-xs-12.col-md-10.col-md-offset-1
+        - if(params && params.title)
+            h2
+                != params.title
+            br
+        ol
+            - if(params && params.local)
+                li Zugriff innerhalb ihrer Praxis:
+                    | &nbsp;
+                    a(href=params.local)
+                        != params.local
+                    p Schnell und unkompliziert aber unverschlüsselt.
+            - if(params && params.local_secure)
+                li Abhörsicherer Zugriff innerhalb Ihrer Praxis:
+                    | &nbsp;
+                    a(href=params.local_secure)
+                        != params.local_secure
+                    p Schnell und verschlüsselt. Meldung über angeblich unsicheren Zugang kann ignoriert werden (Zertifikate sind sicher).
+            - if(params && params.local_secure)
+                li Abhörsicherer Zugriff von außerhalb Ihrer Praxis:
+                    | &nbsp;
+                    a(href=params.remote)
+                        != params.remote
+                    p Muss verwendet werden, wenn Sie von außerhalb der Praxis auf Ihr System zugreifen wollen.
+        br
+        p Dies ist eine automatisch erzeugte E-Mail, wenn die IP Ihres Datensafes sich geändert hat.

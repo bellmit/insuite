@@ -1,0 +1,19 @@
+#tab_services
+  div.col-xs-2
+    ul.nav.nav-pills.nav-stacked
+      li(data-bind= "click: currentSelection('KVC'), attr: {class: currentSelectedAccounts() === 'KVC' ? 'active' : ''}")
+        a(#) KV-Connect
+      // ko if: hasKim
+      li.active(data-bind= "click: currentSelection('KIM'), attr: {class: currentSelectedAccounts() === 'KIM' ? 'active' : ''}")
+        a(#) KIM
+      // /ko
+  div.col-xs-10
+    // ko if: currentSelectedAccounts() === 'KIM'
+    div(data-bind="with: kimAccountsViewModel")
+      div.pull-right(data-bind="template: saveButton.template", style="margin-right: 10px; margin-bottom:10px; display:inline-block;")
+      include ../../../mojits/KVConnectMojit/views/kim_accounts
+    // /ko
+    // ko if: currentSelectedAccounts() === 'KVC'
+    div(data-bind="with: kvcAccountsViewModel")
+      include ../../../mojits/KVConnectMojit/views/kvc_accounts
+    // /ko

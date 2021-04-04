@@ -1,0 +1,40 @@
+div.row#scanMedicationPlan
+  div.row
+    div.col-md-12
+      div.form-group
+        select.form-control(name="locationId", data-bind="options: locationList, optionsValue: '_id', optionsText: 'locname', value: locationId, optionsCaption: selectLocationI18n")
+      div.form-group
+        select.form-control(name="employeeId", data-bind="foreach: employeeListGrouped")
+          optgroup(data-bind="attr: { label: i18n }, foreach: items")
+            option(data-bind="text: lastname + ', ' + firstname, value: _id")
+      // ko if: showWarning
+      div.alert.alert-warning
+        // ko with: hasNotScannedAllPages
+        p(data-bind="text: MEDICATION_PLAN_NOT_ALL_PAGES_SCANNED")
+        // /ko
+        // ko with: hasWrongPatient
+        p(data-bind="text: MEDICATION_PLAN_PATIENT_NOT_MATCH")
+        p(data-bind="text: mpFirstName + ' ' + mpLastName + ' (' + mpDob + ')'")
+        // /ko
+      // /ko
+      // ko foreach: carrierSegments
+      div.form-group( data-bind="hasFeedback: { field: text, toggle: hasError, messages: messages }" )
+        .form-group
+          input.form-control(data-bind="textInput: text, hasFocus: true, attr: {placeholder: $parent.carrierSegments.placeholder}, event: { keydown: onCsKey, keyup: onCsKey, keypress: onCsKey }", style="margin-bottom: 5px")
+      // /ko
+      div.form-group
+        label.control-label(data-bind="text: sourceI18n", style="margin-top: 15px;")
+        input.form-control(name="comment", data-bind="visible: !!comment(), value: comment, readOnly: comment.readOnly", style="margin: 5px 0 20px;")
+      //div.form-group.text-right
+      //  span( data-bind=" template: addScanBtn.template" )
+
+  div.row
+    div.col-md-12
+      div.form-group
+        label.checkbox-inline
+          input(name="createMedicationPlan", type="checkbox", data-bind="checked: createMedicationPlan", style="margin-bottom: 5px")
+          span(data-bind="text: createMedicationPlanI18n")
+      div.form-group
+        label.checkbox-inline
+          input(name="createIngredientPlan", type="checkbox", data-bind="checked: createIngredientPlan", style="margin-bottom: 5px")
+          span(data-bind="text: createIngredientPlanI18n")

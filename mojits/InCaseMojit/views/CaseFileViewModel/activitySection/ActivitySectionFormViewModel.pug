@@ -1,0 +1,47 @@
+div.ActivitySectionFormViewModel(data-bind="notifyBind: { method: 'templateReady', namespace: $data }" style="overflow-x: auto;overflow-y: hidden;")
+  //ko if: showETSPanel
+  div.row
+    .col-xs-12
+      //ko with: currentActivity
+      //ko if: !displayETSPanel() && eTSErrorMessage()
+      .alert.alert-warning
+        h4 eTerminservice
+        p(data-bind="html: eTSErrorMessage")
+      // /ko
+      //ko if: displayETSPanel
+      .alert(data-bind="attr: {'class': eTSAlertClass}")
+        h4 eTerminservice
+        .row
+          div.col-xs-3
+            div.form-group
+              label(data-bind="text: eTSArrangementCode.i18n")
+              input.form-control(name="eTSArrangementCode", data-bind="value: eTSArrangementCode", disabled)
+          div.col-xs-3
+            div(style="padding-top: 20px;")
+              span.btn-block(data-bind="template: requestArrangementCodeButton.template")
+        //ko if: pendingRequest
+        img(style="margin-right: 8px;", src="/static/DocCirrus/assets/images/ajax-loader.gif")
+        span(data-bind="text: requestIsPendingI18n")
+        // /ko
+        //ko if: eTSAErrorMessage() && !pendingRequest()
+        strong(data-bind="text: eTSAErrorMessage")
+        p(data-bind="text: additionalErrorHintI18n")
+        // /ko
+      // /ko
+      // /ko
+  // /ko
+  div(data-bind="visible: isLetter")
+    div.input-group
+      select.form-control(data-bind="options: patientContacts, optionsText: 'label', value: selectedContact, disable: isLetterDisable")
+      span.input-group-btn
+        button.btn(data-bind="click: searchContacts, disable: isLetterDisable")
+          i.fa.fa-search
+
+  div(data-bind="visible: showWYSWYGButtons")
+    div(data-bind="with: wyswyg")
+      include ../../../../FormEditorMojit/views/WYSWYG.pug
+
+  div(style="display: none;")#divFormMissing
+  div#divFormsCompose
+  div#divFormsRender
+  div#divFormPdfPages

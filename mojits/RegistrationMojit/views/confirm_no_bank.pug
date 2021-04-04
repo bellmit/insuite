@@ -1,0 +1,83 @@
+//TRANSLATION INCOMPLETE!! MOJ-3201
+.modal.hide.fade(tabindex="-1", role="dialog", aria-labelledby="myModalLabel", aria-hidden="true")#myModal
+  .modal-header
+    .btn(type="button", class="close", data-dismiss="modal", aria-hidden="true") ×
+    h3 Registrierung für Doc Cirrus Dienste
+  .modal-body
+    .navbar-form.pull-left
+      h4 Ihre Angaben:
+      div.listed_form_entries
+        strong Ausgewählte Dienste
+        ul
+          each service in services
+            li!= service.ps
+          li
+            b
+              | Monatliche Kosten:
+              | &nbsp;
+              != totalPrice
+        strong Ansprechpartner
+        ul
+          li
+            | Vorname:
+            | &nbsp;
+            != firstname
+          li
+            | Nachname:
+            | &nbsp;
+            != lastname
+          li
+            | E-Mail:
+            | &nbsp;
+            != email
+        strong Unternehmen
+        ul
+          li
+            | Name:
+            | &nbsp;
+            != coname
+          li
+            | Art:
+            | &nbsp;
+            != cotype
+          li
+            | Kontakt:
+            | &nbsp;
+            != contact
+        strong Adresse
+        ul
+          li
+            | Straße:
+            | &nbsp;
+            != address.street
+            | &nbsp;
+            != address.houseno
+          li
+            | PLZ / Stadt:
+            | &nbsp;
+            != address.zip
+            | &nbsp;
+            != address.city
+          li
+            | Land:
+            | &nbsp;
+            != address.country
+      p Bitte beachten Sie, dass wir Ihren Antrag nur bearbeiten können, wenn Sie die Datenschutzerklärung und die Nutzungsbedingungen akzeptieren.
+      hr
+      label.checkbox
+        input(type='checkbox', value='')#privacy
+        n &nbsp;Ich akzeptiere die&nbsp;
+        a(href='/static/DocCirrus/assets/docs/Datenschutz.pdf', target='_blank', title='Datenschutzerklärung der Doc Cirrus GmbH') Datenschutzerklärung
+        n &nbsp;der Doc Cirrus GmbH
+      label.checkbox
+        input(type='checkbox', value='')#intimesla
+        n &nbsp;und die&nbsp;
+        a(href='/static/DocCirrus/assets/docs/Nutzungsbedingungen.pdf', target='_blank', title='Nutzungsbedingungen der Doc Cirrus GmbH') Nutzungsbedingungen
+        n &nbsp;für Doc Cirrus Dienste
+  .modal-footer
+    .btn(data-dismiss="modal", aria-hidden="true") Abbrechen
+    input(type='hidden', value=firstname, name='fn')
+    input(type='hidden', value=lastname, name='ln')
+    input(type='hidden', value=email, name='em')
+    input(type='submit', value='Senden').btn.btn-primary.disabled#sendbtn Senden
+

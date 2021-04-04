@@ -1,0 +1,57 @@
+div.ActivitySectionPDFViewModel(data-bind="notifyBind: { method: templateReady, namespace: $data }")
+  div#divExportedDocuments
+    //div(style="display: none;") - debug
+    //  span DEBUG:
+    //  span(data-bind="text: hasFormText")
+    //  span &nbsp;
+    //  span(data-bind="text: hasPdfText")
+    //  span &nbsp;
+    //  span(data-bind="text: isSharedText")
+
+    div#divDocumentButtons
+      table(noborder="noborder")
+        tr
+          td(width="10px")
+          td
+            label(data-bind="text: PDFViewMoldelPDFI18n")
+            div(data-bind="visible: !pdfRenderInProgress()")
+              button.btn.btn-default(type="button",data-bind="click: onRegeneratePdfClick, enable: canCreatePDF && allowPDFCreation")#btnCreatePDF
+                span(data-bind="text: regeneratePDFTextI18n")
+              //- button.btn-id-sign.btn.btn-default(type="button", disabled="disabled")
+              //-  span Signieren
+
+            div(data-bind="visible: pdfRenderInProgress")#divProgressMessage
+              table(noboroder="noborder")
+                tr
+                  td
+                    img(src="/static/DocCirrus/assets/images/ajax-loader.gif")
+                  td
+                    i &nbsp;&nbsp;Ihr PDF wird erzeugt.
+
+          td(width="10px")
+          td
+            div(data-bind="visible: isShareable")#divFormEditableControl
+              label(data-bind="text: interactiveFormI18n")
+              div
+                button.btn-id-new.btn.btn-default(type="button",data-bind="disabled: isNotShareable, visible: isNotShared, click: onShareClick")#btnToggleShareForm
+                  span(data-bind="text: shareFormI18n")
+                button.btn-id-new.btn.btn-default(type="button",data-bind="disabled: isNotShareable, visible: isShared, click: onUnshareClick")#btnToggleUnshareForm
+                  span(data-bind="text: lockFormTextI18n")
+
+                span &nbsp;
+                span#spanToggleFormTip
+      br
+      div(data-bind="{ visible: hasPdf }")#divDocumentPDFLink
+        span &nbsp;&nbsp;&nbsp;
+        // ko ifnot: hideLinksOfPrintedPDF
+        a(data-bind="{ attr: { href: latestPdfUrl }, text: latestPdfCaption }",target="_blank")
+        // /ko
+        // ko if: hideLinksOfPrintedPDF
+        span(data-bind="text: latestPdfCaption ")
+        // /ko
+      div(style="overflow: hidden; height: 0px;")#divDocumentiFrameContainer
+
+      hr
+    div#divDocumentTip
+      | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      i(data-bind="text: PDFViewModelTipI18n")

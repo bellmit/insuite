@@ -1,0 +1,9 @@
+div.form-group
+  div(data-bind="hasFeedback: { field: dmpHadHospitalStayHbA1c, toggle: dmpHadHospitalStayHbA1c.hasError, messages: dmpHadHospitalStayHbA1c.validationMessages }")
+    label.control-label(data-bind="text: dmpHadHospitalStayHbA1c.i18n")
+    span(data-bind="dmpField: { field: dmpHadHospitalStayHbA1c }")
+    div.row
+      div.col-xs-1
+        input.form-control(name="dmpHadHospitalStayHbA1c", type="text", data-bind="value: dmpHadHospitalStayHbA1cString, readOnly: dmpHadHospitalStayHbA1c.readOnly")
+      div.col-xs-11.form-horizontal
+        p.form-control-static(data-bind="text: dmpHadHospitalStayHbA1cUnitLabelI18n")

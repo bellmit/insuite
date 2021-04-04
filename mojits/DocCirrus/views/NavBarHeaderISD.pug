@@ -1,0 +1,58 @@
+nav#NavBarHeader.navbar.navbar-inverse(role="navigation", data-bind="css: { 'NavBarHeader-fixed': fixed, 'navbar-fixed-top': fixed, 'NavBarHeader-fixedNot': !fixed() }")
+  .container.container-fullscreen#container
+    .navbar-header
+      button.NavBarHeader-pin-toggle.navbar-toggle(type="button", data-bind="click: togglePinnedCTA")
+        span.NavBarHeader-pin-icon.fa.fa-thumb-tack
+      button(type="button",data-toggle="collapse",data-target="#bs3TopMenu").navbar-toggle
+        span.sr-only Toggle Navigation
+        span.icon-bar
+        span.icon-bar
+        span.icon-bar
+      a.navbar-brand(href=getUrl( 'iscd' ), data-bind="text: dispatcherTitle")#home
+
+    .navbar-collapse.collapse#bs3TopMenu
+      // ko ifnot: mainMenu.template
+      ul.nav.navbar-nav
+        li
+          a(name="dispatcher", href=getUrl( 'dispatcher' ), data-bind="value: dispatcherTabTitle")
+        li
+          a(name="tasks", href=getUrl( 'tasks' ), data-bind="text: lblMenuTasksI18n")
+        li
+          a(name="mirror_patients", href=getUrl( 'mirror_patients' ), data-bind="text: lblMenuPatientsI18n")
+        li.dropdown
+          a.dropdown-toggle(name="drop-admin", data-toggle="dropdown", data-bind="text: lblMenuManagementI18n")
+            b.caret(style="margin-left: 4px;")
+          ul.dropdown-menu(role="menu")
+            li
+              a(name="printer", href=getUrl( 'printer' ), data-bind="text: topMenuPrinterI18n")
+            li
+              a(name="insight", href=getUrl( 'insight' ), data-bind="text: lblMenuInsightI18n")
+        li.dropdown
+          a.dropdown-toggle(href="#", data-toggle="dropdown", role="button" aria-haspopup="true" aria-expanded="false")
+            span(data-bind="text: lblMenuHelpI18n")
+            span.caret
+          ul.dropdown-menu
+            li
+              a(href="/static/dcbaseapp/assets/dc-api.html", target="_blank", data-bind="text: lblMenuHelpApiI18n")
+            li
+              a(href="/static/dcbaseapp/assets/dc-api-2.raml", target="_blank", data-bind="text: lblMenuHelpApi2I18n")
+            li
+              a(href="/static/dcbaseapp/assets/dc-schema-2.raml", target="_blank", data-bind="text: lblMenuHelpSchema2I18n")
+      // /ko
+
+      // ko template: mainMenu.template
+      // /ko
+
+      .navbar-text.navbar-right.hidden-xs.hidden-sm
+        span.NavBarHeader-pin-icon.fa.fa-thumb-tack(data-bind="click: togglePinnedCTA")
+      p.navbar-text.navbar-right
+        a.navbar-link(name="profile", href=getUrl( 'profile' ), style="margin-right: 5px; text-decoration: underline")
+          | #{loggedInUser}
+        if coname
+          span.badge(style="margin-right: 5px; max-width: 150px; overflow: hidden !important; text-overflow: ellipsis; vertical-align: middle;") #{coname}
+        a.navbar-link(name="changeOnlineStatus", href=getUrl( 'profile' ), style="margin-right: 10px;")
+          span [
+          span(style="color: #85E085;", data-bind="html: onlineStatus, attr: { title: lblMenuAvailableForI18n }")
+          span ]
+        span
+          img(name="logOutButton", src="/static/dcbaseapp/assets/img/doccirrus/exit.png", style="height:25px; margin: -3.5px 0; cursor: pointer;", data-bind="click: logOutButtonHandler")

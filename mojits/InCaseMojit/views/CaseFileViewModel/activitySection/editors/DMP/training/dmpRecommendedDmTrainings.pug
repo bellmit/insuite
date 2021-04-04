@@ -1,0 +1,14 @@
+div.form-group
+  strong(data-bind="text: dmpRecommendedDmTrainings.i18n")
+  span(data-bind="dmpField: { field: dmpRecommendedDmTrainings }")
+  div(data-bind="foreach: dmpRecommendedDmTrainings.list, hasFeedback: { field: dmpRecommendedDmTrainings, toggle: dmpRecommendedDmTrainings.hasError, messages: dmpRecommendedDmTrainings.validationMessages }")
+    label.checkbox-inline
+      span(data-bind="text: i18n")
+      input(type="checkbox", name="dmpRecommendedDmTrainings", data-bind="value: val, checked: $parent.dmpRecommendedDmTrainings, readOnly: $parent.dmpRecommendedDmTrainings.readOnly, attr: { name: $element.name + '-' + val }")
+
+div.form-group(data-bind="visible: isAfterQ22017() && !isFollowing()")
+  strong(data-bind="text: dmpDmTrainingsBeforeSubscription.i18n")
+  div(data-bind="foreach: dmpDmTrainingsBeforeSubscription.list, hasFeedback: { field: dmpDmTrainingsBeforeSubscription, toggle: dmpDmTrainingsBeforeSubscription.hasError, messages: dmpDmTrainingsBeforeSubscription.validationMessages }")
+    label.checkbox-inline
+      span(data-bind="text: i18n")
+      input(type="checkbox", name="dmpDmTrainingsBeforeSubscription", data-bind="value: val, checked: $parent.dmpDmTrainingsBeforeSubscription, readOnly: $parent.dmpDmTrainingsBeforeSubscription.readOnly, attr: { name: $element.name + '-' + val }")

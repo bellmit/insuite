@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- edited with XMLSPY v2004 rel. 3 U (http://www.xmlspy.com) by Frank Weiler (KBV) -->
+<!-- automatische Dokumentation, generiert durch Visual Source Safe 
+	$Workfile: softwarename_typelib.xsd $  
+	$Modtime: 15.04.04 13:18 $  
+	$Revision: 2 $  
+	$History: softwarename_typelib.xsd $
+ * 
+ * *****************  Version 2  *****************
+ * User: Eusorov      Date: 15.04.04   Time: 13:19
+ * Updated in $/XML-Schnittstellen2/KBV/typelib
+ * +Korrektur eines Wertes ("XPM_BRT")
+ * 
+ * *****************  Version 1  *****************
+ * User: Eusorov      Date: 29.03.04   Time: 17:16
+ * Created in $/XML-Schnittstellen2/KBV/typelib
+ * 
+ * *****************  Version 1  *****************
+ * User: Eusorov      Date: 25.03.04   Time: 17:58
+ * Created in $/XML-Schnittstellen2/KBV/typelib
+-->
+<xs:schema targetNamespace="urn:kbv/kbv/typelib/001" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="urn:kbv/kbv/typelib/001" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<!-- ******************** softwaretyp_typ ******************************-->
+	<xs:simpleType name="softwarename_typ">
+		<xs:annotation>
+			<xs:documentation xml:lang="de">Kodierter Wert der Softwaretypen</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="XSD_DM1">
+				<xs:annotation>
+					<xs:documentation xml:lang="de">Schnittstelle zu Diabetes mellitus Typ 1</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="XSD_DM2">
+				<xs:annotation>
+					<xs:documentation xml:lang="de">XSchnittstelle zu Diabetes mellitus Typ 2</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="XSD_KHK">
+				<xs:annotation>
+					<xs:documentation xml:lang="de">Schnittstelle zu Koronale Herzkrankheit</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="XSD_BRT">
+				<xs:annotation>
+					<xs:documentation xml:lang="de">Schnittstelle zu Brustkrebs</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="XPM_DM1">
+				<xs:annotation>
+					<xs:documentation xml:lang="de">Prüfmodul zu Diabetes mellitus Typ 1</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="XPM_DM2">
+				<xs:annotation>
+					<xs:documentation xml:lang="de">Prüfmodul zu Diabetes mellitus Typ 2</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="XPM_KHK">
+				<xs:annotation>
+					<xs:documentation xml:lang="de">Prüfmodul zu Koronale Herzkrankheit</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+				<xs:enumeration value="XPM_BRT">
+				<xs:annotation>
+					<xs:documentation xml:lang="de">Prüfmodul zu Brustkrebs</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

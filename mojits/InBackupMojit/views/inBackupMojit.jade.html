@@ -1,0 +1,9 @@
+div.InBackupMojit(id=mojit_view_id)
+  .container.container-fullscreen(data-bind="with: inBackupViewModel")
+    div(style="position: relative")
+      div(style="position: absolute; right: 0; top: 0;")
+        button.btn.btn-sm.btn-default(
+        name="toggleFullScreen", type="button", data-bind="click: toggleFullScreenHandler, attr: { title: $parent.viewPortBtnI18n }",
+        style="margin-top: 5px; font-size:14px")
+          span.fa.fa-arrows-alt
+    div(data-bind="template: template")

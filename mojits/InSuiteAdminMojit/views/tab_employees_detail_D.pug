@@ -1,0 +1,6 @@
+div.form-group(data-bind="hasFeedback: { field: officialNo, toggle: officialNo.hasError, messages: officialNo.validationMessages }")
+    label.control-label(for="tab_employees_detail-employee-field-officialNo", data-bind="text: officialNo.i18n")
+    span.text-danger(data-bind="if: nonStandardOfficialNo") Ausnahmewert
+    input#tab_employees_detail-employee-field-officialNo.form-control(name="officialNo", type="text", data-bind="select2: select2OfficialNo")
+    div(data-bind="if: isAsvPseudoNo")
+        div.help-block(data-bind="html: asvOfficialNoI18n")

@@ -1,0 +1,25 @@
+div(id=mojit_view_id)
+  .invoice-context.container.container-fullscreen
+    div(style="position: relative")
+      #mainVersionNavigation(data-bind="template: template", style="margin-bottom: 10px;")
+      div#fullScreenToggle(style="position: absolute; right: 0; top: 0;")
+        button.btn.btn-sm.btn-default(
+        name="toggleFullScreen", type="button", data-bind="click: toggleFullScreenHandler, attr: { title: viewPortBtnI18n }",
+        style="margin-top: 6px;")
+          span.fa.fa-arrows-alt
+  .container.container-fullscreen
+    #upperDiv
+      block content
+
+.modal.fade(tabindex="-1", role="dialog", aria-labelledby="myModalLabel", aria-hidden="true")#videoModal
+  .modal-dialog(style="width: 840px; margin-top: 90px;")
+    .modal-content(style="background-color: rgba(0,0,0,1);")
+      .modal-header
+        button.btn(type="button", class="close", data-dismiss="modal", aria-hidden="true", style="color: #fff; opacity: 0.77;") ×
+        h4#myModalLabel.modal-title.text-muted
+      .modal-body
+        video( width="800", controls, autoplay)#video
+          source(src='', type='')#mp4
+          source(src='', type='')#webm
+          Your Ihr Browser unterstützt das HTML5 video tag nicht.
+include ../../../autoload/KoUI/KoSchemaValue/view/KoSchemaTemplates

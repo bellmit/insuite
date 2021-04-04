@@ -1,0 +1,19 @@
+div#outboundCall.row
+  div.col-md-12
+    if message
+      p.bg-info(style="padding: 2px 10px")
+        != message
+  .col-xs-6
+    div.vcard
+      .form-group
+        label(for="reason").control-label Grund
+        input(type='text', name='reason', value='', tabindex='5').form-control#reason
+      p
+        p
+        each user in users
+          p
+            != user.firstname
+            | &nbsp;
+            != user.lastname
+  .col-xs-6.text-center#phoneCall(style="display: none;")
+    img.dc-fade-animation(src="/static/DocCirrus/assets/images/phone.png", style="margin: 15% 0;", alt="call...")

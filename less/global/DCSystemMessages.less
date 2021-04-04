@@ -1,0 +1,109 @@
+& {
+  @import "../variables/bootstrap.less";
+
+  /** DCSystemMessages */
+
+  .dc-SystemMessages {
+    position: absolute !important;
+    z-index: 5000;
+    border-color: #252525;
+    opacity: .9;
+    border-radius: 4px;
+    background-image: linear-gradient(to bottom, #254061, #111111);
+    background-repeat: repeat-x;
+    -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 1px 5px rgba(0, 0, 0, 0.075);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 1px 5px rgba(0, 0, 0, 0.075);
+    max-height: calc(~"100%" - ~"38px");
+    overflow: auto;
+  }
+
+  .dc-SystemMessages-viewMode-full {
+    right: 0;
+    width: 400px;
+  }
+
+  .dc-SystemMessages-viewMode-limited {
+    left: 0;
+    right: 0;
+    width: 100%;
+  }
+
+  .dc-SystemMessages-list-hidden .dc-SystemMessages-list {
+    display: none;
+  }
+
+  .dc-SystemMessages-list-visible .dc-SystemMessages-list {
+    display: block;
+  }
+
+  .dc-SystemMessages-list {
+    padding: 0 2px 2px;
+  }
+
+  .dc-SystemMessages-list .alert {
+    margin: 2px 0 0;
+  }
+
+  .dc-SystemMessages-header {
+    color: #fff;
+    font-size: 11px;
+    padding: 5px 5px 2px 8px;
+    background-color: rgba(0, 0, 0, .5);
+  }
+
+  .dc-SystemMessages-tools {
+    float: right;
+  }
+
+  .dc-SystemMessages-tool {
+    cursor: pointer;
+  }
+
+  .dc-SystemMessages-tool-closeAll {
+    border-right: 1px solid #999;
+
+    span {
+      margin: 0 10px 0 3px;
+      top: 2px;
+    }
+  }
+
+  .dc-SystemMessages-tool-toggleListVisible {
+  }
+
+  /* SystemMessagesCounter */
+
+  .system-messages-counter {
+    &__btn {
+      height: 20px;
+      line-height: 1;
+      font-size: 12px;
+      padding: 0 10px;
+      margin: 8px 0 8px 5px;
+
+      &.btn-success {
+        color: #155724;
+        background-color: #d4edda;
+        border-color: #c3e6cb;
+      }
+
+      &.btn-info {
+        color: #0c5460;
+        background-color: #d1ecf1;
+        border-color: #bee5eb;
+      }
+
+      &.btn-warning {
+        color: #856404;
+        background-color: #fff3cd;
+        border-color: #ffeeba;
+      }
+
+      &.btn-danger {
+        color: #721c24;
+        background-color: #f8d7da;
+        border-color: #f5c6cb;
+      }
+    }
+  }
+}

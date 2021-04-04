@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xs:schema xmlns="urn::sciphox-org/sciphox" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="urn::sciphox-org/sciphox" elementFormDefault="qualified">
+	<!-- Schema -->
+	<xs:simpleType name="Hoergeraeteerstversorgung">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Ja"/>
+			<xs:enumeration value="Nein"/>
+			<xs:enumeration value="nicht bekannt"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Lokalisation">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="links"/>
+			<xs:enumeration value="rechts"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="SchweregradHoerstoerung">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="normalhörig"/>
+			<xs:enumeration value="geringgradig schwerhörig"/>
+			<xs:enumeration value="mittelgradig schwerhörig"/>
+			<xs:enumeration value="hochgradig schwerhörig"/>
+			<xs:enumeration value="Hörreste oder Taubheit"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Sprachentwicklungsstörung">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Ja, audiogen"/>
+			<xs:enumeration value="Ja, andere Ursache"/>
+			<xs:enumeration value="Nein"/>
+			<xs:enumeration value="nicht beurteilbar"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Luftleitung">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="HdO"/>
+			<xs:enumeration value="CROS"/>
+			<xs:enumeration value="BiCROS"/>
+			<xs:enumeration value="andere"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Knochenleitung">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Kopfbügel / Stirnband"/>
+			<xs:enumeration value="teilimplantiertes Knochenleitungsgerät"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="HoergeraeteversorgungsvorschlagEntsprichtVersorgungskonzept">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Ja"/>
+			<xs:enumeration value="Nein"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="HoergeraeteVersorgungserfolgErmittelbar">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Ja"/>
+			<xs:enumeration value="Nein"/>
+		</xs:restriction>
+	</xs:simpleType>	
+	<xs:simpleType name="HoergeraeteVersorgungserfolgErmittelbarDurch">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Sprachaudiometrie"/>
+			<xs:enumeration value="Spielaudiometrie"/>
+			<xs:enumeration value="andere altersgerechte Testverfahren"/>
+		</xs:restriction>
+	</xs:simpleType>	
+	<xs:simpleType name="VersorgungErfolgteZuzahlungsfrei">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Ja"/>
+			<xs:enumeration value="Nein"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="KooperationErfolgtMit">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Logopäde"/>
+			<xs:enumeration value="Pädagoge"/>
+			<xs:enumeration value="Betreuungseinrichtung"/>
+		</xs:restriction>
+	</xs:simpleType>	
+</xs:schema>

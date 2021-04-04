@@ -1,0 +1,5 @@
+div.col-xs-3(data-bind="visible: dmpHeightVisible()")
+    div(data-bind="hasFeedback: { field: dmpHeight, toggle: dmpHeight.hasError, messages: dmpHeight.validationMessages }")
+        label.control-label(data-bind="text: dmpHeight.i18n")
+        span(data-bind="dmpField: { field: dmpHeight }")
+        input.form-control(name="dmpHeight", type="text", data-bind="value: dmpHeightString, readOnly: dmpHeight.readOnly")

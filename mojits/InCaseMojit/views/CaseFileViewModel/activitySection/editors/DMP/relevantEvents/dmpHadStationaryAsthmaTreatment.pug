@@ -1,0 +1,9 @@
+div.form-group
+  div(data-bind="hasFeedback: { field: dmpHadStationaryAsthmaTreatment, toggle: dmpHadStationaryAsthmaTreatment.hasError, messages: dmpHadStationaryAsthmaTreatment.validationMessages }")
+    label.control-label(data-bind="text: dmpHadStationaryAsthmaTreatment.i18n")
+    span(data-bind="dmpField: { field: dmpHadStationaryAsthmaTreatment }")
+    div.row
+      div.col-xs-1
+        input.form-control(name="dmpHadStationaryAsthmaTreatment", type="text", data-bind="value: dmpHadStationaryAsthmaTreatmentString, readOnly: dmpHadStationaryAsthmaTreatment.readOnly")
+      div.col-xs-11.form-horizontal
+        p.form-control-static(data-bind="text: dmpHadStationaryAsthmaTreatmentUnitLabelI18n")

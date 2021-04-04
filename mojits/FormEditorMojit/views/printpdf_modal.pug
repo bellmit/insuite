@@ -1,0 +1,70 @@
+div#divSelPrinter
+  table(noborder="noborder", width="100%")
+    tr
+      td
+        div#divLocations
+          div
+            b(data-bind="text: locationI18n")
+          select.form-control(data-bind="options: currentLocations, optionsText: 'locname', value: selectedLocation")
+      td(width="10px")
+      //ko if: savePDFtoCaseFile
+      td
+        div#divEmployees
+          div
+            b(data-bind="text: employeeI18n")
+          input.form-control(name="employeeId", data-bind="select2: select2Employee")
+      td(width="10px")
+      // /ko
+      //ko if: !savePDFtoCaseFile
+      td
+        div#divPrinters
+          div
+            b(data-bind="text: printersI18n")
+            span(style="float: right")
+              a(data-bind="click: onShowMoreClick, visible: showMoreVisible, text: morePrintersI18n")
+              a(data-bind="click: onShowFewerClick, visible: showFewerVisible, text: fewerPrintersI18n")
+          select.form-control(data-bind="options: currentPrinters, value: selectedPrinter")#selPrinter
+      // /ko
+      //ko if: savePDFtoCaseFile
+      td
+        div#divActType
+          div
+            b(data-bind="text: actTypeI18n")
+          select.form-control(data-bind="options: availableActTypes, optionsText: 'i18n', value: selectedSimpleActivity")
+      // /ko
+      td(width="10px")
+      //ko if: !savePDFtoCaseFile
+      td(width="50px")
+        div#divCopies(data-bind="hasFeedback: { field: copies, toggle: copies.hasError, messages: copies.validationMessages }")
+          div
+            b(data-bind="text: countI18n + ':'")
+            i.dc-info-icon(data-bind="visible: copy, attr: {title: copyText}")
+          input.form-control(type="text", data-bind="value: copies")
+      // /ko
+      //ko if: savePDFtoCaseFile
+      td
+        div#divActivityStatus
+          div
+            b(data-bind="text: activityStatusI18n")
+          select.form-control(data-bind="options: activityStatusList, optionsText: 'i18n', value: selectedActivityStatus")
+      // /ko
+      td(width="10px")
+      //ko if: !savePDFtoCaseFile
+      td(width="50px")
+        div#divCopy(data-bind="hasFeedback: { field: copies, toggle: copies.hasError, messages: copies.validationMessages }")
+          div(style="margin-bottom: 6px;")
+            b(data-bind="text: 'Kopie' + ':'")
+          input(style="margin-left: 30%; margin-bottom: 10px;", type="checkbox", name="printWithCopy", data-bind="checked: copy")
+      // /ko
+      //ko if: savePDFtoCaseFile
+      td
+        div#divActivityContent
+          div
+            b(data-bind="text: activityContentI18n")
+          input.form-control.input-sm(type="text", data-bind="value: activityContent")
+      // /ko
+  // /ko
+
+  a(download="download-test.php", href="#", target="_blank", style="display: none;")#aDownloadHelperPDF download
+  div#divButtons
+    span(data-bind="template: kopbCache.template", style="display:none")

@@ -1,0 +1,15 @@
+div.CaseFileViewModel
+  div.row
+    div.col-md-12
+      // ko template: { name:'activityPatientInfoViewModel', data: activityPatientInfoViewModel, if: activityPatientInfoViewModel }
+      // /ko
+      // ko with: activityCaseFoldersViewModel
+      div.activityCaseFoldersViewModel(data-bind="template: caseFolderNav.template")
+      // /ko
+      // ko template: { name:'mirrorActivityCaseFileButtonsViewModel', data: activityCaseFileButtonsViewModel, if: activityCaseFileButtonsViewModel }
+      // /ko
+      // ko template: { name:'mirrorActivityDetailsViewModel', data: activityDetailsViewModel, if: activityDetailsViewModel }
+      // /ko
+      div#activitiesTable.activitiesTable(data-bind="template: activitiesTable.template")
+
+include ../../../autoload/KoUI/KoSchemaValue/view/KoSchemaTemplates

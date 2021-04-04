@@ -1,0 +1,19 @@
+{
+  "color": "#441122",
+  "type": "PATIENTS",
+  "name": "Mocha master calendar",
+  "isPublic": true,
+  "employee": "100000000000000000000003",
+  "locationId": "000000000000000000000001",
+  "consultTimes": [
+    {
+      "privateInsurance": true,
+      "publicInsurance": true,
+      "end": [22, 30],
+      "start": [9],
+      "colorOfConsults": " ",
+      "days": [1, 2, 3, 4, 5]
+    }
+  ],
+  "isShared": true
+}

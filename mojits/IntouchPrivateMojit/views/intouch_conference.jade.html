@@ -1,0 +1,109 @@
+div(id=mojit_view_id)
+  #conference.container.container-fullscreen.container.container-fullscreen-fullscreen(data-bind="style:{height: windowHeight}", style="margin-top:20px")
+    div#partnerVideo.col-xs-12.col-sm-8.overflow-hidden(data-bind="style:{height: partnerVideoHeight}")
+      p.placeholder-message.text-muted(data-bind="text: waitingForParticipantI18n")
+      div.row.video-boxes(data-bind="foreach: videoBoxes")
+        div.col-xs-4(data-bind="visible: visible, attr:{class: 'col-xs-' + $parent.colSize()}")
+          div.panel.panel-default(style="border: none; box-shadow: none;")
+            div.panel-heading
+              span(data-bind="text: userName")
+              span.ml-3.hidden-xs.pull-right(data-bind="if: 'undefined' !== typeof videoId, visible: !hideControls()")
+                a(href="#", tabindex="-1", data-bind="click: $parent.openSeparateTab")
+                  i.fa.fa-arrows-alt
+              span.ml-3.pull-right(data-bind="if: 'undefined' !== typeof videoId, visible: !hideControls() && $parent.isHost")
+                a.dc-red(href="#", tabindex="-1", data-bind="click: $parent.hangUp")
+                  i.fa.fa-phone
+              span.ml-3.pull-right(data-bind="if: 'undefined' !== typeof videoId, visible: !hideControls() && $parent.isHost")
+                a.dc-red(href="#", tabindex="-1", data-bind="click: $parent.recordVideo, visible: !recording()")
+                  i.fa.fa-circle
+              span.ml-3.pull-right(data-bind="if: 'undefined' !== typeof videoId, visible: !hideControls() && $parent.isHost")
+                a.dc-green(href="#", tabindex="-1", data-bind="click: $parent.stopRecordVideo, visible: recording")
+                  i.fa.fa-stop
+              span.ml-3.pull-right(data-bind="if: 'undefined' !== typeof videoId, visible: !hideControls() && $parent.isHost")
+                a.dc-green(href="#", tabindex="-1", data-bind="click: $parent.pauseRecordVideo, visible: recording, css:{'dc-red dc-fade-animation': recordPaused(), 'dc-green':!recordPaused()}")
+                  i.fa.fa-pause
+              span.ml-3.pull-right(data-bind="if: 'undefined' !== typeof videoId, visible: !hideControls() && $parent.isHost && videoRecordURL()")
+                a.dc-green(href="#", tabindex="-1", data-bind="click: $parent.openPreView, visible: !recording()")
+                  i.fa.fa-play
+              span.ml-3.pull-right(data-bind="if: 'undefined' !== typeof videoId, visible: !hideControls() && $parent.isHost && videoRecordURL()")
+                a.dc-green(href="#", tabindex="-1", data-bind="click: $parent.saveVideoRecord, visible: !recording()")
+                  i.fa.fa-save
+              span.pull-right(data-bind="if: ('undefined' !== typeof videoId) && videoRecord")
+                a.dc-red(href="#", tabindex="-1", data-bind="click: $parent.closeVideoRecord")
+                  i.fa.fa-times
+              span.ml-3.pull-right(data-bind="if: ('undefined' !== typeof videoId) && videoRecord")
+                a.dc-green(href="#", tabindex="-1", data-bind="click: $parent.playVideoRecord")
+                  i.fa.fa-play
+            div.panel-body.form-group(style="margin:0;padding:0;")
+              video(width="100%", data-bind="attr:{id: id}", autoplay="autoplay")
+    div.col-xs-12.col-sm-4.user.mt-4
+      div.row.mb-4
+        // ko if: lightVersion
+        div.no-padding.col-xs-12(data-bind="with: videoBoxesSelf")
+          div.panel.panel-default.mb-0(style="border: none; box-shadow: none;")
+            div.panel-heading
+              span(data-bind="text: userName")
+            div.panel-body.form-group(style="margin:0;padding:0;")
+              div.embed-responsive.embed-responsive-4by3
+                p.placeholder-message.text-muted(data-bind="text: $parent.waitingForCameraI18n")
+                video.embed-responsive-item(width="100%", data-bind="attr:{id: id}", muted="muted", autoplay="autoplay")
+        // /ko
+        // ko ifnot: lightVersion
+        div.no-padding.col-xs-12
+          div.embed-responsive.embed-responsive-4by3(data-bind="with: videoBoxesSelf")
+            p.placeholder-message.text-muted(data-bind="text: $parent.waitingForCameraI18n")
+            video.embed-responsive-item(width="100%", data-bind="attr:{id: id}", muted="muted", autoplay="autoplay")
+        // /ko
+        div.col-xs-12.mt-4.buttons-container
+          div.buttons-bar.mb-4
+            a.dc-green(href="#", tabindex="-1", data-bind="click: switchMicrState, css:{'dc-red': !micrState(), 'dc-green':micrState()}")
+              i.fa.fa-microphone.fa-2x(data-bind="css:{'fa-microphone-slash':!micrState(), 'fa-microphone':micrState()}")
+            a.dc-green(href="#", tabindex="-1", data-bind="click: switchCamState, css:{'dc-red': !camState(), 'dc-green':camState()}")
+              i.fa.fa-2x.fa-video-camera
+            // ko ifnot: privateCall()
+            a.dc-green(href="#", tabindex="-1", data-bind="click: inviteParticipant")
+              i.fa.fa-user-plus.fa-2x
+            // /ko
+            a.dc-red(href="#", tabindex="-1", data-bind="click: hangUpAll")
+              i.fa.fa-phone.fa-2x
+          div.individual-button.mb-4
+            a.dc-green.mr-4(href="#", tabindex="-1", data-bind="click: openExtraScreenShare")
+              i.fa.fa-2x.fa-share-square-o
+            input.form-control.individual-button__details(name="select2ScreenCaptureMode", type="hidden", data-bind="select2: select2ScreenCaptureMode")
+          div.individual-button.mb-4
+            a.dc-green.mr-4(href="#", tabindex="-1", data-bind="click: openExtraCamera", style="", target="_blank")
+              i.fa.fa-file-video-o.fa-2x
+            span.individual-button__details(style="vertical-align: sub;", data-bind="text: addCameraI18n")
+        div.no-padding.col-xs-12
+          // ko ifnot: lightVersion
+          div.panel.panel-default(dc-panel="notes", dc-panel-actions="minimize")
+            div.panel-heading
+              a(href="#notes", data-toggle="collapse")
+                strong(data-bind="text: sharedNotesI18n")
+            div#notes.panel-collapse.collapse
+              div.panel-body
+                div.form-group(style="margin:0; padding:0;")
+                  textarea.form-control(data-bind="value: notes, valueUpdate: 'afterkeydown'", rows="5")
+          div.panel.panel-default(dc-panel="fileList", dc-panel-actions="minimize")
+            div.panel-heading
+              a(href="#fileList", data-toggle="collapse")
+                strong(data-bind="text: sharedFilesI18n")
+            div#fileList.panel-collapse.collapse
+              div.panel-body
+                div.row
+                  div.col-xs-12
+                    input.pull-left(type="file", name="shareFiles", data-bind="event:{change: shareFiles}", multiple="multiple")
+                    button.pull-right.btn.btn-defaul(data-bind="click: resendFiles, text: titleResendI18n")
+                div.row
+                  div.col-xs-12(data-bind="foreach: fileLinks")
+                    div
+                      a(data-bind="click: $parent.downloadFile", href="#")
+                        span(data-bind="text: filename")
+                      strong.dc-green.dc-hide-pulse-animation(data-bind="visible: isNew, text: ' ' + titleNewI18n")
+                      strong(style="margin-left: 10px", data-bind="visible: $parent.isHost && $parent.isTeleConsult, css: {'dc-red': -1 !== fileUploadStatus().indexOf('REJECTED'), 'dc-yellow': 'IN_PROGRESS' === fileUploadStatus(), 'dc-green': 'UPLOADED' === fileUploadStatus()}, attr: {title: titleUpload} ")
+                        i.fa.fa-database
+                      a.dc-red.pull-right(data-bind="click: $parent.removeFile", href="#")
+                        i.fa.fa-times
+          // /ko
+        div.col-xs-12.buttons-container
+          div(data-bind="template: testSpeed.template", style="display:inline-block;")

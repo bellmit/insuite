@@ -1,0 +1,2 @@
+# Extra Options for NodeJS Startup
+# e.g. NODEJS_OPTIONS="--max-old-space-size=2048"

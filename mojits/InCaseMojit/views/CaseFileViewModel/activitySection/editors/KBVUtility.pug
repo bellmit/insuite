@@ -1,0 +1,372 @@
+div
+  div.row
+    div.col-xs-2
+      div.form-group
+        button.btn.btn-default.btn-block(type="button", name="openKbvUtilitySearchBtn", data-bind="click: openKbvUtilitySearch, readOnly: utPrescriptionType.readOnly") Katalogsuche
+    div.col-xs-4
+      div.form-group.dc-form-flex
+        div.dc-form-flex-label
+          label(data-bind="tooltip: {title: 'spätester Behandlungsstart'}") Behandlungsstart
+        .date-picker.input-group(style="width: 63%;", data-bind="hasFeedback: { field: utLatestStartOfTreatment, toggle: utLatestStartOfTreatment.hasError, messages: utLatestStartOfTreatment.validationMessages, type: 'warning' }")
+          input.form-control(name="utLatestStartOfTreatment", type="text", data-bind="datetimepicker: { value: utLatestStartOfTreatment }, readOnly: utLatestStartOfTreatment.readOnly")
+    div.col-xs-6
+      div.panel.panel-default
+        div(style="padding: 6px;", data-bind="hasFeedback: { field: utPrescriptionType, toggle: utPrescriptionType.hasError, messages: utPrescriptionType.validationMessages, type: 'warning' }")
+          div.radio-inline
+            label.control-label
+              span Erstverordnung
+              input(type="radio", name="utPrescriptionType", value="FIRST", data-bind="checked: utPrescriptionType, readOnly: utPrescriptionType.readOnly")
+          div.radio-inline
+            label.control-label
+              span Folgeverordnung
+              input(type="radio", name="utPrescriptionType", value="FOLLOWING", data-bind="checked: utPrescriptionType, readOnly: utPrescriptionType.readOnly")
+          div.radio-inline
+            label.control-label
+              span Kein Regelfall
+              input(type="radio", name="utPrescriptionType", value="NO_NORMAL_CASE", data-bind="checked: utPrescriptionType, readOnly: utPrescriptionType.readOnly")
+  div.row
+    div.col-xs-12
+      div.panel.panel-default
+        div(style="padding: 6px;")
+          div.form-inline
+            div.checkbox-inline
+              label.control-label
+                span Hausbesuch
+                input(type="checkbox", name="utHomeVisit", data-bind="checked: utHomeVisit, readOnly: utHomeVisit.readOnly")
+            div.checkbox-inline(data-bind="hasFeedback: { field: utGroupTherapy, toggle: utGroupTherapy.hasError, messages: utGroupTherapy.validationMessages, type: 'warning' }")
+              label.control-label
+                span Gruppentherapie
+                input(type="checkbox", name="utGroupTherapy", data-bind="checked: utGroupTherapy, readOnly: utGroupTherapy.readOnly")
+            div.checkbox-inline
+              label.control-label
+                span Therapiebericht
+                input(type="checkbox", name="utTherapyReport", data-bind="checked: utTherapyReport, readOnly: utTherapyReport.readOnly")
+            div.checkbox-inline
+              label.control-label
+                span Unfall, Unfallfolgen
+                input(type="checkbox", name="utUnfall", data-bind="checked: utUnfall, readOnly: utUnfall.readOnly")
+            div.checkbox-inline
+              label.control-label
+                span BVG
+                input(type="checkbox", name="utBvg", data-bind="checked: utBvg, readOnly: utBvg.readOnly")
+            div.form-group(style="padding-left: 8px;")
+              label.control-label
+                span(data-bind="text: paidFreeStatusI18n", style="padding-right: 4px;")
+                select.form-control.input-sm(name="paidFreeStatus", placeholder="auto", data-bind="value: paidFreeStatus, options: paidFreeStatus.list, optionsText: 'i18n', optionsValue: 'val', readOnly: paidFreeStatus.readOnly")
+  div.row(data-bind="if: subType")
+    div.col-xs-6
+      div.row
+        label.col-xs-6
+          span Indikation
+        div.col-xs-6
+          div.form-group(data-bind="hasFeedback: { field: utIndicationCode, toggle: utIndicationCode.hasError, messages: utIndicationCode.validationMessages, type: 'warning' }")
+            input.form-control(name="utIndicationCode", data-bind="value: utIndicationCode", disabled="disabled")
+        label.col-xs-6
+          span Diagnose ICD-10&nbsp;
+          i.dc-info-icon(data-bind="visible: icdWillBeCreated, tooltip: {title: 'Wird beim Speichern erstellt!', placement: 'top', trigger:'click'}")
+        div.col-xs-6
+          div.form-group(data-bind="hasFeedback: { field: utIcdCode, toggle: utIcdCode.hasError, messages: utIcdCode.validationMessages, type: 'warning' }")
+            input.form-control(name="utIcdCode", placeholder="ICD-Code", data-bind="value: utIcdCode", disabled="disabled")
+        label.col-xs-6
+          span Sekundärdiagnose ICD-10&nbsp;
+          i.dc-info-icon(data-bind="visible: icd2WillBeCreated, tooltip: {title: 'Wird beim Speichern erstellt!', placement: 'top', trigger:'click'}")
+        div.col-xs-6
+          div.form-group
+            input.form-control(name="utSecondIcdCode", placeholder="Sekundärer ICD-Code", data-bind="value: utSecondIcdCode", disabled="disabled")
+    div.col-xs-6
+      div.form-group
+        textarea.form-control(name="userContent", placeholder="Bezeichnung Indikation", style="height: 122px;", data-bind="value: userContent, readOnly: userContent.readOnly, event: { focus: onDocTreeFocus, blur: onDocTreeBlur }, caretPosition: userContent.caretPosition")
+  div.row
+    label.col-xs-3
+      span Heilmittelvereinbarung&nbsp;
+      i.dc-info-icon(data-bind="visible: utAgreementNeedsApproval, tooltip: {title: 'Eine Genehmigung der Krankenkasse ist notwendig!', placement: 'top', trigger:'click'}")
+    div.col-xs-9
+      div.row
+        div.col-xs-12
+          div.form-group
+            select.form-control(name="utAgreement", data-bind="value: utAgreement, options: utAgreement.list, optionsText: '-de', optionsValue: 'val', readOnly: utAgreement.readOnly")
+        div.col-xs-12(data-bind="if: utAgreementNeedsApproval")
+          div.row
+            div.col-xs-12
+              div.form-group
+                strong Genehmigung des langfristigen Heilmittelbedarfs
+          div.row
+            div.col-xs-4
+              label Datum gültig bis
+            div.col-xs-8
+              div.form-group
+                .date-picker.input-group(data-bind="hasFeedback: { field: utAgreementApprovedTill, toggle: utAgreementApprovedTill.hasError, messages: utAgreementApprovedTill.validationMessages, type: 'warning' }")
+                  input.form-control(name="utAgreementApprovedTill", type="text", data-bind="datetimepicker: { value: utAgreementApprovedTill }, readOnly: utAgreementApprovedTill.readOnly")
+          div.row
+            div.col-xs-4
+              label Diagnosegruppe bzw. Indikationsschlüssel
+            div.col-xs-8
+              div.form-group
+                div.checkbox-inline
+                  label.control-label
+                    span Nur Diagnosegruppe
+                    input(type="checkbox", name="utAgreementApprovedCodeUseDiagnosisGroup", data-bind="checked: utAgreementApprovedCodeUseDiagnosisGroup, readOnly: utAgreementApprovedCodeUseDiagnosisGroup.readOnly() || indicationCodeIsAlreadyDiagnosisGroup()")
+                input.form-control(name="utAgreementApprovedCode", data-bind="value: utAgreementApprovedCode", disabled="disabled")
+
+          div.row
+            div.col-xs-4
+              label Freitext
+            div.col-xs-8
+              div.form-group
+                textarea.form-control(name="utAgreementApprovedText", placeholder="", data-bind="textInput: utAgreementApprovedText, readOnly: utAgreementApprovedText.readOnly")
+          div.row
+            div.col-xs-4
+              label Versicherung
+            div(data-bind="if: 0 === utAgreementApprovedForInsurance().length")
+              span -
+            div.col-xs-8(data-bind="foreach: utAgreementApprovedForInsurance")
+              div(data-bind="text: 'Kasse: ' + (insuranceName() || '-')")
+              div(data-bind="text: 'Versicherten-Nr.: ' + (insuranceNo() || '-')")
+              div(data-bind="text: 'IKNR: ' + (insuranceId() || '-')")
+              div(data-bind="text: 'VKNR: ' + (insuranceGrpId() || '-')")
+              div(data-bind="text: 'KTAB: ' + (costCarrierBillingSection() || '-')")
+              div(data-bind="text: 'Versichertenart: ' + (insuranceKind() || '-')")
+              div(data-bind="text: 'Besondere Personen Gruppe: ' + (persGroup() || '-')")
+  div.row
+    div(data-bind="if: showAcuteEvent")
+      label.col-xs-3
+        span Akutereignis
+      div.col-xs-9
+        .date-picker.input-group
+          input.form-control(name="utAcuteEvent", type="text", placeholder="", data-bind="datetimepicker: { options: { format: 'DD.MM.YYYY'}, value: utAcuteEvent }, readOnly: utAcuteEvent.readOnly")
+    div.row(data-bind="if: isSubTypeVisible(['PHYSIO', 'ERGO']) && utRemedy1List().length")
+      div.col-xs-12
+        div.row
+          div.col-xs-4
+            h4
+              span 1. Heilmittel&nbsp;
+              span(data-bind="with: utMaxSeasons1Stats")
+                span.label(data-bind="tooltip: {title: $parent.utMaxSeasonsStatsI18n}, visible: visible, css: {'label-success': valid, 'label-warning': !valid}, text: current + '/' + max")
+          div.col-xs-1
+            div(style="padding-top: 11px;") Sitzungen
+          div.col-xs-1
+            div(style="padding-top: 11px;")
+              span Preis&nbsp;
+              a(target="_blank", href="admin/incase#/catalogs")
+                i.dc-info-icon(data-bind="tooltip: {title: 'Preisverwaltung', trigger:'hover'}")
+          div.col-xs-2
+            div(style="padding-top: 11px;") Erläuterung
+
+      div.col-xs-6
+        div.row
+          div.col-xs-12
+            div(data-bind="foreach: utRemedy1List, hasFeedback: { field: utRemedy1List, toggle: utRemedy1List.hasError, messages: utRemedy1List.validationMessages, type: 'warning'  }")
+              div.row
+                div.col-xs-8
+                  div.form-group
+                    input.form-control(name="utRemedyEntryName", data-bind="value: name, readOnly: true")
+                div.col-xs-2
+                  div.form-group
+                    input.form-control(name="utRemedyEntrySeasons", data-bind="value: seasons, readOnly: true")
+                div.col-xs-2
+                  div.form-group
+                    input.form-control(name="utRemedyEntryPrice", data-bind="value: $parent.displayPrice(price()), readOnly: true")
+          div.col-xs-12
+            div.row
+              div.col-xs-6
+                div.form-group.dc-form-flex(data-bind="hasFeedback: { field: utRemedy1Seasons, toggle: utRemedy1Seasons.hasError, messages: utRemedy1Seasons.validationMessages }")
+                  div.dc-form-flex-label(style="padding-top: 0px;")
+                    label(for="utRemedy1Seasons") Max. Sitzungen
+                  input.form-control(id="utRemedy1Seasons", name="utRemedy1Seasons", placeholder="6", data-bind="textInput: utRemedy1Seasons, readOnly: utRemedy1Seasons.readOnly")
+              div.col-xs-6
+                div.form-group.dc-form-flex(data-bind="hasFeedback: { field: utRemedy1PerWeek, toggle: utRemedy1PerWeek.hasError, messages: utRemedy1PerWeek.validationMessages, type: 'warning' }")
+                  div.dc-form-flex-label(style="padding-top: 0px;")
+                    label(for="utRemedy1PerWeek")
+                      span Pro&nbsp;
+                      i.dc-info-icon(data-bind="tooltip: {title: 'Erlaubte Werte: n (Nummer) oder n-n entsprechen, z.B. 1 oder 1-2.', placement: 'top', trigger:'click'}")
+                      span Woche
+                  input.form-control(id="utRemedy1PerWeek", name="utRemedy1PerWeek", placeholder="1", data-bind="textInput: utRemedy1PerWeek, readOnly: utRemedy1PerWeek.readOnly")
+      div.col-xs-6
+        div.form-group
+          textarea.form-control(style="height: 78px;", name="utRemedy1Explanation", placeholder="", data-bind="value: utRemedy1Explanation, readOnly: utRemedy1Explanation.readOnly, event: { focus: onDocTreeFocus, blur: onDocTreeBlur }, caretPosition: utRemedy1Explanation.caretPosition")
+    div.row(data-bind="if: isSubTypeVisible(['PHYSIO', 'ERGO']) && utRemedy2List().length")
+      div.col-xs-12
+        div.row
+          div.col-xs-4
+            h4
+              span 2. Heilmittel&nbsp;
+              span(data-bind="with: utMaxSeasons2Stats")
+                span.label(data-bind="tooltip: {title: $parent.utMaxSeasonsStatsI18n}, visible: visible, css: {'label-success': valid, 'label-warning': !valid}, text: current + '/' + max")
+          div.col-xs-1
+            div(style="padding-top: 11px;") Sitzungen
+          div.col-xs-1
+            div(style="padding-top: 11px;")
+              span Preis&nbsp;
+              a(target="_blank", href="admin/incase#/catalogs")
+                i.dc-info-icon(data-bind="tooltip: {title: 'Preisverwaltung', trigger: 'hover'}")
+          div.col-xs-2
+            div(style="padding-top: 11px;") Erläuterung
+
+      div.col-xs-6
+        div.row
+          div.col-xs-12
+            div(data-bind="foreach: utRemedy2List, hasFeedback: { field: utRemedy2List, toggle: utRemedy2List.hasError, messages: utRemedy2List.validationMessages, type: 'warning'  }")
+              div.row
+                div.col-xs-8
+                  div.form-group
+                    input.form-control(name="utRemedyEntryName", data-bind="value: name, readOnly: true")
+                div.col-xs-2
+                  div.form-group
+                    input.form-control(name="utRemedyEntrySeasons", data-bind="value: seasons, readOnly: true")
+                div.col-xs-2
+                  div.form-group
+                    input.form-control(name="utRemedyEntryPrice", data-bind="value: $parent.displayPrice(price()), readOnly: true")
+          div.col-xs-12
+            div.row
+              div.col-xs-6
+                div.form-group.dc-form-flex(data-bind="hasFeedback: { field: utRemedy2Seasons, toggle: utRemedy2Seasons.hasError, messages: utRemedy2Seasons.validationMessages }")
+                  div.dc-form-flex-label(style="padding-top: 0px;")
+                    label(for="utRemedy2Seasons") Max. Sitzungen
+                  input.form-control(id="utRemedy2Seasons", name="utRemedy2Seasons", placeholder="6", data-bind="textInput: utRemedy2Seasons, readOnly: utRemedy2Seasons.readOnly")
+              div.col-xs-6
+                div.form-group.dc-form-flex(data-bind="hasFeedback: { field: utRemedy2PerWeek, toggle: utRemedy2PerWeek.hasError, messages: utRemedy2PerWeek.validationMessages, type: 'warning' }")
+                  div.dc-form-flex-label(style="padding-top: 0px;")
+                    label(for="utRemedy2PerWeek")
+                      span Pro&nbsp;
+                        i.dc-info-iconCSa(data-bind="tooltip: {title: 'Erlaubte Werte: n (Nummer) oder n-n entsprechen, z.B. 1 oder 1-2.', placement: 'top', trigger:'click'}")
+                        span Woche
+                  input.form-control(id="utRemedy2PerWeek", name="utRemedy2PerWeek", placeholder="1", data-bind="textInput: utRemedy2PerWeek, readOnly: utRemedy2PerWeek.readOnly")
+      div.col-xs-6
+        div.form-group
+          textarea.form-control(style="height: 78px;", name="utRemedy2Explanation", placeholder="", data-bind="value: utRemedy2Explanation, readOnly: utRemedy2Explanation.readOnly, event: { focus: onDocTreeFocus, blur: onDocTreeBlur }, caretPosition: utRemedy2Explanation.caretPosition")
+    div.row(data-bind="if: isSubTypeVisible('LOGO')")
+      div.col-xs-6
+        div.row
+          div.col-xs-12
+            div.panel.panel-default
+              div(style="padding: 6px;")
+                div.checkbox-inline
+                  label.control-label Stimmtherapie
+                  input(type="checkbox", name="utVocalTherapy", data-bind="checked: utVocalTherapy, readOnly: utVocalTherapy.readOnly")
+                div.checkbox-inline
+                  label.control-label Sprechtherapie
+                  input(type="checkbox", name="utSpeakTherapy", data-bind="checked: utSpeakTherapy, readOnly: utSpeakTherapy.readOnly")
+                div.checkbox-inline
+                  label.control-label Sprachtherapie
+                  input(type="checkbox", name="utSpeechTherapy", data-bind="checked: utSpeechTherapy, readOnly: utSpeechTherapy.readOnly")
+          div.col-xs-12
+            div.row
+              div.col-xs-6
+                div.form-group.dc-form-flex(data-bind="hasFeedback: { field: utRemedy1Seasons, toggle: utRemedy1Seasons.hasError, messages: utRemedy1Seasons.validationMessages }")
+                  div.dc-form-flex-label
+                    label Sitzungen
+                  input.form-control(name="utRemedy1Seasons", placeholder="6", data-bind="value: utRemedy1Seasons, readOnly: utRemedy1Seasons.readOnly")
+              div.col-xs-6
+                div.form-group.dc-form-flex
+                  div.dc-form-flex-label
+                    label Pro Woche
+                  div(data-bind="if: 'ST3' === utIndicationCode()")
+                    select.form-control(name="utRemedy1PerWeek", placeholder="1", data-bind="value: utRemedy1PerWeek, options: utLogoRemedyPerWeekList, readOnly: utRemedy1PerWeek.readOnly")
+                  div(data-bind="if: 'ST3' !== utIndicationCode()")
+                    input.form-control(name="utRemedy1PerWeek", placeholder="1", data-bind="value: utRemedy1PerWeek, readOnly: utRemedy1PerWeek.readOnly")
+      div.col-xs-3
+        div.form-group
+          select.form-control(name="utDurationOfSeason", placeholder="Dauer der Sitzung", data-bind="value: utDurationOfSeasonComputed, options: utDurationOfSeasonList, optionsText: 'text', optionsValue: 'value', readOnly: utDurationOfSeason.readOnly")
+    div.row
+      div.col-xs-6
+        div.form-group(data-bind="hasFeedback: { field: utMedicalJustification, toggle: utMedicalJustification.hasError, messages: utMedicalJustification.validationMessages, type: 'warning' }")
+          textarea.form-control(name="utMedicalJustification", placeholder="Medizinische Begründung", data-bind="value: utMedicalJustification, readOnly: utMedicalJustification.readOnly, event: { focus: onDocTreeFocus, blur: onDocTreeBlur }, caretPosition: utMedicalJustification.caretPosition", rows="4")
+      div.col-xs-6
+        div.form-group
+          input.form-control(name="utTherapyGoalsList", data-bind="select2: select2UtTherapyGoals, readOnly: utTherapyGoalsList.readOnly")
+    div.row(data-bind="if: isSubTypeVisible(['LOGO', 'ERGO'])")
+      div.col-xs-12
+        textarea.form-control(name="utNeuroFinding", placeholder="Neurologische, pädiatrische Besonderheiten (z.B. psychointellektueller Befund) ", data-bind="value: utNeuroFinding", rows="2")
+    div.row(data-bind="if: isSubTypeVisible('LOGO')")
+      div.col-xs-3
+        div.form-group(data-bind="hasFeedback: { field: utAudioDiagDate, toggle: utAudioDiagDate.hasError, messages: utAudioDiagDate.validationMessages }")
+          label.control-label Tonaudiodiagramm vom
+          .date-picker.input-group
+            input.form-control(name="utAudioDiagDate", type="text", placeholder="", data-bind="datetimepicker: { options: { format: 'DD.MM.YYYY'}, value: utAudioDiagDate }, readOnly: utAudioDiagDate.readOnly")
+      div.col-xs-9
+        div.row
+          div.col-xs-12
+            label Freifeldbefunde ermittelt durch
+          div.col-xs-4
+            div.checkbox
+              label.control-label
+                strong Reaktion
+                input(type="checkbox", name="utAudioDiagReact", data-bind="checked: utAudioDiagReact, readOnly: utAudioDiagReact.readOnly")
+          div.col-xs-4
+            div.checkbox
+              label.control-label
+                strong Konditionierung
+                input(type="checkbox", name="utAudioDiagCond", data-bind="checked: utAudioDiagCond, readOnly: utAudioDiagCond.readOnly")
+          div.col-xs-4
+            div.checkbox
+              label.control-label
+                strong eigene Angaben
+                input(type="checkbox", name="utAudioDiagOwn", data-bind="checked: utAudioDiagOwn, readOnly: utAudioDiagOwn.readOnly")
+    div.row(data-bind="if: isSubTypeVisible('LOGO')")
+      div.col-xs-12
+        h4 Laryngologischer Befund
+      div.col-xs-12
+        div.form-group
+          input.form-control(name="utLupenlaryngoskopie", placeholder="Lupenlaryngoskopie", data-bind="value: utLupenlaryngoskopie, readOnly: utLupenlaryngoskopie.readOnly")
+      div.col-xs-12
+        div.row
+          div.col-xs-6
+            strong Lupenstroboskopie
+          div.col-xs-3
+            div.form-group
+              input.form-control(name="utLupenstroboskopieRight", placeholder="rechts", data-bind="value: utLupenstroboskopieRight, readOnly: utLupenstroboskopieRight.readOnly")
+          div.col-xs-3
+            div.form-group
+              input.form-control(name="utLupenstroboskopieLeft", placeholder="links", data-bind="value: utLupenstroboskopieLeft, readOnly: utLupenstroboskopieLeft.readOnly")
+        div.row
+          div.col-xs-6
+            strong Amplitude
+          div.col-xs-3
+            div.form-group
+              input.form-control(name="utAmplitudeRight", placeholder="rechts", data-bind="value: utAmplitudeRight, readOnly: utAmplitudeRight.readOnly")
+          div.col-xs-3
+            div.form-group
+              input.form-control(name="utAmplitudeLeft", placeholder="links", data-bind="value: utAmplitudeLeft, readOnly: utAmplitudeLeft.readOnly")
+        div.row
+          div.col-xs-6
+            strong Randkantenverschiebung
+          div.col-xs-3
+            div.form-group
+              input.form-control(name="utRandkantenverschiebungRight", placeholder="rechts", data-bind="value: utRandkantenverschiebungRight, readOnly: utRandkantenverschiebungRight.readOnly")
+          div.col-xs-3
+            div.form-group
+              input.form-control(name="utRandkantenverschiebungLeft", placeholder="links", data-bind="value: utRandkantenverschiebungLeft, readOnly: utRandkantenverschiebungLeft.readOnly")
+        br
+        div.row
+          div.col-xs-3
+            strong Regulär
+          div.col-xs-3
+            div
+              label.checkbox-inline
+                span(data-bind="text: utRegular.list()[0].i18n")
+                input(type="checkbox", name="utRegular", data-bind="checked: utRegularYes")
+              label.checkbox-inline
+                span(data-bind="text: utRegular.list()[1].i18n")
+                input(type="checkbox", name="utRegular", data-bind="checked: utRegularNo")
+        div.row
+          div.col-xs-3
+            strong Kompletter Glottisschluss
+          div.col-xs-3
+            div
+              label.checkbox-inline
+                span(data-bind="text: utGlottisschluss.list()[0].i18n")
+                input(type="checkbox", name="utGlottisschluss", data-bind="checked: utGlottisschlussYes")
+              label.checkbox-inline
+                span(data-bind="text: utGlottisschluss.list()[1].i18n")
+                input(type="checkbox", name="utGlottisschluss", data-bind="checked: utGlottisschlussNo")
+
+        br
+        div.row
+          div.col-xs-12
+            h4 Trommelfellbefund
+          div.col-xs-6
+            div.form-group
+              input.form-control(name="utEarDrumFindingRight", placeholder="rechts", data-bind="value: utEarDrumFindingRight, readOnly: utEarDrumFindingRight.readOnly")
+          div.col-xs-6
+            div.form-group
+              input.form-control(name="utEarDrumFindingLeft", placeholder="links", data-bind="value: utEarDrumFindingLeft, readOnly: utEarDrumFindingLeft.readOnly")

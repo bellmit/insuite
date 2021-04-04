@@ -1,0 +1,14 @@
+div.PatientGadgetAlarmClockConfigDialog: form.form-horizontal
+    .row: .col-xs-offset-1.col-xs-11: .form-group: .checkbox: label
+        span(data-bind="text: manualModeI18n")
+        input(type='checkbox', data-bind='checked: manualMode')
+    .row: .col-xs-offset-1.col-xs-11: p.small(style="margin-left: 11px;", data-bind="text: hintI18n")
+    .row: .col-xs-offset-1.col-xs-11: .form-group: .checkbox: label
+        span(data-bind="text: additionalNotificationI18n")
+        input(type='checkbox', data-bind='checked: additionalNotification')
+    .row: .col-xs-10: .form-group
+        label.col-xs-5.control-label.small(for='minBefore', style='font-weight: normal; margin-left: -6px;', data-bind="text: minutesBeforeI18n")
+        .col-xs-3: input#minBefore.form-control.input-sm(type='text' style='margin-left: 9px;' data-bind='textInput: reNotifyMinBefore')
+    .row: .col-xs-10: .form-group
+        label.col-xs-5.control-label.small(for='minAfter', style='font-weight: normal; margin-left: 3px;', data-bind="text: minutesAfterI18n")
+        .col-xs-3: input#minAfter.form-control.input-sm(type='text' data-bind='textInput: reNotifyMinAfter')

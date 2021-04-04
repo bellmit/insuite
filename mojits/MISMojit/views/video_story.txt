@@ -1,0 +1,98 @@
+insuite
+    Funktionsüberblick                      5
+    Einrichtung, Grunddaten                 10 (01:07)
+    Betriebsstätten anlegen                 15 (02:40)
+    Mitarbeiter verwalten                   20 (04:19)
+    Passwort ändern                         25 (02:29)
+    Passwort vergessen                      30 (00:57)
+    Gesundheitsportal einbinden             35 (03:59)
+    Audit Log einsehen                      40 (02:03)
+//    Kartenleser installieren                45
+
+intime
+    Funktionsüberblick                      5
+    Kalender anlegen                        10 (02:16)
+    Sprechzeiten anlegen                    15 (01:17)
+    Sperrzeiten anlegen                     20 (02:03)
+    Terminarten anlegen                     25 (03:28)
+    Wartezimmer Info anpassen               30 (04:28)
+    Betriebsstättenfilter setzen            35 (02:37)
+    Ansichten und Auflösung                 40 (02:47)*
+    Plantermin und Spontantermin            45 (04:14)
+    Zuordnung Termin zu Patient             50 (03:16)
+    Termine außerhalb der Sprechzeiten      55 (02:21)
+    Umgang mit Planterminen                 60 (03:54)
+    Umgang mit Spontanterminen              65 (03:03)
+    Warteliste nutzen                       70 (06:34)
+    Aufrufliste nutzen                      75 (05:13)
+    Intelligenter Kalender                  80 (05:13)
+    Termine im Gesundheitsportal            85 (08:45)
+    Terminliste drucken                     90 (03:27)
+    Terminbenachrichtigungen                95 (04:17)
+
+inform
+    Funktionsüberblick                      5
+    Formular anlegen                        10 (02:09)
+    Formular konfigurieren                  15 (12:36)
+    Formularversion erstellen               20 (06:17)
+//    Standardrolle zuweisen                  25
+    Formulare mit mehreren Seiten           30 (04:09)
+    Bilder in Formularen                    35 (03:01)
+    Mehrsprachige Formulare                 40 (02:42)
+    Mapping von DB-Inhalten                 45 (04:58)
+    Formulare drucken                       50 (04:01)
+    Formulare exportieren                   55 (01:57)
+    Formulare importieren                   60 (01:22)
+
+incase
+    Funktionsüberblick                      5
+    Marker konfigurieren                    10 (03:12)
+    Tastaturkürzel                          15 (02:57)
+    Patient anlegen                         20 (06:44)
+    Patient suchen                          25 (02:13)
+//    Karte einlesen                          30
+    Kostenträger anlegen                    35 (04:11)
+//    Kostenträger PKV                        40
+//    Kostenträger Selbstzahler               45
+//    Kostenträger BG                         47
+    Zuordnung Patient-Termin                50 (03:31)
+    GKV Schein anlegen                      55 (04:48)
+    Auskunft und Befund erfassen            60 (04:24)
+    Diagnose erfassen                       65 (03:38)
+    Leistung erfassen                       70 (03:23)
+    Medikamente in Hauskatalog aufnehmen    75 (07:43)
+    Verordnung von Medikamenten             80 (02:30)
+    Suche nach Medikamenten (MMI)           85 (11:05)
+    Rezept erstellen                        90 (10:36)
+    Folgeverordnung erstellen                   95 (03:58)
+    Formular anlegen                        100 (02:47)
+    Dokumente/Bilder an Akteneintrag hängen 105 (03:32)
+//    Dokumente im Gesundheitsportal          110
+
+invoice
+    Konfiguration                           5
+    Privatrechnung erstellen                10
+    Abrechnungsdateien erstellen            15
+    Abrechnungsdateien prüfen               20
+    Abrechnungsdateien verschlüsseln        25
+    Teilabrechnung, Abrechnung              30
+    Manueller Versand                       35
+    1-Click Versand (KV-Connect)            40
+    Korrektur und Ersatzlieferung           45
+
+
+insight
+    Reporting in Echtzeit                   5
+    Analyse von Behandlungspfaden           10
+
+Datensafe
+    Erste Inbetriebnahme                    5
+    Backup erstellen                        10
+    Fixe IP-Adresse statt DHCP              15
+    Festplatte wechseln                     20
+    Betrieb mit zwei Datensafes             25
+    Integration mit Medtech-Geräten         30
+    Datenmigration                          35
+
+
+

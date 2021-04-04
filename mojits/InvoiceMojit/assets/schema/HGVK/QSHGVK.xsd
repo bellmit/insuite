@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- edited with XMLSPY v5 rel. 4 U (http://www.xmlspy.com) by Win 2000 (KBV) -->
+<xs:schema xmlns:cda="urn::hl7-org/cda" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:kbvlib="urn:kbv/kbv/typelib/001" xmlns:kbv="urn::hl7-org/kbv" xmlns:sciphox="urn::sciphox-org/sciphox" xmlns="urn::hl7-org/cda" targetNamespace="urn::hl7-org/cda" elementFormDefault="qualified">
+	<xs:import namespace="urn::sciphox-org/sciphox" schemaLocation="QSHGVK_SSUS.xsd"/>
+	<xs:import namespace="urn::hl7-org/kbv" schemaLocation="all_kbv_typelib.xsd"/>
+	<xs:import namespace="urn:kbv/kbv/typelib/001" schemaLocation="all_kbvtypelib001_typelib.xsd"/>
+	<!-- ****************************** includen und redefine von clinical_document_header ****************************** -->
+	<xs:redefine schemaLocation="clinical_document_header_typelib.xsd">
+		<xs:simpleType name="v_document_relationship.type_cd_typ">
+			<xs:restriction base="v_document_relationship.type_cd_typ">
+				<xs:enumeration value="RPLC"/>
+			</xs:restriction>
+		</xs:simpleType>
+		<xs:complexType name="dmp_document_type_cd_typ">
+			<xs:complexContent>
+				<xs:restriction base="dmp_document_type_cd_typ">
+					<xs:attribute name="V" use="required">
+						<xs:simpleType>
+							<xs:restriction base="kbv:string_max_60_typ">
+								<xs:enumeration value="QSHGVK_VV"/>
+								<xs:enumeration value="QSHGVK_NG"/>
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:attribute>
+					<xs:attribute name="S" type="xs:string" use="required" fixed="1.2.276.0.76.5.100"/>
+					<xs:attribute name="SN" type="xs:string" use="required" fixed="KBV"/>
+					<xs:attribute name="DN" type="xs:string" use="required"/>
+				</xs:restriction>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:redefine>
+	<!-- ****************************** clinical_document_header ****************************** -->
+	<xs:element name="levelone">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="clinical_document_header" type="qshgvk_clinical_document_header_typ"/>
+				<xs:element name="body" type="body_typ"/>
+			</xs:sequence>
+		</xs:complexType>
+		<xs:key name="k_idRT">
+			<xs:selector xpath="./cda:clinical_document_header/cda:id"/>
+			<xs:field xpath="@RT"/>
+		</xs:key>
+	</xs:element>
+	<!-- ****************************** body ****************************** -->
+	<xs:complexType name="body_typ">
+		<xs:sequence>
+			<xs:element name="section">
+				<xs:annotation>
+					<xs:appinfo>Abschnitt</xs:appinfo>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="paragraph" type="paragraph-typ" maxOccurs="2"/>
+					</xs:sequence>
+				</xs:complexType>
+				<xs:unique name="u_paragraph">
+					<xs:selector xpath="./cda:paragraph/cda:caption/cda:caption_cd"/>
+					<xs:field xpath="@DN"/>
+				</xs:unique>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<!-- ****************************** paragraph-typ ****************************** -->
+	<xs:complexType name="paragraph-typ">
+		<xs:annotation>
+			<xs:appinfo>Abschnitte: </xs:appinfo>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="caption" type="paragraph-caption-typ"/>
+			<xs:element name="content" type="content-typ"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!-- ****************************** paragraph-caption-typ ****************************** -->
+	<xs:complexType name="paragraph-caption-typ">
+		<xs:sequence>
+			<xs:element name="caption_cd">
+				<xs:annotation>
+					<xs:appinfo>Abschnitt Überschrift</xs:appinfo>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:attribute name="DN" type="paragraph-caption-v-typ" use="required"/>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<!-- ****************************** paragraph-caption-v-typ ****************************** -->
+	<xs:simpleType name="paragraph-caption-v-typ">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Vorverordnung"/>
+			<xs:enumeration value="Verordnung"/>
+			<xs:enumeration value="Nachsorge"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!-- ****************************** paragraph-einschreibung-typ ****************************** -->
+	<xs:complexType name="content-typ">
+		<xs:sequence>
+			<xs:element name="local_markup">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="sciphox:sciphox-ssu"/>
+					</xs:sequence>
+					<xs:attribute name="ignore" use="required" fixed="all"/>
+					<xs:attribute name="descriptor" use="required" fixed="sciphox"/>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

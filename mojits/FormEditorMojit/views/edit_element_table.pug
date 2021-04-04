@@ -1,0 +1,63 @@
+div
+  //  table schema
+
+  select.form-control(data-bind="options: schemaNames, value: schemaName")
+
+  //  table of column options (minimal)
+
+  table(noborder="noborder",width="100%")
+    tbody(data-bind="foreach: cols")
+      tr
+        td
+          div(data-bind="text: title")
+          span
+            small(data-bind="text: subscript")
+        td(width="30px")
+          button.btn(data-bind="click: deleteColumn")
+            i.fa.fa-trash-o
+        td(width="30px")
+          button.btn(data-bind="click: promoteItem")
+            i.fa.fa-chevron-circle-up
+        td(width="30px")
+          button.btn( data-bind="visible: 'left' === align(), click: toggleAlign" )
+            i.fa.fa-align-left
+          button.btn( data-bind="visible: 'center' === align(), click: toggleAlign" )
+            i.fa.fa-align-center
+          button.btn( data-bind="visible: 'right' === align(), click: toggleAlign" )
+            i.fa.fa-align-right
+          button.btn( data-bind="visible: 'justify' === align(), click: toggleAlign" )
+            i.fa.fa-align-justify
+
+  //  form to add new columns
+
+  table(noborder="noborder",width="100%")
+    tr
+      td
+        select.form-control(data-bind="value: selMember, foreach: schemaMembers")
+          option(data-bind="value: id, text: label")
+      td(data-bind="visible: isAdditionalDataKeyVisible")
+        input.form-control(type="text", data-bind="value: txtAdditionalDataKey, attr: { placeholder: LBL_PLACEHOLDER_KEY }")
+      td
+        input.form-control(type="text", data-bind="value: txtTitle, attr: { placeholder: LBL_PLACEHOLDER_TITLE }")
+      td
+        button.btn
+          i.glyphicon.glyphicon-plus(data-bind="click: onAddRowClick")
+
+  button.btn(data-bind="text: BTN_MORE_OPTIONS, click: openTablePropertiesDialog()")
+
+  hr
+
+  //  further options
+
+  div.checkbox
+    input(type="checkbox", data-bind="checked: omitFromPDFIfEmpty")#cbHideTableWhenEmpty
+    label.checkbox-inline(for="cbHideTableWhenEmpty")
+      span(style="margin-left: 15px;", data-bind="text: LBL_EE_OMITIFEMPTY")
+
+  div.checkbox
+    input(type="checkbox", data-bind="checked: useMarkdownEditor")#cbTableUseMarkdownEditor
+    label.checkbox-inline(for="cbTableUseMarkdownEditor")
+      span(style="margin-left: 15px;", data-bind="text: LBL_EE_LARGETEXT")
+
+  //  debug
+  //pre(data-bind="text: serialized")

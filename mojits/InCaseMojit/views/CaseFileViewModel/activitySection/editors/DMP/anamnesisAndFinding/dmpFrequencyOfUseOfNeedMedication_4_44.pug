@@ -1,0 +1,7 @@
+div.form-group
+  strong(data-bind="text: dmpFrequencyOfUseOfNeedMedication_4_44.i18n")
+  span(data-bind="dmpField: { field: dmpFrequencyOfUseOfNeedMedication_4_44 }")
+  div(data-bind="foreach: dmpFrequencyOfUseOfNeedMedication_4_44.list, hasFeedback: { field: dmpFrequencyOfUseOfNeedMedication_4_44, toggle: dmpFrequencyOfUseOfNeedMedication_4_44.hasError, messages: dmpFrequencyOfUseOfNeedMedication_4_44.validationMessages }")
+    label.radio-inline
+      span(data-bind="text: i18n")
+      input(type="radio", name="dmpFrequencyOfUseOfNeedMedication_4_44", data-bind="value: val, checked: $parent.dmpFrequencyOfUseOfNeedMedication_4_44, readOnly: $parent.dmpFrequencyOfUseOfNeedMedication_4_44.readOnly")

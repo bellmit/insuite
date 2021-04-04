@@ -1,0 +1,83 @@
+div
+  div.row
+    div.col-xs-12.col-sm-6
+      div.radio(style="margin-bottom: 0;")
+        label
+          input(type="radio", name="bescheinigung", value="erstBesch", data-bind="checked: _bescheid, readOnly: erstBesch.readOnly")
+          strong(data-bind="text: erstBesch.i18n")
+      div.radio(style="margin-top: 0; margin-bottom: 0;")
+        label
+          input(type="radio", name="bescheinigung", value="folgeBesc", data-bind="checked: _bescheid, readOnly: folgeBesc.readOnly")
+          strong(data-bind="text: folgeBesc.i18n")
+    div.col-xs-12.col-sm-6
+      div.checkbox(style="margin-bottom: 0;")
+        label
+          input(type="checkbox", name="arbeitsunfall", data-bind="checked: arbeitsunfall, readOnly: arbeitsunfall.readOnly")
+          strong(data-bind="text: arbeitsunfall.i18n")
+      div.checkbox(style="margin-top: 0; margin-bottom: 0;")
+        label
+          input(type="checkbox", name="durchgangsarzt", data-bind="checked: durchgangsarzt, readOnly: durchgangsarzt.readOnly")
+          strong(data-bind="text: durchgangsarzt.i18n")
+  br
+  div.row.vertical-align-flex
+    div.col-xs-12.col-sm-6.col-md-4
+      div.form-group(data-bind="hasFeedback: { field: auVon, toggle: auVon.hasError, messages: auVon.validationMessages }")
+        label(data-bind="text: auVon.i18n")
+        .date-picker.input-group
+          input.form-control(name="auVon", type="text", data-bind="datetimepicker: { value: auVon }, readOnly: auVon.readOnly, valueUpdate: '', attr: {placeholder: auVon.i18n} ")
+    div.col-xs-12.col-sm-4
+      div.form-group(data-bind="hasFeedback: { field: auVorraussichtlichBis, toggle: auVorraussichtlichBis.hasError, messages: auVorraussichtlichBis.validationMessages }")
+        label(data-bind="text: auVorraussichtlichBis.i18n")
+        .date-picker.input-group
+          input.form-control(name="auVorraussichtlichBis", type="text", data-bind="datetimepicker: { value: auVorraussichtlichBis }, readOnly: auVorraussichtlichBis.readOnly, valueUpdate: '', attr: {placeholder: auVorraussichtlichBis.i18n} ")
+    div.col-xs-12.col-sm-4
+      div.form-group(data-bind="hasFeedback: { field: festgestelltAm, toggle: festgestelltAm.hasError, messages: festgestelltAm.validationMessages }")
+        label(data-bind="text: festgestelltAm.i18n")
+        .date-picker.input-group
+          input.form-control(name="festgestelltAm", type="text", data-bind="datetimepicker: { value: festgestelltAm }, readOnly: festgestelltAm.readOnly, valueUpdate: '', attr: {placeholder: festgestelltAm.i18n} ")
+  div.row
+    div.col-xs-12
+      div.form-group
+        label Diagnosen
+        textarea.form-control(rows="6", data-bind="value: _displayDiagnoses", disabled)
+  div.row
+    div.col-xs-12.col-sm-6
+      div.checkbox
+        label
+          input(type="checkbox", name="sonstigerUnf", data-bind="checked: sonstigerUnf, readOnly: sonstigerUnf.readOnly")
+          strong(data-bind="text: sonstigerUnf.i18n")
+      div.checkbox
+        label
+          input(type="checkbox", name="bvg", data-bind="checked: bvg, readOnly: bvg.readOnly")
+          strong(data-bind="text: bgvI18n")
+    div.col-xs-12.col-sm-6
+      div.form-group
+        strong(data-bind="text: diagnosesAdd.i18n")
+        textarea.form-control(rows="1", data-bind="value: diagnosesAdd, readOnly: diagnosesAdd.readOnly")
+  h4(data-bind="text: massnahmenHeadI18n")
+  div.row
+    div.col-xs-12.col-sm-6
+      div.checkbox
+        label
+          input(type="checkbox", name="rehab", data-bind="checked: rehab, readOnly: rehab.readOnly")
+          strong(data-bind="text: rehab.i18n")
+      div.checkbox
+        label
+          input(type="checkbox", name="reintegration", data-bind="checked: reintegration, readOnly: reintegration.readOnly")
+          strong(data-bind="text: reintegration.i18n")
+    div.col-xs-12.col-sm-6
+      div.form-group
+        strong(data-bind="text: massnahmen.i18n")
+        textarea.form-control(rows="1", data-bind="value: massnahmen, readOnly: massnahmen.readOnly")
+  h4(data-bind="text: krankengeldHeadI18n")
+  div.row
+    div.col-xs-12.col-sm-6
+      div.checkbox
+        label
+          input(type="checkbox", name="krankengeld", data-bind="checked: krankengeld, readOnly: krankengeld.readOnly")
+          strong(data-bind="text: krankengeld.i18n")
+    div.col-xs-12.col-sm-6
+      div.checkbox
+        label
+          input(type="checkbox", name="endBesch", data-bind="checked: endBesch, readOnly: endBesch.readOnly")
+          strong(data-bind="text: endBesch.i18n")

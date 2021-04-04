@@ -1,0 +1,9 @@
+div.form-group
+  div.row
+    div.col-xs-5
+      strong(data-bind="text: dmpCheckedInhalationTechnique.i18n")
+      span(data-bind="dmpField: { field: dmpCheckedInhalationTechnique }")
+    div.col-xs-7(data-bind="foreach: dmpCheckedInhalationTechnique.list, hasFeedback: { field: dmpCheckedInhalationTechnique, toggle: dmpCheckedInhalationTechnique.hasError, messages: dmpCheckedInhalationTechnique.validationMessages }")
+      label.radio-inline
+        span(data-bind="text: i18n")
+        input(type="radio", name="dmpCheckedInhalationTechnique", data-bind="value: val, checked: $parent.dmpCheckedInhalationTechnique, readOnly: $parent.dmpCheckedInhalationTechnique.readOnly")

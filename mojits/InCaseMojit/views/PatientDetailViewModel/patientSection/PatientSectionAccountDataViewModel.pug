@@ -1,0 +1,26 @@
+div.PatientSectionAccountDataViewModel
+  div.row
+    div.col-xs-12.col-md-4
+      h4
+        span(data-bind="text: accountsTitleI18n")
+        | &nbsp;
+        small
+          a(href="javascript:;", data-bind="click: addNewAccount, readOnly: accounts.readOnly")
+            span.fa.fa-plus
+      div(data-bind="foreach: accounts")
+        div.panel.panel-default
+          div.panel-body
+            div.form-group(data-bind="hasFeedback: { field: accountOwner, toggle: accountOwner.hasError, messages: accountOwner.validationMessages }")
+              label.control-label(data-bind="text: accountOwner.i18n")
+              input.form-control(type="text", name="accountOwner", data-bind="value: accountOwner, valueUpdate: 'afterkeydown', readOnly: accountOwner.readOnly")
+            div.form-group(data-bind="hasFeedback: { field: bankIBAN, toggle: bankIBAN.hasError, messages: bankIBAN.validationMessages }")
+              label.control-label(data-bind="text: bankIBAN.i18n")
+              input.form-control(type="text", name="bankIBAN", data-bind="value: bankIBAN, valueUpdate: 'afterkeydown', readOnly: bankIBAN.readOnly", maxlength=34)
+            div.form-group(data-bind="hasFeedback: { field: bankBIC, toggle: bankBIC.hasError, messages: bankBIC.validationMessages }")
+              label.control-label(data-bind="text: bankBIC.i18n")
+              input.form-control(type="text", name="bankBIC", data-bind="value: bankBIC, valueUpdate: 'afterkeydown', readOnly: bankBIC.readOnly", value="")
+            div.form-group(data-bind="hasFeedback: { field: bankName, toggle: bankName.hasError, messages: bankName.validationMessages }")
+              label.control-label(data-bind="text: bankName.i18n")
+              input.form-control(type="text", name="bankName", data-bind="value: bankName, valueUpdate: 'afterkeydown', readOnly: bankName.readOnly")
+            div.text-right
+              button.btn.btn-default(type="button", data-bind="click: removeItem, readOnly: $parent.accounts.readOnly, text: $parent.accountbuttonDeleteI18n")

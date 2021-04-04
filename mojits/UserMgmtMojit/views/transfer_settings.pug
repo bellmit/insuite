@@ -1,0 +1,62 @@
+#transferSettings
+  header
+    h4(data-bind="text: regenerateTitleI18n")
+  div.panel.panel-default
+    div.panel-body
+      div.row
+        div.col-md-12
+          div.alert.alert-warning(data-bind="text: regenerateTextWarnI18n")
+      div.row
+        div.col-md-6
+          div.form-group
+            label
+              span(data-bind="text: patientSearchI18n")
+              a(target="_blank", data-bind="attr: { href: patientLink }, visible: patientLink")  (
+                span(data-bind="text: ' ' + tabPatientsShowI18n")
+                i.fa.fa-external-link
+                |   )
+            input.form-control(name="patient", type="hidden", data-bind="select2: patientAutocomplete")
+      div.row
+        div.col-lg-12.predefined-reports
+          div(data-bind="template: timeline.template, visible: !patient()")
+      div.row
+        div.col-md-12(data-bind="foreach: partnersCount")
+          div.checkbox
+            label
+              span(data-bind="text: $root.partnerName( $data ), style: { 'color': activeActive ? 'red' : 'black' }")
+              input(type="checkbox", data-bind="checked: $root.partnerValue($data), readOnly: !activityCount, click: function(data, event){ return $root.partnerChecked(data._id, $element.checked); }")
+            // ko if: activityCount
+            a(href="#" data-bind="text: activityCount, click: $root.showActivities.bind(null, $data._id)")
+            // /ko
+            // ko ifnot: activityCount
+            span(data-bind="text: activityCount")
+            // /ko
+      div.row
+        div.col-md-12
+          div.checkbox
+            label
+              span(data-bind="text: useCache18")
+              input(name="useCache", type="checkbox", data-bind="checked: useCache")
+
+  //ko ifnot: isSynchronizing
+  span(data-bind="text: activitiesToProcessI18n")
+  |:&nbsp;
+  // ko if: totalCount
+  a(href="#" data-bind="text: totalCount, click: showActivities.bind( null, null )")
+  // /ko
+  // ko ifnot: totalCount
+  span(data-bind="text: totalCount")
+  // /ko
+
+  // /ko
+
+  //ko if: isSynchronizing
+  div#progressbarProcess
+    div.progress(style="margin-top: 8px;")
+      div.progress-bar(style="padding-left: 8px; text-align: left;", role="progressbar", aria-valuenow="0", aria-valuemin="0", aria-valuemax="100", data-bind="text: progressText , style: {width: progressWidth}")
+  // /ko
+
+
+  footer.row.modal-footer
+    div.col-md-12
+      button.btn.btn-primary(data-bind="click: startReSynchronize, disable: startDisabled") Start

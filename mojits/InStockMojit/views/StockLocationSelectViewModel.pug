@@ -1,0 +1,3 @@
+div.StockLocationSelect
+    div(data-bind="hasFeedback: { field: stockLocationId, toggle: stockLocationId.hasError, message: stockLocationId.validationMessages }")
+        input.form-control(name="stockLocationId", type="hidden", data-bind="select2: select2StockLocation, enable: enableSelect2")

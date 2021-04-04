@@ -1,0 +1,63 @@
+div(id=mojit_view_id)
+  .container.container-fullscreen
+    div(style="position: relative")
+      div(style="position: absolute; right: 0; top: 0;")
+        button.btn.btn-sm.btn-default(
+        name="toggleFullScreen", type="button", data-bind="click: toggleFullScreenHandler, attr: { title: viewPortBtnI18n }",
+        style="margin-top: 5px; font-size:14px")
+          span.fa.fa-arrows-alt
+    span
+    .row
+      .col-md-6
+        h4
+          span(data-bind="text: addNewConfigI18n")
+          | &nbsp;
+          small
+            a(name="addButton", href="javascript:void(0);", data-bind="click: addButtonClickHandler")
+              i.icon.fa.fa-plus
+    div(data-bind="foreach: configs")
+      .row
+        .col-md-6
+          div.panel.panel-default
+            div.panel-heading(data-bind="text: configExportClientI18n")
+            div.panel-body
+              div.form-group(data-bind="hasFeedback: { field: name, toggle: name.hasError, messages: name.validationMessages }")
+                label.control-label(data-bind="text: configTitleI18n")
+                div
+                  input.form-control(type="text", name="configName", data-bind="value: name, valueUpdate: 'afterkeydown'")
+              div.row
+                div.col-md-9
+                  div.form-group(data-bind="hasFeedback: { field: host, toggle: host.hasError, messages: host.validationMessages }")
+                    label.control-label(data-bind="text: configServerURLI18n")
+                    div
+                      input.form-control(type="text", name="configHost", data-bind="value: host, valueUpdate: 'afterkeydown'")
+                div.col-md-3
+                  div.form-group(data-bind="hasFeedback: { field: port, toggle: port.hasError, messages: port.validationMessages }")
+                    label.control-label(data-bind="text: configPortI18n")
+                    input.form-control(type="number", data-bind="value: port, valueUpdate: 'afterkeydown'")
+              div.form-group(data-bind="hasFeedback: { field: cert, toggle: cert.hasError, messages: cert.validationMessages }")
+                label.control-label(data-bind="text: configCertI18n")
+                input(type="file", name="cert", data-bind="event: {change: configCertChangeHandler}")
+              div.form-group(data-bind="hasFeedback: { field: certPass, toggle: certPass.hasError, messages: certPass.validationMessages }")
+                label.control-label(data-bind="text: configCertPassI18n")
+                div
+                  input.form-control(type="password", name="configCertPass", data-bind="value: certPass, valueUpdate: 'afterkeydown'")
+              hr
+              div.form-group(data-bind="hasFeedback: { field: userId, toggle: userId.hasError, messages: userId.validationMessages }")
+                label.control-label(data-bind="text: configIdI18n")
+                div
+                  input.form-control(type="text", name="configId", data-bind="value: userId, valueUpdate: 'afterkeydown'")
+              div.form-group(data-bind="hasFeedback: { field: userSecret, toggle: userSecret.hasError, messages: userSecret.validationMessages }")
+                label.control-label(data-bind="text: configSecretI18n")
+                div
+                  input.form-control(type="password", name="configSecret", data-bind="value: userSecret, valueUpdate: 'afterkeydown'")
+              div.form-group
+                button.pull-right.btn.btn-default(type="button", name="testButton", data-bind="click: testButtonClickHandler, disable: testButtonDisabled, text: configButtonTestI18n")
+                span.pull-right &nbsp;
+                button.pull-right.btn.btn-default(name="deleteButton", type="button", data-bind="click: deleteButtonClickHandler.bind($context, $parent)")
+                  span.glyphicon.glyphicon-trash
+                  | &nbsp;
+                  span(data-bind="text: configButtonDeleteI18n")
+    .row
+        span
+        button.pull-right.btn.btn-primary(type="button", name="saveButton", data-bind="click: saveButtonClickHandler, disable: saveButtonDisabled, text: configButtonSaveI18n")

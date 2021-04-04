@@ -1,0 +1,5 @@
+span.KoField.KoFieldSelect(data-bind="visible: visible, attr:{ title: title }")
+  // ko if: icon.hasIcon()
+  span.KoField-icon(data-bind="template: icon.template")
+  // /ko
+  select.form-control(data-bind="value: value, css: css, options: options, optionsText: optionsText, optionsValue: optionsValue, optionsCaption: optionsCaption, attr: { name: name }")

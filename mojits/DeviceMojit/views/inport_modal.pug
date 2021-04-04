@@ -1,0 +1,39 @@
+div#inportModel
+  div.form-group(data-bind="hasFeedback: { field: path, toggle: path.hasError }")
+    label(for="inportSelect2Path", data-bind="text: path.i18n + ':'")
+    input.form-control.input-sm#inportSelect2Path(type="hidden", data-bind="select2: select2Path")
+  //div.form-group
+  //  lable(for="inportParser") #{__i18n('inport-schema.serialport_T.parser.i18n')}
+  //  input.form-control#inportParser(data-bind="value: parser")
+  div.form-group
+    lable(for="inportParser", data-bind="text: baudrate.i18n")
+    input.form-control.input-sm#inportSelect2Baudrate(type="hidden", data-bind="select2: select2Baudrate")
+  div.form-group
+    lable(for="inportParser", data-bind="text: parity.i18n")
+    input.form-control.input-sm#inportSelect2Parity(type="hidden", data-bind="select2: select2Parity")
+  div.form-group
+    lable(for="inportParser", data-bind="text: databits.i18n")
+    input.form-control.input-sm#inportSelect2Databits(type="hidden", data-bind="select2: select2Databits")
+  div.form-group
+    lable(for="inportParser", data-bind="text: stopbits.i18n")
+    input.form-control.input-sm#inportSelect2Stopbits(type="hidden", data-bind="select2: select2Stopbits")
+  div.form-group
+    div.checkbox
+      label.control-label
+        strong(data-bind="text: fc_xon.i18n")
+        input(type="checkbox", name="fc_xon", data-bind="checked: fc_xon")
+  div.form-group
+    div.checkbox
+      label.control-label
+        strong(data-bind="text: fc_xoff.i18n")
+        input(type="checkbox", name="fc_xon", data-bind="checked: fc_xoff")
+  div.form-group
+    div.checkbox
+      label.control-label
+        strong(data-bind="text: fc_xany.i18n")
+        input(type="checkbox", name="fc_xon", data-bind="checked: fc_xany")
+  div.form-group
+    div.checkbox
+      label.control-label
+        strong(data-bind="text: fc_rtscts.i18n")
+        input(type="checkbox", name="fc_xon", data-bind="checked: fc_rtscts")

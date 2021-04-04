@@ -1,0 +1,16 @@
+#cash_settings
+  div.row
+    div.col-xs-12(data-bind="with: invoiceconfiguration")
+      div.row
+        div.col-md-6
+          h4
+            span(data-bind="text: cashSettings.i18n")
+            |&nbsp;
+            small
+              a(href="javascript:void(0);", data-bind="click: addCashSetting")
+                i.icon.fa.fa-plus
+      div(data-bind="template: { name: 'template-CashSettingModel', foreach: cashSettings }")
+  div.row
+    div.col-sm-12
+      div.dc-action-buttons.dc-action-buttons-right(data-bind="with: actions")
+        button.btn.btn-primary(name="saveBtn", type="button", data-bind="enable: saveInvoiceconfigurationEnable, click: saveInvoiceconfiguration, text: buttonSaveI18n")

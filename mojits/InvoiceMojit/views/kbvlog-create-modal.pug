@@ -1,0 +1,8 @@
+#kbvlog-create-modal
+  .alert.alert-info(role="alert") Bei den folgenden Betriebstätten können Sie entscheiden für welches Quartal der Abrechnungssatz erstellt werden soll.
+  .location-list(data-bind="foreach: $data")
+    h4(data-bind="text: $data.displayLocName + ' (' + $data.commercialNo + ')'")
+    .quarterList(data-bind="foreach: quarterList")
+      .radio
+        label(data-bind="text: $data.quarter + '/' + $data.year")
+        input(type="radio", data-bind="attr: {name: $parent.locationId, value: $index}, checked: $parent.checked")

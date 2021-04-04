@@ -1,0 +1,18 @@
+div#medIndexModal
+  div.row
+    div.col-md-12.col-sm-12.col-xs-12
+      h4(data-bind="text: medCatalogI18n")
+    div.col-md-12(data-bind="template: medIndexTable.template, css: {'col-md-6': displayDetails}")
+    div.col-xs-6.col-sm-6.col-md-6(data-bind="if: displayDetails")
+      div(data-bind="if: selectedItem")
+        div(data-bind="with: selectedItem")
+          .panel.panel-default
+            .panel-heading
+              .panel-title(data-bind="text: selectedArticle")
+            .panel-body
+              div(data-bind="template: template")
+            div.panel-footer
+              div.row
+                div.col-md-12
+                  button.pull-right.btn.btn-primary(type="button", style="margin-right: 4px;", data-bind="click: $parent.addRecord.bind( $parent ), enable: $parent.enableSaveButton, text: $parent.addButtonI18n")
+                  button.pull-right.btn.btn-default(type="button", style="margin-right: 4px;", data-bind="click: $parent.cancelEdit.bind( $parent ), text: $parent.buttonCancelI18n")

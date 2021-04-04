@@ -1,0 +1,53 @@
+div(id=mojit_view_id)
+  .container.container-fullscreen.hide
+    div(style="position: relative")
+      #mainPageNavigation(data-bind="style: {display: showNav() ? 'block': 'none'}, template: template", style="margin-bottom: 10px;")
+      #fullScreenToggleInMainPage(style="position: absolute; right: 0; top: 0;")
+        button.btn.btn-sm.btn-default(name="toggleFullScreen", type="button", data-bind="click: toggleFullScreenHandler, attr: { title: viewPortBtnI18n }", style="margin-top: 6px;")
+          span.fa.fa-arrows-alt
+
+  .container.container-fullscreen.hide#viewModel
+    // ko if: appIFrameUrl
+    iframe#iframe(style="width: 100%; display: none; border: none;", data-bind="notifyBind: { method: setContainerHeight }, attr: { src: appIFrameUrl }, style: {display: appIFrameUrl()?'inline':'none'}")
+    // /ko
+    // ko ifnot: appIFrameUrl
+    div(style="margin:20px auto 0; width: 700px;")
+      div(style="height: 170px; background: url('/static/MISMojit/assets/images/Homescreen_1_20151230.jpg');")
+      div(style="height: 330px; overflow: hidden; background: url('/static/MISMojit/assets/images/Homescreen_2_20151230.jpg') no-repeat 50px 0;")
+        table(style="margin-left: 25px; margin-top: 25px;")
+          colgroup
+            col(width="95")
+            col(width="145")
+          tr(data-video="inSuite_Test_Startscreen_Orientierung")
+            td
+              button.btn.btn-default(type="button", name="play-button") PLAY <i class="glyphicon glyphicon-play"></i>
+            td
+              .h4
+                a(href="javascript:;", data-bind="text: orientirungI18n")
+          tr
+            td(colspan="2", style="height: 2em;")
+          tr(data-video="inSuite_Test_Startscreen_Erste Schritte")
+            td
+              button.btn.btn-default(type="button", name="play-button") PLAY <i class="glyphicon glyphicon-play"></i>
+            td
+              .h4
+                a(href="javascript:;", data-bind="text: ersteSchritteI18n")
+          tr
+            td(colspan="2", style="height: 2em;")
+          tr
+            td(colspan="2")
+              .h4(style="padding-left: 30px;")
+                a(data-bind="text: weitereVideosI18n + '...', attr: { href: handBookUrl}")
+    p.text-right.text-muted(style="margin-bottom:30px;margin-right:70px;")
+      em Version #{data.version}
+    .modal.fade(tabindex="-1", role="dialog", aria-labelledby="myModalCopiedFromTutorial", aria-hidden="true")#myModalCopiedFromTutorial-videoModal
+      .modal-dialog(style="width: 840px; margin-top: 90px;")
+        .modal-content(style="background-color: rgba(0,0,0,1);")
+          .modal-header
+            button.btn(type="button", class="close", data-dismiss="modal", aria-hidden="true", style="color: #fff; opacity: 0.77;") ×
+            h4#myModalCopiedFromTutorial.modal-title.text-muted
+          .modal-body
+            video( width="800", controls, autoplay)#myModalCopiedFromTutorial-video
+              source(src='', type='')#myModalCopiedFromTutorial-mp4
+              source(src='', type='')#myModalCopiedFromTutorial-webm
+    // /ko

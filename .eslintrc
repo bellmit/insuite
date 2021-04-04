@@ -1,0 +1,206 @@
+{
+  "env": {
+    "node": true,
+    "es6": true
+  },
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "sourceType": "module",
+    "ecmaVersion": 2018
+  },
+  "rules": {
+    "callback-return": [1, ["callback", "_cb", "itcb", "streamcb", "args.callback", "options.callback", "config.callback", "cb", "next", "done","_final"]],
+    "comma-dangle": [2, "never"],
+    "constructor-super": 2,
+    "curly": 2,
+    "dot-notation": 2,
+    "eqeqeq": 2,
+    "guard-for-in": 2,
+    "handle-callback-err": 2,
+    "linebreak-style": [2, "unix"],
+    "no-case-declarations": 2,
+    "no-cond-assign": [2, "always"],
+    "no-control-regex": 2,
+    "no-console": 2,
+    "no-const-assign": 2,
+    "no-constant-condition": 2,
+    "no-debugger": 2,
+    "no-dupe-args": 2,
+    "no-dupe-class-members": 2,
+    "no-dupe-keys": 2,
+    "no-duplicate-case": 2,
+    "no-empty": 2,
+    "no-empty-character-class": 2,
+    "no-empty-pattern": 2,
+    "no-eval": 2,
+    "no-ex-assign": 2,
+    "no-extend-native": 2,
+    "no-extra-bind": 2,
+    "no-extra-boolean-cast": 0,
+    "no-extra-parens": 0,
+    "no-extra-semi": 2,
+    "no-func-assign": 2,
+    "no-implied-eval": 2,
+    "no-inner-declarations": [2, "both"],
+    "no-invalid-regexp": 2,
+    "no-irregular-whitespace": 2,
+    "no-labels": 2,
+    "no-loop-func": 2,
+    "no-multi-spaces": 0,
+    "no-multi-str": 2,
+    "no-native-reassign": 2,
+    "no-negated-in-lhs": 2,
+    "no-new": 2,
+    "no-new-func": 2,
+    "no-new-wrappers": 2,
+    "no-obj-calls": 2,
+    "no-redeclare": 2,
+    "no-regex-spaces": 2,
+    "no-return-assign": [2, "always"],
+    "no-sparse-arrays": 2,
+    "no-this-before-super": 2,
+    "no-undef": 2,
+    "no-undef-init": 2,
+    "no-unexpected-multiline": 2,
+    "no-unreachable": 2,
+    "no-unused-expressions": 2,
+    "no-unused-vars": [ 2, {"vars": "all", "varsIgnorePattern": "_fn|fun" }],
+    "no-useless-constructor": 2,
+    "no-var": 0,
+    "no-alert": 2,
+    "prefer-rest-params": 1,
+    "prefer-template": 0,
+    "prefer-spread": 1,
+    "radix": 2,
+    "semi": 2,
+    "strict": 1,
+    "use-isnan": 2,
+    "valid-jsdoc": [1, {"requireParamDescription": false, "requireReturn": false, "requireReturnDescription": false }],
+    "valid-typeof": 2
+  },
+  "overrides": [
+    {
+      "files": ["src/mongo/*"],
+      "rules": {
+        "no-unused-vars": "off"
+      },
+      "globals": {
+        "print": "readonly"
+      }
+    },
+    {
+      "parser": "babel-eslint",
+      "files": ["**/*.test.mjs"],
+      "extends": "@dc/eslint-config",
+      "plugins": ["mocha"],
+      "rules": {
+        "space-in-parens": ["error", "always"],
+        "mocha/handle-done-callback": ["error"],
+        "mocha/max-top-level-suites": ["error"],
+        "mocha/no-exports": ["error"],
+        "mocha/no-global-tests": ["error"],
+        "mocha/no-identical-title": ["error"],
+        "mocha/no-mocha-arrows": ["error"],
+        "mocha/no-return-and-callback": ["error"],
+        "mocha/no-return-from-async": ["error"],
+        "mocha/no-setup-in-describe": ["error"],
+        "mocha/no-sibling-hooks": ["error"],
+        "mocha/no-top-level-hooks": ["error"],
+        "mocha/prefer-arrow-callback": ["error"],
+        "func-names": ["error", "never"],
+        "max-lines": ["warn", {"max": 1000, "skipBlankLines": true, "skipComments": true}],
+        "no-mixed-operators": ["off"]
+      },
+      "globals": {
+        "after": "readonly",
+        "afterEach": "readonly",
+        "before": "readonly",
+        "beforeEach": "readonly",
+        "chai": "readonly",
+        "context": "readonly",
+        "describe": "readonly",
+        "expect": "readonly",
+        "it": "readonly",
+        "sinon": "readonly",
+        "Y": "writable",
+        "jQuery": "writable"
+      }
+    },
+    {
+      "parser": "babel-eslint",
+      "files": ["test/api2/*-test.js"],
+      "extends": "@dc/eslint-config",
+      "rules": {
+        "space-in-parens": ["error", "always"],
+        "mocha/handle-done-callback": ["error"],
+        "mocha/no-exports": ["error"],
+        "mocha/no-global-tests": ["error"],
+        "mocha/no-identical-title": ["error"],
+        "func-names": ["warn", "never"]
+      },
+      "globals": {
+        "after": "readonly",
+        "afterEach": "readonly",
+        "before": "readonly",
+        "beforeEach": "readonly",
+        "context": "readonly",
+        "describe": "readonly",
+        "expect": "readonly",
+        "it": "readonly",
+        "stub": "readonly",
+        "Y": "writable"
+      }
+    },
+    {
+      "files": [
+        "mojits/IncaseAdminMojit/client/masterTab.js",
+        "mojits/IncaseAdminMojit/client/components/MasterTab.js",
+        "mojits/IntouchPrivateMojit/client/intouch_nav.js",
+        "mojits/AppTokenMojit/client/appToken.js",
+        "mojits/AppTokenMojit/client/appToken-modal.js",
+        "mojits/AppTokenMojit/client/appAccessManager.js",
+        "mojits/AppTokenMojit/client/appNav.js",
+        "mojits/AppTokenMojit/client/components/AppAccessManager.js",
+        "mojits/AppTokenMojit/client/components/AppDocs.js",
+        "mojits/IntouchPrivateMojit/client/intouch_nav.js",
+        "mojits/TaskMojit/client/tasksNav.js"
+      ],
+      "env": {
+        "browser": true
+      },
+      "parser": "babel-eslint",
+      "parserOptions": {
+        "parserOptions": {
+          "sourceType": "module",
+          "ecmaVersion": 2018,
+          "allowImportExportEverywhere": false,
+          "codeFrame": false
+        },
+        "ecmaFeatures": {
+          "jsx": true
+        }
+      },
+      "plugins": [
+        "jsx-a11y",
+        "react"
+      ],
+      "extends": [
+        "plugin:react/recommended"
+      ]
+    },
+    {
+      "files": ["**/binders/*.js", "**/*.{client,common}.js"],
+      "env": {
+        "browser": true,
+        "node": false
+      },
+      "parser": "espree",
+      "parserOptions": {
+        "sourceType": "script"
+      },
+      "rules": {
+        "prefer-rest-params": 0
+      }
+    }
+  ]
+}

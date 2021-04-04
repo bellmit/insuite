@@ -1,0 +1,12 @@
+div.KoButtonDropDown.btn-group(data-bind="visible: visible, css: { dropup: menu.dropup }")
+  button.btn.btn-default.dropdown-toggle(type="button", data-bind="css: css, disable: disabled, attr: { title: title, name: name }", data-toggle="dropdown")
+    // ko if: (icon && icon.iconName)
+    span.KoButtonDropDown-icon(data-bind="template: $data.icon.template")
+    // /ko
+    // ko if: text
+    span.KoButtonDropDown-text(data-bind="text: text")
+    // /ko
+    | &nbsp;
+    span.caret
+  // ko template: menu.template
+  // /ko

@@ -1,0 +1,8 @@
+.row.form-inline
+  div.col-xs-3.text-right
+    button.btn.btn-primary(type="button", data-bind="click: runTests") runTests
+    | &nbsp;
+    button.btn.btn-primary(type="button", data-bind="click: clearTests") clearTests
+  div.col-xs-9
+    div.well(data-bind="foreach: tests", style="height: 200px; padding:0; overflow-y: auto;")
+      div(data-bind="css: messageCss, text: text", style="padding: 1px 5px;white-space: pre-line;")

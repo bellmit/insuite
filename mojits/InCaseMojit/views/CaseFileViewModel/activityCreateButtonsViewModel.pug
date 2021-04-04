@@ -1,0 +1,8 @@
+div#actTypeBtn.activityCreateButtonsViewModel
+  div.activityCreateButtonsViewModel-container(data-bind="foreach: buttons")
+    div.btn-block(data-bind="visible: !hideForCurrentCaseFolder()")
+      span.activityCreateButtonsViewModel-drag
+        span.activityCreateButtonsViewModel-dragHandle
+          span.fa.fa-ellipsis-v
+          span.fa.fa-ellipsis-v
+      button.activityCreateButtonsViewModel-button.btn.btn-default.btn-block(type="button", data-bind="text: title, style: { 'background-color': color}, attr: { name: name }, click: $parent.createActivity")

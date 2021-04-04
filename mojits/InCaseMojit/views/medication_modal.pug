@@ -1,0 +1,188 @@
+div.row#medication-search
+  div.col-md-12
+    ul.nav.nav-tabs(role="tablist", style="margin-bottom:15px;")
+      li#basic(data-bind="click: searchNav.clicked, css: {active: searchNav.isActive('basic')}")
+        a(href="#", role="tab", data-bind="text: menuSearchI18n")
+      li#advanced(data-bind="click: searchNav.clicked, css: {active: searchNav.isActive('advanced')}")
+        a(href="#", role="tab", data-bind="text: menuAdvancedSearchI18n")
+    div.tab-content
+      div.tab-pane(data-bind="css: {active: searchNav.isActive('basic')}")
+        div.row
+          div.col-md-2
+            div.form-group
+              input.form-control.form-control-search(name="productName", data-bind="value: productName, valueUpdate:'afterkeydown', attr: { placeholder: placeholderProductNameI18n }, hasFocus: productNameHasFocus")
+          div.col-md-2
+            div.form-group
+              input.form-control.form-control-search(name="companyName", data-bind="value: companyName, valueUpdate:'afterkeydown', attr: { placeholder: placeholderCompanyNameI18n }, hasFocus: companyNameHasFocus")
+          div.col-md-2
+            div.form-group
+              input.form-control(name="pznList", data-bind="select2: select2Pzn, valueUpdate:'afterkeydown', hasFocus: pznListHasFocus")
+        div.row
+          div.col-lg-4.col-md-12
+            div#productTable(data-bind="template: productKoTable.template")
+            div(data-bind="visible: selectedProduct, foreach: selectedProduct.iconList")
+              img.img-rounded(data-bind="tooltip: {title: title}, attr: {src: '/static/dcbaseapp/assets/img/MMI/signets/'+src+'.png', alt: src + 'is missing'}")
+          div.col-lg-8.col-md-12
+            div.row
+              div.col-md-12(data-bind="template: packageKoTable.template")
+            div.row(data-bind="visible: selectedProduct.name", style="margin-bottom:15px;")
+              div.col-md-12
+                ul.nav.nav-tabs(role="tablist")
+                  li#productInfo(data-bind="click: tabNav.clicked, css: {active: tabNav.isActive('productInfo')}")
+                    a(href="#", role="tab", data-bind="text: productInformationI18n")
+                  li#priceComparison(data-bind="visible: selectedPackage, click: tabNav.clicked, css: {active: tabNav.isActive('priceComparison')}")
+                    a(href="#", role="tab")
+                      span(data-bind="text: priceComparisonI18n")
+                  li#cheaperProducts(data-bind="visible: selectedPackage, click: tabNav.clicked, css: {active: tabNav.isActive('cheaperProducts')}")
+                    a(href="#", role="tab")
+                      span(data-bind="text: cheaperProductsI18n")
+                      | &nbsp;
+                      span.glyphicon.glyphicon-info-sign(data-bind="visible: cheaperPkgs, attr: { title: attributeDrugI18n }")
+                  li#priceHistory(data-bind="visible: 0 < priceHistoryKoTable.data().length, click: tabNav.clicked, css: {active: tabNav.isActive('priceHistory')}")
+                    a(href="#", role="tab", data-bind="text: priceHistoryI18n")
+                  li#alternatives(data-bind="visible: 0 < alternativesKoTable.data().length, click: tabNav.clicked, css: {active: tabNav.isActive('alternatives')}")
+                    a(href="#", role="tab", data-bind="text: alternativesI18n")
+            div.tab-content
+              div.tab-pane(data-bind="css: {active: tabNav.isActive('productInfo')}")
+                div.row(data-bind="visible: selectedProduct.name")
+                  div.col-md-5.col-sm-12(style="margin-bottom: 10px; display: flex;")
+                    span(data-bind="template: expandAllBtn.template", style="margin-right: 5px;")
+                    span(data-bind="template: collapseAllBtn.template")
+                  div.col-md-2.col-md-offset-1.col-sm-4(style="margin-bottom: 10px;")
+                    select.form-control(name="sections", data-bind="options: sectionsList, optionsValue: 'sectionId', optionsText: 'sectionTitle', value: section, event: {change: openSection}")
+                  div.col-md-2.col-sm-4(style="margin-bottom: 10px;")
+                    span(data-bind="css: {'input-group': searchInput, 'form-group': !searchInput()}")
+                      input.form-control(data-bind="textInput: searchInput, attr: {placeholder: searchPlaceholderI18n}")
+                      span.input-group-btn(data-bind="visible: searchInput")
+                        button.btn.btn-default(data-bind="click: clearSearchInput")
+                          span.glyphicon.glyphicon-remove
+                  div.col-md-2.col-sm-4.pull-right(style="margin-bottom: 10px;")
+                    button.btn.pull-right.btn-small.btn-primary(data-bind="text: printI18n, click: printInfo")
+                div.row(data-bind="visible: selectedProduct.name", style="margin-top:15px;")
+                  .col-xs-12
+                    div.panel.panel-default
+                      div.panel-body
+                        div(data-bind="template: infoTree.template")
+
+              div.tab-pane(data-bind="css: {active: tabNav.isActive('priceComparison')}")
+                div(data-bind="with: priceComparisonKoTable")
+                  include pricecomparison
+              div.tab-pane(data-bind="css: {active: tabNav.isActive('cheaperProducts')}")
+                div(data-bind="with: priceComparisonKoTable")
+                  include pricecomparison
+              div.tab-pane(data-bind="css: {active: tabNav.isActive('alternatives')}")
+                div.row
+                  div.col-md-12(data-bind="template: alternativesKoTable.template")
+              div.tab-pane(data-bind="css: {active: tabNav.isActive('priceHistory')}")
+                div.row
+                  div.col-md-4(data-bind="template: priceHistoryKoTable.template")
+            // ko if: multiSelect
+            p.text-right(data-bind="text: selectedItemsTitle")
+            div(data-bind="foreach: selectedItems")
+              div.dc-form-flex(style="justify-content: flex-end; align-items: center;")
+                div
+                  span(data-bind="text: package.originalData.phNLabel")
+                div(style="margin-left: 10px")
+                  span(type="button", name="unSelectButton", data-bind="template: $parent.unSelectItemButton.template")
+            // /ko
+      div.tab-pane(data-bind="css: {active: searchNav.isActive('advanced')}")
+        div.row
+          div.col-md-3
+            div.form-group
+              input.form-control.form-control-search(name="companyNameAd", data-bind="value: companyNameAd, hasFocus: companyNameAdHasFocus, valueUpdate:'afterkeydown', attr: { placeholder: placeholderCompanyNameI18n }")
+          div.col-md-3
+            form.form-inline
+              div.form-group(style="width: 85%; padding-right: 8px;")
+                input.form-control(name="ATCList", data-bind="select2: select2atcCodes, hasFocus: atcListHasFocus, valueUpdate:'afterkeydown'")
+              button.btn.btn-default(data-bind="click: openAtcSearchModal, tooltip: {title: atcSearchModalTitle}")
+                span.glyphicon.glyphicon-zoom-in
+          div.col-md-6
+            // ko if: moleculeType() !== 'strength'
+            div.form-group
+              input.form-control(name="ingredientList", data-bind="select2: select2Ingredients, hasFocus: ingredientListHasFocus, valueUpdate:'afterkeydown'")
+            // /ko
+            // ko if: moleculeType() === 'strength'
+            form.row
+              div.col-md-7
+                div.form-group
+                  input.form-control(name="ingredientStrength", type="hidden", data-bind="hasFocus: select2IngredientStrengthHasFocus, select2: select2IngredientStrength")
+              div.col-md-2
+                div.form-group(data-bind="hasFeedback: { field: ingredientStrengthValue, toggle: ingredientStrengthValue.hasError, messages: ingredientStrengthValue.validationMessages }")
+                  input.form-control(name="ingredientStrengthValue", data-bind="textInput: ingredientStrengthValue, attr: { placeholder: placeholderIgreI18nStrengthI18n }")
+              div.div.col-md-2
+                div.form-group
+                  select.form-control(name="ingredientStrengthUnit", data-bind="options: ingredientStrengthUnits, optionsText: 'text',  value: ingredientStrengthUnit")
+              div.col-md-1
+                button.btn.btn-primary(data-bind="click: addIngredientStrength, enable: ingredientStrength() && ingredientStrengthValue()")
+                  span.glyphicon.glyphicon-plus
+            // /ko
+            div.form-group
+              label.radio-inline
+                input(name="moleculeType", type="radio", value="active", data-bind="checked: moleculeType")
+                span(data-bind="text: activeMoleculeI18n")
+              label.radio-inline
+                input(name="moleculeType", type="radio", value="activeMulti", data-bind="checked: moleculeType")
+                span(data-bind="text: activeMultiMoleculeI18n")
+              label.radio-inline
+                input(name="moleculeType", type="radio", value="activeMono", data-bind="checked: moleculeType")
+                span(data-bind="text: activeMonoMoleculeI18n")
+              label.radio-inline
+                input(name="moleculeType", type="radio", value="inactive", data-bind="checked: moleculeType")
+                span(data-bind="text: inactiveMoleculeI18n")
+              label.radio-inline
+                input(name="moleculeType", type="radio", value="all", data-bind="checked: moleculeType")
+                span(data-bind="text: activeAndInactiveMoleculeI18n")
+              label.radio-inline
+                input(name="moleculeType", type="radio", value="strength", data-bind="checked: moleculeType")
+                span(data-bind="text: activeMoleculeWithStrengthI18n")
+            // ko if: moleculeType() === 'strength' && selectedIngredientStrengths().length
+            div(style="padding-bottom: 8px;", data-bind="foreach: selectedIngredientStrengths")
+              span.badge(data-bind="click: $parent.removeSelectedIngredientStrength")
+                span(data-bind="text: text")
+                span.glyphicon.glyphicon-trash
+            // /ko
+        div.row
+          div.col-md-12
+            div#packageSearchTable(data-bind="template: packageSearchKoTable.template")
+
+
+    // - div.row
+      div.col-md-6
+        div.row(data-bind="visible: selectedProduct")
+          div.col-md-12
+            div.row
+              div.col-md-12(data-bind="foreach: selectedProduct.iconList")
+                img.img-rounded(data-bind="attr: {src: '/static/dcbaseapp/assets/img/MMI/signets/'+src+'.jpg', alt: src + 'is missing'}")
+            div.row
+              div.col-md-12
+                table.table.table-condensed(width="100%")
+                  colgroup
+                    col(width="100")
+                    col(width="*")
+                  thead
+                    tr
+                      th(colspan="2") Produktinformationen
+                  tbody
+                    tr(data-bind="visible: selectedProduct._hasContent('activeMolecule')")
+                      td Wirkstoffe:
+                      td(data-bind="foreach: selectedProduct.activeMolecule")
+                        p(data-bind="html: displayName()")
+                    tr(data-bind="visible: selectedProduct._hasContent('otherMolecules')")
+                      td Sonstige Bestandteile:
+                      td
+                        p(data-bind="html: selectedProduct._showOtherMolecules")
+                    tr(data-bind="visible: selectedProduct._hasContent('equivalents')")
+                      td Äquivalenzen:
+                      td(data-bind="foreach: selectedProduct.equivalents")
+                        p(data-bind="html: displayName()")
+                    tr(data-bind="visible: selectedProduct._hasContent('atc')")
+                      td ATC:
+                      td(data-bind="foreach: selectedProduct.atc")
+                        p(data-bind="text: displayName()")
+                    tr(data-bind="visible: selectedProduct._hasContent('identa')")
+                      td IDENTA
+                      td(data-bind="foreach: selectedProduct.identa")
+                        div
+                          p(data-bind="text: 'Durchmesser' +' - '+ diameter, visible: diameter")
+                          p(data-bind="text: 'Höhe' +' - '+ height, visible: height")
+                          p(data-bind="text: 'Gewicht' +' - '+ weight, visible: weight")

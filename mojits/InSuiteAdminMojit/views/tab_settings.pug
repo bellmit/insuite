@@ -1,0 +1,241 @@
+#settings
+  .row.SettingsModel
+    .col-sm-12.col-md-8.col-md-offset-2.col-lg-6.col-lg-offset-0#medicinedb
+      include medicinedb_settings
+
+  div.row.SettingsModel
+    // ko if: countryModeIncludesGermany()
+    .col-sm-12.col-md-8.col-md-offset-2.col-lg-6.col-lg-offset-0
+      h4(data-bind="text: settingsHeadingI18n")
+      div.panel.panel-default
+        div.panel-body
+          div.form-group
+            div.checkbox
+              label.control-label
+                input(type="checkbox", data-bind="checked: blankoforms, valueUpdate: 'afterkeydown'")
+                strong(data-bind="text: settingsCheckBoxI18n")
+    // /ko
+  .row.SettingsModel
+    .col-sm-12.col-md-8.col-md-offset-2.col-lg-6.col-lg-offset-0
+      h4(data-bind="text: settingsRemoteHeadingI18n")
+      div.panel.panel-default
+        div.panel-body
+          div.form-group
+            div.checkbox
+              label.control-label
+                input(type="checkbox", data-bind="checked: remoteAccess, valueUpdate: 'afterkeydown'")
+                strong(data-bind="text: settingsRemoteGeneralSwitchI18n")
+                i.dc-info-icon(data-bind="click: showHubAccessInfoMessage")
+          div.form-group
+            div.checkbox
+              label.control-label
+                input(type="checkbox", data-bind="checked: loginWithTAN, disable:true!==remoteAccess(), valueUpdate: 'afterkeydown'")
+                strong(data-bind="text: settingsRemoteLoginTanI18n")
+
+  .row.SettingsModel
+    .col-sm-12.col-md-8.col-md-offset-2.col-lg-6.col-lg-offset-0
+      h4(data-bind="text: settingsMalwareHeadingI18n")
+      div.panel.panel-default
+        div.panel-body
+          div.form-group
+            div.checkbox
+              label.control-label
+                input(type="checkbox", data-bind="checked: blockMalware, valueUpdate: 'afterkeydown'")
+                strong(data-bind="text: settingsBlockMalwareI18n")
+
+  .row.SettingsModel
+    .col-sm-12.col-md-8.col-md-offset-2.col-lg-6.col-lg-offset-0
+      h4(data-bind="text: settingsCrossLocationsHeadingI18n")
+      div.panel.panel-default
+        div.panel-body
+          strong(data-bind="text: strictModeHeadingI18n")
+          div.form-group
+            div.checkbox
+              label.control-label
+                input(type="checkbox", data-bind="checked: noCrossLocationAccess, valueUpdate: 'afterkeydown'")
+                strong(data-bind="text: settingsCrossLocationsCheckBoxI18n")
+          div.form-group(style="margin-left: 20px;")
+            div.checkbox
+              label.control-label
+                input(type="checkbox", data-bind="checked: crossLocationPatientEditingAllowed, valueUpdate: 'afterkeydown', enable: canSetNoCrossLocationAccessSubSettings() && !noCrossLocationPatientAccess()" )
+                strong(data-bind="text: settingsCrossLocationPatientEditingAllowedCheckBoxI18n")
+          div.form-group(style="margin-left: 20px;")
+            div.checkbox
+              label.control-label
+                input(type="checkbox", data-bind="checked: noCrossLocationPatientAccess, valueUpdate: 'afterkeydown', enable: canSetNoCrossLocationAccessSubSettings")
+                strong(data-bind="text: settingsCrossLocationsPatientCheckBoxI18n")
+          div.form-group(style="margin-left: 20px;")
+            div.checkbox
+              label.control-label
+                input(type="checkbox", data-bind="checked: noCrossLocationCalendarAccess, valueUpdate: 'afterkeydown', enable: canSetNoCrossLocationAccessSubSettings")
+                strong(data-bind="text: settingsCrossLocationsCalendarCheckBoxI18n")
+          div.form-group(style="margin-left: 20px;")
+            div.checkbox
+              label.control-label
+                input(type="checkbox", data-bind="checked: booksAccessOnlyForAdmins, valueUpdate: 'afterkeydown', enable: canSetNoCrossLocationAccessSubSettings")
+                strong(data-bind="text: booksAccessI18n")
+
+  .row.AdminModel
+    .col-sm-12.col-md-8.col-md-offset-2.col-lg-6.col-lg-offset-0
+      h4(data-bind="text: settingsProfileHeadLineI18n")
+      div.panel.panel-default(data-bind="with: profileManagement")
+        div.panel-body
+          .row
+            .col-sm-12
+              button.btn.btn-default.pull-right(type="buttonprofileLabelI18n", name="importExport", data-bind="click: showExportImportDialog.bind($data)")
+                i.fa.fa-rocket
+                  span &nbsp;
+          p(data-bind="text: settingsProfileInfoStoreI18n")
+          .row
+            .col-sm-4
+              input.form-control(data-bind="textInput: profileLabel, attr: {placeholder: settingsProfileLabelI18n}")
+            .col-sm-4
+              div.form-group
+                input.form-control(name="workStation", data-bind="select2: select2WorkStation")
+            div(data-bind="if: hasTiLicense").col-sm-4
+              div.form-group
+                input.form-control(name="tiCardReaders", data-bind="enable: workStationSelected, select2: select2TiCardReader")
+            div(data-bind="ifnot: hasTiLicense").col-sm-4
+              button.btn.btn-default(type="button", data-bind="click: storeProfile, readOnly: storeProfileDisabled, text: settingsButtonStoreI18n"  )
+          .row
+            .col-sm-4
+            a.col-sm-4(data-bind="text: configureWorkStationI18n", style="padding-left: 15px", href="/admin/insuite#/work-stations", target="_blank") Arbeitsplatz einrichten
+            div(data-bind="if: hasTiLicense").col-sm-4
+              button.btn.btn-default.pull-right(type="button", data-bind="click: storeProfile, readOnly: storeProfileDisabled, text: settingsButtonStoreI18n")
+          br
+          //p #{__i18n( 'ProfileMojit.ProfileManagementViewModel.info.manage_admin' )}
+          h6(data-bind="text: lastActivatedProfileText")
+
+          div(style="overflow-x: hidden; overflow-y: auto; height: 152px;" data-bind="foreach: storedProfiles")
+            .row
+              .col-sm-4
+                h5(data-bind="text: profileLabel")
+              .col-sm-3
+                h5(data-bind="text: workStationName")
+              .col-sm-5
+                button.btn.btn-default(type='button', data-bind='click: function() { $parent.deleteProfile( $parent, this ) }').pull-right
+                  span.glyphicon.glyphicon-trash
+                button.btn.btn-default.pull-right(style="margin-right:5px" type="button", data-bind="click: function() { $parent.reStoreProfile( $parent, this ) }, text: $parent.settingsButtonRestoreI18n")
+
+
+  .row.SettingsModel
+    .col-sm-12.col-md-8.col-md-offset-2.col-lg-6.col-lg-offset-0
+      h4(data-bind="text: settingsFontCustomHeadingI18n")
+      div.panel.panel-default
+        div.panel-body
+          p(data-bind="text: settingsFontCustomSubHeadingI18n")
+          hr
+          div#divFontUploadEmbed
+          p(data-bind="text: settingsFontCustomDescrI18n")
+
+  .row.AdminModel
+    //ko ifnot: isVPRCNotAdmin()
+    .col-sm-12.col-md-8.col-md-offset-2.col-lg-6.col-lg-offset-0
+      h4(data-bind="text: settingsProxyHeadingI18n")
+      div.panel.panel-default
+        div.panel-body
+          div.form-group(data-bind="hasFeedback: { toggle: proxy.hasError, messages: proxy.validationMessages }")
+            p(data-bind="text: settingsProxyTextI18n")
+            label.control-label(data-bind="text: settingsProxyLabelI18n")
+            input.form-control(data-bind="textInput: proxy, attr: { placeholder: 'http://user:pass@proxy.server.com:3128', title: proxyNotSupported() && proxyFeatureNotSupportedI18n }, disable: proxyNotSupported", data-toggle="tooltip")
+            div.col-md-12
+              button.btn.btn-primary.pull-right(type="button", data-bind="click: testProxy, disable: proxyNotSupported() || proxy.hasError(), text: proxyButtonTextI18n", style= "margin-top: 10px;")
+    // /ko
+  .row.SettingsModel
+    .col-sm-12.col-md-8.col-md-offset-2.col-lg-6.col-lg-offset-0
+      h4(data-bind="text: settingsEmailHeadingI18n")
+      div.panel.panel-default(style="padding: 15px 1px 15px 0px;")
+        form.form.email-server-settings
+          fieldset
+            div.col-md-9
+              div.form-goup
+                label.control-label(data-bind="text: settingsEmailServerIncomeI18n")
+                input.form-control(type="text", data-bind="attr: {placeholder: settingsEmailPlaceholderImapI18n}" disabled)
+            div.col-md-3
+              div.form-group
+                label.control-label(data-bind="text: settingsEmailPortI18n")
+                input.form-control(type="number", disabled)
+            div.col-md-12
+              div.form-group.pull-right
+                label(data-bind="text: settingsEmailEncriptionI18n")
+                div.checkbox
+                  input(type="checkbox", disabled)
+                  label
+                    span(data-bind="text: settingsEmailLabelSSLI18n")
+            div.col-md-9
+              div.form-goup
+                label.control-label(data-bind="text: settingsEmailLabelUserI18n")
+                input.form-control(type="text", data-bind="attr: {placeholder: settingsEmailLabelUserNameI18n}", disabled)
+            div.col-md-3
+              div.form-group
+                label.control-label(data-bind="text: settingsEmailLabelPasswordI18n")
+                input.form-control(type="password", disabled )
+            div.col-md-12
+              div.h-divider
+            div.col-md-12
+              div.form-goup(data-bind="hasFeedback: { field: smtpEmailFrom, toggle: smtpEmailFrom.hasError, messages: smtpEmailFrom.validationMessages }")
+                label.control-label(data-bind="text: smtpEmailFrom.i18n")
+                input.form-control(type="text", data-bind="textInput: smtpEmailFrom, attr: {placeholder: smtpEmailFrom.i18n}", disabled)
+            div.col-md-9
+              div.form-goup
+                label.control-label(data-bind="text: settingsEmailServerOutcomeI18n")
+                input.form-control(type="text", data-bind="textInput: smtpHost, attr: {placeholder: settingsEmailPlaceholderSMTPI18n}", disabled)
+            div.col-md-3
+              div.form-group
+                label.control-label(data-bind="text: settingsEmailPortI18n")
+                input.form-control(type="number", data-bind="value: smtpPort", disabled)
+            div.col-md-12
+              div.form-group.pull-right
+                label(data-bind="text: settingsEmailEncriptionI18n")
+                div.checkbox
+                  input(type="checkbox", data-bind="checked: smtpSsl", disabled)
+                  label
+                    span(data-bind="text: settingsEmailLabelSSLI18n")
+            div.col-md-9
+              div.form-goup
+                label.control-label(data-bind="text: settingsSMTPEmailLabelUserI18n")
+                input.form-control(type="text", data-bind="textInput: smtpUserName, attr: {placeholder: settingsEmailLabelUserNameI18n}", disabled)
+            div.col-md-3
+              div.form-group
+                label.control-label(data-bind="text: settingsSMTPEmailLabelPasswordI18n")
+                input.form-control(type="password", data-bind="textInput: smtpPassword, attr: {placeholder: settingsSMTPEmailLabelPasswordI18n}", disabled)
+            div.col-md-12
+              button.btn.btn-primary.pull-right(type="button", data-bind="click: verifySmtpConfiguration", disabled) Test
+              button.btn.btn-default.pull-right(type="button", data-bind="click: clearSmtpConfiguration, text: settingsEmailSettingsClearI18n", style= "margin-right: 10px;", disabled)
+
+  .row.SettingsModel(data-bind="notifyBind: { method: 'onTemplateReady', namespace: $data }")
+    .col-sm-12.col-md-8.col-md-offset-2.col-lg-6.col-lg-offset-0
+      h4(data-bind="text: settingsEmailPortalHeadingI18n")
+      div.panel.panel-default
+        div.panel-body
+          div.form-group
+            p(data-bind="text: settingsEmailPortalURLTextI18n")
+            input.form-control(data-bind="textInput: patientPortalUrl, attr: {placeholder: settingsEmailPortalURLI18n}")
+
+  .row.SettingsModel
+    .col-sm-12.col-md-8.col-md-offset-2.col-lg-6.col-lg-offset-0
+      h4(data-bind="text: settingsPublicVCI18n")
+      div.panel.panel-default
+        div.panel-body
+          div.form-group
+            div.checkbox
+              label.control-label
+                input(type="checkbox", data-bind="checked: enablePublicVC, valueUpdate: 'afterkeydown'")
+                strong(data-bind="text: settingsEnablePublicVCI18n")
+                i.dc-info-icon(data-bind="click: showPublicVCInfoMessage")
+
+  .row.SettingsModel
+    .col-sm-12.col-md-8.col-md-offset-2.col-lg-6.col-lg-offset-0
+      h4(data-bind="text: locationsHeadingI18n")
+      div.panel.panel-default
+        div.panel-body
+          div.form-group
+            div.checkbox
+              label.control-label
+                input(type="checkbox", data-bind="checked: allowSameCommercialNo, valueUpdate: 'afterkeydown'")
+                strong(data-bind="text: allowSameCommercialNo18n")
+
+  .row.SettingsModel
+    .col-sm-12.col-md-8.col-md-offset-2.col-lg-6.col-lg-offset-0
+      .dc-action-buttons.dc-action-buttons-right#actionButtons
+        button.btn.btn-primary#saveBtn(type="button", data-bind="click: saveSettings, text: settingsButtonSaveI18n")

@@ -1,0 +1,213 @@
+{
+  "cardData": {
+    "stateID" : "CH",
+    "insurerName" : "CSS Versicherung",
+    "insurerID" : "00008",
+    "vekaCardNo" : "00000000000000000000",
+    "expiryDate" : {
+      "inputDate" : "30.03.2024",
+      "_valid" : true,
+      "_validator" : {
+        "dateArray" : [
+          "30",
+          "03",
+          "2024"
+        ],
+        "dd" : "30",
+        "mm" : "03",
+        "yyyy" : "2024",
+        "_valid" : true,
+        "_diffYears" : 1883
+      }
+    },
+    "countryMode" : [
+      "CH"
+    ]
+  },
+  "rawData": {
+    "cardNoVeka": "0000000000000000000",
+    "ZSRno": "U241019",
+    "qualifyingDate": "2020-02-13T00:00:00.000Z",
+    "queryNumber": "256992",
+    "validCard": "0",
+    "codProv": "SS",
+    "CH-Baseinformation": {
+      "identificationData": {
+        "name": {
+          "officialName": "MUSTERNAME",
+          "firstName": "TESTPERSON"
+        },
+        "dateOfBirth": {
+          "yearMonthDay": "1999-12-12T00:00:00.000Z"
+        },
+        "cardholderIdentifier": "0000000000000",
+        "sex": "1"
+      },
+      "administrativeData": {
+        "issuingStateIdNumer": "CH",
+        "nameOfTheInstitution": "CSS Versicherung",
+        "identificationNumberOfTheInstitution": "00000",
+        "coverCardNo": "0000000000000000000",
+        "insuredPersonNumber": "00000000000000000000",
+        "insuredNumber": "00000000000",
+        "expiryDate": "2024-03-30T00:00:00.000Z"
+      },
+      "nationalExtension": {
+        "mailAddress": {
+          "addressLine1": "Strasse 8",
+          "town": "Stadt",
+          "swissZipCode": "1111",
+          "country": "CH"
+        },
+        "KVGInformation": {
+          "languageRegion": "de",
+          "KVGBase": "01",
+          "KVGModel": "04",
+          "KVGcanton": {
+            "KVGcanton": "AG"
+          },
+          "KVGaccidentCoverage": "01"
+        },
+        "insurerInformation": {
+          "contactNumberGerman": {},
+          "contactEanNumber": "7601003001082",
+          "billingAddress": {
+            "addressLine1": "Postfach",
+            "town": "Luzern",
+            "swissZipCode": "6002",
+            "country": "CH"
+          }
+        },
+        "VVGInformation": {
+          "VVGinsurerInformation": {
+            "issuingStateIdNumer": "CH",
+            "nameOfVVGInsurer": "CSS Versicherung",
+            "identificationNumberOfVVGInsurer": "00008",
+            "coverCardNo": "0000000000000000000",
+            "insuredPersonNumber": "00000000000000000000",
+            "insuredNumber": "00000000000",
+            "expiryDate": "2024-03-30T00:00:00.000Z",
+            "insurerInformation": {
+              "contactNumberGerman": {},
+              "contactEanNumber": "7601003001082",
+              "billingAddress": {
+                "addressLine1": "Postfach",
+                "town": "Luzern",
+                "swissZipCode": "6002",
+                "country": "CH"
+              }
+            }
+          },
+          "medicationHL": "01",
+          "medicationAccidentCoverageHL": "00",
+          "medicationKM": "01",
+          "medicationAccidentCoverageKM": "00",
+          "medicalServiceCoverageVVG": "99",
+          "hospitalModelBedVVG": "99",
+          "hospitalModelDocVVG": "99",
+          "accidentCoverageVVG": "99"
+        }
+      },
+      "ofacExtension": {
+        "zusatzKVGModel": {
+          "code": "10"
+        },
+        "debNomAddress": {
+          "officialName": "MUSTERNAME",
+          "firstName": "TESTPERSON"
+        },
+        "debmailAddress": {
+          "addressLine1": "Strasse 8",
+          "town": "Stadt",
+          "swissZipCode": "1111",
+          "country": "CH"
+        },
+        "agenceKVGName": "CSS Versicherung",
+        "agenceKVGAddress": {
+          "addressLine1": "Postfach",
+          "town": "Luzern",
+          "swissZipCode": "6002",
+          "country": "CH"
+        },
+        "agenceVVGName": "CSS Versicherung",
+        "agenceVVGAddress": {
+          "addressLine1": "Postfach",
+          "town": "Luzern",
+          "swissZipCode": "6002",
+          "country": "CH"
+        },
+        "medicalServiceCoverageRestriction": "00",
+        "validityDate": "2020-02-13T00:00:00.000Z",
+        "informationKVGText": "LastName FirstName , Originale durch Generika ersetzen",
+        "informationVVGSpitalText": "hospital_unit: Daten vom Versicherer nicht freigegebenhospital_model: Daten vom Versicherer nicht freigegebenhospital_accident: Daten vom Versicherer nicht freigegebenhospital_remark: Daten vom Versicherer nicht freigegebenhospital_benefit_delay:"
+      }
+    }
+  },
+  "resultData": {
+    "insuranceStatus": [{
+      "cardExpiryDate": "2024-03-29T23:00:00.000Z",
+      "cardValidationDate": "2024-03-29T23:00:00.000Z",
+      "notes": "BAG-Nummer des OKP-Versicherers: 00000\nCovercard-Nummer des OKP-Versicherers:0000000000000000000\nLeistungsunterbrechung: 00 keine Leistungsunterbrechung\nOKP-Versicherung: 01 obligatorische Krankenpflegeversicherung\nVersicherungsform: 04 Listen-Modell (PPO)",
+      "insuranceName": "CSS Versicherung",
+      "department": "",
+      "address1": "Tribschenstrasse 21",
+      "address2": "Postfach 2568",
+      "zipcode": "6002",
+      "city": "Luzern",
+      "phone": "058 277 11 11",
+      "insuranceLink": "www.css.ch/edi",
+      "email": "projekte.edi@css.ch",
+      "insuranceGLN": "7601003001082",
+      "recipientGLN": "7601003001082",
+      "insurancePrintName": "CSS Versicherung",
+      "lawCode": "KVG",
+      "TP_elektronisch": true,
+      "changebillingtypedesc": true,
+      "mediport": true,
+      "catalog": "DC-IVG_KVG_MVG_UVG_VVG-CH-1578325720366.js",
+      "type": "PRIVATE_CH",
+      "vekaCardNo": "00000000000000000000",
+      "insuranceNo": "00000000000"
+    }, {
+      "cardExpiryDate": "2024-03-29T23:00:00.000Z",
+      "cardValidationDate": "2024-03-29T23:00:00.000Z",
+      "notes": "BAG-Nummer des OKP-Versicherers: 00000\nCovercard-Nummer des OKP-Versicherers:0000000000000000000\nLeistungsunterbrechung: 00 keine Leistungsunterbrechung\nHors-Liste-Medikamente: 01 Deckung\nUnfalldeckung für Hors-Liste-Medikament: 00 Keine Unfalldeckung\nMedikamente Komplementärmedizin: 01 Deckung\nUnfalldeckung für Medikamente Komplementärmedizin: 00 Keine Unfalldeckung\nSpitalabteilung: 99 Unbekannt\nSpitalmodell: Hotellerie-Versicherung: 99 Unbekannt\nSpitalmodell: Arztwahl-Versicherung: 99 Unbekannt\nUnfalldeckung Spitalversicherung: 99 Unbekannt",
+      "insuranceName": "CSS Versicherung",
+      "department": "",
+      "address1": "Tribschenstrasse 21",
+      "address2": "Postfach 2568",
+      "zipcode": "6002",
+      "city": "Luzern",
+      "phone": "058 277 11 11",
+      "insuranceLink": "www.css.ch/edi",
+      "email": "projekte.edi@css.ch",
+      "insuranceGLN": "7601003001082",
+      "recipientGLN": "7601003001082",
+      "insurancePrintName": "CSS Versicherung",
+      "lawCode": "KVG",
+      "TP_elektronisch": true,
+      "changebillingtypedesc": true,
+      "mediport": true,
+      "catalog": "DC-IVG_KVG_MVG_UVG_VVG-CH-1578325720366.js",
+      "type": "PRIVATE_CH_VVG",
+      "vekaCardNo": "00000000000000000000",
+      "insuranceNo": "00000000000"
+    }
+    ],
+    "socialSecurityNo": "0000000000000",
+    "gender": "FEMALE",
+    "firstname": "Testperson",
+    "lastname": "Mustername",
+    "dob": "1999-12-12T00:00:00.000Z",
+    "kbvDob": "12.12.1999",
+    "addresses": [{
+      "street": "Strasse",
+      "houseno": "8",
+      "city": "Stadt",
+      "zip": "1111",
+      "countryCode": "CH",
+      "country": "Schweiz",
+      "kind": "OFFICIAL"
+    }]
+  }
+}

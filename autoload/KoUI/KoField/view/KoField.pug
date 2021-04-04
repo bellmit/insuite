@@ -1,0 +1,11 @@
+span.KoField(data-bind="visible: visible, attr:{ title: title }")
+  // ko if: Boolean(label() || icon.hasIcon())
+  label
+    // ko if: icon.hasIcon
+    span.KoField-icon(data-bind="template: icon.template")
+    // /ko
+    // ko if: label
+    span(data-bind="text: label")
+    // /ko
+  // /ko
+  input.form-control(data-bind="value: value, disable: disabled, css: css, style: styleField, valueUpdate: valueUpdate, hasFocus: hasFocus, attr: { placeholder: iconPlaceholder, type: type, name: name }")

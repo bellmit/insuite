@@ -1,0 +1,137 @@
+{
+  "rule": {
+    "parent" : "000000000000000000000002",
+    "isDirectory" : false,
+    "isLocked" : false,
+    "isActive" : true,
+    "caseFolderType" : [
+      "PUBLIC"
+    ],
+    "metaActTypes" : [
+      "HISTORY"
+    ],
+    "metaActCodes" : [],
+    "metaCriterias" : [
+      "actType",
+      "content"
+    ],
+    "description" : "Test Task for rule api",
+    "referenceArea" : "ENTRY",
+    "periodType" : "MONTH",
+    "periodCount" : 1,
+    "periodReference" : "raum",
+    "rules" : [
+      {
+        "ruleId" : "5f7edc6b2edc5c7893000017",
+        "description" : "task test 1",
+        "isActive" : true,
+        "validations" : {
+          "\\\\$and" : [
+            {
+              "context" : "ACTIVITY",
+              "criteria" : {
+                "actType" : {
+                  "\\\\$eq" : "HISTORY"
+                },
+                "content" : {
+                  "\\\\$regex" : "test1",
+                  "\\\\$options" : ""
+                }
+              }
+            }
+          ]
+        },
+        "actions" : [
+          {
+            "type" : "TASK",
+            "template" : {
+              "title" : "title 1",
+              "urgency" : 3,
+              "details" : "some test comment",
+              "roles" : [
+                "Empfang"
+              ],
+              "candidates" : [],
+              "locations" : [
+                {
+                  "_id" : "000000000000000000000001",
+                  "locname" : "TestPraxis1"
+                },
+                {
+                  "_id" : "59955f5f66e8cf1fcc577754",
+                  "locname" : "SecondLocation"
+                }
+              ],
+              "caseFolder" : "",
+              "days" : "",
+              "hours" : "",
+              "minutes" : "",
+              "actType" : "MEASUREMENT",
+              "caseFolderType" : null,
+              "catalogShort" : null,
+              "code" : null,
+              "diagnosisCert" : "NONE",
+              "toCreate" : 1,
+              "explanations" : null,
+              "linkActivities" : false,
+              "autoCreate" : false,
+              "tempateID" : "5f7edcd72edc5c7893000019",
+              "markers" : [],
+              "type" : "USER",
+              "taskType" : "5f8427bc0270511a451cd169"
+            }
+          }
+        ],
+        "metaActTypes" : [
+          "HISTORY"
+        ]
+      }
+    ],
+    "metaFuzzy" : true,
+    "metaCaseOpen" : false
+  },
+  "history": {
+    "attachments" : [],
+    "attachedMediaTags" : [],
+    "subType" : "",
+    "time" : "",
+    "backupEmployeeIds" : [],
+    "userContent" : "test1",
+    "mediaImportError" : "",
+    "partnerInfo" : "",
+    "explanations" : "",
+    "status" : "VALID",
+    "activities" : [],
+    "referencedBy" : [],
+    "formId" : "",
+    "formVersion" : "",
+    "formPdf" : "",
+    "formLang" : "de",
+    "formGender" : "f",
+    "apkState" : "IN_PROGRESS",
+    "unlinkedMirrorIds" : [],
+    "savedEmails" : [],
+    "__t" : "HISTORY",
+    "actType" : "HISTORY",
+    "attachedMedia" : [],
+    "employeeId" : "100000000000000000000003",
+    "content" : "test1",
+    "editor" : [
+
+    ]
+  },
+  "taskType": {
+    "_id" : "5f8427bc0270511a451cd169",
+    "type" : "USER",
+    "name" : "Custom",
+    "allDay" : false,
+    "urgency" : 4,
+    "details" : "custom details",
+    "roles" : [
+      "Empfang"
+    ],
+    "candidates" : [],
+    "candidatesNames" : [],
+    "title" : "Custom"
+  }
+}

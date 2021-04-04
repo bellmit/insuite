@@ -1,0 +1,24 @@
+div#tab_inpacs_luascripts
+  header
+    h4
+      span(data-bind="text: luaScriptsTitleI18n")
+      | &nbsp;
+      a.fa.fa-plus(data-bind="click: addNewLuaScriptHandler")
+  section.row
+    div(data-bind="template: {name: 'luaScriptTmpl', foreach: luaScripts}")
+
+  section.row
+    footer.col-md-12
+      button.btn.btn-primary(data-bind="click: save, visible: (luaScripts().length > 0 || luaScriptsToBeDeleted().length > 0), text: buttonSaveI18n" name="saveBtn", type="button")
+
+
+  script(type="text/html", id="luaScriptTmpl")
+    div.col-md-12.col-xs-12
+      div.well
+        div.form-group
+          input(type="text" class="form-control" data-bind="textInput: description")
+        div.form-group
+          div.form-control(style="height: 40vh; background-color: white;" data-language="lua" data-bind="attr: {'id': 'code_highlight_' + $index()}, syntaxHighlight: {value: content, lang: 'lua'}" class="language-lua line-numbers")
+        div.form-grop
+          button.btn.btn-default(type="button", data-bind="click: $parent.deleteLuaScriptHandler.bind($parent, $data), text: $parent.buttonDeleteI18n")
+

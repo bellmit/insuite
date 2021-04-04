@@ -1,0 +1,679 @@
+#tab_locations
+  div(data-bind="visible: !Boolean(editing())")
+    div.row
+      div.col-xs-12
+        div.form-group
+          button#tab_locations-add.btn.btn-primary(name="tab_locations-add", type="button", data-bind="click: addItem, disable: addItemDisabled")
+            span.fa.fa-plus
+            span(data-bind="text: ' ' + locationsButtonAddI18n")
+    div.row
+      div.col-xs-12
+        div(data-bind="foreach: items")
+          .panel.panel-default
+            div.panel-heading
+              h3.panel-title.clearfix
+                span(data-bind="text: locname", style="line-height: 1.4;")
+                span.pull-right
+                  button.btn.btn-link(name="tab_locations-editItem", type="button", data-bind="click: $parent.editItemHandler.bind($data)", style="padding: 0; margin: 0;")
+                    span.fa.fa-edit
+                  // ko ifnot: ($parent.isMainLocation(_id) && !superLocation)
+                  span(style="display: inline-block; height: 14px; margin: 0 4px; vertical-align: middle; border-right: 1px solid #ddd;")
+                  button.btn.btn-link(name="tab_locations-confirmDeleteItem", type="button", data-bind="click: $parent.confirmDeleteItem", style="padding: 0; margin: 0;")
+                    span.fa.fa-trash
+                  // /ko
+            div.panel-body
+              //ko if: superLocation
+              div.row
+                div.col-xs-12
+                  div.form-group
+                    label
+                      strong(data-bind="text: $parent.slMainI18n + ':'")
+                    div
+                      span.employee-pill(data-bind="html: $parent.getLocationDisplay(mainLocation)")
+              div.row
+                div.col-xs-12
+                  div.form-group
+                    label
+                      strong(data-bind="text: $parent.slMembersI18n + ':'")
+                    // ko if: slMemberLocations.length
+                    div(data-bind="foreach: slMemberLocations")
+                      span.employee-pill(data-bind="html: $parentContext.$parent.getLocationDisplay($data)")
+                    // /ko
+                    // ko ifnot: slMemberLocations.length
+                    div.text-muted(style="padding: 7px 11px;", data-bind="text: $parent.locationsNoEntriesI18n")
+                    // /ko
+              // /ko
+              div.row
+                div.col-md-6
+                  strong(data-bind="text: $parent.locationsAddressI18n + ':'")
+                  address
+                    span
+                      span(data-bind="text: street")
+                      | &nbsp;
+                      span(data-bind="text: houseno")
+                    br
+                    span
+                      span(data-bind="text: zip")
+                      // ko if: kbvZip
+                      | &nbsp;(
+                      span(data-bind="text: kbvZip")
+                      | )
+                      // /ko
+                      | &nbsp;
+                      span(data-bind="text: city")
+                div.col-md-6
+                  // ko if: isAdditionalLocation
+                  div
+                    // ko if: commercialNo && countryMode && countryMode.indexOf('D') !==-1
+                    strong(data-bind="text: $parent.locationsLabelNbsnrI18n + ':'")
+                    ul
+                      li(data-bind="text: commercialNo")
+                    // /ko
+                    // ko if: mainLocationDisplay
+                    strong(data-bind="text: $parent.locationsLabelHbsI18n + ':'")
+                    ul
+                      li(data-bind="text: mainLocationDisplay")
+                    // /ko
+                  // /ko
+                  // ko ifnot: isAdditionalLocation
+                  div
+                    // ko if: commercialNo && countryMode && countryMode.indexOf('D') !==-1
+                    strong(data-bind="text: $parent.locationsLabelBsnrI18n + ':'")
+                    ul
+                      li(data-bind="text: commercialNo")
+                    // /ko
+                  // /ko
+                  div
+                    // ko if: institutionCode
+                    strong(data-bind="text: $parent.locationsLabelInstitutionCodeI18n + ':'")
+                    | &nbsp;
+                    span(data-bind="text: institutionCode")
+                    // /ko
+                  div
+                    // ko if: department
+                    strong(data-bind="text: $parent.locationsDepartamentI18n + ':'")
+                    | &nbsp;
+                    span(data-bind="text: department")
+                    // /ko
+                  div
+                    // ko if: Boolean(phone || fax || email)
+                    strong(data-bind="text: $parent.locationsOtherDataI18n + ':'")
+                    ul
+                      // ko if: phone
+                      li
+                        span(data-bind="text: $parent.locationsTelI18n + ':'")
+                        | &nbsp;
+                        span(data-bind="text: phone")
+                      // /ko
+                      // ko if: fax
+                      li
+                        span(data-bind="text: $parent.locationsFaxI18n + ':'")
+                        | &nbsp;
+                        span(data-bind="text: fax")
+                      // /ko
+                      // ko if: email
+                      li
+                        span(data-bind="text: $parent.locationsEmailI18n + ':'")
+                        | &nbsp;
+                        span(data-bind="text: email")
+                      // /ko
+                      // ko if: website
+                      li
+                        span(data-bind="text: $parent.locationsWebsiteI18n + ':'")
+                        | &nbsp;
+                        span(data-bind="text: website")
+                      // /ko
+                    // /ko
+              //ko ifnot: superLocation
+              //ko if: $parent.showStockLocationsTab && stockLocationsLoaded()
+              div.row
+                dov.col-xs-offset-6.col-xs-6
+                  div.form-group
+                    strong(data-bind="text: $parent.stockLocationsI18n")
+                    ul(data-bind="foreach: stockLocationList")
+                      li(data-bind="text: title + ' (' + description + ')'")
+              // /ko
+
+              div.row
+                div.col-xs-12
+                  div.form-group
+                    label
+                      strong(data-bind="text: $parent.locationsDInLI18n + ':'")
+                    // ko if: employeesPhysicians.length
+                    div(data-bind="foreach: employeesPhysicians")
+                      span.employee-pill(data-bind="html: $parentContext.$parent.getEmployeeDisplay($data)")
+                    // /ko
+                    // ko ifnot: employeesPhysicians.length
+                    div.text-muted(style="padding: 7px 11px;", data-bind="text: $parent.locationsNoEntriesI18n")
+                    // /ko
+                div.col-xs-12
+                  div.form-group
+                    label
+                      strong(data-bind="text: $parent.locationsOInLI18n + ':'")
+                    // ko if: employeesOthers.length
+                    div(data-bind="foreach: employeesOthers")
+                      span.employee-pill(data-bind="html: $parentContext.$parent.getEmployeeDisplay($data)")
+                    // /ko
+                    // ko ifnot: employeesOthers.length
+                    div.text-muted(style="padding: 7px 11px;", data-bind="text: $parent.locationsNoEntriesI18n")
+                    // /ko
+              div.row
+                div.col-xs-12
+                  table.table.table-bordered(style="margin: 0")
+                    tbody
+                      tr(data-bind="foreach: openTimesDisplay")
+                        th(data-bind="text: alias")
+                      tr(data-bind="foreach: openTimesDisplay")
+                        td
+                          // ko if: $parentContext.$parent.displayNonOpenTime($data)
+                          span(data-bind="text: times[0]")
+                          // /ko
+                          // ko ifnot: $parentContext.$parent.displayNonOpenTime($data)
+                          // ko foreach: times
+                          span(data-bind="text: start")
+                          | &nbsp;-&nbsp;
+                          span(data-bind="text: end")
+                          br
+                          // /ko
+                          // /ko
+              // /ko
+    div.row(data-bind="visible: items().length>4")
+      div.col-xs-12
+        div.form-group
+          button#tab_locations-add-bottom.btn.btn-primary(name="tab_locations-add-bottom", type="button", data-bind="click: addItem, disable: addItemDisabled")
+            span.fa.fa-plus
+            span(data-bind="text: ' ' + locationsButtonAddI18n")
+  div(data-bind="visible: Boolean(editing())")
+    // ko if: editing
+    div#tab_locations-editing.panel.panel-default(data-bind="with: editing")
+      //ko ifnot: superLocation
+      div.panel-heading
+        h3.panel-title.clearfix
+          span.form-inline(data-bind="highlightError: locname")
+            input#tab_locations-editing-field-locname.form-control.input-sm(name="locname", type="text", data-bind="textInput: locname, hasFocus: isNew(), attr: {placeholder: locname.i18n}", style="display: inline-block; width: 300px;")
+          span.pull-right
+            button#tab_locations-editing-button-closeEditingItem.btn.btn-link(name="tab_locations-editing-button-closeEditingItem", type="button", data-bind="click: $parent.closeEditingItem, hasFocus: !isNew()", style="padding: 0; margin: 0;")
+              span.fa.fa-remove
+      div.panel-body
+        div
+          ul.nav.nav-tabs
+            li.active
+              a(href="javascript:;", data-target="#tab_locations-editing-panel-general", data-toggle="tab")
+                span(data-bind="css: { 'text-danger': generalFieldsAreInvalid }, text: submenuTextI18n")
+            li
+              a(href="javascript:;", data-target="#tab_locations-editing-panel-employees", data-toggle="tab")
+                span(data-bind="text: submenuEmployeesTextI18n")
+            li
+              a(href="javascript:;", data-target="#tab_locations-editing-panel-openTimes", data-toggle="tab")
+                span(data-bind="css: { 'text-danger': openTimesFieldsAreInvalid }, text: submenuOpenTimesTextI18n")
+            //ko if: !isSwitz
+            li
+              a(href="javascript:;", data-target="#tab_locations-editing-panel-budget", data-toggle="tab")
+                span(data-bind="text: submenuBudgetTextI18n")
+            // /ko
+            li
+              a(href="javascript:;", data-target="#tab_locations-editing-panel-printers", data-toggle="tab")
+                span(data-bind="text: submenuPrintersTextI18n")
+            li
+              a(href="javascript:;", data-target="#tab_locations-editing-panel-email-fax", data-toggle="tab")
+                span(data-bind="text: submenuEmailAndFaxTextI18n")
+            //ko if:showStockLocationsTab
+            li
+              a(href="javascript:;", data-target="#tab_locations-editing-panel-stock-locations", data-toggle="tab")
+                span(data-bind="text: submenuStockLocationsI18n")
+            // /ko
+
+          div.tab-content(style="padding-top: 15px")
+            #tab_locations-editing-panel-general.tab-pane.fade.in.active
+              div.row
+                div.col-md-6
+                  .form-horizontal
+                    div.row
+                      div.col-xs-8.pull-right
+                        include ../../../views/countryMode
+                    div.form-group(data-bind="hasFeedback: { field: street, toggle: street.hasError, messages: street.validationMessages }")
+                      label.col-xs-4.control-label(for="tab_locations-editing-field-street", data-bind="text: addressStreetI18n + ':'")
+                      .col-xs-8
+                        input#tab_locations-editing-field-street.form-control(name="street", type="text", data-bind="textInput: street, attr: {placeholder: addressStreetPlaceholderI18n}")
+                    div.form-group(data-bind="hasFeedback: { field: houseno, toggle: houseno.hasError, messages: houseno.validationMessages }")
+                      label.col-xs-4.control-label(for="tab_locations-editing-field-houseno", data-bind="text: addressHouseNoI18n + ':'")
+                      .col-xs-8
+                        input#tab_locations-editing-field-houseno.form-control(name="houseno", type="text", data-bind="textInput: houseno, attr: {placeholder: addressHouseNoPlaceholderI18n}")
+                    div.form-group(data-bind="hasFeedback: { field: zip, toggle: zip.hasError, messages: zip.validationMessages }")
+                      label.col-xs-4.control-label(for="tab_locations-editing-field-zip", data-bind="text: addressZipI18n + ':'")
+                      .col-xs-8
+                        // ko if: select2ZipDisabled
+                        input#tab_locations-editing-field-zip.form-control(name="zip", type="text", maxlength="10", data-bind="textInput: zip, attr: {placeholder: addressZipPlaceholderI18n}")
+                        // /ko
+                        // ko ifnot: select2ZipDisabled
+                        input#tab_locations-editing-field-zip.form-control(name="zip", type="text", maxlength="10", data-bind="select2: select2Zip")
+                        // /ko
+                    // ko if: countryModeIncludesGermany()
+                    div(data-bind="visible: select2KbvZipVisible")
+                      div.form-group(data-bind="hasFeedback: { field: kbvZip, toggle: kbvZip.hasError, messages: kbvZip.validationMessages }")
+                        label.col-xs-4.control-label(for="tab_locations-editing-field-kbvZip", data-bind="text: addressKvbZipI18n + ':'")
+                        .col-xs-8
+                          input#tab_locations-editing-field-kbvZip.form-control(name="kbvZip", type="text", maxlength="10", data-bind="select2: select2KbvZipConfig")
+                    // /ko
+                    div.form-group(data-bind="hasFeedback: { field: city, toggle: city.hasError, messages: city.validationMessages }")
+                      label.col-xs-4.control-label(for="tab_locations-editing-field-city", data-bind="text: addressCityI18n + ':'")
+                      .col-xs-8
+                        // ko if: select2ZipDisabled
+                        input#tab_locations-editing-field-city.form-control(name="city", type="text", data-bind="textInput: city, attr: {placeholder: addressCityPlaceholderI18n}")
+                        // /ko
+                        // ko ifnot: select2ZipDisabled
+                        input#tab_locations-editing-field-city.form-control(name="city", type="text", data-bind="select2: select2City, attr: {placeholder: addressCityPlaceholderI18n}")
+                        // /ko
+                    // ko ifnot: isDCPRC
+                    // ko if: countryModeIncludesGermany()
+                    div.form-group
+                      label.col-xs-4.control-label(for="tab_locations-editing-field-kv", data-bind="text: addressTkvI18n + ':'")
+                      .col-xs-8
+                        input#tab_locations-editing-field-kv.form-control(name="kv", type="text",readonly="readonly", data-bind="textInput: kv, attr: {placeholder: addressKvPlaceholderI18n}")
+                    div.form-group(data-bind="hasFeedback: { field: countryCode, toggle: countryCode.hasError, messages: countryCode.validationMessages }")
+                      label.col-xs-4.control-label(for="tab_locations-editing-field-countryCode", data-bind="text: addressCountryI18n + ':'")
+                      .col-xs-8
+                        input#tab_locations-editing-field-countryCode.form-control(name="countryCode", data-bind="select2: select2CountryCode")
+                    // /ko
+                    // ko if: countryModeIncludesSwitzerland()
+                    include ./canton_CH
+                    // /ko
+                    // /ko
+                    // ko if: isDCPRC
+                    div.form-group
+                     label.col-xs-4.control-label(for="tab_locations-editing-field-kv", data-bind="text: addressTkvI18n + ':'")
+                     .col-xs-8
+                       input#tab_locations-editing-field-kv.form-control(name="kv", type="text",readonly="readonly", data-bind="textInput: kv, attr: {placeholder: addressKvPlaceholderI18n}")
+                    div.form-group(data-bind="hasFeedback: { field: countryCode, toggle: countryCode.hasError, messages: countryCode.validationMessages }")
+                     label.col-xs-4.control-label(for="tab_locations-editing-field-countryCode", data-bind="text: addressCountryI18n + ':'")
+                     .col-xs-8
+                       input#tab_locations-editing-field-countryCode.form-control(name="countryCode", data-bind="select2: select2Country")
+                    // ko if: 'CH' === countryCode()
+                    div.form-group(data-bind="hasFeedback: { field: cantonCode, toggle: cantonCode.hasError, messages: cantonCode.validationMessages }")
+                      label.col-xs-4.control-label(for="tab_locations-editing-field-cantonCode", data-bind="text: cantonI18n + ':'")
+                      .col-xs-8
+                        input#tab_locations-editing-field-cantonCode.form-control(name="cantonCode", data-bind="value: cantonCode")
+                    // /ko
+                    // /ko
+                    hr
+                    h4(data-bind="text: bankAccountI18n")
+                    // ko if: countryModeIncludesSwitzerland()
+                    include ./esr_number_CH
+                    // /ko
+                    div.form-group(data-bind="hasFeedback: { field: bankName, toggle: bankName.hasError, messages: bankName.validationMessages }")
+                      label.col-xs-4.control-label(for="tab_locations-editing-field-bankName", data-bind="text: bankNameI18n + ':'")
+                      .col-xs-8
+                        input#tab_locations-editing-field-bankName.form-control(name="bankName", type="text", data-bind="textInput: bankName, attr: {placeholder: bankNameI18n}")
+                    div.form-group(data-bind="hasFeedback: { field: bankIBAN, toggle: bankIBAN.hasError, messages: bankIBAN.validationMessages }")
+                      .col-xs-4.control-label.ppt-0
+                        // ko if: countryModeIncludesSwitzerland()
+                        label.control-label(for="tab_locations-editing-field-bankIBAN", data-bind="text: bankIbanLabelI18n + ':'")
+                        i.dc-info-icon(data-bind="tooltip: {title: bankIbanI18n}")
+                        // /ko
+                        // ko ifnot: countryModeIncludesSwitzerland()
+                        label.control-label(for="tab_locations-editing-field-bankIBAN", data-bind="text: bankIbanI18n + ':'")
+                        // /ko
+                      .col-xs-8
+                        input#tab_locations-editing-field-bankIBAN.form-control(name="bankIBAN", type="text", data-bind="textInput: bankIBAN, attr: {placeholder: countryModeIncludesSwitzerland() ? bankIbanLabelI18n : bankNameI18n}")
+                    div.form-group(data-bind="hasFeedback: { field: bankBIC, toggle: bankBIC.hasError, messages: bankBIC.validationMessages }")
+                      .col-xs-4.control-label.ppt-0
+                        // ko if: countryModeIncludesSwitzerland()
+                        label.control-label(for="tab_locations-editing-field-bankBIC", data-bind="text: bankBicLabelI18n + ':'")
+                        i.dc-info-icon(data-bind="tooltip: {title: bankBicI18n}")
+                        // /ko
+                        // ko ifnot: countryModeIncludesSwitzerland()
+                        label.control-label(for="tab_locations-editing-field-bankBIC", data-bind="text: bankBicI18n + ':'")
+                        // /ko
+                      .col-xs-8
+                        input#tab_locations-editing-field-bankBIC.form-control(name="bankBIC", type="text", data-bind="textInput: bankBIC, attr: {placeholder: countryModeIncludesSwitzerland() ? bankBicLabelI18n : bankBicI18n}")
+                div.col-md-6
+                  .form-horizontal
+                    // ko if: countryModeIncludesGermany()
+                    div.form-group(data-bind="hasFeedback: { field: commercialNo, toggle: commercialNo.hasError, messages: commercialNo.validationMessages }")
+                      label.col-xs-4.control-label(for="tab_locations-editing-field-commercialNo")
+                        span(data-bind="if: nonStandardCommercialNo")
+                          span.text-danger Ausnahmewert
+                          br
+                        span(data-bind="text: bankBsnrI18n + ':'")
+                      .col-xs-8
+                        input#tab_locations-editing-field-commercialNo.form-control(name="commercialNo", type="text", data-bind="select2: select2CommercialNoConfig")
+                    // /ko
+                    // ko if: countryModeIncludesSwitzerland()
+                    include ./gln_zsr_numbers_CH
+                    // /ko
+                    // ko if: countryModeIncludesGermany()
+                    div.form-group.clearfix
+                      label.col-xs-4.control-label
+                      .col-xs-4
+                        div.checkbox
+                          label.control-label
+                            span(data-bind="text: bankNbsI18n")
+                            input(name="isAdditionalLocation", type="checkbox", data-bind="checked: isAdditionalLocation, disable: computeMainLocationIdDisable")
+                      .col-xs-4
+                        div.checkbox
+                          label.control-label
+                            span(data-bind="text: slMainI18n")
+                            input(name="slMain", type="checkbox", data-bind="checked: slMain, disable: computeMainSuperLocationDisable")
+                          i.dc-info-icon(data-toggle="popover", data-bind="attr: {'data-content': slMainInfoI18n}", data-html="true", rel="popover", data-placement="auto bottom", data-trigger="hover")
+                    div(data-bind="visible: computeMainLocationIdVisible")
+                      div.form-group(data-bind="hasFeedback: { field: mainLocationId, toggle: mainLocationId.hasError, messages: mainLocationId.validationMessages }")
+                        label.col-xs-4.control-label(for="tab_locations-editing-field-mainLocationId", data-bind="text: bankHbsI18n + ':'")
+                        .col-xs-8
+                          input#tab_locations-editing-field-mainLocationId.form-control(name="mainLocationId", type="text",data-bind="select2: select2MainLocationIdConfig")
+                    div(data-bind="visible: computeGkvInvoiceReceiverVisible")
+                      div.form-group(data-bind="hasFeedback: { field: gkvInvoiceReceiver, toggle: gkvInvoiceReceiver.hasError, messages: gkvInvoiceReceiver.validationMessages }")
+                        label.col-xs-4.control-label(for="tab_locations-editing-field-gkvInvoiceReceiver", data-bind="text: gkvInvoiceReceiverI18n + ':'")
+                        .col-xs-8
+                          input#tab_locations-editing-field-gkvInvoiceReceiver.form-control(name="gkvInvoiceReceiver", type="text", data-bind="select2: select2gkvInvoiceReceiverConfig")
+                    div
+                      div.form-group(data-bind="hasFeedback: { field: institutionCode, toggle: institutionCode.hasError, messages: institutionCode.validationMessages }")
+                        label.col-xs-4.control-label(for="tab_locations-editing-field-institutionCode",data-bind="text: institutionCode.i18n + ':'")
+                        .col-xs-8
+                          input#tab_locations-editing-field-institutionCode.form-control(name="institutionCode", type="text",data-bind="textInput: institutionCode")
+                    div
+                      div.form-group(data-bind="hasFeedback: { field: department, toggle: department.hasError, messages: department.validationMessages }")
+                        label.col-xs-4.control-label(for="tab_locations-editing-field-department",data-bind="text: department.i18n + ':'")
+                        .col-xs-8
+                          input#tab_locations-editing-field-department.form-control(name="department", type="text",data-bind="textInput: department")
+                    div
+                      div.form-group(data-bind="hasFeedback: { field: region, toggle: region.hasError, messages: region.validationMessages }")
+                        label.col-xs-4.control-label(for="tab_locations-editing-field-region",data-bind="text: region.i18n + ':'")
+                        .col-xs-8
+                          input#tab_locations-editing-field-region.form-control(name="region", type="text",data-bind="textInput: region")
+                    // /ko
+                    hr
+                    h4(data-bind="text: otherDataI18n")
+                    div.form-group(data-bind="hasFeedback: { field: phone, toggle: phone.hasError, messages: phone.validationMessages }")
+                      label.col-xs-4.control-label(for="tab_locations-editing-field-phone", data-bind="text: phonePlaceholderI18n + ':'")
+                      .col-xs-8
+                        input#tab_locations-editing-field-phone.form-control(name="phone", type="text", data-bind="textInput: phone, attr: {placeholder: phonePlaceholderI18n}")
+                    div.form-group(data-bind="hasFeedback: { field: fax, toggle: fax.hasError, messages: fax.validationMessages }")
+                      label.col-xs-4.control-label(for="tab_locations-editing-field-fax", data-bind="text: faxPlaceholderI18n + ':'")
+                      .col-xs-8
+                        input#tab_locations-editing-field-fax.form-control(name="fax", type="text", data-bind="textInput: fax, attr: {placeholder: faxPlaceholderI18n}")
+                    div.form-group(data-bind="hasFeedback: { field: email, toggle: email.hasError, messages: email.validationMessages }")
+                      label.col-xs-4.control-label(for="tab_locations-editing-field-email", data-bind="text: emailPlaceholderI18n + ':'")
+                      .col-xs-8
+                        input#tab_locations-editing-field-email.form-control(name="email", type="text", data-bind="textInput: email, attr: {placeholder: emailPlaceholderI18n}")
+                    div.form-group(data-bind="hasFeedback: { field: website, toggle: website.hasError, messages: website.validationMessages }")
+                      label.col-xs-4.control-label(for="tab_locations-editing-field-website", data-bind="text: websitePlaceholderI18n + ':'")
+                      .col-xs-8
+                        input#tab_locations-editing-field-website.form-control(name="website", type="text", data-bind="textInput: website, attr: {placeholder: websitePlaceholderI18n}")
+                    div.form-group
+                      .col-xs-4
+                      .col-xs-8.text-right
+                        button.btn.btn-default(name="testEmail", type="button", data-bind="click: testEmailHandler, disable: testEmailDisabled(), text: testEmailI18n")
+            #tab_locations-editing-panel-employees.tab-pane.fade
+              div.row
+                div.col-md-6
+                  label.control-label(for="tab_locations-editing-field-employees-physicians", data-bind="text: dInLI18n + ':'")
+                  div.form-group
+                    input#tab_locations-editing-field-employees-physicians.form-control(name="employees-physicians", type="text", data-bind="select2: select2PhysiciansConfig")
+                div.col-md-6
+                  label.control-label(for="tab_locations-editing-field-employees-others", data-bind="text: oInLI18n + ':'")
+                  div.form-group
+                    input#tab_locations-editing-field-employees-others.form-control(name="employees-others", type="text", data-bind="select2: select2OthersConfig")
+            div#tab_locations-editing-panel-openTimes.tab-pane.fade
+              div.row
+                div.col-xs-12
+                  div.form-group
+                    button#tab_locations-editing-button-addOpenTime.btn.btn-default(name="tab_locations-editing-button-addOpenTime", type="button", data-bind="click: addOpenTime")
+                      span.fa.fa-plus
+                      span(data-bind="text: ' ' + buttonAddI18n")
+                  div.tab_locations-editing-openTimes-container.form-horizontal(data-bind="foreach: openTimes")
+                    div.row
+                      div.col-xs-12.col-md-5
+                        div.form-group(data-bind="hasFeedback: { field: days, toggle: days.hasError, messages: days.validationMessages }")
+                          label.col-md-4.control-label(data-bind="attr: { for: 'tab_locations-editing-openTimes-field-days-' + $index() }, text: days.i18n + ':'")
+                          .col-md-8
+                            input.form-control(name="days", type="hidden", data-bind="select2: select2Days, attr: { id: 'tab_locations-editing-openTimes-field-days-' + $index() }")
+                      div.col-xs-6.col-md-3
+                        div.form-group(data-bind="hasFeedback: { field: start, toggle: start.hasError, messages: start.validationMessages }")
+                          label.col-md-3.control-label(data-bind="attr: { for: 'tab_locations-editing-openTimes-field-start-' + $index() }, text: start.i18n + ':'")
+                          .col-md-8
+                            div.date-picker.input-group
+                              input.form-control(name="start", type="text", data-bind="datetimepicker:{ options: { format: 'HH:mm'}, value: isoStart }, attr: { id: 'tab_locations-editing-openTimes-field-start-' + $index() }")
+                      div.col-xs-6.col-md-3
+                        div.form-group(data-bind="hasFeedback: { field: end, toggle: end.hasError, messages: end.validationMessages }")
+                          label.col-md-3.control-label(data-bind="attr: { for: 'tab_locations-editing-openTimes-field-end-' + $index() }, text: end.i18n + ':'")
+                          .col-md-8
+                            div.date-picker.input-group
+                              input.form-control(name="end", type="text", data-bind="datetimepicker:{ options: { format: 'HH:mm'}, value: isoEnd }, attr: { id: 'tab_locations-editing-openTimes-field-end-' + $index() }")
+                      div.col-xs-12.col-md-1.text-right
+                        button.btn.btn-default(name="tab_locations-editing-openTimes-button-deleteOpenTime", type="button", data-bind="click: $parent.deleteOpenTime, disable: $parent.deleteOpenTimeDisabled()")
+                          span.fa.fa-trash
+                          span.hidden-md.hidden-lg(data-bind="text: ' ' + $parent.buttonDeleteI18n")
+                    hr.visible-xs.visible-sm
+            //ko if: !isSwitz
+            div#tab_locations-editing-panel-budget.tab-pane.fade
+              div.row
+                div.col-xs-6
+                  .form-horizontal
+                    h4
+                      span(data-bind="text: medBudgetI18n")
+                      | &nbsp;
+                      small
+                        a(href="#", data-bind="click: addMedBudget")
+                          span.fa.fa-plus
+                    div(data-bind="foreach: budgets")
+                      // ko if: type() === 'MEDICATION'
+                      div.form-group(data-bind="hasFeedback: { field: specialities, toggle: specialities.hasError, messages: specialities.validationMessages }")
+                        label.col-xs-4.control-label(data-bind="text: $parent.personSpacialiesI18n+ ':'")
+                        .col-xs-8
+                          input.form-control(name="specialities", type="text", data-bind="select2: select2Specialities")
+                      div.form-group(data-bind="hasFeedback: { field: startDate, toggle: startDate.hasError, messages: startDate.validationMessages }")
+                        label.col-xs-4.control-label(data-bind="text: $parent.startBudgetFromI18n + ':'")
+                        .col-xs-8
+                          div.date-picker.input-group
+                            input.form-control(name="startDate", type="text", data-bind="datetimepicker:{ value: startDate }")
+                      div.form-group(data-bind="hasFeedback: { field: startBudget, toggle: startBudget.hasError, messages: startBudget.validationMessages }")
+                        label.col-xs-4.control-label(data-bind="text: $parent.startBudgetI18n + ':'")
+                        .col-xs-8
+                          input.form-control(name="startBudget", type="text", data-bind="textInput: startBudget, attr: {placeholder: $parent.startBudgetPlaceholderI18n}")
+                      div.form-group(data-bind="hasFeedback: { field: patientAgeRange1, toggle: patientAgeRange1.hasError, messages: patientAgeRange1.validationMessages }")
+                        label.col-xs-4.control-label(data-bind="text: patientAgeRange1.i18n")
+                        .col-xs-8
+                          input.form-control(name="patientAgeRange1", type="text", data-bind="textInput: patientAgeRange1, attr: {placeholder: $parent.insuranceBudgetPlaceholderI18n}")
+                      div.form-group(data-bind="hasFeedback: { field: patientAgeRange2, toggle: patientAgeRange2.hasError, messages: patientAgeRange2.validationMessages }")
+                        label.col-xs-4.control-label(data-bind="text: patientAgeRange2.i18n")
+                        .col-xs-8
+                          input.form-control(name="patientAgeRange2", type="text", data-bind="textInput: patientAgeRange2, attr: {placeholder: $parent.insuranceBudgetPlaceholderI18n}")
+                      div.form-group(data-bind="hasFeedback: { field: patientAgeRange3, toggle: patientAgeRange3.hasError, messages: patientAgeRange3.validationMessages }")
+                        label.col-xs-4.control-label(data-bind="text: patientAgeRange3.i18n")
+                        .col-xs-8
+                          input.form-control(name="patientAgeRange3", type="text", data-bind="textInput: patientAgeRange3, attr: {placeholder: $parent.insuranceBudgetPlaceholderI18n}")
+                      div.form-group(data-bind="hasFeedback: { field: patientAgeRange3, toggle: patientAgeRange3.hasError, messages: patientAgeRange3.validationMessages }")
+                        label.col-xs-4.control-label(data-bind="text: patientAgeRange4.i18n")
+                        .col-xs-8
+                          input.form-control(name="patientAgeRange4", type="text", data-bind="textInput: patientAgeRange4, attr: {placeholder: $parent.insuranceBudgetPlaceholderI18n}")
+                      div.text-right
+                        button.btn.btn-default(name="remove", type="button", data-bind="click: $parent.removeBudget.bind($parent), text: $parent.buttonDeleteI18n")
+                      hr
+                      // /ko
+                div.col-xs-6
+                  .form-horizontal
+                    h4
+                      span(data-bind="text: utBudgetI18n")
+                      // ko if: addingUtBudgetAllowed()
+                      | &nbsp;
+                      small
+                        a(href="#", data-bind="click: addUtBudget")
+                          span.fa.fa-plus
+                      // /ko
+                    div(data-bind="foreach: budgets")
+                      // ko if: type() === 'KBVUTILITY'
+                      div.form-group(data-bind="hasFeedback: { field: startDate, toggle: startDate.hasError, messages: startDate.validationMessages }")
+                        label.col-xs-4.control-label(for="tab_locations-editing-field-utStartBudget", data-bind="text: $parent.startBudgetFromI18n + ':'")
+                        .col-xs-8
+                          div.date-picker.input-group
+                            input#tab_locations-editing-field-utStartDate.form-control(name="startDate", type="text", data-bind="datetimepicker:{ value: startDate }")
+                      div.form-group(data-bind="hasFeedback: { field: startBudget, toggle: startBudget.hasError, messages: startBudget.validationMessages }")
+                        label.col-xs-4.control-label(for="tab_locations-editing-field-utStartBudget", data-bind="text: $parent.startBudgetI18n + ':'")
+                        .col-xs-8
+                          input#tab_locations-editing-field-utStartBudget.form-control(name="startBudget", type="text", data-bind="textInput: startBudget, attr: {placeholder: $parent.insuranceBudgetPlaceholderI18n}")
+                      div.form-group(data-bind="hasFeedback: { field: patientAgeRange1, toggle: patientAgeRange1.hasError, messages: patientAgeRange1.validationMessages }")
+                        label.col-xs-4.control-label(for="tab_locations-editing-field-utPatientAgeRange1", data-bind="text: patientAgeRange1.i18n")
+                        .col-xs-8
+                          input#tab_locations-editing-field-utPatientAgeRange1.form-control(name="patientAgeRange1", type="text", data-bind="textInput: patientAgeRange1, attr: {placeholder: $parent.insuranceBudgetPlaceholderI18n}")
+                      div.form-group(data-bind="hasFeedback: { field: patientAgeRange2, toggle: patientAgeRange2.hasError, messages: patientAgeRange2.validationMessages }")
+                        label.col-xs-4.control-label(for="tab_locations-editing-field-utPatientAgeRange2", data-bind="text: patientAgeRange2.i18n")
+                        .col-xs-8
+                          input#tab_locations-editing-field-utPatientAgeRange2.form-control(name="patientAgeRange2", type="text", data-bind="textInput: patientAgeRange2, attr: {placeholder: $parent.insuranceBudgetPlaceholderI18n}")
+                      div.form-group(data-bind="hasFeedback: { field: patientAgeRange3, toggle: patientAgeRange3.hasError, messages: patientAgeRange3.validationMessages }")
+                        label.col-xs-4.control-label(for="tab_locations-editing-field-utPatientAgeRange3", data-bind="text: patientAgeRange3.i18n")
+                        .col-xs-8
+                          input#tab_locations-editing-field-utPatientAgeRange3.form-control(name="patientAgeRange3", type="text", data-bind="textInput: patientAgeRange3, attr: {placeholder: $parent.insuranceBudgetPlaceholderI18n}")
+                      div.form-group(data-bind="hasFeedback: { field: patientAgeRange3, toggle: patientAgeRange3.hasError, messages: patientAgeRange3.validationMessages }")
+                        label.col-xs-4.control-label(for="tab_locations-editing-field-utPatientAgeRange4", data-bind="text: patientAgeRange4.i18n")
+                        .col-xs-8
+                          input#tab_locations-editing-field-utPatientAgeRange4.form-control(name="patientAgeRange4", type="text", data-bind="textInput: patientAgeRange4, attr: {placeholder: $parent.insuranceBudgetPlaceholderI18n}")
+                      div.text-right
+                        button.btn.btn-default(name="remove", type="button", data-bind="click: $parent.removeBudget.bind($parent), text: $parent.buttonDeleteI18n")
+                      hr
+                      // /ko
+            // /ko
+            div#tab_locations-editing-panel-printers.tab-pane.fade
+              div.row
+                div.col-xs-5
+                  h4(data-bind="text: enabledPrintersI18n")
+                  div.form-group
+                    input.form-control(name="printersEnabled", type="hidden", data-bind="select2: select2Printers, attr: { id: 'tab_locations-editing-enabledPrinters' }")
+                div.col-xs-1
+                  h4 &nbsp;
+                  button.btn(data-bind="click: reloadPrinters")
+                    i.fa.fa-rotate-right
+                div.col-xs-6
+                  h4(data-bind="text: settingsPrintersI18n")
+                  .form-horizontal
+                    select.form-control#selDefaultPrinter(data-bind="options: enabledPrinters, value: defaultPrinter, disable: defaultPrinterDisabled")
+
+              div.row(data-bind="visible: showPrinterAssignmentsUI")
+                div.col-xs-12
+                  div.form-group
+                    h4(data-bind="text: formsPrintersI18n")
+                    //a(data-bind="attr: { href: formsConfigUrl() }") #{__i18n( 'InSuiteAdminMojit.tab_locations.label.FORMS_LINK' )}
+
+                    div#divFormPrinterAssignments(style="margin: 10px;")
+
+            div#tab_locations-editing-panel-email-fax.tab-pane.fade
+              div.row
+                div.col-xs-6
+                  div.row(style="margin-bottom: 5px")
+                    div.col-xs-12
+                      form.form
+                        fieldset
+                          div.col-xs-12
+                            div.form-goup(data-bind="hasFeedback: { field: smtpEmailFrom, toggle: smtpEmailFrom.hasError, messages: smtpEmailFrom.validationMessages }")
+                              label.control-label(data-bind="text: smtpEmailFrom.i18n")
+                              input.form-control(type="text", data-bind="textInput: smtpEmailFrom, attr: {placeholder: smtpEmailFrom.i18n}")
+                          div.col-xs-9
+                            div.form-goup
+                              label.control-label(data-bind="text: settingsEmailServerOutcomeI18n")
+                              input.form-control(type="text", data-bind="textInput: smtpHost, attr: {placeholder: smtpHost.i18n}")
+                          div.col-xs-3
+                            div.form-group
+                              label.control-label(data-bind="text: settingsEmailPortI18n")
+                              input.form-control(type="number", data-bind="value: smtpPort")
+                          div.col-xs-12
+                            div.form-group.pull-right
+                              label(data-bind="text: settingsEmailEncriptionI18n")
+                              div.checkbox
+                                input(type="checkbox", data-bind="checked: smtpSsl")
+                                label
+                                  span(data-bind="text: settingsEmailLabelSSLI18n")
+                          div.col-xs-9
+                            div.form-goup
+                              label.control-label(data-bind="text: settingsSMTPEmailLabelUserI18n")
+                              input.form-control(type="text", data-bind="textInput: smtpUserName, attr: {placeholder: settingsEmailLabelUserNameI18n}")
+                          div.col-xs-3
+                            div.form-group
+                              label.control-label(data-bind="text: settingsSMTPEmailLabelPasswordI18n")
+                              input.form-control(type="password", data-bind="textInput: smtpPassword, attr: {placeholder: settingsSMTPEmailLabelPasswordI18n}")
+                          div.col-md-12
+                            button.btn.btn-primary.pull-right(type="button", data-bind="click: verifySmtpConfiguration") Test
+                            button.btn.btn-default.pull-right(type="button", data-bind="click: clearSmtpConfiguration, text: settingsEmailSettingsClearI18n", style= "margin-right: 10px;")
+                  div.row
+                    div.col-xs-12
+                      form.form
+                        fieldset
+                          div.col-md-12
+                            div.form-group(data-bind="hasFeedback: { field: emailFaxGateway, toggle: emailFaxGateway.hasError, messages: emailFaxGateway.validationMessages }")
+                              h4(data-bind="text: emailToFaxI18n")
+                              input.form-control(name="emailFaxGateway", type="email", data-bind="textInput: emailFaxGateway, attr: {placeholder: emailToFaxPlaceholderI18n}")
+                          div.col-md-12
+                            button.btn.btn-primary.pull-right(data-bind="click: testEmailToFaxGateway, disable: emailFaxGateway.hasError() || !emailFaxGateway()") Test
+                div.col-xs-6
+                  fieldset
+                    h4(data-bind="text: emailLogoI18n")
+                    div.form-horizontal
+                      img(name="profilePicture", data-bind="mediaSetImgFromDefault: mediaSetImgFromDefaultProfilePicture, mediaAddEditor: mediaAddEditorProfilePicture")
+
+                    h4(data-bind="text: emailFooterI18n")
+                    textarea.form-control(name="details", data-bind="value: emailFooter, valueUpdate: 'afterkeydown', attr: {placeholder: emailFooterPlaceholderI18n}", style="height: 100px;")
+
+              div.clearfix
+
+
+            //ko if: stockLocationTableLoaded()
+            div#tab_locations-editing-panel-stock-locations.tab-pane.fade(data-bind="if: showStockLocationsTab")
+                div.row
+                  div.col-xs-12
+                    div.row(style="margin-bottom: 5px")
+                      div.col-xs-12
+                        form.form
+                          fieldset
+                            .col-md-12(data-bind="with: stockLocationTable")
+                              div(data-bind="template: template")
+                div.clearfix
+            // /ko
+        hr
+        div.row
+          div.col-xs-12.text-right
+            button#tab_locations-editing-button-save.btn.btn-primary(name="tab_locations-editing-button-save", type="button", data-bind="click: save, disable: saveDisabled, text: buttonSaveI18n")
+      // /ko
+
+      //ko if: superLocation
+      div.panel-heading
+        h3.panel-title.clearfix
+          span.form-inline(data-bind="highlightError: slName")
+            input.form-control.input-sm(name="slName", type="text", data-bind="textInput: slName, hasFocus: isNew(), attr: {placeholder: slName.i18n}", style="display: inline-block; width: 300px;")
+          span.pull-right
+            button.btn.btn-link(name="tab_locations-editing-button-closeEditingItem", type="button", data-bind="click: $parent.closeEditingItem, hasFocus: !isNew()", style="padding: 0; margin: 0;")
+              span.fa.fa-remove
+      div.panel-body
+        div
+          ul.nav.nav-tabs
+            li.active
+              a(href="javascript:;", data-target="#tab_super_locations-editing-panel-general", data-toggle="tab")
+                span(data-bind="text: submenuTextI18n")
+
+          div.tab-content(style="padding-top: 15px")
+            #tab_super_locations-editing-panel-general.tab-pane.fade.in.active
+              div.row
+                div.col-md-6
+                  div.row
+                    div.col-xs-12
+                      div.form-group
+                        label
+                          strong(data-bind="text: $parent.slMainI18n + ':'")
+                        div
+                          span.employee-pill(data-bind="html: $data.locname")
+                  div.row
+                    div.col-xs-12
+                      div.form-group
+                        label
+                          strong(data-bind="text: $parent.slMembersI18n + ':'")
+                        div
+                          input.form-control(name="slMembers", type="text", data-bind="select2: select2Members")
+                div.col-md-6
+                  div
+                    strong(data-bind="text: $parent.locationsLabelBsnrI18n + ':'")
+                    ul
+                      li(data-bind="text: commercialNo")
+        hr
+        div.row
+          div.col-xs-12.text-right
+            button.btn.btn-primary(name="tab_super-locations-editing-button-save", type="button", data-bind="click: save, disable: saveDisabled, text: buttonSaveI18n")
+      // /ko
+
+    // /ko

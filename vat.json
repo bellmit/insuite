@@ -1,0 +1,60 @@
+{
+    "vat": [
+        {
+            "code": 3,
+            "percent": 19,
+            "description": "19%",
+            "padxstring": "Voller Umsatzsteuersatz",
+            "countryMode": "D"
+        },
+        {
+          "code": 320,
+          "percent": 16,
+          "description": "16%",
+          "padxstring": "Voller Umsatzsteuersatz",
+          "countryMode": "D"
+        },
+        {
+            "code": 2,
+            "percent": 7,
+            "description": "7%",
+            "padxstring": "Reduzierter Umsatzsteuersatz",
+            "countryMode": "D"
+        },
+        {
+          "code": 220,
+          "percent": 5,
+          "description": "5%",
+          "padxstring": "Reduzierter Umsatzsteuersatz",
+          "countryMode": "D"
+        },
+        {
+            "code": 1,
+            "percent": 0,
+            "description": "0%",
+            "padxstring": "Ohne Umsatzsteuer",
+            "countryMode": "D"
+        },
+        {
+            "code": 1001,
+            "percent": 7.7,
+            "description": "7,7%",
+            "padxstring": "Voller Umsatzsteuersatz",
+            "countryMode": "CH"
+        },
+        {
+            "code": 1002,
+            "percent": 2.5,
+            "description": "2,5%",
+            "padxstring": "Reduzierter Umsatzsteuersatz",
+            "countryMode": "CH"
+        },
+        {
+            "code": 1003,
+            "percent": 0,
+            "description": "0,0%",
+            "padxstring": "Ohne Umsatzsteuer",
+            "countryMode": "CH"
+        }
+    ]
+}

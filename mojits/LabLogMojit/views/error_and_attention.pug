@@ -1,0 +1,67 @@
+div
+  script#errorAndAttentionPersonTemplate(type="text/html")
+    tr
+      th(data-bind="text: $root.i18n.NAME")
+      td(style="padding: 0 1em")
+        // ko if: title
+        span(data-bind="text: title")
+        span &nbsp;
+        // /ko
+        // ko if: firstname
+        span(data-bind="text: firstname")
+        span &nbsp;
+        // /ko
+        // ko if: lastname
+        span(data-bind="text: lastname")
+        // /ko
+    // ko if: status
+    tr
+      th(data-bind="text: $root.i18n.STATUS")
+      td(data-bind="text: status", style="padding: 0 1em")
+    // /ko
+  script#errorAndAttentionNoticeReasonTemplate(type="text/html")
+    // ko if: reason
+    tr
+      th(data-bind="text: $root.i18n.REASON")
+      td(style="padding: 0 1em")
+        span(data-bind="text: reason")
+        span &nbsp;
+    // /ko
+    // ko if: date
+    tr
+      th(data-bind="text: $root.i18n.DATE")
+      td(style="padding: 0 1em")
+        span(data-bind="text: date")
+        span &nbsp;
+    // /ko
+    // ko if: recallRecommended
+    tr
+      th(data-bind="text: $root.i18n.RECALL")
+      td(style="padding: 0 1em") &nbsp;
+    // /ko
+
+
+  script#errorAndAttentionAdditionalInfoTemplate(type="text/html")
+    tr
+      th(data-bind="text: $root.i18n.ADDITIONAL_INFO")
+      td(style="padding: 0 1em") &nbsp;
+        // ko foreach: $data
+        p(data-bind="text: $data")
+        // /ko
+
+  script#errorAndAttentionTemplate(type="text/html")
+    table.form-group(style="margin-left: 1em")
+    // ko template: {name: 'errorAndAttentionPersonTemplate', data: person}
+    // /ko
+    // ko template: {name: 'errorAndAttentionNoticeReasonTemplate', data: noticeReason}
+    // /ko
+    // ko template: {name: 'errorAndAttentionAdditionalInfoTemplate', data: additionalInfo}
+    // /ko
+  div
+    // ko if: Obj_0017 && Obj_0017.length
+    div(data-bind="template: {name: 'errorAndAttentionTemplate', foreach: Obj_0017}")
+    hr
+    // /ko
+    // ko if: Obj_0060 && Obj_0060.length
+    div(data-bind="template: {name: 'errorAndAttentionTemplate', foreach: Obj_0060}")
+    // /ko

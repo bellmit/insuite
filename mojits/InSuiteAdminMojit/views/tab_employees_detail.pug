@@ -1,0 +1,214 @@
+#tab_employees_detail(data-bind="with: editing")
+  div.row
+    div.col-md-3.col-sm-4(data-bind="with: identity")
+      h4(data-bind="text: headlinePermissionI18n")
+      div.panel.panel-default
+        div.panel-body
+          div.form-group(data-bind="hasFeedback: { field: username, toggle: username.hasError, messages: username.validationMessages }")
+            label.control-label(for="tab_employees_detail-identity-field-username", data-bind="text: userNameI18n")
+            input#tab_employees_detail-identity-field-username.form-control(name="username", data-bind="textInput: username")
+          div.row
+            .col-md-6
+              h4
+                span(data-bind="text: memberOfHeaderI18n")
+                i.dc-info-icon(data-bind="click: $parent.showIdentityInfoDialog")
+              div.form-group(data-bind="foreach: $parent.identityGroups, hasFeedback: { field: memberOf, toggle: memberOf.hasError, messages: memberOf.validationMessages }")
+                div.checkbox
+                  label.control-label
+                    strong(data-bind="text: i18n")
+                    input(type="checkbox", data-bind="checkedValue: $data, checked: $parent.memberOf, attr: { name: 'memberOf-group-' + group() }, disable: $parentContext.$parent.computeIdentityGroupDisabled($data)")
+            .col-md-6
+              h4
+                span(data-bind="text: roleHeaderI18n")
+                i.dc-info-icon(data-bind="click: $parent.showRoleInfoDialog")
+                | &nbsp;
+                small
+                  a(href="#", data-bind="click: $parent.addNewRole")
+                    span.fa.fa-plus
+                | &nbsp;&nbsp;
+                small(data-bind="if: $parent.roles().length > 1")
+                  a(href="#", data-bind="click: $parent.deleteRole")
+                    span.fa.fa-minus
+              div.form-group(data-bind="foreach: $parent.roles")
+                div.checkbox
+                  label.control-label
+                    strong(data-bind="text: value")
+                    input(type="checkbox", data-bind="checkedValue: value, checked: $parents[1].employee.roles")
+
+      h4(data-bind="text: cardLoginI18n")
+      div.panel.panel-default
+        div.panel-body
+          div.form-group
+            label.control-label(for="tab_employees_detail-identity-field-cardKey", data-bind="text: cardKey.i18n")
+            textarea#tab_employees_detail-identity-field-cardKey.form-control(name="cardKey", rows="3", readonly="true", data-bind="value: cardKey", style="resize: vertical; min-height: 3em;")
+            button#tab_employees_detail-button-cardKeyReset.btn.btn-sm.btn-block.btn-default(name="cardKeyReset", type="button", data-bind="click: $parent.cardKeyResetClick, disable: $parent.cardKeyResetDisabled, text: cardResetI18n")
+    div.col-md-3.col-sm-4(data-bind="with: employee")
+      include ../../../views/countryMode
+      h4(data-bind="text: personHeaderI18n")
+      div.panel.panel-default
+        div.panel-body
+          div.form-group(data-bind="hasFeedback: { field: talk, toggle: talk.hasError, messages: talk.validationMessages }")
+            label.control-label(for="tab_employees_detail-employee-field-talk", data-bind="text: personTalkI18n")
+            select#tab_employees_detail-employee-field-talk.form-control(name="talk",
+            data-bind="value: talk, valueUpdate: 'afterkeydown', options: talk.list, optionsValue: 'val', optionsText: 'i18n', optionsCaption: personPleaseSelectI18n")
+          div.form-group(data-bind="hasFeedback: { field: title, toggle: title.hasError, messages: title.validationMessages }")
+            label.control-label(for="tab_employees_detail-employee-field-title", data-bind="text: title.i18n")
+            input#tab_employees_detail-employee-field-title.form-control(name="title", type="text",
+            data-bind="attr: {placeholder: personTitlePlaceholderI18n}, textInput: title")
+          div.form-group(data-bind="hasFeedback: { field: firstname, toggle: firstname.hasError, messages: firstname.validationMessages }")
+            label.control-label(for="tab_employees_detail-employee-field-firstname" data-bind="text: firstname.i18n")
+            input#tab_employees_detail-employee-field-firstname.form-control(name="firstname", type="text",
+            data-bind="attr: {placeholder: personFirstNamePlaceholderI18n}, textInput: firstname")
+          div.form-group(data-bind="hasFeedback: { field: lastname, toggle: lastname.hasError, messages: lastname.validationMessages }")
+            label.control-label(for="tab_employees_detail-employee-field-lastname", data-bind="text: lastname.i18n")
+            input#tab_employees_detail-employee-field-lastname.form-control(name="lastname", type="text",
+            data-bind="attr: {placeholder: personLastNamePlaceholderI18n}, textInput: lastname")
+          div.form-group(data-bind="hasFeedback: { field: initials, toggle: initials.hasError, messages: initials.validationMessages }")
+            label.control-label(for="tab_employees_detail-employee-field-initials", data-bind="text: initials.i18n")
+            input#tab_employees_detail-employee-field-initials.form-control(name="initials", type="text",
+            data-bind="attr: {placeholder: initials.i18n}, textInput: initials")
+          div.form-group(data-bind="hasFeedback: { field: type, toggle: type.hasError, messages: type.validationMessages }")
+            label.control-label(for="tab_employees_detail-employee-field-type", data-bind="text: personTypeI18n")
+            select#tab_employees_detail-employee-field-type.form-control(name="type",
+            data-bind="value: type, options: employeeTypeList, optionsValue: 'val', optionsText: 'i18n', optionsCaption: personPleaseSelectI18n")
+          div.form-group(data-bind="hasFeedback: { field: workDescription, toggle: workDescription.hasError, messages: workDescription.validationMessages }")
+            label.control-label(for="tab_employees_detail-employee-field-workDescription", data-bind="text: workDescription.i18n")
+            input#tab_employees_detail-employee-field-workDescription.form-control(name="workDescription", type="text",
+            data-bind="attr: {placeholder: workDescription.i18n}, textInput: workDescription")
+          div(data-bind="visible: computeTypeAdditionalFieldsVisible")
+            // ko if: countryModeIncludesGermany()
+            include ./tab_employees_detail_D
+            div.form-group(data-bind="hasFeedback: { field: specialities, toggle: specialities.hasError, messages: specialities.validationMessages }")
+              label.control-label(for="tab_employees_detail-employee-field-specialities", data-bind="text: personSpacialiesI18n")
+              input#tab_employees_detail-employee-field-specialities.form-control(name="specialities", type="text",
+              data-bind="select2: select2Specialities")
+            // /ko
+            div.form-group(data-bind="hasFeedback: { field: specialisationText, toggle: specialisationText.hasError, messages: specialisationText.validationMessages }")
+              label.control-label(for="tab_employees_detail-employee-field-specialisationText", data-bind="text: specialisationText.i18n")
+              input#tab_employees_detail-employee-field-specialisationText.form-control(name="specialisationText", type="text",
+              data-bind="attr: {placeholder: personSpecialisationTextI18n}, textInput: specialisationText")
+    div.col-md-3.col-sm-4(data-bind="with: employee")
+      h4(data-bind="text: personBelongingI18n")
+      div.panel.panel-default
+        div.panel-body
+          div.form-group(data-bind="hasFeedback: { field: from, toggle: from.hasError, messages: from.validationMessages }")
+            label.control-label(for="tab_employees_detail-employee-field-from", data-bind="text: personFromI18n")
+            div.date-picker.input-group
+              input#tab_employees_detail-employee-field-from.form-control(name="from", type="text", data-bind="datetimepicker: { value: from }")
+          div.form-group(data-bind="hasFeedback: { field: to, toggle: to.hasError, messages: to.validationMessages }")
+            label.control-label(for="tab_employees_detail-employee-field-to", data-bind="text: personToI18n")
+            div.date-picker.input-group
+              input#tab_employees_detail-employee-field-to.form-control(name="to", type="text", data-bind="datetimepicker: { value: to }")
+          div.form-group(data-bind="hasFeedback: { field: employeeNo, toggle: employeeNo.hasError, messages: employeeNo.validationMessages }")
+            label.control-label(for="tab_employees_detail-employee-field-employeeNo", data-bind="text: employeeNo.i18n")
+            input#tab_employees_detail-employee-field-employeeNo.form-control(name="employeeNo", type="text",
+            data-bind="attr: {placeholder: personNoPlaceholderI18n}, textInput: employeeNo")
+          div.form-group(data-bind="hasFeedback: { field: locations, toggle: locations.hasError, messages: locations.validationMessages }")
+            label.control-label(for="tab_employees_detail-employee-field-locations", data-bind="text: personLocationsI18n")
+            input#tab_employees_detail-employee-field-locations.form-control(name="locations", type="text",
+            data-bind="select2: select2Locations")
+          div.form-group(data-bind="hasFeedback: { field: department, toggle: department.hasError, messages: department.validationMessages }")
+            label.control-label(for="tab_employees_detail-employee-field-department", data-bind="text: department.i18n")
+            input#tab_employees_detail-employee-field-department.form-control(name="department", type="text",
+            data-bind="attr: {placeholder: personDepartmentPlaceholderI18n}, textInput: department")
+      // ko if: countryModeIncludesSwitzerland()
+      include ./tab_employees_detail_CH
+      // /ko
+      div(data-bind="visible: computeTypeAdditionalFieldsVisible")
+        //ko if: countryModeIncludesGermany()
+        h4(data-bind="text: personBGI18n")
+        div.panel.panel-default
+          div.panel-body
+            div.form-group(data-bind="hasFeedback: { field: physicianType, toggle: physicianType.hasError, messages: physicianType.validationMessages }")
+              label.control-label(for="tab_employees_detail-employee-field-physicianType", data-bind="text: physicianType.i18n")
+              input#tab_employees_detail-employee-field-physicianType.form-control(name="physicianType", type="text",
+              data-bind="select2: select2PhysicianType")
+            div.form-group(data-bind="hasFeedback: { field: physicianIknr, toggle: physicianIknr.hasError, messages: physicianIknr.validationMessages }")
+              label.control-label(for="tab_employees_detail-employee-field-physicianIknr", data-bind="text: physicianIknr.i18n")
+              input#tab_employees_detail-employee-field-physicianIknr.form-control(name="physicianIknr", type="text",
+              data-bind="attr: {placeholder: physicianIknr.i18n}, textInput: physicianIknr")
+        // /ko
+      //ko if: $parent.isAsvSectionVisible && countryModeIncludesGermany()
+      h4 ASV
+      div.panel.panel-default
+        div.panel-body
+          div.form-group(data-bind="hasFeedback: { field: asvTeamNumbers, toggle: asvTeamNumbers.hasError, messages: physicianType.validationMessages }")
+            label.control-label(for="tab_employees_detail-employee-field-asvTeamNumbers", data-bind="text: asvTeamNumbers.i18n")
+            input#tab_employees_detail-employee-field-asvTeamNumbers.form-control(name="asvTeamNumbers", type="text",
+            data-bind="select2: select2AsvTeamNumbers")
+          div.form-group(data-bind="hasFeedback: { field: asvSpecializations, toggle: asvSpecializations.hasError, messages: asvSpecializations.validationMessages }")
+            label.control-label(for="tab_employees_detail-employee-field-asvTeamNumbers", data-bind="text: asvSpecializations.i18n")
+            input#tab_employees_detail-employee-field-asvSpecializations.form-control(name="asvSpecializations", type="text",
+            data-bind="select2: select2AsvSpecializations")
+          div.form-group
+            p
+              b(data-bind="text: asvMembershipType.i18n")
+            // ko foreach: asvSpecializationsTypes
+            label.radio
+              input(type="radio", name="asvMembershipType", data-bind="checked: $parent.asvMembershipType, value: val")
+              span(data-bind="text: i18n")
+            // /ko
+      // /ko
+    div.col-md-3.col-sm-4(data-bind="with: employee")
+      //ko if: countryModeIncludesGermany()
+      h4 RLV
+      div.panel.panel-default
+        div.panel-body
+          div.checkbox
+            label.control-label
+              span(data-bind="text: physicianInQualificationLabelI18n")
+              input(name="physicianInQualification", type="checkbox", data-bind="checked: physicianInQualification")
+          div.form-group(data-bind="visible: !physicianInQualification(),hasFeedback: { field: rlvCapacity, toggle: rlvCapacity.hasError, messages: rlvCapacity.validationMessages }")
+            label.control-label(for="tab_employees_detail-employee-field-rlvCapacity", data-bind="text: rlvCapacity.i18n")
+            input#tab_employees_detail-employee-field-rlvCapacity.form-control(name="rlvCapacity", type="text", data-bind="textInput: rlvCapacity")
+          div.form-group(data-bind="visible: physicianInQualification, hasFeedback: { field: rlvPhysician, toggle: rlvPhysician.hasError, messages: rlvPhysician.validationMessages }")
+            label.control-label(for="tab_employees_detail-employee-field-rlvPhysician", data-bind="text: rlvPhysician.i18n")
+            input#tab_employees_detail-employee-field-rlvPhysician.form-control(name="rlvPhysician", type="text", data-bind="select2: select2RlvPhysician")
+      // /ko
+    div.col-md-3.col-sm-4(data-bind="with: employee")
+      h4
+        span(data-bind="text: personCommunicationI18n")
+        | &nbsp;
+        small
+          a(href="#", data-bind="click: $parent.addEmployeeCommunication")
+            span.fa.fa-plus
+      div#tab_employees_detail-employee-field-communications.panel.panel-default(data-bind="visible: Boolean(communications().length)")
+        div.panel-body(data-bind="foreach: communications")
+          div.form-group(data-bind="hasFeedback: { field: type, toggle: type.hasError, messages: type.validationMessages }")
+            select.form-control(name="type", data-bind="value: type, valueUpdate: 'afterkeydown'")
+              option(value="PHONEJOB", data-bind="text: $parent.phoneJobI18n")
+              option(value="MOBILEPRIV", data-bind="text: $parent.mobilePrivateI18n")
+              option(value="PHONEPRIV", data-bind="text: $parent.phonePrivateI18n")
+              option(value="FAXJOB", data-bind="text: $parent.faxJobI18n")
+              option(value="EMAILJOB", data-bind="text: $parent.emailJobI18n")
+              option(value="EMAILPRIV", data-bind="text: $parent.emailPrivI18n")
+              option(value="PHONEEXT", data-bind="text: $parent.phoneExtI18n")
+          div.form-group(data-bind="hasFeedback: { field: value, toggle: value.hasError, messages: value.validationMessages }")
+            input.form-control(name="value", type="text", data-bind="textInput: value, attr: {placeholder: $parent.communicationPlaceholderI18n}")
+          div.row
+            div.col-md-6
+              div.checkbox
+                label.control-label
+                  span(data-bind="text: $parent.preferedI18n")
+                  input(name="preferred", type="checkbox", data-bind="checked: preferred")
+            div.col-md-6(data-bind="visible: $data.type() == 'PHONEEXT' || $data.type() == 'PHONEJOB' ")
+              div.checkbox
+                label.control-label
+                  span(data-bind="text: $parent.signalingTI18n")
+                  input(name="signaling", type="checkbox", data-bind="checked: signaling")
+
+          div.text-right
+            button.btn.btn-default(name="remove", type="button", data-bind="click: $parentContext.$parent.removeEmployeeCommunication, text: $parent.buttonDeleteI18n")
+          hr
+  div.col-xs-12.text-right
+    button#tab_employees_detail-button-visitOverview.btn.btn-primary(name="visitOverview", type="button", data-bind="click: $parent.visitOverview")
+      span.glyphicon.glyphicon-chevron-left
+      span(data-bind="text: ' ' + buttonBackI18n")
+    | &nbsp;
+    button#tab_employees_detail-button-showEmployeePasswordResetDialog.btn.btn-primary(name="showEmployeePasswordResetDialog", type="button", data-bind="click: showEmployeePasswordResetDialog, disable: showEmployeePasswordResetDialogDisabled")
+      span.glyphicon.glyphicon-lock
+      span(data-bind="text: ' ' + buttonPWI18n")
+    | &nbsp;
+    button#tab_employees_detail-button-save.btn.btn-primary(name="save", type="button", data-bind="click: save, disable: saveDisabled")
+      span.glyphicon.glyphicon-ok
+      span(data-bind="text: ' ' + buttonSaveI18n")

@@ -1,0 +1,21 @@
+div#portScanModal.text-center(style="margin-top: -10px")
+    span(data-bind="text: driversLabel.i18n")
+    select#search_driver(style="margin-left: 10px", data-bind="options: driversList, value: selectedDriver")
+    br
+    br
+    span(data-bind="text: portsLabel.i18n")
+    input(data-bind="value: portLimit", style="margin-left: 10px", type="number")
+    br
+    br
+    button.btn.btn-primary(data-bind="text: searchButtonText.i18n, click: scanPorts")
+    br
+    hr
+    br
+    h4(data-bind="text: resultText.i18n")
+    // ko if: availablePorts().length === 0
+    span(data-bind="text: noPortFoundText.i18n")
+    // /ko
+    // ko if: availablePorts().length > 0
+    ul.list-unstyled(data-bind="foreach: availablePorts")
+        li(data-bind="text: $data")
+    // /ko

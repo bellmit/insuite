@@ -1,0 +1,28 @@
+div.KoBaseContact.form-group
+  label.control-label
+    span(data-bind="text: label")
+    = " "
+    a.fa.fa-plus(data-bind="click: create, readOnly: readOnly, visible: createContactMenuDisabled")
+
+    span.dropup(data-bind="visible: createContactMenuVisible")
+      a.fa.fa-plus.dropdown-toggle(data-toggle="dropdown", data-bind="disable: createContactMenuDisabled")
+      ul.dropdown-menu(role="menu", data-bind="foreach: baseContactTypes")
+        li(data-bind="style: style")
+          a(data-bind="text: text, click: $parent.createContact")
+
+    = " "
+    a.fa.fa-pencil(data-bind="visible: isEditable, click: edit, readOnly: readOnly")
+    = " "
+    span.dropdown
+      a.fa.fa-envelope.dropdown-toggle(data-bind="visible: canPrintEnvelope, readOnly: readOnly", data-toggle="dropdown")
+      ul.dropdown-menu
+        li
+          a(data-bind="click: printEnvelopeC6") C6
+        li
+          a(data-bind="click: printEnvelopeC5") C5
+        li
+          a(data-bind="click: printEnvelopeC4") C4
+        li
+          a(data-bind="click: printEnvelopeDL") DL
+
+  input.form-control(name="physicianSelection", type="text", data-bind="select2: select2Config, attr: {id: cid}, readOnly: readOnly")

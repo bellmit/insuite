@@ -1,0 +1,7 @@
+{
+  "comment": "Are using for sending the order to Galexis, look into file stockorder-api: _shoppingCardRequest",
+  "host": "test.e-galexis.com",
+  "path": "/testPOS/",
+  "number": "DOCCIRRUS",
+  "password": "probe"
+}

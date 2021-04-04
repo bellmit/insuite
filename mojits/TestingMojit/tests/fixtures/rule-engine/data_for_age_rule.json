@@ -1,0 +1,249 @@
+{
+  "rule": {
+    "isDirectory" : false,
+    "isLocked" : false,
+    "isActive" : true,
+    "caseFolderType" : [
+      "PUBLIC"
+    ],
+    "metaActTypes" : [
+      "HISTORY"
+    ],
+    "metaActCodes" : [],
+    "metaCriterias" : [
+      "actType",
+      "ageOnTimestamp",
+      "patientId.age"
+    ],
+    "description" : "Age Testing",
+    "referenceArea" : "ENTRY",
+    "periodType" : "MONTH",
+    "periodCount" : 1,
+    "periodReference" : "raum",
+    "rules" : [
+      {
+        "ruleId" : "5f7de3ac6f63bf0cda000016",
+        "description" : "Age on Date",
+        "isActive" : true,
+        "validations" : {
+          "\\\\$and" : [
+            {
+              "context" : "ACTIVITY",
+              "criteria" : {
+                "actType" : {
+                  "\\\\$eq" : "HISTORY"
+                },
+                "ageOnTimestamp" : {
+                  "\\\\$gte" : 10
+                }
+              }
+            }
+          ]
+        },
+        "actions" : [
+          {
+            "type" : "ERROR"
+          }
+        ],
+        "metaActTypes" : [
+          "HISTORY"
+        ]
+      },
+      {
+        "ruleId" : "5f808ddbd7448d5508000016",
+        "description" : "Age on Now",
+        "isActive" : true,
+        "validations" : {
+          "\\\\$and" : [
+            {
+              "context" : "ACTIVITY",
+              "criteria" : {
+                "actType" : {
+                  "\\\\$eq" : "HISTORY"
+                },
+                "patientId\\\\-age" : {
+                  "\\\\$gte" : 10
+                }
+              }
+            }
+          ]
+        },
+        "actions" : [
+          {
+            "type" : "ERROR"
+          }
+        ],
+        "metaActTypes" : [
+          "HISTORY"
+        ]
+      }
+    ],
+    "metaFuzzy" : false,
+    "metaCaseOpen" : false,
+    "idStr" : "5f7de41654726c2ef6db7166"
+  },
+  "patient": {
+    "title" : "",
+    "firstname" : "Ptient4",
+    "nameaffix" : "",
+    "lastname" : "PatientRuleTest",
+    "physicians" : [],
+    "employees" : [],
+    "markers" : [],
+    "gender" : "MALE",
+    "patientNumber" : 120,
+    "communications" : [
+      {
+        "signaling" : true,
+        "confirmed" : false,
+        "confirmNeeded" : false,
+        "type" : "EMAILPRIV",
+        "value" : "aaa@bbb.ccc"
+      },
+      {
+        "signaling" : true,
+        "confirmed" : false,
+        "confirmNeeded" : false,
+        "type" : "PHONEPRIV",
+        "value" : "0128-122-1213"
+      }
+    ],
+    "addresses" : [
+      {
+        "street" : "1",
+        "houseno" : "",
+        "zip" : "10001",
+        "city" : "1",
+        "country" : "Deutschland",
+        "countryCode" : "D",
+        "addon" : "",
+        "title" : "",
+        "firstname" : "",
+        "nameaffix" : "",
+        "middlename" : "",
+        "lastname" : "",
+        "kind" : "OFFICIAL"
+      }
+    ],
+    "kbvDob" : "05.10.2010",
+    "insuranceStatus" : [
+      {
+        "fk4133" : null,
+        "fk4110" : null,
+        "insuranceKind" : "1",
+        "costCarrierBillingSection" : "00",
+        "costCarrierBillingGroup" : "11",
+        "feeSchedule" : "2",
+        "fused" : false,
+        "unzkv" : [],
+        "bgNumber" : "",
+        "address1" : "Lichtscheider Str. 89",
+        "address2" : "42285 Wuppertal",
+        "zipcode" : "",
+        "city" : "",
+        "phone" : "",
+        "insuranceLink" : "",
+        "email" : "",
+        "insuranceGLN" : "",
+        "recipientGLN" : "",
+        "department" : "",
+        "isTiersGarant" : false,
+        "isTiersPayant" : true,
+        "insuranceId" : "109580001",
+        "insuranceName" : "BARMER",
+        "insurancePrintName" : "BARMER",
+        "insuranceGrpId" : "72601",
+        "type" : "PUBLIC",
+        "persGroup" : "4",
+        "dmp" : "",
+        "notes" : "AAAAAAAAAAAAAA!!!!!!!!!!!!!!!!!!!!!!!!",
+        "kv" : "72",
+        "locationId" : "000000000000000000000001",
+        "fusedFrom" : null,
+        "fusedToInsuranceId" : null
+      }
+    ],
+    "dataTransmissionToPVSApproved" : true,
+    "affiliates" : [],
+    "images" : [],
+    "devices" : [],
+    "partnerIds" : [],
+    "careDegree" : "NO",
+    "dob" : "2010-10-05T07:00:00.000Z",
+    "dob_MM" : "10",
+    "dob_DD" : "05",
+    "patientSince" : "2018-07-12T10:01:47.776Z",
+    "crmTreatments" : [],
+    "crmCatalogShort" : "GOÄ",
+    "locationId" : "",
+    "patientNo" : "120",
+    "mirrorPatientId" : [
+      "5be156bc3920ea276690823f"
+    ],
+    "edmpCaseNo" : "1323653",
+    "countryMode" : [
+      "D"
+    ],
+    "additionalMirrorPatientIds" : [],
+    "nextAppointment" : null,
+    "activeCaseFolderId" : "5f7df5e237bfe03e4d94f883",
+    "importId" : true,
+    "noShowCount" : 1,
+    "latestLabData" : [],
+    "familyDoctorModel" : false,
+    "additionalFamilyMembers" : [],
+    "confirmedViewFromLocationIds" : [],
+    "inActive" : false,
+    "isDeceased" : false,
+    "patientsFamilyMembers" : [],
+    "latestMedData" : []
+  },
+  "history": {
+    "attachments" : [],
+    "attachedMediaTags" : [],
+    "subType" : "",
+    "status" : "VALID",
+    "activities" : [],
+    "referencedBy" : [],
+    "apkState" : "IN_PROGRESS",
+    "__t" : "HISTORY",
+    "actType" : "HISTORY",
+    "attachedMedia" : [],
+    "content" : "1",
+    "editor" : [    ],
+    "caseFolderId" : "5f7df5e237bfe03e4d94f883",
+    "employeeName" : "Dredn, Jhony",
+    "employeeInitials" : "JD",
+    "patientLastName" : "PatientRuleTest",
+    "patientFirstName" : "Ptient4"
+  },
+  "rulelogs": {
+    "onNow": {
+      "message": "Age on Now",
+      "referenceArea": "ENTRY",
+      "ruleLogType": "ERROR",
+      "actCodes": [],
+      "actTypes": [ "HISTORY" ],
+      "activitiesToCreate": [],
+      "affectedActivities": [],
+      "allCodes": [],
+      "caseFolderType": [ "PUBLIC", "PUBLIC_A" ],
+      "requiredCodes": [],
+      "ruleId": "5f808ddbd7448d5508000016"
+    },
+    "onDate": {
+      "message": "Age on Date",
+      "referenceArea": "ENTRY",
+      "ruleLogType": "ERROR",
+      "actCodes": [],
+      "actTypes": [ "HISTORY" ],
+      "activitiesToCreate": [],
+      "affectedActivities": [],
+      "allCodes": [],
+      "caseFolderType": [ "PUBLIC", "PUBLIC_A" ],
+      "requiredCodes": [],
+      "ruleId": "5f7de3ac6f63bf0cda000016"
+    }
+  }
+
+}

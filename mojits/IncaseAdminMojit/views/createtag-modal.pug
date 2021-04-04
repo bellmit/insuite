@@ -1,0 +1,13 @@
+div#createTagView
+
+  div.row
+    div.col-md-12
+      select.form-control(data-bind="value: tagType")
+        option(value="SUBTYPE", data-bind="text: TYPE_SUBTYPE")
+        option(value="DOCUMENT", data-bind="text: TYPE_DOCUMENT")
+        option(value="DOSE", data-bind="text: TYPE_DOSE")
+
+  div.row
+    div.col-md-12
+      div.form-group(data-bind="hasFeedback: { toggle: tagTitle.hasError }")
+        input.form-control(type="text",data-bind="value: tagTitle, valueUpdate: ['afterkeydown'], event: { keydown: onTitleKeyDown }")

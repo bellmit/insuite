@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- automatische Dokumentation, generiert durch Visual Source Safe 
+	$Workfile: all_kbv_typelib.xsd $  
+	$Modtime: 25.03.04 12:39 $  
+	$Revision: 1 $  
+-->
+<xs:schema targetNamespace="urn::hl7-org/kbv" xmlns="urn::hl7-org/kbv" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:include schemaLocation="string_typelib.xsd"/>
+	<xs:include schemaLocation="nummer_typelib.xsd"/>
+	<xs:include schemaLocation="dttm_typelib.xsd"/>
+
+</xs:schema>

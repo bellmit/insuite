@@ -1,0 +1,25 @@
+div#divElementEditPanelImage
+
+  div(data-bind="text: selectedImageLabel")#spanImageSelection
+
+  br
+
+  div(data-bind="visible: hasDefaultValue")#divImageSelection
+    b(data-bind="text: imageClickI18n")
+    span
+      select.form-control( data-bind="value: selectionMode" )#selImageEditMode
+        option(value="CHOOSE_IMAGE", data-bind="text: optEEChooseImageI18n")
+        option(value="EDIT_IMAGE", data-bind="text: optEditImageI18n")
+
+  br
+
+  b(data-bind="text: printResolutionI18n")
+  select.form-control(data-bind="value: printResolution")#selPrintResolution
+    option( value="1" ) 144 DPI
+    option( value="2" ) 288 DPI
+    option( value="5" ) 720 DPI
+
+  br
+
+  button.btn(data-bind="text: btnChooseImageI18n, click: onRequestImage")#btnChooseElemImage
+

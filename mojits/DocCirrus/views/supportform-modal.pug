@@ -1,0 +1,41 @@
+div
+    div.row
+        div.col-md-2(style="text-align: right;")
+            label(data-bind="text: shortDescriptionI18n")
+        div.col-md-10
+            div.form-group(data-bind="hasFeedback: { field: shortDescr, toggle: shortDescr.hasError, messages: shortDescr.validationMessages }")
+                input.form-control(name="shortDescr", data-bind="value: shortDescr, attr: {placeholder: shortDescriptionI18n}")
+    div.row
+        div.col-md-2(style="text-align: right;")
+            label(data-bind="text: labelDescriptionI18n")
+        div.col-md-10
+            div.form-group
+                textarea.form-control(data-bind="value: description, attr: {placeholder: descrPlaceholderI18n}", rows="10")
+    div.row
+        div.col-md-2(style="text-align: right;")
+            label(data-bind="text: senderNameI18n")
+        div.col-md-5
+            div.form-group(data-bind="hasFeedback: { field: name, toggle: name.hasError, messages: name.validationMessages }")
+                input.form-control(data-bind="value: name, attr: {placeholder: senderNameI18n}")
+    div.row
+        div.col-md-2(style="text-align: right;")
+            label(data-bind="text: senderEmailI18n")
+        div.col-md-5
+            div.form-group(data-bind="hasFeedback: { field: email, toggle: email.hasError, messages: email.validationMessages }")
+                input.form-control(data-bind="value: email, attr: {placeholder: senderEmailI18n}")
+    div.row
+        div.col-md-2(style="text-align: right;")
+            label(data-bind="text: ccEmailI18n")
+        div.col-md-5
+            div.form-group(data-bind="hasFeedback: { field: cc_email, toggle: cc_email.hasError, messages: cc_email.validationMessages }")
+                input.form-control(data-bind="value: cc_email, attr: {placeholder: senderEmailI18n}")
+    div.row
+        div.form-group
+            label.control-label.col-sm-1.col-md-2(style="text-align: right;", data-bind="text: attachmentsI18n")
+            div.col-sm-11.col-md-10(data-bind="template: attachmentsUploader.template")
+        div.form-group
+            div.col-sm-offset-1.col-md-offset-2.col-md-10(data-bind="foreach: attachments", style="display: flex")
+                div(style="margin-right: 0.5em; border: 1px solid #bbb; border-radius: 5px; display: flex; flex-direction: column;")
+                    a(data-bind="attr: { href: fullUrl }", target="_blank")
+                        img(data-bind="attr: { src: thumbUrl }", width="68", height="68", style="border-top-left-radius: 5px; border-top-right-radius: 5px;")
+                    a.btn.glyphicon.glyphicon-remove(data-bind="click: $parent.removeAttachment.bind($parent)" style="padding: 0; margin:0;")

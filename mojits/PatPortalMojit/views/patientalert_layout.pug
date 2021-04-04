@@ -1,0 +1,47 @@
+//TRANSLATION INCOMPLETE!! MOJ-3201
+-var link = (data && data.dcCustomerNo) || '';
+div(id=mojit_view_id)
+  block navigation
+    .navbar.navbar-default.margin-bottom-small(role="navigation")
+      .container.container-fullscreen
+        .navbar-header
+          button(type="button", data-toggle="collapse", data-target=".navbar-ex1-collapse").navbar-toggle
+            span.sr-only
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          a.navbar-brand(href="/intime?prac=" + link)#home Ihr Gesundheitsportal
+        .navbar-collapse.collapse.navbar-ex1-collapse
+          ul.nav.navbar-nav(style="border-bottom: none;")
+            //li#waitingtime
+            //  a(href="/intime#/waitingtime") Wartezeit
+            //li#schedules
+            //  a(href="#") Termine
+            //li#practices
+            //  a(href="#") Praxen
+            //li#documents
+            //  a(href="#") Dokumente
+            //li#devices
+            //  a(href="?tab=devices#") Geräte
+            //if data && data.canTransfer
+            //  li#patienttransfer
+            //    a(href="#") Transfer
+            //li#account
+            //  a(href="#") Konto
+            //if loggedIn
+            //  li#login.active
+            //    a(href='/pplogout',role='button')
+            //      img(src='/static/dcbaseapp/assets/img/doccirrus/exit.png',style='height:25px;')
+  block content
+    .content
+      #upperDiv
+
+  block footer
+    nav.navbar.navbar-default.navbar-fixed-bottom(role="navigation")
+      #footer
+        .container.container-fullscreen
+          .col-xs-8
+            #practiceBrand
+          .col-xs-4
+            a(href="https://www.doc-cirrus.com/", target="_blank").pull-right
+              #logoContainer

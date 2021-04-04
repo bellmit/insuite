@@ -1,0 +1,42 @@
+div.container.container-fullscreen-fluid(style="padding:50px;")
+  div.row
+    div.col-xs-12
+    h2(data-bind="text: headlineI18n")
+    hr
+    // ko foreach: changeLogList
+    .div
+      a(href="#", data-bind="click: $parent.onVersionClick", style="cursor: pointer;")
+        h5(data-bind="attr: {title: title}, text: display")
+      // ko if: collapsed
+      // ko foreach: content
+      h5(data-bind="text: title")
+      // ko if: $data.comment
+      p(data-bind="text: comment")
+      // /ko
+      // ko if: $data.diff && $data.diff.values && $data.diff.values.length
+      div.table-responsive
+        table.table.DCWindow-DiffMMI
+          colgroup
+            col(style="width:30%")
+            col(style="width:35%; border-left: 1px solid #ddd;")
+            col(style="width:35%; border-left: 1px solid #ddd;")
+          tbody
+            tr
+              th
+              th(data-bind="text: 'Alt'")
+              th
+                span(data-bind="text: 'Neu'")
+            // ko foreach: diff.values
+            tr
+              th(data-bind="text: label")
+              td.bg-conflict(data-bind="text: aVal", style="color: #a94442; background-color: #f2dede; border-color: #ebccd1;")
+              td.bg-noconflict(data-bind="text: bVal", style="color: #3c763d; background-color: #dff0d8; border-color: #d6e9c6;")
+            // /ko
+      // /ko
+      // ko ifnot: $data.diff && $data.diff.values && $data.diff.values.length
+      div -
+      // /ko
+      // /ko
+      // /ko
+      hr
+    // /ko

@@ -1,0 +1,17 @@
+header
+    h5(data-bind="text: labelMainI18n")
+    form.form-horizontal
+        .form-group
+            label.col-sm-2.control-label(data-bind="text: labelDcIdI18n + ':'")
+            div.col-sm-8
+                p.form-control-static(data-bind="text: prcCustomerNo")
+        .form-group
+            label.col-sm-2.control-label(data-bind="text: labelPracticeI18n + ':'")
+            div.col-sm-8
+                p.form-control-static(data-bind="text: practice")
+        .form-group
+            label.col-sm-2.control-label(for="customerId", data-bind="text: labelIdI18n")
+            div.col-sm-7
+                input.form-control(type="text", data-bind="textInput: customerId" name="customerId" id="customerId")
+            div.col-sm-3
+                button.btn.btn-default.btn-sm(data-bind="click: genNewCustomerId, text: buttonGenerateI18n")

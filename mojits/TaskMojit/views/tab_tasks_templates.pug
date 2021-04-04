@@ -1,0 +1,7 @@
+div#tasks
+  div(data-bind="template: tasksKoTable.template")
+  div
+    span(data-bind="template: createTask.template", style="margin-right: 10px")
+    //ko if: isAdminUser
+    span(data-bind="template: deleteTask.template", style="margin-right: 10px")
+    // /ko

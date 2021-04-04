@@ -1,0 +1,9 @@
+div.form-group
+  div.row
+    div.col-xs-5
+      strong(data-bind="text: dmpInhaledGlucocorticosteroids.i18n")
+      span(data-bind="dmpField: { field: dmpInhaledGlucocorticosteroids }")
+    div.col-xs-7(data-bind="foreach: dmpInhaledGlucocorticosteroids.list, hasFeedback: { field: dmpInhaledGlucocorticosteroids, toggle: dmpInhaledGlucocorticosteroids.hasError, messages: dmpInhaledGlucocorticosteroids.validationMessages }")
+      label.checkbox-inline
+        span(data-bind="text: i18n")
+        input(type="checkbox", name="dmpInhaledGlucocorticosteroids", data-bind="value: val, checked: $parent.dmpInhaledGlucocorticosteroids, readOnly: $parent.dmpInhaledGlucocorticosteroids.readOnly, attr: { name: $element.name + '-' + val }")

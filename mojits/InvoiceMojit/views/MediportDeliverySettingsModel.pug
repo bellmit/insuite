@@ -1,0 +1,18 @@
+div.panel.panel-default
+    div.panel-body
+        div.row
+            div.col-md-6
+                div.form-group(data-bind="hasFeedback: { field: deviceServer, toggle: deviceServer.hasError, messages: deviceServer.validationMessages }")
+                    label(data-bind="text: deviceServerI18n + ':'")
+                    input.form-control(type="hidden", data-bind="select2: select2DeviceServers")
+                div.form-group(data-bind="hasFeedback: { field: mediportBasePath, toggle: mediportBasePath.hasError, messages: mediportBasePath.validationMessages }")
+                    label.control-label(data-bind="text: mediportBaseI18n")
+                    | &nbsp;
+                    i.dc-info-icon(data-bind="tooltip: {title: mediportBaseInfoI18n}")
+                    input.form-control(name="incomingFileDirPath", data-bind="textInput: mediportBasePath")
+        div.row
+            div.col-md-12.text-right
+                button.btn.btn-default(name="deleteMediportSetting", type="button", data-bind="click: deleteMediportSetting.bind($context, $parent)")
+                    span.glyphicon.glyphicon-trash
+                    | &nbsp;
+                    span(data-bind="text: buttonDeleteTextI18n")

@@ -1,0 +1,22 @@
+div
+  div
+    .row
+      .col-md-12(style={ 'margin-bottom': '5px' })
+        p(data-bind="text: header")
+    .row
+      // ko foreach: routeOverrides
+      div.text-center.col-6.col-xs-6.col-md-6.col-sm-6.col-lg-4
+        div.panel.panel-default
+          div.panel-body
+            div.small(data-bind="text: appName")
+            // ko if: getSolIconPath()
+            img(style="max-height: 4em;max-width: 10em;", data-bind="attr: { src: getSolIconPath(), alt: appName }")
+            // /ko
+            // ko if: !getSolIconPath()
+            span.fa.fa-question.fa-4x
+            // /ko
+          div.panel-footer
+            label.radio-inline
+              span(data-bind="text: description")
+              input(type="radio", name="routeOverrideSelector", data-bind="value: uid, checked: $parent.selectedRoute")
+      // /ko

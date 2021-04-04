@@ -1,0 +1,7 @@
+div(id=mojit_view_id, style="margin-bottom: 8px;")
+  .container.container-fullscreen
+    .row
+      .col-xs-12#catalogViewerContainer
+        h3(data-bind="text: titleCatalogViewerI18n")
+        div(data-bind="with: catalogViewer")
+          div(data-bind="template: {name: $data.templateName, data: $data}")

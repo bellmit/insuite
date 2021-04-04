@@ -1,0 +1,42 @@
+div#inconferenceAppointment
+  div.row
+    div.col-sm-6
+      div.panel.panel-info
+        div.panel-heading
+          h4(data-bind="text: appointmentSettingI18n")
+        div.panel-body
+          div.form-group(data-bind="css: { 'has-error': !appointmentType() }")
+            label(data-bind="text: appointmentTypeI18n")
+            input.form-control(name="appointmentType", type="hidden", data-bind="select2: select2AppointmentType, disable: !isWebRTCChecked()")
+          div.alert.alert-warning(data-bind="text: patientInfo, visible: patientInfo", style="display: none;")
+          div.alert.alert-warning(data-bind="text: healthCardI18n, visible: appointmentType()", style="display: none;")
+          div.form-group
+            label(data-bind="text: dateFromI18n")
+            div.date-picker.input-group
+              input.form-control(name="date", data-bind="datetimepicker: { value: selectedDate, options: selectedDateDatepickerOptions }")
+  // ko if: !appointmentType()
+  div.row
+    div.col-sm-6
+      div.checkbox
+        label.control-label
+          span(data-bind="html: checkWebRTCI18n")
+          input(type="checkbox", name="isWebRTCChecked", data-bind="checked: isWebRTCChecked")
+  // /ko
+  div.row(data-bind="if: 0 < freeAppointments().length")
+    div.col-sm-6
+      div.panel.panel-info
+        div.panel-heading
+          h4(data-bind="text: foundedAppointmentsI18n")
+        div.panel-body(data-bind="foreach: freeAppointments")
+          div.schedule-item.col-xs-6()
+            div.panel.panel-default
+              div.panel-body
+                em.pull-right(data-bind="text: inDays")
+                br
+                h5
+                  i.icon.icon-calendar
+                  span(data-bind="text: date")
+                h5
+                  i.icon.icon-time
+                  span(data-bind="text: time + ' ' + $parent.hourI18n")
+                a.pull-right.btn.btn-block.btn-primary(data-bind="click: $parent.bookAppointment, text: $parent.bookI18n")

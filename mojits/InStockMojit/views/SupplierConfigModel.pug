@@ -1,0 +1,29 @@
+div.panel.panel-default
+  div.panel-body
+    div.row
+      div.col-md-6
+        div.form-group
+          label.control-label(data-bind="text: supplier.i18n")
+          input.form-control(type="text", data-bind="select2: select2Supplier")
+        div.form-group
+          label.control-label(data-bind="text: number.i18n")
+          input.form-control(type="text", data-bind="textInput: number")
+        div.form-group
+          label.control-label(data-bind="text: password.i18n")
+          div.input-group
+            input.form-control(data-bind="attr: {type: passwordInputType}, textInput: password")
+            span.input-group-addon(data-bind="event: {mousedown: showPassword, mouseup: hidePassword}")
+              span.fa.fa-eye
+      div.col-md-6
+        div.form-group
+          label.control-label(data-bind="text: host.i18n")
+          input.form-control(type="text", data-bind="textInput: host")
+        div.form-group
+          label.control-label(data-bind="text: path.i18n")
+          input.form-control(type="text", data-bind="textInput: path")
+    div.row
+      div.col-md-12.text-right
+        button.btn.btn-default(name="deleteSupplierConfig", type="button", data-bind="click: deleteSupplierConfig.bind($context, $parent)")
+          span.glyphicon.glyphicon-trash
+          | &nbsp;
+          span(data-bind="text: buttonDeleteTextI18n")

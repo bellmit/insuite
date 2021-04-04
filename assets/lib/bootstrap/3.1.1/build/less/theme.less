@@ -1,0 +1,519 @@
+//
+// Load core variables and mixins
+// --------------------------------------------------
+
+@import "variables.less";
+@import "mixins.less";
+
+// TODO when updating: search for @media in other css files > these might take changed widths static
+
+// TODO: [MOJ-1768]
+.container .container {
+  width: auto;
+}
+
+// FIX FOR: .dropdown menu getting clipped by .panel-body #12683 ( https://github.com/twbs/bootstrap/issues/12683 )
+// remove this @ v > 3.2.0
+.panel-group .panel {
+  overflow: visible;
+}
+
+//== Typography
+//
+@font-face {
+  font-family: 'proxima_nova_rgbold';
+  src: url('/static/DocCirrus/assets/fonts/proxima_nova_bold-webfont.eot');
+  src: url('/static/DocCirrus/assets/fonts/proxima_nova_bold-webfont.eot?#iefix') format('embedded-opentype'),
+  url('/static/DocCirrus/assets/fonts/proxima_nova_bold-webfont.woff') format('woff'),
+  url('/static/DocCirrus/assets/fonts/proxima_nova_bold-webfont.ttf') format('truetype'),
+  url('/static/DocCirrus/assets/fonts/proxima_nova_bold-webfont.svg#proxima_nova_rgbold') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'proxima_novalight';
+  src: url('/static/DocCirrus/assets/fonts/proxima_nova_light-webfont.eot');
+  src: url('/static/DocCirrus/assets/fonts/proxima_nova_light-webfont.eot?#iefix') format('embedded-opentype'),
+  url('/static/DocCirrus/assets/fonts/proxima_nova_light-webfont.woff') format('woff'),
+  url('/static/DocCirrus/assets/fonts/proxima_nova_light-webfont.ttf') format('truetype'),
+  url('/static/DocCirrus/assets/fonts/proxima_nova_light-webfont.svg#proxima_novalight') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'proxima_nova_rgregular';
+  src: url('/static/DocCirrus/assets/fonts/proxima_nova_reg-webfont.eot');
+  src: url('/static/DocCirrus/assets/fonts/proxima_nova_reg-webfont.eot?#iefix') format('embedded-opentype'),
+  url('/static/DocCirrus/assets/fonts/proxima_nova_reg-webfont.woff') format('woff'),
+  url('/static/DocCirrus/assets/fonts/proxima_nova_reg-webfont.ttf') format('truetype'),
+  url('/static/DocCirrus/assets/fonts/proxima_nova_reg-webfont.svg#proxima_nova_rgregular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+//
+// Buttons
+// --------------------------------------------------
+
+// Common styles
+.btn-default,
+.btn-primary,
+.btn-success,
+.btn-info,
+.btn-warning,
+.btn-danger {
+  text-shadow: 0 -1px 0 rgba(0,0,0,.2);
+  @shadow: inset 0 1px 0 rgba(255,255,255,.15), 0 1px 1px rgba(0,0,0,.075);
+  .box-shadow(@shadow);
+
+  // Reset the shadow
+  &:active,
+  &.active {
+    .box-shadow(inset 0 3px 5px rgba(0,0,0,.125));
+  }
+}
+
+// Mixin for generating new styles
+.btn-styles(@btn-color: #555) {
+  //#gradient > .vertical(@start-color: @btn-color; @end-color: darken(@btn-color, 12%));
+  .reset-filter(); // Disable gradients for IE9 because filter bleeds through rounded corners
+  background-repeat: repeat-x;
+  border-color: darken(@btn-color, 14%);
+
+  &:hover,
+  &:focus  {
+    background-color: darken(@btn-color, 12%);
+    background-position: 0 -15px;
+  }
+
+  &:active,
+  &.active {
+    background-color: darken(@btn-color, 20%);
+    border-color: darken(@btn-color, 32%);
+  }
+}
+
+// Common styles
+.btn {
+  // Remove the gradient for the pressed/active state
+  &:active,
+  &.active {
+    background-image: none;
+  }
+}
+
+// Apply the mixin to the buttons
+.btn-default {
+  .btn-styles(@btn-default-bg);
+  text-shadow: 0 1px 0 #fff; border-color: #ccc; }
+.btn-primary { .btn-styles(@btn-primary-bg); }
+.btn-success { .btn-styles(@btn-success-bg); }
+.btn-info    { .btn-styles(@btn-info-bg); }
+.btn-warning { .btn-styles(@btn-warning-bg); }
+.btn-danger  { .btn-styles(@btn-danger-bg); }
+
+
+
+//
+// Images
+// --------------------------------------------------
+
+.thumbnail,
+.img-thumbnail {
+  .box-shadow(0 1px 2px rgba(0,0,0,.075));
+}
+
+
+
+//
+// Dropdowns
+// --------------------------------------------------
+
+.dropdown-menu > li > a:hover,
+.dropdown-menu > li > a:focus {
+  //#gradient > .vertical(@start-color: @dropdown-link-hover-bg; @end-color: darken(@dropdown-link-hover-bg, 5%));
+  background-color: darken(@dropdown-link-hover-bg, 5%);
+}
+.dropdown-menu > .active > a,
+.dropdown-menu > .active > a:hover,
+.dropdown-menu > .active > a:focus {
+  //#gradient > .vertical(@start-color: @dropdown-link-active-bg; @end-color: darken(@dropdown-link-active-bg, 5%));
+  background-color: darken(@dropdown-link-active-bg, 5%);
+}
+
+
+
+//
+// Navbar
+// --------------------------------------------------
+
+// Default navbar
+.navbar-default {
+  //#gradient > .vertical(@start-color: lighten(@navbar-default-bg, 10%); @end-color: @navbar-default-bg);
+  .reset-filter(); // Remove gradient in IE<10 to fix bug where dropdowns don't get triggered
+  border-radius: @navbar-border-radius;
+  @shadow: inset 0 1px 0 rgba(255,255,255,.15), 0 1px 5px rgba(0,0,0,.075);
+  .box-shadow(@shadow);
+
+  .navbar-nav > .active > a {
+    //#gradient > .vertical(@start-color: darken(@navbar-default-bg, 5%); @end-color: darken(@navbar-default-bg, 2%));
+    .box-shadow(inset 0 3px 9px rgba(0,0,0,.075));
+  }
+}
+.navbar-brand,
+.navbar-nav > li > a {
+  text-shadow: 0 1px 0 rgba(255,255,255,.25);
+}
+
+// Inverted navbar
+.navbar-inverse {
+  //#gradient > .vertical(@start-color: lighten(@navbar-inverse-bg, 10%); @end-color: @navbar-inverse-bg);
+  .reset-filter(); // Remove gradient in IE<10 to fix bug where dropdowns don't get triggered
+
+  .navbar-nav > .active > a {
+    //#gradient > .vertical(@start-color: @navbar-inverse-bg; @end-color: lighten(@navbar-inverse-bg, 2.5%));
+    .box-shadow(inset 0 3px 9px rgba(0,0,0,.25));
+  }
+
+  .navbar-brand,
+  .navbar-nav > li > a {
+    text-shadow: 0 -1px 0 rgba(0,0,0,.25);
+  }
+}
+
+// Undo rounded corners in static and fixed navbars
+.navbar-static-top,
+.navbar-fixed-top,
+.navbar-fixed-bottom {
+  border-radius: 0;
+}
+
+
+
+//
+// Alerts
+// --------------------------------------------------
+
+// Common styles
+.alert {
+  text-shadow: 0 1px 0 rgba(255,255,255,.2);
+  @shadow: inset 0 1px 0 rgba(255,255,255,.25), 0 1px 2px rgba(0,0,0,.05);
+  .box-shadow(@shadow);
+}
+
+// Mixin for generating new styles
+.alert-styles(@color) {
+  #gradient > .vertical(@start-color: @color; @end-color: darken(@color, 7.5%));
+  border-color: darken(@color, 15%);
+}
+
+// Apply the mixin to the alerts
+.alert-success    { .alert-styles(@alert-success-bg); }
+.alert-info       { .alert-styles(@alert-info-bg); }
+.alert-warning    { .alert-styles(@alert-warning-bg); }
+.alert-danger     { .alert-styles(@alert-danger-bg); }
+
+
+
+//
+// Progress bars
+// --------------------------------------------------
+
+// Give the progress background some depth
+.progress {
+  #gradient > .vertical(@start-color: darken(@progress-bg, 4%); @end-color: @progress-bg)
+}
+
+// Mixin for generating new styles
+.progress-bar-styles(@color) {
+  #gradient > .vertical(@start-color: @color; @end-color: darken(@color, 10%));
+}
+
+// Apply the mixin to the progress bars
+.progress-bar            { .progress-bar-styles(@progress-bar-bg); }
+.progress-bar-success    { .progress-bar-styles(@progress-bar-success-bg); }
+.progress-bar-info       { .progress-bar-styles(@progress-bar-info-bg); }
+.progress-bar-warning    { .progress-bar-styles(@progress-bar-warning-bg); }
+.progress-bar-danger     { .progress-bar-styles(@progress-bar-danger-bg); }
+
+
+
+//
+// List groups
+// --------------------------------------------------
+
+.list-group {
+  border-radius: @border-radius-base;
+  .box-shadow(0 1px 2px rgba(0,0,0,.075));
+}
+.list-group-item.active,
+.list-group-item.active:hover,
+.list-group-item.active:focus {
+  text-shadow: 0 -1px 0 darken(@list-group-active-bg, 10%);
+  #gradient > .vertical(@start-color: @list-group-active-bg; @end-color: darken(@list-group-active-bg, 7.5%));
+  border-color: darken(@list-group-active-border, 7.5%);
+}
+
+
+
+//
+// Panels
+// --------------------------------------------------
+
+// Common styles
+.panel {
+  .box-shadow(0 1px 2px rgba(0,0,0,.05));
+}
+
+// Mixin for generating new styles
+.panel-heading-styles(@color) {
+  #gradient > .vertical(@start-color: @color; @end-color: darken(@color, 5%));
+}
+
+// Apply the mixin to the panel headings only
+.panel-default > .panel-heading   { .panel-heading-styles(@panel-default-heading-bg); }
+.panel-primary > .panel-heading   { .panel-heading-styles(@panel-primary-heading-bg); }
+.panel-success > .panel-heading   { .panel-heading-styles(@panel-success-heading-bg); }
+.panel-info > .panel-heading      { .panel-heading-styles(@panel-info-heading-bg); }
+.panel-warning > .panel-heading   { .panel-heading-styles(@panel-warning-heading-bg); }
+.panel-danger > .panel-heading    { .panel-heading-styles(@panel-danger-heading-bg); }
+
+
+
+//
+// Wells
+// --------------------------------------------------
+
+.well {
+  #gradient > .vertical(@start-color: darken(@well-bg, 5%); @end-color: @well-bg);
+  border-color: darken(@well-bg, 10%);
+  @shadow: inset 0 1px 3px rgba(0,0,0,.05), 0 1px 0 rgba(255,255,255,.1);
+  .box-shadow(@shadow);
+}
+
+
+//
+// Custom timeanimation styles
+//
+
+.resp-quad-container {
+  position: relative;
+  padding-bottom: 100%;
+  overflow: hidden;
+  height: 0;
+  -webkit-transition: all 0.09s ease-in;
+  -moz-transition: all 0.09s ease-in;
+  -o-transition: all 0.09s ease-in;
+  transition: all 0.09s ease-in;
+}
+
+ul.resp-quad-list li {
+  /* do we need this? text-indent: -9999px; */
+  display: block;
+  position: absolute;
+  /*    opacity: 0.7;*/
+}
+
+ul.resp-quad-list li:nth-child(1) {
+  width: percentage((4 / @grid-columns));
+  height: percentage((4 / @grid-columns));
+  top: percentage((3 / @grid-columns));
+  left: percentage((3.5 / @grid-columns));
+  z-index: 1200;
+}
+ul.resp-quad-list li:nth-child(2) {
+  width: percentage((5 / @grid-columns));
+  height: percentage((5 / @grid-columns));
+  top: percentage((2.5 / @grid-columns));
+  left: percentage((3 / @grid-columns));
+}
+ul.resp-quad-list li:nth-child(3) {
+  width: percentage((6 / @grid-columns));
+  height: percentage((6 / @grid-columns));
+  top: percentage((2 / @grid-columns));
+  left: percentage((2.5 / @grid-columns));
+}
+ul.resp-quad-list li:nth-child(4) {
+  width: percentage((7 / @grid-columns));
+  height: percentage((7 / @grid-columns));
+  top: percentage((1.5 / @grid-columns));
+  left: percentage((2 / @grid-columns));
+}
+ul.resp-quad-list li:nth-child(5) {
+  width: percentage((8 / @grid-columns));
+  height: percentage((8 / @grid-columns));
+  top: percentage((1 / @grid-columns));
+  left: percentage((1.5 / @grid-columns));
+}
+ul.resp-quad-list li:nth-child(6) {
+  width: percentage((9 / @grid-columns));
+  height: percentage((9 / @grid-columns));
+  top: percentage((0.5 / @grid-columns));
+  left: percentage((1 / @grid-columns));
+}
+ul.resp-quad-list li:nth-child(7) {
+  width: percentage((10 / @grid-columns));
+  height: percentage((10 / @grid-columns));
+  top: percentage((0 / @grid-columns));
+  left: percentage((0.5 / @grid-columns));
+}
+
+ul.resp-quad-list li.symbol {
+  width: percentage((1 / @grid-columns));
+  height: percentage((1 / @grid-columns));
+  border-radius: 50% 50% 50% 50%;
+  z-index: 1200;
+}
+
+ul.resp-quad-list li.symbol-1 {
+  top: percentage((4.2 / @grid-columns));
+  left: percentage((1.5 / @grid-columns));
+  background: url('/static/DocCirrus/assets/images/Baum.svg') no-repeat scroll center center #FFFFFF;
+}
+ul.resp-quad-list li.symbol-2 {
+  top: percentage((1.7 / @grid-columns));
+  left: percentage((5.2 / @grid-columns));
+  border-radius: 50% 50% 50% 50%;
+  background: url('/static/DocCirrus/assets/images/Kaffeetasse.svg') no-repeat scroll center center #FFFFFF;
+}
+ul.resp-quad-list li.symbol-3 {
+  top: percentage((4 / @grid-columns));
+  left: percentage((9.2 / @grid-columns));
+  background: url('/static/DocCirrus/assets/images/Einkaufstasche.svg') no-repeat scroll center center #FFFFFF;
+}
+
+.text-container {
+  width: percentage((6 / @grid-columns));
+  height: percentage((6 / @grid-columns));
+  top: percentage((6 / @grid-columns));
+  left: percentage((2.75 / @grid-columns));
+  background: #ffffff;
+  z-index: 1150;
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+
+/**********************************
+*** dropdown-submenu styles missing from BS3
+*** http://stackoverflow.com/questions/18023493/bootstrap-3-dropdown-sub-menu-missing
+*********************************/
+
+.dropdown-submenu {
+  position:relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top:0;
+  left:100%;
+  margin-top:-6px;
+  margin-left:-1px;
+  -webkit-border-radius:0 6px 6px 6px;
+  -moz-border-radius:0 6px 6px 6px;
+  border-radius:0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display:block;
+}
+.dropdown-submenu>a:after {
+  display:block;
+  content:" ";
+  float:right;
+  width:0;
+  height:0;
+  border-color:transparent;
+  border-style:solid;
+  border-width:5px 0 5px 5px;
+  border-left-color:#cccccc;
+  margin-top:5px;
+  margin-right:-10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color:#ffffff;
+}
+.dropdown-submenu.pull-left {
+  float:none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left:-100%;
+  margin-left:10px;
+  -webkit-border-radius:6px 0 6px 6px;
+  -moz-border-radius:6px 0 6px 6px;
+  border-radius:6px 0 6px 6px;
+}
+
+#mainInvoiceNavigation {
+  height:42px;
+}
+
+#upperDiv {
+  min-height:300px;
+}
+
+.overlay .preloader{
+  background: url('../images/select2-spinner.gif') center center no-repeat;
+  display:block;
+  height:16px;
+  position:absolute;
+  top:44%;
+  width:100%;
+}
+
+.datatable .overlay {
+  background:rgba(255,255,255, .8);
+  border-radius:3px;
+  display:none;
+  height:100%;
+  min-height:151px;
+  position:absolute;
+  width:97.5%;
+  z-index:1;
+}
+
+.datatable .overlay > p {
+  color:#000;
+  display:none;
+  position:absolute;
+  text-align:center;
+  top:41%;
+  width:100%;
+}
+
+.dataTableTD .input-group-addon .fa {
+  position: absolute;
+  line-height: 0.6;
+  right:8px;
+  width:10px;
+}
+
+.dataTableTD .input-group-addon .fa-sort-desc {
+  margin-top: -8px;
+  padding-bottom: 0;
+  padding-top: 4px;
+  top: 10px;
+}
+
+.dataTableTD .input-group-addon .fa-sort-asc {
+  margin-top: 4px;
+  padding-bottom: 0px;
+  padding-bottom: 4px;
+  position: absolute;
+  right:8px;
+  width: 10px;
+}
+
+td.dataTableTD.notSortable .form-control { border-radius: 4px; }
+
+@import "../../../../../../less/global/NavBarHeader.less";
+@import "../../../../../../less/global/NavBarFooter.less";
+@import "../../../../../../less/global/DCContextMenu.less";
+@import "../../../../../../less/global/DCWindow.less";
+@import "../../../../../../less/global/DCSystemMessages.less";
+@import "../../../../../../less/global/DCMiniCalendarView.less";
+@import "../../../../../../less/global/KoUI.less";
+@import "../../../../../../less/global/KoEditableTable.less";
+@import "../../../../../../less/global/dc-info-icon.less";
+@import "../../../../../../less/global/Gadget.less";

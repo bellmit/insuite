@@ -1,0 +1,18 @@
+.inpacs-allowedNoOfImages-div {
+    margin-top: 10px;
+    padding-left: 30px;
+    width: 54%;
+}
+
+.inpacs-allowedNoOfImages-textBoxWidth {
+    width: 80%;
+}
+
+.inpacs-allowedNoOfImages-label {
+    font-weight: 400;
+}
+
+#tab_inpacs_worklist .row .tooltip-inner {
+    min-width: 380px;
+    position: relative;
+}

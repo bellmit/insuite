@@ -1,0 +1,162 @@
+div.row#addConfiguration
+  // ko ifnot: isFilter
+  h4(data-bind="text: appointmentDatesI18n", style="margin-top: -10px;")
+  .form-group
+    div.checkbox
+      label.control-label
+        input(name="patientTitle", type="checkbox", data-bind="checked: patientTitle")
+        span(data-bind="text: patientTitleI18n")
+  .form-group
+    div.checkbox
+      label.control-label
+        input(name="patientInsurance", type="checkbox", data-bind="checked: patientInsurance")
+        span(data-bind="text: insuranceI18n")
+  .form-group
+    div.checkbox
+      label.control-label
+        input(name="patientArrivalTime", type="checkbox", data-bind="checked: patientArrivalTime")
+        span(data-bind="text: arrivalTimeI18n")
+  .form-group
+    div.checkbox
+      label.control-label
+        input(name="duration", type="checkbox", data-bind="checked: duration")
+        span(data-bind="text: durationsI18n")
+  .form-group
+    div.checkbox
+      label.control-label
+        input(name="calendarName", type="checkbox", data-bind="checked: calendarName")
+        span(data-bind="text: calendarI18n")
+  .form-group
+    div.checkbox
+      label.control-label
+        input(name="adhoc", type="checkbox", data-bind="checked: adhoc")
+        span(data-bind="text: waitI18n")
+  .form-group
+    div.checkbox
+      label.control-label
+        input(name="patientSeverity", type="checkbox", data-bind="checked: patientSeverity")
+        span(data-bind="text: severityI18n")
+  .form-group
+    div.checkbox
+      label.control-label
+        input(name="details", type="checkbox", data-bind="checked: details")
+        span(data-bind="text: detailsI18n")
+  .form-group
+    div.checkbox
+      label.control-label
+        input(name="timeinadvance", type="checkbox", data-bind="checked: timeinadvance")
+        span(data-bind="text: timeInAdvanceI18n")
+  .form-group
+    div.checkbox
+      label.control-label
+        input(name="eta", type="checkbox", data-bind="checked: eta")
+        span(data-bind="text: etaI18n")
+  // ko ifnot: isWaitingRoom
+  .form-group
+    div.checkbox
+      label.control-label
+        input(name="status", type="checkbox", data-bind="checked: status")
+        span(data-bind="text: statusI18n")
+  // /ko
+  .form-group
+    div.checkbox
+      label.control-label
+        input(name="patientNo", type="checkbox", data-bind="checked: patientNo")
+        span(data-bind="text: patientNoI18n")
+  .form-group
+    div.checkbox
+      label.control-label
+        input(name="patientDob", type="checkbox", data-bind="checked: patientDob")
+        span(data-bind="text: patientDobI18n")
+  // ko if: isGeneral
+  h4(data-bind="text: sortByI18n")
+  .form-group
+    label.radio-inline
+      input(type="radio", name="filter", value= "name", data-bind="checked: sortByFilter")
+      span(data-bind="text: patientNameI18n")
+  .form-group
+    label.radio-inline
+      input(type="radio", name="filter", value= "gs", data-bind="checked: sortByFilter")
+      span(data-bind="text: etaI18n")
+  .form-group
+    label.radio-inline
+      input(type="radio", name="filter", value= "bw", data-bind="checked: sortByFilter")
+      span(data-bind="text: arrivalTimeI18n")
+  .form-group
+    label.radio-inline
+      input(type="radio", name="filter", value= "w", data-bind="checked: sortByFilter")
+      span(data-bind="text: severityI18n")
+  // /ko
+  // /ko
+  // ko if: isFilter
+  h4(data-bind="text: filterI18n", style="margin-top: -10px;")
+  .form-group
+    div.checkbox
+      label.control-label
+        input(name="calendarNameFilter", type="checkbox", data-bind="checked: calendarNameFilter")
+        span(data-bind="text: calendarI18n")
+  .form-group
+    div.checkbox
+      label.control-label
+        input(name="detailsFilter", type="checkbox", data-bind="checked: detailsFilter")
+        span(data-bind="text: detailsI18n")
+  .form-group
+    div.checkbox
+      label.control-label
+        input(name="patientSeverityFilter", type="checkbox", data-bind="checked: patientSeverityFilter")
+        span(data-bind="text: severityI18n")
+  .form-group
+    div.checkbox
+      label.control-label
+        input(name="patientInsuranceFilter", type="checkbox", data-bind="checked: patientInsuranceFilter")
+        span(data-bind="text: insuranceI18n")
+  .form-group
+    div.checkbox
+      label.control-label
+        input(name="etaFilter", type="checkbox", data-bind="checked: etaFilter")
+        span(data-bind="text: etaI18n")
+  .form-group
+    div.checkbox
+      label.control-label
+        input(name="patientArrivalTimeFilter", type="checkbox", data-bind="checked: patientArrivalTimeFilter")
+        span(data-bind="text: arrivalTimeI18n")
+  .form-group
+    div.checkbox
+      label.control-label
+        input(name="durationFilter", type="checkbox", data-bind="checked: durationFilter")
+        span(data-bind="text: durationsI18n")
+  .form-group
+    div.checkbox
+      label.control-label
+        input(name="adhocFilter", type="checkbox", data-bind="checked: adhocFilter")
+        span(data-bind="text: waitI18n")
+  .form-group
+    div.checkbox
+      label.control-label
+        input(name="timeinadvanceFilter", type="checkbox", data-bind="checked: timeinadvanceFilter")
+        span(data-bind="text: timeInAdvanceI18n")
+  .form-group
+    div.checkbox
+      label.control-label
+        input(name="statusFilter", type="checkbox", data-bind="checked: statusFilter")
+        span(data-bind="text: statusI18n")
+  .form-group
+    div.checkbox
+      label.control-label
+        input(name="patientNoFilter", type="checkbox", data-bind="checked: patientNoFilter")
+        span(data-bind="text: patientNoI18n")
+  .form-group
+    div.checkbox
+      label.control-label
+        input(name="patientDobFilter", type="checkbox", data-bind="checked: patientDobFilter")
+        span(data-bind="text: patientDobI18n")
+  h4(data-bind="text: roomI18n")
+  .form-group
+    label.radio-inline
+      input(type="radio", name="columns", value= "2", data-bind="checked: columnsFilter")
+      span(data-bind="text: columns2I18n")
+  .form-group
+    label.radio-inline
+      input(type="radio", name="columns", value= "3", data-bind="checked: columnsFilter")
+      span(data-bind="text: columns3I18n")
+  // /ko

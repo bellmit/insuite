@@ -1,0 +1,82 @@
+{
+  "kbvLogEntry": {
+    "_id": "5fa9667fd61c86329b7e26f9",
+    "isPreValidated": false,
+    "notApproved": [
+      0,
+      0,
+      0
+    ],
+    "replacement": false,
+    "excludedPatientIds": [],
+    "mediportNotAllowedPatientIds": [
+      ""
+    ],
+    "excludedScheinIds": [],
+    "unknownInsuranceScheinIds": [],
+    "complete": false,
+    "test": false,
+    "mainLocationId": "5f9c28582b4c2508e3b46df9",
+    "commercialNo": "870166900",
+    "locname": "conFIleBestriebsstätte",
+    "countryCode": "",
+    "totalItems": "1/1/1",
+    "user": [
+      {
+        "_id": "5fa96692d61c86329b7e2712",
+        "name": "Thomas Baier",
+        "employeeNo": "5bf28673e151410df85edb03"
+      }
+    ],
+    "lastUpdate": "2020-11-09T16:03:23.802Z",
+    "status": "VALID",
+    "_log_version": "3",
+    "created": "2020-11-09T15:55:43.868Z",
+    "pid": "",
+    "priceTotal": 58,
+    "pointsTotal": 0,
+    "pricePerPatient": null,
+    "pointsPerPatient": null,
+    "replacedLogId": "",
+    "version": 1,
+    "guid": "",
+    "number": 0,
+    "quarter": 4,
+    "year": 2020,
+    "destination": "72",
+    "conFileName": "Z01870166900_09.11.2020_17.03.CON",
+    "conFileId": "5fa9683ed61c86329b7e2761",
+    "xkmFileName": "",
+    "xkmFileId": "",
+    "pdfMediaId": "",
+    "kvcaEntry": [],
+    "statFiles": [],
+    "sourceConFiles": [],
+    "messages": [],
+    "isContentOutdated": false
+  },
+  "params": {
+    "files": [
+      {
+        "filename": "Z01870166900_09.11.2020_17.03.CON",
+        "mediaId": "Z01870166900_09.11.2020_17.03.CON",
+        "conFileId": "5fa9683ed61c86329b7e2761",
+        "isMainMergeFile": true,
+        "path": "mojits/TestingMojit/tests/fixtures/conFiles/ORIG_Z01870166900_09.11.2020_17.03.CON"
+      },
+      {
+        "filename": "Z01310101300_01.10.2020_09.43.CON",
+        "conFileId": "5fa9683ed61c86329b7e2762",
+        "mediaId": "5fa96852d61c86329b7e2772",
+        "path": "mojits/TestingMojit/tests/fixtures/conFiles/Z01310101300_01.10.2020_09.43.CON"
+      },
+      {
+        "filename": "Z01310101300_06.04.2020_09.44.CON",
+        "conFileId": "5fa9683ed61c86329b7e2763",
+        "mediaId": "5fa96852d61c86329b7e2773",
+        "path": "mojits/TestingMojit/tests/fixtures/conFiles/Z01310101300_06.04.2020_09.44.CON"
+      }
+    ],
+    "KbvLogId": "5fa9667fd61c86329b7e26f9"
+  }
+}

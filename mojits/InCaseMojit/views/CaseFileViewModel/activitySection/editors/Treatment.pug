@@ -1,0 +1,483 @@
+div.row
+  div.col-xs-7
+    div.row
+      div(data-bind="css: {'col-xs-11': !userContent.readOnly(), 'col-xs-12': userContent.readOnly}")
+        div.form-group
+          textarea#textform-sd4-userContent.form-control(name="userContent", data-bind="textInput: userContent, readOnly: userContent.readOnly, event: { focus: onDocTreeFocus, blur: onDocTreeBlur }, caretPosition: userContent.caretPosition, attr: { placeholder: contentServiceI18n }", rows="7")
+        div.form-group
+          textarea#textform-sd4-catalogContent.form-control(name="originalCatalogText", data-bind="textInput: originalCatalogText() == '' ? originalCatalogPlaceholder : originalCatalogText, readOnly: true, event: { focus: onDocTreeFocus, blur: onDocTreeBlur }, attr: { placeholder: catalogTextI18n }", rows="5")
+        div.form-group
+          textarea#textform-sd4-explanations.form-control(name="explanations", data-bind="textInput: explanations, readOnly: explanations.readOnly, event: { focus: onDocTreeFocus, blur: onDocTreeBlur }, caretPosition: explanations.caretPosition, attr: { placeholder: SD4ExplanationsI18n }", rows="7")
+
+      // ko if: !userContent.readOnly()
+      div.col-xs-1(style="padding-left: 0", data-bind="foreach: catalogTexts")
+        button.btn-default.btn(data-bind="text: title, tooltip: {title: text()}, css: {'dc-grey-text': !text() && !active(), 'dc-grey': text() && !active(), 'btn-primary-disabled': usedInUserContent() && !active(), 'btn-primary': active }, click: $parent.activateCatalogTextItem", style="width: 40px; height: 40px; margin-bottom: 2px")
+      // /ko
+    //div.row
+    //  div(data-bind="css: {'col-xs-11': !userContent.readOnly(), 'col-xs-12': userContent.readOnly}")
+    //    div.form-group
+    //      textarea#textform-sd4-explanations.form-control(name="explanations", placeholder="#{__i18n( 'InCaseMojit.casefile_detail.placeholder.SD4EXPLANATIONS' )}", data-bind="textInput: explanations, readOnly: explanations.readOnly, event: { focus: onDocTreeFocus, blur: onDocTreeBlur }, caretPosition: explanations.caretPosition", rows="7")
+  div.col-xs-5
+    div.form-inline
+      //ko if: isModified() && canModifyHomeCatalog()
+      div.checkbox-inline
+        label.control-label
+          strong(data-bind="text: modifyHomeCatI18n")
+          input(type="checkbox", name="modifyHomeCat", data-bind="checked: modifyHomeCat, readOnly: modifyHomeCat.readOnly")
+      // /ko
+      //ko if: canOverrideCatalogFlag
+      div.checkbox-inline
+        label.control-label
+          strong
+            span(data-bind="text: useCatalogPriceI18n")
+            i.dc-info-icon(data-bind="tooltip: {title: useCatalogInfoI18n}")
+          input(type="checkbox", name="catalog", data-bind="checked: catalog, readOnly: catalog.readOnly")
+      // /ko
+    div.row.form-group
+      div.col-xs-12
+        div.form-group
+          input.form-control(name="tag", type="hidden", data-bind="select2: select2tags, valueUpdate: 'afterkeydown', readOnly: code.readOnly")
+
+    div.row
+      div.col-xs-3
+        div.form-group(data-bind="hasFeedback: { popover: { container: 'body' }, field: numberOfCopies, toggle: numberOfCopies.hasError, messages: numberOfCopies.validationMessages }")
+          label.control-label
+            strong(data-bind="text: numberOfCopiesI18n")
+          input.form-control(name="numberOfCopies", type="text", size="4", data-bind="value: numberOfCopies, readOnly: code.readOnly")#txtNumberOfCopies
+      div.col-xs-9
+        div.form-group(data-bind="hasFeedback: { field: code, toggle: code.hasError, messages: code.validationMessages }")
+          label.control-label
+            strong(data-bind="text: labelCodeI18n")
+          input.form-control(name="code", type="hidden", data-bind="select2: select2Code, readOnly: code.readOnly, hasFocus: true")
+          span(data-bind="if: _catalogShortVisible(['EBM'])() && _codeValidationInfo()")
+            span(data-bind="text: _codeValidationInfo().display, style: {'color': _codeValidationInfo().isValid ? '' : '#a94442'}")
+    div.row
+      div.col-xs-5
+        div.form-group
+          div.checkbox
+            label.control-label
+              strong(data-bind="text: vatI18n")
+              input(type="checkbox", name="hasVat", data-bind="checked: hasVat, readOnly: hasVat.readOnly")
+      div.col-xs-2
+        div.form-group.text-right(data-bind="if: hasVat", style="padding-top: 7px")
+          label.control-label
+            light(data-bind="text: labelNetI18n")
+      div.col-xs-5
+        div.form-group
+          input.form-control.text-right(name="displayPrice", data-bind="value: _displayPrice, visible: _unitValuesVisible, readOnly: _PriceReadOnly() || isLinkedPercentageVisible(), attr: { placeholder: displayPriceI18n }")
+
+    div.row
+      div.form-group(data-bind="if: hasVat")
+        div.col-xs-5
+          div.form-group
+            select.form-control(name="vat", data-bind="options: _vatList, optionsValue: 'code', optionsText: 'description', value: vat, readOnly: vat.readOnly, visible: hasVat")
+        div.col-xs-2
+          div.form-control-static.text-right(style="padding-top: 7px")
+            label.control-label
+              light(data-bind="text: labelGrossI18n")
+        div.col-xs-5
+          div.form-group
+            input.form-control.text-right(name="displayGross", data-bind="value: _displayGross, visible: _unitValuesVisible, readOnly: _PriceReadOnly")
+
+    div.row.form-group
+      div.col-xs-5
+        select.form-control(name="_catalog", data-bind="options: _catalogBase, optionsValue: 'short', optionsText: 'short', value: catalogShort, readOnly: code.readOnly")
+      div.col-xs-2
+        label.control-label
+          //strong #{__i18n('InCaseMojit.casefile_detail.label.UNIT')}:
+      div.col-xs-5
+        input.form-control.text-right(name="unit", data-bind="value: unit, visible: _unitValuesVisible, readOnly: true")
+
+    // ko if: _catalogShortVisible(['GOÄ'])
+    div.row.form-group
+      div.col-xs-7
+        select#dc-input-billingFactor-sd4.dc-input-billingFactor.form-control(data-bind="options: _billingFactorTypeList(), optionsValue: 'val', optionsText: '-de', value: privateBillingFactorType, readOnly: !catalog() || billingFactorType.readOnly() || isLinkedPercentageVisible()", name="billingFactorType")
+      div.col-xs-5(data-bind="hasFeedback: { field: billingFactorValue, toggle: billingFactorValue.hasError, messages: billingFactorValue.validationMessages }")
+        input#dc-input-billingFactorValue-sd4.dc-input-billingFactorValue.form-control.text-right(name="billingFactorValue", data-bind="value: _displayBillingFactorValue, readOnly: billingFactorValue.readOnly() || isLinkedPercentageVisible(), attr: { placeholder: billingFactorValueI18n }")
+    // /ko
+    // ko if: _catalogShortVisible(['UVGOÄ'])()
+    div.row.form-group
+      div.col-xs-12
+        select#dc-input-uvgoetype-sd4.dc-input-uvgoetype.form-control(data-bind="options: _uvGoaeTypeList, optionsValue: 'val', optionsText: '-de', value: uvGoaeType, readOnly: uvGoaeType.readOnly", name="uvGoaeType")
+    // /ko
+    //ko if: isLinkedPercentageVisible
+    div.row.form-group
+      div.col-xs-7
+        span
+          b(data-bind="text: linkedPercentage.i18n")
+      div.col-xs-5(data-bind="hasFeedback: { field: linkedPercentage, toggle: linkedPercentage.hasError, messages: linkedPercentage.validationMessages }")
+        input.form-control.text-right(name="linkedPercentage", data-bind="attr: { placeholder: 'max 25' }, value: _displayLinkedPercentage, readOnly: linkedPercentage.readOnly")
+    // /ko
+    div.form-group
+      strong(data-bind="text: bilableI18n + ':'")
+      | &nbsp;
+      label.radio-inline
+        input(type="radio", name="areTreatmentDiagnosesBillable", value="1", data-bind="checked: areTreatmentDiagnosesBillable, readOnly: areTreatmentDiagnosesBillable.readOnly")
+        strong(data-bind="text: checkboxYesI18n")
+      label.radio-inline
+        input(type="radio", name="areTreatmentDiagnosesBillable", value="0", data-bind="checked: areTreatmentDiagnosesBillable, readOnly: areTreatmentDiagnosesBillable.readOnly")
+        strong(data-bind="text: checkboxNoI18n")
+    // ko if: isASV
+    div.form-group
+      label.checkbox-inline
+        strong(data-bind="text: noASV.i18n")
+        input(type="checkbox", name="noASV", data-bind="checked: noASV, readOnly: noASV.readOnly")
+    // /ko
+    div#textform-sd4-panel-group.panel-group
+
+      // ko if: 'EBM' !== catalogShort()
+      div.panel.panel-default(data-bind="panelCollapse: { name: 'textform-sd4-panel-body-expenses' }")
+        div.panel-heading
+          a(href="#textform-sd4-panel-body-expenses", data-toggle="collapse", data-parent="#textform-sd4-panel-group")
+            strong(data-bind="text: groupExpensesI18n")
+        div#textform-sd4-panel-body-expenses.panel-collapse.collapse
+          div.panel-body
+            p(data-bind="text: labelExpensesI18n")
+            div.form-group(data-bind="foreach: {data: costTypes, as: 'ctype'}")
+              div.radio
+                label
+                  input(type="radio", name="costType", data-bind="checked: $parent.costType, value: ctype.val, readOnly: $parent.costType.readOnly")
+                  strong(data-bind="text: ctype.i18n")
+      // /ko
+
+      // ko if: _showTreatmentDiagnoses()
+      div.panel.panel-default(data-bind="panelCollapse: { name: 'textform-sd4-panel-body-diagnoses' }")
+        div.panel-heading
+          a(href="#textform-sd4-panel-body-diagnoses", data-toggle="collapse", data-parent="#textform-sd4-panel-group")
+            strong(data-bind="text: groupDiagnosesI18n")
+        div#textform-sd4-panel-body-diagnoses.panel-collapse.collapse.in
+          div.panel-body
+            div.form-group(data-bind="hasFeedback: { field: icdsExtra, toggle: icdsExtra.hasError, messages: icdsExtra.validationMessages }")
+              label.control-label(data-bind="text: labelAnamnesticI18n")
+              input.form-control(name="icdsExtra", type="hidden", data-bind="select2: _select2caseHistory, readOnly: icdsExtra.readOnly")
+            div.form-group(data-bind="hasFeedback: { field: icds, toggle: icds.hasError, messages: icds.validationMessages }")
+              label.control-label(data-bind="text: labelRelevantI18n")
+              input.form-control(name="icds", type="hidden", data-bind="select2: _select2treatmentRelevant, readOnly: icds.readOnly")
+      // /ko
+      // ko if: 'EBM' !== catalogShort()
+      div.panel.panel-default(data-bind="panelCollapse: { name: 'textform-sd4-panel-body-allgemein' }")
+        div.panel-heading
+          a(href="#textform-sd4-panel-body-allgemein", data-toggle="collapse", data-parent="#textform-sd4-panel-group")
+            strong(data-bind="text: groupCostsI18n")
+        div#textform-sd4-panel-body-allgemein.panel-collapse.collapse
+          div.panel-body
+            div.form-group
+              label.control-label(data-bind="text: generalCostsI18n")
+              input.form-control(name="generalCosts", data-bind="value: _displayGeneralCosts, readOnly: generalCosts.readOnly")
+            div.form-group
+              label.control-label(data-bind="text: specialCostsI18n")
+              // ko if: _hasSpecialCostsInfo
+              .alert.alert-info Nach Gebührenordnung sind folgende Werte möglich:
+                div(data-bind="foreach: _specialCostsValues")
+                  a.alert-link(data-bind="click: $parent._clickSpecialCostsValue, text: $data + ($index() < $parent._specialCostsValues().length - 1 ? ', ' : '')")
+              // /ko
+              input.form-control(name="specialCosts", data-bind="value: _displaySpecialCosts, readOnly: specialCosts.readOnly")
+      // /ko
+      // ko if: isASV && !noASV()
+      div.panel.panel-default(data-bind="panelCollapse: { name: 'textform-sd4-asv-private' }")
+        div.panel-heading
+          a(href="#textform-sd4-panel-asv-private", data-toggle="collapse", data-parent="#textform-sd4-panel-group")
+            strong GOÄ-Leistungen
+        div#textform-sd4-panel-asv-private.panel-collapse.collapse
+          div.panel-body
+            div(data-bind="foreach: fk5012Set")
+              div.row
+                // ko foreach: fk5011Set
+                div.col-xs-12(data-bind="if: $index() === 0")
+                  div.form-group
+                    label.control-label Code
+                    input.form-control(name="fk5011", data-bind="select2: select2Code, readOnly: fk5011.readOnly")
+                // /ko
+                div.col-xs-12
+                  div.form-group
+                    label.control-label(data-bind="text: $parent.labelInCentI18n")
+                    input.form-control(name="fk5012", data-bind="value: fk5012, readOnly: fk5012.readOnly")
+                div.col-xs-12
+                  button.push-right.btn.btn-default(type="button", data-bind="click: $parent.removeFk5012Set, readOnly: $parent.fk5012Set.readOnly")
+                    span.glyphicon.glyphicon-trash
+              hr
+            div
+              a(href="#", data-bind="click: addPrivateCode, readOnly: fk5012Set.readOnly")
+                i.icon.fa.fa-plus
+
+      // /ko
+      // ko if: 'EBM' === catalogShort()
+      div.form-group(data-bind="if: 0 < availableGnrAdditionalInfos().length, hasFeedback: { field: availableGnrAdditionalInfos, toggle: gnrAdditionalInfoEntered, messages: [], type: 'warning', popover: {placement: 'bottom'} }")
+        label.control-label
+          span(data-bind="text: 'Erforderliche ' + gnrAdditionalInfoI18n")
+          br
+          span(data-bind="text: 'AUSWAHL' === gnrAdditionalInfoType() ? 'Eine von...' : 'Alle von...'")
+        ul.list-unstyled(data-bind="foreach: availableGnrAdditionalInfos")
+          li(data-bind="text: i18n, style: {color: $parent.fieldTracker[val]() ? 'green' : 'black'}, click: $parent.jumpTo", style="padding-left: 8px;")
+
+      div.panel.panel-default(data-bind="panelCollapse: { name: 'textform-sd4-panel-bodymaterialCosts' }")
+        div.panel-heading
+          a(href="#textform-sd4-panel-bodymaterialCosts", data-toggle="collapse", data-parent="#textform-sd4-panel-group")
+            strong(data-bind="text: groupCostsI18n")
+        div#textform-sd4-panel-bodymaterialCosts.panel-collapse.collapse
+          div.panel-body
+            table.table(width="100%")
+              colgroup
+                col(width="*")
+                col(width="45")
+              thead
+                tr
+                  th(data-bind="text: matCostsI18n")
+                  th.text-center
+                    a(href="#", data-bind="click: addFk5012Set, readOnly: fk5012Set.readOnly")
+                      i.icon.fa.fa-plus
+              tbody(data-bind="foreach: fk5012Set")
+                tr
+                  td
+                    div(data-bind="hasFeedback: { field: fk5012, toggle: fk5012.hasError, messages: fk5012.validationMessages }")
+                      label.control-label(data-bind="text: $parent.labelInCentI18n")
+                      input.form-control(name="fk5012", data-bind="value: fk5012, valueUpdate: 'afterkeydown', readOnly: fk5012.readOnly, attr: { placeholder: $parent.placeholderFK5012I18n }")
+                  td
+                    button.btn.btn-default(type="button", data-bind="click: $parent.removeFk5012Set, focusOnRemove: { parent: 'table', find: 'thead a' }, readOnly: $parent.fk5012Set.readOnly", style="margin-top: 25px;")
+                      span.glyphicon.glyphicon-trash
+                // ko if: $parent.showAdditionalFk5012SetFields
+                tr
+                  td
+                    div
+                      label.control-label(data-bind="text: fk5074.i18n")
+                      input.form-control(name="fk5074", data-bind="value: fk5074, valueUpdate: 'afterkeydown', readOnly: fk5074.readOnly")
+                tr
+                  td
+                    div
+                      label.control-label(data-bind="text: fk5075.i18n")
+                      input.form-control(name="fk5075", data-bind="value: fk5075, valueUpdate: 'afterkeydown', readOnly: fk5075.readOnly")
+                // /ko
+                tr
+                  td(colspan=2, style="border-top: 0 none; padding: 0;")
+                    table.table(width="100%")
+                      colgroup
+                        col(width="*")
+                        col(width="45")
+                      thead(data-bind="css: { 'bg-danger': fk5011Set.hasError, 'text-danger': fk5011Set.hasError }")
+                        tr
+                          th(data-bind="text: $parent.labelDesignationsI18n")
+                          th.text-center
+                            a(href="#", data-bind="click: addFk5011Set, readOnly: fk5011Set.readOnly")
+                              i.icon.fa.fa-plus
+                      tbody(data-bind="foreach: fk5011Set")
+                        tr
+                          td
+                            div.form-group(data-bind="hasFeedback: { field: fk5011, toggle: fk5011.hasError, messages: fk5011.validationMessages }")
+                              textarea.form-control(name="fk5011", data-bind="value: fk5011, valueUpdate: 'afterkeydown', readOnly: fk5011.readOnly, attr: { placeholder: fk5011.i18n }")
+                          td
+                            button.btn.btn-default(type="button", data-bind="click: $parent.removeFk5011Set, focusOnRemove: { parent: 'table', find: 'thead a' }, readOnly: $parent.fk5011Set.readOnly", style="margin-top: 25px;")
+                              span.glyphicon.glyphicon-trash
+              tfoot(data-bind="visible: fk5012Set().length")
+                tr
+                  th
+                  th.text-center
+                    a(href="#", data-bind="click: addFk5012Set, readOnly: fk5012Set.readOnly")
+                      i.icon.fa.fa-plus
+      // /ko
+      div.panel.panel-default(data-bind="panelCollapse: { name: 'textform-sd4-panel-others' }")
+        div.panel-heading
+          a(href="#textform-sd4-panel-others", data-toggle="collapse", data-parent="#textform-sd4-panel-group")
+            strong Sonstiges
+        div#textform-sd4-panel-others.panel-collapse.collapse
+          div.panel-body
+            div.form-group(data-bind="hasFeedback: { field: fk5002, toggle: fk5002.hasError, messages: fk5002.validationMessages }")
+              label.control-label(data-bind="text: fk5002.i18n+ ':'")
+              input.form-control(name="fk5002", maxlength="60", data-bind="value: fk5002, valueUpdate: 'afterkeydown', readOnly: fk5002.readOnly, attr: { placeholder: fk5002.i18n }")
+            div.form-group(data-bind="hasFeedback: { field: fk5005, toggle: fk5005.hasError, messages: fk5005.validationMessages }")
+              label.control-label(data-bind="text: fk5005.i18n+ ':'")
+              input.form-control(name="fk5005", data-bind="value: fk5005, valueUpdate: 'afterkeydown', readOnly: fk5005.readOnly, attr: { placeholder: fk5005.i18n }")
+            div.form-group(data-bind="hasFeedback: { field: fk5013, toggle: fk5013.hasError, messages: fk5013.validationMessages }")
+              label.control-label(data-bind="text: fk5013.i18n+ ':'")
+              input.form-control(name="fk5013", data-bind="value: fk5013, valueUpdate: 'afterkeydown', readOnly: fk5013.readOnly, attr: { placeholder: fk5013.i18n }")
+            div.form-group(data-bind="hasFeedback: { field: fk5015, toggle: fk5015.hasError, messages: fk5015.validationMessages }")
+              label.control-label(data-bind="text: fk5015.i18n+ ':'")
+              textarea.form-control(name="fk5015", data-bind="value: fk5015, valueUpdate: 'afterkeydown', readOnly: fk5015.readOnly, attr: { placeholder: fk5015.i18n }")
+            div.form-group(data-bind="hasFeedback: { field: fk5016, toggle: fk5016.hasError, messages: fk5016.validationMessages }")
+              label.control-label(data-bind="text: fk5016.i18n+ ':'")
+              textarea.form-control(name="fk5016", data-bind="value: fk5016, valueUpdate: 'afterkeydown', readOnly: fk5016.readOnly, attr: { placeholder: fk5016.i18n }")
+            // ko if: 'EBM' === catalogShort()
+            div.form-group(data-bind="hasFeedback: { field: tsvDoctorNo, toggle: tsvDoctorNo.hasError, messages: tsvDoctorNo.validationMessages }")
+              label.control-label(data-bind="text: tsvDoctorNo.i18n+ ':'")
+              input.form-control(name="tsvDoctorNo", type="text", data-bind="select2: tsvDoctorNoAutoComplete, readOnly: tsvDoctorNo.readOnly")
+            // /ko
+            div.form-group.hidden(data-bind="hasFeedback: { field: fk5044, toggle: fk5044.hasError, messages: fk5044.validationMessages }")
+              label.control-label(data-bind="text: fk5044.i18n + ':'")
+              input.form-control(name="fk5044", data-bind="value: fk5044, valueUpdate: 'afterkeydown', readOnly: fk5044.readOnly")
+
+      // ko if: 'EBM' === catalogShort()
+      div.panel.panel-default(data-bind="panelCollapse: { name: 'textform-sd4-panel-body-batchNumber' }")
+        div.panel-heading
+          a(href="#textform-sd4-panel-body-batchNumber", data-toggle="collapse", data-parent="#textform-sd4-panel-group")
+            strong(data-bind="text: groupBatchNumberI18n")
+        div#textform-sd4-panel-body-batchNumber.panel-collapse.collapse
+          div.panel-body
+            div.form-group(data-bind="hasFeedback: { field: fk5010BatchNumber, toggle: fk5010BatchNumber.hasError, messages: fk5010BatchNumber.validationMessages }")
+              label.control-label(data-bind="text: labelBatchNumberI18n")
+              input.form-control(name="fk5010BatchNumber", maxlength="60", data-bind="value: fk5010BatchNumber, valueUpdate: 'afterkeydown', readOnly: fk5010BatchNumber.readOnly")
+      // /ko
+
+      div.panel.panel-default(data-bind="panelCollapse: { name: 'textform-sd4-panel-approach' }")
+        div.panel-heading
+          a(href="#textform-sd4-panel-approach", data-toggle="collapse", data-parent="#textform-sd4-panel-group")
+            strong(data-bind="text: groupJourneyI18n")
+        div#textform-sd4-panel-approach.panel-collapse.collapse
+          div.panel-body
+            div.form-group(data-bind="hasFeedback: { field: fk5008, toggle: fk5008.hasError, messages: fk5008.validationMessages }")
+              label.control-label(data-bind="text: fk5008.i18n + ':'")
+              div.alert.alert-info(data-bind="visible: isVisibleFk5008Notes")
+                div(data-bind="foreach: fk5008Notes")
+                  div(data-bind="text: value")
+              input.form-control(name="fk5008", data-bind="value: fk5008, valueUpdate: 'afterkeydown', readOnly: fk5008.readOnly, attr: { placeholder: fk5008.i18n }")
+            div.form-group(data-bind="hasFeedback: { field: fk5017, toggle: fk5017.hasError, messages: fk5017.validationMessages }")
+              label.control-label(data-bind="text: fk5017.i18n + ':'")
+              input.form-control(name="fk5017", maxlength="60", data-bind="value: fk5017, valueUpdate: 'afterkeydown', readOnly: fk5017.readOnly, attr: { placeholder: fk5017.i18n }")
+            div.form-group(data-bind="hasFeedback: { field: fk5018, toggle: fk5018.hasError, messages: fk5018.validationMessages }")
+              label.control-label(data-bind="text: fk5018.i18n + ':'")
+              select.form-control(name="fk5018", data-bind="options: _fk5018List, optionsValue: 'val', optionsText: 'i18n', value: fk5018, readOnly: fk5018.readOnly")
+            div.form-group(data-bind="hasFeedback: { field: fk5019, toggle: fk5019.hasError, messages: fk5019.validationMessages }")
+              label.control-label(data-bind="text: fk5019.i18n + ':'")
+              input.form-control(name="fk5019", maxlength="60", data-bind="value: fk5019, valueUpdate: 'afterkeydown', readOnly: fk5019.readOnly, attr: { placeholder: fk5019.i18n }")
+      div.panel.panel-default(data-bind="panelCollapse: { name: 'textform-sd4-panel-operation' }")
+        div.panel-heading
+          a(href="#textform-sd4-panel-operation", data-toggle="collapse", data-parent="#textform-sd4-panel-group")
+            strong(data-bind="text: groupOperationI18n")
+        div#textform-sd4-panel-operation.panel-collapse.collapse
+          div.panel-body
+            div.form-group(data-bind="hasFeedback: { field: fk5023, toggle: fk5023.hasError, messages: fk5023.validationMessages }")
+              label.control-label(data-bind="text: fk5023.i18n + ':'")
+              input.form-control(name="fk5023", data-bind="value: fk5023, valueUpdate: 'afterkeydown', readOnly: fk5023.readOnly")
+            div.form-group(data-bind="hasFeedback: { field: fk5024, toggle: fk5024.hasError, messages: fk5024.validationMessages }")
+              label.control-label(data-bind="text: fk5024.i18n + ':'")
+              input.form-control(name="fk5024", data-bind="value: fk5024, valueUpdate: 'afterkeydown', readOnly: fk5024.readOnly")
+            div.form-group(data-bind="hasFeedback: { field: fk5025, toggle: fk5025.hasError, messages: fk5025.validationMessages }")
+              label.control-label(data-bind="text: fk5025.i18n + ':'")
+              div.date-picker.input-group
+                input.form-control(name="fk5025", data-bind="datetimepicker: { value: fk5025 }, readOnly: fk5025.readOnly, valueUpdate: '' ")
+            div.form-group(data-bind="hasFeedback: { field: fk5026, toggle: fk5026.hasError, messages: fk5026.validationMessages }")
+              label.control-label(data-bind="text: fk5026.i18n + ':'")
+              div.date-picker.input-group
+                input.form-control(name="fk5026", data-bind="datetimepicker: { value: fk5026 }, readOnly: fk5026.readOnly, valueUpdate: '' ")
+            div.form-group(data-bind="hasFeedback: { field: fk5034, toggle: fk5034.hasError, messages: fk5034.validationMessages }")
+              label.control-label(data-bind="text: fk5034.i18n + ':'")
+              div.date-picker.input-group
+                input.form-control(name="fk5034", data-bind="datetimepicker: { value: fk5034 }, readOnly: fk5034.readOnly, valueUpdate: '' ")
+            div.form-group
+              table(width="100%")
+                colgroup
+                  col(width="*")
+                  col(width="46%")
+                  col(width="45")
+                thead
+                  tr
+                    th(data-bind="text: labelOpKeyI18n")
+                    th
+                      small(data-bind="text: siteLocI18n")
+                    th.text-center
+                      a(href="#", data-bind="click: addFk5035Set, readOnly: fk5035Set.readOnly")
+                        i.icon.fa.fa-plus
+                tbody(data-bind="foreach: fk5035Set")
+                  tr
+                    td
+                      div(data-bind="hasFeedback: { field: fk5035, toggle: fk5035.hasError, messages: fk5035.validationMessages }")
+                        input.form-control(name="fk5035", type="hidden", data-bind="select2: fk5035Select2, readOnly: fk5035.readOnly, attr: { placeholder: fk5035.i18n }")
+                    td
+                      div(data-bind="hasFeedback: { field: fk5041, toggle: fk5041.hasError, messages: fk5041.validationMessages }")
+                        input.form-control(name="fk5041", data-bind="value: fk5041, valueUpdate: 'afterkeydown', readOnly: fk5041.readOnly, attr: { placeholder: fk5041.i18n }")
+                    td
+                      button.btn.btn-default(type="button", data-bind="click: $parent.removeFk5035Set, focusOnRemove: { parent: 'table', find: 'thead a' }, readOnly: $parent.fk5035Set.readOnly")
+                        span.glyphicon.glyphicon-trash
+            div.form-group
+              table(width="100%")
+                colgroup
+                  col(width="*")
+                  col(width="45")
+                thead
+                  tr
+                    th(data-bind="text: labelGnrJustI18n")
+                    th.text-center
+                      a(href="#", data-bind="click: addFk5036Set, readOnly: fk5036Set.readOnly")
+                        i.icon.fa.fa-plus
+                tbody(data-bind="foreach: fk5036Set")
+                  tr
+                    td
+                      div(data-bind="hasFeedback: { field: fk5036, toggle: fk5036.hasError, messages: fk5036.validationMessages }")
+                        input.form-control(name="fk5036", data-bind="select2: _fk5036CfgAutoComplete, readOnly: fk5036.readOnly", type="hidden")
+                    td
+                      button.btn.btn-default(type="button", data-bind="click: $parent.removeFk5036Set, focusOnRemove: { parent: 'table', find: 'thead a' }, readOnly: $parent.fk5036Set.readOnly")
+                        span.glyphicon.glyphicon-trash
+            div.form-group(data-bind="hasFeedback: { field: fk5037, toggle: fk5037.hasError, messages: fk5037.validationMessages }")
+              label.control-label(data-bind="text: fk5037.i18n + ':'")
+              input.form-control(name="fk5037", data-bind="value: fk5037, valueUpdate: 'afterkeydown', readOnly: fk5037.readOnly, attr: { placeholder: fk5037.i18n }")
+            div.form-group(data-bind="hasFeedback: { field: fk5038, toggle: fk5038.hasError, messages: fk5038.validationMessages }, attr: { placeholder: fk5037.i18n }")
+              label.control-label(data-bind="text: fk5038.i18n + ':'")
+              textarea.form-control(name="fk5038", data-bind="value: fk5038, valueUpdate: 'afterkeydown', readOnly: fk5038.readOnly")
+      div.panel.panel-default(data-bind="panelCollapse: { name: 'textform-sd4-panel-earlyDiagnosis' }")
+        div.panel-heading
+          a(href="#textform-sd4-panel-earlyDiagnosis", data-toggle="collapse", data-parent="#textform-sd4-panel-group")
+            strong(data-bind="text: earlyDI18n")
+        div#textform-sd4-panel-earlyDiagnosis.panel-collapse.collapse
+          div.panel-body
+            div.form-group(data-bind="hasFeedback: { field: fk5040, toggle: fk5040.hasError, messages: fk5040.validationMessages }")
+              label.control-label(data-bind="text: fk5040.i18n + ':'")
+              input.form-control(name="fk5040", data-bind="value: fk5040, valueUpdate: 'afterkeydown', readOnly: fk5040.readOnly")
+            div(data-bind="hasFeedback: { field: fk5020Set, toggle: fk5020Set.hasError, messages: fk5020Set.validationMessages }, foreach: fk5020Set")
+              div.form-group(data-bind="hasFeedback: { field: fk5020, toggle: fk5020.hasError, messages: fk5020.validationMessages }")
+                div.checkbox
+                  label.control-label
+                    strong(data-bind="text: fk5020.i18n + ':'")
+                    input(type="checkbox", name="fk5020", data-bind="checked: fk5020, readOnly: fk5020.readOnly")
+              div.form-group(data-bind="visible: fk5020, hasFeedback: { field: fk5021, toggle: fk5021.hasError, messages: fk5021.validationMessages }")
+                label.control-label(data-bind="text: fk5021.i18n + ':'")
+                input.form-control(name="fk5021" data-bind="value: fk5021, valueUpdate: 'afterkeydown', readOnly: fk5021.readOnly, attr: { placeholder: fk5021.i18n }")
+      div.panel.panel-default(data-bind="panelCollapse: { name: 'textform-sd4-panel-kmam' }")
+        div.panel-heading
+          a(href="#textform-sd4-panel-kmam", data-toggle="collapse", data-parent="#textform-sd4-panel-group")
+            strong(data-bind="text: groupKMAMI18n")
+        div#textform-sd4-panel-kmam.panel-collapse.collapse
+          div.panel-body
+            div(data-bind="foreach: fk5042Set")
+              div.form-group(data-bind="hasFeedback: { field: fk5042, toggle: fk5042.hasError, messages: fk5042.validationMessages }")
+                label.control-label(data-bind="text: fk5042.i18n + ':'")
+                input.form-control(name="fk5042", data-bind="value: fk5042, valueUpdate: 'afterkeydown', readOnly: fk5042.readOnly, attr: {placeholder: fk5042.i18n }")
+              div.form-group(data-bind="hasFeedback: { field: fk5043, toggle: fk5043.hasError, messages: fk5043.validationMessages }")
+                label.control-label(data-bind="text: fk5043.i18n + ':'")
+                select.form-control(name="fk5043", data-bind="options: $parent._fk5043List, optionsValue: 'val', optionsText: 'i18n', value: fk5043, readOnly: fk5043.readOnly")
+      div.panel.panel-default(data-bind="panelCollapse: { name: 'textform-sd4-panel-gens' }, css: {'panel-danger': omimCodesHasError }")
+        div.panel-heading
+          a(href="#textform-sd4-panel-gens", data-toggle="collapse", data-parent="#textform-sd4-panel-group")
+            strong(data-bind="text: groupGenesI18n")
+            | &nbsp;
+            i.dc-info-icon(data-bind="visible: omimCodesHasError, tooltip: {title: omimCodesValidationMessage, placement: 'top', trigger:'click'}")
+        div#textform-sd4-panel-gens.panel-collapse.collapse
+          div.panel-body
+            div.form-group
+              label.control-label
+                span(data-bind="text: omimCodes.i18n")
+                | &nbsp;
+                span.text-right
+                  a(href="#", data-bind="click: addOmimChain, readOnly: omimCodes.readOnly() || !selectedOmimChain()")
+                    i.icon.fa.fa-plus
+              input.form-control(name="omimChainSelect2", type="hidden", data-bind="select2: omimChainSelect2, readOnly: omimCodes.readOnly")
+            div.text-right
+              a(href="#", data-bind="click: addOmimCodes, readOnly: omimCodes.readOnly")
+                i.icon.fa.fa-plus
+            div(data-bind="foreach: omimCodes")
+              div
+                div.form-group(data-bind="hasFeedback: { field: fk5070, toggle: fk5070.hasError, messages: fk5070.validationMessages }")
+                  label.control-label(data-bind="text: fk5070.i18n + ':'")
+                  input.form-control(name="fk5070", type="hidden", data-bind="select2: _fk5070CfgAutoComplete, readOnly: fk5070ReadOnly")
+                div.form-group(data-bind="hasFeedback: { field: fk5072, toggle: fk5072.hasError, messages: fk5072.validationMessages }")
+                  label.control-label(data-bind="text: fk5072.i18n + ':'")
+                  input.form-control.dc-select2-multiline(name="fk5072", type="hidden", data-bind="select2: _fk5072CfgAutoComplete, readOnly: fk5072ReadOnly")
+                div.form-group(data-bind="hasFeedback: { field: fk5071, toggle: fk5071.hasError, messages: fk5071.validationMessages }")
+                  label.control-label(data-bind="text: fk5071.i18n + ':'")
+                  input.form-control(name="fk5071", type="hidden", data-bind="select2: _fk5071CfgAutoComplete, readOnly: fk5071.readOnly")
+                div.form-group(data-bind="hasFeedback: { field: fk5073, toggle: fk5073.hasError, messages: fk5073.validationMessages }")
+                  label.control-label(data-bind="text: fk5073.i18n + ':'")
+                  input.form-control.dc-select2-multiline(name="fk5073", type="hidden", data-bind="select2: _fk5073CfgAutoComplete, readOnly: fk5073ReadOnly")
+              div
+                button.btn.btn-default(type="button", data-bind="click: $parent.removeOmimCodes, readOnly: $parent.omimCodes.readOnly")
+                  span.glyphicon.glyphicon-trash
+              div
+                hr
+            p(data-bind="html: textCopyrightI18n")

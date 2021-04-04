@@ -1,0 +1,21 @@
+{
+  "meta": {
+    "errors": [],
+    "warnings": [],
+    "query": {},
+    "itemsPerPage": null,
+    "page": null,
+    "replyCode": 200,
+    "model": "drug"
+  },
+  "data": [
+    {
+      "_id": 1401,
+      "name": "Spiramycin"
+    },
+    {
+      "_id": 54571,
+      "name": "Spiramycinum"
+    }
+  ]
+}

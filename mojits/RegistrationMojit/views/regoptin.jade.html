@@ -1,0 +1,31 @@
+-//TRANSLATION INCOMPLETE!! MOJ-3201
+-if(true === trial)
+  span Please wait...
+  script.
+    document.location = '#{optinPage}';
+-else
+  .container.container-fullscreen.dc_container.dc_shift_top
+    .hero-unit.dc_hero-unit
+      .row
+        .span12
+          .row
+            .span5
+              - if( 'ok' === status )
+                h3 Registrierung bestätigt!
+                small Ihre Registrierung für die Doc Cirrus Dienste ist
+                  | hiermit bestätigt.<br>
+                small Sie erhalten in Kürze eine abschließende E-Mail, sobald Ihr Konto aktiviert wurde.
+              - else if( 'confirmed' === status )
+                h3 Achtung!
+                small Sie haben sich bereits über diesen Link angemeldet.
+              - else
+                h3 Registrierungsfehler!
+                small Ihr Registrierungs-Link konnte leider nicht überprüft werden.<br>
+                small Verwenden Sie bitte einen freigegebenen Browser oder wenden Sie sich an unseren Support.
+              hr
+              small Vielen Dank und beste Grüsse<br>
+                | Ihr Doc Cirrus Team
+            .span6.offset1
+              a(href="/")
+                img(src='/static/DocCirrus/assets/images/dc_logo_300x103_trans.png', alt="Doc Cirrus – Your Safe Medical Cloud")
+    include ../../DocCirrus/views/footer

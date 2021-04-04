@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- automatische Dokumentation, generiert durch Visual Source Safe 
+	$Workfile: provider_typelib.xsd $  
+	$Modtime: 10.01.06 11:02 $  
+	$Revision: 11 $  
+-->
+<xs:schema xmlns:kbv="urn::hl7-org/kbv" xmlns="urn::hl7-org/cda" xmlns:kbvlib="urn:kbv/kbv/typelib/001" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="urn::hl7-org/cda" elementFormDefault="qualified">
+	<xs:import namespace="urn::hl7-org/kbv" schemaLocation="all_kbv_typelib.xsd"/>
+	<xs:import namespace="urn:kbv/kbv/typelib/001" schemaLocation="all_kbvtypelib001_typelib.xsd"/>
+	<xs:include schemaLocation="person_typelib.xsd"/>
+	<!-- ************************** dmp_provider_typ *************************************-->
+	<xs:complexType name="dmp_provider_typ">
+		<xs:annotation>
+			<xs:appinfo>Ersteller-Informationen</xs:appinfo>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="provider.type_cd" type="provider.type_cd_typ"/>
+			<xs:element name="function_cd" type="function_cd_typ" minOccurs="0"/>
+			<xs:element name="person" type="dmp_provider_person_typ"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!-- ************************** Hilfsdatentypen (provider.type_cd_typ, function_cd_typ) *************************************-->
+	<xs:complexType name="provider.type_cd_typ">
+		<xs:attribute name="V" type="xs:string" use="required" fixed="PRF"/>
+	</xs:complexType>
+	<xs:complexType name="function_cd_typ">
+		<xs:annotation>
+			<xs:appinfo>Arzt-Funktion</xs:appinfo>
+		</xs:annotation>
+		<xs:attribute name="V" type="kbvlib:personfunction_typ" use="required"/>
+		<xs:attribute name="S" type="xs:string" use="required" fixed="1.2.276.0.76.5.105"/>
+		<xs:attribute name="SN" type="xs:string" use="optional" fixed="KBV"/>
+		<xs:attribute name="DN" type="xs:string" use="optional"/>
+	</xs:complexType>
+	<!--
+	============================================================
+	Datentypen für die Schnittstelle zwischen Datenannahmestellen und gemeinsamen Einrichtungen
+	============================================================-->
+	<!-- ************************** dmp_provider_da_typ *************************************-->
+	<xs:complexType name="dmp_provider_da_typ">
+		<xs:annotation>
+			<xs:appinfo>Ersteller-Informationen</xs:appinfo>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="provider.type_cd" type="provider.type_cd_typ"/>
+			<xs:element name="function_cd" type="function_cd_typ" minOccurs="0"/>
+			<xs:element name="person" type="dmp_provider_person_da_typ"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--
+	============================================================
+	Datentypen für Koloskopie - 38a
+	============================================================-->
+	<!-- ************************** koloskopie_38a_provider_typ *************************************-->
+	<xs:complexType name="koloskopie_38a_provider_typ">
+		<xs:annotation>
+			<xs:appinfo>Ersteller-Informationen</xs:appinfo>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="provider.type_cd" type="provider.type_cd_typ"/>
+			<!--			<xs:element name="function_cd" type="function_cd_typ" minOccurs="0"/>-->
+			<xs:element name="person" type="koloskopie_38a_provider_person_typ"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--
+	============================================================
+	Datentypen für Koloskopie - 38b
+	============================================================-->
+	<!-- ************************** koloskopie_38b_provider_typ *************************************-->
+	<xs:complexType name="koloskopie_38b_provider_typ">
+		<xs:annotation>
+			<xs:appinfo>Ersteller-Informationen</xs:appinfo>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="provider.type_cd" type="provider.type_cd_typ"/>
+			<!--<xs:element name="function_cd" type="function_cd_typ" minOccurs="0"/>-->
+			<xs:element name="person" type="koloskopie_38b_provider_person_typ"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--
+	============================================================
+	Datentypen für eHKS
+	============================================================-->
+	<!-- **************************eHKS_provider_typ *************************************-->
+	<xs:complexType name="eHKS_provider_typ">
+		<xs:annotation>
+			<xs:appinfo>Ersteller-Informationen</xs:appinfo>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="provider.type_cd" type="provider.type_cd_typ"/>
+			<!--<xs:element name="function_cd" type="function_cd_typ" minOccurs="0"/>-->
+			<xs:element name="person" type="eHKS_provider_person_typ"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--
+	============================================================
+	Datentypen für QSHV 
+	============================================================-->
+	<!-- **************************QSHGV_provider_typ *************************************-->
+	<xs:complexType name="qshgv_provider_typ">
+		<xs:annotation>
+			<xs:appinfo>Ersteller-Informationen</xs:appinfo>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="person" type="qshgv_provider_person_typ"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

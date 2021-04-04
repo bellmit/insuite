@@ -1,0 +1,10 @@
+div.row.PatientDetailViewModel
+  div.col-xs-4.col-sm-3.col-md-2(data-bind="template: { name:'PatientSidebarViewModel', data: patientSidebarViewModel }")
+  div.col-xs-8.col-sm-9.col-md-10(data-bind="with: currentPatientSectionViewModel")
+    div.currentPatientSectionViewModel(data-bind="template: template")
+  div.col-xs-12.text-right
+    button.btn.btn-default(name="back", type="button", data-bind="click: back, text: buttonBackI18n")
+    | &nbsp;
+    button.btn.btn-default(name="deletePatient", type="button", data-bind="click: deletePatient, visible: isDeletePatientVisible(), readOnly: disableButtons, text: buttonDeleteI18n")
+    | &nbsp;
+    button#savePatient.btn.btn-primary(name="savePatient", type="button", data-bind="click: savePatientClickHandler, enable: isSavePatientEnabledComputed() && !disableButtons(), text: buttonSaveI18n")

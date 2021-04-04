@@ -1,0 +1,7 @@
+div.form-group
+  strong(data-bind="text: dmpCopdRelatedTransferOrConfinementArranged.i18n")
+  span(data-bind="dmpField: { field: dmpCopdRelatedTransferOrConfinementArranged }")
+  div(data-bind="foreach: dmpCopdRelatedTransferOrConfinementArranged.list, hasFeedback: { field: dmpCopdRelatedTransferOrConfinementArranged, toggle: dmpCopdRelatedTransferOrConfinementArranged.hasError, messages: dmpCopdRelatedTransferOrConfinementArranged.validationMessages }")
+    label.radio-inline
+      span(data-bind="text: i18n")
+      input(type="radio", name="dmpCopdRelatedTransferOrConfinementArranged", data-bind="value: val, checked: $parent.dmpCopdRelatedTransferOrConfinementArranged, readOnly: $parent.dmpCopdRelatedTransferOrConfinementArranged.readOnly")

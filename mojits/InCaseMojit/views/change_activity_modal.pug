@@ -1,0 +1,29 @@
+div#changeActivityModel
+  div.row
+    div.col-xs-12
+      //ko if: !actionCopy
+      span(data-bind="text: textMainI18n")
+      // /ko
+  div.row(data-bind="visible: isScheinSelected")
+    div.col-xs-12
+      span(data-bind="text: cheinSelectedI18n")
+  div.row
+    div.col-xs-5
+      div.form-group(data-bind="if: !isScheinSelected")
+        .date-picker.input-group
+          input#inputDate.form-control(name="timestamp", type="text", data-bind="datetimepicker: { value: timestamp }, attr: {placeholder: placeholderTimestampI18n}, readOnly: timestamp.readOnly")
+      div.form-group
+        //ko if: actionCopy
+        | &nbsp;
+        p(data-bind="text: selectFolderI18n")
+          div(data-bind="foreach: caseFolders")
+            .radio
+              label
+                input(type="radio", name="casefolderRadioBoxes", value="", data-bind="checked: $parent.selected, attr: {value: _id}, disable: $parent.disableCaseFolder( $data )")
+                span(data-bind="text: title")
+        // /ko
+    div.col-xs-6.col-xs-offset-1
+      div.form-group
+        input.form-control.input-sm#changeActivityLocation(type="hidden", data-bind="select2: select2Location", name="location")
+      div.form-group
+        input.form-control.input-sm#changeActivityEmployee(type="hidden", data-bind="select2: select2Employee", name="employee")

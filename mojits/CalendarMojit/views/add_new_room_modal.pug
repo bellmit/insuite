@@ -1,0 +1,19 @@
+div.row#addNewRoom
+  .form-group(data-bind="hasFeedback: { field: name, toggle: name.hasError, messages: name.validationMessages }")
+    label(for="name", data-bind="text: 'Name'")
+    input#name.form-control(data-bind="value: name, valueUpdate: 'afterkeydown', attr: { placeholder: 'Name' }" type="text" name="name")
+  .form-group(data-bind="hasFeedback: { field: color, toggle: color.hasError, messages: color.validationMessages }")
+    label(for="color", data-bind="text: colorI18n")
+    input#color.input-color.form-control(data-bind="value: color" type="input" name="color")
+  .form-group(data-bind="hasFeedback: { field: numberOfPatients, toggle: numberOfPatients.hasError, messages: numberOfPatients.validationMessages }")
+    label(for="numberOfPatients", data-bind="text: numberOfPatientsI18n")
+    input#numberOfPatients.form-control(data-bind="value: numberOfPatients, valueUpdate: 'afterkeydown', attr: { placeholder: numberOfPatientsI18n }" type="number" name="numberOfPatients")
+  .form-group
+      label(data-bind="text: roomTypeI18n")
+      | &nbsp;
+      label.radio-inline
+        span(data-bind="text: waitingRoomNameI18n + ' (' + waitingRoomI18n + ')'")
+        input(type="radio", name="roomTypeRadio", value= "waiting", data-bind="checked: roomType")
+      label.radio-inline
+        span(data-bind="text: treatmentRoomNameI18n + ' (' + treatmentRoomI18n+ ')'")
+        input(type="radio", name="roomTypeRadio", value= "treatment", data-bind="checked: roomType")

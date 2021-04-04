@@ -1,0 +1,915 @@
+{
+  "asv": {
+    "location": {
+      "kv": "72",
+      "kind": "OFFICIAL",
+      "postbox": "",
+      "addon": "",
+      "countryCode": "D",
+      "country": "Deutschland",
+      "city": "Berlin",
+      "zip": "12357",
+      "houseno": "40",
+      "street": "Flurweg",
+      "cardType": "BANK",
+      "isOptional": true,
+      "isAdditionalLocation": false,
+      "enabledPrinters": [],
+      "imapUrl": "",
+      "imapUserName": "",
+      "imapPassword": "",
+      "locname": "BS1",
+      "phone": "030",
+      "email": "maximilian.kramp+1000@doc-cirrus.com",
+      "budgets": [],
+      "defaultPrinter": "",
+      "commercialNo": "700100200",
+      "gkvInvoiceReceiver": "70",
+      "countryMode": [
+        "D"
+      ],
+      "emailFooter": "meine signatur",
+      "smtpEmailFrom": "",
+      "smtpHost": "",
+      "smtpPassword": "",
+      "smtpUserName": "",
+      "stockLocations": [],
+      "firstname": "",
+      "lastname": "",
+      "middlename": "",
+      "nameaffix": "",
+      "region": "Test",
+      "title": ""
+    },
+    "employee": {
+      "title": "",
+      "firstname": "Maximilian",
+      "nameaffix": "",
+      "middlename": "",
+      "fk3120": "",
+      "lastname": "Kramp",
+      "specialities": [],
+      "specialisationText": "",
+      "asvTeamNumbers": [
+        "123456789"
+      ],
+      "asvSpecializations": [],
+      "asvMembershipType": "FULL",
+      "arztstempel": "",
+      "fromLDAP": false,
+      "roles": [
+        "Empfang"
+      ],
+      "preferredLanguage": "null",
+      "expertise": [],
+      "bsnrs": [],
+      "accounts": [],
+      "communications": [
+        {
+          "signaling": true,
+          "confirmed": false,
+          "confirmNeeded": false,
+          "type": "EMAILJOB",
+          "preferred": true,
+          "value": "maximilian.kramp@doc-cirrus.com"
+        }
+      ],
+      "addresses": [],
+      "type": "PHYSICIAN",
+      "locations": [
+        {
+          "_id": "000000000000000000000001",
+          "locname": "BS1"
+        }
+      ],
+      "talk": "NONE",
+      "username": "mk",
+      "memberOf": [
+        {
+          "group": "ADMIN"
+        }
+      ],
+      "status": "ACTIVE",
+      "dob": "2018-11-19T09:46:27.758Z",
+      "initials": "MK",
+      "officialNo": "310013801",
+      "countryMode": [
+        "D"
+      ],
+      "qualiDignities": [],
+      "quantiDignities": [],
+      "ownZsrNumber": false,
+      "glnNumber": "9999999999999",
+      "kNumber": "9999999999999"
+    },
+    "patient": {
+      "additionalMirrorPatientIds": [],
+      "title": "",
+      "firstname": "Maximilian",
+      "nameaffix": "zusatz",
+      "middlename": "",
+      "fk3120": "vorwort",
+      "lastname": "Kramp",
+      "markers": [],
+      "createPlanned": false,
+      "accessPRC": true,
+      "talk": "MR",
+      "gender": "MALE",
+      "sendPatientReceipt": false,
+      "patientNumber": 1337,
+      "attachedSeverity": "NONE",
+      "crmTags": [],
+      "ehksDocType": "EHKSND",
+      "confirmedViewFromOtherLocations": false,
+      "additionalContacts": [],
+      "patientsFamilyMembers": [],
+      "additionalFamilyMembers": [],
+      "countryMode": [
+        "D"
+      ],
+      "accounts": [],
+      "communications": [
+        {
+          "signaling": true,
+          "confirmed": false,
+          "confirmNeeded": false,
+          "type": "EMAILPRIV",
+          "value": "maximilian.kramp@doc-cirrus.com"
+        }
+      ],
+      "addresses": [
+        {
+          "street": "Test",
+          "houseno": "1",
+          "zip": "12349",
+          "city": "Berlin",
+          "country": "Deutschland",
+          "countryCode": "D",
+          "addon": "",
+          "title": "",
+          "firstname": "",
+          "nameaffix": "",
+          "middlename": "",
+          "lastname": "",
+          "kind": "OFFICIAL"
+        }
+      ],
+      "kbvDob": "19.01.1996",
+      "insuranceStatus": [
+        {
+          "fk4133": null,
+          "fk4110": null,
+          "insuranceKind": "1",
+          "costCarrierBillingSection": "07",
+          "costCarrierBillingGroup": "11",
+          "feeSchedule": "2",
+          "fused": false,
+          "unzkv": [],
+          "bgNumber": "",
+          "address1": "Lichtscheider Str. 89",
+          "address2": "42285 Wuppertal",
+          "zipcode": "",
+          "city": "",
+          "phone": "",
+          "insuranceLink": "",
+          "email": "",
+          "insuranceGLN": "",
+          "recipientGLN": "",
+          "department": "",
+          "isTiersGarant": false,
+          "isTiersPayant": true,
+          "insuranceNo": "M240819600",
+          "insuranceId": "104940005",
+          "insuranceName": "BARMER",
+          "insurancePrintName": "BARMER/BVFG",
+          "insuranceGrpId": "72601",
+          "type": "PUBLIC",
+          "persGroup": "",
+          "dmp": "",
+          "kv": "72",
+          "locationId": "000000000000000000000001",
+          "fusedFrom": null,
+          "fusedToInsuranceId": null
+        }
+      ],
+      "affiliates": [],
+      "images": [],
+      "devices": [],
+      "partnerIds": [
+        {
+          "asvTeamNumbers": [
+            "123456789"
+          ],
+          "partnerId": "ASV"
+        }
+      ],
+      "careDegree": "NO",
+      "dob": "1996-01-19T09:00:00.000Z",
+      "dob_MM": "01",
+      "dob_DD": "19",
+      "isAMTInvoiceRecipient": false,
+      "patientNo": "1337",
+      "attachedActivity": "",
+      "attachedContent": "",
+      "inActive": false,
+      "isDeceased": false,
+      "pin": "12345",
+      "nextAppointment": null,
+      "noShowCount": 1,
+      "familyDoctorModel": false,
+      "confirmedViewFromLocationIds": [],
+      "jobStatus": "EMPLOYEE",
+      "jobTitle": "Dev",
+      "workingAt": "Doc-Cirrus"
+    },
+    "gkvCaseFolder": {
+      "disabled" : false,
+      "merged" : false,
+      "type" : "PUBLIC",
+      "title" : "GKV"
+    },
+    "asvCaseFolder": {
+      "ruleErrors": 0,
+      "ruleWarnings": 0,
+      "ruleActivities": 0,
+      "disabled": false,
+      "merged": false,
+      "title": "ASV (123456789)",
+      "type": "PUBLIC",
+      "additionalType": "ASV",
+      "identity": "123456789",
+      "lastChanged": "2020-11-10T12:28:29.803Z"
+    },
+    "gkvSchein": {
+      "actType": "SCHEIN",
+      "attachments": [],
+      "attachedMediaTags": [],
+      "subType": "",
+      "time": "",
+      "backupEmployeeIds": [],
+      "userContent": "ambulante Behandlung (ambulante Behandlung)",
+      "mediaImportError": "",
+      "partnerInfo": "",
+      "explanations": "",
+      "status": "VALID",
+      "activities": [],
+      "referencedBy": [],
+      "formId": "",
+      "formVersion": "",
+      "formPdf": "",
+      "formLang": "de",
+      "formGender": "n",
+      "apkState": "IN_PROGRESS",
+      "unlinkedMirrorIds": [],
+      "savedEmails": [],
+      "forInsuranceType": "",
+      "locationFeatures": "",
+      "scheinRemittor": "",
+      "scheinEstablishment": "",
+      "scheinSpecialisation": "",
+      "scheinOrder": "",
+      "scheinDiagnosis": "",
+      "reasonType": "",
+      "scheinFinding": "",
+      "scheinNotes": "",
+      "scheinClinicalTreatmentFrom": null,
+      "scheinClinicalTreatmentTo": null,
+      "scheinNextTherapist": "",
+      "fk4234": false,
+      "fk4219": "",
+      "continuousIcds": [],
+      "continuousMedications": [],
+      "createContinuousDiagnosisOnSave": false,
+      "createContinuousMedicationsOnSave": false,
+      "caseNumber": "",
+      "icds": [],
+      "icdsExtra": [],
+      "scheinBillingArea": "00",
+      "scheinType": "0101",
+      "scheinSubgroup": "00",
+      "scheinTransferArrangementCode": "",
+      "scheinTransferDateOfContact": null,
+      "scheinTransferTypeInfo": "",
+      "fk4124": "",
+      "fk4126": "",
+      "fk4125from": null,
+      "fk4125to": null,
+      "fk4123": "",
+      "fk4206": null,
+      "fk4236": false,
+      "fk4241": "",
+      "fk4217": "",
+      "scheinSlipMedicalTreatment": "",
+      "__t": "SCHEIN",
+      "attachedMedia": [],
+      "timestamp": "2020-11-07T23:00:00.001Z",
+      "content": "ambulante Behandlung (ambulante Behandlung)",
+      "fk4235Set": [],
+      "invoiceData": [],
+      "scheinTransferType": ""
+    },
+    "asvSchein": {
+      "actType": "SCHEIN",
+      "attachments": [],
+      "attachedMediaTags": [],
+      "subType": "",
+      "time": "",
+      "backupEmployeeIds": [],
+      "userContent": "ambulante Behandlung (ambulante Behandlung)",
+      "mediaImportError": "",
+      "partnerInfo": "",
+      "explanations": "",
+      "status": "VALID",
+      "activities": [],
+      "referencedBy": [],
+      "formId": "",
+      "formVersion": "",
+      "formPdf": "",
+      "formLang": "de",
+      "formGender": "m",
+      "apkState": "IN_PROGRESS",
+      "unlinkedMirrorIds": [],
+      "savedEmails": [],
+      "forInsuranceType": "",
+      "locationFeatures": "",
+      "scheinRemittor": "",
+      "scheinEstablishment": "",
+      "scheinSpecialisation": "",
+      "scheinOrder": "",
+      "scheinDiagnosis": "",
+      "reasonType": "",
+      "scheinFinding": "",
+      "scheinNotes": "",
+      "scheinClinicalTreatmentFrom": null,
+      "scheinClinicalTreatmentTo": null,
+      "scheinNextTherapist": "",
+      "fk4234": false,
+      "fk4219": "",
+      "continuousIcds": [],
+      "continuousMedications": [],
+      "createContinuousDiagnosisOnSave": false,
+      "createContinuousMedicationsOnSave": false,
+      "caseNumber": "",
+      "icds": [],
+      "icdsExtra": [],
+      "scheinBillingArea": "00",
+      "scheinType": "0101",
+      "scheinSubgroup": "00",
+      "scheinTransferArrangementCode": "",
+      "scheinTransferDateOfContact": null,
+      "scheinTransferTypeInfo": "",
+      "fk4124": "",
+      "fk4126": "",
+      "fk4125from": null,
+      "fk4125to": null,
+      "fk4123": "",
+      "fk4206": null,
+      "fk4236": false,
+      "fk4241": "",
+      "fk4217": "",
+      "scheinSlipMedicalTreatment": "",
+      "__t": "SCHEIN",
+      "attachedMedia": [],
+      "timestamp": "2020-11-08T23:00:00.001Z",
+      "content": "ambulante Behandlung (ambulante Behandlung)",
+      "fk4235Set": [],
+      "invoiceData": [],
+      "scheinTransferType": ""
+    }
+  },
+  "patients": [
+    {
+      "additionalMirrorPatientIds": [],
+      "title": "",
+      "firstname": "MaximilianPKV",
+      "nameaffix": "",
+      "middlename": "",
+      "fk3120": "",
+      "lastname": "Kramp",
+      "physicians": [],
+      "employees": [
+        "5bf28673e151410df85edb0a",
+        "5ae04b83926edda18f16f61f"
+      ],
+      "markers": [],
+      "createPlanned": false,
+      "accessPRC": false,
+      "talk": "MR",
+      "gender": "MALE",
+      "sendPatientReceipt": false,
+      "patientNumber": 20,
+      "attachedSeverity": "NONE",
+      "crmTags": [],
+      "edmpTypes": [],
+      "edmpNotifiedAboutStatementOfParticipationTypes": [],
+      "ehksDocType": "EHKSND",
+      "scheinEmployeeIds": [
+        "5bf28673e151410df85edb0a"
+      ],
+      "confirmedViewFromOtherLocations": false,
+      "additionalContacts": [],
+      "countryMode": [
+        "D"
+      ],
+      "accounts": [],
+      "communications": [],
+      "addresses": [],
+      "kbvDob": "19.01.1996",
+      "insuranceStatus": [
+        {
+          "fk4133": null,
+          "fk4110": null,
+          "insuranceKind": "",
+          "costCarrierBillingSection": "00",
+          "costCarrierBillingGroup": "",
+          "feeSchedule": "3",
+          "fused": false,
+          "unzkv": [],
+          "bgNumber": "",
+          "address1": "Theodor-Heuss-Straße 96",
+          "address2": "49377 Vechta",
+          "zipcode": "",
+          "city": "",
+          "phone": "",
+          "insuranceLink": "",
+          "email": "",
+          "insuranceGLN": "",
+          "recipientGLN": "",
+          "lawCode": "",
+          "department": "",
+          "_id": "5cc837a6368ef10d9e223bff",
+          "insuranceId": "168141427",
+          "insuranceName": "ALTE OLDENBURGER Krankenversicherung AG",
+          "insurancePrintName": "ALTE OLDENBURGER",
+          "type": "PRIVATE",
+          "billingFactor": "privatversicherte",
+          "persGroup": "",
+          "dmp": "",
+          "locationId": "000000000000000000000001",
+          "employeeId": "5ae04b83926edda18f16f61f"
+        }
+      ],
+      "affiliates": [],
+      "images": [],
+      "devices": [],
+      "partnerIds": [],
+      "careDegree": "NO",
+      "dob": "1996-01-19T09:00:00.000Z",
+      "dob_MM": "01",
+      "dob_DD": "19",
+      "patientSince": "2019-04-30T11:54:37.052Z",
+      "crmTreatments": [],
+      "crmCatalogShort": "GOÄ",
+      "locationId": "",
+      "patientNo": "20",
+      "lastChanged": "2019-07-03T11:13:04.393Z",
+      "activeCaseFolderId": "5cc837ac368ef10d9e223c03"
+    },
+    {
+      "firstname": "Test1",
+      "lastname": "Test1",
+      "patientNo": "Z-1446",
+      "patientNumber": 1446,
+      "insuranceStatus": [
+        {
+          "address1": "",
+          "address2": "",
+          "bgNumber": "",
+          "billingFactor": "privatversicherte",
+          "costCarrierBillingGroup": "",
+          "costCarrierBillingSection": "",
+          "dmp": "",
+          "feeSchedule": "3",
+          "fk4108": "",
+          "fk4110": null,
+          "fk4133": null,
+          "fused": false,
+          "insuranceGrpId": "",
+          "insuranceId": "",
+          "insuranceKind": "3",
+          "insuranceName": "Privat",
+          "insurancePrintName": "Privat",
+          "kv": "",
+          "persGroup": "",
+          "policyHolder": "",
+          "type": "PRIVATE",
+          "unzkv": []
+        }
+      ]
+    },
+    {
+      "firstname": "Test2",
+      "lastname": "Test2",
+      "patientNo": "1446",
+      "patientNumber": 1446,
+      "insuranceStatus": [
+        {
+          "fk4133": null,
+          "fk4110": null,
+          "insuranceKind": "",
+          "costCarrierBillingSection": "00",
+          "costCarrierBillingGroup": "",
+          "feeSchedule": "3",
+          "fused": false,
+          "unzkv": [],
+          "bgNumber": "",
+          "address1": "Maybachstraße 54/56",
+          "address2": "70469 Stuttgart",
+          "zipcode": "",
+          "city": "",
+          "phone": "",
+          "insuranceLink": "",
+          "email": "",
+          "insuranceGLN": "",
+          "recipientGLN": "",
+          "department": "",
+          "insuranceId": "950885055",
+          "insuranceName": "Postbeamtenkrankenkasse",
+          "insurancePrintName": "Postbeamtenkrankenkasse",
+          "type": "PRIVATE",
+          "billingFactor": "postbeamte_b",
+          "persGroup": "",
+          "dmp": "",
+          "isTiersGarant": false,
+          "isTiersPayant": true
+        }
+      ]
+    }
+
+  ],
+  "casefolders": [
+    {
+      "ruleErrors": 0,
+      "ruleWarnings": 0,
+      "ruleActivities": 0,
+      "disabled": false,
+      "merged": false,
+      "type": "PRIVATE",
+      "title": "PKV",
+      "start": "2019-04-30T11:55:24.610Z",
+      "lastChanged": "2019-04-30T11:55:24.736Z"
+    }
+  ],
+  "lablogs": [
+    {
+      "timestamp" : "2021-02-10T22:23:15.917Z",
+      "created" : "2020-09-15T22:00:00.000Z",
+      "source" : "Drs. med. Gem.praxis f.Hämat.u.Onkologie Dechow/De",
+      "status" : "IMPORTED",
+      "description" : "",
+      "type" : "LG-Bericht ([E] Endbefund)",
+      "user" : [],
+      "fileName" : "SUP-35451.ldt.ignore",
+      "fileHash" : "-79de94b2",
+      "fileDatabaseId" : "5fad304f0bce2c2d92fd777d",
+      "configuration" : {
+        "pre" : {
+          "billingFlag" : true,
+          "gkvBillingFlag" : false,
+          "disallowGkvBilling" : false,
+          "checkFileWithLdkPm" : false,
+          "useCustomAssignment" : false,
+          "customAssignmentField" : "8310",
+          "useDataFromLabrequestIfPresent" : false
+        },
+        "assignment" : {
+          "assignmentField" : "",
+          "assignmentValue" : ""
+        }
+      },
+      "linkedActivities" : [],
+      "assignedPatient" : {
+        "patientId" : "",
+        "patientName" : "",
+        "patientFirstname" : ""
+      },
+      "patientLabLogId" : "",
+      "l_data" : {
+        "versionUsed" : {
+          "type" : "ldt",
+          "name" : "ldt20"
+        },
+        "records" : [
+          {
+            "recordType" : "8220",
+            "ldtVersion" : "LDT1014.01",
+            "bsnr" : 621971500,
+            "bsnrDesc" : "Drs. med. Gem.praxis f.Hämat.u.Onkologie Dechow/De",
+            "docLANR" : [
+              {
+                "head" : 838234327,
+                "docName" : "Prof.Dr.med. Thomas Decker"
+              }
+            ],
+            "bsnrStreet" : "Elisabethenstr. 19",
+            "bsnrZip" : "88212",
+            "bsnrCity" : "Ravensburg",
+            "lab" : "LG Biberach",
+            "kbvValidationNo" : "Z/38/1601/24/804",
+            "encoding" : "Code page 437",
+            "customerNo" : "1540",
+            "dateOfCreation" : "2020-09-15T22:00:00.000Z"
+          },
+          {
+            "recordType" : "8202",
+            "recordRequestId" : "32121",
+            "labReqNo" : "15403672",
+            "labReqReceived" : "2020-09-17T21:00:00.000Z",
+            "reportDate" : "2020-09-17T17:47:00.000Z",
+            "patientName" : "Lastname_Test",
+            "patientForename" : "Firstname_Test",
+            "patientDob" : "1996-01-18T23:00:00.000Z",
+            "patientGender" : "U",
+            "findingKind" : "E",
+            "billingType" : "P",
+            "labClient" : "290465627",
+            "feeSchedule" : 3,
+            "patientAddInfo" : "Lang, Peter",
+            "testId" : [
+              {
+                "head" : "Arzt2",
+                "testLabel" : "Arzt-Profil 2",
+                "labName" : "Drs. med. Gem.praxis f.Hämat.u.Onkologie Dechow/De",
+                "previousVersions" : 1,
+                "labReqReceived" : "2020-09-17T21:00:00.000Z"
+              },
+              {
+                "head" : "Bili",
+                "testLabel" : "Bilirubin, gesamt",
+                "gnr" : [
+                  {
+                    "head" : "3581H1",
+                    "cost" : 0,
+                    "BillingDoneBy" : 2
+                  }
+                ],
+                "sampleId" : "LS",
+                "sampleLabel" : "LG Serum",
+                "testResultVal" : 0.51,
+                "TestResultUnit" : "mg/dl",
+                "sampleNormalValueText" : [
+                  "< 1.2"
+                ],
+                "sampleNormalValueUpperBound" : 1.2,
+                "labName" : "Drs. med. Gem.praxis f.Hämat.u.Onkologie Dechow/De",
+                "previousVersions" : 1,
+                "labReqReceived" : "2020-09-17T21:00:00.000Z"
+              },
+              {
+                "head" : "AP",
+                "testLabel" : "AP (Alk. Phosphatase i.S.)",
+                "gnr" : [
+                  {
+                    "head" : "3587H1",
+                    "cost" : 0,
+                    "BillingDoneBy" : 2
+                  }
+                ],
+                "sampleId" : "LS",
+                "sampleLabel" : "LG Serum",
+                "testResultVal" : 89,
+                "TestResultUnit" : "U/l",
+                "sampleNormalValueText" : [
+                  "Kein Referenzbereich wegen unvollständiger Patientendaten."
+                ],
+                "labName" : "Drs. med. Gem.praxis f.Hämat.u.Onkologie Dechow/De",
+                "previousVersions" : 1,
+                "labReqReceived" : "2020-09-17T21:00:00.000Z"
+              },
+              {
+                "head" : "GOT",
+                "testLabel" : "GOT (AST)",
+                "gnr" : [
+                  {
+                    "head" : "3594H1",
+                    "cost" : 0,
+                    "BillingDoneBy" : 2
+                  }
+                ],
+                "sampleId" : "LS",
+                "sampleLabel" : "LG Serum",
+                "testResultVal" : 18,
+                "TestResultUnit" : "U/l",
+                "sampleNormalValueText" : [
+                  "Kein Referenzbereich wegen unvollständiger Patientendaten."
+                ],
+                "labName" : "Drs. med. Gem.praxis f.Hämat.u.Onkologie Dechow/De",
+                "previousVersions" : 1,
+                "labReqReceived" : "2020-09-17T21:00:00.000Z"
+              },
+              {
+                "head" : "GPT",
+                "testLabel" : "GPT (ALT)",
+                "gnr" : [
+                  {
+                    "head" : "3595H1",
+                    "cost" : 0,
+                    "BillingDoneBy" : 2
+                  }
+                ],
+                "sampleId" : "LS",
+                "sampleLabel" : "LG Serum",
+                "testResultVal" : 11,
+                "TestResultUnit" : "U/l",
+                "sampleNormalValueText" : [
+                  "Kein Referenzbereich wegen unvollständiger Patientendaten."
+                ],
+                "labName" : "Drs. med. Gem.praxis f.Hämat.u.Onkologie Dechow/De",
+                "previousVersions" : 1,
+                "labReqReceived" : "2020-09-17T21:00:00.000Z"
+              },
+              {
+                "head" : "G-GT",
+                "testLabel" : "Gamma-GT",
+                "gnr" : [
+                  {
+                    "head" : "3592H1",
+                    "cost" : 0,
+                    "BillingDoneBy" : 2
+                  }
+                ],
+                "sampleId" : "LS",
+                "sampleLabel" : "LG Serum",
+                "testResultVal" : 49,
+                "TestResultUnit" : "U/l",
+                "sampleNormalValueText" : [
+                  "Kein Referenzbereich wegen unvollständiger Patientendaten."
+                ],
+                "labName" : "Drs. med. Gem.praxis f.Hämat.u.Onkologie Dechow/De",
+                "previousVersions" : 1,
+                "labReqReceived" : "2020-09-17T21:00:00.000Z"
+              },
+              {
+                "head" : "Na",
+                "testLabel" : "Natrium",
+                "gnr" : [
+                  {
+                    "head" : "3558",
+                    "cost" : 0,
+                    "BillingDoneBy" : 2
+                  }
+                ],
+                "sampleId" : "LS",
+                "sampleLabel" : "LG Serum",
+                "testResultVal" : 137,
+                "TestResultUnit" : "mmol/l",
+                "sampleNormalValueText" : [
+                  "132 - 146"
+                ],
+                "sampleNormalValueLowerBound" : 132,
+                "sampleNormalValueUpperBound" : 146,
+                "labName" : "Drs. med. Gem.praxis f.Hämat.u.Onkologie Dechow/De",
+                "previousVersions" : 1,
+                "labReqReceived" : "2020-09-17T21:00:00.000Z"
+              },
+              {
+                "head" : "K",
+                "testLabel" : "Kalium",
+                "gnr" : [
+                  {
+                    "head" : "3557",
+                    "cost" : 0,
+                    "BillingDoneBy" : 2
+                  }
+                ],
+                "sampleId" : "LS",
+                "sampleLabel" : "LG Serum",
+                "testResultVal" : 3.6,
+                "TestResultUnit" : "mmol/l",
+                "sampleNormalValueText" : [
+                  "3.5 - 5.1"
+                ],
+                "sampleNormalValueLowerBound" : 3.5,
+                "sampleNormalValueUpperBound" : 5.1,
+                "labName" : "Drs. med. Gem.praxis f.Hämat.u.Onkologie Dechow/De",
+                "previousVersions" : 1,
+                "labReqReceived" : "2020-09-17T21:00:00.000Z"
+              },
+              {
+                "head" : "Ca",
+                "testLabel" : "Calcium",
+                "gnr" : [
+                  {
+                    "head" : "3555",
+                    "cost" : 0,
+                    "BillingDoneBy" : 2
+                  }
+                ],
+                "sampleId" : "LS",
+                "sampleLabel" : "LG Serum",
+                "testResultVal" : 2.05,
+                "TestResultUnit" : "mmol/l",
+                "sampleNormalValueText" : [
+                  "2.08 - 2.65"
+                ],
+                "sampleNormalValueLowerBound" : 2.08,
+                "sampleNormalValueUpperBound" : 2.65,
+                "testResultLimitIndicator" : "-",
+                "labName" : "Drs. med. Gem.praxis f.Hämat.u.Onkologie Dechow/De",
+                "previousVersions" : 1,
+                "labReqReceived" : "2020-09-17T21:00:00.000Z"
+              },
+              {
+                "head" : "SGlu",
+                "testLabel" : "Glucose im Serum",
+                "gnr" : [
+                  {
+                    "head" : "3560",
+                    "cost" : 0,
+                    "BillingDoneBy" : 2
+                  }
+                ],
+                "sampleId" : "LS",
+                "sampleLabel" : "LG Serum",
+                "testResultVal" : 83,
+                "TestResultUnit" : "mg/dl",
+                "sampleNormalValueText" : [
+                  "60 - 100",
+                  "Hinweis:",
+                  "Beim Versand von Vollblut statt Serum und bei verspätetem",
+                  "Abseren (> 1 Std.) sind falsch niedrige Glukosewerte infolge",
+                  "der Glykolyse zu erwarten."
+                ],
+                "sampleNormalValueLowerBound" : 60,
+                "sampleNormalValueUpperBound" : 100,
+                "labName" : "Drs. med. Gem.praxis f.Hämat.u.Onkologie Dechow/De",
+                "previousVersions" : 1,
+                "labReqReceived" : "2020-09-17T21:00:00.000Z"
+              },
+              {
+                "head" : "KREAJ2",
+                "testLabel" : "Kreatinin (JaffΘ)",
+                "gnr" : [
+                  {
+                    "head" : "3585H1",
+                    "cost" : 0,
+                    "BillingDoneBy" : 2
+                  }
+                ],
+                "sampleId" : "LS",
+                "sampleLabel" : "LG Serum",
+                "testResultVal" : 0.89,
+                "TestResultUnit" : "mg/dl",
+                "sampleNormalValueText" : [
+                  "Kein Referenzbereich wegen unvollständiger Patientendaten."
+                ],
+                "labName" : "Drs. med. Gem.praxis f.Hämat.u.Onkologie Dechow/De",
+                "previousVersions" : 1,
+                "labReqReceived" : "2020-09-17T21:00:00.000Z"
+              },
+              {
+                "head" : "MDRD-F",
+                "testLabel" : "GFR (MDRD)",
+                "sampleId" : "LS",
+                "sampleLabel" : "LG Serum",
+                "TestResultUnit" : "ml/min/1.73m2KOF",
+                "sampleTestNotes" : [
+                  "Berechnung nicht möglich",
+                  "Berechnung bezogen auf Standard-Körperoberfläche (1,73 qm)"
+                ],
+                "labName" : "Drs. med. Gem.praxis f.Hämat.u.Onkologie Dechow/De",
+                "previousVersions" : 1,
+                "labReqReceived" : "2020-09-17T21:00:00.000Z"
+              },
+              {
+                "head" : "HST",
+                "testLabel" : "Harnstoff",
+                "gnr" : [
+                  {
+                    "head" : "3584H1",
+                    "cost" : 0,
+                    "BillingDoneBy" : 2
+                  }
+                ],
+                "sampleId" : "LS",
+                "sampleLabel" : "LG Serum",
+                "testResultVal" : 42.7,
+                "TestResultUnit" : "mg/dl",
+                "sampleNormalValueText" : [
+                  "< 50.0",
+                  "Hinweis:",
+                  "Abhängig vom Eiweißkonsum. Bei hoher Eiweißzufuhr sind auch",
+                  "bei Nierengesunden höhere Harnstoffspiegel zu beobachten."
+                ],
+                "sampleNormalValueUpperBound" : 50,
+                "labName" : "Drs. med. Gem.praxis f.Hämat.u.Onkologie Dechow/De",
+                "previousVersions" : 1,
+                "labReqReceived" : "2020-09-17T21:00:00.000Z"
+              }
+            ]
+          },
+          {
+            "recordType" : "8221",
+            "sizeTotal" : 2249763
+          }
+        ]
+      },
+      "flow" : "",
+      "flags" : [],
+      "errs" : [],
+      "pmResults" : null,
+      "sourceFileType" : null,
+      "u_extra" : null
+    }
+  ]
+}

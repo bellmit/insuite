@@ -1,0 +1,67 @@
+div(id=mojit_view_id)
+  .container(style="padding-top: 30px")
+    h1 KoUI
+    //div(data-bind="template: readCardBtn.template")
+    //div(data-bind="template: getCardTerminalsBtn.template")
+    //div(data-bind="template: changePinBtn.template")
+    //div(data-bind="template: getPinStatusBtn.template")
+    //div(data-bind="template: unblockPinBtn.template")
+    //div(data-bind="template: verifyPinBtn.template")
+    //div(data-bind="template: discoverTiEndpointsBtn.template")
+    h1 Test uploader (pure)
+    hr
+    div#uploader(data-bind="with: uploader")
+      div.well.dcFileDrop(data-bind="fileDrop: droppedFiles")
+        div.form-group.row
+          div.col-md-6
+            // ko foreach: {data: fileUploader.filesInProgress, as: 'fileDesc'}
+            div
+              img.img-rounded.thumb(style="height: 125px;", data-bind="attr: { src: fileDesc.dataURL }")
+              span(data-bind="text: fileDesc.name")
+              a.dc-red.pull-right(data-bind="click: $parent.fileUploader.cancel", href="#")
+                i.fa.fa-times
+            // /ko
+            div(datt-bind="ifnot: fileUploader.filesInProgress")
+              label.drag-label Drag file here
+          div.col-md-6
+            input(type="file", multiple, data-bind="fileUploader: fileUploader", accept="image/*")
+    h1 Test uploader (component)
+    hr
+    div#aKoFileUploader(data-bind="template: aKoFileUploader.template")
+    h1 TestEditableTable
+    hr
+    #aKoEditableTable(data-bind="template: aEditableTable.template")
+    hr
+    h1 KoButton
+    hr
+    #aKoButton(data-bind="template: aKoButton.template")
+    h1 KoMenu
+      small &nbsp;(normally not used inline)
+    hr
+    #aKoMenu.open.clearfix(data-bind="template: aKoMenu.template", style="margin-bottom: 110px; position: relative;")
+    h1 KoButtonDropDown
+    hr
+    #aKoButtonDropDown(data-bind="template: aKoButtonDropDown.template")
+    h1 KoTable
+    hr
+    #aKoTable(data-bind="template: aKoTable.template")
+    #aKoTableRemote(data-bind="template: aKoTableRemote.template")
+    h1 KoNav
+    hr
+    #aKoNav(data-bind="template: aKoNav.template")
+    hr
+    h1 KoPrintButton
+    #aKoPrintButton(data-bind="template: aKoPrintButton.template")
+    h1 KoExample
+    hr
+    #aKoExample(data-bind="template: aKoExample.template")
+    h1 KoSchemaValue
+    #aKoSchemaValueFormText(data-bind="template: aKoSchemaValueFormText.template")
+    hr
+    h1 Tests
+    hr
+    #test-ground(style="margin: 20px 0;")
+    include runTests
+
+//- include is not needed in regular files it is just for not re-compile when modifying those templates
+include ../../../autoload/KoUI/include

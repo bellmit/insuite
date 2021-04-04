@@ -1,0 +1,10 @@
+div.CartViewModel
+    div.col-xs-12(data-bind="with: actionButtons")
+        div.dc-action-buttons.dc-action-buttons-top.dc-action-buttons-left.clearfix
+            button#btn_crt.btn.btn-primary(type="button", data-bind="click: create.action, enable: create.enabled, text: buttonCreateI18n")
+            button#btn_sent.btn.btn-primary(type="button", data-bind="click: send.action, text: buttonSendI18n, enable: send.enabled")
+            button#btn_arrive.btn.btn-primary(type="button", data-bind="click: arrive.action, text: buttonArriveI18n, enable: arrive.enabled")
+            button#btn_remove.btn.btn-primary(type="button", data-bind="click: remove.action, text: buttonRemoveI18n, enable: remove.enabled")
+            button#btn_crtfrom.btn.btn-primary(type="button", data-bind="click: createFrom.action, text: buttonCreateFromI18n, enable: createFrom.enabled")
+    div.col-xs-12
+        div(data-bind="template: ordersTable.template")

@@ -1,0 +1,18 @@
+div
+  p
+    span Zertifikate von
+    | &nbsp;
+    span(data-bind="text: account.username")
+  div(data-bind="foreach: account.certificates")
+    p
+      span(data-bind="text: $parent.getCsrStatus($data)")
+      | &nbsp;
+      span(data-bind="if: !$parent.isFinalCsrStatus(), click: $parent.refreshCsrStatus")
+        span.glyphicon.glyphicon-refresh.glyphicon.glyphicon-refresh
+    p
+      span(data-bind="text: $parent.getCertificateInfo($data)")
+
+  div
+    span(data-bind="template: createCertificate.template", style="padding-right: 8px;")
+    span(data-bind="template: deleteCertificate.template", style="padding-right: 8px;")
+    span(data-bind="template: downloadCertificate.template")

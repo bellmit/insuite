@@ -1,0 +1,73 @@
+div
+  include patientdiff
+  include add_insurances
+  div.row
+    .col-xs-12
+      div(data-bind="if: errors().length > 0")
+        div.panel.panel-danger
+          div.panel-heading.panel-title Fehler
+          div.panel-body
+            ul.list-unstyled(data-bind="foreach: errors")
+              li
+                div
+                  h4(data-bind="html: message")
+                  br
+                  div.row(data-bind="foreach: actions")
+                    div.pull-left(data-bind="template: $root[name].template", style="margin-left: 10px")
+  div.row
+    div(data-bind="if: readIds().length")
+      a(data-bind="click: showAll") Alle anzeigen
+    div(data-bind="if: crlogs().length")
+      .col-xs-6.col-sm-6.col-md-6
+        div(data-bind="template: cardreaderTable.template")
+      .col-xs-6.col-sm-6.col-md-6(data-bind="if: selectedCrLog")
+        div(data-bind="with: selectedCrLog")
+          h4(data-bind="html: displayStatusText, css: {'text-success': displayStatus() === 'success', 'text-danger': displayStatus() === 'danger'}")
+          div(data-bind="if: feedback().length")
+            .panel(data-bind="css: {'panel-default': displayPanelStatus() === 'default', 'panel-success': displayPanelStatus() === 'success', 'panel-warning': displayPanelStatus() === 'warning', 'panel-danger': displayPanelStatus() === 'danger', 'panel-info': displayPanelStatus() === 'info'}")
+              .panel-heading
+                .panel-title Rückmeldungen
+              .panel-body
+                div(data-bind="foreach: feedback")
+                  p(data-bind="css: {'text-warning': ('111001' === code() || '111003' === code())}, text: message")
+                h4.text-danger(data-bind="text: actionsText")
+          div(data-bind="if: 'ONLY_ALLOW_COPYING_DATA' === validationStatus()")
+            button.btn.btn-primary(style="margin-left: 5px;", data-bind="click: applyAction.bind($data, 'copy')") Daten in kopierbarer Form anzeigen
+          div(data-bind="if: 'MATCHING' === status() && patientSelection()")
+            div#cr-select-patient(data-bind="with: patientSelection")
+              div(style="margin-bottom: 4px;")
+                button.btn.btn-default(data-bind="click: $parent.applyAction.bind($parent, 'cancel')") Kartenlesevorgang abbrechen
+                button.btn.btn-default(style="margin-left: 5px;", data-bind="click: $parent.applyAction.bind($parent, 'matching_create_new')") Neu Anlegen
+                button.btn.btn-primary(style="margin-left: 5px;", data-bind="enable: $parent.selectedMatchingPatient, click: $parent.applyAction.bind($parent, 'matching_select')") Auswählen
+              ul.nav.nav-tabs
+                li(data-bind="click: select.bind($data, 'all'), css: {active: 'all' === current()}")
+                  a Alle zeigen
+                li(data-bind="click: select.bind($data, 'some'), css: {active: 'some' === current()}")
+                  a
+                    | Treffer zeigen &nbsp;
+                    span.badge(data-bind="text: nFound")
+
+              div(data-bind="visible: 'all' === current()")
+                div(data-bind="with: all")
+                  div(data-bind="template: template")
+              div(data-bind="visible: 'some' === current()")
+                div(data-bind="with: some")
+                  div(data-bind="template: template")
+          div(data-bind="if: 'MATCHED' === status() && null !== addInsuranceModel()")
+            div(data-bind="template: addInsuranceModel().template")
+            div
+              button.btn.btn-primary(data-bind="click: applyAction.bind($data, 'do_not_add_additional_insurances')") Nein
+              button.btn.btn-primary(style="margin-left: 5px;", data-bind="click: applyAction.bind($data, 'add_additional_insurances')") Ja
+            div
+          div(data-bind="if: 'MERGED' === status() && diffModel()")
+            div
+              button.btn.btn-default(data-bind="click: applyAction.bind($data, 'cancel')") Kartenlesevorgang abbrechen
+              button.btn.btn-primary(style="margin-left: 5px;", data-bind="click: applyAction.bind($data, 'apply')") Übernehmen
+            div(data-bind="template: diffModel().template")
+          div(data-bind="if: 'APPLIED' === status()")
+            div(data-bind="if: 'UPDATED_EVENT_ARRIVED' === eventStatus()")
+              .alert.alert-info
+                div(data-bind="text: displayEventStatus")
+            span(data-bind="if: 'NEEDS_EVENT' === eventStatus()")
+              button.btn.btn-default(data-bind="click: createEvent, text: displayEventStatus")
+            button.btn.btn-primary(style="margin-left: 5px;", data-bind="click: applyAction.bind($data, 'open_patient')") Patient öffnen

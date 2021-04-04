@@ -1,0 +1,7 @@
+button.KoButton.btn(type="button", data-bind="visible: visible, css: css, click: bindClick( $context ), disable: getDisabled( $context ), attr: { title: title, name: name }")
+  // ko if: (icon && icon.iconName)
+  span.KoButton-icon(data-bind="template: $data.icon.template")
+  // /ko
+  // ko if: text
+  span.KoButton-text(data-bind="text: text")
+  // /ko

@@ -1,0 +1,34 @@
+div#editTableDefinition
+    div#divDataBinding
+        b(data-bind="text: lblTableSchemaI18n")
+        table(noborder="noborder",style="width: 100%;")
+            tr
+                td
+                    div#divSelTableSchema(data-bind="text: lblLoadingSchemaI18n")
+                td
+                    button.btn#btnUpdateSchema(data-bind="text: btnSetSchemaI18n")
+
+    div#divTableColumns
+        b(data-bind="text: lblColsI18n")
+
+    div#divAddColumn
+
+        b!= LBL_TE_ADD_COL
+        table(noborder="noborder",style="width: 100%;")
+            tr
+                td
+                    | Title
+                td
+                    input(type='text')#txtNewColName
+
+            tr
+                td
+                    | Binding
+                td
+                    span#spanTableSchemaMember
+
+            tr
+                td
+                    | Binding
+                td
+                    button.btn#btnAddColumn(data-bind="text: btnAddColI18n")

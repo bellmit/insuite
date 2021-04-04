@@ -1,0 +1,19 @@
+include SimpleActivity
+div.row
+  // ko if: canPutOnHold
+  div.col-xs-6
+    div.form-group.ml-3
+      label.checkbox.row
+        span(data-bind="text: revokeWarningI18n")
+        input(name="onHold", type="checkbox", data-bind="checked: onHold")
+    // ko if: onHold
+    div.form-group
+      label.control-label(data-bind="text: onHoldNotesI18n")
+      textarea.form-control(name="onHoldNotes", data-bind="value: onHoldNotes, valueUpdate: 'afterkeydown'")
+    // /ko
+  // /ko
+  // ko if: cancelled
+  div.form-group.col-xs-12
+    label.control-label(data-bind="text: cancelReasonI18n")
+    textarea.form-control(name="cancelReason", data-bind="value: cancelReason, readOnly: true")
+  // /ko

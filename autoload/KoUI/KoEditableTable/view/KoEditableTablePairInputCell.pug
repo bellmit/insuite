@@ -1,0 +1,8 @@
+// ko if: valueUpdate
+input.hasPairInputs.KoEditableTablePairInputCell.form-control(data-bind="value: value1, valueUpdate: valueUpdate, attr:{ placeholder: value1Placeholder }")
+input.hasPairInputs.KoEditableTablePairInputCell.form-control(data-bind="value: value2, valueUpdate: valueUpdate, attr:{ placeholder: value2Placeholder }")
+// /ko
+// ko ifnot: valueUpdate
+input.hasPairInputs.KoEditableTablePairInputCell.form-control(data-bind="textInput: value1, attr:{ placeholder: value1Placeholder }")
+input.hasPairInputs.KoEditableTablePairInputCell.form-control(data-bind="textInput: value2, attr:{ placeholder: value2Placeholder }")
+// /ko

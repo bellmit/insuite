@@ -1,0 +1,242 @@
+div
+  div.row
+    div.col-xs-6
+      div.form-group
+        textarea.form-control(name="userContent", placeholder="Bezeichnung Indikation", data-bind="value: userContent", rows="4")
+
+    div.col-xs-6
+      div.row
+        div.col-xs-6
+          div.form-group(data-bind="hasFeedback: { field: code, toggle: code.hasError, messages: code.validationMessages }")
+            input.form-control(name="code", data-bind="select2: select2Code, readOnly: code.readOnly")
+        div.col-xs-6
+          div.form-group
+            select.form-control(name="_catalog", data-bind="options: _catalogBase, optionsValue: 'short', optionsText: 'short', value: catalogShort")
+      div.row
+        label.col-xs-6
+          span.pull-right Diagnose ICD-10:
+        div.col-xs-6
+          div.form-group
+            input.form-control(name="_displayUtIcd", placeholder="ICD-Code", data-bind="value: _displayUtIcd", disabled="disabled")
+  div.row(data-bind="if: _catalogShortVisible(['PHYSIO', 'ERGO'])")
+    div.col-xs-12
+      h4 1. Heilmittel
+    div.col-xs-6
+      div.form-group
+        select.form-control(name="utRemedy1Name", data-bind="options: _remedyList, optionsValue: 'name', optionsText: _displayRemedyOptionsText, optionsCaption: '1. Heilmittel wählen', value: utRemedy1Name, readOnly: utRemedy1Name.readOnly")
+    div.col-xs-6
+      div.form-group(data-bind="hasFeedback: { field: utRemedy1Item, toggle: utRemedy1Item.hasError, messages: utRemedy1Item.validationMessages }")
+        input#utRemedyItemAutoComplete1.form-control(name="utRemedy1Item", data-bind="select2: _select2utRemedy1Item, readOnly: _utRemedy1ItemReadOnly")
+  div.row(data-bind="if: _catalogShortVisible(['PHYSIO', 'ERGO'])")
+    div.col-xs-6
+      div.form-group
+        input.form-control(name="utRemedy1Explanation", placeholder="Erläuterung", data-bind="value: utRemedy1Explanation, readOnly: utRemedy1Explanation.readOnly")
+    div.col-xs-2
+      div.form-group
+        input.form-control(name="utRemedy1Seasons", placeholder="Sitzungen", data-bind="tooltip: {title: _sessionAdvices}, value: utRemedy1Seasons, readOnly: utRemedy1Seasons.readOnly")
+    div.col-xs-2
+      div.form-group(data-bind="hasFeedback: { field: utRemedy1PerWeek, toggle: utRemedy1PerWeek.hasError, messages: utRemedy1PerWeek.validationMessages }")
+        input.form-control(name="utRemedy1PerWeek", placeholder="pro Woche", data-bind="tooltip: {title: _perWeekAdvices}, value: utRemedy1PerWeek, readOnly: utRemedy1PerWeek.readOnly")
+    div.col-xs-2
+      div.form-group(data-bind="hasFeedback: { field: utRemedy1ItemPrice, toggle: utRemedy1ItemPrice.hasError, messages: utRemedy1ItemPrice.validationMessages }")
+        input.form-control(name="utRemedy1ItemPrice", placeholder="in Euro", data-bind="value: _utRemedy1DisplayPrice, readOnly: utRemedy1ItemPrice.readOnly")
+  div.row(data-bind="if: _catalogShortVisible(['PHYSIO', 'ERGO'])")
+    div.col-xs-12
+      h4 2. Heilmittel
+    div.col-xs-6
+      div.form-group
+        select.form-control(name="utRemedy2Name", data-bind="options: _remedyList, optionsValue: 'name', optionsText: _displayRemedyOptionsText, optionsCaption: '2. Heilmittel wählen', value: utRemedy2Name, readOnly: utRemedy2Name.readOnly")
+    div.col-xs-6
+      div.form-group(data-bind="hasFeedback: { field: utRemedy2Item, toggle: utRemedy2Item.hasError, messages: utRemedy2Item.validationMessages }")
+        input#utRemedyItemAutoComplete2.form-control(name="utRemedy2Item", data-bind="select2: _select2utRemedy2Item, readOnly: _utRemedy2ItemReadOnly")
+  div.row(data-bind="visible: _catalogShortVisible(['PHYSIO', 'ERGO'])")
+    div.col-xs-6
+      div.form-group
+        input.form-control(name="utRemedy2Explanation", placeholder="Erläuterung", data-bind="value: utRemedy2Explanation, readOnly: utRemedy2Explanation.readOnly")
+        //input.form-control(name="utRemedy2Explanation", placeholder="Erläuterung", data-bind="value: utRemedy2Explanation, readOnly: utRemedy2Explanation.readOnly")
+    div.col-xs-2
+      div.form-group
+        input.form-control(name="utRemedy2Seasons", placeholder="Sitzungen", data-bind="tooltip: {title: _sessionAdvices}, value: utRemedy2Seasons, readOnly: utRemedy2Seasons.readOnly")
+    div.col-xs-2
+      div.form-group(data-bind="hasFeedback: { field: utRemedy2PerWeek, toggle: utRemedy2PerWeek.hasError, messages: utRemedy2PerWeek.validationMessages }")
+        input.form-control(name="utRemedy2PerWeek", placeholder="pro Woche", data-bind="tooltip: {title: _perWeekAdvices}, value: utRemedy2PerWeek, readOnly: utRemedy2PerWeek.readOnly")
+    div.col-xs-2
+      div.form-group(data-bind="hasFeedback: { field: utRemedy2ItemPrice, toggle: utRemedy2ItemPrice.hasError, messages: utRemedy2ItemPrice.validationMessages }")
+        input.form-control(name="utRemedy2ItemPrice", placeholder="in Euro", data-bind="value: _utRemedy2DisplayPrice, readOnly: utRemedy2ItemPrice.readOnly")
+  div.row(data-bind="visible: _hasPrescriptionAdvices")
+    div.col-xs-12
+      div.alert.alert-info(data-bind="html: _pescriptionAdvices")
+  div.row
+    div.col-xs-7
+      div.row(data-bind="if: _catalogShortVisible('LOGO')")
+        div.col-xs-4
+          div.checkbox
+            label.control-label
+              span Stimmtherapie
+              input(type="checkbox", name="utVocalTherapy", data-bind="checked: utVocalTherapy, readOnly: utVocalTherapy.readOnly")
+        div.col-xs-4
+          div.checkbox
+            label.control-label
+              span Sprechtherapie
+              input(type="checkbox", name="utSpeakTherapy", data-bind="checked: utSpeakTherapy, readOnly: utSpeakTherapy.readOnly")
+        div.col-xs-4
+          div.checkbox
+            label.control-label
+              span Sprachtherapie
+              input(type="checkbox", name="utSpeechTherapy", data-bind="checked: utSpeechTherapy, readOnly: utSpeechTherapy.readOnly")
+      div.row
+        div.col-xs-4
+          div.radio
+            label.control-label
+              span Erstverord.
+              input(type="radio", name="utPrescriptionType", value="FIRST", data-bind="checked: utPrescriptionType")
+        div.col-xs-4
+          div.radio
+            label.control-label
+              span Folgeverord.
+              input(type="radio", name="utPrescriptionType", value="FOLLOWING", data-bind="checked: utPrescriptionType")
+        div.col-xs-4
+          div.checkbox
+            label.control-label
+              span nicht Regelfall
+              input(type="checkbox", name="utNoNormalCase", data-bind="checked: utNoNormalCase, readOnly: utNoNormalCase.readOnly")
+      div.row
+        div.col-xs-4
+          div.checkbox
+            label.control-label
+              span Hausbesuch
+              input(type="checkbox", name="utHomeVisit", data-bind="checked: utHomeVisit, readOnly: utHomeVisit.readOnly")
+        div.col-xs-4
+          div.checkbox
+            label.control-label
+              span Gruppenthera.
+              input(type="checkbox", name="utGroupTherapy", data-bind="checked: utGroupTherapy, readOnly: utGroupTherapy.readOnly")
+        div.col-xs-4
+          div.checkbox
+            label.control-label
+              span Thera.bericht
+              input(type="checkbox", name="utTherapyReport", data-bind="checked: utTherapyReport, readOnly: utTherapyReport.readOnly")
+      div.row
+        div.col-xs-4
+          div.checkbox
+            label.control-label
+              span Unfall, Unfallfolgen
+              input(type="checkbox", name="utUnfall", data-bind="checked: utUnfall, readOnly: utUnfall.readOnly")
+        div.col-xs-4
+          div.checkbox
+            label.control-label
+              span BVG
+                input(type="checkbox", name="utBvg", data-bind="checked: utBvg, readOnly: utBvg.readOnly")
+    div.col-xs-5
+      div.row(data-bind="if: _catalogShortVisible('LOGO')")
+        div.col-xs-6
+          div.form-group
+            input.form-control(name="utRemedy1Seasons", placeholder="Sitzungen", data-bind="tooltip: {title: _sessionAdvices}, value: utRemedy1Seasons, readOnly: utRemedy1Seasons.readOnly")
+        div.col-xs-6
+          div.form-group
+            input.form-control(name="utRemedy1PerWeek", placeholder="pro Woche", data-bind="tooltip: {title: _perWeekAdvices}, value: utRemedy1PerWeek, readOnly: utRemedy1PerWeek.readOnly")
+      div.row(data-bind="if: _catalogShortVisible('LOGO')")
+        div.col-xs-6.col-xs-offset-6
+          div.form-group
+            input.form-control(name="utDurationOfSeason", placeholder="Dauer der Sitzung", data-bind="value: utDurationOfSeason, readOnly: utDurationOfSeason.readOnly")
+      div.row
+        label.col-xs-6
+          span(data-bind="tooltip: {title: 'spätester Behandlungsstart'}").pull-right Behandlungsstart:
+        div.col-xs-6
+          .date-picker.input-group
+            input.form-control(name="utLatestStartOfTreatment", type="text", data-bind="datetimepicker: { value: utLatestStartOfTreatment }, readOnly: utLatestStartOfTreatment.readOnly")
+  div.row
+    div.col-xs-6
+      div.row
+        div.col-xs-12
+          div.form-group
+            textarea.form-control(name="utMedicalJustification", placeholder="Medizinische Begründung", data-bind="value: utMedicalJustification, readOnly: utMedicalJustification.readOnly", rows="4")
+        div.col-xs-12
+          div.form-group
+            textarea.form-control(name="utTherapyGoals", placeholder="Therapieziele", data-bind="value: utTherapyGoals, readOnly: utTherapyGoals.readOnly", rows="4")
+    div.col-xs-6
+      div.form-group
+        label Mögliche Diagnosen für diese Indikation (Info):
+        textarea.form-control(name="_displayPossibleDiagnoses", data-bind="value: _displayPossibleDiagnoses", disabled="disabled", rows="8")
+  div.row(data-bind="if: _catalogShortVisible('LOGO')")
+    div.col-xs-12
+      textarea.form-control(name="utNeuroFinding", placeholder="Neurologische, pädiatrische Besonderheiten (z.B. psychointellektueller Befund) ", data-bind="value: utNeuroFinding", rows="2")
+  div.row(data-bind="if: _catalogShortVisible('LOGO')")
+    div.col-xs-3
+      div.form-group(data-bind="hasFeedback: { field: utAudioDiagDate, toggle: utAudioDiagDate.hasError, messages: utAudioDiagDate.validationMessages }")
+        label.control-label Tonaudiodiagramm vom
+        .date-picker.input-group
+          input.form-control(name="utAudioDiagDate", type="text", placeholder="", data-bind="datetimepicker: { options: { format: 'DD.MM.YYYY'}, value: utAudioDiagDate }, readOnly: utAudioDiagDate.readOnly")
+    div.col-xs-9
+      div.row
+        div.col-xs-12
+          label Freifeldbefunde ermittelt durch
+        div.col-xs-4
+          div.checkbox
+            label.control-label
+              strong Reaktion
+              input(type="checkbox", name="utAudioDiagReact", data-bind="checked: utAudioDiagReact, readOnly: utAudioDiagReact.readOnly")
+        div.col-xs-4
+          div.checkbox
+            label.control-label
+              strong Konditionierung
+              input(type="checkbox", name="utAudioDiagCond", data-bind="checked: utAudioDiagCond, readOnly: utAudioDiagCond.readOnly")
+        div.col-xs-4
+          div.checkbox
+            label.control-label
+              strong eigene Angaben
+              input(type="checkbox", name="utAudioDiagOwn", data-bind="checked: utAudioDiagOwn, readOnly: utAudioDiagOwn.readOnly")
+  div.row(data-bind="if: _catalogShortVisible('LOGO')")
+    div.col-xs-12
+      h4 Laryngologischer Befund
+    div.col-xs-12
+      div.form-group
+        input.form-control(name="utLupenlaryngoskopie", placeholder="Lupenlaryngoskopie", data-bind="value: utLupenlaryngoskopie, readOnly: utLupenlaryngoskopie.readOnly")
+    div.col-xs-12
+      div.row
+        div.col-xs-6
+          strong Lupenstroboskopie:
+        div.col-xs-3
+          div.form-group
+            input.form-control(name="utLupenstroboskopieRight", placeholder="rechts", data-bind="value: utLupenstroboskopieRight, readOnly: utLupenstroboskopieRight.readOnly")
+        div.col-xs-3
+          div.form-group
+            input.form-control(name="utLupenstroboskopieLeft", placeholder="links", data-bind="value: utLupenstroboskopieLeft, readOnly: utLupenstroboskopieLeft.readOnly")
+      div.row
+        div.col-xs-6
+          strong Amplitude:
+        div.col-xs-3
+          div.form-group
+            input.form-control(name="utAmplitudeRight", placeholder="rechts", data-bind="value: utAmplitudeRight, readOnly: utAmplitudeRight.readOnly")
+        div.col-xs-3
+          div.form-group
+            input.form-control(name="utAmplitudeLeft", placeholder="links", data-bind="value: utAmplitudeLeft, readOnly: utAmplitudeLeft.readOnly")
+      div.row
+        div.col-xs-6
+          strong Randkantenverschiebung:
+        div.col-xs-3
+          div.form-group
+            input.form-control(name="utRandkantenverschiebungRight", placeholder="rechts", data-bind="value: utRandkantenverschiebungRight, readOnly: utRandkantenverschiebungRight.readOnly")
+        div.col-xs-3
+          div.form-group
+            input.form-control(name="utRandkantenverschiebungLeft", placeholder="links", data-bind="value: utRandkantenverschiebungLeft, readOnly: utRandkantenverschiebungLeft.readOnly")
+      div.row
+        div.col-xs-6
+          div.checkbox
+            label.control-label
+              strong Regularität
+              input(type="checkbox", name="utRegular", data-bind="checked: utRegular, readOnly: utRegular.readOnly")
+        div.col-xs-6
+          div.checkbox
+            label.control-label
+              strong Kompletter Glottisschluss
+              input(type="checkbox", name="utGlottisschluss", data-bind="checked: utGlottisschluss, readOnly: utGlottisschluss.readOnly")
+      div.row
+        div.col-xs-12
+          h4 Trommelfellbefund
+        div.col-xs-6
+          div.form-group
+            input.form-control(name="utEarDrumFindingRight", placeholder="rechts", data-bind="value: utEarDrumFindingRight, readOnly: utEarDrumFindingRight.readOnly")
+        div.col-xs-6
+          div.form-group
+            input.form-control(name="utEarDrumFindingLeft", placeholder="links", data-bind="value: utEarDrumFindingLeft, readOnly: utEarDrumFindingLeft.readOnly")

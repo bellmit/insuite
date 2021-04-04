@@ -1,0 +1,21 @@
+.modal.fade(tabindex="-1", role="dialog", aria-labelledby="myModalLabel", aria-hidden="true")#myModal
+  .modal-dialog
+    .modal-content
+      form#pForm(action="/waitingroom?action=update_header", method="post")
+      input(type="hidden", name="setId").setId
+      .modal-header
+        button.btn(type="button", class="close", data-dismiss="modal", aria-hidden="true") ×
+        h3#myModalLabel.modal-title(data-bind="text: titleEditHeadLineI18n")
+      .modal-body
+        p(data-bind="text: lblPreviewI18n")
+        div.showbox
+          h2#head-preview &nbsp;
+          h4(style="color: #bbbbbb;")#subhead-preview &nbsp;
+        hr
+        div.form-group
+          input.form-control(type="text", placeholder="hier Titel eingeben...", name="headline")#headline
+        div.form-group
+          input.form-control(type="text", placeholder="hier Untertitel eingeben", name="subheadline", style="color: #bbbbbb;")#subheadline
+      .modal-footer
+        button.btn.btn-default(data-dismiss="modal", aria-hidden="true", data-bind="text: btnCancelI18n")
+        button.btn.btn-primary(id="savebtn", disabled="true", data-bind="text: btnSaveI18n")

@@ -1,0 +1,42 @@
+div(id=mojit_view_id)
+    .container.container-fullscreen
+        div(style="position: relative")
+          div(style="position: absolute; right: 0; top: 0;")
+            button.btn.btn-sm.btn-default(
+            name="toggleFullScreen", type="button", data-bind="click: toggleFullScreenHandler, attr: { title: viewPortBtnI18n }",
+            style="margin-top: 5px; font-size:14px")
+              span.fa.fa-arrows-alt
+        .row
+            h3 Data Import
+        .row
+            div#importStatusFromLicense
+        <!--.row-->
+            <!--div#Blabla-->
+              <!--ul-->
+                <!--li-->
+                  <!--a(href="#", data-bind="click: clickHandler.bind($data, 'import.checkDicomImages')") Check Dicom Images-->
+                <!--li-->
+                  <!--a(href="#", data-bind="click: clickHandler.bind($data, 'import.importEmployeeLocations')") Import Employee, Identities & Location ( creates dump, drops and restores the collection)-->
+                <!--li-->
+                  <!--a(href="#", data-bind="click: clickHandler.bind($data, 'import.importCalendarsAndSchedules')") Import Calendars & Schedules ( creates dump, drops and restores the collection)-->
+                <!--li-->
+                  <!--a(href="#", data-bind="click: clickHandler.bind($data, 'import.importAllOtherCollections')") Import activties, patients, patientversions, casefolders, syncreportings, basecontacts, scheduletypes-->
+                <!--li-->
+                  <!--a(href="#", data-bind="click: clickHandler.bind($data, 'import.clearEmployeesAndLocations')") Clear Employees, Identities & Locations-->
+                <!--li-->
+                  <!--a(href="#", data-bind="click: clickHandler.bind($data, 'import.clearCalendarsAndSchedules')") Clear Calendars & Schedules-->
+                <!--li-->
+                  <!--a(href="#", data-bind="click: clickHandler.bind($data, 'import.clearAllOtherCollections')") Clear activties, patients, patientversions, casefolders, syncreportings, basecontacts, scheduletypes-->
+                <!--li-->
+                  <!--a(href="#", data-bind="click: clickHandler.bind($data, 'import.clearGridFSMediaAndDoc')") Clear GridFs, Media & Documents-->
+
+        .row
+            div(style="position: relative")
+              h4 Upload the compressed BDT file here ( *.bdt.zip )
+            div#uploadformFile
+                form#uploadForm( enctype="multipart/form-data" )
+                  input.btn.btn-default(id="uploadFile",type="file", name="multiFile", accept = ".zip", style="display: inline-block;", data-bind="event: { change: fileChange }")
+                  span
+                  input.btn.btn-primary(type="button", value="Hinzufügen", style="display: inline-block;", data-bind="click: uploadFiles, enable: uploadEnabled")
+
+

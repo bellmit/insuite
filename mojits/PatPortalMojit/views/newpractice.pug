@@ -1,0 +1,24 @@
+//TRANSLATION INCOMPLETE!! MOJ-3201
+.container.container-fullscreen#patregister
+  .col-sm-5.col-sm-offset-1
+    h4 Praxis hinzufügen
+    .control-domain
+      input(type="hidden",name="wantsAlert",dctype="PatientAlert_T",dcschema="patientalert",value='wantsAlert')
+      .control-group.form-group.substitute-icon
+        #withpin1
+            label(for="pin1").control-label PIN
+            .controls.input-group
+                input(type='text', name='pin1', width="150", placeholder='siehe E-Mail Ihrer Praxis...', dcschema='_simple',dctype='mandatory')#pin1.dcvalidate.form-control
+                span.help-inline.input-group-btn
+            hr
+      .control-group.form-group.substitute-icon
+        label.checkbox
+            input(type='checkbox', value='')#privacy
+            n Ich akzeptiere die&nbsp;
+            a(href='/static/DocCirrus/assets/docs/Datenschutz.pdf', target='_blank', title='Datenschutzerklärung der Doc Cirrus GmbH') Datenschutzerklärung
+        label.checkbox
+            input(type='checkbox', value='')#intimesla
+            n und die&nbsp;
+            a(href='/static/DocCirrus/assets/docs/Datenschutz.pdf', target='_blank', title='Nutzungsbedingungen') Nutzungsbedingungen
+        hr
+    .btn.btn-primary#btnSendReg Praxis hinzufügen

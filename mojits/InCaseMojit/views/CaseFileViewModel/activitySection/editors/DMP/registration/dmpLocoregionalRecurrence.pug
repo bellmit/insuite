@@ -1,0 +1,9 @@
+div(data-bind="visible: dmpLocoregionalRecurrenceVisible()")
+    div(data-bind='hasFeedback: { field: dmpLocoregionalRecurrence, toggle: dmpLocoregionalRecurrence.hasError, messages: dmpLocoregionalRecurrence.validationMessages }')
+        div.col-xs-6
+            div.form-group
+                label.control-label
+                    span(data-bind="text: dmpLocoregionalRecurrence.i18n")
+                    span(data-bind="dmpField: { field: dmpLocoregionalRecurrence }")
+        div.col-xs-5.date-picker.input-group
+            input.form-control(name="dmpLocoregionalRecurrence", data-bind="datetimepicker: { value: dmpLocoregionalRecurrence, options: { parseInputDate: parseInputDateBK } }, readOnly: dmpLocoregionalRecurrence.readOnly")

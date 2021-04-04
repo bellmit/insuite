@@ -1,0 +1,50 @@
+doctype html
+html(class="yui3-js-enabled")
+  head
+    = "\n"
+    meta(charset="utf-8")
+    meta(http-equiv="X-UA-Compatible", content="IE=edge")
+    meta(name="viewport", content="width=device-width, initial-scale=1")
+    = "\n"
+    title= "Doc Cirrus Medical Information System"
+    script(src="/static/DocCirrus/assets/js/00jquery191-min.js", type="text/javascript")
+    link(href="/static/dcbaseapp/assets/lib/bootstrap/3.1.1/css/bootstrap.min.css", type="text/css", rel="stylesheet")
+    link(href="/static/dcbaseapp/assets/lib/bootstrap/3.1.1/css/bootstrap-theme.min.css", type="text/css", rel="stylesheet")
+    link(href="/static/DocCirrus/assets/css/dc.css", type="text/css", rel="stylesheet")
+    link(href="/static/NoscriptMojit/assets/index.css", type="text/css", rel="stylesheet")
+
+  body
+    .dc_shift_top
+      .jumbotron.jumbotron-fluid.dc_hero-unit
+        .row
+          .col-sm-5.col-xs-12
+            a(href="/")
+              img(src='/static/DocCirrus/assets/images/dc_logo_300x103_trans.png', class="img-responsive", alt="Doc Cirrus GmbH")
+          .col-sm-6.col-sm-offset-1.col-xs-12.settings
+            h3
+              strong #{data.i18n('header')}
+            p #{data.i18n('settings.hint')}:
+            ul
+              li
+                span
+                  span #{data.i18n('settings.java-script')} &nbsp;
+                  a(id="js",href="http://www.enable-javascript.com/de/", target="_blank", class="highlight") (#{data.i18n('settings.guide')})
+              li
+                span
+                  span #{data.i18n('settings.cookies')} &nbsp;
+                  a(id="cookies",href="https://support.norton.com/sp/de/de/home/current/solutions/v57840314_NortonM_Retail_1_de_de", target="_blank") (#{data.i18n('settings.guide')})
+            br
+            br
+            br
+            a.btn.btn-primary.pull-right(href="/login") #{data.i18n('settings.done')}
+          .col-sm-6.col-sm-offset-1.col-xs-12.hidden.window
+            h3
+              strong #{data.i18n('header')}
+            p #{data.i18n('window.hint')}:
+            br
+            br
+            br
+            a.btn.btn-primary.pull-right(target="_blank") #{data.i18n('window.open')}
+    script if (window.self !== window.top && !navigator.cookieEnabled) { $('.window .btn').attr( 'href', sessionStorage.getItem( 'referer' ) ); $('.settings').addClass('hidden'); $('.window').removeClass('hidden'); }
+    script $('#js').removeClass('highlight');
+    script if (!navigator.cookieEnabled) { $('#cookies').addClass('highlight'); } else { window.location.replace('/'); }

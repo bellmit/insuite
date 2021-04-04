@@ -1,0 +1,336 @@
+{
+  "baseConfig": {
+    "street": "ABC",
+    "houseno": "6",
+    "zip": "10115",
+    "city": "Berlin",
+    "country": "Deutschland",
+    "countryCode": "D",
+    "addon": "",
+    "title": "",
+    "firstname": "",
+    "nameaffix": "",
+    "middlename": "",
+    "lastname": "",
+    "oneClickServer": "www.aaa.aaa",
+    "oneClickName": "admin",
+    "oneClickPass": "123456",
+    "participantValueType": "percent",
+    "_id": "000000000000000000000001",
+    "padxSettingTitle": "One Test",
+    "locations": [{
+      "_id": "000000000000000000000001",
+      "locname": "TestPraxis1",
+      "commercialNo": "111000700"
+    }
+    ],
+    "employees": [{
+      "_id": "100000000000000000000003",
+      "firstname": "Jhony",
+      "lastname": "Dredn04"
+    }
+    ],
+    "recipientName": "ABC",
+    "senderName": "AAAAAAA",
+    "senderCustomerNo": "111",
+    "senderNameAdd": [],
+    "contacts": [],
+    "kind": "OFFICIAL",
+    "participantName": "Test1",
+    "participantCustomerNumber": 1235,
+    "participantValue": 33.3,
+    "transferNo": "000000",
+    "padXJson": {
+      "xmlSchemaNamespace": "http://padinfo.de/ns/pad",
+      "xmlSchemaAdl": "http://www.padinfo.de/ns/pad/padx_adl_v2.12.xsd",
+      "xmlSchemaAuf": "http://www.padinfo.de/ns/pad/padx_auf_v2.12.xsd",
+      "specVersion": "02.12",
+      "messageType": "PRE",
+      "tempSubdir": "PADX",
+      "certSourcePath": "https://webservice.padline.de/zertifikat/v1/?id=",
+      "jarPath": "lib/dc-padnext/dc-padnext.jar",
+      "validRZIDs": ["100", "101", "102", "200", "201", "202", "203", "204", "205", "206", "207", "208", "209", "210", "300", "400", "500", "600", "601", "602", "603", "700", "800", "801", "802", "900", "901", "902", "1000", "1100", "2000", "2001", "2002", "2003", "2100", "2101", "2102", "2103", "2104", "2105", "2106", "2107", "2108", "2109", "2110", "2140", "2150", "2200", "2300", "2301", "3000", "4000", "4020", "4030", "4040", "4050", "4060", "4070", "4080", "4090", "4100", "4120", "4130", "4140", "4150", "4160", "4170", "4180", "4200", "4210", "4250", "4300", "4350", "4400", "4500", "4600", "4610", "4620", "4650", "4700", "4710", "4720", "4730", "4740", "4750", "4760", "4770", "4780", "4790", "9999"],
+      "catalogMap": {
+        "EBM": "EBM",
+        "GOÄ": "GOAE",
+        "GebüH": "GEBUEH",
+        "UVGOÄ": "UVGOAE"
+      },
+      "talkMap": {
+        "MR": "Herr",
+        "MS": "Frau",
+        "MALE": "Herr",
+        "FEMALE": "Frau"
+      },
+      "genderMap": {
+        "MALE": "m",
+        "FEMALE": "w",
+        "UNKNOWN": "u",
+        "UNDEFINED": "u"
+      },
+      "contacttypeMap": {
+        "PHONEPRIV": "privat",
+        "FAXPRIV": "privat",
+        "MOBILEPRIV": "privat",
+        "EMAILPRIV": "privat",
+        "PHONEJOB": "beruflich",
+        "FAXJOB": "beruflich",
+        "MOBILEJOB": "beruflich",
+        "EMAILJOB": "beruflich"
+      },
+      "contactkindMap": {
+        "PHONEPRIV": "telefonnr",
+        "PHONEJOB": "telefonnr",
+        "FAXPRIV": "faxnr",
+        "FAXJOB": "faxnr",
+        "MOBILEPRIV": "mobilnr",
+        "MOBILEJOB": "mobilnr",
+        "EMAILPRIV": "email",
+        "EMAILJOB": "email"
+      },
+      "diagnosisCertMap": {
+        "CONFIRM": "G",
+        "TENTATIVE": "V",
+        "ASYMPTOMATIC": "Z",
+        "EXCLUDE": "A"
+      },
+      "diagnosisSiteMap": {
+        "LEFT": "L",
+        "RIGHT": "R",
+        "BOTH": "B"
+      },
+      "fachbereiche": ["", "Anästhesiologie", "Anatomie", "Arbeitsmedizin", "Augenheilkunde", "Biochemie", "Chirurgie", "Frauenheilkunde und Geburtshilfe", "Hals- Nasen- Ohrenheilkunde", "Haut- und Geschlechtskrankheiten", "Humangenetik", "Hygiene und Umweltmedizin", "Innere Medizin und Allgemeinmedizin", "Kinder- und Jugendmedizin", "Kinder- und Jugendpsychiatrie und - psychotherapie", "Laboratoriumsmedizin", "Mikrobiologie, Virologie und Infektionsepidemiologie", "Mund-Kiefer-Gesichtschirurgie", "Neurochirurgie", "Neurologie", "Nuklearmedizin", "Öffentliches Gesundheitswesen", "Pathologie", "Pharmakologie", "Physikalische und Rehabilitative Medizin", "Physiologie", "Psychiatrie und Psychotherapie", "Psychosomatische Medizin und Psychotherapie", "Radiologie", "Rechtsmedizin", "Strahlentherapie", "Transfusionsmedizin", "Urologie", "Zahnärzte"]
+    },
+    "encryption": false,
+    "version": "02.12",
+    "messageType": "PRE",
+    "exportPath": "/home/dcdev/doccirrus/dc-insuite/var/tmp/PADX/",
+    "certNo": "Y/1/1410/36/488",
+    "creationDate": "20201229",
+    "creationDateLong": "2020-12-29T17:51:23Z",
+    "baseFileName": "00000111_20201229_PRE_000000",
+    "attachments": [{
+      "meta": {
+        "id": "0000",
+        "dateOfCreation": "2020-12-29T17:51:23Z"
+      },
+      "docType": "PADneXt",
+      "name": "00000111_20201229_PRE_000000_padx.xml",
+      "desc": "Nutzdatendatei",
+      "bytes": []
+    }
+    ],
+    "AISInvoiceNumber" : true,
+    "AISAmount" : true
+  },
+  "invoiceEntries": [
+    {
+      "_id": "5feb5e8a6732013d494f1533",
+      "source": "",
+      "invoiceLogId": "5feb5be5be5d863b1ecd134f",
+      "type": "header",
+      "caseFolderType": ["PRIVATE", "PRIVATE_A", "PRIVATE_A"],
+      "data": {
+        "locations": [{
+          "_id": "000000000000000000000001",
+          "commercialNo": "111000700",
+          "phone": "+491111111134",
+          "locname": "TestPraxis1",
+          "city": "berlin",
+          "zip": "11017",
+          "houseno": "5_5_5",
+          "street": "prac4Str. 222",
+          "email": "mykhaylo.dolishniy@edvantis.com",
+          "fax": "",
+          "physicians": [{
+            "_id": "100000000000000000000003",
+            "officialNo": "999999900",
+            "specialities": ["050"],
+            "lastname": "Dredn",
+            "nameaffix": "",
+            "firstname": "Jhony",
+            "title": ""
+          }
+          ]
+        }
+        ],
+        "locationIds": ["000000000000000000000001"]
+      }
+    },
+    {
+      "source": "",
+      "_id": "5feb5e8a6732013d494f152f",
+      "invoiceLogId": "5feb5be5be5d863b1ecd134f",
+      "type": "schein",
+      "caseFolderType": ["PRIVATE", "PRIVATE_A", "PRIVATE_A"],
+      "data": {
+        "_id": "5fda2cb7def0122cf9935249",
+        "actType": "PKVSCHEIN",
+        "status": "VALID",
+        "locationFeatures": "",
+        "scheinRemittor": "",
+        "scheinEstablishment": "",
+        "scheinSpecialisation": "",
+        "scheinOrder": "",
+        "scheinDiagnosis": "",
+        "scheinFinding": "",
+        "scheinClinicalTreatmentFrom": null,
+        "scheinClinicalTreatmentTo": null,
+        "scheinNextTherapist": "",
+        "continuousIcds": [],
+        "icds": [],
+        "isTiersGarant": false,
+        "isTiersPayant": true,
+        "timestamp": "2020-11-30T23:00:00.001Z",
+        "patientId": "5dd66267ccf50327b118a67d",
+        "employeeId": "100000000000000000000003",
+        "locationId": "000000000000000000000001",
+        "caseFolderId": "5fda2cb0def0122cf9935248",
+        "treatmentType": "AMBULANT",
+        "isChiefPhysician": false,
+        "fk4235Set": [],
+        "content": "Privat Schein",
+        "blFinished": null,
+        "patient": {
+          "title": "",
+          "firstname": "ruleTest",
+          "nameaffix": "",
+          "lastname": "0",
+          "talk": "MS",
+          "gender": "FEMALE",
+          "sendPatientReceipt": false,
+          "_id": "5dd66267ccf50327b118a67d",
+          "communications": [],
+          "addresses": [{
+            "street": "1",
+            "houseno": "552255",
+            "zip": "10001",
+            "city": "1",
+            "country": "Deutschland",
+            "countryCode": "D",
+            "addon": "",
+            "title": "",
+            "firstname": "",
+            "nameaffix": "",
+            "middlename": "",
+            "lastname": "",
+            "_id": "5dd66267ccf50327b118a67e",
+            "kind": "OFFICIAL"
+          }
+          ],
+          "kbvDob": "11.07.2014",
+          "insuranceStatus": [{
+            "fk4133": null,
+            "fk4110": null,
+            "insuranceKind": "1",
+            "costCarrierBillingSection": "01",
+            "costCarrierBillingGroup": "11",
+            "feeSchedule": "2",
+            "address1": "",
+            "address2": "10837 Berlin",
+            "_id": "5dd66267ccf50327b118a680",
+            "insuranceId": "104940005",
+            "insuranceName": "BARMER",
+            "insurancePrintName": "BARMER/SVA",
+            "insuranceGrpId": "72601",
+            "type": "PUBLIC",
+            "persGroup": "",
+            "dmp": ""
+          }, {
+            "fk4133": null,
+            "fk4110": null,
+            "insuranceKind": "",
+            "costCarrierBillingSection": "00",
+            "costCarrierBillingGroup": "",
+            "feeSchedule": "3",
+            "address1": "Berlin-Kölnische Allee 2 - 4",
+            "address2": "50969 Köln",
+            "_id": "5dd66267ccf50327b118a67f",
+            "insuranceId": "168141381",
+            "insuranceName": "ASSTEL",
+            "insurancePrintName": "ASSTEL",
+            "type": "PRIVATE",
+            "billingFactor": "privatversicherte"
+          }
+          ],
+          "dataTransmissionToPVSApproved": true,
+          "patientNo": "162",
+          "blFinished": true,
+          "assignedEmployees": [{
+            "_id": "100000000000000000000003",
+            "firstname": "Jhony",
+            "lastname": "Dredn",
+            "officialNo": "999999900"
+          }
+          ],
+          "priceTotal": 201.09
+        },
+        "caseFolderTypeSingle": "PRIVATE",
+        "end": "2020-12-29T16:51:22.239Z",
+        "treatments": [{
+          "_id": "5fda2f47def0122cf9935280",
+          "actType": "TREATMENT",
+          "status": "VALID",
+          "time": "",
+          "explanations": "",
+          "fk5015": "",
+          "price": 201.09,
+          "billingFactorValue": "2.30",
+          "costType": "",
+          "catalog": true,
+          "hasVat": false,
+          "icds": [],
+          "catalogShort": "GOÄ",
+          "vat": 0,
+          "timestamp": "2020-12-16T16:00:58.420Z",
+          "patientId": "5dd66267ccf50327b118a67d",
+          "employeeId": "100000000000000000000003",
+          "locationId": "000000000000000000000001",
+          "content": "Hohe Koloskopie bis zum Coecum - gegebenenfalls einschließlich Probeexzision und/oder Probepunktion -",
+          "comment": "Hohe Koloskopie bis zum Coecum",
+          "code": "687",
+          "actualPrice": 1500,
+          "unit": "Euro",
+          "actualUnit": "Punkte",
+          "employeeName": "Dredn, Jhony",
+          "vatAmount": 0
+        }
+        ],
+        "diagnoses": [],
+        "continuousDiagnoses": [],
+        "medications": [],
+        "invoiceData": [{
+          "totalWithoutExpenses": 201.09,
+          "totalDoc": 201.09,
+          "total75": 150.8175,
+          "total25": 50.2725,
+          "total15": 30.1635,
+          "totalOwing": 201.09,
+          "hasOP": false,
+          "beforetax": 201.09,
+          "totalVat": 0,
+          "total": 201.09,
+          "totalASK": 0,
+          "totalBSK": 0,
+          "totalAHB": 0,
+          "totalBHB": 0,
+          "price": 201.09,
+          "totalExpense": 0
+        }
+        ]
+      }
+    }
+  ],
+  "expectedResults": {
+    "percent": {
+      "nutzdatenXML":"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<rechnungen xsi:schemaLocation=\"http://padinfo.de/ns/pad http://www.padinfo.de/ns/pad/padx_adl_v2.12.xsd\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://padinfo.de/ns/pad\" anzahl=\"1\">\r\n    <nachrichtentyp version=\"02.12\">ADL</nachrichtentyp>\r\n    <rechnungsersteller>\r\n        <name>AAAAAAA</name>\r\n        <kundennr>111</kundennr>\r\n        <anschrift>\r\n            <hausadresse>\r\n                <land>D</land>\r\n                <plz>10115</plz>\r\n                <ort>Berlin</ort>\r\n                <strasse>ABC</strasse>\r\n                <hausnr>6</hausnr>\r\n            </hausadresse>\r\n        </anschrift>\r\n    </rechnungsersteller>\r\n    <leistungserbringer id=\"1\" aisid=\"SomeIdHere\">\r\n        <anrede>Herr</anrede>\r\n        <vorname>First name</vorname>\r\n        <name>Last name</name>\r\n        <namezusatz>Last name</namezusatz>\r\n    </leistungserbringer>\r\n    <rechnung id=\"5fda2cb7def0122cf9935249\" aisrechnungsnr=\"feb5e8a64f152f\" aisendbetrag=\"201.09\">\r\n        <rechnungsempfaenger>\r\n            <person>\r\n                <anrede>Frau</anrede>\r\n                <vorname>ruleTest</vorname>\r\n                <name>0</name>\r\n                <gebdatum>2014-07-11</gebdatum>\r\n                <anschrift>\r\n                    <hausadresse>\r\n                        <land>D</land>\r\n                        <plz>10001</plz>\r\n                        <ort>1</ort>\r\n                        <strasse>1</strasse>\r\n                        <hausnr>552255</hausnr>\r\n                    </hausadresse>\r\n                </anschrift>\r\n            </person>\r\n        </rechnungsempfaenger>\r\n        <abrechnungsfall>\r\n            <humanmedizin>\r\n                <leistungserbringerid>1</leistungserbringerid>\r\n                <behandelter aisid=\"SomeIdHere\">\r\n                    <anrede>Frau</anrede>\r\n                    <vorname>ruleTest</vorname>\r\n                    <name>0</name>\r\n                    <gebdatum>2014-07-11</gebdatum>\r\n                    <geschlecht>w</geschlecht>\r\n                </behandelter>\r\n                <versicherter>\r\n                    <anrede>Frau</anrede>\r\n                    <vorname>ruleTest</vorname>\r\n                    <name>0</name>\r\n                    <gebdatum>2014-07-11</gebdatum>\r\n                    <geschlecht>w</geschlecht>\r\n                    <versicherung>\r\n                        <kassenname>ASSTEL</kassenname>\r\n                        <iknr>168141381</iknr>\r\n                    </versicherung>\r\n                    <anschrift>\r\n                        <hausadresse>\r\n                            <land>D</land>\r\n                            <plz>10001</plz>\r\n                            <ort>1</ort>\r\n                            <strasse>1</strasse>\r\n                            <hausnr>552255</hausnr>\r\n                        </hausadresse>\r\n                    </anschrift>\r\n                </versicherter>\r\n                <behandlungsart>0</behandlungsart>\r\n                <vertragsart>1</vertragsart>\r\n                <beteiligung>\r\n                    <betrag>66.96</betrag>\r\n                    <beteiligter>1235</beteiligter>\r\n                </beteiligung>\r\n                <positionen posanzahl=\"1\">\r\n                    <goziffer go=\"GOAE\" ziffer=\"687\" positionsnr=\"1\">\r\n                        <datum>2020-12-16</datum>\r\n                        <anzahl>1</anzahl>\r\n                        <text>Hohe Koloskopie bis zum Coecum - gegebenenfalls einschließlich Probeexzision und/oder Probepunktion -</text>\r\n                        <faktor>02.300000</faktor>\r\n                        <gesamtbetrag>201.09</gesamtbetrag>\r\n                    </goziffer>\r\n                </positionen>\r\n            </humanmedizin>\r\n        </abrechnungsfall>\r\n    </rechnung>\r\n</rechnungen>",
+      "auftragsXML":"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<auftrag xsi:schemaLocation=\"http://padinfo.de/ns/pad http://www.padinfo.de/ns/pad/padx_auf_v2.12.xsd\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://padinfo.de/ns/pad\" erstellungsdatum=\"2020-12-29T17:51:23Z\" transfernr=\"000000\" echtdaten=\"0\" dateianzahl=\"1\">\r\n    <empfaenger>\r\n        <logisch>ABC</logisch>\r\n        <physikalisch>ABC</physikalisch>\r\n    </empfaenger>\r\n    <absender>\r\n        <logisch kundennr=\"111\">AAAAAAA</logisch>\r\n        <physikalisch kundennr=\"111\">AAAAAAA</physikalisch>\r\n    </absender>\r\n    <nachrichtentyp version=\"02.12\">PRE</nachrichtentyp>\r\n    <system>\r\n        <produkt>DocCirrus-inSuite</produkt>\r\n        <version>4.17.0</version>\r\n        <hersteller>Doc Cirrus GmbH</hersteller>\r\n    </system>\r\n    <verschluesselung verfahren=\"0\" idcert=\"0\"/>\r\n    <empfangsquittung>0</empfangsquittung>\r\n    <datei id=\"0000\" erstellungsdatum=\"2020-12-29T17:51:23Z\">\r\n        <dokumententyp>PADneXt</dokumententyp>\r\n        <name>00000111_20201229_PRE_000000_padx.xml</name>\r\n        <beschreibung>Nutzdatendatei</beschreibung>\r\n        <dateilaenge laenge=\"3828\" pruefsumme=\"someHashHere\"/>\r\n    </datei>\r\n</auftrag>"
+    },
+    "total": {
+      "nutzdatenXML":"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<rechnungen xsi:schemaLocation=\"http://padinfo.de/ns/pad http://www.padinfo.de/ns/pad/padx_adl_v2.12.xsd\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://padinfo.de/ns/pad\" anzahl=\"1\">\r\n    <nachrichtentyp version=\"02.12\">ADL</nachrichtentyp>\r\n    <rechnungsersteller>\r\n        <name>AAAAAAA</name>\r\n        <kundennr>111</kundennr>\r\n        <anschrift>\r\n            <hausadresse>\r\n                <land>D</land>\r\n                <plz>10115</plz>\r\n                <ort>Berlin</ort>\r\n                <strasse>ABC</strasse>\r\n                <hausnr>6</hausnr>\r\n            </hausadresse>\r\n        </anschrift>\r\n    </rechnungsersteller>\r\n    <leistungserbringer id=\"1\" aisid=\"SomeIdHere\">\r\n        <anrede>Herr</anrede>\r\n        <vorname>First name</vorname>\r\n        <name>Last name</name>\r\n        <namezusatz>Last name</namezusatz>\r\n    </leistungserbringer>\r\n    <rechnung id=\"5fda2cb7def0122cf9935249\" aisrechnungsnr=\"feb5e8a64f152f\" aisendbetrag=\"201.09\">\r\n        <rechnungsempfaenger>\r\n            <person>\r\n                <anrede>Frau</anrede>\r\n                <vorname>ruleTest</vorname>\r\n                <name>0</name>\r\n                <gebdatum>2014-07-11</gebdatum>\r\n                <anschrift>\r\n                    <hausadresse>\r\n                        <land>D</land>\r\n                        <plz>10001</plz>\r\n                        <ort>1</ort>\r\n                        <strasse>1</strasse>\r\n                        <hausnr>552255</hausnr>\r\n                    </hausadresse>\r\n                </anschrift>\r\n            </person>\r\n        </rechnungsempfaenger>\r\n        <abrechnungsfall>\r\n            <humanmedizin>\r\n                <leistungserbringerid>1</leistungserbringerid>\r\n                <behandelter aisid=\"SomeIdHere\">\r\n                    <anrede>Frau</anrede>\r\n                    <vorname>ruleTest</vorname>\r\n                    <name>0</name>\r\n                    <gebdatum>2014-07-11</gebdatum>\r\n                    <geschlecht>w</geschlecht>\r\n                </behandelter>\r\n                <versicherter>\r\n                    <anrede>Frau</anrede>\r\n                    <vorname>ruleTest</vorname>\r\n                    <name>0</name>\r\n                    <gebdatum>2014-07-11</gebdatum>\r\n                    <geschlecht>w</geschlecht>\r\n                    <versicherung>\r\n                        <kassenname>ASSTEL</kassenname>\r\n                        <iknr>168141381</iknr>\r\n                    </versicherung>\r\n                    <anschrift>\r\n                        <hausadresse>\r\n                            <land>D</land>\r\n                            <plz>10001</plz>\r\n                            <ort>1</ort>\r\n                            <strasse>1</strasse>\r\n                            <hausnr>552255</hausnr>\r\n                        </hausadresse>\r\n                    </anschrift>\r\n                </versicherter>\r\n                <behandlungsart>0</behandlungsart>\r\n                <vertragsart>1</vertragsart>\r\n                <beteiligung>\r\n                    <betrag>25.10</betrag>\r\n                    <beteiligter>1235</beteiligter>\r\n                </beteiligung>\r\n                <positionen posanzahl=\"1\">\r\n                    <goziffer go=\"GOAE\" ziffer=\"687\" positionsnr=\"1\">\r\n                        <datum>2020-12-16</datum>\r\n                        <anzahl>1</anzahl>\r\n                        <text>Hohe Koloskopie bis zum Coecum - gegebenenfalls einschließlich Probeexzision und/oder Probepunktion -</text>\r\n                        <faktor>02.300000</faktor>\r\n                        <gesamtbetrag>201.09</gesamtbetrag>\r\n                    </goziffer>\r\n                </positionen>\r\n            </humanmedizin>\r\n        </abrechnungsfall>\r\n    </rechnung>\r\n</rechnungen>",
+      "auftragsXML":"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<auftrag xsi:schemaLocation=\"http://padinfo.de/ns/pad http://www.padinfo.de/ns/pad/padx_auf_v2.12.xsd\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://padinfo.de/ns/pad\" erstellungsdatum=\"2020-12-29T17:51:23Z\" transfernr=\"000000\" echtdaten=\"0\" dateianzahl=\"1\">\r\n    <empfaenger>\r\n        <logisch>ABC</logisch>\r\n        <physikalisch>ABC</physikalisch>\r\n    </empfaenger>\r\n    <absender>\r\n        <logisch kundennr=\"111\">AAAAAAA</logisch>\r\n        <physikalisch kundennr=\"111\">AAAAAAA</physikalisch>\r\n    </absender>\r\n    <nachrichtentyp version=\"02.12\">PRE</nachrichtentyp>\r\n    <system>\r\n        <produkt>DocCirrus-inSuite</produkt>\r\n        <version>4.17.0</version>\r\n        <hersteller>Doc Cirrus GmbH</hersteller>\r\n    </system>\r\n    <verschluesselung verfahren=\"0\" idcert=\"0\"/>\r\n    <empfangsquittung>0</empfangsquittung>\r\n    <datei id=\"0000\" erstellungsdatum=\"2020-12-29T17:51:23Z\">\r\n        <dokumententyp>PADneXt</dokumententyp>\r\n        <name>00000111_20201229_PRE_000000_padx.xml</name>\r\n        <beschreibung>Nutzdatendatei</beschreibung>\r\n        <dateilaenge laenge=\"3828\" pruefsumme=\"someHashHere\"/>\r\n    </datei>\r\n</auftrag>"
+    }
+  }
+
+
+}

@@ -1,0 +1,64 @@
+.datatable.clearfix(id=_tableId)
+  .col-xs-12
+    .overlay.table-bordered
+      span.preloader
+    table(class=_css)
+      thead
+        tr
+          each col, index in _columns
+            if col.customHtmlHead
+              != col.customHtmlHead
+            else if "checkboxCol" == col.name
+              if "multi" == _selectMode
+                td.checkbox-row(data-selector="true")
+                  .checkbox
+                    input.select-item(type="checkbox", id=checkAllId)
+                    label(for=checkAllId)
+              else
+                td
+            else if col.filterable
+              td(class=col.css)
+                .input-group
+                  input.form-control(name="_filter-" + col.name, placeholder=col.title, data-filter=col.name + "_" + col.filterType, data-bind="value: " + col.name + "_" + col.filterType + ", valueUpdate: 'keyup'")
+                  if col.sortable
+                    span.input-group-addon
+                      i.fa.fa-sort-desc(data-bind="click: sortDesc", data-name=col.name)
+                      i.fa.fa-sort-asc(data-bind="click: sortAsc", data-name=col.name)
+
+            else
+              td(class=col.css)
+                div(style="font-weight:bold;", class=col.rowCss)
+                  != col.title
+
+      tbody(data-bind="foreach: data")
+        tr(data-bind="attr: { style: $parent.getStyleRow && $parent.getStyleRow( $data ) || '' }")
+          each col, index in _columns
+            if col.customHtml
+              != col.customHtml
+            else if "checkboxCol" == col.name
+              td.checkbox-row(data-selector="true")
+                .checkbox
+                  //- _selected is a property of the base viewModel class
+                  input.select-item(type="checkbox", data-bind="attr: { id: 'c' + $root._randomId + ( ('undefined' === typeof _id) ? 'new' : _id  ) }, checked: $data._selected")
+                  label(data-bind="attr: { for: 'c' + $root._randomId + ( ('undefined' === typeof _id) ? 'new' : _id ) }")
+
+            else
+              td(class=col.css)
+                span(data-bind=col.dataBind, class=col.rowCss)
+
+  .col-xs-12(style="margin-top:-5px;")
+    .panel.panel-default
+      .panel-body(style="padding:0px;")
+        .datatable-limitList.pull-right(data-bind="visible: _limitListEnabled", style="width: 100px; margin: 5px;")
+          select.form-control(name="datatable-limitList", data-bind="options: _limitList, value: _limit")
+        .col-md-3.col-xs-4.pull-right
+          .datatable-paging
+            .row
+              .col-xs-2
+                a(href="#", data-bind="click: prevPage")
+                  i.fa.fa-caret-left.fa-2x
+              .col-xs-6
+                input(name="page", data-bind="value: setPage, valueUpdate: 'keyup'", placeholder="Seite", style="text-align:center;").form-control
+              .col-xs-2
+                a(href="#", data-bind="click: nextPage")
+                  i.fa.fa-caret-right.fa-2x

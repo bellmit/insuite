@@ -1,0 +1,119 @@
+div.row(data-bind="if: fk4234")
+  div.col-xs-12
+    div#fk4235Set.panel-group(data-bind="hasFeedback: { field: fk4235Set, toggle: fk4235Set.hasError, messages: fk4235Set.validationMessages }, foreach: fk4235Set")
+      div.panel.panel-default
+        div.panel-heading
+          a(data-toggle="collapse", data-parent="#fk4235Set", data-bind="attr: { href: ('#fk4235Set'+ $index()) }")
+            strong(data-bind="text: certOfRecI18n")
+        div(data-bind="attr: { id:('fk4235Set'+ $index()) }, css : { in : ($parent.fk4235Set().length === 1 + $index()) }").panel-collapse.collapse
+          div.panel-body
+            div.row
+              div.col-xs-6
+                div.form-group(data-bind="hasFeedback: { field: fk4235, toggle: fk4235.hasError, messages: fk4235.validationMessages }")
+                  label.control-label(data-bind="text: fk4235.i18n")
+                  div.date-picker.input-group
+                    input.form-control(name="fk4235", data-bind="datetimepicker: { value: fk4235 }, readOnly: fk4235.readOnly")
+              div.col-xs-6
+                div.form-group(data-bind="hasFeedback: { field: fk4247, toggle: fk4247.hasError, messages: fk4247.validationMessages }")
+                  label.control-label(data-bind="text: fk4247.i18n")
+                  div.date-picker.input-group
+                    input.form-control(name="fk4247", data-bind="datetimepicker: { value: fk4247 }, readOnly: fk4247.readOnly")
+            div.row
+              div.col-xs-6
+                div.checkbox
+                  label.control-label
+                    span(data-bind="text: fk4250.i18n")
+                    | &nbsp;
+                    input(type="checkbox", name="fk4250", data-bind="checked: fk4250, readOnly: fk4250.readOnly")
+              div.col-xs-6(data-bind="if: fk4250")
+                div(data-bind="foreach: fk4251Set")
+                  div.row
+                    div.col-xs-12
+                      div.form-group(data-bind="hasFeedback: { field: fk4251, toggle: fk4251.hasError, messages: fk4251.validationMessages }")
+                        label.control-label(data-bind="text: fk4251.i18n")
+                        select.form-control(name="fk4251", data-bind="options: fk4251.list, optionsText: 'i18n', optionsValue: 'val', value: fk4251, readOnly: fk4251.readOnly")
+            div.row
+              div.col-xs-4
+                div.form-group(data-bind="hasFeedback: { field: fk4252, toggle: fk4252.hasError, messages: fk4252.validationMessages }")
+                  label.control-label(data-bind="text: fk4252.i18n")
+                  div.input-group
+                    input.form-control(name="fk4252", data-bind="textInput: fk4252, readOnly: fk4252.readOnly")
+                    span.input-group-addon(data-bind="text: fk4252Sum, tooltip: {title: nrContractsI18n}")
+              div.col-xs-4
+                div.form-group(data-bind="hasFeedback: { field: fk4255, toggle: fk4255.hasError, messages: fk4255.validationMessages }")
+                  label.control-label(data-bind="text: fk4255.i18n")
+                  div.input-group
+                    input.form-control(name="fk4255", data-bind="textInput: fk4255, readOnly: fk4255.readOnly")
+                    span.input-group-addon(data-bind="text: fk4255Sum, tooltip: {title: nrContractsI18n}")
+              div.col-xs-4
+                div.form-group(data-bind="hasFeedback: { field: fk4299, toggle: fk4299.hasError, messages: fk4299.validationMessages }")
+                  label.control-label(data-bind="text: fk4299.i18n")
+                  input.form-control(name="fk4299", data-bind="select2: _fk4299AutoComplete, readOnly: fk4299.readOnly")
+            div.row
+              div.col-xs-12
+                div.checkbox
+                  label.control-label
+                    span(data-bind="text: autoSubstitutionOfCodesI18n")
+                    input(type="checkbox", name="autoSubstitutionOfCodes", data-bind="checked: autoSubstitutionOfCodes, readOnly: fk4299.readOnly")
+                div.checkbox
+                  label.control-label
+                    span(data-bind="text: finishedWithoutPseudoCode.i18n")
+                    input(type="checkbox", name="finishedWithoutPseudoCode", data-bind="checked: finishedWithoutPseudoCodeProxy, readOnly: finishedWithoutPseudoCodeProxy.readOnly")
+            hr
+            div.row
+              div.col-xs-12
+                h4 Versicherter
+                table.table(width="100%")
+                  colgroup
+                    col(width="30%")
+                    col(width="*")
+                    col(width="45")
+                  thead
+                    tr
+                      th(data-bind="text: appServiceI18n")
+                      th(data-bind="text: nrContractsI18n")
+                      th.text-center
+                        a(href="#", data-bind="click: addFk4244Set, readOnly: fk4244Set.readOnly")
+                          i.icon.fa.fa-plus
+                  tbody(data-bind="foreach: fk4244Set")
+                    tr
+                      td
+                        div(data-bind="hasFeedback: { field: fk4244, toggle: fk4244.hasError, messages: fk4244.validationMessages }")
+                          input.form-control(name="fk4244", data-bind="select2: _select2fk4244, readOnly: fk4244.readOnly")
+                      td
+                        div(data-bind="hasFeedback: { field: fk4246, toggle: fk4246.hasError, messages: fk4246.validationMessages }")
+                          input.form-control.fk4246(name="_displayfk4246", data-bind="value: _displayfk4246, readOnly: fk4246ReadOnly")
+                      td
+                        button.btn.btn-default(type="button", data-bind="click: $parent.removeFk4244Set, focusOnRemove: { parent: 'table', find: 'thead a' }, readOnly: $parent.fk4244Set.readOnly")
+                          span.glyphicon.glyphicon-trash
+              div.col-xs-12
+                h4 Bezugsperson
+                table.table(width="100%")
+                  colgroup
+                    col(width="30%")
+                    col(width="*")
+                    col(width="45")
+                  thead
+                    tr
+                      th(data-bind="text: appServiceI18n")
+                      th(data-bind="text: nrContractsI18n")
+                      th.text-center
+                        a(href="#", data-bind="click: addFk4256Set, readOnly: fk4256Set.readOnly")
+                          i.icon.fa.fa-plus
+                  tbody(data-bind="foreach: fk4256Set")
+                    tr
+                      td
+                        div(data-bind="hasFeedback: { field: fk4244, toggle: fk4244.hasError, messages: fk4244.validationMessages }")
+                          input.form-control(name="fk4244", data-bind="select2: _select2fk4244, readOnly: fk4244.readOnly")
+                      td
+                        div(data-bind="hasFeedback: { field: fk4246, toggle: fk4246.hasError, messages: fk4246.validationMessages }")
+                          input.form-control.fk4246(name="_displayfk4246", data-bind="value: _displayfk4246, readOnly: fk4246ReadOnly")
+                      td
+                        button.btn.btn-default(type="button", data-bind="click: $parent.removeFk4256Set, focusOnRemove: { parent: 'table', find: 'thead a' }, readOnly: $parent.fk4244Set.readOnly")
+                          span.glyphicon.glyphicon-trash
+              div.row
+                div.col-xs-12
+                  button.btn.btn-default(type="button", data-bind="click: $parent.removeFk4235Set, focusOnRemove: { parent: '#textform-sd5-PSYCHOTHERAPY', find: '[name=_arrayAdd-fk4235Set]' }, readOnly: fk4235Set.readOnly")
+                    span.glyphicon.glyphicon-trash
+                    | &nbsp;
+                    span(data-bind="text: delCertI18n")

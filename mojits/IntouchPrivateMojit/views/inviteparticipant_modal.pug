@@ -1,0 +1,32 @@
+div#inviteParticipant
+  div.row
+    div.col-xs-12
+      ul.nav.nav-tabs(role="tablist")
+        li#emailInvitationTab(role="presentation", data-bind="click: tabNav.clicked, css: {active: tabNav.isActive('emailInvitationTab')}")
+          a(href="#", role="tab", aria-controls="emailInvitation", data-bind="text: menuEmailI18n")
+        //li#presenceListInvitationTab(role="presentation", data-bind="click: tabNav.clicked, css: {active: tabNav.isActive('presenceListInvitationTab')}")
+          a(href="#", role="tab", aria-controls="presenceListInvitation") #{__i18n('IntouchPrivateMojit.intouch_navJS.menu.PRESENCE_LIST')}
+      div.container.container-fullscreen-fluid.tab-content
+        div#emailInvitation.tab-pane(role="tabpanel", data-bind="css: {active: tabNav.isActive('emailInvitationTab')}")
+          div.row
+            div.col(style="margin-top: 5px")
+              div.form-group(data-bind="hasFeedback: { toggle: emailModel.emailAddress.hasError, messages: emailModel.emailAddress.validationMessages }")
+                input.form-control(name="emailAddress", type="email", data-bind="value: emailModel.emailAddress, valueUpdate: 'afterkeydown', attr: { placeholder: titleEmailI18n }")
+              div.form-group
+                input.form-control(name="subject", type="text", data-bind="value: emailModel.subject, valueUpdate: 'afterkeydown', attr: { placeholder: placeholderSubjectI18n }")
+              div.form-group(data-bind="hasFeedback: { toggle: emailModel.firstName.hasError, messages: emailModel.firstName.validationMessages }")
+                input.form-control(name="firstName", type="text", data-bind="value: emailModel.firstName, valueUpdate: 'afterkeydown', attr: { placeholder: titleFirstnameI18n }")
+              div.form-group(data-bind="hasFeedback: { field: emailModel.lastName, toggle: emailModel.lastName.hasError, messages: emailModel.lastName.validationMessages }")
+                input.form-control(name="lastName", type="text", data-bind="value: emailModel.lastName, valueUpdate: 'afterkeydown', attr: { placeholder: titleLastnameI18n }")
+              div.panel.panel-default
+                div.panel-body
+                  div.form-group
+                    textarea.form-control(data-bind="value: emailModel.content_top, valueUpdate: 'afterkeydown', attr: { placeholder: titleMessageI18n }", rows="7")
+                  div
+                    p.text-center(data-bind="text: emailModel.link", style="border-radius: 4px; border: 1px solid rgb(204, 204, 204); padding: 5px 0px;")
+                  div.form-group
+                    textarea.form-control(data-bind="value: emailModel.content_bottom, valueUpdate: 'afterkeydown', attr: { placeholder: titleMessageI18n }", rows="6")
+        div#presenceListInvitation.tab-pane(role="tabpanel", data-bind="css: {active: tabNav.isActive('presenceListInvitationTab')}")
+          div.row
+            div.col-md-12
+              span Presence List

@@ -1,0 +1,10 @@
+div#tab_overview
+  div.ml-1.row.mb-4
+    div.col-xs-9.ppl-0
+      div(data-bind="template: dateSelector.template")
+    div.col-xs-3(style="margin-top: 3.2rem")
+      button.btn.btn-primary(data-bind="text: requestNotificationsBtnI18n, click: fetchNotificationsFromMedidata")
+  div.dc-action-buttons.dc-action-buttons-top
+    button.btn.btn-primary(data-bind="text: confirmBtnI18n, enable: confirmEnabled, click: confirmNotifications")
+  div#overviewTable(data-bind="template: notificationsTable.template")
+include ../../../autoload/KoUI/KoSchemaValue/view/KoSchemaTemplates

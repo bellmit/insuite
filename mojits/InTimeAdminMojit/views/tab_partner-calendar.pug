@@ -1,0 +1,21 @@
+#tab_partner-calendar
+  h4(data-bind="text: title")
+  h5(data-bind="text: subtitle")
+  div.row(data-bind="foreach: partners")
+    div.col-sm-3
+      div.panel.panel-default
+        div.panel-heading
+          span(data-bind="text: prcCoName")
+        div.panel-body(data-bind="foreach: calendars")
+          div(style="display: flex; justify-content: space-between; align-items: center;")
+            div.form-group(style="margin-bottom: 0")
+              span.checkbox
+                label.control-label(style="display: flex; align-items: baseline;")
+                  input(name="active", type="checkbox", data-bind="checked: active", style="margin-right: 5px")
+                  span(data-bind="text: name", style="flex-grow: 1")
+            div.form-group
+              .just-color
+                input.form-control(name="color", type="hidden", data-bind="minicolors: { value: color, theme: 'none' }")
+  div.row
+    div.col-xs-12.text-right
+      button#tab_partner-calendar-save-btn.btn.btn-primary(name="tab_partner-calendar-save-btn", type="button", data-bind="click: save, disable: saveDisabled, text: save.i18n")

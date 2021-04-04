@@ -1,0 +1,135 @@
+script(type="text/html", id="ruleLogEntryTemplate")
+  tr
+    td(data-bind="text: $index() + 1")
+    td
+      p(data-bind="text: message")
+    td.text-center(data-bind="if: factId || (ruleSetId && ruleId)")
+      // ko if: factId
+      // ko ifnot: $root.isTask($data)
+      a(target="_blank", data-bind="attr: {href: $root.getPath($data)}").btn.btn-default.glyphicon.glyphicon-pencil
+      // /ko
+      // ko if: $root.isTask($data)
+      a(href="#", data-bind="click: $root.displayTaskDetails.bind($root, factId)").btn.btn-default.glyphicon.glyphicon-pencil
+      // /ko
+      span &nbsp;
+      // /ko
+      // ko if: (ruleSetId && ruleId)
+      button.btn.btn-default.glyphicon.glyphicon-eye-open(data-bind="click: $root.loadRuleSetPreview.bind($root, ruleSetId, ruleId )")
+      // /ko
+
+script(type="text/html", id="ruleLogActivityTemplate")
+  tr(style='border-top: 2px solid #eee')
+    td(data-bind="text: $index() + 1")
+    td
+      p(data-bind="text: message")
+    td.text-right(data-bind="if: factId || ruleSetId")
+      // ko if: factId
+      a(target="_blank", data-bind="attr: {href: $root.getPath($data)}").btn.btn-default.glyphicon.glyphicon-pencil
+      span &nbsp;
+      button.btn.btn-primary.glyphicon.glyphicon-ok(type="button", data-bind='click: $root.createActivities.bind( $root, $data )')
+      span &nbsp;
+      button.btn.btn-default.glyphicon.glyphicon-remove(type="button", data-bind='click: $root.removeEntry.bind( $root, $data )')
+      span &nbsp;
+      // /ko
+      // ko if: ruleSetId
+      button.btn.btn-default.glyphicon.glyphicon-eye-open(data-bind="click: $root.loadRuleSetPreview.bind($root, ruleSetId, ruleId )")
+      // /ko
+  // ko foreach: activitiesToCreate
+  tr
+    td.text-right
+      input(name="ActivityCreationTogler", type="checkbox", data-bind="checked: selected")
+    td(data-bind="text: $root.showActivityDescription(template)", colspan=2)
+  // /ko
+
+script#ruleElementTemplate(type="text/html")
+  .rule-operator-entry(data-bind="css: {'rule-is-last': $index() === ($parent.content().length - 1) }")
+    // ko if: type() === 'and' || type() === 'or' || type() === 'not'
+    .rule-operator
+      .rule-operator-panel(data-bind="css: {'rule-operator-and': 'and' === type(), 'rule-operator-or': 'or' === type(), 'rule-operator-not': 'not' === type() }")
+        span.rule-operator-panel-text(data-bind="text: operatorName")
+      .rule-operator-content
+        ul(data-bind="template: {name: 'ruleElementTemplate', foreach: content.slice(0, 50)}")
+      // ko if: content.slice(50).length
+      ul
+        | &nbsp;&nbsp;&nbsp;
+        span(data-bind="text: '... (und ' + ('function' === typeof content && content().slice(50).length) + ' mehr)'")
+      // /ko
+    // /ko
+    // ko if: type() === 'validation'
+    .rule-validation
+      div(data-bind="with: content")
+        span &nbsp;
+        // ko if: isActivity
+        span(data-bind="text: displayActType")
+        span :&nbsp;
+        // /ko
+        // ko if: isCaseFolder
+        span Fall:&nbsp;
+        // /ko
+        // ko if: isPatient
+        span Patient:&nbsp;
+        // /ko
+        span(data-bind="if: count")
+          span(data-bind="text: displayCount")
+          span(data-bind="visible: criterionList().length") ,&nbsp;
+        span(data-bind="foreach: criterionList")
+          // ko if: $index !== 0 && !($index() === ($parent.criterionList().length - 1))
+          span &nbsp;
+          // /ko
+          // ko if: $index() > 0 && $index() === ($parent.criterionList().length - 1)
+          span &nbsp;und&nbsp;
+          // /ko
+          span(data-bind="text: getText($parent.actType(), $parent)")
+    // /ko
+
+script(type="text/html", id="rulePreviewTemplate")
+  .dc-rule
+    .panel.panel-default
+      .panel-heading
+        span.rule-description(data-bind="text: description")
+      .panel-collapse.collapse.in
+        .panel-body.panel-body-rule-editor
+          span Wenn:
+          .rule-editor-workspace(data-bind="template: {name:'ruleElementTemplate', foreach: content}")
+          div(style="word-wrap: break-word;")
+            span dann:
+            span &nbsp;&nbsp;
+            // ko foreach: actions
+            // ko if: $index() > 0
+            span ,&nbsp;
+            // /ko
+            span.rule-action.text-primary(data-bind="text: $root.displayAction($data), css: {'text-danger': 'ERROR' === type, 'text-warning': 'WARNING' === type }")
+            // /ko
+div#ruleLog
+
+  // ko if: selectedRuleSet
+  div(data-bind="template: {name: 'rulePreviewTemplate', foreach: selectedRuleSet().rules}", style="margin-top: 5px;")
+  // /ko
+
+  // ko ifnot: selectedRuleSet
+  ul.nav.nav-tabs#ruleLogNav(data-bind="foreach: tabs")
+    li(data-bind="css: { active: isSelected }")
+      a(href="#", data-bind="click: $parent.selectedTab")
+        span(data-bind="text: title")
+  div.tab-content(data-bind="foreach: tabs")
+    div#rulelog-errors.tab-pane(data-bind="css: { active: isSelected }")
+      div.table-responsive
+        table.table
+          thead
+            tr
+              th Nr.
+              th Meldung
+              th &nbsp;
+
+          // ko switch: name
+          // ko case: 'errors'
+          tbody(data-bind="template: {name: 'ruleLogEntryTemplate', foreach: $parent.errors}")
+          // /ko
+          // ko case: 'warnings'
+          tbody(data-bind="template: {name: 'ruleLogEntryTemplate', foreach: $parent.warnings}")
+          // /ko
+          // ko case: 'activities'
+          tbody(data-bind="template: {name: 'ruleLogActivityTemplate', foreach: $parent.activities}")
+          // /ko
+          // /ko
+  // /ko

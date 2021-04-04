@@ -1,0 +1,274 @@
+/*************************
+*** SPECIFIC STYLES  *****
+**************************/
+
+.kbvlogmodel-status {
+    color: #000;
+}
+
+/** KBVLOG Statuses **/
+.kbvlogmodel-status-created {
+    color: #18A0F4;
+}
+
+.kbvlogmodel-status-invalid {
+    color: #F77B00;
+}
+
+.kbvlogmodel-status-valid {
+    color: #61CC85;
+}
+
+.kbvlogmodel-status-encryterror {
+    color: #F77B00;
+}
+
+.kbvlogmodel-status-encrypted {
+    color: #333;
+}
+
+.kbvlogmodel-status-sendingerror {
+    color: #F77B00;
+}
+
+.kbvlogmodel-status-sent {
+    color: #61CC85;
+}
+
+.kbvlogmodel-status-rejected {
+    color: #C02000;
+}
+
+.kbvlogmodel-status-archived {
+    color: #333;
+}
+
+.kbvlogmodel-status-accepted {
+    color: #61CC85;
+}
+
+.kbvlogmodel-status-timeout {
+    color: #C02000;
+}
+
+.invoicelogmodal-approved {
+    color: #609419 !important;
+}
+
+.invoice-progress {
+    height: 20px;
+    margin-bottom: 5px;
+}
+
+.invoice-progress-bar {
+    overflow: visible;
+    white-space: nowrap;
+    color: black;
+    text-align: left;
+}
+
+.rule-editor-workspace {
+    /*background-color: lightblue;*/
+    width: 100%;
+    position: relative;
+}
+
+#ruleWorkspace h4 {
+    margin-top: 0;
+}
+
+.rule-operator-panel {
+    position: absolute;
+    width: 40px;
+    height: 100%;
+    border-right: 2px solid;
+    padding: 6px;
+}
+
+.rule-operator-and {
+    border-color: blue;
+}
+
+.rule-operator-or {
+    border-color: red;
+}
+
+.rule-operator-not {
+    border-color: magenta;
+}
+
+.rule-operator-entry {
+    border-bottom: 2px solid;
+    /*max-width: 500px;*/
+    padding-top: 4px;
+    padding-bottom: 4px;
+    cursor: pointer;
+}
+
+.rule-is-last {
+    border-bottom: none;
+}
+
+.rule-operator {
+    min-height: 50px;
+    position: relative;
+}
+
+.rule-validation {
+    /*background-color: #D9EDF7;*/
+    padding: 4px;
+    margin-left: 4px;
+}
+
+.rule-validation-error {
+    border-color: #ff0404;
+    color: #ff0404;
+}
+
+.rule-dragging {
+    opacity: 0.5;
+    filter: "alpha(opacity=50)";
+    background-color: #D9EDF7;
+}
+
+.rule-editor-workspace .drag-element {
+    border-bottom: none;
+}
+
+#ruleEditorContainer {
+    padding-top: 8px;
+}
+
+.rule-activate-checkbox {
+    margin: 0;
+}
+
+.rule-option-divider {
+    margin-top: 4px;
+}
+
+.rule-action {
+    cursor: pointer;
+}
+
+.text-ellipsis {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.rule-description {
+    cursor: pointer;
+}
+
+.dc-rule {
+    padding-bottom: 8px;
+}
+
+#ruleEditorContainer .panel-heading {
+    min-height: 23px !important;
+}
+
+.panel-body-rule-editor {
+    background-color: #FFFFFF !important;
+}
+
+#ruleEditorContainer .ko-tree {
+    max-height: 500px;
+    overflow: auto;
+}
+
+.disabledPanel {
+    background-color: #eee;
+    cursor: default;
+}
+
+.progress.text-in-center {
+    position: relative;
+    margin-bottom: 5px;
+}
+
+.progress.text-in-center span {
+    position: absolute;
+    display: block;
+    width: 100%;
+    color: black;
+}
+
+#importTree, #exportTree {
+    max-height: 550px;
+    overflow: auto;
+    margin-bottom: 10px;
+}
+
+.leftSidePanelRuleSearch {
+    margin-bottom: 4px;
+}
+
+.dc-homecatalog-text-color {
+    color: #2d6ca2;
+}
+
+/*
+    Code selection widget
+*/
+.dc-select2-createActivityCodeAutoComplete .textform-homecatalog.select2-highlighted {
+    color: #d3f0f0;
+}
+
+.dc-select2-createActivityCodeAutoComplete .select2-results {
+    max-height: 400px;
+    width: 450px;
+}
+
+.dc-select2-createActivityCodeAutoComplete-formatResult {
+    line-height: 1.2;
+}
+
+.dc-select2-createActivityCodeAutoComplete-formatResult-code {
+    font-weight: bold;
+    margin-right: 0.5em;
+}
+
+.dc-select2-createActivityCodeAutoComplete .textform-homecatalog {
+    color: #2d6ca2;
+}
+
+.dc-select2-createActivityCodeAutoComplete .textform-homecatalog.select2-highlighted {
+    color: #d3f0f0;
+}
+
+.dc-select2-createActivityCodeAutoComplete .textform-homecatalog + .textform-originalcatalog {
+    border-top: 1px solid #ccc;
+}
+
+.dc-select2-createActivityCodeAutoComplete-autoWidth.dc-select2-createActivityCodeAutoComplete .select2-results {
+    width: auto;
+}
+
+.error-table-icons {
+    border: none;
+    background-color: inherit;
+}
+
+div#cashBook {
+    margin-bottom: 50px;
+}
+
+.onActivitiesTableShowMoreContentMore {
+    display: inline-block;
+    white-space: nowrap;
+    text-decoration: underline;
+}
+
+.onActivitiesTableShowMoreContentDetail {
+    white-space: pre-wrap;
+}
+
+.onActivitiesTableShowMoreContentDetailHidden {
+    display: none;
+}
+
+.onActivitiesTableShowMoreContentDetailShown {
+    display: block;
+}

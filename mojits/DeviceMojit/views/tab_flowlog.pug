@@ -1,0 +1,7 @@
+div#tab_flowlog
+  .row
+    .col-xs-12.col-md-10.col-md-offset-1
+      i.dc-info-icon.pull-right(data-toggle="popover", data-bind="attr: { 'data-content': flowLogHintI18n }", data-html="true", rel="popover", data-placement="auto bottom", data-trigger="click")
+      button.pull-right.btn.btn-primary(style="margin-top: 14px;", type="button", name="addConfig", data-bind="click: resetBlacklist, html: btnClearBlacklistText")
+      h3(data-bind="text: flowLogTitleI18n")
+      div#overviewTable(data-bind="template: overviewTable.template")

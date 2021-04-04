@@ -1,0 +1,24 @@
+div.row
+    .col-xs-4
+        div.list-group(data-bind="foreach: data")
+            a.list-group-item.list-group-item-success(style="padding: 4px 8px 0px 8px;", href="#", data-bind="click: $parent.selectData.bind($parent)")
+                div(data-bind="text: name")
+                p(style="line-height: 12px; font-size: 12px;", data-bind="text: displaySub")
+    .col-xs-8(data-bind="if: selectedPrinters().length > 0")
+        table.table.table-bordered
+            colgroup
+                col(width="50%")
+                col(width="50")
+            thead
+                tr
+                    th Drucker
+                    th Formular
+                    th Betriebsstätte
+            tbody(data-bind='foreach: selectedPrinters')
+                tr
+                    td(data-bind="text: $data.name")
+                    td(data-bind="text: $data.formName")
+                    td(data-bind="text: $data.location")
+    .col-xs-8(data-bind="if: selectedData().length > 0")
+        ul(data-bind="foreach: selectedData")
+           li(data-bind="text: $data[0] + ': ' + $data[1]")

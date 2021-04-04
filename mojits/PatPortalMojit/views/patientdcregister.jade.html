@@ -1,0 +1,68 @@
+extends patientalert_layout
+block content
+  .container.container-fullscreen#patregister
+    h3(data-bind="text: headerI18n")
+    p(data-bind="html: registerInfoI18n")
+    -if(patientId || customerId)
+      input(type="hidden",name="patientId",value=patientId)#patientId
+      input(type="hidden",name="customerId",value=customerId)#customerId
+      form(role="form")
+        .control-domain
+          div.col-sm-12.col-md-6
+            input(type="hidden",name="wantsAlert",dctype="PatientAlert_T",dcschema="patientalert",value='wantsAlert')
+            .form-group.substitute-icon
+              label(for="talk", data-bind="text: talkI18n").control-label
+              select(name='talk', dcschema='patient', tabindex='5')#talk.dcvalidate.form-control
+                option(value='NONE', data-bind="text: talkNoneI18n")
+                option(value='MS', data-bind="text: talkFemaleI18n")
+                option(value='MR', data-bind="text: talkMaleI18n")
+
+            .form-group.substitute-icon
+              label(for="firstname", data-bind="text: firstnameI18n").control-label
+              input(type='text', name='firstname', dcschema='patient',dctype='firstname', tabindex='5')#firstname.dcvalidate.form-control
+
+            .form-group.substitute-icon
+              label(for="lastname", data-bind="text: lastnameI18n").control-label
+              input(type='text', name='lastname', dcschema='patient',dctype='lastname', tabindex='5')#lastname.dcvalidate.form-control
+
+            .form-group.substitute-icon
+              label(for='dobField', data-bind="text: kbvDobI18n").control-label
+              #dobDiv.input-append.date-container
+                input(type='text', name='kbvDob', dcschema='patient', dctype='kbvDob', value='', tabindex='5', data-bind="placeholder: kbvDobPlaceholderI18n")#dobField.dcvalidate.form-control.input-min-width
+              hr.visible-xs.visible-sm
+          div.col-sm-12.col-md-6
+            .form-group.substitute-icon
+              label(for="email", data-bind="text: emailI18n").control-label
+              input(type='text', name='email', dcschema='_simple',dctype='PatientAlert_T_email', tabindex='5')#email.dcvalidate.form-control
+
+            .form-group.substitute-icon
+              label(for="mobile", data-bind="text: mobileI18n").control-label
+              input(type='text', name='mobile', dcschema='_simple',dctype='PatientAlert_T_phone', tabindex='5')#mobile.dcvalidate.form-control
+
+              hr.visible-xs.visible-sm
+            .form-group.substitute-icon
+              label(for="password", data-bind="text: passwordI18n").control-label
+              input(type='password', name='password', dcschema='_simple',dctype='mandatory', tabindex='5', style="background-color:transparent;border: 1;cursor: text;" autocomplete="off", readonly, onfocus="this.removeAttribute('readonly');")#password.dcvalidate.form-control
+
+            .form-group.substitute-icon
+              label(for="password2").control-label
+                span(data-bind="text: password2I18n")
+              input(type='password', name='password2', dcschema='_simple',dctype='mandatory', tabindex='5', style="background-color:transparent;border: 1;cursor: text;", autocomplete="off", readonly, onfocus="this.removeAttribute('readonly');")#password2.dcvalidate.form-control
+              span(data-bind="text: passwordsDontMatch, visible: !passwordsMatch()", style="color:darkred; font-size:small;", class="pull-right")
+
+          div.col-sm-12.col-md-12
+            .form-group
+              label.checkbox.control-label
+                input(type='checkbox', value='',dcschema='_simple', dctype='mandatory', tabindex='5')#privacy.dcvalidate
+                n(data-bind="html: privacyStatementI18n")
+
+            .form-group
+              label.checkbox.control-label
+                input(type='checkbox', value='',dcschema='_simple', dctype='mandatory', tabindex='5')#intimesla.dcvalidate
+                n(data-bind="html: termsOfUseI18n")
+            hr
+            .btn.btn-primary.btn-lg.btn-block(data-bind="text: btnSendRegI18n")#btnSendReg
+
+    -else
+      p(data-bind="text: registerViaMailURLI18n")
+

@@ -1,0 +1,55 @@
+div.wyswyg_bar(data-bind="notifyBind: { method: 'templateReady', namespace: $data }, css: manageContainerClasses, visible: isEditable")
+  div.form-inline(style="padding-bottom: 5px;")
+
+    button.btn.btn-default(data-bind="click: onBoldClick, disable: isDisabled")
+      i.fa.fa-bold
+    button.btn.btn-default(data-bind="click: onItalicClick, disable: isDisabled")
+      i.fa.fa-italic
+    button.btn.btn-default(data-bind="click: onUnderlineClick, disable: isDisabled")
+      i.fa.fa-underline
+
+    span &nbsp;
+
+    div.color-highlight
+      .btn-group
+        button.btn.btn-default.btn-highlight(data-bind="click: onHighlightClick, disable: isDisabled")
+          span.selected-color-preview(data-bind="style: {'background-color': selectedHighlightColor()}")
+          i.fa.fa-pencil
+        button.btn.btn-default.btn-choose-color(type="button", data-bind="click: toggleColorPicker")
+          span.caret
+
+      div.color-popup(data-bind='visible: isColorPickerVisible()')
+        div.row.mb-2
+          button.btn.btn-default.btn-xs(data-bind="text: noColorI18n, click: onNoColorClick")
+        div.row
+          button.btn-stub
+            div.color-selector(data-bind="click: onChooseColorClick, style: {'background-color': yellowHighlightColor}")
+          button.btn-stub
+            div.color-selector(data-bind="click: onChooseColorClick, style: {'background-color': greenHighlightColor}")
+
+    button.btn.btn-default(data-bind="click: onClearHighlightClick, disable: isDisabled")
+      i.fa.fa-square-o
+    span &nbsp;
+
+    select.form-control(data-bind='value: toggleLineStyle, disable: isDisabled')
+      option(value='')
+      option(value='p', data-bind="text: PARAGRAPH")
+      option(value='h1', data-bind="text: HEADING_1")
+      option(value='h2', data-bind="text: HEADING_2")
+      option(value='h3', data-bind="text: HEADING_3")
+      option(value='h4', data-bind="text: HEADING_4")
+      option(value='h5', data-bind="text: HEADING_5")
+      option(value='h6', data-bind="text: HEADING_6")
+
+    span &nbsp;
+
+      button.btn.btn-default(data-bind="click: onOLClick, disable: isDisabled")
+        i.fa.fa-list-ol
+      button.btn.btn-default(data-bind="click: onULClick, disable: isDisabled")
+        i.fa.fa-list-ul
+      button.btn.btn-default(data-bind="click: onIndentClick, disable: isDisabled")
+        i.fa.fa-indent
+      button.btn.btn-default(data-bind="click: onOutdentClick, disable: isDisabled")
+        i.fa.fa-outdent
+      button.btn.btn-default.clear_format(data-bind="click: onClearFormatClick, disable: isDisabled")
+        i.fa.fa-eraser

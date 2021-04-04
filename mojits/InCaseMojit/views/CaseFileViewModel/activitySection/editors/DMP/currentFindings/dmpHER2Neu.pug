@@ -1,0 +1,7 @@
+div.form-group
+    strong(data-bind="text: dmpHER2Neu.i18n")
+    span(data-bind="dmpField: { field: dmpHER2Neu }")
+    div(data-bind="foreach: dmpHER2Neu.list, hasFeedback: { field: dmpHER2Neu, toggle: dmpHER2Neu.hasError, messages: dmpHER2Neu.validationMessages }")
+        label.radio-inline
+            span(data-bind="text: i18n")
+            input(type="radio", name="dmpHER2Neu", data-bind="value: val, checked: $parent.dmpHER2Neu, readOnly: $parent.dmpHER2Neu.readOnly, attr: { name: $element.name + '-' + val }")

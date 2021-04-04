@@ -1,0 +1,23 @@
+div
+  // ko if: introduction
+  p(data-bind="text: introduction")
+  // /ko
+  // ko ifnot: introduction
+  p(data-bind="text: resheduleAppQuestionI18n + ':'")
+  // /ko
+  p
+    span(data-bind="text: resheduleAppI18n + ':'")
+    | &nbsp;
+    span(data-bind="text: scheduleTitle")
+  p
+    span(data-bind="text: resheduleFromI18n + ':'")
+    | &nbsp;
+    span(data-bind="text: fromText")
+  p
+    span(data-bind="text: resheduleToI18n + ':'")
+    | &nbsp;
+    span(data-bind="text: toText")
+  // ko if: notice
+  div.alert.alert-info(style="margin-bottom: 0")
+    span(data-bind="text: notice")
+  // /ko

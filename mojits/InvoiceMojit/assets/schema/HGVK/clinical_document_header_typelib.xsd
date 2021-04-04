@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- edited with XMLSPY v2004 rel. 3 U (http://www.xmlspy.com) by Hr. Usorov (KBV) -->
+<!-- automatische Dokumentation, generiert durch Visual Source Safe 
+	$Workfile: clinical_document_header_typelib.xsd $  
+	$Modtime: 10.01.06 11:12 $  
+	$Revision: 15 $  
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:kbv="urn::hl7-org/kbv" xmlns:sciphox="urn::sciphox-org/sciphox" xmlns="urn::hl7-org/cda" targetNamespace="urn::hl7-org/cda" elementFormDefault="qualified">
+	<xs:include schemaLocation="id_typelib.xsd"/>
+	<xs:include schemaLocation="document_type_cd_typelib.xsd"/>
+	<xs:include schemaLocation="provider_typelib.xsd"/>
+	<xs:include schemaLocation="patient_typelib.xsd"/>
+	<xs:include schemaLocation="document_relationship_typelib.xsd"/>
+	<xs:include schemaLocation="software_ssu_kontakt_typelib.xsd"/>
+	<xs:import namespace="urn::sciphox-org/sciphox" schemaLocation="software_ssu_typelib.xsd"/>
+	<xs:import namespace="urn::hl7-org/kbv" schemaLocation="all_kbv_typelib.xsd"/>
+	<!-- ****************************** clinical_document_header ****************************** -->
+	<xs:complexType name="dmp_clinical_document_header_typ">
+		<xs:sequence>
+			<xs:element name="id" type="document_id_mit_bsnr_lanr_typ"/>
+			<xs:element name="set_id" type="document_id_mit_arztabrechnungsnummer_typ"/>
+			<xs:element name="version_nbr" type="kbv:version_nbr_typ"/>
+			<xs:element name="document_type_cd" type="dmp_document_type_cd_typ"/>
+			<xs:element name="service_tmr" type="service_tmr_typ"/>
+			<xs:element name="origination_dttm" type="origination_dttm_typ"/>
+			<xs:element name="document_relationship" type="document_relationship_typ" minOccurs="0"/>
+			<xs:element name="provider" type="dmp_provider_typ"/>
+			<xs:element name="patient" type="dmp_patient_typ"/>
+			<xs:element name="local_header" type="sciphox:dmp_software_ssu_typ"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--
+	============================================================
+	Datentypen für die Schnittstelle zwischen Datenannahmestellen und gemeinsamen Einrichtungen
+	============================================================-->
+	<xs:complexType name="dmp_clinical_document_header_da_typ">
+		<xs:sequence>
+			<xs:element name="id" type="document_id_mit_bsnr_lanr_typ"/>
+			<xs:element name="set_id" type="document_id_mit_arztabrechnungsnummer_typ"/>
+			<xs:element name="version_nbr" type="kbv:version_nbr_typ"/>
+			<xs:element name="document_type_cd" type="dmp_document_type_cd_typ"/>
+			<xs:element name="service_tmr" type="service_tmr_typ"/>
+			<xs:element name="origination_dttm" type="origination_dttm_typ"/>
+			<xs:element name="document_relationship" type="document_relationship_typ" minOccurs="0"/>
+			<xs:element name="provider" type="dmp_provider_da_typ"/>
+			<xs:element name="patient" type="dmp_patient_da_typ"/>
+			<xs:element name="local_header" type="sciphox:dmp_software_ssu_typ"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!-- ****************************** service_tmr_typ ****************************** -->
+	<xs:complexType name="service_tmr_typ">
+		<xs:annotation>
+			<xs:appinfo>Dokumentationsdatum (Unterschriftsdatum)</xs:appinfo>
+		</xs:annotation>
+		<xs:attribute name="V" type="xs:date" use="required"/>
+	</xs:complexType>
+	<!-- ****************************** origination_dttm_typ ****************************** -->
+	<xs:complexType name="origination_dttm_typ">
+		<xs:annotation>
+			<xs:appinfo>Dokumentationsdatum (Kopfdatum)</xs:appinfo>
+		</xs:annotation>
+		<xs:attribute name="V" type="xs:date" use="required"/>
+	</xs:complexType>
+	<!--
+	============================================================
+	Datentypen für Koloskopie - 38a
+	============================================================-->
+	<!-- ************************** koloskopie_clinical_document_header_typ *************************************-->
+	<xs:complexType name="koloskopie_clinical_document_header_typ">
+		<xs:sequence>
+			<xs:element name="id" type="document_id_mit_bsnr_lanr_typ"/>
+			<xs:element name="set_id" type="document_id_mit_arztabrechnungsnummer_typ"/>
+			<xs:element name="version_nbr" type="kbv:version_nbr_typ"/>
+			<xs:element name="document_type_cd" type="dmp_document_type_cd_typ"/>
+			<xs:element name="service_tmr" type="service_tmr_typ"/>
+			<xs:element name="origination_dttm" type="origination_dttm_typ"/>
+			<xs:element name="document_relationship" type="document_relationship_typ" minOccurs="0"/>
+			<xs:element name="provider" type="koloskopie_38a_provider_typ"/>
+			<xs:element name="patient" type="koloskopie_patient_typ"/>
+			<xs:element name="local_header" type="sciphox:dmp_software_ssu_typ"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--
+	============================================================
+	Datentypen für Koloskopie - 38b
+	============================================================-->
+	<!-- ************************** koloskopie_38b_clinical_document_header_typ *************************************-->
+	<xs:complexType name="koloskopie_38b_clinical_document_header_typ">
+		<xs:sequence>
+			<xs:element name="id" type="document_id_mit_bsnr_lanr_typ"/>
+			<xs:element name="set_id" type="document_id_mit_arztabrechnungsnummer_typ"/>
+			<xs:element name="version_nbr" type="kbv:version_nbr_typ"/>
+			<xs:element name="document_type_cd" type="dmp_document_type_cd_typ"/>
+			<xs:element name="service_tmr" type="service_tmr_typ"/>
+			<xs:element name="origination_dttm" type="origination_dttm_typ"/>
+			<xs:element name="document_relationship" type="document_relationship_typ" minOccurs="0"/>
+			<xs:element name="provider" type="koloskopie_38b_provider_typ"/>
+			<xs:element name="patient" type="koloskopie_38b_patient_typ"/>
+			<xs:element name="local_header" type="sciphox:dmp_software_ssu_typ"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--
+	============================================================
+	Datentypen für AU
+	============================================================-->
+	<xs:complexType name="au_clinical_document_header_typ">
+		<xs:sequence>
+			<xs:element name="id" type="document_id_mit_bsnr_lanr_typ"/>
+			<!--			<xs:element name="set_id" type="document_id_mit_arztabrechnungsnummer_typ"/>-->
+			<!--			<xs:element name="version_nbr" type="kbv:version_nbr_typ"/>-->
+			<xs:element name="document_type_cd" type="dmp_document_type_cd_typ"/>
+			<xs:element name="service_tmr" type="service_tmr_typ"/>
+			<xs:element name="origination_dttm" type="origination_dttm_typ"/>
+			<!--			<xs:element name="document_relationship" type="document_relationship_typ" minOccurs="0"/>-->
+			<xs:element name="provider" type="dmp_provider_typ"/>
+			<xs:element name="patient" type="au_patient_typ"/>
+			<xs:element name="local_header" type="sciphox:dmp_software_ssu_typ"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--
+	============================================================
+	Datentypen für eHKS - Dermatologen/Nicht-Dermatologen
+	============================================================-->
+	<!-- ************************** eHKS_clinical_document_header_typ *************************************-->
+	<xs:complexType name="eHKS_clinical_document_header_typ">
+		<xs:sequence>
+			<xs:element name="id" type="document_id_mit_bsnr_lanr_typ"/>
+			<xs:element name="document_type_cd" type="dmp_document_type_cd_typ"/>
+			<xs:element name="service_tmr" type="service_tmr_typ"/>
+			<xs:element name="origination_dttm" type="origination_dttm_typ"/>
+			<xs:element name="provider" type="eHKS_provider_typ"/>
+			<xs:element name="patient" type="eHKS_patient_typ"/>
+			<xs:element name="local_header" type="sciphox:dmp_software_ssu_typ"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!-- 
+	============================================================
+	Datentypen für qshgv - QS Hörgerätevereinbarung (eDoku)
+	============================================================
+	-->
+	<xs:complexType name="qshgv_clinical_document_header_typ">
+		<xs:sequence>
+			<xs:element name="id" type="document_id_mit_bsnr_lanr_typ"/>
+			<xs:element name="set_id" type="document_id_mit_bsnr_lanr_typ"/>
+			<xs:element name="version_nbr" type="kbv:version_nbr_typ"/>
+			<xs:element name="document_type_cd" type="dmp_document_type_cd_typ"/>
+			<xs:element name="service_tmr" type="service_tmr_typ"/>
+			<xs:element name="origination_dttm" type="origination_dttm_typ"/>
+			<xs:element name="document_relationship" type="document_relationship_typ" minOccurs="0"/>
+			<xs:element name="provider" type="qshgv_provider_typ"/>
+			<xs:element name="patient" type="qshgv_patient_typ"/>
+			<xs:element name="local_header" type="sciphox:dmp_software_ssu_typ"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!-- 
+	============================================================
+	Datentypen für qshgv - QS Hörgerätevereinbarung Kinder (eDoku)
+	============================================================
+	-->
+	<xs:complexType name="qshgvk_clinical_document_header_typ">
+		<xs:sequence>
+			<xs:element name="id" type="document_id_mit_bsnr_lanr_typ"/>
+			<xs:element name="set_id" type="document_id_mit_bsnr_lanr_typ"/>
+			<xs:element name="version_nbr" type="kbv:version_nbr_typ"/>
+			<xs:element name="document_type_cd" type="dmp_document_type_cd_typ"/>
+			<xs:element name="service_tmr" type="service_tmr_typ"/>
+			<xs:element name="origination_dttm" type="origination_dttm_typ"/>
+			<xs:element name="document_relationship" type="document_relationship_typ" minOccurs="0"/>
+			<xs:element name="provider" type="qshgv_provider_typ"/>
+			<xs:element name="patient" type="qshgvk_patient_typ"/>
+			<xs:element name="local_header" type="sciphox:dmp_software_ssu_typ"/>
+		</xs:sequence>
+	</xs:complexType>	
+</xs:schema>

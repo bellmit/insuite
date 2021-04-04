@@ -1,0 +1,613 @@
+style(type="text/css").
+  .panel-heading{
+    background-color: #eeeeee;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+  .panel-heading a {
+    color: #005580;
+    text-decoration: none;
+  }
+  .panel-heading a:hover {
+    color: #005580;
+    text-decoration: underline;
+  }
+.container.container-fullscreen(id=mojit_view_id)
+  .container.container-fullscreen
+    div(style="position: relative")
+      #fullScreenToggle(style="position: absolute; right: 0; top: 0;")
+        button.btn.btn-sm.btn-default(
+        name="toggleFullScreen", type="button", data-bind="click: toggleFullScreenHandler, attr: { title: viewPortBtnI18n }",
+        style="margin-top: 5px; font-size:14px")
+          span.fa.fa-arrows-alt
+  div
+    ul.nav.nav-tabs(role="tablist", style="margin-bottom: 20px;")
+      li.active
+        a(href="#insuite", role="tab", data-toggle="tab") inSuite
+      li
+        a(href="#intime", role="tab", data-toggle="tab") inTime
+      li
+        a(href="#inform", role="tab", data-toggle="tab") inForm
+      li
+        a(href="#incase", role="tab", data-toggle="tab") inCase
+      li
+        a(href="#invoice", role="tab", data-toggle="tab") inVoice
+      li
+        a(href="#insight", role="tab", data-toggle="tab") inSight
+      li
+        a(href="#datensafe", role="tab", data-toggle="tab") Datensafe
+
+    .row
+      .col-xs-12.col-lg-10.col-lg-offset-1
+        .tab-content
+
+          div.tab-pane.fade.in.active.panel-group#insuite
+            .panel.panel-default
+              .panel-heading
+                h4.panel-title
+                  a(data-toggle="collapse", data-parent="#insuite", href="#collapseOne") 1. Was ist die inSuite?
+              .panel-collapse.collapse.in#collapseOne
+                .panel-body
+                  p Die inSuite vereint als erste und einzige Praxissoftware alle Vorteile webbasierter Lösungen mit lokaler Datenspeicherung in Praxis oder MVZ. Für Sie als Nutzer bedeutet dies:
+                  ul
+                    li <b>Einfach nutzen:</b><br>keine Installation notwendig, intuitiv bedienbar auch ohne aufwändige Schulungen und IT-Expertise; dank automatischer Updates immer aktuell bei Änderung von Katalogen oder Gesetzen.
+                    li <b>Einfach komplett:</b><br>von Terminbuchung über Patientenverwaltung und Dokumentation bis zur Abrechnung alles in Ihrer Hand.
+                    li <b>Einfach flexibel:</b><br>Nutzung an PC, Tablet oder Smartphone mit allen Betriebssystemen; Sie entscheiden wo, wann und wie.
+                    li <b>Einfach zeitgemäß:</b><br>werbefrei und unabhängig bei kostenlosen Einstiegs- und Basisversionen und fairen Monatsgebühren ohne versteckte Kosten.
+            .panel.panel-default
+              .panel-heading
+                h4.panel-title
+                  a(data-toggle="collapse", data-parent="#insuite", href="#collapseTwo") 2. Wie sieht es bei der inSuite mit der Datensicherheit aus und wo werden Praxis- und Patientendaten gespeichert?
+              .panel-collapse.collapse#collapseTwo
+                .panel-body
+                  p Das Doc Cirrus Prinzip sieht vor, dass niemals sensible Patienten- oder Praxisdaten Ihre Praxis verlassen. Daten werden ausschließlich auf dem Doc Cirrus Datensafe Ihrer Einrichtung gespeichert und sind von außen für Unbefugte nicht zugänglich. Zusätzlich setzen wir auf modernste Verschlüsselungstechniken, die die inSuite noch sicherer machen als bspw. Online-Banking.
+            .panel.panel-default
+              .panel-heading
+                h4.panel-title
+                  a(data-toggle="collapse", data-parent="#insuite", href="#collapseThree") 3. Gibt es Mindestvoraussetzungen für die Nutzung der inSuite?
+              .panel-collapse.collapse#collapseThree
+                .panel-body
+                  p Alles was Sie benötigen ist Hardware, wie PC, Notebook, Smartphone oder Tablet mit einem der folgenden, aktuellen Webbrowser: Firefox, Chrome, Safari oder Android Browser. Zusätzlich ist Internet in Ihrer Praxis erforderlich um die Updates zu erhalten.
+            .panel.panel-default
+              .panel-heading
+                h4.panel-title
+                  a(data-toggle="collapse", data-parent="#insuite", href="#collapseFour") 4. Warum kann ich nicht jeden beliebigen Browser nutzen?
+              .panel-collapse.collapse#collapseFour
+                .panel-body
+                  p Doc Cirrus legt größten Wert auf die Sicherheit Ihrer Daten – und auf die Sicherheit der Daten Ihrer Patienten. Moderne Browser bieten ein Höchstmaß an Sicherheit, im Gegensatz zu vielen alten Browsern. Diese offenbahren Sicherheitslücken, die den Zugriff auf die Browserinhalte ermöglichen. Deshalb schließt Doc Cirrus dieses Risiko aus und unterstützt folgende Browser:
+                  ul
+                    li Firefox (V.#{ffVersion}+)
+                    li Chrome (V.#{chromeVersion}+)
+                    li Safari (V.#{safariVersion}+)
+                    li Microsoft Edge (V.#{microsoftEdgeVersion}+)
+                    li Safari Mobile (default IOS #{safariMobileVersion}+)
+                    li Android Browser (default #{androidVersion}+)
+            .panel.panel-default
+              .panel-heading
+                h4.panel-title
+                  a(data-toggle="collapse", data-parent="#insuite", href="#collapseFive") 5. Brauche ich kostenpflichtige Apps für den mobilen Zugriff?
+              .panel-collapse.collapse#collapseFive
+                .panel-body
+                  p Nein. Sie können mit jedem mobilen Endgerät auf die inSuite zugreifen, das die genannten Browser unterstützt (<a data-toggle="collapse" data-parent="#insuite" href="#collapseFour"> siehe 4. </a>). Da alle Doc Cirrus Dienste webbasiert sind, benötigen Sie für den Zugriff keine besondere App oder Plug-ins. Sie können sich aber optional ein Desktop-Lesezeichen zur Doc Cirrus Seite setzen und haben somit den Schnellzugriff, den eine App auch liefert. Zusätzliche Kosten entstehen also nicht für Sie.
+            .panel.panel-default
+              .panel-heading
+                h4.panel-title
+                  a(data-toggle="collapse", data-parent="#insuite", href="#collapseSix") 6. Ich habe bereits mehrere PCs, Notebooks oder Tablets in meiner Praxis - muss ich diese nun alle neu beschaffen, wenn ich die inSuite nutzen möchte?
+              .panel-collapse.collapse#collapseSix
+                .panel-body
+                  p Nein, das müssen Sie nicht. Der Vorteil webbasierter Software besteht gerade darin, dass sie mit Ihrer vorhandenen Hardware kompatibel ist - und Sie somit keine hohen Kosten für eine komplett neue Hardware-Ausstattung haben. Alles was Sie kurz prüfen müssen ist, ob einer der in (<a data-toggle="collapse" data-parent="#insuite" href="#collapseFour"> siehe 4. </a>) aufgeführten sicheren Browser auf Ihren Geräten lauffähig ist.
+            .panel.panel-default
+              .panel-heading
+                h4.panel-title
+                  a(data-toggle="collapse", data-parent="#insuite", href="#collapseSeven") 7. Muss sich jeder Nutzer für die inSuite registrieren?
+              .panel-collapse.collapse#collapseSeven
+                .panel-body
+                  p Nein, es muss sich nur ein Verantwortlicher der Praxis registrieren. Dieser kann dann weitere Nutzer einfach im System mit den jeweiligen Rechten anlegen.
+            .panel.panel-default
+              .panel-heading
+                h4.panel-title
+                  a(data-toggle="collapse", data-parent="#insuite", href="#collapseEight") 8. Was passiert, wenn ich mein Passwort vergessen habe?
+              .panel-collapse.collapse#collapseEight
+                .panel-body
+                  p Hat ein Mitarbeiter sein Passwort vergessen, kann über die Startseite bei der Anmeldung ein neues Passwort angefordert werden. Der Nutzer bekommt dann an seine im System hinterlegte Mailadresse die Möglichkeit ein neues Passwort zu vergeben.
+            .panel.panel-default
+              .panel-heading
+                h4.panel-title
+                  a(data-toggle="collapse", data-parent="#insuite", href="#collapseNine") 9. Kann ich (m)ein (vorhandenes) Kartenlesegerät an die inSuite anschließen?
+              .panel-collapse.collapse#collapseNine
+                .panel-body
+                  p Ja, und zwar auf zwei Wegen. Entweder Sie schließen Ihr Kartenlesegerät direkt an den Datensafe an - oder Sie verbinden es mit einem Ihrer Arbeitsplatz-PCs oder -Laptops. Für den zweiten Weg müssen Sie vorher ein kleines Programm auf dem entsprechenden Rechner installieren, das wir Ihnen kostenlos zur Verfügung stellen und Ihr Kartenlesegerät erkennt. Nutzer von Apple Produkten mit Betriebssystem Mac OS X 10.10. (Yosemite) und höher müssen sich außerdem das von Apple bereitgestellte Paket Java für OS X herunterladen und installieren. Bei Fragen hierzu stehen Ihnen unsere Kolleginnen und Kollegen vom Support gern zur Verfügung.
+            .panel.panel-default
+              .panel-heading
+                h4.panel-title
+                  a(data-toggle="collapse", data-parent="#insuite", href="#collapseTen") 10. Wie nutze ich eine Medikamentendatenbank mit der inSuite?
+              .panel-collapse.collapse#collapseTen
+                .panel-body
+                  p In Kürze bieten wir Ihnen auch eine integrierte, zertifizierte Medikamentendatenbank an. Bis dahin können Sie eine selbstlernende Hausliste anlegen und pflegen, auf deren Basis Sie Verordnungen schnell und einfach vornehmen können.
+            .panel.panel-default
+              .panel-heading
+                h4.panel-title
+                  a(data-toggle="collapse", data-parent="#insuite", href="#collapseEleven") 11. Wofür steht eigentlich "Cirrus"?
+              .panel-collapse.collapse#collapseEleven
+                .panel-body
+                  p Cirrus steht für feine, durchsichtige Schleierwolken aus Eiskristallen in rund 10 bis 15 km Höhe. Cirrus-Wolken sind die höchsten am Himmel und oft die Vorboten für einen Wetterumschwung...
+            .panel.panel-default
+              .panel-heading
+                h4.panel-title
+                  a(data-toggle="collapse", data-parent="#insuite", href="#collapseTwelve") 12. Wieso kann ich manchmal nicht speichern? Warum sind die Button nicht bedienbar?
+              .panel-collapse.collapse#collapseTwelve
+                .panel-body
+                  p Im ganzen inSuite System finden sich immer wieder rot umrandete Felder, sogenannte Pflichtfelder. Diese müssen ausgefüllt werden, damit die Felder blau werden und der Bereich gespeichert werden kann.
+            .panel.panel-default
+              .panel-heading
+                h4.panel-title
+                  a(data-toggle="collapse", data-parent="#insuite", href="#collapseThirteen") 13. Warum wechseln manche Felder die Farbe von rot nach blau?
+              .panel-collapse.collapse#collapseThirteen
+                .panel-body
+                  p Im gesamten System von inSuite gibt es zwischendurch rot umrandete Felder. Das sind Pflichtfelder, die ausgefüllt werden müssen, da sonst ein Speichern nicht möglich ist. Sobald Sie das Feld korrekt ausgefüllt haben, wechselt die Farbe in blau und das Speichern ist möglich.
+            .panel.panel-default
+              .panel-heading
+                h4.panel-title
+                  a(data-toggle="collapse", data-parent="#insuite", href="#collapseFourteen") 14. Ich möchte gern Feedback geben, wie mache ich das?
+              .panel-collapse.collapse#collapseFourteen
+                .panel-body
+                  p Wir haben auf der Startseite "Doc Cirrus" rechts eine blaue Lasche bereit gestellt, unter der Sie uns gern Feedback zum System geben dürfen. Ihnen gefällt etwas sehr gut oder etwas könnte verbessert werden? Tragen Sie es in der Maske ein und hinterlassen Sie uns Ihren Praxisnamen, Namen und E-Mailadresse, so dass wir Sie kontaktieren können. Wir freuen uns auf Ihr Feedback!
+            .panel.panel-default
+              .panel-heading
+                h4.panel-title
+                  a(data-toggle="collapse", data-parent="#insuite", href="#collapseFiveteen") 15. Wie logge ich mich aus?
+              .panel-collapse.collapse#collapseFiveteen
+                .panel-body
+                  p Oben rechts sehen Sie ein Symbol mit einem Männchen. Wenn Sie das klicken, sind Sie ausgeloggt.
+
+          div.tab-pane.fade.panel-group#intime
+            .panel.panel-default
+              .panel-heading
+                h4.panel-title
+                  a(data-toggle="collapse", data-parent="#intime", href="#2collapseOne") 1. Was ist inTime?
+              .panel-collapse.collapse.in#2collapseOne
+                .panel-body
+                  p inTime ist die Termin- und Ressourcenverwaltung der inSuite und bedeutet mehr Service für Ihre Patienten und mehr Effizienz für Ihre Praxis. Die Lösung orientiert sich an den individuellen Vorgaben und Arbeitsabläufen Ihrer Einrichtung, die Sie im Verwaltungsbereich einrichten können. So können Patienten bequem per Smartphone, Tablet und PC jederzeit einen Termin vereinbaren. Oder im dringenden Fall einen Sofort-Termin buchen. Das System erlaubt neben der Voraussage der aktuellen Wartezeit auch die laufende Information zur Wartezeitentwicklung in Echtzeit, so dass ein Patient mit Smartphone diese Zeit anderweitig sinnvoll nutzen kann - damit gehört die Bindung an das Wartezimmer der Vergangenheit an. Ferner bietet inTime:
+                  ul
+                    li Online-Terminbuchung eingebettet in Ihre Praxis-Website (im sog. Doc Cirrus Gesundheitsportal, s.u.) in einem zentralen Kalendersystem ohne Doppelerfassung.
+                    li Intelligente Terminvergabe für optimale Auslastung.
+                    li Weniger No-Show-Patienten durch integrierten Erinnerungsservice per SMS oder E-Mail
+                    li Keine Wartezimmerbindung durch Echtzeitinformationen über Wartezeiten
+            .panel.panel-default
+              .panel-heading
+                h4.panel-title
+                  a(data-toggle="collapse", data-parent="#intime", href="#2collapseTwo") 2. Welche Vorteile habe ich, wenn ich inTime einsetze?
+              .panel-collapse.collapse#2collapseTwo
+                .panel-body
+                  p Der Einsatz von inTime bietet für die verschiedenen Beteiligten eine Reihe unterschiedlicher Vorteile: - Online und Offlinekalender - Aussagen über mögliche Wartezeiten bei Spontanpatienten - unterschiedlichste Kalenderansichten - Terminbuchungen über das Gesundheitsportal bei registrierten Patienten - Spontannummernvergabe mit Wartezeitanzeige via Gesundheitsportal
+            .panel.panel-default
+              .panel-heading
+                h4.panel-title
+                  a(data-toggle="collapse", data-parent="#intime", href="#2collapseThree") 3. Was ist der Unterschied zwischen einem Termin und einer Nummer?
+              .panel-collapse.collapse#2collapseThree
+                .panel-body
+                  p Termine sind geplante Ereignisse, die im voraus eingetragen werden. Ein spontan erscheinender Patient bekommt eine Nummer zugewiesen, um ihm Auskunft über die mögliche Wartezeit zu geben. Der Patient hat dann die Möglichkeit mit der Nummer und der Praxis ID die Wartezeit außerhalb der Praxis zu verbringen.
+            .panel.panel-default
+              .panel-heading
+                h4.panel-title
+                  a(data-toggle="collapse", data-parent="#intime", href="#2collapseFour") 4. Warum wird der vergebene Termin nicht in die Wartezeitberechnung miteingerechnet?
+              .panel-collapse.collapse#2collapseFour
+                .panel-body
+                  p Ist der Termin einem Infokalender zugeordnet? Dann wird dieser nicht in die Wartezeitberechnung miteingerechnet. Patiententermine müssen einem "Arztkalender" zugewiesen werden.
+            .panel.panel-default
+              .panel-heading
+                h4.panel-title
+                  a(data-toggle="collapse", data-parent="#intime", href="#2collapseFive") 5. Was bedeuten die Abkürzungen in der Warte- und Aufrufliste?
+              .panel-collapse.collapse#2collapseFive
+                .panel-body
+                  p Gehen Sie mit der Maus auf die Abkürzung, die Sie interessiert. Es erscheinen nun die ausgeschriebenen Feldbezeichnungen.
+            .panel.panel-default
+              .panel-heading
+                h4.panel-title
+                  a(data-toggle="collapse", data-parent="#intime", href="#2collapseSix") 6. Wie kann ich meinen Kalender so filtern, dass ich nur die für mich wichtigen Einträge sehe.
+              .panel-collapse.collapse#2collapseSix
+                .panel-body
+                  p Sie arbeiten in einer großen Praxis oder MVZ und haben einen unübersichtlichen Kalender? Dann können Sie einfach, die Kalender links neben der Kalenderansicht wegklicken, die Sie nicht betreffen. Haben Sie mehrere Betriebsstätten? Dann können Sie auf Ihren Benutzernamen oben rechts klicken und bei "Betriebsstätte" die auswählen, für die Sie zuständig sind. Die Ansicht ist dann auch in der Warte- und Aufrufliste wirksam.
+            .panel.panel-default
+              .panel-heading
+                h4.panel-title
+                  a(data-toggle="collapse", data-parent="#intime", href="#2collapseSeven") 7. Wie finde ich den nächsten Termin von einem Patienten?
+              .panel-collapse.collapse#2collapseSeven
+                .panel-body
+                  p Entweder Sie gehen in die Patientenakte, dort findet sich oben rechts neben dem Symbol der Uhr der jeweils nächste Termin oder Sie geben in inTime in das Suchfeld den Patientennamen an. Hat ein Patient mehrere Termine können Sie diese auch über die Patientenakte - Drucken - Terminliste sich anschauen oder dem Patienten ausdrucken, wenn dieser nicht das Gesundheitsportal nutzt.
+            .panel.panel-default
+              .panel-heading
+                h4.panel-title
+                  a(data-toggle="collapse", data-parent="#intime", href="#2collapseEight") 8. Was ist das Gesundheitsportal?
+              .panel-collapse.collapse#2collapseEight
+                .panel-body
+                  p Das Gesundheitsportal ist ein Service Ihrer Praxis an Ihre vorhandenen oder zukünftigen Patienten. Der Zugang lässt sich schnell in Ihre Website einbetten. In diesem Portal können nicht nur Patienten Termine buchen, sondern auch Untersuchungsbefunde und Dokumente einsehen, die Sie vorher freigegeben haben. Außerdem können interaktive Fragebögen ausgefüllt werden, eigene Einträge ergänzt oder - in Kürze - Ergebnisse von sog. Gesundheits-Apps importiert werden. Mit Hilfe des Gesundheitsportals werden Ihre Patienten also auch zu Ihren "Online-Patienten": mehr Service für Ihre Patienten bei weniger Aufwand für Sie und Ihre Angestellten.
+            .panel.panel-default
+              .panel-heading
+                h4.panel-title
+                  a(data-toggle="collapse", data-parent="#intime", href="#2collapseNine") 9. Wie bekommt mein Patient Zugang zum Gesundheitsportal?
+              .panel-collapse.collapse#2collapseNine
+                .panel-body
+                  p Sie können den Patienten einfach unter seinen Daten | Portalrechte für Onlinetermine und Dokumentenaustausch freischalten. Außerdem hat der Patient die Möglichkeit, sich über Ihre Webseite dafür anzumelden, wenn Sie das eingestellt haben und den iFrame nutzen.
+            .panel.panel-default
+              .panel-heading
+                h4.panel-title
+                  a(data-toggle="collapse", data-parent="#intime", href="#2collapseTen") 10. Welche Geräte kann ich für das Wartezimmer-TV benutzen?
+              .panel-collapse.collapse#2collapseTen
+                .panel-body
+                  p Um Ihren Patienten den zusätzlichen Wartezimmer-TV-Service anbieten zu können, benötigen Sie entweder einen Monitor mit PC-Anschluss, der mit dem Internet verbunden ist, oder ein Smart-TV-Gerät, auf dem die unterstützten Browser laufen (siehe 5.). Wir werden in Kürze eine Liste von Smart-TVs veröffentlichen, die von uns für die Nutzung empfohlen werden
+            .panel.panel-default
+              .panel-heading
+                h4.panel-title
+                  a(data-toggle="collapse", data-parent="#intime", href="#2collapseEleven") 11. Wie kann ich Patienten vor Ihrem Termin benachrichtigen lassen?
+              .panel-collapse.collapse#2collapseEleven
+                .panel-body
+                  p Im Menü unter Verwaltung / inTime / Benachrichtigungen können Sie einstellen ob und wann Patienten mit Termin per E-Mail oder SMS an ihren Termin erinnert werden sollen. Zusätzlich können Sie dort den Benachrichtigungstext anpassen.
+
+          div.tab-pane.fade.panel-group#inform
+            .panel.panel-default
+              .panel-heading
+                h4.panel-title
+                  a(data-toggle="collapse", data-parent="#inform", href="#3collapseOne") 1. Was ist inForm?
+              .panel-collapse.collapse.in#3collapseOne
+                .panel-body
+                  p inForm untestützt Sie bei der Erstellung von Formularen und Dokumenten im Praxisalltag und darüber hinaus. Eine Umstellung auf integrierte Prozesse ohne Medienbrüche und Doppelerfassung wird damit mühelos möglich. Beispielhaft stehen diese Funktionalitäten für inForm:
+                  ul
+                    li Drag & Drop-Formulargestaltung
+                    li Automatische Befüllung der Formulare und Dokumente mit Ihren Patienten- und Praxisdaten
+                    li Zahlreiche Vorlagen, z.B. für Arztbriefe und Verordnungen
+                    li Interaktive Formulare für die Patientenkommunikation, z.B. Anamnese- und Aufklärungsbögen oder Qualitätsbefragungen
+            .panel.panel-default
+              .panel-heading
+                h4.panel-title
+                  a(data-toggle="collapse", data-parent="#inform", href="#3collapseTwo") 2. Mit welchen Geräten kann ich inForm bedienen?
+              .panel-collapse.collapse#3collapseTwo
+                .panel-body
+                  p Wie alle Doc Cirrus Lösungen ist auch inForm webbasiert, d.h. Sie können den Dienst an PC, Tablet oder sogar mit Ihrem Smartphone nutzen.
+            .panel.panel-default
+              .panel-heading
+                h4.panel-title
+                  a(data-toggle="collapse", data-parent="#inform", href="#3collapseThree") 3. Auf welche Vorlagen kann ich mit inForm direkt zugreifen?
+              .panel-collapse.collapse#3collapseThree
+                .panel-body
+                  p inForm bietet aktuell die von der KBV vorgegebenen Formulare, sowie Privatrechnung, Terminliste und Privatrezept. Weitere können Sie selbst jederzeit anlegen.
+            .panel.panel-default
+              .panel-heading
+                h4.panel-title
+                  a(data-toggle="collapse", data-parent="#inform", href="#3collapseFour") 4. Kann ich meine inForm-Formulare und -Dokumente als PDF exportieren und drucken?
+              .panel-collapse.collapse#3collapseFour
+                .panel-body
+                  p Ja, das geht praktisch mit einem Click. Einfach in inForm auf den oben stehenden Button "PDF exportieren" klicken , dann erstellt das System ein PDF, welches Sie entweder öffnen oder abspeichern können.
+            .panel.panel-default
+              .panel-heading
+                h4.panel-title
+                  a(data-toggle="collapse", data-parent="#inform", href="#3collapseFive") 5. Kann ich Formulare importieren und exportieren?
+              .panel-collapse.collapse#3collapseFive
+                .panel-body
+                  p Ja, diese Funktion steht Ihnen im inForm Editor zur Verfügung. Bei Export erhalten Sie ein Archivfile mit allen exportierten Formularen. Beim Import können Sie entweder einzelne oder alle enthaltemen Formulare in eine Verzeichnis Ihrer Wahl übernehmen.
+            .panel.panel-default
+              .panel-heading
+                h4.panel-title
+                  a(data-toggle="collapse", data-parent="#inform", href="#3collapseSix") 6. Was bietet der inForm Editor?
+              .panel-collapse.collapse#3collapseSix
+                .panel-body
+                  p Mit dem von uns zur Verfügung gestellten Editor, können Sie eigene Formulare ganz einfach erstellen. Sie können Hintergründe, Bilder, Logos hochladen und Texte nach Ihren Wünschen erstellen. Desweiteren bietet der Editor noch weitere Elemente, um zum Beispiel Fragebögen zu erstellen.
+            .panel.panel-default
+              .panel-heading
+                h4.panel-title
+                  a(data-toggle="collapse", data-parent="#inform", href="#3collapseSeven") 7. Kann ich Formulare auch meinen Patienten elektronisch zur Verfügung stellen?
+              .panel-collapse.collapse#3collapseSeven
+                .panel-body
+                  p Ja, wenn Ihr Patient das Gesundheitsportal nutzt, können Sie einzelne Formulare dem Patienten freigeben, das der diese anschauen oder auch bearbeiten kann. Bearbeitete Dokumente kann der Patient dann ganz einfach zurücksenden und Sie sehen das Ergebnis in der Patientenakte mit dem Hinweis "von Patient".
+            .panel.panel-default
+              .panel-heading
+                h4.panel-title
+                  a(data-toggle="collapse", data-parent="#inform", href="#3collapseEight") 8. Kann ich die Standardformulare auch ändern?
+              .panel-collapse.collapse#3collapseEight
+                .panel-body
+                  p Ja. Erstellen Sie einfach eine Kopie des Formulars, verändern Sie es nach Belieben und nutzen Sie fortan Ihre eigenen Versionen. Wenn Sie auch eigene Versionen von Formularen wünschen, die mit Bedienelementen anderer inSuite Module verbunden sind (z.B. mit dem Rechnungsknopf von inCase), dann müssen Sie in Ihrer Version noch unter Formular die entsprechende Standardrolle zuweisen. Ansonsten wird dort weiterhin die Originalversion verwendet.
+            .panel.panel-default
+              .panel-heading
+                h4.panel-title
+                  a(data-toggle="collapse", data-parent="#inform", href="#3collapseNine") 9. Was passiert mit alten Formulareinträgen in den Akten, wenn ich ein solches Formular ändere?
+              .panel-collapse.collapse#3collapseNine
+                .panel-body
+                  p Die werden nicht geändert, sondern zeigen weiterhin die alte Version. Wenn Sie für neue Einträge eine angepasste Formularversion aktivieren möchten, dann erhöhen Sie innerhalb des inForm einfach die Versionsnummer mit dem Button V+.
+            .panel.panel-default
+              .panel-heading
+                h4.panel-title
+                  a(data-toggle="collapse", data-parent="#inform", href="#3collapseTen") 10. Können auch Formulare mit unterschiedlichen Papiergrößen angelegt und gedruckt werden?
+              .panel-collapse.collapse#3collapseTen
+                .panel-body
+                  p Ja. Bei der Anlage eine Formulars können Sie das Papierformat wählen. Diese Informationen werden dann später ins PDF eingebettet und informieren den Drucker über das Format. Moderne Drucker wählen daraufhin selbsttätig den richtigen Schacht. Bei älteren Druckern müssen Sie im Druckdialog selbst den Schacht auswählen, in dem das passende Papier bzw. Vordruck liegt.
+
+          div.tab-pane.fade.panel-group#incase
+            .panel.panel-default
+              .panel-heading
+                h4.panel-title
+                  a(data-toggle="collapse", data-parent="#incase", href="#4collapseOne") 1. Was ist inCase?
+              .panel-collapse.collapse.in#4collapseOne
+                .panel-body
+                  p inCase ist die zentrale elektronische Fall- und Patientenakte der inSuite und damit das Herzstück der Praxissoftware. Rechtskonform und revisionssicher dokumentieren und erfassen Sie mit inCase jegliche Leistungen – schnell und auf Basis stets aktueller Kataloge. inCase bietet aber noch mehr:
+                  ul
+                    li Dashboard-Ansicht, alles Wichtige auf einen Blick
+                    li Echtzeitprüfung der Einträge im Hintergrund schon während der Dokumentation
+                    li Konkrete Hilfestellungen für eine bessere und effizientere Dokumentation
+                    li Selbstlernende Hauskataloge
+            .panel.panel-default
+              .panel-heading
+                h4.panel-title
+                  a(data-toggle="collapse", data-parent="#incase", href="#4collapseTwo") 2. Kann ich inCase auch mit Tastaturkürzeln bedienen?
+              .panel-collapse.collapse#4collapseTwo
+                .panel-body
+                  p Ja, das geht. Unsere Tastaturkürzel sind kontextsensitiv verfügbar. Dies bedeutet, dass aus Gründen der Übersichtlichkeit bestimmte Shortcuts nur für bestimmte Bereiche der inSuite vorgesehen sind; aktuell im Bereich von inCase, d.h. in Patientenliste und Akte - "ctrl-h" zeigt alle für einen bestimmten Bereich verfügbaren Tastaturkürzel jeweils an. Die Taste "ctrl" wird auf vielen Tastaturen auch mit "strg" bezeichnet.
+                  ul
+                    li <b>ctrl+h</b> Hilfe für Tastenkürzel
+                    li <b>ctrl+p</b> Patientenliste
+                    li <b>ctrl+e</b> Neuer Eintrag
+                    li <b>ctrl+l</b> Neue Leistung
+                    li <b>ctrl+d</b> Neue Diagnose
+                    li <b>ctrl+b</b> Neuer Schein
+                    li <b>ctrl+s</b> Speichern
+            .panel.panel-default
+              .panel-heading
+                h4.panel-title
+                  a(data-toggle="collapse", data-parent="#incase", href="#4collapseThree") 3. Welche Kataloge sind in inCase integriert?
+              .panel-collapse.collapse#4collapseThree
+                .panel-body
+                  p inCase beinaltet den jeweils aktuellen EBM Katalog der KBV. Zusätzlich bieten wir noch den GOÄ und den UV GOÄ Katalog an. Medikamente, Heilmittel und Hilfsmittel werden in Kürze von der Firma MMI integriert. Weitere Kataloge können auf Anfrage bereitgestellt werden.
+            .panel.panel-default
+              .panel-heading
+                h4.panel-title
+                  a(data-toggle="collapse", data-parent="#incase", href="#4collapseFour") 4. Welche Vorteile habe ich dadurch, dass die Kataloge "stets aktuell" sind?
+              .panel-collapse.collapse#4collapseFour
+                .panel-body
+                  p Sobald sich irgendein Bestandteil eines Kataloges oder ein Prüfmodul ändert (z.B. die Quartals-Updates der KBV), liegt dieser in Echtzeit auch in Ihrem System vor - hierfür sorgt das Auto-Update der inSuite. Für Sie bedeutet das stets aktuelle Informationen und Grundlagen, ohne dass Sie sich selbst um oftmals nervtötende und zeitraubende Updates kümmern müssen.
+            .panel.panel-default
+              .panel-heading
+                h4.panel-title
+                  a(data-toggle="collapse", data-parent="#incase", href="#4collapseFive") 5. Warum muss ich erst einen Typ wählen, bevor ich Einträge machen kann in der Patientendokumentation?
+              .panel-collapse.collapse#4collapseFive
+                .panel-body
+                  p Die Auswahl der Typen hilft die Daten strukturiert im System anzulegen. Zum Einen kann danach gefiltert und zum Anderen später im inSight Bereich analysiert werden. Außerdem befindet sich hinter jedem "Typ" eine darauf angepasste Eingabemaske oder ein inForm-Formular, der Ihnen die Dokumentation erleichert.
+                  p <b>Tipp:</b>
+                  p Mit ctrl+u zeigt das System Ihnen die Tastaturkürzel, mit denen Sie u.a. auch direkt Einträge eines bestimmten Typs erzeugen können (z.B. ctrl+l für einen Leistungseintrag). Außerdem gibt es noch die Funktion <b>Speichern+</b>, die Ihnen z.B. die schnelle Eingabe mehrerer EInträge gleichen Typs ermöglicht.
+            .panel.panel-default
+              .panel-heading
+                h4.panel-title
+                  a(data-toggle="collapse", data-parent="#incase", href="#4collapseSix") 6. Was ist der Unterschied zwischen Speichern+ und Speichern?
+              .panel-collapse.collapse#4collapseSix
+                .panel-body
+                  p Speichern+ bezieht sich auf den ausgewählten Typ bei der Dokumentation in der Patientenakte. Sie können nach der Eingabe Speichern drücken und haben dann die Möglichkeit einen neuen Typen auszuwählen. Speichern+ lässt Sie in dem ausgewählten Typen bleiben und löscht alle anderen Felder. Haben Sie zu Ende dokumentiert drücken Sie Speichern und dann "Zurück" um aus dem Dokumentationsbereich herauszukommen
+            .panel.panel-default
+              .panel-heading
+                h4.panel-title
+                  a(data-toggle="collapse", data-parent="#incase", href="#4collapseSeven") 7. Wozu dienen diese Zustandsangaben an einem Eintrag und welche gibt es?
+              .panel-collapse.collapse#4collapseSeven
+                .panel-body
+                  p inCase unterstützt den Arzt dabei eine rechtlich einwandfrei, revisionssichere Falldokumentation zu erstellen. Diese Unterstützung basiert auf den Zuständen der Akteneinträge sowie dem systemweiten Audit-Log, in dem alle Änderungen des Systems protokolliert werden.
+                  p Einträge in der Akte folgenden definierten Zuständen:
+                  ul
+                    li <b>erzeugt</b>: neu angelegter Eintrag
+                    li <b>importiert</b>: neuer Eintrag, der durch Import ins System kam
+                    li <b>validiert</b>: ein erzeugter oder importierter Eintrag der den hinterlegten Regeln entspricht
+                    li <b>freigegeben</b>: ein valider Eintrag, der durch verantwortlichen Mediziner inhaltlich/rechtlich freigegeben wurde
+                    li <b>storniert</b>: ein freigegebener Eintrag, der nachträglich storniert wurde
+                    li <b>abgerechnet</b>: ein freigegebener Leistungseintrag, der abgerechnet wurde
+                    li <b>beanstandet</b>: ein abgerechneter Leistungseintrag, der vom Patienten oder der KV beanstandet wurde
+                    li <b>bezahlt</b>: ein abgerechneter Leistungseintrag, der bezahlt wurde
+                    li <b>archiviert</b>: alter Eintrag, der vom System archiviert wurde
+                  p Die Freigabe eines Eintrags ist hier eine besondere Aktion, da sie den Zeitpunkt festlegt, zu dem der Mediziner die Verantwortung für den Eintrag übernimmt. Davor kann ein Eintrag beliebig gelöscht und verändert werden, danach sind Änderungen noch durch Stornieren, Kopieren und erneutes Freigeben möglich.
+                  p Stornierte Einträge bleiben <b><strike>durchgestrichen</strike></b> in der Akte stehen.
+                  p Die Freigabe von Leistungen, Diagnosen und Scheinen (nur GKV) muss spätestens zum Zeitpunkt der Abrechnung erfolgen (ohne Freigabe ist keine Abrechnung möglich)
+            .panel.panel-default
+              .panel-heading
+                h4.panel-title
+                  a(data-toggle="collapse", data-parent="#incase", href="#4collapseEight") 8. Wir gebe ich meinem Patienten ein Dokument frei, das er dann in seinem Gesundheitspostal sieht?
+              .panel-collapse.collapse#4collapseEight
+                .panel-body
+                  p Folgende Dokumentarten können für den Zugriff des Patienten via Gesundheitsportal bereitgestellt werden:
+                  ul
+                    li Formulare als PDF, für die ein PDF erzeugt wurde
+                    li Interaktive Formulare
+                    li Externe Dokumente, die einem Eintrag zugeordnet wurden (PDF, JPG/JPEG, PNG, GIF)
+                  p Voraussetzungen damit der Patient zugreifen kann sind:
+                  ul
+                    li Patient wurden unter Stammdaten / Portalrechte das grundsätzlich Recht für den Datenzugriff eingeräumt
+                    li Die Einträge die er sehen können soll sind im Status "freigegeben"
+                    li Die Einträge werden dann unter Stammdaten / Dokumente angezeigt
+                    li werden sie dort angehakt, dann sind sie für den Patienten sichtbar
+                    li für Interaktive Formular muss zusätzlich unter Verlauf der Modus "Interaktiv" gewählt werden.
+                  p Es klingt ein wenig kompliziert, wurde aber bewusst so gestaltet, da die Bereitstellung von Daten aus der Fallakte ein sensibles Thema ist und der Arzt hier jederzeit einsehen und entscheiden kann was er so freigibt und was nicht
+                  p <b>Tipp:</b>
+                  p Das System ist so optimiert, dass sie über diesen Mechanismus mit sehr wenig Aufwand der Forderung gemäß Patientenrechtegesetz nachkommen können. Zusätzlich ermöglicht es eine innovative und effiziente Form der Arzt-Patienten-Kommunikation.
+
+          div.tab-pane.fade.panel-group#invoice
+            .panel.panel-default
+              .panel-heading
+                h4.panel-title
+                  a(data-toggle="collapse", data-parent="#invoice", href="#5collapseOne") 1. Was ist inVoice?
+              .panel-collapse.collapse.in#5collapseOne
+                .panel-body
+                  p inVoice steht für korrekte und umfassende Abrechnung aller Leistungen und Honorare - GKV, PKV und Selbstzahler. Und damit für mehr und schnelleren Umsatz ohne Mehraufwand. inVoice beinhaltet darüber hinaus:
+                  ul
+                    li Erstellung von Rechnungen und Quittungen auf Knopfdruck
+                    li Konsolidierte Abrechnung auch über mehrere Betriebsstätten und Ärzte
+                    li Manueller Versand/Upload oder 1-Click-Abrechnung über KV-Connect
+                    li Automatische Prüfung und Vervollständigung bei privaten Leistungen und Honoraren
+            .panel.panel-default
+              .panel-heading
+                h4.panel-title
+                  a(data-toggle="collapse", data-parent="#invoice", href="#5collapseThree") 3. Kann ich mit inVoice auch gegenüber den Berufsgenossenschaften abrechnen?
+              .panel-collapse.collapse#5collapseThree
+                .panel-body
+                  p Das ist aktuell noch nicht möglich. Wir werden dieses Abrechnungsverfahren aber bereits in Kürze anbieten - wenden Sie sich bitte diesbzgl. an unser Support Team für mehr Informationen zum sog. "Datenaustausch mit Leistungserbringern in der gesetzlichen Unfallversicherung", kurz: DALE-UV.
+            .panel.panel-default
+              .panel-heading
+                h4.panel-title
+                  a(data-toggle="collapse", data-parent="#invoice", href="#5collapseFour") 4. Wie erstelle ich Rechnungen und Quittungen mit inVoice?
+              .panel-collapse.collapse#5collapseFour
+                .panel-body
+                  p Nachdem Sie die Leistungen für den Patienten in inCase eingetragen haben, können Sie - nach Auswahl des Rechnungsformulars - nun diese Leistungen auswählen, indem Sie einfach das Häkchen hinter die jeweilige Leistung setzen. Diese wird dann automatisch in der Rechnung angezeigt. Wollen Sie die Diagnosen mitaufführen geht das auf die gleiche Weise.
+            .panel.panel-default
+              .panel-heading
+                h4.panel-title
+                  a(data-toggle="collapse", data-parent="#invoice", href="#5collapseFive") 5. Kann ich mit inVoice auch ein Kassenbuch führen, also z.B. sehen wer welche Rechnungen bereits oder noch nicht bezahlt hat?
+              .panel-collapse.collapse#5collapseFive
+                .panel-body
+                  p Das ist aktuell noch nicht möglich. Wir werden diese Möglichkeit aber bereits in Kürze anbieten - wenden Sie sich bitte diesbzgl. an unser Support Team für mehr Informationen zum sog. "Kassenbuch"
+            //.panel.panel-default
+              .panel-heading
+                h4.panel-title
+                  a(data-toggle="collapse", data-parent="#invoice", href="#5collapseSix") 6. ...
+              .panel-collapse.collapse#5collapseSix
+                .panel-body
+                  p ...
+            //.panel.panel-default
+              .panel-heading
+                h4.panel-title
+                  a(data-toggle="collapse", data-parent="#invoice", href="#5collapseSeven") 7. ...
+              .panel-collapse.collapse#5collapseSeven
+                .panel-body
+                  p ...
+            //.panel.panel-default
+              .panel-heading
+                h4.panel-title
+                  a(data-toggle="collapse", data-parent="#invoice", href="#5collapseEight") 8. ...
+              .panel-collapse.collapse#5collapseEight
+                .panel-body
+                  p ...
+
+          div.tab-pane.fade.panel-group#insight
+            .panel.panel-default
+              .panel-heading
+                h4.panel-title
+                  a(data-toggle="collapse", data-parent="#insight", href="#6collapseOne") 1. Was ist inSight?
+              .panel-collapse.collapse.in#6collapseOne
+                .panel-body
+                  p inSight liefert Kennzahlen und betriebswirtschaftliche Auswertungen in Echtzeit – als Basis für eine exakte und vergleichende Analyse Ihres Praxisbetriebs. Folgende Funktionen bilden den Kern von inSight:
+                  ul
+                    li Identifikation unvollständig oder gar nicht abgerechneter Leistungen
+                    li Analysen und grafische Darstellungen zu Zuweisern, Patientenzugang, Diagnosen und Behandlungspfaden
+                    li Kennzahlen zu Erträgen abhängig von spezifischen Suchkriterien
+                    li Auswertungen zu Auslastung und Ertrag Ihrer Angestellten
+            .panel.panel-default
+              .panel-heading
+                h4.panel-title
+                  a(data-toggle="collapse", data-parent="#insight", href="#6collapseTwo") 2. Welche Kennzahlen erhalte ich mit inSight?
+              .panel-collapse.collapse#6collapseTwo
+                .panel-body
+                  p inSight bietet Echtzeit-Informationen, Kennzahlen und Grafiken, die Ihnen Transparenz über Ihre Patienten und Ihre Praxis ermöglicht.
+                  p inSight wird sukzessive um weitere Auswertungen und Kennzahlen erweitert. Sprechen Sie uns an, wenn Ihnen etwas besonders wichtig ist und wird prüfen ob wir dies aufnehmen.
+                  p Neben dem Reporting verfügt inSight über ein leistungsfähiges Anaalyse-Werkzeug, mit dem Sie Ihre Patientendaten und Behandlungspfade selbst durchleuchten können.
+                  p Für einen "Refresh" nach Datenänderung (nur dann erforderlich) drücken Sie bitte den Button oben rechts.
+            //.panel.panel-default
+              .panel-heading
+                h4.panel-title
+                  a(data-toggle="collapse", data-parent="#insight", href="#6collapseThree") 3. Welche Kennzahlen erhalte ich mit inSight?
+              .panel-collapse.collapse#6collapseThree
+                .panel-body
+                  p inSight bietet Echtzeit-Informationen, Kennzahlen und Grafiken, die Ihnen Transparenz über Ihre Patienten und Ihre Praxis ermöglicht.
+                  p inSight wird sukzessive um weitere Auswertungen und Kennzahlen erweitert. Sprechen Sie uns an, wenn Ihnen etwas besonders wichtig ist und wird prüfen ob wir dies aufnehmen.
+                  p Neben dem Reporting verfügt inSight über ein leistungsfähiges Anaalyse-Werkzeug, mit dem Sie Ihre Patientendaten und Behandlungspfade selbst durchleuchten können.
+                  p Für einen "Refresh" nach Datenänderung (nur dann erforderlich) drücken Sie bitte den Button oben rechts.
+            //.panel.panel-default
+              .panel-heading
+                h4.panel-title
+                  a(data-toggle="collapse", data-parent="#insight", href="#6collapseFour") 4. Wie erstelle ich Rechnungen und Quittungen mit inVoice?
+              .panel-collapse.collapse#6collapseFour
+                .panel-body
+                  p Nachdem Sie die Leistungen für den Patienten in inCase eingetragen haben, können Sie - nach Auswahl des Rechnungsformulars - nun diese Leistungen auswählen, indem Sie einfach das Häkchen hinter die jeweilige Leistung setzen. Diese wird dann automatisch in der Rechnung angezeigt. Wollen Sie die Diagnosen mitaufführen geht das auf die gleiche Weise.
+            //.panel.panel-default
+              .panel-heading
+                h4.panel-title
+                  a(data-toggle="collapse", data-parent="#insight", href="#6collapseFive") 5. Kann ich mit inVoice auch ein Kassenbuch führen, also z.B. sehen wer welche Rechnungen bereits oder noch nicht bezahlt hat?
+              .panel-collapse.collapse#6collapseFive
+                .panel-body
+                  p Das ist aktuell noch nicht möglich. Wir werden diese Möglichkeit aber bereits in Kürze anbieten - wenden Sie sich bitte diesbzgl. an unser Support Team für mehr Informationen zum sog. "Kassenbuch"
+            //.panel.panel-default
+              .panel-heading
+                h4.panel-title
+                  a(data-toggle="collapse", data-parent="#insight", href="#6collapseSix") 6. ...
+              .panel-collapse.collapse#6collapseSix
+                .panel-body
+                  p ...
+            //.panel.panel-default
+              .panel-heading
+                h4.panel-title
+                  a(data-toggle="collapse", data-parent="#insight", href="#6collapseSeven") 7. ...
+              .panel-collapse.collapse#6collapseSeven
+                .panel-body
+                  p ...
+            //.panel.panel-default
+              .panel-heading
+                h4.panel-title
+                  a(data-toggle="collapse", data-parent="#insight", href="#6collapseEight") 8. ...
+              .panel-collapse.collapse#6collapseEight
+                .panel-body
+                  p ...
+
+          div.tab-pane.fade.panel-group#datensafe
+            .panel.panel-default
+              .panel-heading
+                h4.panel-title
+                  a(data-toggle="collapse", data-parent="#datensafe", href="#7collapseOne") 1. Was ist der Datensafe?
+              .panel-collapse.collapse.in#7collapseOne
+                .panel-body
+                  p der Doc Cirrus Datensafe ist eine sog. Appliance, d.h. eine HW/SW-Kombination die als Einheit fungiert. Es ist also kein Gerät auf das ein Anwender eigene SW einspielen kann oder mit Admin-Rechten Veränderungen durchführen kann. Wir haben diesen Weg gewählt, um den Datenschutz und die Betriebssicherheit bestmöglich zu gewährleisten. Es ist auch nicht erforderlich dort manuell Updates einzuspielen, da der Datensafe via VPN mit unserer zentralen Infrastruktur verbunden ist und seine Updates von dort automatisch bezieht.
+                  p Im Standard bezieht der Datensafe seine IP-Adresse per DHCP dynamisch vom Internet-Router der Praxis. Mit anderen Worten, Einstecken und läuft. Da die Festplatten low-level verschlüsselt sind, muss beim Neustart der mitgelieferte Schlüssel auf einen der USB-Ports gesteckt sein. Nach ca. 1 Minute kann und soll der Schlüssel dann abgezogen und sicher verwahrt werden. Ohne den Schlüssel kann ein Dieb mit den Festplatten nichts anfangen. Falls eine Firewall in der Praxis betrieben wird ist dies für unsere Struktur nicht schädlich. Der Datensafe baut seine VPN-Verbindung per SSL von innen nach außen auf.
+                  p Der Datensafe sollte kontinuierlich laufen und mit dem Internet verbunden sein. Andernfalls ist er für Patienten-Interaktion via Gesundheitsportal sowie für Updates (KBV-Stammdaten, sonstige Kataloge, Arzneimittel-Updates, Sicherheitsupdates usw.) nicht erreichbar. Das behindert nicht den internen Betrieb (der ist auch ohne Internet möglich) aber erlaubt dann natürlich keine Neu-Patienten-Gewinnung via Gesundheitsportal.
+                  p Technisch handelt es sich um einen Micro-Server mit RAID-Controller und zwei Festplatten a 1 TByte. Das Betriebssystem ist aus Sicherheitsgründen besonders von uns gehärtet worden. Da es sich um eine Appliance handelt und wir keine Angriffsvektoren liefern, sind weitere Details zum Aufbau und zur Konfiguration nicht veröffentlicht.
+                  p Der Datensafe verfügt über mehrere USB-Ports über die externe Festplatten als Backup Medium angeschlossen werden können. Initialisierung und Backup/Recovery Steuerung läuft über unsere Oberflächen. Administrationsaufwand ist hier minimal und von jedem Arzt auch selbst durchführbar. Die Backup-Medien sind dann ebenfalls implizit verschlüsselt, d.h. ohne den Schlüssel sind auch die Backups nicht rückspielbar.
+                  p Bei der Integration von medizinischen Geräten kommt der Kommunikationsserver auf dem Datensafe zum Einsatz. Die Konfiguration ist derzeit nur durch uns möglich, wird im kommenden Jahr aber auch durch IT-Partner von Doc Cirrus möglich sein. Entfernt stehende medizinische Geräte, die nur über serielle oder USB Schnittstellen verfügen und räumlich nicht direkt in den Datensafe eingesteckt werden können, werden über eine weitere Appliance von uns mit dem Datensafe verbunden. Hierbei handelt es sich um einen intelligenten aktiven Adapter, der die Geräte TCP/IP-fähig macht. Dieser Adapter wird dann entweder per Kabel (Ethernet) oder wireless ins Praxisnetz eingebunden, bekommt seine IP-Adresse ebenfalls per DHCP und meldet sich selbsttätig beim lokalen Datensafe an (alles plug & play).
+                  p Der Anschluss von Card Readern ist an jedem Endgerät innerhalb der Praxis möglich und von jedem Anwender selbst durchführbar. Wurden mehrere Card Reader installiert und angemeldet, so sind diese auch geräteübergreifend aufrufbar. So ist etwa auch das Einlesen einer Karte von einem Tablet ohne USB-Anschluss möglich, wenn der Card Reader am Datensafe oder an einem Desktop mit USB betrieben wird.
+            .panel.panel-default
+              .panel-heading
+                h4.panel-title
+                  a(data-toggle="collapse", data-parent="#datensafe", href="#7collapseTwo") 2. Was bedeutet das Doc Cirrus Hybrid Cloud Prinzip?
+              .panel-collapse.collapse#7collapseTwo
+                .panel-body
+                  p Das Doc Cirrus Prinzip basiert auf einem sogenannten Hybrid Cloud Ansatz. Dabei kommt die Anwendung - die "Software" - als solche aus der Doc Cirrus Public Cloud und ist webbasiert. Alle sensiblen Patienten- und Praxisdaten werden ausschließlich in Ihrem Doc Cirrus Datensafe gehalten, von wo sie bei Bedarf abgerufen werden. Der Datensafe dient nicht nur zur Datenspeicherung, sondern reagiert auch bei Ausfall oder Störung Ihrer Internetverbindung, indem er den Betrieb der Doc Cirrus Dienste übernimmt und sicherstellt. Sensible Daten verlassen also zu keinem Zeitpunkt Ihre Praxis, Sie müssen dennoch nicht auf die vielen Vorteile der Cloud verzichten und können mit dem System sogar dann arbeiten, wenn Ihre Verbindung zum Internet einmal gestört sein sollte.
+            .panel.panel-default
+              .panel-heading
+                h4.panel-title
+                  a(data-toggle="collapse", data-parent="#datensafe", href="#7collapseThree") 3. Was passiert, wenn meine Internetverbindung gestört oder unterbrochen ist?
+              .panel-collapse.collapse#7collapseThree
+                .panel-body
+                  p Auch wenn Sie "offline" sind kommt Ihre Einrichtung dank der Offline-Verfügbarkeit aller Doc Cirrus-Lösungen nicht zum Stillstand. In diesem Fall liefert nämlich der Doc Cirrus Datensafe jegliche Anwendungen aus, da dieser auf eine lokal gespeicherte, stets aktuelle Version der Doc Cirrus Software zurückgreifen kann. Was wir nicht ausschließen können ist, dass die Geschwindigkeit, mit der Sie die Software nutzen können, ein wenig abnimmt, solange Ihre Praxis oder Ihre Einrichtung keine Verbindung zum Internet hat.
+            .panel.panel-default
+              .panel-heading
+                h4.panel-title
+                  a(data-toggle="collapse", data-parent="#datensafe", href="#7collapseFour") 4. Wie binde ich Medizintechnik, Diagnostik oder sonstige Peripheriegeräte an den Datensafe bzw. die inSuite an?
+              .panel-collapse.collapse#7collapseFour
+                .panel-body
+                  p Der Doc Cirrus Datensafe ist gleichzeitig ein sog. Kommunikationsserver, welcher die üblichen Schnittstellen für Datentransfer und -synchronisation im ambulanten (bspw. GDT) und/oder stationären (bspw. HL7) Gesundheitssektor offen und vorinstalliert zur Verfügung stellt. Über diese Schnittstellen lassen sich auch die allermeisten medizintechnischen, diagnostischen oder sonstigen Geräte an den Datensafe und damit die inSuite schnell und einfach anbinden. Unser Doc Cirrus Support Team steht Ihnen bei diesen Themen gern zur Verfügung.
+            .panel.panel-default
+              .panel-heading
+                h4.panel-title
+                  a(data-toggle="collapse", data-parent="#datensafe", href="#7collapseFive") 5. Wie werden die Daten aus meinem Altsystem in die inSuite bzw. den Doc Cirrus Datensafe übertragen?
+              .panel-collapse.collapse#7collapseFive
+                .panel-body
+                  p Falls Sie Daten aus einer bestehenden Software in das Doc Cirrus System importieren wollen, bietet wir Ihnen einen unverbindlichen Datenmigrationscheck an. Bitte wenden Sie sich diesbzgl. an unser Doc Cirrus Support Team. Technisch gesehen ist der Doc Cirrus Datensafe auch ein sog. Kommunikationsserver, welcher die üblichen Schnittstellen für Datentransfer und -synchronisation im ambulanten (bspw. GDT) und/oder stationären (bspw. HL7) Gesundheitssektor offen und vorinstalliert zur Verfügung stellt. Damit lassen sich Daten aus Ihrem Altsystem in den allermeisten Fällen mühelos per Knopfdruck in die inSuite übertragen, sofern sie uns in einem maschinenlesbaren Format (bspw. CSV) zur Verfügung gestellt werden.
+            //.panel.panel-default
+              .panel-heading
+                h4.panel-title
+                  a(data-toggle="collapse", data-parent="#datensafe", href="#7collapseSix") 6. ...
+              .panel-collapse.collapse#7collapseSix
+                .panel-body
+                  p ...
+            //.panel.panel-default
+              .panel-heading
+                h4.panel-title
+                  a(data-toggle="collapse", data-parent="#datensafe", href="#7collapseSeven") 7. ...
+              .panel-collapse.collapse#7collapseSeven
+                .panel-body
+                  p ...
+            //.panel.panel-default
+              .panel-heading
+                h4.panel-title
+                  a(data-toggle="collapse", data-parent="#datensafe", href="#7collapseEight") 8. ...
+              .panel-collapse.collapse#7collapseEight
+                .panel-body
+                  p ...
+

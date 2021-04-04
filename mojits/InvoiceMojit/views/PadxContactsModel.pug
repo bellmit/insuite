@@ -1,0 +1,37 @@
+div.panel.panel-default
+  div.panel-body
+    //- type
+    div.form-group(data-bind="hasFeedback: { field: type, toggle: type.hasError, messages: type.validationMessages }")
+      label.control-label(data-bind="text: contactTypeI18n")
+      select.form-control(
+      name="type",
+      data-bind="options: _typeList, optionsValue: 'val', optionsText: 'i18n', textInput: type"
+      )
+    //- value
+    div.form-group(data-bind="hasFeedback: { field: value, toggle: value.hasError, messages: value.validationMessages }")
+      label.control-label(data-bind="text: valueTextI18n")
+      input.form-control(
+      name="value",
+      type="text",
+      data-bind="textInput: value",
+      placeholder=""
+      )
+    //- preferred
+    div.row
+      div.col-xs-6
+        //- preferred
+        div.form-group
+          div.checkbox
+            label.control-label
+              strong(data-bind="text: preferredTextI18n")
+              input(
+              name="preferred",
+              type="checkbox",
+              data-bind="checked: preferred"
+              )
+      div.col-xs-6
+        div.form-group.text-right
+          button.btn.btn-default(name="deleteContactItem", type="button", data-bind="click: deleteContactItem.bind($context, $parent)")
+            span.glyphicon.glyphicon-trash
+            | &nbsp;
+            span(data-bind="text: buttonDeleteTextI18n")

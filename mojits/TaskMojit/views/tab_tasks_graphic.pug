@@ -1,0 +1,304 @@
+div#tasks.graphic-tasks
+  .row
+    .col-xs-12.mb-1.no-padding
+      .col-xs-2
+        h4
+          span(data-bind="text: filterI18n")
+          | &nbsp;
+          a(href="#", data-bind="click: saveConfiguration", style="text-decoration: none;")
+            i.icon.fa.fa-plus
+            | &nbsp;
+          a(href="#", data-bind="click: editConfiguration", style="text-decoration: none;")
+            i.fa.fa-pencil
+            | &nbsp;
+          a(href="#", data-bind="click: filterViewHandler", style="text-decoration: none;")
+            i.fa.fa-exchange
+      h4.pull-right.mb-0.mt-0
+        div#alertTimeSelector(data-bind="template: alertTimeComponent.template")
+        // ko if: isAdminUser
+        a.mr-3(href="#", data-bind="click: configure.bind( $data, 'filter' )")
+          span.fa.fa-gear
+        // /ko
+  // ko if: filterView
+  .row
+    .col-xs-12.no-padding.mb-1
+      .form-group.clearfixx.filters-list
+        // ko if: detailsFilter
+        .col-sm-3
+          input#details.form-control(data-bind="value: detailsFilterValue, valueUpdate: 'afterkeydown', attr: { placeholder: detailsI18n }" type="text" name="details")
+        // /ko
+        // ko if: urgencyFilter
+        .col-sm-3
+          input#urgencySelector.form-control(name="urgencySelector", type="hidden", data-bind="select2: select2Urgency")
+        // /ko
+        // ko if: tasksFilter
+        .col-sm-3
+          input#tasksSelector.form-control(name="tasksSelector", type="hidden", data-bind="select2: select2TaskTypes")
+        // /ko
+        // ko if: rolesFilter
+        .col-sm-3
+          input#rolesSelector.form-control(name="rolesSelector", type="hidden", data-bind="select2: select2Roles")
+        // /ko
+        // ko if: candidatesFilter
+        .col-sm-3
+          input#candidatesNames.form-control(data-bind="value: candidatesNamesFilterValue, valueUpdate: 'afterkeydown', attr: { placeholder: candidatesNamesI18n }" type="text" name="candidatesNames")
+        // /ko
+        // ko if: patientNameFilter
+        .col-sm-3
+          input#patientName.form-control(data-bind="value: patientNameFilterValue, valueUpdate: 'afterkeydown', attr: { placeholder: patientNameI18n }" type="text" name="patientName")
+        // /ko
+        // ko if: employeeNameFilter
+        .col-sm-3
+          input#employeeName.form-control(data-bind="value: employeeNameFilterValue, valueUpdate: 'afterkeydown', attr: { placeholder: employeeNameI18n }" type="text" name="employeeName")
+        // /ko
+        // ko if: creatorNameFilter
+        .col-sm-3
+          input#creatorName.form-control(data-bind="value: creatorNameFilterValue, valueUpdate: 'afterkeydown', attr: { placeholder: creatorNameI18n }" type="text" name="creatorName")
+        // /ko
+        // ko if: titleFilter
+        .col-sm-3
+          input#title.form-control(data-bind="value: titleFilterValue, valueUpdate: 'afterkeydown', attr: { placeholder: titleI18n }" type="text" name="title")
+        // /ko
+        // ko if: scheduleFilter
+        .col-sm-3.mb-0
+          div#scheduleSelector(data-bind="template: scheduleComponent.template")
+        // /ko
+        // ko if: linkedScheduleFilter
+        .col-sm-3.mb-0
+          div#linkedScheduleSelector(data-bind="template: linkedScheduleComponent.template")
+        // /ko
+        // ko if: lastScheduleFilter
+        .col-sm-3.mb-0
+          div#lastScheduleSelector(data-bind="template: lastScheduleComponent.template")
+        // /ko
+        // ko if: dateCreatedFilter
+        .col-sm-3
+          input#dateCreated.form-control(data-bind="value: dateCreatedFilterValue, valueUpdate: 'afterkeydown', attr: { placeholder: dateCreatedI18n }" type="text" name="dateCreated")
+        // /ko
+        // ko if: listsFilter
+        .col-sm-3
+          input#listSelector.form-control(name="listSelector", type="hidden", data-bind="select2: select2List")
+        // /ko
+  // /ko
+  // ko ifnot: filterView
+  .row
+    .col-xs-12.dc-action-buttons.dc-action-buttons-left.mb-2(data-bind="foreach: localStorageConfigs")
+      // ko if: visible
+      span.btn.btn-default.btn-xs.filter-button(data-bind="text: name, click: $parent.applyConfiguration.bind( $parent, $data )")
+      // /ko
+  // /ko
+  .row#tasksListGraphic
+    .col-md-2.col-sm-4.col-xs-12(style="max-width: 180px;")
+      div.checkbox.mb-2.ml-2.mt-0
+        label.control-label
+          input(name="showClosedTasks", type="checkbox", data-bind="checked: showClosedTasksFilter, click: updateClosedTasksFilter")
+          span(data-bind="text: showCompletedTasksI18n")
+      div.panel.panel-default
+        div.panel-heading.unassigned(style="word-break: break-all; position: relative;")
+          span(data-bind="html: tasksTitleI18n, attr: {title: tasksTitleI18n}")
+          span(style="position: absolute; right: 5px; top: 0;")
+            // ko if: isAdminUser
+            a(href="#", data-bind="click: configure")
+              span.fa.fa-gear
+            // /ko
+        span.ml-3(data-bind="text: createTaskGraphicI18n")
+        span(data-bind="template: createTaskGraphic.template")
+        div.panel-body(style="overflow-y: auto; overflow-x: hidden;")
+          // ko if: isTasksDataNotEmpty
+          ol.prepared-tasks-list.tasks-list-drop(data-bind="foreach: tasksData")
+            // ko ifnot: $data.columnId
+            li.task.mb-1(data-bind="style: {'background-color': status === 'DONE' ? '#d3d3d3' : ''}", , style="padding: 0 0 5px 5px; border: 1px solid #cccccc; ")
+              <!-- ko if: $parent.urgency -->
+              div(style="position: relative; padding-top: 5px;", data-bind="attr: { class: 'dc-triangle dc-urgency-' + $data.urgency }")
+              <!-- /ko -->
+              <!-- ko ifnot: $parent.urgency -->
+              div(style="position: relative; padding-top: 5px;")
+              <!-- /ko -->
+              div.task-inner(style="padding-right: 15px;")
+                span.fa.fa-eye(style="cursor: pointer;", data-bind="click: $parent.showTaskDetails.bind( $parent, $data )")
+                | &nbsp;
+                // ko if: $parent.alertTime
+                span(data-bind="html: $parent.alertTimeTitle( $data )")
+                br
+                // /ko
+                // ko if: $parent.title
+                span(data-bind="text: title")
+                br
+                // /ko
+                // ko if: $parent.tasks
+                // ko if: $data.taskTypeObj && $data.taskTypeObj.name
+                span(data-bind="text: taskTypeObj.name")
+                br
+                // /ko
+                // /ko
+                // ko if: $parent.roles
+                span(data-bind="html: $parent.rolesTitle( $data )")
+                br
+                // /ko
+                // ko if: $parent.candidates
+                // ko if: $data.candidates && $data.candidates.length
+                span(data-bind="html: $parent.candidatesTitle( $data )")
+                br
+                // /ko
+                // /ko
+                // ko if: $parent.patientName
+                span(data-bind="html: $parent.patientNameTitle( $data )")
+                br
+                // /ko
+                // ko if: $parent.employeeName
+                // ko if: $data.employeeName
+                span(data-bind="text: employeeName")
+                br
+                // /ko
+                // /ko
+                // ko if: $parent.creatorName
+                // ko if: $data.creatorName
+                span(data-bind="text: creatorName")
+                br
+                // /ko
+                // /ko
+                // ko if: $parent.dateCreated
+                span(data-bind="text: $parent.dateCreatedTitle( $data )")
+                br
+                // /ko
+                // ko if: $parent.details
+                // ko if: $data.details
+                span(data-bind="text: $parent.detailsTitle( $data )")
+                br
+                // /ko
+                // /ko
+                // ko if: $parent.schedule
+                // ko if: $data.schedule
+                span(data-bind="html: $parent.scheduleTitle( $data )")
+                br
+                // /ko
+                // /ko
+                // ko if: $parent.linkedSchedule
+                // ko if: $data.linkedSchedule
+                span(data-bind="html: $parent.linkedScheduleTitle( $data )")
+                br
+                // /ko
+                // /ko
+                // ko if: $parent.lastSchedule
+                // ko if: $data.lastSchedule
+                span(data-bind="html: $parent.lastScheduleTitle( $data )")
+                br
+                // /ko
+                // /ko
+                div.row(style="padding: 0 15px;")
+                  span.pull-right
+                    // ko if: $data.candidates && $data.candidates.length
+                    span.user-icon.fa.fa-user
+                    // /ko
+                    span(data-bind="html: $parent.alertTimeIcon( $data )")
+            // /ko
+          // /ko
+    div.columns.col-md-10.col-sm-8.col-xs-12(style="width: calc( 100% - 180px )")
+      // ko if: isAdmin
+      h4.mb-2.ml-2.mt-0
+        span(data-bind="text: labelAssignedI18n")
+        | &nbsp;
+        a(href="#", data-bind="click: add")
+          i.icon.fa.fa-plus
+      // /ko
+      ol.tasks-list(data-bind="foreach: filteredListArray")
+        li.list.col-md-12(style="padding: 0 5px 0 5px;")
+          div.panel(data-bind="style: {'border-color': color}")
+            div.panel-heading(style="word-break: break-all; position: relative;", data-bind="style: {'background-color': color}")
+              span(data-bind="text: name, attr: {title: name}")
+              | &nbsp;
+              span(style="position: absolute; right: 5px; top: 0;")
+                a(href="#", data-bind="click: $root.configure.bind( $parent, $data )")
+                  span.fa.fa-gear
+                // ko if: $root.isAdmin
+                a(href="#", data-bind="click: $root.add.bind( $parent, $data )")
+                  span.fa.fa-pencil
+                // /ko
+            div.panel-body.mb-0(style="overflow-y: auto; overflow-x: hidden;")
+              ol.prepared-tasks-list.tasks-list-drop(data-bind="foreach: $parent.tasksData")
+                // ko if: $data.columnId === $parent._id
+                li.task.mb-1(data-bind="style: {'background-color': status === 'DONE' ? '#d3d3d3' : 'white'}", style="padding: 0 0 5px 5px; border: 1px solid #cccccc;")
+                  <!-- ko if: $parent.urgency -->
+                  div(style="position: relative; padding-top: 5px;", data-bind="attr: { class: 'dc-triangle dc-urgency-' + $data.urgency }")
+                  <!-- /ko -->
+                  <!-- ko ifnot: $parent.urgency -->
+                  div(style="position: relative; padding-top: 5px;")
+                  <!-- /ko -->
+                  div.task-inner(style="padding-right: 15px;")
+                    span.fa.fa-eye(style="cursor: pointer;", data-bind="click: $root.showTaskDetails.bind( $root, $data )")
+                    | &nbsp;
+                    // ko if: $parent.alertTime
+                    span(data-bind="html: $root.alertTimeTitle( $data )")
+                    br
+                    // /ko
+                    // ko if: $parent.title
+                    span(data-bind="text: title")
+                    br
+                    // /ko
+                    // ko if: $parent.tasks
+                    // ko if: $data.taskTypeObj && $data.taskTypeObj.name
+                    span(data-bind="text: taskTypeObj.name")
+                    br
+                    // /ko
+                    // /ko
+                    // ko if: $parent.roles
+                    span(data-bind="html: $root.rolesTitle( $data )")
+                    br
+                    // /ko
+                    // ko if: $parent.candidates
+                    // ko if: $data.candidates && $data.candidates.length
+                    span(data-bind="html: $root.candidatesTitle( $data )")
+                    br
+                    // /ko
+                    // /ko
+                    // ko if: $parent.patientName
+                    span(data-bind="html: $root.patientNameTitle( $data )")
+                    br
+                    // /ko
+                    // ko if: $parent.employeeName
+                    // ko if: $data.employeeName
+                    span(data-bind="text: employeeName")
+                    br
+                    // /ko
+                    // /ko
+                    // ko if: $parent.creatorName
+                    // ko if: $data.creatorName
+                    span(data-bind="text: creatorName")
+                    br
+                    // /ko
+                    // /ko
+                    // ko if: $parent.dateCreated
+                    span(data-bind="text: $root.dateCreatedTitle( $data )")
+                    br
+                    // /ko
+                    // ko if: $parent.details
+                    span(data-bind="text: $root.detailsTitle( $data )")
+                    br
+                    // /ko
+                    // ko if: $parent.schedule
+                    // ko if: $data.schedule
+                    span(data-bind="html: $root.scheduleTitle( $data )")
+                    br
+                    // /ko
+                    // /ko
+                    // ko if: $parent.linkedSchedule
+                    // ko if: $data.linkedSchedule
+                    span(data-bind="html: $root.linkedScheduleTitle( $data )")
+                    br
+                    // /ko
+                    // /ko
+                    // ko if: $parent.lastSchedule
+                    // ko if: $data.lastSchedule
+                    span(data-bind="html: $root.lastScheduleTitle( $data )")
+                    br
+                    // /ko
+                    // /ko
+                    div.row(style="padding: 0 15px;")
+                      span.pull-right
+                        // ko if: $data.candidates && $data.candidates.length
+                        span.user-icon.fa.fa-user
+                        // /ko
+                        span(data-bind="html: $root.alertTimeIcon( $data )")
+                // /ko
+
+include ../../../autoload/KoUI/KoSchemaValue/view/KoSchemaTemplates

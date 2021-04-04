@@ -1,0 +1,84 @@
+mixin Gadget
+  div.Gadget.Gadget-draggable(data-bind="component: { name: $component.getGadgetName( gadgetConst() ), params: { $context: $context } }")
+
+mixin GadgetForeach(index)
+  <!-- ko foreach: activeDashboardGadgets()[!{index}] -->
+  +Gadget
+  // /ko
+  | <!-- ko with: {isDrop:true, gadgetCollection: !{index}} -->
+  div.Gadget-dropTarget.well.text-center(data-bind="visible: $component.isColumnDropTargetVisible("+index+")")
+    em
+      span.fa.fa-level-down
+      | &nbsp;
+      span(data-bind="text: $component.dragLabelI18n")
+  // /ko
+
+div.form-group
+  .clearfix(style="padding-top: 10px")
+    .pull-left
+      .input-group(style="width: 260px;")
+        select.form-control(name="activeDashboardId", data-bind="options: dashboardModel.dashboards, optionsText: 'name', optionsValue: '_id', value: dashboardModel.activeDashboardId, valueAllowUnset: true")
+        span.input-group-btn
+          button.btn.btn-default(type="button", data-bind="click: handlerAddDashboard, disable: handlerAddDashboardDisabled(), attr: { title: dashboardBaseAddDialogI18n }")
+            span.fa.fa-plus
+          button.btn.btn-default(type="button", data-bind="click: handlerEditDashboard, disable: handlerEditDashboardDisabled(), attr: { title: dashboardBaseEditDialogI18n }")
+            span.fa.fa-pencil
+    // ko ifnot: gadgetMaximized
+    // ko if: activeDashboard
+    .pull-right.form-inline
+      button.btn.btn-default(type="button", data-bind="click: handlerAddGadget, disable: handlerAddGadgetDisabled(), text: dashboardBaseGadgetSelectorI18n", style="margin-right: 10px;")
+      label.control-label(data-bind="text: layoutLabelI18n")
+      | &nbsp;
+      select.form-control(name="layout", data-bind="options: layoutList, optionsValue: 'val', optionsText: 'i18n', value: activeDashboardLayout")
+    // /ko
+    // /ko
+
+// ko if: activeDashboard
+
+// ko with: gadgetMaximized
+div.DashboardBase-GadgetMaximized(data-bind="with: $data")
+  +Gadget
+// /ko
+
+// ko ifnot: gadgetMaximized
+div.DashboardBase(data-bind="notifyBind: { method: notifyBindDdContainerElement }")
+  // ko switch: activeDashboardLayout
+  // ko case: layoutTypes.FULL
+  div.row.DashboardBase-FULL
+    div.col-xs-12
+      +GadgetForeach(0)
+  // /ko
+  // ko case: layoutTypes.TWO
+  div.row.DashboardBase-TWO
+    div.col-xs-12.col-md-6
+      +GadgetForeach(0)
+    div.col-xs-12.col-md-6
+      +GadgetForeach(1)
+  // /ko
+  // ko case: layoutTypes.TWO_LTR
+  div.row.DashboardBase-TWO_LTR
+    div.col-xs-12.col-md-7
+      +GadgetForeach(0)
+    div.col-xs-12.col-md-5
+      +GadgetForeach(1)
+  // /ko
+  // ko case: layoutTypes.TWO_RTL
+  div.row.DashboardBase-TWO_RTL
+    div.col-xs-12.col-md-5
+      +GadgetForeach(0)
+    div.col-xs-12.col-md-7
+      +GadgetForeach(1)
+  // /ko
+  // ko case: layoutTypes.THREE
+  div.row.DashboardBase-THREE
+    div.col-xs-12.col-md-4
+      +GadgetForeach(0)
+    div.col-xs-12.col-md-4
+      +GadgetForeach(1)
+    div.col-xs-12.col-md-4
+      +GadgetForeach(2)
+  // /ko
+  // /ko
+// /ko
+
+// /ko

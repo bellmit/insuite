@@ -1,0 +1,8 @@
+div.panel.panel-default.pre-table-box
+  div.panel-heading(data-bind="text: tableNameDisplay || 'Table'")
+  div.panel-body
+    div.sub-navigation
+
+    // ko if: loaded
+    div.side-table(data-bind="template: kotable.template")
+    // /ko

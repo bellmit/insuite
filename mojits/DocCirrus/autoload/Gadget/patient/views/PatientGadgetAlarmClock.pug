@@ -1,0 +1,21 @@
+div.PatientGadgetAlarmClock(data-bind="css: contextCss")
+  div.PatientGadgetAlarmClock-time
+    div.PatientGadgetAlarmClock-time-field
+      input.form-control.input-sm(data-bind="textInput: fieldHours.value, disable: fieldHours.disable, hasFocus: fieldHours.focus, attr: { name: fieldHours.nameAttr }")
+      div.PatientGadgetAlarmClock-time-field-description
+        span(data-bind="text: fieldHoursI18n")
+    div.PatientGadgetAlarmClock-time-field
+      input.form-control.input-sm(data-bind="textInput: fieldMinutes.value, disable: fieldMinutes.disable, hasFocus: fieldMinutes.focus, attr: { name: fieldHours.nameAttr }")
+      div.PatientGadgetAlarmClock-time-field-description
+        span(data-bind="text: fieldMinutesI18n")
+    div.PatientGadgetAlarmClock-time-field
+      input.form-control.input-sm(data-bind="textInput: fieldSeconds.value, disable: fieldSeconds.disable, hasFocus: fieldSeconds.focus, attr: { name: fieldHours.nameAttr }")
+      div.PatientGadgetAlarmClock-time-field-description
+        span(data-bind="text: fieldSecondsI18n")
+  div.PatientGadgetAlarmClock-controls
+    button.PatientGadgetAlarmClock-control(type="button", data-bind="click: controlPlay.click, disable: controlPlay.disable, attr: { name: controlPlay.nameAttr, title: controlPlay.title }")
+      span.fa(data-bind="css: controlPlay.css")
+    button.PatientGadgetAlarmClock-control(type="button", data-bind="click: controlStop.click, disable: controlStop.disable, attr: { name: controlStop.nameAttr, title: controlStop.title }")
+      span.fa(data-bind="css: controlStop.css")
+    button.PatientGadgetAlarmClock-control(type="button", data-bind="click: controlAlarm.click, disable: controlAlarm.disable, attr: { name: controlAlarm.nameAttr, title: controlAlarm.title }")
+      span.fa(data-bind="css: controlAlarm.css")

@@ -1,0 +1,41 @@
+div.visible-xs.visible-sm(style="padding: 15px")
+div.visible-md.visible-lg(style="padding: 35px")
+div.container.container-fullscreen(id=mojit_view_id)
+  .jumbotron(style="border-radius: 30px;")
+
+    h3 Image resizing
+
+    div#divSampleBox
+      img#imgTest(src="/static/TestingMojit/assets/images/large-test-image.jpg", style="max-width: 100%;")
+
+    div#divTestStatus
+      p Loading...
+
+    div(style="display:none")#sizeForm
+      h3 Load image as dataUrl/base64 string
+      b Max Width (px):
+      input(type="text",value="100")#txtWidth
+      br
+      b Max Height (px):
+      input(type="text", value="100")#txtHeight
+      br
+      button.btn.btn-default#btnMakeTransform Make Transform
+
+    h3 Image resizing (native/binary)
+
+    div#divBinSampleBox
+    img#imgBinTest(src="/static/TestingMojit/assets/images/large-image-2.jpg", style="max-width: 100%;")
+
+    div#divBinTestStatus
+      p Loading...
+
+    div(style="display:none")#binSizeForm
+      h3 Load image as native/binary file
+      b Max Width (px):
+      input(type="text",value="100")#txtBinWidth
+      br
+      b Max Height (px):
+      input(type="text", value="100")#txtBinHeight
+      br
+      button.btn.btn-default#btnMakeBinTransform Make Transform
+

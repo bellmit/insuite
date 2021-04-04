@@ -1,0 +1,20 @@
+#tab_connectivity
+  div.row
+    div.col-md-1
+      i.fa.fa-circle(data-bind="css:{ 'dc-green': serverTest() === 1, 'dc-red': serverTest() === -1, 'dc-yellow': !serverTest(), 'dc-fade-animation-rev': animate }")
+    div.col-md-11
+      span(data-bind="text: serverTestI18n")
+  div.row
+    div.col-md-1
+      i.fa.fa-circle(data-bind="css:{ 'dc-green': pucTest(), 'dc-red': !pucTest()}")
+    div.col-md-11
+      span(data-bind="text: pucTestI18n")
+  div.row
+    div.col-md-1
+      i.fa.fa-circle(data-bind="css:{ 'dc-green': dcprcTest(), 'dc-red': !dcprcTest()}")
+    div.col-md-11
+      span(data-bind="text: dcprcTestI18n")
+
+  div.row
+    h3(data-bind="text: auditTableI18n")
+    div(data-bind="template: auditLogTable.template")

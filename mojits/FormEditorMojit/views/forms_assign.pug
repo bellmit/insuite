@@ -1,0 +1,24 @@
+div#divConfigAssignment
+  p(data-bind="text: labelAssignI18n")
+
+  table(noborder="noborder",width="100%")
+    tr
+      td
+        select.form-control#selConfigKey
+          option(value='')
+          option(value='startform', data-bind="text: lblStartFormI18n")
+          option(value='casefile-invoice', data-bind="text: lblInvoiceI18n")
+          option(value='casefile-prescription', data-bind="text: lblPrescriptionI18n")
+          option(value='casefile-personalienfeld', data-bind="text: personalienFeldI18n")
+          option(value='casefile-patientreciept', data-bind="text: patientRecieptI18n")
+          option(value='casefile-terminliste', data-bind="text: lblTerministeI18n")
+
+          option(value='casefile-insurance', data-bind="text: lblInsuranceI18n")
+          option(value='casefile-disability', data-bind="text: lblDisabilityI18n")
+          option(value='casefile-referral', data-bind="text: lblTransferI18n")
+          option(value='casefile-docletter', data-bind="text: lblDocletterI18n")
+          option(value='casefile-privatebill', data-bind="text: privateBillI18n")
+          option(value='casefile-dkgbill', data-bind="text: lblDKGBillI18n")
+
+      td
+        button.btn#btnApplyConfig(data-bind="text: btnAssignI18n")

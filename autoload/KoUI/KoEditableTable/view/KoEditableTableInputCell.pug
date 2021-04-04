@@ -1,0 +1,8 @@
+// ko if: valueUpdate
+div.form-group(data-bind="hasFeedback: { field: value, toggle: value.hasError, messages: value.validationMessages }")
+  input.KoEditableTableInputCell.form-control(data-bind="value: value, valueUpdate: valueUpdate, attr: {placeholder: placeholder, type: type}, disable: disabled")
+// /ko
+// ko ifnot: valueUpdate
+div.form-group(data-bind="hasFeedback: { field: value, toggle: value.hasError, messages: value.validationMessages }")
+  input.KoEditableTableInputCell.form-control(data-bind="textInput: value, attr: {placeholder: placeholder, type: type}, disable: disabled")
+// /ko

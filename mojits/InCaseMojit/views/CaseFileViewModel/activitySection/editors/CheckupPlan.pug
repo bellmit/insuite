@@ -1,0 +1,37 @@
+.row
+  .col-md-12
+    table(noborder="noborder",width="100%")
+      tr
+        td
+          label(for="txtStartDateFormatted", data-bind="text: startDateI18n")
+        td
+          input.form-control(type="text", data-bind="value: startDateFormatted, disable: disableDashInputs")#txtStartDateFormatted
+        td
+          span &nbsp;&nbsp;
+        td
+          label(for="txtDobFormatted", data-bind="text: bornI18n")
+        td
+          input.form-control(type="text", data-bind="value: dobFormatted, disable: disableDashInputs")#txtDobFormatted
+        td
+          span &nbsp;&nbsp;
+        td
+          label(for="txtPatientAgeFormatted", data-bind="text: ageI18n")
+          i.dc-info-icon(data-bind="click: onInfoAgeClick")
+        td
+          input.form-control.diabled(type="text", data-bind="value: patientAgeFormatted, disable: disableDashInputs")#txtPatientAgeFormatted
+        td
+          span &nbsp;&nbsp;
+        td
+          button.btn.btn-primary(data-bind="click: regenerateSchedule, visible: showRegenerateButton, text: recreateI18n")
+
+br
+
+.row
+  .col-md-12
+    #examinationsEditableTable(data-bind="template: examinationsEditableTable.template")
+
+div.row
+  div.col-md-12
+    b(data-bind="text: notesI18n")
+    div.form-group
+      textarea.form-control(name="userContent", data-bind="caretPosition: userContent.caretPosition, attr:{rows: '10'}, value: userContent, valueUpdate: 'afterkeydown', readOnly: userContent.readOnly")

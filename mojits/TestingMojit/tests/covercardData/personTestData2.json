@@ -1,0 +1,183 @@
+{
+  "cardData": {
+    "stateID" : "CH",
+    "insurerName" : "sanacur",
+    "insurerID" : "01235",
+    "vekaCardNo" : "80756012350000201356",
+    "expiryDate" : {
+      "inputDate" : "31.10.2022",
+      "_valid" : true,
+      "_validator" : {
+        "dateArray" : [
+          "31",
+          "10",
+          "2022"
+        ],
+        "dd" : "31",
+        "mm" : "10",
+        "yyyy" : "2022",
+        "_valid" : true,
+        "_diffYears" : 1881
+      }
+    },
+    "countryMode" : [
+      "CH"
+    ]
+  },
+  "rawData": {
+    "cardNoVeka": "6105110000222223412",
+    "ZSRno": "U241019",
+    "qualifyingDate": "2020-03-12T00:00:00.000Z",
+    "queryNumber": "860414",
+    "validCard": "0",
+    "codProv": "CC",
+    "CH-Baseinformation": {
+      "identificationData": {
+        "name": {
+          "officialName": "NOM TEST 10",
+          "firstName": "PRENOM TEST 10"
+        },
+        "dateOfBirth": {
+          "yearMonthDay": "1965-05-25T00:00:00.000Z"
+        },
+        "cardholderIdentifier": "7569999999502",
+        "sex": "1"
+      },
+      "administrativeData": {
+        "issuingStateIdNumer": "CH",
+        "nameOfTheInstitution": "Versicherung ZU - TEST",
+        "identificationNumberOfTheInstitution": "02571",
+        "coverCardNo": "6105110000222223412",
+        "insuredPersonNumber": "80756025719999999950",
+        "insuredNumber": "00002222234",
+        "expiryDate": "2012-12-31T00:00:00.000Z"
+      },
+      "nationalExtension": {
+        "mailAddress": {
+          "addressLine1": "Avenue de Genève 12",
+          "town": "Onex",
+          "swissZipCode": "1200",
+          "country": "CH"
+        },
+        "KVGInformation": {
+          "languageRegion": "fr",
+          "KVGBase": "01",
+          "KVGModel": "01",
+          "KVGaccidentCoverage": "01"
+        },
+        "insurerInformation": {
+          "contactNumberFrench": {},
+          "billingAddress": {
+            "addressLine1": "Fontanastrasse 16",
+            "town": "Zurich",
+            "swissZipCode": "8006",
+            "country": "CH"
+          }
+        },
+        "VVGInformation": {
+          "VVGinsurerInformation": {
+            "issuingStateIdNumer": "CH",
+            "nameOfVVGInsurer": "Versicherung ZU - TEST",
+            "identificationNumberOfVVGInsurer": "02571",
+            "coverCardNo": "6105110000222223412",
+            "insuredPersonNumber": "80756025719999999950",
+            "insuredNumber": "00002222234",
+            "expiryDate": "2012-12-31T00:00:00.000Z",
+            "insurerInformation": {
+              "contactNumberFrench": {},
+              "billingAddress": {
+                "addressLine1": "Fontanastrasse 16",
+                "town": "Zurich",
+                "swissZipCode": "8006",
+                "country": "CH"
+              }
+            }
+          },
+          "medicationHL": "01",
+          "medicationAccidentCoverageHL": "00",
+          "medicationKM": "01",
+          "medicationAccidentCoverageKM": "00",
+          "medicalServiceCoverageVVG": "01",
+          "hospitalModelBedVVG": "99",
+          "hospitalModelDocVVG": "99",
+          "accidentCoverageVVG": "01"
+        }
+      },
+      "ofacExtension": {
+        "debNomAddress": {
+          "officialName": "Nom Deb test 10",
+          "firstName": "Prenom Deb test 10"
+        },
+        "debmailAddress": {
+          "addressLine1": "Avenue de la gare",
+          "town": "Onex",
+          "swissZipCode": "1200",
+          "country": "CH"
+        },
+        "agenceKVGName": "Covercard LS",
+        "agenceKVGAddress": {
+          "addressLine1": "Fontanastrasse 16",
+          "town": "Zurich",
+          "swissZipCode": "8006",
+          "country": "CH"
+        },
+        "agenceVVGName": "Covercard LS",
+        "agenceVVGAddress": {
+          "addressLine1": "Fontanastrasse 16",
+          "town": "Zurich",
+          "swissZipCode": "8006",
+          "country": "CH"
+        },
+        "medicalServiceCoverageRestriction": "00",
+        "validityDate": "2020-03-12T00:00:00.000Z"
+      }
+    }
+  },
+  "resultData": {
+    "insuranceStatus" : [
+      {
+        "cardExpiryDate" : "2022-10-30T23:00:00.000Z",
+        "cardValidationDate" : "2022-10-30T23:00:00.000Z",
+        "notes" : "BAG-Nummer des OKP-Versicherers: 02571\nCovercard-Nummer des OKP-Versicherers:6105110000222223412\nLeistungsunterbrechung: 00 keine Leistungsunterbrechung\nOKP-Versicherung: 01 obligatorische Krankenpflegeversicherung\nVersicherungsform: 01 Standardmodell (ohne Einschränkung der Leistungserbringer)",
+        "insuranceName" : "Versicherung ZU - TEST",
+        "insurancePrintName" : "Versicherung ZU - TEST",
+        "insuranceNo" : "00002222234",
+        "city" : "Zurich",
+        "zipcode" : "8006",
+        "address1" : "Fontanastrasse 16",
+        "type" : "PRIVATE_CH",
+        "vekaCardNo": "80756012350000201356"
+      },
+      {
+        "cardExpiryDate" : "2022-10-30T23:00:00.000Z",
+        "cardValidationDate" : "2022-10-30T23:00:00.000Z",
+        "notes" : "BAG-Nummer des OKP-Versicherers: 02571\nCovercard-Nummer des OKP-Versicherers:6105110000222223412\nLeistungsunterbrechung: 00 keine Leistungsunterbrechung\nHors-Liste-Medikamente: 01 Deckung\nUnfalldeckung für Hors-Liste-Medikament: 00 Keine Unfalldeckung\nMedikamente Komplementärmedizin: 01 Deckung\nUnfalldeckung für Medikamente Komplementärmedizin: 00 Keine Unfalldeckung\nSpitalabteilung: 01 Allgemeine Spitalabteilung ganze Schweiz\nSpitalmodell: Hotellerie-Versicherung: 99 Unbekannt\nSpitalmodell: Arztwahl-Versicherung: 99 Unbekannt\nUnfalldeckung Spitalversicherung: 01 Hotellerie-Versicherung 1 Bett-Zimmer",
+        "insuranceName" : "Versicherung ZU - TEST",
+        "insurancePrintName" : "Versicherung ZU - TEST",
+        "insuranceNo" : "00002222234",
+        "city" : "Zurich",
+        "zipcode" : "8006",
+        "address1" : "Fontanastrasse 16",
+        "type" : "PRIVATE_CH_VVG",
+        "vekaCardNo": "80756012350000201356"
+      }
+    ],
+    "socialSecurityNo" : "7569999999502",
+    "gender" : "FEMALE",
+    "firstname" : "Prenom Test 10",
+    "lastname" : "Nom Test 10",
+    "dob" : "1965-05-25T00:00:00.000Z",
+    "kbvDob" : "25.05.1965",
+    "addresses" : [
+      {
+        "street" : "Avenue de Genève",
+        "houseno": "12",
+        "city" : "Onex",
+        "zip" : "1200",
+        "countryCode" : "CH",
+        "country" : "Schweiz",
+        "kind" : "OFFICIAL"
+      }
+    ]
+  }
+}

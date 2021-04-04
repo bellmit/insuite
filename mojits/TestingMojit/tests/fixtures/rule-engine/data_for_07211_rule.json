@@ -1,0 +1,538 @@
+{
+  "rule": {
+    "parent" : "000000000000000000000002",
+    "isDirectory" : false,
+    "isLocked" : false,
+    "isActive" : true,
+    "caseFolderType" : [
+      "PUBLIC"
+    ],
+    "metaActTypes" : [
+      "SCHEIN",
+      "TREATMENT"
+    ],
+    "metaActCodes" : [
+      "07211"
+    ],
+    "description" : "07211 ",
+    "referenceArea" : "PERIOD",
+    "periodType" : "QUARTER",
+    "periodCount" : 1,
+    "periodReference" : "raum",
+    "rules" : [
+      {
+        "ruleId" : "5c121440abe9311d3d000015",
+        "description" : "Ordinationskompl. 07211",
+        "isActive" : true,
+        "validations" : {
+          "\\\\$and" : [
+            {
+              "context" : "ACTIVITY",
+              "criteria" : {
+                "actType" : {
+                  "\\\\$eq" : "SCHEIN"
+                },
+                "\\\\$count" : {
+                  "\\\\$eq" : 1
+                },
+                "patientId\\\\-age" : {
+                  "\\\\$gt" : 5,
+                  "\\\\$lt" : 60
+                }
+              }
+            },
+            {
+              "context" : "ACTIVITY",
+              "criteria" : {
+                "actType" : {
+                  "\\\\$eq" : "TREATMENT"
+                },
+                "code" : {
+                  "\\\\$eq" : "07211",
+                  "\\\\$catalogShort" : "EBM"
+                },
+                "\\\\$count" : {
+                  "\\\\$eq" : 0
+                }
+              }
+            }
+          ]
+        },
+        "actions" : [
+          {
+            "type" : "ACTIVITY",
+            "template" : {
+              "urgency" : 2,
+              "details" : "",
+              "roles" : [],
+              "candidates" : [],
+              "caseFolder" : "",
+              "actType" : "TREATMENT",
+              "caseFolderType" : "PUBLIC",
+              "catalogShort" : "EBM",
+              "code" : "07211",
+              "diagnosisCert" : "NONE",
+              "toCreate" : 1,
+              "explanations" : null,
+              "linkActivities" : false,
+              "autoCreate" : false,
+              "tempateID" : "5c12145dabe9311d3d000017",
+              "markers" : [],
+              "type" : ""
+            }
+          },
+          {
+            "type" : "WARNING",
+            "template" : {
+              "urgency" : 2,
+              "details" : "",
+              "roles" : [],
+              "candidates" : [],
+              "caseFolder" : "",
+              "diagnosisCert" : "NONE",
+              "toCreate" : 1,
+              "linkActivities" : false,
+              "autoCreate" : false,
+              "tempateID" : "5c2f3a7a7378ff7186000015",
+              "markers" : [],
+              "type" : ""
+            }
+          }
+        ],
+        "metaActTypes" : [
+          "SCHEIN",
+          "TREATMENT"
+        ],
+        "metaRequiredCodes" : [
+          "07211"
+        ]
+      }
+    ],
+    "metaCriterias": [
+      "actType",
+      "patientId.age",
+      "code"
+    ],
+    "metaFuzzy" : false
+  },
+  "schein": {
+    "actType" : "SCHEIN",
+    "attachments" : [],
+    "subType" : "",
+    "time" : "",
+    "userContent" : "ambulante Behandlung (ambulante Behandlung)",
+    "partnerInfo" : "",
+    "explanations" : "",
+    "status" : "VALID",
+    "activities" : [],
+    "referencedBy" : [],
+    "formId" : "",
+    "formVersion" : "",
+    "formPdf" : "",
+    "formLang" : "de",
+    "formGender" : "m",
+    "apkState" : "IN_PROGRESS",
+    "forInsuranceType" : "",
+    "locationFeatures" : "",
+    "scheinRemittor" : "",
+    "scheinEstablishment" : "",
+    "scheinSpecialisation" : "",
+    "scheinOrder" : "",
+    "scheinDiagnosis" : "",
+    "scheinFinding" : "",
+    "scheinNotes" : "",
+    "scheinClinicalTreatmentFrom" : null,
+    "scheinClinicalTreatmentTo" : null,
+    "scheinNextTherapist" : "",
+    "fk4234" : false,
+    "fk4219" : "",
+    "continuousIcds" : [],
+    "icds" : [],
+    "icdsExtra" : [],
+    "scheinQuarter" : "1",
+    "scheinYear" : "2019",
+    "scheinBillingArea" : "00",
+    "scheinType" : "0101",
+    "scheinSubgroup" : "00",
+    "scheinTransferTypeInfo" : "",
+    "fk4124" : "",
+    "fk4126" : "",
+    "fk4125from" : null,
+    "fk4125to" : null,
+    "fk4123" : "",
+    "fk4206" : null,
+    "fk4236" : false,
+    "fk4241" : "",
+    "fk4217" : "",
+    "scheinSlipMedicalTreatment" : "",
+    "__t" : "SCHEIN",
+    "attachedMedia" : [],
+    "content" : "ambulante Behandlung (ambulante Behandlung)",
+    "editor" : [
+      {
+        "name" : "A B",
+        "initials" : "AB"
+      }
+    ],
+    "debtCollection" : "",
+    "fk4235Set" : [],
+    "invoiceData" : [],
+    "scheinTransferType" : ""
+  },
+  "treatment07211": {
+    "actType" : "TREATMENT",
+    "status" : "VALID",
+    "attachments" : [],
+    "subType" : "",
+    "time" : "",
+    "userContent" : "Grundpauschale 6.- 59. Lebensjahr",
+    "partnerInfo" : "",
+    "explanations" : "",
+    "activities" : [],
+    "referencedBy" : [],
+    "formId" : "",
+    "formVersion" : "",
+    "formPdf" : "",
+    "formLang" : "de",
+    "formGender" : "m",
+    "apkState" : "IN_PROGRESS",
+    "scheinOrder" : "",
+    "scheinDiagnosis" : "",
+    "areTreatmentDiagnosesBillable" : "1",
+    "fk5002" : "",
+    "fk5005" : "",
+    "fk5008" : "",
+    "fk5013" : "",
+    "fk5017" : "",
+    "fk5019" : "",
+    "fk5023" : "",
+    "fk5024" : "",
+    "fk5025" : null,
+    "fk5026" : null,
+    "fk5034" : null,
+    "fk5037" : "",
+    "fk5040" : "",
+    "fk5044" : "",
+    "fk5015" : "",
+    "fk5016" : "",
+    "fk5018" : "",
+    "fk5038" : "",
+    "costType" : "",
+    "gnrAdditionalInfo" : [],
+    "gnrAdditionalInfoType" : "AUSWAHL",
+    "catalog" : true,
+    "catalogRef" : "DC-EBM-D-1541506572227.json",
+    "forInsuranceType" : "",
+    "modifyHomeCat" : false,
+    "deleteEntryHomeCat" : false,
+    "hasVat" : false,
+    "icds" : [],
+    "icdsExtra" : [],
+    "numberOfCopies" : 1,
+    "__t" : "TREATMENT",
+    "catalogShort" : "EBM",
+    "vat" : 0,
+    "attachedMedia" : [],
+    "content" : "Grundpauschale 6.- 59. Lebensjahr",
+    "editor" : [
+      {
+        "name" : "A B",
+        "initials" : "AB"
+      }
+    ],
+    "u_extra" : {
+      "validfrom" : "2008-01-01..",
+      "quittungstext" : "Behandlungskomplex vom 6. bis zum vollendeten 59. Lebensjahr",
+      "leistungserbringerart" : "1",
+      "leistungsgruppe" : "1",
+      "asvQualifications" : [
+        "VISZERALCHIRURGIE",
+        "ALLGEMEINCHIRURGIE",
+        "HERZCHIRURGIE"
+      ],
+      "kv" : {
+        "kv" : "72",
+        "arztpraxis" : true,
+        "kv_bewertung" : [
+          {
+            "value" : "221",
+            "unit" : "Punkte",
+            "leistungserbringerart" : "1"
+          },
+          {
+            "value" : "23.55",
+            "unit" : "Euro",
+            "leistungserbringerart" : "1",
+            "versorgungsgebiet" : "1"
+          }
+        ]
+      },
+      "gkv_kontenart" : [
+        {
+          "gkv_kontenart" : "400"
+        },
+        {
+          "gkv_kontenart" : "408"
+        },
+        {
+          "gkv_kontenart" : "409"
+        },
+        {
+          "gkv_kontenart" : "463"
+        },
+        {
+          "gkv_kontenart" : "570"
+        }
+      ],
+      "fachgruppe_liste" : {
+        "zulaessig" : true,
+        "liste" : [
+          {
+            "versorgungsbereich" : "2",
+            "fachgruppe" : [
+              "040",
+              "041",
+              "042",
+              "043",
+              "044",
+              "045",
+              "046",
+              "047",
+              "048",
+              "304",
+              "320",
+              "321",
+              "322",
+              "510",
+              "511",
+              "512",
+              "513",
+              "514",
+              "542",
+              "544"
+            ]
+          }
+        ]
+      },
+      "berichtspflicht" : false,
+      "genehmigungspflicht" : false,
+      "aop_115b" : false,
+      "begruendungen_liste" : {
+        "ops_liste" : [],
+        "ops_liste_include" : null,
+        "icd_liste" : [],
+        "gnr_liste" : []
+      },
+      "altersbedingung_liste" : [
+        {
+          "value" : "5",
+          "unit" : "8",
+          "type" : "MIN"
+        },
+        {
+          "value" : "58",
+          "unit" : "8",
+          "type" : "MAX"
+        }
+      ],
+      "anzahlbedingung_liste" : [
+        {
+          "bezugsraum" : {
+            "anzahl" : "1",
+            "value" : "1",
+            "unit" : "7",
+            "aussetzungsgrund_liste" : [],
+            "altersbedingung_liste" : []
+          }
+        }
+      ],
+      "ausschluss_liste" : [
+        {
+          "value" : "1",
+          "unit" : "1",
+          "gnr" : [
+            {
+              "seq" : "01210",
+              "hint" : "Notfallpauschale"
+            },
+            {
+              "seq" : "01212",
+              "hint" : "Notfallpauschale"
+            },
+            {
+              "seq" : "01436",
+              "hint" : "Konsultationspauschale"
+            },
+            {
+              "seq" : "01950",
+              "hint" : "Substitutionsgestützte Behandlung Opiatabhängiger"
+            },
+            {
+              "seq" : "01955",
+              "hint" : "Diamorphingestützte Behandlung Opiatabhängiger"
+            },
+            {
+              "seq" : "01960",
+              "hint" : "Konsiliarische Untersuchung und Beratung eines Patienten"
+            }
+          ]
+        },
+        {
+          "value" : "1",
+          "unit" : "7",
+          "gnr" : [
+            {
+              "seq" : "01600",
+              "hint" : "Ärztlicher Bericht nach Untersuchung"
+            },
+            {
+              "seq" : "01601",
+              "hint" : "Individueller Arztbrief"
+            },
+            {
+              "seq" : "07210",
+              "hint" : "Grundpauschale bis 5. Lebensjahr"
+            },
+            {
+              "seq" : "07212",
+              "hint" : "Grundpauschale ab 60. Lebensjahr"
+            },
+            {
+              "seq" : "11301",
+              "hint" : "Grundpauschale humangenetische in-vitro-Diagnostik bei Probeneinsendung"
+            },
+            {
+              "seq" : "19401",
+              "hint" : "Grundpauschale tumorgenetische in-vitro-Diagnostik"
+            }
+          ]
+        }
+      ],
+      "zeitbedarfsliste" : [
+        {
+          "zeitbedarf" : "25",
+          "leistung_typ" : "AL"
+        }
+      ],
+      "pruefzeit" : {
+        "quartal" : 20
+      },
+      "bewertung_liste" : [
+        {
+          "value" : "221",
+          "unit" : "Punkte",
+          "leistungserbringerart" : "1"
+        },
+        {
+          "value" : "23.55",
+          "unit" : "Euro",
+          "leistungserbringerart" : "1",
+          "versorgungsgebiet" : "1"
+        }
+      ]
+    },
+    "caseFolderId" : "5c402f28df1e7d1f47d6c667",
+    "generalCosts" : 0,
+    "specialCosts" : 0,
+    "omimCodes" : [],
+    "fk5012Set" : [],
+    "fk5020Set" : [
+      {
+        "fk5020" : false,
+        "fk5021" : ""
+      }
+    ],
+    "fk5035Set" : [],
+    "fk5036Set" : [],
+    "fk5042Set" : [
+      {
+        "fk5042" : "",
+        "fk5043" : ""
+      }
+    ],
+    "code" : "07211",
+    "price" : 23.92,
+    "actualPrice" : 221,
+    "unit" : "Euro",
+    "actualUnit" : "Punkte",
+    "employeeName" : "B, A",
+    "employeeInitials" : "AB",
+    "patientLastName" : "a",
+    "patientFirstName" : "a",
+    "materialCosts" : 0,
+    "debtCollection" : "",
+    "vatAmount" : 0,
+    "BSK" : 0,
+    "ASK" : 0,
+    "AHB" : 0,
+    "BHB" : 0
+  },
+  "rulelogs": [
+    {
+      "activitiesToCreate" : [],
+      "caseFolderType" : [
+        "PUBLIC"
+      ],
+      "affectedActivities" : [],
+      "actTypes" : [
+        "SCHEIN",
+        "TREATMENT"
+      ],
+      "actCodes" : [],
+      "requiredCodes" : [
+        "07211"
+      ],
+      "ruleId" : "5c121440abe9311d3d000015",
+      "allCodes" : [],
+      "referenceArea" : "PERIOD",
+      "ruleLogType" : "WARNING",
+      "message": "Ordinationskompl. 07211"
+    },
+    {
+      "activitiesToCreate" : [
+        {
+          "template" : {
+            "urgency" : 2,
+            "details" : "",
+            "roles" : [],
+            "candidates" : [],
+            "caseFolder" : "",
+            "actType" : "TREATMENT",
+            "caseFolderType" : "PUBLIC",
+            "catalogShort" : "EBM",
+            "code" : "07211",
+            "diagnosisCert" : "NONE",
+            "toCreate" : 1,
+            "explanations" : null,
+            "linkActivities" : false,
+            "autoCreate" : false,
+            "tempateID" : "5c12145dabe9311d3d000017",
+            "markers" : [],
+            "type" : ""
+          },
+          "ruleSetCaseFolder" : [
+            "PUBLIC"
+          ],
+          "referenceArea" : "PERIOD",
+          "id" : 0,
+          "ruleId" : "5c121440abe9311d3d000015"
+        }
+      ],
+      "caseFolderType" : [],
+      "affectedActivities" : [],
+      "actTypes" : [
+        "SCHEIN",
+        "TREATMENT"
+      ],
+      "actCodes" : [],
+      "requiredCodes" : [
+        "07211"
+      ],
+      "allCodes" : [],
+      "referenceArea" : "PERIOD",
+      "ruleLogType" : "ACTIVITY",
+      "ruleId" : "5c121440abe9311d3d000015",
+      "message": "Ordinationskompl. 07211"
+    }
+  ]
+}

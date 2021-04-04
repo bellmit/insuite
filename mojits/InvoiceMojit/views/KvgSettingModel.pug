@@ -1,0 +1,41 @@
+div.panel.panel-default
+    div.panel-body
+        div.row
+            div.col-md-6
+                div.form-group(data-bind="hasFeedback: { field: kvgSettingTitle, toggle: kvgSettingTitle.hasError, messages: kvgSettingTitle.validationMessages }")
+                    label.control-label(data-bind="text: kvgSettingTitle.i18n")
+                    input.form-control(name="kvgSettingTitle", type="text", data-bind="value: kvgSettingTitle")
+            div.col-md-6
+                    label.control-label(data-bind="text: billerI18n")
+                    div.row
+                        div.col-md-12.form-group(data-bind="hasFeedback: { field: billerEqualToProvider, toggle: billerEqualToProvider.hasError, messages: billerEqualToProvider.validationMessages }")
+                            label.checkbox-inline
+                                span(data-bind="text: billerEqualToProviderI18n")
+                                input(type="checkbox", name="billerEqualToProvider", data-bind="checked: billerEqualToProvider")
+                    div.row
+                        div.col-md-12.form-group(data-bind="hasFeedback: { field: biller, toggle: biller.hasError, messages: biller.validationMessages }")
+                            input.form-control(name="biller", type="text", data-bind="select2: select2Biller, readOnly: billerEqualToProvider")
+
+        div.row
+            div.col-md-6
+                div.form-group(data-bind="hasFeedback: { field: employees, toggle: employees.hasError, messages: employees.validationMessages }")
+                    label.control-label(data-bind="text: physiciansI18n")
+                    input.form-control(name="employees", type="hidden", data-bind="select2: select2Physicians, readOnly: employees.readOnly")
+            div.col-md-6
+                div.form-group(data-bind="hasFeedback: { field: locations, toggle: locations.hasError, messages: locations.validationMessages }")
+                    label.control-label(data-bind="text: locationsI18n")
+                    input.form-control(name="locations", type="hidden", data-bind="select2: select2Locations, readOnly: locations.readOnly")
+
+        div(data-bind="foreach: employees", style="margin-top: 10px")
+            div.row
+                div.col-md-2(data-bind="text: lastname() + ', ' + firstname()", style="margin-left: 10px")
+                div.col-md-3(data-bind="foreach: billingRole.list, hasFeedback: { field: billingRole, toggle: billingRole.hasError, messages: billingRole.validationMessages }")
+                        label.checkbox-inline
+                            span(data-bind="text: i18n")
+                            input(type="checkbox", name="billingRole", data-bind="value: val, checked: $parent.billingRole, readOnly: $parent.billingRole.readOnly, attr: { name: $element.name + '-' + val }")
+        div.row
+            div.col-md-12.text-right
+                button.btn.btn-default(name="deleteKvgSetting", type="button", data-bind="click: deleteKvgSetting.bind($context, $parent)")
+                    span.glyphicon.glyphicon-trash
+                    | &nbsp;
+                    span(data-bind="text: buttonDeleteTextI18n")

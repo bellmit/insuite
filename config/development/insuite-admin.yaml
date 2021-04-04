@@ -1,0 +1,4 @@
+externalPrescriptionSoftware:
+  command:
+    enable: ./src/bash/mmi-stop.sh && ./src/bash/fhir-start.sh
+    disable: ./src/bash/fhir-stop.sh && ./src/bash/mmi-start.sh

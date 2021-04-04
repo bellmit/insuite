@@ -1,0 +1,190 @@
+script(type="text/html", id="catalog-viewer-template")
+  // ko if: !modalChooser
+  .row
+    .col-xs-12
+      ul.nav.nav-pills.nav-justified(style="margin-bottom: 8px;")
+        // ko foreach: catalogs
+        li(data-bind="css: {active: $parent.catalogShort() === id}")
+          a(style="padding: 0px 0px 0px 0px;", data-bind="text: id, tooltip: {title: text}, click: $parent.selectCatalogShort.bind($parent)")
+        // /ko
+  // /ko
+  .row
+    .col-xs-5
+      .row
+        div(data-bind="css: {'col-xs-8': searchInput, 'col-xs-12': !searchInput()}")
+          span(data-bind="css: {'input-group': searchInput, 'form-group': !searchInput()}")
+            input.form-control(data-bind="textInput: searchInput, attr: {placeholder: searchPlaceholderI18n}")
+            span.input-group-btn(data-bind="visible: searchInput")
+              button.btn.btn-default(data-bind="click: clearSearchInput")
+                span.glyphicon.glyphicon-remove
+        .col-xs-4(data-bind="visible: searchInput")
+          span.input-group
+            input.form-control(data-bind="value: page")
+            span.input-group-addon(style="padding-left: 4px; padding-right: 4px;", data-bind="text: '/' + pages()")
+            span.input-group-btn
+              button.btn.btn-default.KoPaging(style="padding-left: 4px; padding-right: 4px;", data-bind="click: prevPage, enable: hasPrevPage")
+                span.fa.fa-chevron-left
+              button.btn.btn-default.KoPaging(style="padding-left: 4px; padding-right: 4px;", data-bind="click: nextPage, enable: hasNextPage")
+                span.fa.fa-chevron-right
+        // ko if: searchInput
+        .col-xs-12
+          div(data-bind="template: searchTree.template")
+        // /ko
+        // ko ifnot: searchInput
+        .col-xs-12
+          div(data-bind="template: tree.template")
+        // /ko
+    .col-xs-7
+      .row
+        .col-xs-12
+          // ko if: breadcrump
+          ol.breadcrumb(data-bind="foreach: breadcrump")
+            li(data-bind="html: $parent.textFormatter($data)")
+          // /ko
+        .col-xs-12
+          // ko if: content
+          div(data-bind="template: {name: contentTemplateName, data: content}")
+          // /ko
+      // ko if: multiSelect && selectedItems().length
+      .row
+        .col-xs-12
+          p.text-right(data-bind="text: selectedItemsTitle")
+          div(data-bind="foreach: selectedItems")
+            div.dc-form-flex(style="justify-content: flex-end; align-items: center;")
+              div
+                span(data-bind="text: title")
+              div(style="margin-left: 10px")
+                span(type="button", name="unSelectButton", data-bind="template: $parent.unSelectItemButton.template")
+      // /ko
+
+script(type="text/html", id="catalog-viewer-empty-content-template")
+  span Es wurde kein Katalog ausgewählt!
+
+script(type="text/html", id="catalog-viewer-icd-10-content-template")
+  // ko if: (typeof seq === "string")
+  h3(data-bind="html: textFormatter(seq + ' ' + title)")
+  // /ko
+
+  h4 Eigenschaften
+
+  ul(data-bind="if: $data.u_extra")
+    // ko if: u_extra.abrechenbar === 'j'
+    li Abrechenbar
+    // /ko
+
+    // ko if: u_extra.krankheit_in_mitteleuropa_sehr_selten === 'j'
+    li Krankheit in Mitteleuropa sehr selten
+    // /ko
+
+    // ko if: u_extra.schlüsselnummer_mit_inhalt_belegt === 'j'
+    li Schlüsselnummer mit Inhalt belegt
+    // /ko
+
+    // ko if: u_extra.infektionsschutzgesetz_meldepflicht === 'j'
+    li Infektionsschutzgesetz Meldepflicht
+    // /ko
+
+    // ko if: u_extra.infektionsschutzgesetz_abrechnungsbesonderheit === 'j'
+    li Infektionsschutzgesetz Abrechnungsbesonderheit
+    // /ko
+
+  // ko if: Array.isArray($data.infos)
+  h4 Thesaurusliste
+
+  ul(data-bind="foreach: infos")
+    li(data-bind="html: $parent.textFormatter($data)")
+  // /ko
+
+script(type="text/html", id="catalog-viewer-arv-content-template")
+  h3(data-bind="html: title")
+  // ko if: ($data.category)
+  div(style="margin-left: 1em;")
+      | IWW-Kategorie: &nbsp;
+      span(data-bind="html: $data.categoryTitle, style: { color: $data.categoryColor }")
+  // /ko
+
+  // ko if: (typeof $data.annotation === "string")
+  h4 Anmerkung des IWW
+    div(data-bind="html: $data.annotation" style="margin-left: 1em;")
+  // /ko
+
+  // ko if: (Array.isArray($data.referenceDocuments) && $data.referenceDocuments.length > 0)
+  h4 Verweise
+  ol(data-bind="foreach: $data.referenceDocuments")
+    li
+      a(data-bind="attr: { href: $data.url }", target="_blank")
+        span(data-bind="text: $data.name")
+  // /ko
+
+  // ko if: (Array.isArray($data.annotations) && $data.annotations.length > 0)
+  h4 Anmerkungen des IWW
+  div(data-bind="foreach: $data.annotations")
+    div
+      p(data-bind="html: $data.title" style="margin-left: 1em;")
+      // ko if: ( Array.isArray($data.links) && links.length > 0 )
+      h4 Alternative Wirkstoffe:
+      ul(data-bind="foreach: links")
+        li
+          p
+            span(data-bind="text: $data.atc")
+            | : &nbsp;
+            span(data-bind="html: $data.description")
+            // ko if: $data.category
+            | &nbsp; (IWW-Kategorie: &nbsp;
+            span(data-bind="text: $data.categoryTitle, style: { color: $data.categoryColor }")
+            | )
+            // /ko
+          // ko if: (Array.isArray($data.applicationForms) && $data.applicationForms.length > 0)
+          p
+            span Empfehlungsrelevante Darreichungsformen
+            ul(data-bind="foreach: $data.applicationForms")
+              li
+                span(data-bind="text: $data.code")
+                | , &nbsp;
+                span(data-bind="text: $data.keyTableNumber")
+                | &nbsp;
+                // ko if: ($data.include)
+                | (inklusiv)
+                // /ko
+                // ko if: (!$data.include)
+                | (exklusiv)
+                // /ko
+          // /ko
+      // /ko
+  // /ko
+
+  // ko if: (Array.isArray($data.applicationForms) && $data.applicationForms.length > 0)
+  h4 Empfehlungsrelevante Darreichungsformen
+  ul(data-bind="foreach: $data.applicationForms")
+    li
+      span(data-bind="text: $data.code")
+      | , &nbsp;
+      span(data-bind="text: $data.keyTableNumber")
+      | &nbsp;
+      // ko if: ($data.include)
+      | (inklusiv)
+      // /ko
+      // ko if: (!$data.include)
+      | (exklusiv)
+      // /ko
+  // /ko
+
+  // ko if: (Array.isArray($data.atcs) && $data.atcs.length > 0)
+  h4 Bevorzugte ATCs
+  ul(data-bind="foreach: $data.atcs")
+    li
+      span(data-bind="text: $data.atcCode")
+      | &nbsp;
+      // ko if: ($data.prescriptionRequired)
+      | (verschreibungspflichtig)
+      // /ko
+      // ko if: (!$data.prescriptionRequired)
+      | (nicht verschreibungspflichtig)
+      // /ko
+  // /ko
+
+script(type="text/html", id="catalog-viewer-ebm-content-template")
+  span EBM details
+
+script(type="text/html", id="catalog-viewer-modal-template")
+  div(data-bind="template: {name: catalogViewer.templateName, data: catalogViewer}")

@@ -1,0 +1,20 @@
+div.row
+
+  div.col-md-10#divEditFormText
+    div(data-bind="visible: useWYSWYG")
+      div(data-bind="with: wyswygButtons")#divEditTextWYSWYGButtons
+        include ./WYSWYG.pug
+
+      div.markdown-editor.form-control.content-editable(style="background-color: #eeeeee; padding-left: 10px; height: 700px; overflow: auto;")#divContentEditableModal
+
+    div(data-bind="visible: useTextarea", name="markdownText")
+      textarea.form-control(data-bind=" \
+        value: markdownText, \
+        caretPosition: markdownText.caretPosition, \
+        attr: {rows: '36'}, \
+        valueUpdate: 'afterkeydown', \
+        hasFocus: useTextarea ")
+
+  // ko if: showDocTree
+  div.col-md-2.docTree(data-bind="template: activityDocTreeViewModel.template, visible: hasDocTree")
+  // /ko

@@ -1,0 +1,73 @@
+div#mailActivities
+  div
+    div(data-bind="visible: isVisibleOn('step1')")
+      div.row
+        div.col-md-2
+          label.control-label(data-bind="text: emailModel.toI18n")
+        div.col-md-5
+          div.input-group
+            select.form-control(data-bind="options: emailModel.patientContacts, optionsText: 'label', value: emailModel.selectedContact")
+            span.input-group-btn
+              button.btn(data-bind="click: emailModel.searchContacts")
+                i.fa.fa-search
+        div.col-md-5
+          div.form-group(data-bind="hasFeedback: { toggle: emailModel.emailAddress.hasError, messages: emailModel.emailAddress.validationMessages }")
+            input.form-control(name="emailAddress", type="email", data-bind="value: emailModel.emailAddress, valueUpdate: 'afterkeydown', readOnly: emailModel.emailAddress.readOnly, attr: {placeholder: emailModel.emailI18n}")
+      div.row
+        div.col-md-2
+          label.control-label(data-bind="text: emailModel.fromI18n")
+        div.col-md-5
+          div.form-group(data-bind="hasFeedback: { toggle: emailModel.senderEmail.hasError, messages: emailModel.senderEmail.errorMessage }")
+            select.form-control(data-bind="value: emailModel.senderEmail, options: emailModel.senderEmailAddresses, optionsValue: 'val', optionsText: 'i18n'")
+        div.col-md-5
+          input.form-control(name="senderName", type="text", data-bind="value: emailModel.senderName, readOnly: true, attr: {placeholder: emailModel.senderI18n}")
+      div.row
+        div.col-md-2
+          label.control-label(data-bind="text: emailModel.replyToI18n")
+        //ko ifnot: emailModel.isOtherReplyToSelected()
+        div.col-md-10
+          div.form-group(data-bind="hasFeedback: { toggle: emailModel.replyTo.hasError, messages: emailModel.replyTo.errorMessage }")
+            select.form-control(data-bind="value: emailModel.replyTo, options: emailModel.replyToOptions, optionsValue: 'val', optionsText: 'i18n'")
+        // /ko
+        //ko if: emailModel.isOtherReplyToSelected()
+        div.col-md-5
+          div.form-group(data-bind="hasFeedback: { toggle: emailModel.replyTo.hasError, messages: emailModel.replyTo.errorMessage }")
+            select.form-control(data-bind="value: emailModel.replyTo, options: emailModel.replyToOptions, optionsValue: 'val', optionsText: 'i18n'")
+        div.col-md-5
+          div.form-group(data-bind="hasFeedback: { toggle: emailModel.otherReplyTo.hasError, messages: emailModel.otherReplyTo.validationMessages }")
+            input.form-control(name="otherReplyTo", type="email", data-bind="value: emailModel.otherReplyTo, valueUpdate: 'afterkeydown', attr: {placeholder: emailModel.emailI18n}")
+        // /ko
+      div.row
+        div.col-md-2
+          label.control-label(data-bind="text: emailModel.subjectI18n")
+        div.col-md-10
+          div.form-group
+            input.form-control(name="subject", type="text" data-bind="value: emailModel.subject, valueUpdate: 'afterkeydown', attr: {placeholder: emailModel.subjectI18n}")
+      div.row
+        div.col-md-2
+          label.control-label(data-bind="text: emailModel.emailTextI18n")
+        div.col-md-10
+          div.form-group
+            textarea.form-control(data-bind="value: emailModel.content, autoResize: emailModel.content, valueUpdate: 'afterkeydown',  readOnly: emailModel.content.ReadOnly, attr: {placeholder: emailModel.titleMessageI18n}", rows="5")
+      div.row
+         div.col-md-12
+           button.btn.btn-default.btn-xs.pull-right(type="button", data-bind="click: emailModel.cleanEmailContent, text: emailModel.cleanContentI18n")
+      div.row
+        div.col-md-2
+          label.control-label(data-bind="text: emailModel.attachmentsI18n")
+        div.col-md-10
+          div.form-group
+            div(data-bind="foreach: emailModel.attachments", style="display: flex")
+              div(style="margin-right: 0.5em; border: 1px solid #bbb; border-radius: 5px; display: flex; flex-direction: column;")
+                a(data-bind="attr: { href: fullUrl }", target="_blank")
+                  img(data-bind="attr: { src: thumbUrl }", width="68", height="68", style="border-top-left-radius: 5px; border-top-right-radius: 5px;")
+                a.btn.glyphicon.glyphicon-remove(data-bind="click: $parent.emailModel.removeAttachment.bind($parent.emailModel)" style="padding: 0; margin:0;")
+      div.row
+        div.col-md-2
+          label.control-label(data-bind="text: emailModel.locationTemplateI18n")
+        div.col-md-10
+          div.form-group
+            select.form-control(data-bind="value: emailModel.locationTemplate, options: emailModel.locationTemplates, optionsValue: 'val', optionsText: 'i18n'")
+    div.row(data-bind="visible: isVisibleOn('step2')")
+      .col-md-12
+        p(data-bind="text: step2_messageI18n")

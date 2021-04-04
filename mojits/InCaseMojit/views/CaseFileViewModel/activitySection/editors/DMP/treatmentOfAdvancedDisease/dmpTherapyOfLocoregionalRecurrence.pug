@@ -1,0 +1,7 @@
+div.form-group
+    strong(data-bind="text: dmpTherapyOfLocoregionalRecurrence.i18n")
+    span(data-bind="dmpField: { field: dmpTherapyOfLocoregionalRecurrence }")
+    div(data-bind="foreach: dmpTherapyOfLocoregionalRecurrence.list, hasFeedback: { field: dmpTherapyOfLocoregionalRecurrence, toggle: dmpTherapyOfLocoregionalRecurrence.hasError, messages: dmpTherapyOfLocoregionalRecurrence.validationMessages }")
+        label.checkbox-inline
+            span(data-bind="text: i18n")
+            input(type="checkbox", name="dmpTherapyOfLocoregionalRecurrence", data-bind="value: val, checked: $parent.dmpTherapyOfLocoregionalRecurrence, readOnly: $parent.dmpTherapyOfLocoregionalRecurrence.readOnly, attr: { name: $element.name + '-' + val }")

@@ -1,0 +1,83 @@
+//TRANSLATION INCOMPLETE!! MOJ-3201
+div.container.container-fullscreen#intimePractices
+  div(data-bind="if: isReady() && 0 === practices().length")
+    p Sie haben noch keine Ärzte.
+    p
+      em
+        small Sprechen Sie Ihren Arzt an, er schaltet Sie frei!
+  div(data-bind="foreach: practices")
+    div.panel.panel-info(data-bind="attr:{ id: 'practice-' + customerIdPrac }", dc-panel="prac_panel", dc-panel-actions="minimize")
+      div.panel-heading
+        h4.clearfix
+          span(data-bind="text: coname")
+          span(data-bind="if: $data.prcOffline ")
+            span.text-danger.pull-right(data-bind="text: $parent.textOfflineI18n")
+          span(data-bind="if: !$data.prcOffline && !$data.confirmed ")
+            span(data-bind="attr:{ id: 'practice-' + customerIdPrac }, click: sendConfirmationEmail", style="cursor: pointer").text-danger.fa.fa-envelope.pull-right
+      div.panel-body#prac_panel
+        div(data-bind="if: $data.prcOffline")
+          span(data-bind="text: $parent.practiceOfflineI18n")
+        //ko if: !$data.prcOffline && $data.onlyPracticesPatientsCanBook && ( $data.noPRC || !$data.createPlanned )
+        div
+          span(data-bind="text: $parent.bookingIsBlockedI18n")
+        // /ko
+        //ko ifnot: $data.onlyPracticesPatientsCanBook && ( $data.noPRC || !$data.createPlanned )
+        div(data-bind="foreach: locations")
+          div.row.inner-panel-entry
+            div.col-xs-12
+              h4(data-bind="text: 'Standort ' + locname ")
+              hr
+              div.row
+                div.col-sm-12.col-lg-8.col-xs-12
+                  p
+                    i.icon.icon-home.icon-2x
+                    span(data-bind="attr:{ id: _id }, text: street + ' ' + houseno" )
+                    span(data-bind="text: ', ' + zip + ' ' + city")
+                  p
+                    i.icon.icon-phone.icon-2x
+                    span(data-bind="text: phone")
+                  p Öffnungszeiten:
+                  .table-responsive
+                    table.table.table-bordered
+                      thead
+                        tr(data-bind="foreach: openDays")
+                          th(data-bind="text: alias")
+                      tbody
+                        tr(data-bind="foreach: openDays")
+                          td
+                            // ko if: '-' === $data.times[0]
+                            span(data-bind="text: times[0]")
+                            // /ko
+                            // ko ifnot: '-' === $data.times[0]
+                            // ko foreach: times
+                            span(data-bind="text: start")
+                            | &nbsp;-&nbsp;
+                            span(data-bind="text: end")
+                            br
+                            // /ko
+                            // /ko
+                  div.row
+                    div.col-xs-12
+                      p Kalender:
+                    div.col-xs-6
+                      input.form-control(name="calendar", type="hidden", data-bind="select2: select2Calendar")
+                    div.col-xs-6(data-bind="if: calendars.length")
+                      button.btn.btn-primary.btn-block(data-bind="click: makeAppointment") Termin
+                div.col-lg-4.col-md-5.col-sm-8.col-xs-12
+                  br
+                  div.panel.panel-info
+                    div.panel-heading
+                      h5 Anfahrt
+                    div.panel-body(data-bind="attr: {id: 'map-canvas-' + $parent.customerIdPrac + '-' + _id}", style='height:220px')
+        // /ko
+#pinModal.hidden
+  div.form-group
+    p Geben Sie bitte die PIN ein, die Sie von dieser Praxis zuletzt erhalten haben.
+    input.form-control(type='text', name='pin', placeholder='hier PIN eingeben')
+
+
+
+
+
+
+

@@ -1,0 +1,7 @@
+div.form-group
+    strong(data-bind="text: dmpResection.i18n")
+    span(data-bind="dmpField: { field: dmpResection }")
+    div(data-bind="foreach: dmpResection.list, hasFeedback: { field: dmpResection, toggle: dmpResection.hasError, messages: dmpResection.validationMessages }")
+        label.checkbox-inline
+            span(data-bind="text: i18n")
+            input(type="checkbox", name="dmpResection", data-bind="value: val, checked: $parent.dmpResection, readOnly: $parent.dmpResection.readOnly, attr: { name: $element.name + '-' + val }")

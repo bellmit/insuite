@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- automatische Dokumentation, generiert durch Visual Source Safe 
+	$Workfile: guid_typelib.xsd $  
+	$Modtime: 25.03.04 10:36 $  
+	$Revision: 1 $  
+-->
+<xs:schema targetNamespace="urn::hl7-org/kbv" xmlns="urn::hl7-org/kbv" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<!-- ****************************** guid_typ ****************************** -->
+	<xs:simpleType name="guid_typ">
+		<xs:annotation>
+			<xs:documentation>Typ für einen Global Unique Identifier</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[a-zA-Z0-9]{8}-[a-zA-Z0-9]{4}-[a-zA-Z0-9]{4}-[a-zA-Z0-9]{4}-[a-zA-Z0-9]{12}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+</xs:schema>

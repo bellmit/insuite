@@ -1,0 +1,8 @@
+div#closeDays
+    h4(data-bind="text: pageTitle")
+    div.row
+        div.col-md-12
+            div.pull-right(data-bind="template: saveCloseDay.template", style="margin-right: 10px; margin-bottom:10px; display:inline-block;")
+            div.pull-right(data-bind="template: importCloseDay.template, visible: isGermany", style="margin-right: 10px; margin-bottom:10px; display:inline-block;")
+    div.row
+        div.col-md-12(data-bind="template: closeDaysEditableTable.template")

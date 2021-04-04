@@ -1,0 +1,8 @@
+div.PatientGadgetCrm
+  h4.PatientGadget-headline
+    a(data-bind="text: crmInfoI18n")
+  div(data-bind="visible: crmInfoVisible")
+    ul(data-bind="foreach: crmInfo").list-unstyled
+      li.dc-text-crop(data-bind="text: $data")
+    p(data-bind="text: _displayCrmReminder, visible: _displayCrmReminder")
+    p(data-bind="html: _displayCrmAppointment, visible: _displayCrmAppointment")

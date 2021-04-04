@@ -1,0 +1,11 @@
+div.PatientGadgetReportConfigDialog
+  form
+    div.form-group
+      label Report type
+      select(data-bind="options: reportTypes, optionsText: 'label', optionsValue: 'value', value: reportType").form-control
+    div.form-group(data-bind="visible: reportType() === 'predefined'")
+      label Config
+      select(data-bind="options: presetList, optionsText: 'csvFilename', optionsValue: '_id', value: presetId").form-control
+    div.form-group(data-bind="visible: reportType() === 'own'")
+      label Config
+      select(data-bind="options: ownList, optionsText: 'csvFilename', optionsValue: '_id', value: ownId").form-control

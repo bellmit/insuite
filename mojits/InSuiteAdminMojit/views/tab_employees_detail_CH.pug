@@ -1,0 +1,28 @@
+h4(data-bind="text: switzerlandTitleI18n")
+div.panel.panel-default
+    div.panel-body
+        div.form-group(data-bind="hasFeedback: { field: glnNumber, toggle: glnNumber.hasError, messages: glnNumber.validationMessages }")
+            label.control-label(data-bind="text: glnNumber.i18n")
+            .form-group
+                input.form-control(name="glnNumber", data-bind="value: glnNumber, readOnly: glnNumber.readOnly, valueUpdate: '', attr: { placeholder: placeholderGlnNumberI18n }")
+        div.form-group(data-bind="foreach: ownZsrNumber.list, hasFeedback: { field: ownZsrNumber, toggle: ownZsrNumber.hasError, messages: ownZsrNumber.validationMessages }")
+            label.radio-inline
+                span(data-bind="text: i18n")
+                input(type="radio", name="ownZsrNumber", data-bind="value: val, checked: $parent.ownZsrNumber, readOnly: $parent.ownZsrNumber.readOnly")
+
+        div.form-group(data-bind="visible: ownZsrNumber(), hasFeedback: { field: zsrNumber, toggle: zsrNumber.hasError, messages: zsrNumber.validationMessages }")
+            label.control-label(data-bind="text: zsrNumber.i18n")
+            .form-group
+                input.form-control(name="zsrNumber", data-bind="value: zsrNumber, readOnly: zsrNumber.readOnly, valueUpdate: '', attr: { placeholder: placeholderZsrNumberI18n }")
+        div.form-group(data-bind="visible: !ownZsrNumber(), hasFeedback: { field: kNumber, toggle: kNumber.hasError, messages: kNumber.validationMessages }")
+            label.control-label(data-bind="text: kNumber.i18n")
+            .form-group
+                input.form-control(name="kNumber", data-bind="value: kNumber, readOnly: kNumber.readOnly, valueUpdate: '', attr: { placeholder: placeholderKNumberI18n }")
+
+        div.form-group(data-bind="hasFeedback: { field: qualiDignities, toggle: qualiDignities.hasError, messages: qualiDignities.validationMessages }")
+            label.control-label(data-bind="text: qualiDignitiesI18n")
+            input.form-control(name="qualiDignities", type="text", data-bind="select2: select2QualiDignities")
+
+        div.form-group(data-bind="hasFeedback: { field: quantiDignities, toggle: quantiDignities.hasError, messages: quantiDignities.validationMessages }")
+            label.control-label(data-bind="text: quantiDignitiesI18n")
+            input.form-control(name="quantiDignities", type="text", data-bind="select2: select2QuantiDignities")

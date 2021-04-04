@@ -1,0 +1,131 @@
+li.room.col-md-12(style="padding: 0 5px 0 5px;")
+  div.panel(data-bind="style: {'border-color': color}")
+    div.panel-heading(data-bind="style: {'background-color': color}")
+      div(style="position: relative; padding-right: 30px; word-break: break-all;")
+        span(data-bind="text: $parent.roomTitleData( $data )")
+        | &nbsp;
+        // ko if: 'waiting' === roomType
+        span(data-bind="text: '(' + $parent.waitingRoomI18n + ')'")
+        // /ko
+        // ko if: 'treatment' === roomType
+        span(data-bind="text: '(' + $parent.treatmentRoomI18n+ ')'")
+        // /ko
+        span(style="position: absolute; right: -5px; top: 0;")
+          a(href="#", data-bind="click: $parent.configure.bind( $parent, $data )")
+            span.fa.fa-gear
+          // ko if: $root.isAdmin
+          a(href="#", data-bind="click: $parent.add.bind( $parent, $data )")
+            span.fa.fa-pencil
+          // ko if: isDeletable
+          a(href="#", data-bind="click: $parent.remove.bind( $parent, $data )")
+            span.fa.fa-remove
+          // /ko
+          // /ko
+    div.panel-body
+      ol.patients-list.patients-list-drop(data-bind="foreach: $parent.filteredData")
+        // ko if: $data.roomId === $parent._id
+        li.patient(style="padding: 0 0 5px 5px;")
+          <!-- ko if: $parent.patientSeverity -->
+          div(style="position: relative; padding-top: 5px;", data-bind="attr: { class: 'dc-triangle dc-severity-' + $data.severity }")
+          <!-- /ko -->
+          <!-- ko ifnot: $parent.patientSeverity -->
+          div(style="position: relative; padding-top: 5px;")
+          <!-- /ko -->
+            div.appointment-inner(style="padding-right: 15px;")
+              span.fa.fa-eye(style="cursor: pointer;", data-bind="click: $root.showAppointment.bind( $parent, $data )")
+              // ko if: $parent.patientTitle
+              | ,&nbsp;
+              span(data-bind="html: $root.patientTitleData( $data )")
+              // /ko
+              // ko if: $parent.patientDob
+              // ko if: $data.patientDob
+              | ,&nbsp;
+              span(data-bind="text: patientDob")
+              // /ko
+              // /ko
+              // ko if: $parent.patientNo
+              // ko if: $data.patientNo
+              | ,&nbsp;
+              span(data-bind="text: $root.patientNoLabelI18n + ':'")
+              span(data-bind="text: patientNo")
+              // /ko
+              // /ko
+              // ko if: $parent.calendarName
+              | ,&nbsp;
+              span(data-bind="text: $root.patientCalendars( $data )")
+              // /ko
+              // ko if: $parent.patientInsurance && $root.hasPatientInsuranceData( $data )
+              | ,&nbsp;
+              span(data-bind="html: $root.patientInsuranceData( $data )")
+              // /ko
+              // ko if: $parent.details
+              // ko if: $data.details
+              | ,&nbsp;
+              span(style="overflow-wrap: break-word;", data-bind="text: details")
+              // /ko
+              // /ko
+              // ko if: $parent.eta
+              // ko if: $data.eta
+              | ,&nbsp;
+              i.fa.fa-clock-o
+              | &nbsp;
+              span(data-bind="text: $root.etaData( $data )")
+              // /ko
+              // /ko
+              // ko if: $parent.patientArrivalTime
+              | ,&nbsp;
+              span(data-bind="text: $root.arrivalTimeLabelI18n + ':'")
+              // ko ifnot: 'treatment' === $parent.roomType
+              span(data-bind="text: $root.patientArrivalTimeData( $data )")
+              // /ko
+              // ko if: 'treatment' === $parent.roomType
+              // ko if: $data.actualWaitingTimeMinutes
+              // ko if: $data.actualWaitingTimeMinutes > 0
+              span(data-bind="text: actualWaitingTimeMinutes")
+              // /ko
+              // ko ifnot: $data.actualWaitingTimeMinutes > 0
+              span(data-bind="text: 0")
+              // /ko
+              // /ko
+              // ko ifnot: $data.actualWaitingTimeMinutes
+              span(data-bind="text: 0")
+              // /ko
+              // /ko
+              // /ko
+              // ko if: $parent.duration
+              | ,&nbsp;
+              span(data-bind="text: $root.durationsLabelI18n + ':'")
+              span(data-bind="text: duration")
+              // /ko
+              // ko if: $parent.adhoc
+              // ko if: $data.adhoc
+              | ,&nbsp;
+              span(data-bind="text: $root.waitLabelI18n + ':'")
+              // ko if: $data.wait <= 0
+              span(data-bind="text: '0'")
+              // /ko
+              // ko ifnot: $data.wait < 0
+              span(data-bind="text: wait")
+              // /ko
+              // /ko
+              // /ko
+              // ko if: $parent.timeinadvance
+              // ko if: $data.timeinadvance
+              | ,&nbsp;
+              span(data-bind="text: $root.timeInAdvanceData( $data )")
+              // /ko
+              // /ko
+              // ko ifnot: 'waiting' === $parent.roomType
+              // ko if: $parent.status
+              // ko if: $data.status
+              | ,&nbsp;
+              span(data-bind="text: status")
+              // /ko
+              // /ko
+              // /ko
+              // ko if: 'treatment' === $parent.roomType
+              .row
+                .col-xs-12
+                  a.btn.btn-default.pull-right(style="margin-right: -10px;", data-bind="text: $root.endButtonI18n, click: $root.endAppointment.bind( $root, $data )")
+              // /ko
+        // /ko

@@ -1,0 +1,14 @@
+div.row#selectFlowModel
+  div.form-group
+    input.form-control.input-sm#selectFlowModelSelect2Flow(type="hidden", data-bind="select2: select2Flow")
+  div(data-bind=" if: flowTypes.XRAY === flowType()")
+    div.form-group
+      label(for="selectFlowModelSelect2Region", data-bind="text: titleRegionI18n + ':'")
+      input.form-control.input-sm#selectFlowModelSelect2Region(type="hidden", data-bind="select2: select2Region")
+    div.form-group
+      label(for="selectFlowModelSelect2Side", data-bind="text: titleSideI18n + ':'")
+      input.form-control.input-sm#selectFlowModelSelect2Side(type="hidden", data-bind="select2: select2Side")
+    div.form-group
+      label(for="selectFlowModelSelect2Method", data-bind="text: titleMethodI18n + ':'")
+      input.form-control.input-sm#selectFlowModelSelect2Method(type="hidden", data-bind="select2: select2Method")
+

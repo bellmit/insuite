@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- edited with XMLSPY v2004 rel. 3 U (http://www.xmlspy.com) by Frank Weiler (KBV) -->
+<!-- automatische Dokumentation, generiert durch Visual Source Safe 
+	$Workfile: statusergaenzung_typelib.xsd $  
+	$Modtime: 25.02.05 11:00 $  
+	$Revision: 4 $  
+	$History: statusergaenzung_typelib.xsd $
+ * 
+ * *****************  Version 4  *****************
+ * User: Eusorov      Date: 12.04.05   Time: 11:47
+ * Updated in $/XML-Schnittstellen2/KBV/typelib
+ * Neu Statusergänzungen: "D" "F" "S" "P" für neue DMPs: Asthma und COPD
+ * 
+ * *****************  Version 3  *****************
+ * User: Eusorov      Date: 17.05.04   Time: 16:10
+ * Updated in $/XML-Schnittstellen2/KBV/typelib
+ * + Wert "4": "Sozialhilfeempfänger"
+ * 
+ * *****************  Version 2  *****************
+ * User: Eusorov      Date: 6.05.04    Time: 14:49
+ * Updated in $/XML-Schnittstellen2/KBV/typelib
+ * + Enumerationen "E" und "N" für DM1 Wert und Ost
+ * 
+ * *****************  Version 1  *****************
+ * User: Eusorov      Date: 29.03.04   Time: 17:16
+ * Created in $/XML-Schnittstellen2/KBV/typelib
+ * 
+ * *****************  Version 1  *****************
+ * User: Eusorov      Date: 25.03.04   Time: 17:58
+ * Created in $/XML-Schnittstellen2/KBV/typelib
+-->
+<xs:schema targetNamespace="urn:kbv/kbv/typelib/001" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="urn:kbv/kbv/typelib/001" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<!-- ******************** statusergaenzung_typ ******************************-->
+	<xs:simpleType name="statusergaenzung_typ">
+		<xs:annotation>
+			<xs:documentation xml:lang="de">Statusergaenzung</xs:documentation>
+		</xs:annotation>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="1">
+							<xs:annotation>
+								<xs:documentation xml:lang="de">West</xs:documentation>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="4">
+							<xs:annotation>
+								<xs:documentation xml:lang="de">Sozialhilfeempfänger, §264 SGB V</xs:documentation>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="6">
+							<xs:annotation>
+								<xs:documentation xml:lang="de">BVG</xs:documentation>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="7">
+							<xs:annotation>
+								<xs:documentation xml:lang="de">SVA fuer Kennzeichnung fuer zwischenstaatliches Krankenversicherungsrecht fuer Personen zeitweilig im Inland oder Personen mit Wohnsitz im Inland, Abrechnung nach Aufwand oder deutsch-niederlaendischer Graenzgaenger</xs:documentation>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="8">
+							<xs:annotation>
+								<xs:documentation xml:lang="de">SVA fuer Personen mit Wohnsitz im Inland, Abrechnung pauschal</xs:documentation>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="9">
+							<xs:annotation>
+								<xs:documentation xml:lang="de">Ost</xs:documentation>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="M">
+							<xs:annotation>
+								<xs:documentation xml:lang="de">eingeschriebene Versicherte in Disease-Management-Programmen Diabetes mellitus Typ 2 - RK West</xs:documentation>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="X">
+							<xs:annotation>
+								<xs:documentation xml:lang="de">eingeschriebene Versicherte in Disease-Management-Programmen Diabetes mellitus Typ 2 - RK Ost</xs:documentation>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="A">
+							<xs:annotation>
+								<xs:documentation xml:lang="de">eingeschriebene Versicherte in Disease-Management-Programmen Brustkrebs - RK West</xs:documentation>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="C">
+							<xs:annotation>
+								<xs:documentation xml:lang="de">eingeschriebene Versicherte in Disease-Management-Programmen Brustkrebs - RK Ost</xs:documentation>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="K">
+							<xs:annotation>
+								<xs:documentation xml:lang="de">eingeschriebene Versicherte in Disease-Management-Programmen Koronare Herzkrankheit - RK West</xs:documentation>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="L">
+							<xs:annotation>
+								<xs:documentation xml:lang="de">eingeschriebene Versicherte in Disease-Management-Programmen Koronare Herzkrankheit - RK Ost</xs:documentation>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="E">
+							<xs:annotation>
+								<xs:documentation xml:lang="de">eingeschriebene Versicherte in Disease-Management-Programmen Diabetes mellitus Typ 1 - RK West</xs:documentation>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="N">
+							<xs:annotation>
+								<xs:documentation xml:lang="de">eingeschriebene Versicherte in Disease-Management-Programmen Diabetes mellitus Typ 1 - RK Ost</xs:documentation>
+							</xs:annotation>
+						</xs:enumeration>						
+						<xs:enumeration value="D">
+							<xs:annotation>
+								<xs:documentation xml:lang="de">eingeschriebene Versicherte in Disease-Management-Programmen Asthma bronchiale - RK West</xs:documentation>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="F">
+							<xs:annotation>
+								<xs:documentation xml:lang="de">eingeschriebene Versicherte in Disease-Management-Programmen Asthma bronchiale - RK Ost</xs:documentation>
+							</xs:annotation>
+						</xs:enumeration>								
+						<xs:enumeration value="S">
+							<xs:annotation>
+								<xs:documentation xml:lang="de">eingeschriebene Versicherte in Disease-Management-Programmen COPD - RK West</xs:documentation>
+							</xs:annotation>
+						</xs:enumeration>								
+						<xs:enumeration value="P">
+							<xs:annotation>
+								<xs:documentation xml:lang="de">eingeschriebene Versicherte in Disease-Management-Programmen COPD - RK Ost</xs:documentation>
+							</xs:annotation>
+						</xs:enumeration>													
+					</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

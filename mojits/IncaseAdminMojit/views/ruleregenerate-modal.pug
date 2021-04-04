@@ -1,0 +1,63 @@
+#regenerate_modal
+  div.row
+    div.col-xs-12.text-center
+      span(data-bind="html: updateMessage" style="font-weight:bold;")
+  br
+  div.row
+    div.col-xs-12
+      span(data-bind="html: message")
+  br
+  div.row
+    div.col-xs-2
+      label(data-bind="text: regenerateLogI18n")
+      i.dc-info-icon(data-toggle="popover", data-bind="attr: {'data-content': info_rule_log }", data-html="true", rel="popover", data-placement="auto left", data-trigger="hover", data-container= "#regenerate_modal")
+    div.col-xs-10(style="padding-bottom: 10px")
+      select.form-control(style="width: auto", data-bind="options: deletingLogStrategyList, optionsValue: 'val', optionsText: 'text', value: deletingLogStrategy")
+  div.row
+    div.col-xs-12
+      h4(data-bind="text: regenerateRulesTitleI18n")
+  div.row
+    div.col-xs-12.mb-3(data-bind="template: dateSelector.template")
+  div.row
+    div.col-xs-2
+      label(data-bind="text: entryTypesI18n")
+      i.dc-info-icon(data-toggle="popover", data-bind="attr: {'data-content': info_acttypes }", data-html="true", rel="popover", data-placement="auto left", data-trigger="hover", data-container= "#regenerate_modal")
+    div.col-xs-10
+      div.form-group(data-bind="hasFeedback: { field: actType, toggle: actType.hasError }")
+        input.form-control(data-bind="select2: actTypeAutocomplete")
+  div.row
+    div.col-xs-2
+      label(data-bind="text: statusI18n")
+      i.dc-info-icon(data-toggle="popover", data-bind="attr: {'data-content': info_status }", data-html="true", rel="popover", data-placement="auto left", data-trigger="hover", data-container= "#regenerate_modal")
+    div.col-xs-10
+      div.form-group(data-bind="hasFeedback: { field: actStatus, toggle: actStatus.hasError }")
+        input.form-control(data-bind="select2: actStatusAutocomplete")
+  div.row
+    div.col-xs-2
+      label(data-bind="text: patientsI18n")
+      i.dc-info-icon(data-toggle="popover", data-bind="attr: {'data-content': info_patients }", data-html="true", rel="popover", data-placement="auto left", data-trigger="hover", data-container= "#regenerate_modal")
+    div.col-xs-10
+      div.form-group
+        input.form-control(data-bind="select2: select2Patient")
+  div.row
+    div.col-xs-2
+      label(data-bind="text: locationsI18n")
+      i.dc-info-icon(data-toggle="popover", data-bind="attr: {'data-content': info_location }", data-html="true", rel="popover", data-placement="auto left", data-trigger="hover", data-container= "#regenerate_modal")
+    div.col-xs-10
+      div.form-group
+        input.form-control(data-bind="select2: select2Locations")
+  div.row
+    div.col-xs-2
+      label(data-bind="text: caseTypesI18n")
+      i.dc-info-icon(data-toggle="popover", data-bind="attr: {'data-content': info_casefolders }", data-html="true", rel="popover", data-placement="auto left", data-trigger="hover", data-container= "#regenerate_modal")
+    div.col-xs-10
+      div.form-group(data-bind="hasFeedback: { field: caseFolderType, toggle: caseFolderType.hasError }")
+        input.form-control(data-bind="select2: caseFolderAutocomplete")
+  // ko if: tenantsReady
+  div.row
+    div.col-xs-2
+      label(data-bind="text: tenantsI18n")
+    div.col-xs-10
+      div.form-group(data-bind="hasFeedback: { field: tenants, toggle: tenants.hasError }")
+        input.form-control(data-bind="select2: tenantsAutocomplete")
+  // /ko

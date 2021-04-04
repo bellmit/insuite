@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- automatische Dokumentation, generiert durch Visual Source Safe 
+	$Workfile: software_ssu_kontakt_typelib.xsd $  
+	$Modtime: 24.05.04 17:24 $  
+	$Revision: 9 $  
+-->
+<xs:schema targetNamespace="urn::hl7-org/cda" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="urn::hl7-org/cda" xmlns:kbv="urn::hl7-org/kbv" elementFormDefault="qualified">
+	<xs:import namespace="urn::hl7-org/kbv" schemaLocation="all_kbv_typelib.xsd"/>
+	<xs:include schemaLocation="person_typelib.xsd"/>
+	<xs:include schemaLocation="addr_typelib.xsd"/>
+	<xs:include schemaLocation="telecom_typelib.xsd"/>
+	<!-- ******************** Gruppe kontakt-gruppe ******************** -->
+	<xs:group name="kontakt_gruppe">
+		<xs:sequence>
+		<xs:element name="organization.nm">
+			<xs:annotation>
+				<xs:appinfo>Organisations-Name</xs:appinfo>
+			</xs:annotation>
+			<xs:complexType>
+				<xs:attribute name="V" type="kbv:string_max_60_typ"/>
+			</xs:complexType>
+		</xs:element>
+		<xs:element name="person_name" type="dmp_provider_person_name_typ" minOccurs="0"/>
+		<xs:element name="addr" type="person_addr_typ"/>
+		<xs:element name="telecom" type="dmp_telecom_typ" maxOccurs="5"/>
+		</xs:sequence>
+	</xs:group>		
+</xs:schema>

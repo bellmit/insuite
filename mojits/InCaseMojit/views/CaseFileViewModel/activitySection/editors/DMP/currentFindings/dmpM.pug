@@ -1,0 +1,9 @@
+div.form-group
+    div.row
+        div.col-xs-2
+            strong(data-bind="text: dmpM.i18n")
+            span(data-bind="dmpField: { field: dmpM }")
+        div.col-xs-10(data-bind="foreach: dmpM.list, hasFeedback: { field: dmpM, toggle: dmpM.hasError, messages: dmpM.validationMessages }")
+            label.radio-inline
+                span(data-bind="text: i18n")
+                input(type="radio", name="dmpM", data-bind="value: val, checked: $parent.dmpM, readOnly: $parent.dmpM.readOnly, attr: { name: $element.name + '-' + val }")

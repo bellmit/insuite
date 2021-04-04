@@ -1,0 +1,98 @@
+[
+  {
+    "active": true,
+    "official": true,
+    "confirmOfficial": false,
+    "careProvider": "",
+    "utilityName": "Psychisch-funkt. Beh.",
+    "utilityPositionNo": "X4105",
+    "kv": "72",
+    "insuranceType": "PUBLIC",
+    "prices": [
+      {
+        "insuranceGroupId": "000000000000000000000222",
+        "price": 65.72
+      }
+    ]
+  },
+  {
+    "active": true,
+    "official": true,
+    "confirmOfficial": false,
+    "careProvider": "",
+    "utilityName": "Psychisch-funkt. Beh. Gruppe",
+    "utilityPositionNo": "X4208",
+    "kv": "72",
+    "insuranceType": "PUBLIC",
+    "prices": [
+      {
+        "insuranceGroupId": "000000000000000000000222",
+        "price": 52
+      }
+    ]
+  },
+  {
+    "active": true,
+    "official": true,
+    "confirmOfficial": false,
+    "careProvider": "",
+    "utilityName": "Hirnleistungstraining/neuropsych. orientierte Beh.",
+    "utilityPositionNo": "X4104",
+    "kv": "72",
+    "insuranceType": "PUBLIC",
+    "prices": [
+      {
+        "insuranceGroupId": "000000000000000000000222",
+        "price": 43.22
+      }
+    ]
+  },
+  {
+    "active": true,
+    "official": true,
+    "confirmOfficial": false,
+    "careProvider": "",
+    "utilityName": "Hirnleistungstraining Gruppe",
+    "utilityPositionNo": "X4207",
+    "kv": "72",
+    "insuranceType": "PUBLIC",
+    "prices": [
+      {
+        "insuranceGroupId": "000000000000000000000222",
+        "price": 34
+      }
+    ]
+  },
+  {
+    "active": true,
+    "official": true,
+    "confirmOfficial": false,
+    "careProvider": "",
+    "utilityName": "Sensomotorisch-perz. Beh.",
+    "utilityPositionNo": "X4103",
+    "kv": "72",
+    "insuranceType": "PUBLIC",
+    "prices": [
+      {
+        "insuranceGroupId": "000000000000000000000222",
+        "price": 52.5
+      }
+    ]
+  },
+  {
+    "active": true,
+    "official": true,
+    "confirmOfficial": false,
+    "careProvider": "",
+    "utilityName": "Sensomotorisch-perz. Beh. Gruppe",
+    "utilityPositionNo": "X4206",
+    "kv": "72",
+    "insuranceType": "PUBLIC",
+    "prices": [
+      {
+        "insuranceGroupId": "000000000000000000000222",
+        "price": 42
+      }
+    ]
+  }
+]

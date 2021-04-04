@@ -1,0 +1,23 @@
+.container.container-fullscreen(id=mojit_view_id)
+  h2.text-muted(data-bind="text: titleHealthI18n")
+  .row
+    .col-xs-12.col-sm-9.col-md-4.col-md-offset-1
+      div#if-inputs
+        h4(data-bind="text: adjustmentsI18n")
+        .form-horizontal
+          .form-group
+            label.control-label.col-sm-8.col-md-6.col-lg-8(data-bind="text: labelWidthI18n")
+            #ifwidth.col-sm-4.col-md-6.col-lg-4
+              input.form-control(data-bind="attr: { placeholder: placeholderWidthI18n }")
+          .form-group
+            label.control-label.col-sm-8.col-md-6.col-lg-8(data-bind="text: labelHeightI18n")
+            #ifheight.col-sm-4.col-md-6.col-lg-4
+              input.form-control(data-bind="attr: { placeholder: placeholderHeightI18n }")
+    .col-xs-12.col-md-6.col-lg-5
+      h4(data-bind="text: groupHtmlI18n")
+      pre#iframe_code(style="margin-top:10px; white-space: normal;")
+  hr
+  .row
+    .col-xs-12
+      iframe#display_iframe.center-block(src="", frameborder=0, scrolling="auto", width="708px", height="630px", style="box-shadow:1px 1px 2px 2px #666;")
+

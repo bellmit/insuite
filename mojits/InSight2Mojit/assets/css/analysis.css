@@ -1,0 +1,22 @@
+.dropdown-menu.dropdown-menu-insight {
+    overflow: hidden;
+    overflow-y: auto;
+    max-height: 500px;
+}
+
+.masterhead h3 {
+    margin-left: 20px;
+}
+
+#menu-buttons {
+    margin-top: 100px;
+}
+
+.analysisOpts label {
+    line-height: 16px;
+    margin-bottom: 5px;
+}
+
+.analysisOpts .btn-wrapper {
+    margin-top: 22px;
+}

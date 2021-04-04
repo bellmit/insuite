@@ -1,0 +1,51 @@
+br
+br
+.container.container-fullscreen.content(id=mojit_view_id)
+
+  h3 Edit InCase Mapping Descriptions
+
+  p This form is used to edit the descriptions of mappings used in inCase and reporting.
+
+  hr
+
+  table(noborder="noborder",width="100%")
+    tr
+      td(width="500px",valign="top")
+        b Filter:
+        input.form-control#txtFilter
+        br
+        div#divMappingList
+          img(src="/static/DocCirrus/assets/images/ajax-loader.gif")
+      td(width="10px")
+      td(valign="top")
+        div#divEditMapping
+          span#spanMappingName
+          table(noborder="noborder",width="100%")
+            tr
+              td
+                b Label (English):
+                br
+                input.form-control#txtLabelEn
+                br
+            tr
+              td
+                b Label (German):
+                br
+                input.form-control#txtLabelDe
+                br
+            tr
+              td
+                b Description (English):
+                br
+                textarea.form-control(rows="10")#taDescEn
+                br
+            tr
+              td
+                b Description (German):
+                br
+                textarea.form-control(rows="10")#taDescDe
+                br
+
+          span(style="float: right;")
+            button.btn.btn-primary#btnSave Save
+

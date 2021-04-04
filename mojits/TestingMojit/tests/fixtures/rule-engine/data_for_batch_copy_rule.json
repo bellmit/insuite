@@ -1,0 +1,325 @@
+{
+  "rules": [
+    {
+      "_id" : "5eb4569f1aa18e307448647c",
+      "parent" : "000000000000000000000002",
+      "isDirectory" : false,
+      "isLocked" : false,
+      "isActive" : true,
+      "caseFolderType" : [
+        "PUBLIC"
+      ],
+      "metaActTypes" : [
+        "TREATMENT"
+      ],
+      "metaActCodes" : [
+        "23023"
+      ],
+      "metaCriterias" : [
+        "actType",
+        "code"
+      ],
+      "description" : "Entry rule test",
+      "referenceArea" : "ENTRY",
+      "periodType" : "MONTH",
+      "periodCount" : 1,
+      "periodReference" : "raum",
+      "rules" : [
+        {
+          "ruleId" : "5eb45687c6e86b182b000016",
+          "description" : "E L 23023",
+          "isActive" : true,
+          "validations" : {
+            "\\\\$and" : [
+              {
+                "context" : "ACTIVITY",
+                "criteria" : {
+                  "actType" : {
+                    "\\\\$eq" : "TREATMENT"
+                  },
+                  "code" : {
+                    "\\\\$eq" : "23023",
+                    "\\\\$catalogShort" : "EBM"
+                  }
+                }
+              }
+            ]
+          },
+          "actions" : [
+            {
+              "type" : "ERROR",
+              "template" : {
+                "urgency" : 2,
+                "details" : "",
+                "roles" : [],
+                "candidates" : [],
+                "locations" : [
+                  {
+                    "_id" : "000000000000000000000001",
+                    "locname" : "TestPraxis1"
+                  },
+                  {
+                    "_id" : "59955f5f66e8cf1fcc577754",
+                    "locname" : "SecondLocation"
+                  }
+                ],
+                "caseFolder" : "",
+                "diagnosisCert" : "NONE",
+                "toCreate" : 1,
+                "linkActivities" : false,
+                "autoCreate" : false,
+                "tempateID" : "5eb4569dc6e86b182b000017",
+                "markers" : [],
+                "type" : ""
+              }
+            }
+          ],
+          "metaCodes" : [
+            "23023"
+          ],
+          "metaActTypes" : [
+            "TREATMENT"
+          ]
+        }
+      ],
+      "metaFuzzy" : false,
+      "metaCaseOpen" : false,
+      "idStr" : "5eb4569f1aa18e307448647c"
+    },
+    {
+      "_id" : "5ebab502a594f8518b5ca2bf",
+      "parent" : "5e41257cdf27326f372d3431",
+      "isDirectory" : false,
+      "isLocked" : true,
+      "isActive" : true,
+      "caseFolderType" : [
+        "PUBLIC"
+      ],
+      "metaActTypes" : [
+        "TREATMENT"
+      ],
+      "metaActCodes" : [
+        "23023"
+      ],
+      "metaCriterias" : [
+        "actType",
+        "code",
+        "areTreatmentDiagnosesBillable"
+      ],
+      "rules" : [
+        {
+          "isActive" : true,
+          "description" : "Anzahlbedingungsliste 23023 (EBM) im Behandlungsfall",
+          "validations" : {
+            "\\\\$and" : [
+              [
+                {
+                  "context" : "ACTIVITY",
+                  "criteria" : {
+                    "actType" : "TREATMENT",
+                    "code" : "23023",
+                    "areTreatmentDiagnosesBillable" : "1",
+                    "\\\\$count" : {
+                      "\\\\$gt" : 1
+                    }
+                  }
+                }
+              ]
+            ]
+          },
+          "actions" : [
+            {
+              "type" : "ERROR"
+            }
+          ],
+          "metaCodes" : [
+            "23023"
+          ],
+          "metaActTypes" : [
+            "TREATMENT"
+          ],
+          "ruleId" : "5e41257cdf27326f372d3432"
+        }
+      ],
+      "description" : "EBM 23023 im Behandlungsfall",
+      "fromCatalog" : "DC-EBM-D-1580198939199.json",
+      "fromCatalogShort" : "EBM",
+      "referenceArea" : "PERIOD",
+      "periodType" : "QUARTER",
+      "periodCount" : 1,
+      "periodReference" : "raum",
+      "idStr" : "5e41257cdf27326f372d3434",
+      "metaFuzzy" : false,
+      "metaCaseOpen" : false
+    }
+  ],
+  "rulelogs": [
+    {
+      "caseFolderId" : "5ebe4c9667f9e11ee9c4ff81",
+      "factId" : "5ebe4c9967f9e11ee9c50031",
+      "message" : "E L 23023",
+      "patientId" : "5ebe4c9667f9e11ee9c4ff80",
+      "referenceArea" : "ENTRY",
+      "ruleLogType" : "ERROR",
+      "actCodes" : [
+        "23023"
+      ],
+      "actTypes" : [
+        "TREATMENT"
+      ],
+      "activitiesToCreate" : [],
+      "affectedActivities" : [
+        {
+          "id" : "5ebe4c9967f9e11ee9c50031",
+          "code" : "23023",
+          "actType" : "TREATMENT"
+        }
+      ],
+      "allCodes" : [],
+      "caseFolderType" : [
+        "PUBLIC"
+      ],
+      "locationId" : "5ebe4c9667f9e11ee9c4ff7e",
+      "requiredCodes" : [],
+      "ruleId" : "5eb45687c6e86b182b000016",
+      "ruleSetId" : "5ebe4c9767f9e11ee9c4ffc7"
+    },
+    {
+      "caseFolderId" : "5ebe4c9667f9e11ee9c4ff81",
+      "factId" : "5ebe4c9967f9e11ee9c50030",
+      "message" : "E L 23023",
+      "patientId" : "5ebe4c9667f9e11ee9c4ff80",
+      "referenceArea" : "ENTRY",
+      "ruleLogType" : "ERROR",
+      "actCodes" : [
+        "23023"
+      ],
+      "actTypes" : [
+        "TREATMENT"
+      ],
+      "activitiesToCreate" : [],
+      "affectedActivities" : [
+        {
+          "id" : "5ebe4c9967f9e11ee9c50030",
+          "code" : "23023",
+          "actType" : "TREATMENT"
+        }
+      ],
+      "allCodes" : [],
+      "caseFolderType" : [
+        "PUBLIC"
+      ],
+      "locationId" : "5ebe4c9667f9e11ee9c4ff7e",
+      "requiredCodes" : [],
+      "ruleId" : "5eb45687c6e86b182b000016",
+      "ruleSetId" : "5ebe4c9767f9e11ee9c4ffc7"
+    },
+    {
+      "caseFolderId" : "5ebe4c9667f9e11ee9c4ff81",
+      "message" : "Anzahlbedingungsliste 23023 (EBM) im Behandlungsfall",
+      "patientId" : "5ebe4c9667f9e11ee9c4ff80",
+      "referenceArea" : "PERIOD",
+      "ruleLogType" : "ERROR",
+      "actCodes" : [
+        "23023"
+      ],
+      "actTypes" : [
+        "TREATMENT"
+      ],
+      "activitiesToCreate" : [],
+      "affectedActivities" : [
+        {
+          "id" : "5ebe4c9967f9e11ee9c50031",
+          "code" : "23023",
+          "actType" : "TREATMENT",
+          "locationId" : "5ebe4c9667f9e11ee9c4ff7e"
+        },
+        {
+          "id" : "5ebe4c9967f9e11ee9c50030",
+          "code" : "23023",
+          "actType" : "TREATMENT",
+          "locationId" : "5ebe4c9667f9e11ee9c4ff7e"
+        }
+      ],
+      "allCodes" : [],
+      "caseFolderType" : [
+        "PUBLIC"
+      ],
+      "locationId" : "5ebe4c9667f9e11ee9c4ff7e",
+      "requiredCodes" : [],
+      "ruleId" : "5e41257cdf27326f372d3432",
+      "ruleSetId" : "5ebe4c9767f9e11ee9c4ffc9"
+    }
+  ],
+  "schein": {
+    "actType" : "SCHEIN",
+    "attachments" : [],
+    "subType" : "",
+    "time" : "",
+    "userContent" : "ambulante Behandlung (ambulante Behandlung)",
+    "partnerInfo" : "",
+    "explanations" : "",
+    "status" : "VALID",
+    "activities" : [],
+    "referencedBy" : [],
+    "formId" : "",
+    "formVersion" : "",
+    "formPdf" : "",
+    "formLang" : "de",
+    "formGender" : "m",
+    "apkState" : "IN_PROGRESS",
+    "forInsuranceType" : "",
+    "locationFeatures" : "",
+    "scheinRemittor" : "",
+    "scheinEstablishment" : "",
+    "scheinSpecialisation" : "",
+    "scheinOrder" : "",
+    "scheinDiagnosis" : "",
+    "scheinFinding" : "",
+    "scheinNotes" : "",
+    "scheinClinicalTreatmentFrom" : null,
+    "scheinClinicalTreatmentTo" : null,
+    "scheinNextTherapist" : "",
+    "fk4234" : false,
+    "fk4219" : "",
+    "continuousIcds" : [],
+    "icds" : [],
+    "icdsExtra" : [],
+    "scheinQuarter" : "1",
+    "scheinYear" : "2019",
+    "scheinBillingArea" : "00",
+    "scheinType" : "0101",
+    "scheinSubgroup" : "00",
+    "scheinTransferTypeInfo" : "",
+    "fk4124" : "",
+    "fk4126" : "",
+    "fk4125from" : null,
+    "fk4125to" : null,
+    "fk4123" : "",
+    "fk4206" : null,
+    "fk4236" : false,
+    "fk4241" : "",
+    "fk4217" : "",
+    "scheinSlipMedicalTreatment" : "",
+    "__t" : "SCHEIN",
+    "attachedMedia" : [],
+    "content" : "ambulante Behandlung (ambulante Behandlung)",
+    "debtCollection" : "",
+    "fk4235Set" : [],
+    "invoiceData" : [],
+    "scheinTransferType" : ""
+  },
+  "treatment": {
+      "_id": "5e8d96e28656ee2974c394f5",
+      "actType" : "TREATMENT",
+      "status" : "VALID",
+      "attachments" : [],
+      "subType" : "",
+      "userContent" : "ab Beginn des 19. bis zum vollendeten 54. Lebensjahr",
+      "areTreatmentDiagnosesBillable" : "1",
+      "catalog" : true,
+      "catalogRef" : "DC-EBM-D-1583833525695.json",
+      "catalogShort" : "EBM",
+      "code" : "23023"
+  }
+}

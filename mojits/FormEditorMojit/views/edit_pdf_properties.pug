@@ -1,0 +1,51 @@
+div#divEditPdfPropertiesContainer
+  fieldset
+    table(noborder="noborder",width="100%")
+
+      tr
+        td
+          b(data-bind="text: lblRotationI18n")
+        td
+          select.form-control#selPdfRotation
+            option(value="0") 0°
+            option(value="90") 90°
+            option(value="180") 180°
+            option(value="270") 270°
+
+      tr
+        td
+          b(data-bind="text: lblOffsetXI18n")
+        td
+          input.form-control(type="text")#txtOffsetX
+
+      tr
+        td
+          b(data-bind="text: lblOffsetYI18n")
+        td
+          input.form-control(type="text")#txtOffsetY
+
+      tr
+        td
+          b(data-bind="text :lblPdfScaleI18n")
+          | &nbsp;
+        td
+          input.form-control(type="text")#txtPdfScale
+
+    table(noborder="noborder",width="100%")
+
+        td(style="padding-top: 10px;")
+          table(noborder="noborder")
+            tr
+              td(valign="top")
+                div.checkbox#divPrintBg
+                  input(type="checkbox")#chkPrintBg
+                  label.checkbox-inline(for="chkPrintBg")
+                    div(style="margin-left: 15px;", data-bind="text: lblPrintBgI18n")
+              td(valign="top")
+                div.checkbox
+                  input(type="checkbox")#chkPdfA4
+                  label.checkbox-inline(for="chkPdfA4")
+                    div(style="margin-left: 15px;", data-bind="text: lblPdfA4I18n")
+
+              td(valign="top")
+                button.btn-default.btn(style="float:right;", data-bind="text: lblTestPrintI18n")#btnTestPrint

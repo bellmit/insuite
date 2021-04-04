@@ -1,0 +1,7 @@
+div.form-group
+  strong(data-bind="text: dmpFrequencyOfAsthmaSymptoms_4_44.i18n")
+  span(data-bind="dmpField: { field: dmpFrequencyOfAsthmaSymptoms_4_44 }")
+  div(data-bind="foreach: dmpFrequencyOfAsthmaSymptoms_4_44.list, hasFeedback: { field: dmpFrequencyOfAsthmaSymptoms_4_44, toggle: dmpFrequencyOfAsthmaSymptoms_4_44.hasError, messages: dmpFrequencyOfAsthmaSymptoms_4_44.validationMessages }")
+    label.radio-inline
+      span(data-bind="text: i18n")
+      input(type="radio", name="dmpFrequencyOfAsthmaSymptoms_4_44", data-bind="value: val, checked: $parent.dmpFrequencyOfAsthmaSymptoms_4_44, readOnly: $parent.dmpFrequencyOfAsthmaSymptoms_4_44.readOnly")

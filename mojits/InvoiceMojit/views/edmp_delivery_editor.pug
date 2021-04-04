@@ -1,0 +1,76 @@
+.row(data-bind="with: currentModel")
+  .col-xs-12
+    span Status:&nbsp;
+    span(data-bind="html: displayEdmpDeliveryStatus")
+  .col-xs-12
+    .col-xs-12
+      .row
+        .col-xs-2
+          div.form-group(data-bind="hasFeedback: { field: quarter, toggle: quarter.hasError, messages: quarter.validationMessages }")
+            label.control-label(for="edmpdelvieryeditor-modal-field-quarter", data-bind="text: quarterI18n")
+            input#edmpdelvieryeditor-modal-field-quarter.form-control(name="quarter", type="text", data-bind="value: quarter", readonly="true")
+        .col-xs-2
+          div.form-group(data-bind="hasFeedback: { field: year, toggle: year.hasError, messages: year.validationMessages }")
+            label.control-label(for="edmpdelvieryeditor-modal-field-year", data-bind="text: yearI18n")
+            input#edmpdelvieryeditor-modal-field-year.form-control(name="year", type="text", data-bind="value: year", readonly="true")
+        .col-xs-4
+          div.form-group(data-bind="hasFeedback: { field: addressee, toggle: addressee.hasError, messages: addressee.validationMessages }")
+            label.control-label(for="edmpdelvieryeditor-modal-field-addressee", data-bind="text: addresseI18n")
+            input#edmpdelvieryeditor-modal-field-addressee.form-control(name="addressee", type="text", data-bind="value: displayAddressee", readonly="true")
+        .col-xs-4
+          div.form-group(data-bind="hasFeedback: { field: addresseeIk, toggle: addresseeIk.hasError, messages: addresseeIk.validationMessages }")
+            label.control-label(for="edmpdelvieryeditor-modal-field-addresseeIk", data-bind="text: addresseIkI18n")
+            input#edmpdelvieryeditor-modal-field-addresseeIk.form-control(name="addresseeIk", type="text", data-bind="value: displayAddresseeIk", readonly="true")
+      // ko if: showCreateEvlCheckOptions
+      .row
+        .col-xs-6
+          label.checkbox
+            span(data-bind="text: createEvl.i18n")
+            input(type="checkbox", name="createEvl", data-bind="value: createEvl, checked: createEvl, readOnly: disableEvlSettings")
+        .col-xs-6
+          div.form-group
+            label.control-label(for="edmpdelvieryeditor-modal-field-evlEmployeeId", data-bind="text: evlEmployeeId.i18n")
+            input#edmpdelvieryeditor-modal-field-evlEmployeeId.form-control(name="evlEmployeeId", type="hidden", data-bind="select2: evlEmployeeIdAutoComplete, readOnly: disableEvlEmployeeId")
+      // /ko
+      .row(data-bind="if: 'PACKED' === edmpDeliveryStatus() || 'SENT' === edmpDeliveryStatus() || 'ARCHIVED' === edmpDeliveryStatus() || displayError()")
+        .col-xs-12
+          .well.well-sm
+            h4
+              span(data-bind="text: headline")
+              button.btn.btn-default.btn-xs(data-bind="click: downloadAll, visible: !disableDownloadAll")
+                span.glyphicon.glyphicon-download-alt
+            // ko if: labelFormId()
+            div
+              a.edmp-archive-dl(download="", href="#", target="_blank", data-bind="attr: {href: getMediaUrl(labelFormId())}") Datenträgerbeschriftung
+            // /ko
+            // ko if: contentFormId()
+            div
+              a.edmp-archive-dl(download="", href="#", target="_blank", data-bind="attr: {href: getMediaUrl(contentFormId())}") Transportbegleitzettel
+            // /ko
+            // ko if: error() || errorDetails()
+            div
+              p(data-bind="text: displayError")
+            // /ko
+            div(data-bind="foreach: content")
+              div.mb-4
+                div(data-bind="if: ($data.encryptedArchiveFileId && $data.encryptedArchiveFileName) || ($data.archiveFileId && $data.archiveFileId)")
+                  span(data-bind="html: 'Archiv ' + ($index() + 1) + ' (' + $parent.displayActType(actType) + ')<br>'")
+                div(data-bind="if: $data.archiveFileId && $data.archiveFileId")
+                  a(href="#", target="_blank", data-bind="attr: {href: $parent.makeUrl(archiveFileId)}, text: archiveFileName")
+                div(data-bind="if: $data.encryptedArchiveFileId && $data.encryptedArchiveFileName")
+                  a.edmp-archive-dl(download="", href="#", target="_blank", data-bind="attr: {href: $parent.makeUrl(encryptedArchiveFileId)}, text: encryptedArchiveFileName")
+                div(data-bind="if: $data.indexFileId && $data.indexFileName")
+                  a.edmp-archive-dl(download="", href="#", target="_blank", data-bind="attr: {href: $parent.makeUrl(indexFileId)}, text: indexFileName")
+                div(data-bind="if: $data.evlAckFileId && $data.evlAckFileName")
+                  a.edmp-archive-dl(download="", href="#", target="_blank", data-bind="attr: {href: $parent.makeUrl(evlAckFileId)}, text: evlAckFileName")
+                div.mt-2(data-bind="if: $data.xmlFiles")
+                  div(data-bind="text: $parent.encryptedXMLFilesI18n")
+                div(data-bind="foreach: { data: $data.xmlFiles, as: 'file'}")
+                  div(data-bind="if: xmlFileName && xmlFileId")
+                    a(href="#", target="_blank", data-bind="attr: {href: $parents[1].makeUrl(xmlFileId)}, text: xmlFileName")
+  .col-xs-6
+.row
+  .col-xs-12
+    h4 Dokumentationen
+  .col-xs-12
+    div(data-bind="template: edmpDeliveriesDetailContentTable.template")

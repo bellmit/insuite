@@ -1,0 +1,546 @@
+{
+  "rule": {
+    "isDirectory" : false,
+    "isLocked" : false,
+    "isActive" : true,
+    "caseFolderType" : [
+      "PUBLIC"
+    ],
+    "metaActTypes" : [
+      "SCHEIN",
+      "MEDICATION",
+      "TREATMENT"
+    ],
+    "metaActCodes" : [
+      "4226",
+      "99992"
+    ],
+    "description" : "Regel mit Aufgabe",
+    "referenceArea" : "SCHEIN",
+    "periodType" : "MONTH",
+    "periodCount" : 1,
+    "periodReference" : "raum",
+    "metaCriterias" : [
+      "actType",
+      "code",
+      "areTreatmentDiagnosesBillable",
+      "subType"
+    ],
+    "rules" : [
+      {
+        "ruleId" : "5cdbbcf23cdb840c9800001a",
+        "description" : "Neue Regel",
+        "isActive" : true,
+        "validations" : {
+          "\\\\$and" : [
+            {
+              "context" : "ACTIVITY",
+              "criteria" : {
+                "actType" : {
+                  "\\\\$eq" : "SCHEIN"
+                },
+                "subType" : {
+                  "\\\\$eq" : "O123"
+                }
+              }
+            },
+            {
+              "\\\\$or" : [
+                {
+                  "context" : "ACTIVITY",
+                  "criteria" : {
+                    "actType" : {
+                      "\\\\$eq" : "MEDICATION"
+                    },
+                    "code" : {
+                      "\\\\$eq" : "4226"
+                    }
+                  }
+                },
+                {
+                  "context" : "ACTIVITY",
+                  "criteria" : {
+                    "actType" : {
+                      "\\\\$eq" : "TREATMENT"
+                    },
+                    "code" : {
+                      "\\\\$eq" : "99992",
+                      "\\\\$catalogShort" : "EBM"
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "actions" : [
+          {
+            "type" : "TASK",
+            "template" : {
+              "title" : "Du sollst an diese Aufgabe schauen",
+              "urgency" : 2,
+              "details" : "",
+              "roles" : [
+                "Empfang"
+              ],
+              "candidates" : [],
+              "caseFolder" : "",
+              "days" : "0",
+              "hours" : "",
+              "minutes" : "",
+              "actType" : "MEASUREMENT",
+              "caseFolderType" : null,
+              "catalogShort" : null,
+              "code" : null,
+              "diagnosisCert" : "NONE",
+              "toCreate" : 1,
+              "explanations" : null,
+              "linkActivities" : false,
+              "autoCreate" : false,
+              "tempateID" : "5cdbbcf73cdb840c9800001b",
+              "markers" : [],
+              "type" : "",
+              "taskType" : "100000000000000000000001"
+            }
+          },
+          {
+            "type" : "WARNING",
+            "template" : {
+              "urgency" : 2,
+              "details" : "",
+              "roles" : [],
+              "candidates" : [],
+              "caseFolder" : "",
+              "diagnosisCert" : "NONE",
+              "toCreate" : 1,
+              "linkActivities" : false,
+              "autoCreate" : false,
+              "tempateID" : "5cdbc9ba3cdb840c9800001f",
+              "markers" : [],
+              "type" : ""
+            }
+          }
+        ],
+        "metaActTypes" : [
+          "SCHEIN",
+          "MEDICATION",
+          "TREATMENT"
+        ],
+        "metaCodes" : [
+          "4226",
+          "99992"
+        ]
+      }
+    ],
+    "metaFuzzy" : false
+  },
+  "medication": {
+    "actType" : "MEDICATION",
+    "attachments" : [],
+    "subType" : "",
+    "time" : "",
+    "backupEmployeeIds" : [],
+    "userContent" : "new to hauskatalog_2",
+    "mediaImportError" : "",
+    "partnerInfo" : "",
+    "explanations" : "",
+    "status" : "VALID",
+    "activities" : [],
+    "referencedBy" : [],
+    "formId" : "",
+    "formVersion" : "",
+    "formPdf" : "",
+    "formLang" : "de",
+    "formGender" : "m",
+    "apkState" : "IN_PROGRESS",
+    "unlinkedMirrorIds" : [],
+    "phPZN" : "4226",
+    "phCompany" : "",
+    "phForm" : "",
+    "phPackSize" : "",
+    "phPriceSale" : null,
+    "phPriceRecommended" : null,
+    "phPatPay" : null,
+    "phPatPayHint" : "",
+    "phFixedPay" : null,
+    "phAtc" : [],
+    "phOnly" : false,
+    "phTer" : false,
+    "phTrans" : false,
+    "phImport" : false,
+    "phNegative" : false,
+    "phLifeStyle" : false,
+    "phLifeStyleCond" : false,
+    "phAMR" : [],
+    "phGBA" : false,
+    "phDisAgr" : false,
+    "phDisAgrAlt" : false,
+    "phMed" : false,
+    "phPrescMed" : false,
+    "phBTM" : false,
+    "phRecipeOnly" : false,
+    "phNLabel" : "new to hauskatalog_2",
+    "phOTC" : false,
+    "phOTX" : false,
+    "phARV" : false,
+    "phARVContent" : [],
+    "phCheaperPkg" : false,
+    "phContinuousMed" : false,
+    "hasVat" : false,
+    "vat" : 0,
+    "dosis" : "text",
+    "phDosisMorning" : "0",
+    "phDosisAfternoon" : "0",
+    "phDosisEvening" : "0",
+    "phDosisNight" : "0",
+    "phDosisType" : "TEXT",
+    "phUnit" : "",
+    "phNote" : "",
+    "phReason" : "",
+    "phSelfMedication" : false,
+    "phHeader" : "",
+    "isPrescribed" : false,
+    "isDispensed" : false,
+    "catalog" : true,
+    "catalogShort" : "MMI",
+    "catalogRef" : "MMI",
+    "forInsuranceType" : "",
+    "modifyHomeCat" : false,
+    "deleteEntryHomeCat" : false,
+    "__t" : "MEDICATION",
+    "attachedMedia" : [],
+    "content" : "new to hauskatalog_2",
+    "editor" : [
+      {
+        "name" : "Jhony Dredn04",
+        "employeeNo" : "01234",
+        "initials" : "JD"
+      }
+    ],
+    "phIngr" : [
+      {
+        "name" : "-"
+      }
+    ],
+    "code" : "4226",
+    "employeeName" : "Dredn04, Jhony",
+    "employeeInitials" : "JD",
+    "patientLastName" : "Nachnamme",
+    "patientFirstName" : "Mann"
+  },
+  "schein": {
+    "actType" : "SCHEIN",
+    "attachments" : [],
+    "subType" : "",
+    "time" : "",
+    "backupEmployeeIds" : [],
+    "userContent" : "ambulante Behandlung (ambulante Behandlung)",
+    "mediaImportError" : "",
+    "partnerInfo" : "",
+    "explanations" : "",
+    "status" : "VALID",
+    "activities" : [],
+    "referencedBy" : [],
+    "formId" : "",
+    "formVersion" : "",
+    "formPdf" : "",
+    "formLang" : "de",
+    "formGender" : "m",
+    "apkState" : "IN_PROGRESS",
+    "unlinkedMirrorIds" : [],
+    "forInsuranceType" : "",
+    "locationFeatures" : "",
+    "scheinRemittor" : "",
+    "scheinEstablishment" : "110100000",
+    "scheinSpecialisation" : "050",
+    "scheinOrder" : "",
+    "scheinDiagnosis" : "",
+    "scheinFinding" : "",
+    "scheinNotes" : "",
+    "scheinClinicalTreatmentFrom" : null,
+    "scheinClinicalTreatmentTo" : null,
+    "scheinNextTherapist" : "",
+    "fk4234" : false,
+    "fk4219" : "",
+    "continuousIcds" : [],
+    "createContinuousDiagnosisOnSave" : false,
+    "icds" : [],
+    "icdsExtra" : [],
+    "scheinQuarter" : "2",
+    "scheinYear" : "2019",
+    "scheinBillingArea" : "00",
+    "scheinType" : "0101",
+    "scheinSubgroup" : "00",
+    "scheinTransferTypeInfo" : "",
+    "fk4124" : "",
+    "fk4126" : "",
+    "fk4125from" : null,
+    "fk4125to" : null,
+    "fk4123" : "",
+    "fk4206" : null,
+    "fk4236" : false,
+    "fk4241" : "",
+    "fk4217" : "",
+    "scheinSlipMedicalTreatment" : "",
+    "__t" : "SCHEIN",
+    "attachedMedia" : [],
+    "pressButton" : "",
+    "employeeId" : "100000000000000000000003",
+    "content" : "ambulante Behandlung (ambulante Behandlung)",
+    "editor" : [
+      {
+        "name" : "Jhony Dredn04",
+        "employeeNo" : "01234",
+        "initials" : "JD"
+      }
+    ],
+    "debtCollection" : "MEDNEO",
+    "fk4235Set" : [],
+    "invoiceData" : [],
+    "scheinDate" : "2019-05-05T08:48:51.250Z",
+    "scheinTransferType" : "",
+    "employeeName" : "Dredn04, Jhony",
+    "employeeInitials" : "JD",
+    "patientLastName" : "Nachnamme",
+    "patientFirstName" : "Mann",
+    "code" : null
+  },
+  "treatment": {
+    "actType" : "TREATMENT",
+    "status" : "VALID",
+    "attachments" : [],
+    "subType" : "",
+    "time" : "",
+    "backupEmployeeIds" : [],
+    "userContent" : "BGAT Patientenschulungsmateri.8jjal öDiabetes mellitus Typ 1ее",
+    "mediaImportError" : "",
+    "partnerInfo" : "",
+    "explanations" : "",
+    "activities" : [],
+    "referencedBy" : [],
+    "formId" : "",
+    "formVersion" : "",
+    "formPdf" : "",
+    "formLang" : "de",
+    "formGender" : "m",
+    "apkState" : "IN_PROGRESS",
+    "unlinkedMirrorIds" : [],
+    "scheinOrder" : "",
+    "scheinDiagnosis" : "",
+    "countryMode" : [
+      "D"
+    ],
+    "fk5002" : "",
+    "fk5005" : "",
+    "fk5008" : "",
+    "fk5013" : "",
+    "fk5017" : "",
+    "fk5019" : "",
+    "fk5023" : "",
+    "fk5024" : "",
+    "fk5025" : null,
+    "fk5026" : null,
+    "fk5034" : null,
+    "fk5037" : "",
+    "fk5040" : "",
+    "fk5044" : "",
+    "fk5015" : "",
+    "fk5016" : "",
+    "fk5018" : "",
+    "fk5038" : "",
+    "treatmentCategory" : "",
+    "divisionCode" : null,
+    "divisionText" : "",
+    "anaesthesiaText" : "",
+    "medicalText" : "",
+    "technicalText" : "",
+    "medicalTaxPoints" : 0,
+    "technicalTaxPoints" : 0,
+    "assistanceTaxPoints" : 0,
+    "medicalScalingFactor" : 1,
+    "technicalScalingFactor" : 1,
+    "treatmentTime" : 0,
+    "preparationAndFollowUpTime" : 0,
+    "reportTime" : 0,
+    "roomOccupancyTime" : 0,
+    "rotationTime" : 0,
+    "assistanceQuantity" : 0,
+    "benefitsText" : "",
+    "billingRole" : [
+      "MEDICAL",
+      "TECHNICAL"
+    ],
+    "treatmentTypeCh" : "AMBULATORY",
+    "sideMandatory" : false,
+    "price" : 20,
+    "displayPrice" : "0",
+    "areTreatmentDiagnosesBillable" : "1",
+    "costType" : "",
+    "gnrAdditionalInfo" : [],
+    "gnrAdditionalInfoType" : "AUSWAHL",
+    "catalog" : true,
+    "catalogRef" : "DC-EBM-D-1556117162868.json",
+    "forInsuranceType" : "",
+    "modifyHomeCat" : false,
+    "deleteEntryHomeCat" : false,
+    "hasVat" : false,
+    "icds" : [
+      "5cdbd2f338c37546f01b3516"
+    ],
+    "icdsExtra" : [],
+    "numberOfCopies" : 1,
+    "__t" : "TREATMENT",
+    "catalogShort" : "EBM",
+    "vat" : 0,
+    "attachedMedia" : [],
+    "employeeId" : "100000000000000000000003",
+    "content" : "BGAT Patientenschulungsmateri.8jjal öDiabetes mellitus Typ 1ее",
+    "comment" : "BGAT Patientenschulungsmaterial Diabetes mellitus Typ 1",
+    "editor" : [
+      {
+        "name" : "Jhony Dredn04",
+        "employeeNo" : "01234",
+        "initials" : "JD"
+      }
+    ],
+    "u_extra" : {
+      "validfrom" : "2007-10-01..",
+      "quittungstext" : "BGAT Patientenschulungsmaterial Diabetes mellitus Typ 1",
+      "leistungserbringerart" : "1",
+      "leistungsgruppe" : "14",
+      "kv" : {
+        "kv" : "72",
+        "arztpraxis" : true,
+        "kv_bewertung" : [
+          {
+            "value" : "20.00",
+            "unit" : "Euro",
+            "leistungserbringerart" : "1"
+          }
+        ]
+      },
+      "gkv_kontenart" : [
+        {
+          "gkv_kontenart" : "408"
+        },
+        {
+          "gkv_kontenart" : "409"
+        },
+        {
+          "gkv_kontenart" : "570"
+        },
+        {
+          "gkv_kontenart" : "994"
+        }
+      ],
+      "berichtspflicht" : false,
+      "genehmigungspflicht" : false,
+      "aop_115b" : false,
+      "begruendungen_liste" : {
+        "ops_liste" : [],
+        "ops_liste_include" : null,
+        "icd_liste" : [],
+        "gnr_liste" : []
+      },
+      "anzahlbedingung_liste" : [
+        {
+          "bezugsraum" : {
+            "anzahl" : "1",
+            "value" : "1",
+            "unit" : "7",
+            "aussetzungsgrund_liste" : [],
+            "altersbedingung_liste" : []
+          }
+        }
+      ],
+      "bewertung_liste" : [
+        {
+          "value" : "20.00",
+          "unit" : "Euro",
+          "leistungserbringerart" : "1"
+        }
+      ]
+    },
+    "fk5012Set" : [],
+    "fk5020Set" : [
+      {
+        "fk5020" : false,
+        "fk5021" : ""
+      }
+    ],
+    "fk5035Set" : [],
+    "fk5036Set" : [],
+    "fk5042Set" : [
+      {
+        "fk5042" : "",
+        "fk5043" : ""
+      }
+    ],
+    "generalCosts" : 0,
+    "specialCosts" : 0,
+    "omimCodes" : [],
+    "code" : "99992",
+    "actualPrice" : 20,
+    "unit" : "Euro",
+    "actualUnit" : "Euro",
+    "employeeName" : "Dredn04, Jhony",
+    "employeeInitials" : "JD",
+    "patientLastName" : "Nachnamme",
+    "patientFirstName" : "Mann",
+    "materialCosts" : 0,
+    "debtCollection" : "MEDNEO",
+    "vatAmount" : 0,
+    "BSK" : 0,
+    "ASK" : 0,
+    "AHB" : 0,
+    "BHB" : 0,
+    "billingFactorType" : "privatversicherte",
+    "includesBSK" : null,
+    "isChiefPhysician" : null
+  },
+  "rulelog": {
+    "message" : "Neue Regel",
+    "referenceArea" : "SCHEIN",
+    "ruleLogType" : "WARNING",
+    "actCodes" : [
+      "4226",
+      "99992"
+    ],
+    "actTypes" : [
+      "SCHEIN",
+      "MEDICATION",
+      "TREATMENT"
+    ],
+    "activitiesToCreate" : [],
+    "affectedActivities" : [],
+    "allCodes" : [],
+    "caseFolderType" : [
+      "PUBLIC"
+    ],
+    "locationId" : "000000000000000000000001",
+    "requiredCodes" : [],
+    "ruleId" : "5cdbbcf23cdb840c9800001a"
+  },
+  "taskTemplate": {
+    "allDay" : false,
+    "templateAlertTimeInterval" : "Seconds",
+    "urgency" : 2,
+    "status" : "NEW",
+    "details" : "",
+    "roles" : [
+      "Empfang"
+    ],
+    "candidates" : [],
+    "candidatesNames" : [],
+    "type" : "RULE_ENGINE",
+    "sessionWide" : false,
+    "title" : "Du sollst an diese Aufgabe schauen",
+    "patientName" : "Patient, Test",
+    "activityType" : "SCHEIN",
+    "creatorName" : "Rule Engine",
+    "activities" : [],
+    "location" : [],
+    "links" : [],
+    "taskType" : "100000000000000000000001"
+  }
+}

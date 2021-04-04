@@ -1,0 +1,53 @@
+{
+  "employeeName": "Dr.1 admin1, prac1",
+  "employeeInitials": "NN",
+  "actType": "KBVUTILITY",
+  "timestamp": "2017-06-01T08:00:00.000Z",
+  "patientId": "575a6bfc6b93652b18eefc56",
+  "employeeId": "100000000000000000000003",
+  "locationId": "000000000000000000000001",
+  "caseFolderId": "577e7ce1e7a387f626123994",
+  "patientName": "Eva Kluge",
+  "utIcdCode": "E74.0",
+  "utLatestStartOfTreatment": "2017-06-15T23:00:00Z",
+  "utPrescriptionType": "FIRST",
+  "utRemedy1Seasons": 6,
+  "utRemedy2Seasons": null,
+  "utRemedy1PerWeek": "2",
+  "utRemedy2PerWeek": null,
+  "utVocalTherapy": false,
+  "utSpeakTherapy": false,
+  "utSpeechTherapy": false,
+  "utHomeVisit": true,
+  "utIcdText": "Pseudosarkomatöse Fibromatose: Schulterregion [Klavikula, Skapula, Akromioklavikular-, Schulter-, Sternoklavikulargelenk]",
+  "utSecondIcdCode": null,
+  "utSecondIcdText": null,
+  "utRemedy2List": [],
+  "utRemedy1List": [
+    {
+      "name": "KMT",
+      "type": "vorrangiges_heilmittel_liste",
+      "groupTherapyAble": false,
+      "seasons": 6
+    }
+  ],
+  "utAgreementApprovedForInsurance": [],
+  "utTherapyGoalsList": [],
+  "forInsuranceType": "",
+  "catalogShort": "HMV",
+  "catalog": true,
+  "subType": "PHYSIO",
+  "apkState": "IN_PROGRESS",
+  "editor": [
+    {
+      "name": "prac1 admin1",
+      "employeeNo": "1",
+      "_id": "5677b16d523552401dd65078"
+    }
+  ],
+  "status": "VALID",
+  "explanations": "",
+  "partnerInfo": "",
+  "userContent": "Lymphabflussstörungen mit prognostisch kurzzeitigem Behandlungsbedarf",
+  "comment": "API2TestingActivity"
+}

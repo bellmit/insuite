@@ -1,0 +1,11 @@
+div#trialDaysModel
+  h5(data-bind=" text: 'Kunden Nummer: ' + affectedTenants")
+  div.row
+    div.col-md-12(style="margin-top: 5px")
+      div.form-group
+        label.control-label(for="tenantsTemplates", data-bind="text: selectedDataPoolI18n")
+        select.form-control#tenantsTemplates(name="tenantsTemplates", data-bind="options: tenantsTemplates, optionsText: 'coname', value: tenantTemplate")
+      div.form-group(data-bind="hasFeedback: { field: days, toggle: days.hasError, messages: days.validationMessages }")
+        span System wird aktiviert für (Tage):
+        input.form-control(name="days", type="number", min="0", data-bind="value: days, valueUpdate: 'afterkeydown'")
+        span(style="font-size: 0.8em") * 0 - unbeschränkt

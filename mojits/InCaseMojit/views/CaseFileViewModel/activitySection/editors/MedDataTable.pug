@@ -1,0 +1,14 @@
+.row
+  .col-sm-12
+    .row
+      .col-sm-9
+        input.form-control(name="selectMedData", type="hidden", data-bind="select2: select2Date, hasFocus: true")
+      .col-sm-3
+        // ko if: showAddButton
+        button.btn-primary.btn(data-bind="click: createNewEntry, text: newEntryI18n")
+        // /ko
+        button.btn.btn-sm.btn-default(data-bind="click: toggleFullView,  css: { active: fullView }, attr: { title: tooltipShowMiniChartsI18n }",data-toggle="tooltip")
+          i.fa.fa-image
+    .row(style="margin-top: 5px",data-bind="visible: isTableVisible")
+      .col-sm-12
+        #medDataKoTable(data-bind="template: medDataKoTable.template")

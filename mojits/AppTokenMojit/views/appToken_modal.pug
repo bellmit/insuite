@@ -1,0 +1,30 @@
+div#appTokenModal
+  div.row
+    div.col-xs-3
+      div.form-group(data-bind="hasFeedback: { popover: { container: '#DCWindow-AppToken' }, field: appName, toggle: appName.hasError, messages: appName.validationMessages }")
+        label.control-label
+          strong(data-bind="text: appName.i18n")
+        input.form-control(name="appName", type="text", data-bind="textInput: appName")
+    div.col-xs-3
+      div.form-group(data-bind="hasFeedback: { popover: { container: '#DCWindow-AppToken' }, field: title, toggle: title.hasError, messages: title.validationMessages }")
+        label.control-label
+          strong(data-bind="text: title.i18n")
+        input.form-control(name="title", data-bind="textInput: title")
+    div.col-xs-3
+      div.form-group
+        label.control-label
+          strong(data-bind="text: type.i18n")
+        input.form-control(name="select2Type", data-bind="select2: select2Type")
+  div.row
+    div.col-xs-12
+      div(style="display: grid; grid-template-columns: 1fr 50px")
+        div.form-group(data-bind="hasFeedback: { popover: { container: '#DCWindow-AppToken' }, field: token, toggle: token.hasError, messages: token.validationMessages }")
+          label.control-label
+            strong(data-bind="text: token.i18n")
+          input.form-control(name="token", type="text", data-bind="textInput: token")
+        div(style="padding-top: 20px")
+          span(data-bind="template: refreshBtn.template")
+  div.row
+    div.col-xs-12
+      div.form-group
+        textarea.form-control(data-bind="value: description", rows="10")

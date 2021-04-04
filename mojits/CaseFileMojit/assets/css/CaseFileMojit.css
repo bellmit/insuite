@@ -1,0 +1,387 @@
+.dc-nav {
+    position: relative;
+    margin-bottom: 10px;
+}
+
+.dc-nav-tools {
+    position: absolute;
+    top: 6px;
+    right: 0;
+    white-space: nowrap;
+}
+
+#patientHead p {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#textform-sd1 textarea {
+    resize: vertical;
+}
+
+.select2-results .dc-formatResult {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.prescription-view {
+    position: relative;
+}
+
+.prescription-view #prescription > div > div {
+    border: 0 none !important;
+    margin-bottom: 0 !important;
+}
+
+.prescription-view #divFormsComposeFrame {
+    display: none;
+}
+
+.prescription-container {
+    position: relative;
+}
+
+.prescription-view-full .prescription-container {
+}
+
+.prescription-view-small .prescription-container {
+    height: 238px;
+}
+
+.prescription-scroll {
+    border: 1px solid #000;
+}
+
+.prescription-view-small .prescription-scroll {
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.prescription-resize {
+    position: absolute;
+    bottom: -23px;
+    right: 0;
+}
+
+.prescription-resize a:hover {
+    text-decoration: none;
+}
+
+.prescription-resize-full,
+.prescription-resize-small {
+    cursor: pointer;
+}
+
+.prescription-view-small .prescription-resize-small {
+    display: none;
+}
+
+.prescription-view-full .prescription-resize-full {
+    display: none;
+}
+
+.medication-no-patientpayment {
+    color: #05FC70;
+}
+
+.medication-alt-discount {
+    background-color: #E6E212;
+}
+
+.medication-discount {
+    background-color: #05FC70;
+}
+
+.medication-footer-text {
+    color: #5E5E5E;
+    margin-right: 10px;}
+
+.historyform-events {
+    overflow-y: auto;
+    max-height: 233px;
+}
+
+.activitiesTable-td-deleteButton {
+    width: 40px;
+}
+td.dataTableTD.notSortable .form-control { border-radius: 4px; }
+
+.patientTable-td-lastname {
+    width: 20%;
+}
+
+.patientTable-td-firstname {
+    width: 19%;
+}
+
+.patientTable-td-kbvDob {
+    width: 8%;
+}
+
+.patientTable-td-gender {
+    width: 9%;
+}
+
+.patientTable-td-insuranceStatus {
+    width: 6%;
+}
+
+.patientTable-td-communications {
+    width: 16%;
+}
+
+.dc-select2-createActivityCodeAutoComplete .textform-homecatalog {
+    color: #2d6ca2;
+}
+
+.dc-select2-createActivityCodeAutoComplete .textform-homecatalog.select2-highlighted {
+    color: #d3f0f0;
+}
+
+.dc-select2-createActivityCodeAutoComplete .textform-homecatalog + .textform-originalcatalog {
+    border-top: 1px solid #ccc;
+}
+
+#activityDetail {
+    padding-top: 5px;
+}
+
+/* small padding for input-group */
+#activityDetail .input-group-addon,
+#activityDetail .input-group-btn .btn {
+    padding-left: 6px;
+    padding-right: 6px;
+}
+/* …, but not in a dataTable */
+#activityDetail .dataTableTD .input-group-addon,
+#activityDetail .dataTableTD .input-group-btn .btn {
+    padding: 6px 12px;
+}
+
+img.img-rounded {
+    margin: 5px;
+}
+
+/*
+    sd_ophthalmology_tonometry, sd_ophthalmology_refraction styles (OPHTHALMOLOGY, OPHTHALMOLOGY_TONOMETRY, OPHTHALMOLOGY_REFRACTION)
+*/
+.panel-sd_ophthalmology_tonometry-middle {
+    box-shadow: none;
+}
+
+.panel-sd_ophthalmology_tonometry-middle [data-toggle="collapse"] {
+    display: none;
+}
+
+.dc-tablefieldset-inline {
+    width: 100%;
+}
+
+.dc-tablefieldset-inline td {
+    padding-bottom: 15px;
+}
+
+.dc-tablefieldset-inline tr:last-child td {
+    padding-bottom: 0;
+}
+
+.dc-tablefieldset-inline label {
+    margin: 0 5px;
+}
+
+.dc-tablefieldset-unit {
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+/* responsive columns .textform-sd_ophthalmology_tonometry-measurement-a */
+@media /*xs*/
+(max-width: 699px),
+    /*sm*/
+(min-width: 700px),
+    /*md*/
+(min-width: 992px) {
+    .textform-sd_ophthalmology_tonometry-measurement-a col:nth-child(1) {
+        width: auto;
+    }
+
+    .textform-sd_ophthalmology_tonometry-measurement-a col:nth-child(2) {
+        width: 60px;
+    }
+
+    .textform-sd_ophthalmology_tonometry-measurement-a col:nth-child(3) {
+        width: auto;
+    }
+
+    .textform-sd_ophthalmology_tonometry-measurement-a col:nth-child(4) {
+        width: 60px;
+    }
+}
+
+/*lg*/
+@media (min-width: 1200px) {
+    .textform-sd_ophthalmology_tonometry-measurement-a {
+        margin-left: -10px;
+    }
+
+    .textform-sd_ophthalmology_tonometry-measurement-a col:nth-child(1) {
+        width: auto;
+    }
+
+    .textform-sd_ophthalmology_tonometry-measurement-a col:nth-child(2) {
+        width: 70px;
+    }
+
+    .textform-sd_ophthalmology_tonometry-measurement-a col:nth-child(3) {
+        width: auto;
+    }
+
+    .textform-sd_ophthalmology_tonometry-measurement-a col:nth-child(4) {
+        width: 70px;
+    }
+}
+
+/* columns .textform-sd_ophthalmology_refraction-measurement-a */
+.textform-sd_ophthalmology_refraction-measurement-a col:nth-child(1) {
+    width: auto;
+}
+
+.textform-sd_ophthalmology_refraction-measurement-a col:nth-child(2) {
+    width: 90px;
+}
+
+.textform-sd_ophthalmology_refraction-measurement-a col:nth-child(3) {
+    width: auto;
+}
+
+/* responsive columns .textform-sd_ophthalmology_refraction-measurement-b, .textform-sd_ophthalmology_refraction-measurement-c */
+@media /*xs*/
+(max-width: 699px),
+    /*sm*/
+(min-width: 700px),
+    /*md*/
+(min-width: 992px) {
+    .textform-sd_ophthalmology_refraction-measurement-b col:nth-child(1),
+    .textform-sd_ophthalmology_refraction-measurement-c col:nth-child(1) {
+        width: auto;
+    }
+
+    .textform-sd_ophthalmology_refraction-measurement-b col:nth-child(2),
+    .textform-sd_ophthalmology_refraction-measurement-c col:nth-child(2) {
+        width: 90px;
+    }
+
+    .textform-sd_ophthalmology_refraction-measurement-b col:nth-child(3),
+    .textform-sd_ophthalmology_refraction-measurement-c col:nth-child(3) {
+        width: auto;
+    }
+}
+
+/*lg*/
+@media (min-width: 1200px) {
+    .textform-sd_ophthalmology_refraction-measurement-b col:nth-child(1),
+    .textform-sd_ophthalmology_refraction-measurement-c col:nth-child(1) {
+        width: 34%;
+    }
+
+    .textform-sd_ophthalmology_refraction-measurement-b col:nth-child(2),
+    .textform-sd_ophthalmology_refraction-measurement-c col:nth-child(2) {
+        width: 90px;
+    }
+
+    .textform-sd_ophthalmology_refraction-measurement-b col:nth-child(3),
+    .textform-sd_ophthalmology_refraction-measurement-c col:nth-child(3) {
+        width: auto;
+    }
+
+}
+
+.activitiesTable-td-content-row-OPHTHALMOLOGY_TONOMETRY {
+    word-wrap: normal;
+    white-space: pre;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.activitiesTable-td-content-row-OPHTHALMOLOGY_REFRACTION {
+    word-wrap: normal;
+    white-space: pre;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/*** custom DC checkboxes ***/
+.dc-checkbox label {
+    cursor: pointer;
+    display: inline-block;
+    font-weight: 100;
+    font-family: 'FontAwesome';
+    font-size: 25px;
+}
+.dc-checkbox input[type="checkbox"] {
+    display: none;
+}
+.dc-checkbox label::before {
+    content: "\f096";
+    color: rgb(194,194,194);
+}
+.dc-checkbox input[type="checkbox"]:checked + label::before {
+    content: "\f046";
+    color: rgb(114,114,114);
+}
+.dc-checkbox input[type="checkbox"]:disabled + label {
+    opacity: 0.50;
+}
+.dc-checkbox input[type="checkbox"]:disabled + label::before {
+    cursor: not-allowed;
+}
+.dc-big-drop .select2-results{
+    max-height: 400px;
+}
+.attached-content div:first-child{
+    display: inline-block;
+}
+.attached-content div:last-child{
+    display: inline-block;
+}
+
+.dc-select2-createActivityCodeAutoComplete .select2-results {
+    max-height: 400px;
+    width: 280px;
+}
+.dc-select2-createActivityCodeAutoComplete-formatResult {
+    line-height: 1.2;
+}
+.dc-select2-createActivityCodeAutoComplete-formatResult-code {
+    font-weight: bold;
+    margin-right: 0.5em;
+}
+
+.activity-attribute-DAY_SEPARATION_FLAG .KoTableCell-forPropertyName-timestamp {
+    border-bottom: 3px solid #909090;
+}
+
+.activity-attribute-NEW_DAY_FLAG .KoTableCell-isData {
+    border-bottom: 3px solid #909090;
+}
+
+.activity-attribute-QUARTER_CHANGE_FLAG .KoTableCell-isData {
+    border-bottom: 3px solid #A84347;
+}
+
+.activity-attribute-NEW_DAY_FLAG.activity-attribute-QUARTER_CHANGE_FLAG td:nth-child(2n).KoTableCell-isData{
+    border-bottom: 3px solid #909090;
+}
+
+.ko-inline-print-icon::after {
+    content: "<i class='fa fa-print'></i>(after)"
+}
+
+.ko-inline-print-icon::before {
+    content: "(before)"
+}
+
+[name=apkStateBtn].btn-warning {
+    color: #333;
+}

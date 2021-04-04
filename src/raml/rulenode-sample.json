@@ -1,0 +1,56 @@
+{
+  "meta": {
+    "errors": [],
+    "warnings": [],
+    "query": {"_id":"5774fe73741b60d660fe2b43"},
+    "itemsPerPage": null,
+    "totalItems": 1,
+    "page": null,
+    "replyCode": 200
+  },
+  "data": [
+  {
+    "_id": "5774fe73741b60d660fe2b43",
+    "rules": [
+      {
+        "isActive": true,
+        "description": "Test Regen für die GNR 01774 (EBM)",
+        "validations": {
+          "$and": [
+            {
+              "context": "ACTIVITY",
+              "criteria": {
+                "actType": "TREATMENT",
+                "code": "01774"
+              }
+            },
+            {
+              "$or": [
+                {
+                  "context": "ACTIVITY",
+                  "criteria": {
+                    "actType": "TREATMENT",
+                    "code": "33021"
+                  }
+                },
+                {
+                  "context": "ACTIVITY",
+                  "criteria": {
+                    "actType": "TREATMENT",
+                    "code": "33022"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "actions": [
+          {
+            "type": "ERROR"
+          }
+        ]
+      }
+    ]
+  }
+]
+ }

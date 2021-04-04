@@ -1,0 +1,33 @@
+div#formTreeContainer.ActivitySectionFormTreeViewModel(data-bind="notifyBind: { method: 'templateReady', namespace: $data }")
+
+  div#divLangAndGenderSelection(data-bind="visible: showTranslationDropDown")
+    select.form-control#selLanguage(data-bind="value: langSelector")
+      option(value='de', data-bind="text: germanDefaultI18n")
+        i.fa.fa-genderless
+      option(value='def', data-bind="text: germanFeminineI18n")
+        i.fa.fa-venus
+        span
+      option(value='dem', data-bind="text: germanMasculineI18n")
+        i.fa.fa-mars
+        span
+      option(value='en', data-bind="text: englishDefaultI18n")
+        i.fa.fa-genderless
+        span
+
+    br
+    span(data-bind="text: translationsNoteI18n")
+  hr
+
+  input.form-control.form-control-search(data-bind="value: formSearchText, valueUpdate: 'afterkeydown', attr: { placeholder: formSearchPlaceholder }")
+  br
+
+  div.row
+    div.col-lg-5
+      div(data-bind="template: formsTreeUser.tree.template")
+    div.col-lg-1
+
+    div.col-lg-5
+      div(data-bind="template: formsTreeDefault.tree.template")
+    div.col-lg-1
+
+  hr

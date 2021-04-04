@@ -1,0 +1,138 @@
+#wideContainer
+  div.panel.panel-default.table-box
+    div.panel-heading(data-bind="text: tableNameDisplay || 'Table'")
+    div.panel-body
+      div.sub-navigation
+
+      // ko if: subViewManager.state.table
+      div(data-bind="template: kotable.template")
+      div.config-btn-wrapper
+        div(data-bind="template: subViewManager.buttons.showConfig.template").config-btn
+        // ko if: reportConfigSerialEmail()
+        div(data-bind="template: serialEmailButton.template").config-btn
+        // /ko
+        // ko if: reportConfigSerialLetter()
+        div(data-bind="template: serialLetterButton.template").config-btn
+        // /ko
+      // /ko
+
+      // ko if: subViewManager.state.config
+      h4.top(data-bind="text: tableNameTextI18n")
+      div.row
+        div.col-col-lg-4.col-md-4.col-sm-6
+          input(type="text", data-bind="value: tableName").form-control
+
+      h4
+        span(data-bind="text: tableFieldsTextI18n")
+        a(data-bind="click: addColSelectorClick").glyphicon.glyphicon-plus.btt-add
+      div.row(data-bind="foreach: displayFields").display-fields
+        div.col-lg-4.col-md-4.col-sm-6.col-selector
+          a(data-bind="click: $parent.removeColSelector.bind($parent)").glyphicon.glyphicon-minus.btt-remove
+          div(data-bind="template: template").template-wrapper
+
+      h4
+        span(data-bind="text: tableFiltersTextI18n")
+        a(data-bind="click: addFilterElementClick").btt-add
+          i.glyphicon.glyphicon-plus
+      div.row.filter-list
+        div(data-bind="foreach: filterElements")
+          div.col-lg-12.col-md-12.col-sm-12.filter-element
+            a(data-bind="click: $parent.removeFilterElement.bind($parent)").glyphicon.glyphicon-minus.btt-remove
+            div(data-bind="template: template").template-wrapper
+
+      h4
+        span(data-bind="text: tableFiltersNotTextI18n")
+        a(data-bind="click: addFilterNotElementClick").btt-add
+          i.glyphicon.glyphicon-plus
+      div.row.filter-list
+        div(data-bind="foreach: filterNotElements")
+          div.col-lg-12.col-md-12.col-sm-12.filter-element
+            a(data-bind="click: $parent.removeFilterNotElement.bind($parent)").glyphicon.glyphicon-minus.btt-remove
+            div(data-bind="template: template").template-wrapper
+
+      h4
+        span(data-bind="text: tableGroupByI18n")
+        input(type="checkbox", data-bind="checked: groupBy.enabled")
+      div.row
+        div.col-lg-4.col-md-4.col-sm-12.col-xs-12
+          div(data-bind="template: groupBy.selector.template").template-wrapper
+      // ko if: expertMode()
+      div.row
+        div.col-lg-6.col-md-6.col-sm-12.col-xs-12
+         div.panel.panel-default
+          div.panel-heading
+            h5.panel-title.clearfix
+              a(data-toggle="collapse", href="#collapseTree", data-bind="text: expertModeI18n")
+              span.pull-right
+                input(type="checkbox", data-bind="checked: isExpertModeActive")
+          div.panel-collapse.collapse#collapseTree
+            div.panel-body
+                textarea.form-control(data-bind="value: aggregatePipeline, readOnly: !isExpertModeActive()", rows="10")
+      // /ko
+      div.row
+        div.col-md-6
+           h4
+             span(data-bind="text: tableShowTimelineI18n")
+             input(type="checkbox", data-bind="checked: dateSettings.hideTimeline")
+           div.row
+             div.col-lg-12.col-md-12.col-sm-12.col-xs-12.date-range-config
+                div.radio
+                  label
+                     input(type="radio", value="absolute", data-bind="checked: dateSettings.dateMode, " +
+                                                                    "attr: {'name': $parent.clientId+'-date-range-config'}, " +
+                                                                    "disable: !dateSettings.hideTimeline()")
+                  div.option-wrapper
+                    span(data-bind="text: tableOptAbsolute1I18n + ' '")
+                    span(data-bind="text: dateRangeConfig.absoluteParams.startDate").date-string
+                    span(data-bind="text: ' ' + tableOptAbsolute2I18n + ' '")
+                    span(data-bind="text: dateRangeConfig.absoluteParams.endDate").date-string
+                    span(data-bind="text: ' ' + tableOptAbsolute3I18n")
+
+                div.radio
+                  label
+                    input(type="radio", value="relative", data-bind="checked: dateSettings.dateMode, " +
+                                                                    "attr: {'name': $parent.clientId+'-date-range-config'}, " +
+                                                                    "disable: !dateSettings.hideTimeline()")
+                  div.option-wrapper
+                    span(data-bind="text: tableOptRelative1I18n + ' '")
+                    span(data-bind="text: dateRangeConfig.relativeParams.offsetDisplay")
+                    span(data-bind="text: ' ' + tableOptRelative2I18n + ' '")
+                    span(data-bind="text: dateRangeConfig.relativeParams.durationDisplay")
+                    span(data-bind="text: ' ' + tableOptRelative3I18n")
+
+                div.radio
+                   label
+                     input(type="radio", value="relativeWithMode", data-bind="checked: dateSettings.dateMode, " +
+                                                                              "attr: {'name': $parent.clientId+'-date-range-config'}, " +
+                                                                              "disable: disableRelWithMode")
+                   div.option-wrapper
+                     span(data-bind="text: dateRangeConfig.relativeWMParams.text")
+
+        div.col-md-3
+          h4
+            span(data-bind="text: forContainerI18n")
+            input(type="checkbox", data-bind="checked: forContainer")
+          div
+            input.form-control(name="container", type="text", data-bind="select2: select2Container, enable: forContainer")
+          include ../../../views/countryMode
+        div.col-md-3
+          h4
+            span(data-bind="text: groupVisibilityI18n")
+            input(type="checkbox", data-bind="checked: groupVisibility")
+          // ko foreach: visibilityTypes
+          label.radio
+            input(type="radio", name="visibility", data-bind="checked: $parent.visibility, value: val, enable: $parent.groupVisibility")
+            span(data-bind="text: i18n")
+          // /ko
+        div.col-md-3.mt-20
+            div
+              input(type="checkbox", data-bind="checked: serialLetter" )
+              span(data-bind="text: serialLetterI18n").checkbox-span
+            div
+              input(type="checkbox", data-bind="checked: serialEmail")
+              span(data-bind="text: serialEmailI18n").checkbox-span
+      div.action
+        div(data-bind="template: subViewManager.buttons.saveConfig.template")
+        div(data-bind="template: subViewManager.buttons.backToTable.template")
+        div(data-bind="template: subViewManager.buttons.removeTable.template").remove
+      // /ko

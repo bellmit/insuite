@@ -1,0 +1,263 @@
+div#divFormElementEditor
+  div(style="display:none;width:90%;",data-bind="visible: hasEditableElement")#divElementEditControls
+    fieldset
+        input(type="hidden", value="", data-bind="value: hiddenDomId")#hdnDomId
+        input(type="hidden", value="")#hdnElemIdx
+        table(noborder="noborder",style="width:100%;")
+
+            tr
+                td
+                    b(data-bind="text: lblDomIdI18n")
+                td
+                    input.form-control(style="width: 100%;",value="",data-bind="value: elemId")
+
+            tr
+                td(width="100px")
+                    b(data-bind="text: lblElementTypeI18n")
+                td
+                    select.form-control(style="width:100%;", data-bind="foreach: compatibleTypes, value: elemType")#selElemTypeNew
+                        option(data-bind="value: elemType, text: label")
+
+            tr(data-bind="visible: hasReducedSchema")#trSchemaBinding
+                td
+                    b Binding
+                td
+                    table(noborder="noborder",width="100%")
+                        tr
+                            //td(valign="top")
+                                span#spanSchemaBinding
+                                    select#selElementBinding
+                                        option(value="") Loading...
+
+                            td(valign="top")
+                                span#spanSchemaBindingXXX
+                                    select.form-control(data-bind="foreach: allReducedSchemaMembers, value: schemaMember")
+                                        option(data-bind="value: memberName, text: memberTrans")
+
+                            td(valign="top",width="30px")
+                                button.btn(style="float:right;", data-bind="click: onClearElementBinding")#btnClearBinding
+                                    i.fa.fa-unlink
+
+            tr(data-bind="visible: hasSchemaSubType;")#trSchemaSubtype
+                td
+                    b Sub Type
+                td
+                    input.form-control(type="text",placeholder="subType",data-bind="value: schemaMemberST")#txtBindSubType
+
+        hr
+
+        a(href='javascript:void(0);')#aToggleColors
+          i.icon.fa.fa-plus#iToggleColors
+          | &nbsp;
+          b(data-bind="text: lblEEColorsI18n")
+
+        table(noborder="noborder",width="100%",style="display:none;")#tblColors
+            tr
+                td(data-bind="text: lblForegroundColorI18n")
+                td
+                    input.minicolors-inline.form-control(value="#ffffff")#txtFgColor
+
+            tr
+                td(data-bind="text: lblBackgroundColorI18n")
+                td
+                    input.minicolors-inline.form-control(value="#ffffff")#txtBgColor
+
+            tr
+                td(data-bind="text: lblBorderColorI18n")
+                td
+                    input.minicolors-inline.form-control(value="#ffffff")#txtBorderColor
+
+        hr
+
+        a(href='javascript:void(0);')#aTogglePosition
+          i.icon.fa.fa-plus#iTogglePosition
+          | &nbsp;
+          b(data-bind="text: labelEEPositionI18n")
+
+        table(noborder="noborder",width="100%",style="display:none;")#tblPosition
+            tr
+                td(data-bind="text: lblFontFaceI18n")
+                td(align="right")
+                    select.form-control(style="width: 85px;")#selFont
+                        //option(value="")
+                        //option(value="Courier") Courier
+                        //option(value="Times New Roman") Times New Roman
+                        //option(value="Helvetica") Helvetica
+
+                td(width="10px")
+
+                td(data-bind="text: lblWidthMMI18n")
+                td(align="right")
+                    input.form-control(style="width: 85px;",value="", data-bind="value: width;")#txtScaleWidth
+
+            tr
+
+                td(data-bind="text: lblAlignI18n")
+                td(align="right")
+                    select.form-control(style="width: 85px;", data-bind="value: align;")#selAlign
+                        option(value="left", data-bind="text: optLeftI18n")
+                        option(value="center", data-bind="text: optCenterI18n")
+                        option(value="right", data-bind="text: optRightI18n")
+                        option(value="justify", data-bind="text: optJustifyI18n")
+
+                td(width="10px")
+
+                td(data-bind="text: heightMMI18n")
+                td(align="right")
+                    input.form-control(style="width: 85px;",value="", data-bind="value: height;")#txtScaleHeight
+
+            tr
+                td(data-bind="text: fontHeightMMI18n")
+                td(align="right")
+                    input.form-control(style="width: 85px;",value="",data-bind="value: lineHeight;")#txtScaleFont
+
+                td(width="10px")
+
+                td(data-bind="text: lblLeftMMI18n")
+                td(align="right")
+                    input.form-control(style="width: 85px;",value="", data-bind="value: left;")#txtScaleLeft
+
+            tr
+                td(data-bind="text: lblFontSpaceI18n")
+                td(align="right")
+                    input.form-control(style="width: 85px;",value="",data-bind="value: lineSpace;")#txtLineSpace
+
+                td(width="10px")
+
+                td(data-bind="text: lblTopMMI18n")
+                td(align="right")
+                    input.form-control(style="width: 85px;",value="", data-bind="value: top;")#txtScaleTop
+
+            tr(data-bind="visible: isTableType")#trTableCell
+                td(data-bind="text: lblRowspaceI18n")
+                td(align="right")
+                    input.form-control(style="width: 85px;",data-bind="value: tableRowSpacing")#txtRowSpacing
+
+            tr
+                td(width="10px")
+                td(colspan=5,align="right")
+                    div(style="height: 3px;")
+                    button.btn#btnIsBold(data-bind="click: onToggleBold, css: { 'btn-info': isBold }")
+                        i.fa.fa-bold
+
+                    button.btn#btnIsItalic(data-bind="click: onToggleItalic, css: { 'btn-info': isItalic }")
+                        i.fa.fa-italic
+
+                    button.btn#btnIsUnderline(data-bind="click: onToggleUnderline, css: { 'btn-info': isUnderline }")
+                        i.fa.fa-underline
+
+        hr
+        // -- inSight2 / reporting fields
+
+        div#divReportingPanel
+            a(href='javascript:void(0);')#aToggleReporting
+                i.icon.fa.fa-plus#iToggleReporting
+                | &nbsp;
+                b(data-bind="text: lblEEReportingI18n")
+
+            table(noborder="noborder",width="100%",style="display:none;")#tblReporting
+                tr
+                    td(data-bind="text: lblEERepotingTypeI18n")
+                    td
+                        select.form-control#selReportingDataType
+                            option(value="String", data-bind="text: lblStringI18n")
+                            option(value="Number", data-bind="text: lblNumbersI18n")
+                            option(value="Boolean", data-bind="text: lblBooleanI18n")
+                            option(value="Date", data-bind="text: lblDateI18n")
+                            option(value="Image", data-bind="text: lblImageI18n")
+
+                tr#trReportingDescDE
+                    td(data-bind="text: lblEEDescriptionDEI18n")
+                    td
+                        input.form-control(value="")#txtReportingDescDE
+                tr#trReportingDescEN
+                    td(data-bind="text: lblEEDescriptionENI18n")
+                    td
+                        input.form-control(value="")#txtReportingDescEN
+            // -- end insight temp
+
+            hr
+
+    b(data-bind="text: lblEEValueI18n")
+
+    textarea(style="width: 100%; display: none;", rows="4")#taDefault
+
+    div(data-bind="with: tableEditorVM, visible: showTableEditor")
+        include edit_element_table.pug
+
+    div(data-bind="with: textEditorVM, visible: showTextEditor")
+      include edit_element_text.pug
+
+    div(style="display:none;")#divValueEditor
+
+    div(style="display:none;")#divElementTip
+        button.btn.btn-primary(type="button", data-bind="attr: { value: btnUpdateElementI18n }, text: btnUpdateElementI18n"
+        style="display:none;")#btnUpdateElement
+
+    hr
+
+    table(noborder="noborder",width="100%")
+        tr
+
+            td
+                div.checkbox
+                    input(type="checkbox")#chkAlignGrid
+                    label.checkbox-inline(for="chkAlignGrid")
+                        span(style="margin-left: 15px;", data-bind="text: lblEEGridAlignI18n")
+
+            td
+
+                div.checkbox
+                    input(type="checkbox")#chkReadOnly
+                    label.checkbox-inline(for="chkReadOnly")
+                        span(style="margin-left: 15px;", data-bind="text: lblEEReadonlyI18n")
+
+        tr
+            td
+                div.checkbox
+                    input(type="checkbox")#chkElemBFB
+                    label.checkbox-inline(for="chkElemBFB")
+                        span(style="margin-left: 15px;", data-bind="text: lblEEBffI18n")
+
+            td
+                div.checkbox
+                    input(type="checkbox")#chkClipOverflow
+                    label.checkbox-inline(for="chkClipOverflow")
+                        span(style="margin-left: 15px;", data-bind="text: lblEEClipI18n")
+
+        tr
+            td
+                div.checkbox
+                    input(type="checkbox")#chkNotEmpty
+                    label.checkbox-inline(for="chkNotEmpty")
+                        span(style="margin-left: 15px;", data-bind="text: lblEENotemptyI18n")
+            td
+                div.checkbox
+                    input(type="checkbox")#chkNoCopyOver
+                    label.checkbox-inline(for="chkNoCopyOver")
+                        span(style="margin-left: 15px;", data-bind="text: lblEENoCopyOverI18n")
+
+        tr
+            td
+                div.checkbox#divCbReporting
+                    input(type="checkbox")#chkUseInReporting
+                    label.checkbox-inline(for="chkUseInReporting")
+                        span(style="margin-left: 15px;", data-bind="text: lblEEReportingI18n")
+
+
+        tr
+            td(colspan="2")
+                span#spanIsLinked(data-bind="text: lblEEIslinkedI18n, visible: isLinked")
+
+        tr
+            td(colspan="2")
+                //div.btn-group.inline.pull-left
+                button.btn(data-bind="text: btnEELinkI18n, visible: isLinkable, click: onLinkButtonClicked")#btnLinkElement
+                button.btn(data-bind="text: btnEEUnlinkI18n, visible: isLinked, click: onUnlinkButtonClicked")#btnUnlinkElement
+                span &nbsp;
+                button.btn.btn-primary(type="button", value="Remove", data-bind="text: buttonRemoveElementI18n, visible: btnRemoveElementVisible, click: onRemoveButtonClicked")#btnRemoveElement
+
+  div#divNoElementSelected(data-bind="visible: noElementSelected")
+      select.form-control(style="width:100%;", data-bind="foreach: allAvailableElements, value: allElementsDropdown")#selElemOnPage
+          option(data-bind="value: elemId, text: label")
+

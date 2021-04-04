@@ -1,0 +1,187 @@
+{
+  "rule": {
+    "isDirectory" : false,
+    "isLocked" : true,
+    "isActive" : true,
+    "caseFolderType" : [
+      "PUBLIC"
+    ],
+    "referenceArea" : "PERIOD",
+    "periodType" : "QUARTER",
+    "periodCount" : 1,
+    "periodReference" : "raum",
+    "metaFuzzy" : false,
+    "metaActTypes" : [
+      "TREATMENT"
+    ],
+    "metaActCodes" : [
+      "40300",
+      "34291"
+    ],
+    "metaCriterias" : [
+      "actType",
+      "code",
+      "areTreatmentDiagnosesBillable"
+    ],
+    "rules" : [
+      {
+        "isActive" : true,
+        "description" : "Erforderliche Grundleistungen für Zuschlagsleistung 40300 (EBM) im Behandlungsfall",
+        "validations" : {
+          "\\\\$and" : [
+            {
+              "context" : "ACTIVITY",
+              "criteria" : {
+                "actType" : "TREATMENT",
+                "code" : "40300",
+                "areTreatmentDiagnosesBillable" : "1"
+              }
+            },
+            {
+              "context" : "ACTIVITY",
+              "criteria" : {
+                "actType" : "TREATMENT",
+                "code" : {
+                  "\\\\$in" : [
+                    "34291"
+                  ]
+                },
+                "areTreatmentDiagnosesBillable" : "1",
+                "\\\\$count" : {
+                  "\\\\$eq" : 0
+                }
+              }
+            }
+          ]
+        },
+        "actions" : [
+          {
+            "type" : "ERROR"
+          }
+        ],
+        "ruleId" : "5baa5b43abbb442b8c2a5cbd",
+        "metaCodes" : [
+          "40300"
+        ],
+        "metaActTypes" : [
+          "TREATMENT"
+        ],
+        "metaRequiredCodes" : [
+          "34291"
+        ]
+      }
+    ],
+    "description" : "EBM 40300 im Behandlungsfall",
+    "fromCatalog" : "DC-EBM-D-1537801466952.json",
+    "fromCatalogShort" : "EBM"
+  },
+  "schein": {
+    "actType" : "SCHEIN",
+    "attachments" : [],
+    "subType" : "",
+    "time" : "",
+    "userContent" : "ambulante Behandlung (ambulante Behandlung)",
+    "partnerInfo" : "",
+    "explanations" : "",
+    "status" : "VALID",
+    "activities" : [],
+    "referencedBy" : [],
+    "formId" : "",
+    "formVersion" : "",
+    "formPdf" : "",
+    "formLang" : "de",
+    "formGender" : "m",
+    "apkState" : "IN_PROGRESS",
+    "forInsuranceType" : "",
+    "locationFeatures" : "",
+    "scheinRemittor" : "",
+    "scheinEstablishment" : "",
+    "scheinSpecialisation" : "",
+    "scheinOrder" : "",
+    "scheinDiagnosis" : "",
+    "scheinFinding" : "",
+    "scheinNotes" : "",
+    "scheinClinicalTreatmentFrom" : null,
+    "scheinClinicalTreatmentTo" : null,
+    "scheinNextTherapist" : "",
+    "fk4234" : false,
+    "fk4219" : "",
+    "continuousIcds" : [],
+    "icds" : [],
+    "icdsExtra" : [],
+    "scheinQuarter" : "1",
+    "scheinYear" : "2019",
+    "scheinBillingArea" : "00",
+    "scheinType" : "0101",
+    "scheinSubgroup" : "00",
+    "scheinTransferTypeInfo" : "",
+    "fk4124" : "",
+    "fk4126" : "",
+    "fk4125from" : null,
+    "fk4125to" : null,
+    "fk4123" : "",
+    "fk4206" : null,
+    "fk4236" : false,
+    "fk4241" : "",
+    "fk4217" : "",
+    "scheinSlipMedicalTreatment" : "",
+    "__t" : "SCHEIN",
+    "attachedMedia" : [],
+    "content" : "ambulante Behandlung (ambulante Behandlung)",
+    "debtCollection" : "",
+    "fk4235Set" : [],
+    "invoiceData" : [],
+    "scheinTransferType" : ""
+  },
+  "treatment34291": {
+    "actType" : "TREATMENT",
+    "status" : "VALID",
+    "attachments" : [],
+    "subType" : "",
+    "userContent" : "Herzkatheteruntersuchung mit Koronarangiographie",
+    "areTreatmentDiagnosesBillable" : "1",
+    "catalog" : true,
+    "catalogRef" : "DC-EBM-D-1541506572227.json",
+    "catalogShort" : "EBM",
+    "code" : "34291"
+  },
+  "treatment40300": {
+    "actType" : "TREATMENT",
+    "status" : "VALID",
+    "attachments" : [],
+    "subType" : "",
+    "userContent" : "Herzkatheteruntersuchung mit Koronarangiographie",
+    "areTreatmentDiagnosesBillable" : "1",
+    "catalog" : true,
+    "catalogRef" : "DC-EBM-D-1541506572227.json",
+    "catalogShort" : "EBM",
+    "code" : "40300"
+  },
+  "rulelogExprected": [ {
+      "message": "Erforderliche Grundleistungen für Zuschlagsleistung 40300 (EBM) im Behandlungsfall",
+      "referenceArea" : "PERIOD",
+      "ruleLogType" : "ERROR",
+      "actCodes" : [
+        "40300"
+      ],
+      "actTypes" : [
+        "TREATMENT"
+      ],
+      "activitiesToCreate" : [],
+
+      "allCodes" : [],
+      "caseFolderType" : [
+        "PUBLIC"
+      ],
+      "requiredCodes" : [
+        "34291"
+      ],
+      "ruleId": "5baa5b43abbb442b8c2a5cbd",
+      "affectedActivities" : [
+        {
+          "code" : "40300",
+          "actType" : "TREATMENT"
+        }
+      ]
+  } ]
+}

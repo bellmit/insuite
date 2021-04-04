@@ -1,0 +1,7 @@
+div.form-group
+    strong(data-bind="text: dmpCurrentTreatmentStatus_following.i18n")
+    span(data-bind="dmpField: { field: dmpCurrentTreatmentStatus_following }")
+    div(data-bind="foreach: dmpCurrentTreatmentStatus_following.list, hasFeedback: { field: dmpCurrentTreatmentStatus_following, toggle: dmpCurrentTreatmentStatus_following.hasError, messages: dmpCurrentTreatmentStatus_following.validationMessages }")
+        label.checkbox-inline
+            span(data-bind="text: i18n")
+            input(type="checkbox", name="dmpCurrentTreatmentStatus_following", data-bind="value: val, checked: $parent.dmpCurrentTreatmentStatus_following, readOnly: $parent.dmpCurrentTreatmentStatus_following.readOnly, attr: { name: $element.name + '-' + val }")

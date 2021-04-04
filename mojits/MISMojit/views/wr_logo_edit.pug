@@ -1,0 +1,49 @@
+.modal.fade(tabindex="-1", role="dialog", aria-labelledby="myModalLabel", aria-hidden="true")#myModal
+  .modal-dialog
+    .modal-content
+      .modal-header
+        .btn(type="button", class="close", data-dismiss="modal", aria-hidden="true")#btnModalClose ×
+        h3#myModalLabel.modal-title
+          != TITLE_EDIT_LOGO
+
+      .modal-body
+
+        .row
+          .col-xs-3.col-xs-offset-1
+            p(data-bind="text: lblPreviewI18n")
+        .row
+          .col-xs-4.col-xs-offset-1(style="width: 180px;")
+            .showbox(style="width: 130px;")#logoDiv
+              img(src="", style="max-width: 100%")#logopreview
+          .col-xs-5
+            em
+              u(data-bind="text: uLogoSizeI18n")
+              span(data-bind="text: lblLogoSizeI18n")
+              br
+            em
+              u(data-bind="text: uLogoFormatI18n")
+              span(data-bind="text: lblLogoFormatI18n")
+            hr
+            form(action="/1/media/:upload", method="POST", target="saveTarget", enctype="multipart/form-data")#frmLogoImg
+              input(type="hidden", name="setId", value="").setId
+              input(type="hidden", name="ownerCollection",value="test")#hdnOwnerCollection
+              input(type="hidden", name="ownerId", value="test")#hdnOwnerId
+              input(type="hidden", name="label", value="logo")#hdnLabel
+
+              .form-group
+                label(for="fileUploadBox")#fileUploadLabel
+                  input(type='file', accept='image/*', capture='camera', name="myFile")#fileUploadBox
+                  input(type="submit", style="display: none;")#btnResetLogo
+                  .btn.btn-default.btn-sm#resetbtn(data-bind="text: btnResetI18n")
+
+              input(type="hidden", name="filename", value="")#filename
+
+
+        .row
+          .col-xs-3.col-xs-offset-1
+          .col-xs-5
+          iframe(name="saveTarget", width="10px", height="10px", frameborder="0")#ifSaveTarget
+
+      .modal-footer
+        .btn.btn-default(data-dismiss="modal", aria-hidden="true", data-bind="text: btnSaveI18n")#btnReload
+        input.btn.btn-primary(type="button", style="display: none;" data-bind="attr: { value: btnSaveI18n }")#btnSubmit

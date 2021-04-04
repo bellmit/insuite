@@ -1,0 +1,376 @@
+div
+  div.row.form-horizontal
+    div.col-xs-6
+      div.form-group
+        label.col-sm-4.control-label(data-bind="text: scheinQuarter.i18n")
+        div.col-sm-3
+          input.form-control(name="scheinQuarter", data-bind="value: scheinQuarter", disabled="disabled")
+        div.col-sm-5
+          input.form-control(name="scheinYear", data-bind="value: scheinYear", disabled="disabled")
+    //ko if: showPatientVersions
+    div.col-xs-6
+      button.btn.btn-primary.btn-block(name="editPatientVersion", type="button", data-bind="click: editPatientVersion, disable: editPatientVersionDisabled, text: patientDataI18n")
+    // /ko
+  if mvprc
+    div.row
+      div.col-xs-6
+        label.col-sm-4.control-label
+          span.pull-right Medneo
+        div.col-sm-8.form-group
+          label.control-label(data-bind="text: debtCollection.i18n")
+          div.form-group
+            select.form-control(name="debtCollection", data-bind="options: debtCollection.list, optionsValue: 'val', optionsText: 'i18n', value: debtCollection, readOnly: debtCollection.readOnly")
+      div.col-xs-6
+        div.form-group.col-xs-6
+          label.control-label(data-bind="text: orderAccounting.i18n")
+          div.date-picker.input-group
+            input.form-control(name="orderAccounting", type="text", data-bind="value: orderAccounting, readOnly: orderAccounting.readOnly")
+        div.form-group.col-xs-6
+          label.control-label(data-bind="text: agencyCost.i18n")
+          div.date-picker.input-group
+            input.form-control(name="agencyCost", type="text", data-bind="value: agencyCost, readOnly: agencyCost.readOnly")
+  div.row.form-horizontal
+    div.col-xs-6
+      div.form-group
+        label.col-sm-4.control-label(data-bind="text: billingAreaI18n")
+        div.col-sm-8
+          select.form-control(name="scheinBillingArea", data-bind="options: _scheinBillingAreaList, optionsValue: 'key', optionsText: 'value', value: scheinBillingArea, readOnly: scheinBillingArea.readOnly")
+    div.col-xs-6
+      div.form-group
+        label.col-sm-4.control-label(data-bind="text: scheinSettledDate.i18n")
+        div.col-sm-8
+          input.form-control(name="scheinSettledDate", data-bind="readOnly: true, value: _showScheinSettledDate")
+  div.row.form-horizontal
+    div.col-xs-6
+      div.form-group(data-bind="hasFeedback: { field: scheinType, toggle: scheinType.hasError, messages: scheinType.validationMessages }")
+        label.col-sm-4.control-label(data-bind="text: scheinType.i18n")
+        div.col-sm-8
+          select.form-control(name="scheinType", data-bind="options: _scheinTypeList, optionsValue: 'key', hasFocus: true, optionsText: 'value', value: scheinType, readOnly: scheinType.readOnly")
+    div.col-xs-6
+      div.form-group(data-bind="hasFeedback: { field: scheinSubgroup, toggle: scheinSubgroup.hasError, messages: scheinSubgroup.validationMessages }")
+        label.col-sm-4.control-label(data-bind="text: scheinSubgroup.i18n")
+        div.col-sm-8
+          select.form-control(name="scheinSubgroup", data-bind="options: _scheinSubgroup, optionsValue: 'key', optionsText: 'value', value: scheinSubgroup, readOnly: scheinSubgroup.readOnly")
+    div(data-bind="visible: _isVisibleScheinType('0102') && _isVisibleScheinSubgroup('21','27')")
+      div.col-md-offset-6.col-xs-6
+        div.form-group()
+          label.col-sm-4.control-label(data-bind="text: labelInputTemplate")
+          div.col-sm-8
+            // ko if: _isVisibleScheinSubgroup('21')
+            select.form-control(name="scheinInputTemplate", data-bind="options: scheinInputTemplateList21, optionsValue: 'val', optionsText: 'i18n', value: scheinInputTemplate, readOnly: scheinInputTemplate.readOnly")
+            // /ko
+            // ko if: _isVisibleScheinSubgroup('27')
+            select.form-control(name="scheinInputTemplate", data-bind="options: scheinInputTemplateList27, optionsValue: 'val', optionsText: 'i18n', value: scheinInputTemplate, readOnly: scheinInputTemplate.readOnly")
+            // /ko
+  div.row.form-horizontal
+    div.col-xs-12
+      div.form-group(data-bind="hasFeedback: { field: continuousIcds, toggle: continuousIcds.hasError, messages: continuousIcds.validationMessages }")
+        label.col-sm-2.control-label(data-bind="text: continuousIcds.i18n")
+        div.col-sm-10
+          input.form-control(name="continuousIcds", type="hidden", data-bind="select2: _select2continuousDiagnoses, readOnly: continuousIcds.readOnly")
+          div.checkbox
+            label.control-label
+              strong(data-bind="text: createContinuousDiagnosisOnSave.i18n")
+              input(type="checkbox", name="createContinuousDiagnosisOnSave", data-bind="checked: createContinuousDiagnosisOnSave, readOnly: continuousIcds.readOnly")
+  // commented for later usage MOJ-13152
+  //div.row.form-horizontal
+    div.col-xs-12
+      div.form-group(data-bind="hasFeedback: { field: continuousMedications, toggle: continuousMedications.hasError, messages: continuousMedications.validationMessages }")
+        label.col-sm-2.control-label(data-bind="text: continuousMedications.i18n")
+        div.col-sm-10
+          input.form-control(name="continuousMedications", type="hidden", data-bind="select2: _select2continuousMedications, readOnly: continuousMedications.readOnly")
+          div.checkbox
+            label.control-label
+              strong(data-bind="text: createContinuousMedicationsOnSave.i18n")
+              input(type="checkbox", name="createContinuousMedicationsOnSave", data-bind="checked: createContinuousMedicationsOnSave, readOnly: continuousMedications.readOnly")
+
+  div.row
+    div.col-xs-12
+      hr
+      h4(data-bind="text: etsI18n")
+  div.row
+    div.col-xs-6
+      div.form-group(data-bind="hasFeedback: { field: scheinTransferType, toggle: scheinTransferType.hasError, messages: scheinTransferType.validationMessages }")
+        label.control-label(data-bind="text: scheinTransferType.i18n")
+        select.form-control(name="scheinTransferType", data-bind="options: scheinTransferType.list, optionsValue: 'val', optionsText: 'i18n', value: scheinTransferType, readOnly: scheinTransferType.readOnly")
+      // ko if: scheinTransferType()
+      div.form-group(data-bind="hasFeedback: { field: scheinTransferArrangementCode, toggle: scheinTransferArrangementCode.hasError, messages: scheinTransferArrangementCode.validationMessages }")
+        label.control-label(data-bind="text: scheinTransferArrangementCode.i18n")
+        input.form-control(name="scheinTransferArrangementCode", type="text", data-bind="value: scheinTransferArrangementCode, readOnly: scheinTransferArrangementCode.readOnly")
+      // /ko
+    // ko if: scheinTransferType()
+    div.col-xs-6
+      div.form-group(data-bind="hasFeedback: { field: scheinTransferDateOfContact, toggle: scheinTransferDateOfContact.hasError, messages: scheinTransferDateOfContact.validationMessages }")
+        label.control-label(data-bind="text: scheinTransferDateOfContact.i18n")
+        div.date-picker.input-group
+          input.form-control(name="scheinTransferDateOfContact", data-bind="datetimepicker: { value: scheinTransferDateOfContact }, readOnly: scheinTransferDateOfContact.readOnly")
+
+      div.form-group(data-bind="hasFeedback: { field: scheinTransferTypeInfo, toggle: scheinTransferTypeInfo.hasError, messages: scheinTransferTypeInfo.validationMessages }")
+        label.control-label(data-bind="text: scheinTransferTypeInfo.i18n")
+        textarea.form-control(name="scheinTransferTypeInfo", data-bind="value: scheinTransferTypeInfo, valueUpdate: 'afterkeydown', readOnly: scheinTransferTypeInfo.readOnly")
+    // /ko
+hr.row
+div(data-bind="if: _isVisibleScheinType('0102')")
+  div.row
+    div.col-xs-8
+      h4
+        a(href="javascript:;", data-bind="readOnly: scheinEstablishment.readOnly, click: selectPhysician0102, text: remittorI18n")
+    // ko if: scheinSubgroup() !== '28'
+    div.col-xs-4
+      div.checkbox.pull-right
+        label.control-label
+          strong ASV
+          input(type="checkbox", name="asvReferrer", data-bind="checked: asvReferrer, readOnly: asvReferrer.readOnly")
+    // /ko
+  div.row
+    div.col-xs-4
+      div.form-group(data-bind="hasFeedback: { field: scheinDate, toggle: scheinDate.hasError, messages: scheinDate.validationMessages }")
+        label.control-label(data-bind="text: scheinDate.i18n")
+        div.date-picker.input-group
+          input.form-control(name="scheinDate", data-bind="datetimepicker: { value: scheinDate }, readOnly: scheinDate.readOnly")
+    // ko if: scheinSubgroup() !== '28'
+    div.col-xs-4
+      div.form-group(data-bind="hasFeedback: { field: scheinEstablishment, toggle: scheinEstablishment.hasError, messages: scheinEstablishment.validationMessages }")
+        label.control-label(data-bind="text: labelBNSRI18nComputed")
+        input.form-control(name="scheinEstablishment", data-bind="select2: _scheinEstablishmentCfgAutoComplete, readOnly: scheinEstablishment.readOnly")
+    div.col-xs-4
+      div.form-group(data-bind="hasFeedback: { field: scheinRemittor, toggle: scheinRemittor.hasError, messages: scheinRemittor.validationMessages }")
+        label.control-label(data-bind="text: labelLanrI18nComputed")
+        input.form-control(name="scheinRemittor", data-bind="select2: _scheinRemittorCfgAutoComplete, value: scheinRemittor, readOnly: scheinRemittor.readOnly")
+    // /ko
+  div.row
+    div.col-xs-6
+      div.form-group(data-bind="hasFeedback: { field: fk4219, toggle: fk4219.hasError, messages: fk4219.validationMessages }")
+        label.control-label(data-bind="text: fk4219.i18n")
+        input.form-control(name="fk4219", maxlength="60", data-bind="value: fk4219, valueUpdate: 'afterkeydown', readOnly: fk4219.readOnly, attr: { placeholder: fk4219.i18n }")
+    div.col-xs-6
+      div.form-group(data-bind="hasFeedback: { field: scheinSpecialisation, toggle: scheinSpecialisation.hasError, messages: scheinSpecialisation.validationMessages }")
+        label.control-label(data-bind="text: labelToI18n")
+        input.form-control(name="scheinSpecialisation", type="hidden", data-bind="select2: _select2scheinSpecialisation, readOnly: scheinSpecialisation.readOnly")
+    div.col-xs-6(data-bind="visible: _isVisibleScheinSubgroup('27','28')")
+      div.form-group(data-bind="hasFeedback: { field: scheinSlipMedicalTreatment, toggle: scheinSlipMedicalTreatment.hasError, messages: scheinSlipMedicalTreatment.validationMessages }")
+        label.control-label(data-bind="text: scheinSlipMedicalTreatment.i18n")
+        select.form-control(name="scheinSlipMedicalTreatment", data-bind="options: scheinSlipMedicalTreatmentList, optionsValue: 'val', optionsText: '-de', value: scheinSlipMedicalTreatment, readOnly: scheinSlipMedicalTreatment.readOnly")
+  div(data-bind="visible: _isVisibleScheinType('0102') && _isVisibleScheinSubgroup('27','28')")
+    div.row
+      div.col-xs-8
+        h4
+          a(href="javascript:;", data-bind="readOnly: fk4217.readOnly, click: selectPhysician0102_27, text: initialRemittorI18n")
+      div.col-xs-4
+        div.checkbox.pull-right
+          label.control-label
+            strong ASV
+            input(type="checkbox", name="asvInitiator", data-bind="checked: asvInitiator, readOnly: asvInitiator.readOnly")
+    div.row
+      div.col-xs-4
+        div.form-group(data-bind="hasFeedback: { field: initiatorPhysicianName, toggle: initiatorPhysicianName.hasError, messages: initiatorPhysicianName.validationMessages }")
+          label.control-label(data-bind="text: initiatorPhysicianName.i18n")
+          input.form-control(name="initiatorPhysicianName", data-bind="select2: _initiatorPhysicianNameCfgAutoComplete, readOnly: initiatorPhysicianName.readOnly")
+      div.col-xs-4
+        div.form-group(data-bind="hasFeedback: { field: fk4217, toggle: fk4217.hasError, messages: fk4217.validationMessages }")
+          label.control-label(data-bind="text: initiatorLabelBNSRI18nComputed")
+          input.form-control(name="fk4217", data-bind="select2: _fk4217CfgAutoComplete, readOnly: fk4217.readOnly")
+      div.col-xs-4
+        div.form-group(data-bind="hasFeedback: { field: fk4241, toggle: fk4241.hasError, messages: fk4241.validationMessages }")
+          label.control-label(data-bind="text: initiatorLabelLanrI18nComputed")
+          input.form-control(name="fk4241", data-bind="select2: _fk4241CfgAutoComplete, readOnly: fk4241.readOnly")
+    div.row
+      div.col-xs-2
+        div.radio(data-bind="highlightError: scheinSlipMedicalTreatment")
+          label.control-label
+            strong(data-bind="text: scheinSlipMedicalTreatment1I18n")
+            input(type="radio", name="scheinSlipMedicalTreatment", value="1", data-bind="checked: scheinSlipMedicalTreatment, readOnly: scheinSlipMedicalTreatment.readOnly")
+      div.col-xs-2
+        div.radio(data-bind="highlightError: scheinSlipMedicalTreatment")
+          label.control-label
+            strong(data-bind="text: scheinSlipMedicalTreatment2I18n")
+            input(type="radio", name="scheinSlipMedicalTreatment", value="2", data-bind="checked: scheinSlipMedicalTreatment, readOnly: scheinSlipMedicalTreatment.readOnly")
+      div.col-xs-2
+        div.radio(data-bind="highlightError: scheinSlipMedicalTreatment")
+          label.control-label
+            strong(data-bind="text: scheinSlipMedicalTreatment3ShortI18n, tooltip: {title: scheinSlipMedicalTreatment3I18n, trigger:'hover'}")
+            input(type="radio", name="scheinSlipMedicalTreatment", value="3", data-bind="checked: scheinSlipMedicalTreatment, readOnly: scheinSlipMedicalTreatment.readOnly")
+      div.col-xs-2
+        div.radio(data-bind="highlightError: scheinSlipMedicalTreatment")
+          label.control-label
+            strong(data-bind="text: scheinSlipMedicalTreatment4ShortI18n, tooltip: {title: scheinSlipMedicalTreatment4I18n, trigger:'hover'}")
+            input(type="radio", name="scheinSlipMedicalTreatment", value="4", data-bind="checked: scheinSlipMedicalTreatment, readOnly: scheinSlipMedicalTreatment.readOnly")
+  div.row
+    div.col-xs-2
+      div.form-group(data-bind="hasFeedback: { field: locationFeatures, toggle: locationFeatures.hasError, messages: locationFeatures.validationMessages }")
+        label.control-label(data-bind="text: labelWopI18n")
+        input.form-control(name="locationFeatures", data-bind="value: locationFeatures, readOnly: locationFeatures.readOnly, valueUpdate: 'afterkeydown'")
+    div.col-xs-4
+      div.form-group(data-bind="hasFeedback: { field: icds, toggle: icds.hasError, messages: icds.validationMessages }")
+        label.control-label(data-bind="text: labelDSICDI18n")
+        input.form-control(name="icds", type="hidden", data-bind="select2: _select2scheinCaseHistory, readOnly: icds.readOnly")
+    div.col-xs-6
+      div.form-group(data-bind="hasFeedback: { field: scheinDiagnosis, toggle: scheinDiagnosis.hasError, messages: scheinDiagnosis.validationMessages }")
+        label.control-label(data-bind="text: scheinDiagnosis.i18n")
+        textarea.form-control(name="scheinDiagnosis", data-bind="value: scheinDiagnosis, valueUpdate: 'afterkeydown', readOnly: scheinDiagnosis.readOnly")
+  div.row
+    div.col-xs-6
+      div.form-group(data-bind="hasFeedback: { field: scheinOrder, toggle: scheinOrder.hasError, messages: scheinOrder.validationMessages }")
+        // ko if: scheinSubgroup() !== '21' && scheinSubgroup() !== '27'
+        label.control-label(data-bind="text: scheinOrder.i18n")
+        textarea.form-control(name="scheinOrder", data-bind="value: scheinOrder, valueUpdate: 'afterkeydown', readOnly: scheinOrder.readOnly")
+        // /ko
+        // ko if: scheinSubgroup() === '21' || scheinSubgroup() === '27'
+        //span.pull-right
+        //  a(data-bind="tooltip: {title: _setScheinOrder39Tooltip}") Muster 39?
+        label.control-label(data-bind="text: scheinOrder.i18n")
+        input.form-control(name="scheinOrder", data-bind="select2: _select2scheinOrder, readOnly: scheinOrder.readOnly")
+        // /ko
+    div.col-xs-6
+      div.form-group(data-bind="hasFeedback: { field: scheinFinding, toggle: scheinFinding.hasError, messages: scheinFinding.validationMessages }")
+        label.control-label(data-bind="text: scheinFinding.i18n")
+        textarea.form-control(name="scheinFinding", data-bind="value: scheinFinding, valueUpdate: 'afterkeydown', readOnly: scheinFinding.readOnly")
+div(data-bind="if: _isVisibleScheinType('0103')")
+  // ko ifnot: _isVisibleScheinSubgroup('31')
+  h4(data-bind="text: remittorI18n")
+  // /ko
+  // ko if: _isVisibleScheinSubgroup('31')
+  h4
+    a(href="javascript:;", data-bind="readOnly: scheinEstablishment.readOnly, click: selectPhysician0103, text: remittorI18n")
+  // /ko
+  div.row(data-bind="visible: _isVisibleScheinSubgroup('31')")
+    div.col-xs-6
+      div.form-group(data-bind="hasFeedback: { field: scheinEstablishment, toggle: scheinEstablishment.hasError, messages: scheinEstablishment.validationMessages }")
+        label.control-label(data-bind="text: labelBNSRI18n")
+        input.form-control(name="scheinEstablishment", data-bind="select2: _scheinEstablishmentCfgAutoComplete, readOnly: scheinEstablishment.readOnly")
+    div.col-xs-6
+      div.form-group(data-bind="hasFeedback: { field: scheinRemittor, toggle: scheinRemittor.hasError, messages: scheinRemittor.validationMessages }")
+        label.control-label(data-bind="text: labelLanrI18n")
+        input.form-control(name="scheinRemittor", data-bind="select2: _scheinRemittorCfgAutoComplete, value: scheinRemittor, readOnly: scheinRemittor.readOnly")
+  div.row
+    div.col-xs-2
+      div.form-group(data-bind="hasFeedback: { field: locationFeatures, toggle: locationFeatures.hasError, messages: locationFeatures.validationMessages }")
+        label.control-label(data-bind="text: labelWopI18n")
+        input.form-control(name="locationFeatures", data-bind="value: locationFeatures, readOnly: locationFeatures.readOnly, valueUpdate: 'afterkeydown'")
+    div.col-xs-4(data-bind="visible: _isVisibleScheinSubgroup('30','31')")
+      div.form-group(data-bind="hasFeedback: { field: icds, toggle: icds.hasError, messages: icds.validationMessages }")
+        label.control-label(data-bind="text: labelDSICDI18n")
+        input.form-control(name="icds", type="hidden", data-bind="select2: _select2scheinCaseHistory, readOnly: icds.readOnly")
+    div.col-xs-6(data-bind="visible: _isVisibleScheinSubgroup('30','31')")
+      div.form-group(data-bind="hasFeedback: { field: scheinDiagnosis, toggle: scheinDiagnosis.hasError, messages: scheinDiagnosis.validationMessages }")
+        label.control-label(data-bind="text: scheinDiagnosis.i18n")
+        textarea.form-control(name="scheinDiagnosis", data-bind="value: scheinDiagnosis, valueUpdate: 'afterkeydown', readOnly: scheinDiagnosis.readOnly")
+  div.row(data-bind="visible: _isVisibleScheinSubgroup('30','31')")
+    div.col-xs-6
+      div.form-group(data-bind="hasFeedback: { field: scheinOrder, toggle: scheinOrder.hasError, messages: scheinOrder.validationMessages }")
+        label.control-label(data-bind="text: scheinOrder.i18n")
+        textarea.form-control(name="scheinOrder", data-bind="value: scheinOrder, valueUpdate: 'afterkeydown', readOnly: scheinOrder.readOnly")
+    div.col-xs-6
+      div.form-group(data-bind="hasFeedback: { field: scheinFinding, toggle: scheinFinding.hasError, messages: scheinFinding.validationMessages }")
+        label.control-label(data-bind="text: scheinFinding.i18n")
+        textarea.form-control(name="scheinFinding", data-bind="value: scheinFinding, valueUpdate: 'afterkeydown', readOnly: scheinFinding.readOnly")
+div.row(data-bind="visible: _isVisibleScheinType('0104')")
+  div.col-xs-12
+    div.form-group(data-bind="hasFeedback: { field: scheinNextTherapist, toggle: scheinNextTherapist.hasError, messages: scheinNextTherapist.validationMessages }")
+      label.control-label(data-bind="text: scheinNextTherapist.i18n")
+      input.form-control(name="scheinNextTherapist", data-bind="value: scheinNextTherapist, valueUpdate: 'afterkeydown', readOnly: scheinNextTherapist.readOnly")
+div.row(data-bind="visible: _isVisibleScheinType('0101','0104')")
+  div.col-xs-12
+    div.form-group
+      label.control-label(data-bind="text: scheinNotes.i18n")
+      textarea.form-control(name="scheinNotes", data-bind="value: scheinNotes, valueUpdate: 'afterkeydown', readOnly: scheinNotes.readOnly")
+div(data-bind="visible: _isVisibleScheinSubgroup('30','31','32')")
+  hr.row
+  h4(data-bind="text: operationsI18n")
+  div.row
+    div.col-xs-6
+      div.form-group(data-bind="hasFeedback: { field: scheinClinicalTreatmentFrom, toggle: scheinClinicalTreatmentFrom.hasError, messages: scheinClinicalTreatmentFrom.validationMessages }")
+        label.control-label(data-bind="text: scheinClinicalTreatmentFrom.i18n")
+        div.date-picker.input-group
+          input.form-control(name="scheinClinicalTreatmentFrom", data-bind="datetimepicker: { value: scheinClinicalTreatmentFrom }, readOnly: scheinClinicalTreatmentFrom.readOnly")
+    div.col-xs-6
+      div.form-group(data-bind="hasFeedback: { field: scheinClinicalTreatmentTo, toggle: scheinClinicalTreatmentTo.hasError, messages: scheinClinicalTreatmentTo.validationMessages }")
+        label.control-label(data-bind="text: scheinClinicalTreatmentTo.i18n")
+        div.date-picker.input-group
+          input.form-control(name="scheinClinicalTreatmentTo", data-bind="datetimepicker: { value: scheinClinicalTreatmentTo }, readOnly: scheinClinicalTreatmentTo.readOnly")
+div
+  hr.row
+  h4(data-bind="text: sktI18n")
+  div.row
+    div.col-xs-6
+      div.form-group
+        label.control-label(data-bind="text: fk4123.i18n")
+        select.form-control(name="fk4123", data-bind="options: _fk4123List, optionsValue: 'key', optionsText: 'value', value: fk4123, valueAllowUnset: true, readOnly: fk4123.readOnly")
+      div.form-group
+        label.control-label(data-bind="text: fk4124.i18n")
+        div.alert.alert-info(data-bind="visible: _isVisibleFk4124Notes")
+          div(data-bind="foreach: _fk4124Notes")
+            div(data-bind="text: value")
+        input.form-control(name="fk4124", maxlength="60", data-bind="value: fk4124, valueUpdate: 'afterkeydown', readOnly: fk4124.readOnly")
+    div.col-xs-6
+      div.alert.alert-info(data-bind="visible: _isVisibleFk4125Notes")
+        div(data-bind="foreach: _fk4125Notes")
+          div(data-bind="text: value")
+      div.form-group(data-bind="visible: _isVisibleScheinType('0101','0102','0104'), hasFeedback: { field: fk4125from, toggle: fk4125from.hasError, messages: fk4125from.validationMessages }")
+        label.control-label(data-bind="text: fk4125from.i18n")
+        div.date-picker.input-group
+          input.form-control(name="fk4125from", data-bind="datetimepicker: { value: fk4125from }, readOnly: fk4125from.readOnly")
+      div.form-group(data-bind="visible: _isVisibleScheinType('0101','0102','0104'), hasFeedback: { field: fk4125to, toggle: fk4125to.hasError, messages: fk4125to.validationMessages }")
+        label.control-label(data-bind="text: fk4125to.i18n")
+        div.date-picker.input-group
+          input.form-control(name="fk4125to", data-bind="datetimepicker: { value: fk4125to }, readOnly: fk4125to.readOnly")
+      div.form-group
+        label.control-label(data-bind="text: fk4126.i18n")
+        div.alert.alert-info(data-bind="visible: _isVisibleFk4126Notes")
+          div(data-bind="foreach: _fk4126Notes")
+            div(data-bind="text: value")
+        textarea.form-control(name="fk4126", data-bind="value: fk4126, valueUpdate: 'afterkeydown', readOnly: fk4126.readOnly")
+div(data-bind="visible: _isVisibleScheinType('0101','0102','0103')")
+  hr.row
+  h4(data-bind="text: pregnancyI18n")
+  div.row
+    div.col-xs-6
+      div.form-group(data-bind="hasFeedback: { field: fk4206, toggle: fk4206.hasError, messages: fk4206.validationMessages }")
+        label.control-label(data-bind="text: fk4206.i18n")
+        div.date-picker.input-group
+          input.form-control(name="fk4206", data-bind="datetimepicker: { value: fk4206 }, readOnly: fk4206.readOnly")
+div(data-bind="visible: _isVisibleScheinType('0101','0102')")
+  hr.row
+  h4
+    span(data-bind="text: psychotherapyI18n + '/' + bewillgteLeistungenI18n")
+    a( href="#", data-bind="visible: !isNew() && fk4235Set().length,readOnly: fk4235Set.readOnly, click: _recalculate, text: ' (' + recalculateI18n + ')'")
+  div.row
+    div.col-xs-6(data-bind="visible: _isVisibleScheinType('0101')")
+      div.checkbox
+        label.control-label
+          strong(data-bind="text: fk4236.i18n")
+          input(type="checkbox", name="fk4236", data-bind="checked: fk4236, readOnly: fk4236.readOnly")
+    div.col-xs-6
+      div.checkbox
+        label.control-label
+          strong(data-bind="text: fk4234.i18n")
+          input(type="checkbox", name="fk4234", data-bind="checked: fk4234, readOnly: fk4234.readOnly")
+        | &nbsp;
+        a(name="_arrayAdd-fk4235Set", href="#", data-bind="visible: fk4234, click: addFk4235Set, readOnly: fk4235Set.readOnly")
+          i.icon.fa.fa-plus
+  include FK4235Set
+div(data-bind="visible: _isVisibleScheinType('0101','0102','0103','0104')")
+  hr.row
+  h4(data-bind="text: otherI18n")
+  div.row
+    div.col-xs-6(data-bind="visible: _isVisibleScheinType('0101','0102','0103')")
+      div.checkbox
+        label.control-label
+          strong(data-bind="text: fk4204.i18n")
+          input(type="checkbox", name="fk4204", data-bind="checked: fk4204, readOnly: fk4204.readOnly")
+    div.col-xs-6(data-bind="visible: _isVisibleScheinType('0101','0102','0103','0104')")
+      div.checkbox
+        label.control-label
+          strong(data-bind="text: fk4202.i18n")
+          input(type="checkbox", name="fk4202", data-bind="checked: fk4202, readOnly: fk4202.readOnly")
+    div.col-xs-6(data-bind="visible: _isVisibleScheinType('0102') && _isVisibleScheinSubgroup(['27','28'])")
+      div.checkbox
+        label.control-label
+          strong(data-bind="text: fk4229.i18n")
+          input(type="checkbox", name="fk4229", data-bind="checked: fk4229CheckboxValue, readOnly: fk4229.readOnly")
+        i.dc-info-icon(data-bind="click: showExceptionalindicationFk4229InfoDialog")
+  div.row
+    div.col-xs-6
+      input.form-control(name="fk5098", data-bind="visible: false, value: fk5098, readOnly: true")
+    div.col-xs-6
+      input.form-control(name="fk5099", data-bind="visible: false, value: fk5099, readOnly: true")

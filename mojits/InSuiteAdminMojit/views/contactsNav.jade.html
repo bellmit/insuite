@@ -1,0 +1,10 @@
+div(id=mojit_view_id)
+  .container.container-fullscreen(style="position: relative")
+    div(data-bind="template: {name: template.name}")
+
+script(type="text/html", id="TabContactsOverview")
+  include tab_contacts_overview
+script(type="text/html", id="TabContactsDetail")
+  include tab_contacts_detail
+
+include baseContactTemplates

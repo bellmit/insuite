@@ -1,0 +1,7 @@
+div.widget-wrapper
+
+  div(data-bind="template: addWidgetBtt.template")
+
+  div.row(data-bind="foreach: widgetsByCols")
+    div.col-lg-4(data-bind="foreach: $data")
+      div(data-bind="template: template")

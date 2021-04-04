@@ -1,0 +1,88 @@
+div.PatientSectionAddDataViewModel
+  div.row
+    div.col-xs-12.col-md-8(data-bind="visible: showCrm")
+      h4(data-bind="text: itemSrmHeadlineI18n")
+      div.panel.panel-default
+        div.panel-body
+          div.row
+            .col-xs-6
+              .form-group
+                input.form-control(name="tag", data-bind="select2: _select2tags, valueUpdate: 'afterkeydown', readOnly: crmTags.readOnly")
+            .col-xs-6
+              .form-group
+                select.form-control(name="_catalog", data-bind="options: _crmCatalogs, optionsValue: 'short', optionsText: 'short', value: crmCatalogShort, readOnly: crmTags.readOnly")
+          div.row
+            .col-xs-12
+              label.control-label
+                span(data-bind="text: labelTreatmentsI18n")
+                | &nbsp;
+                small
+                  a(href="#", data-bind="click: addNewCrmTreatment, readOnly: crmTags.readOnly")
+                    span.fa.fa-plus
+              div(data-bind="foreach: crmTreatments")
+                .row
+                  .col-xs-5
+                    label.control-label(data-bind="text: $parent.labelCrmTitleI18n")
+                    input.form-control(name="title", data-bind="select2: _select2Code, readOnly: title.readOnly")
+                  .col-xs-3
+                    .form-group(data-bind="highlightError: price")
+                      label.control-label(data-bind="text: $parent.labelPriceI18n")
+                      input.form-control(name="price", data-bind="value: _displayPrice, valueUpdate: 'afterkeydown', readOnly: price.readOnly")
+                  .col-xs-2
+                    .form-group
+                      label.control-label(data-bind="text: $parent.labelProbabilityI18n")
+                      select.form-control(name="probability", data-bind="value: probability, valueUpdate: 'afterkeydown', readOnly: probability.readOnly")
+                        option 0
+                        option 10
+                        option 20
+                        option 30
+                        option 40
+                        option 50
+                        option 60
+                        option 80
+                        option 90
+                        option 100
+                  .col-xs-2
+                    .form-group
+                      button.btn.btn-default(type="button", data-bind="click: removeItem, readOnly: title.readOnly", style="margin-top: 25px;")
+                        span.glyphicon.glyphicon-trash
+          div.row
+            .col-xs-12
+              label.control-label(data-bind="text: labelEstimatedAppointmentI18n")
+            .col-xs-4
+              .form-group
+                label.control-label(data-bind="text: labelMonthOrI18n")
+                select.form-control(data-bind="options: _monthList, value: crmAppointmentMonth, optionsCaption: '', disable: _monthDisabled() || crmTags.readOnly()")
+            .col-xs-4
+              .form-group
+                label.control-label(data-bind="text: labelQuaterI18n")
+                select.form-control(data-bind="value: crmAppointmentQuarter, options: _quarterList, optionsCaption: '', disable: _quarterDisabled() || crmTags.readOnly()")
+            .col-xs-4
+              .form-group
+                label.control-label(data-bind="text: labelYearI18n")
+                select.form-control(data-bind="options: _yearList, value: crmAppointmentYear, optionsCaption: messagePleaseSelectI18n, readOnly: crmTags.readOnly()")
+          div.row
+            .col-xs-12
+              .form-group
+                label.control-label(data-bind="text: labelCommentI18n")
+                textarea.form-control(name="crmComment", rows="3", data-bind="value: crmComment, valueUpdate: 'afterkeydown', readOnly: crmTags.readOnly")
+          div.row
+            .col-xs-4
+              label.control-label(data-bind="text: labelReminderI18n")
+              .date-picker.input-group
+                input.form-control(name="crmReminder", type="text", data-bind="datetimepicker: { value: crmReminder }, disable: _crmReminderDatepickerDisabled() || crmTags.readOnly()")
+            .col-xs-8
+              .form-inline
+                .form-group.pull-right
+                  button.btn.btn-default(style="margin-top: 25px; margin-right: 25px;", data-bind="click: _onCrmDeleteButtonClicked, disable: _crmDeleteButtonDisabled() || crmTags.readOnly(), text: buttonDeleteAppointmentI18n")
+                  button.btn.btn-default(style="margin-top: 25px;", data-bind="click: _onCrmCreateButtonClicked, disable: _crmCreateButtonDisabled() || crmTags.readOnly(), text: buttonCreateAppointmentI18n")
+  div.row
+    div.col-xs-12.col-md-8(data-bind="visible: showOthers")
+      h4(data-bind="text: othersSectionTitleI18n")
+      div.panel.panel-default
+        div.panel-body
+          div.row
+            .col-xs-6
+              .form-group
+                label.control-label(data-bind="text: labelPseudonymI18n")
+                input.form-control(name="patientPseudonym", type="text", data-bind="value: pseudonym, valueUpdate: 'afterkeydown'")

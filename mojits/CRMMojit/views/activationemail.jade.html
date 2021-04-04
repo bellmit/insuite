@@ -1,0 +1,26 @@
+extend ../../DocCirrus/views/email_layout
+
+block emailbody
+  // [if lt IE 9] <!
+  script(type="text/javascript", src="/static/CMSMojit/assets/js/polyfill/respond-min.js")
+  script(type="text/javascript", src="/static/CMSMojit/assets/js/polyfill/polyfiller.js")
+  script.
+     $.webshims.polyfill("es5 forms forms-ext details");
+  // <![endif]
+
+  div(id=mojit_view_id)
+    .container.container-fullscreen
+      p !{params.greetings}
+        br
+        p !{params.PART1}
+        br
+        a(href=params.link, style="text-decoration:none;")
+          span(style="background: #22405E; color: white; display: inline-block; width: auto; text-align: center;text-decoration:none;border:10px solid #22405E;font-weight: bold;font-size: 15px;font-style: normal") !{params.BUTTON_LOGIN}
+        br
+        br
+        p !{params.PART2}
+        br
+        p !{params.BUTTOMLINE}
+        br
+        br
+        p !{params.PS}

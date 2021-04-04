@@ -1,0 +1,16 @@
+div
+  .row
+    .col-xs-12
+      h4(data-bind="hasFeedback: { field: ut2Remedy1List, toggle: ut2Remedy1List.hasError, messages: ut2Remedy1List.validationMessages }")
+        span Heilmittel
+        span &nbsp;
+        small nach Maßgabe des Katalogs&nbsp;
+        a.KoTableSelectEditButton(name="kbvutility-heilmittel-edit-element", href="#", data-bind="visible: diagnosisGroupSelect.canEdit && !ut2Remedy1List.readOnly(), click: remedySelect.toggleEditModel.bind(remedySelect), tooltip: {title: 'Heilmittel ändern'}")
+          span.fa.fa-pencil
+          span &nbsp;
+        br
+        small.text-danger(data-bind="html: ut2Remedy1List.validationMessages")
+
+  .row
+    .col-xs-12
+      div(data-bind="template: remedySelect.template")

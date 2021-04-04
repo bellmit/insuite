@@ -1,0 +1,11 @@
+div.PatientGadgetEditGadget(data-bind="notifyBind: { method: notifyBindResizeElement}")
+  div.PatientGadgetEditGadget-header
+    span.PatientGadgetEditGadget-remove.text-danger.fa.fa-close(data-bind="click: handlerRemoveFromGadgetCollection")
+    | &nbsp;
+    span.PatientGadgetEditGadget-label(data-bind="text: label")
+  div(data-bind="if: isEditable()")
+    button.btn.btn-default.btn-xs(
+    type="button",
+    data-bind="click: showEditGadget, attr: {title: settingsI18n}",
+    style="left: 50%;margin-left: -11px;margin-top: -11px;position: absolute;top: 50%;")
+      span.fa.fa-gear

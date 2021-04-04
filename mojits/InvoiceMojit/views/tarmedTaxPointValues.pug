@@ -1,0 +1,25 @@
+h4(data-bind="text: tarmedTaxPointValuesI18n")
+div.table-responsive
+    table.table.table-bordered
+        colgroup
+            col(width="25%")
+            col(width="25%")
+            col(width="25%")
+            col(width="25%")
+        thead
+            tr
+                th(data-bind="text: lawI18n")
+                th(data-bind="text: cantonI18n")
+                th(data-bind="text: dateI18n")
+                th(data-bind="text: taxPointValueI18n")
+        tbody
+            tr
+                td
+                    input.form-control(name="law", data-bind="select2: select2Law")
+                td
+                    input.form-control(name="canton", data-bind="select2: select2Canton")
+                td
+                    div.date-picker.input-group
+                        input.form-control(name="date", data-bind="datetimepicker: { value: selectedTarmedTaxPointDate }")
+                td
+                    input.form-control(name="tarmedTaxPointValue", data-bind="value: tarmedTaxPointValue, readOnly: true")

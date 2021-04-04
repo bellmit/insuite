@@ -1,0 +1,40 @@
+style(type="text/css").
+    .striked-text {
+        text-decoration: line-through;
+    }
+
+    .bubble-image-container {
+        position: relative !important;
+        width: 150px !important;
+        min-width: 150px !important;
+        max-width: 150px !important;
+        max-height: 45px;
+        overflow: hidden;
+    }
+
+    .bubble-image {
+        padding: 0;
+        margin: -40px 0 0;
+        transform-origin: left top;
+        transform: scale(0.65);
+    }
+
+
+div.PatientGadgetAmts
+    h4.PatientGadget-headline
+        a(data-bind="text: checkResultI18n")
+    h5.mb-0
+        span(data-bind="css: { 'striked-text': !GDPRFormApprovedVersion() }, text: GDPRFormApprovedVersionLabelI18n, tooltip: { title: GDPRFormApprovedVersionTooltipI18n }"  )
+        span ,&nbsp;
+        span(data-bind="css: { 'striked-text': !amtsApprovalForReleaseFromConfidentiality() }, text: amtsApprovalForReleaseFromConfidentialityLabelI18n, tooltip: { title: amtsApprovalForReleaseFromConfidentialityTooltipI18n }" )
+        span ,&nbsp;
+        span(data-bind="css: { 'striked-text': !amtsParticipationInSelectiveContract() }, text: amtsParticipationInSelectiveContractLabelI18n, tooltip: { title: amtsParticipationInSelectiveContractTooltipI18n }" )
+        span ,&nbsp;
+        span(data-bind="css: { 'striked-text': !amtsApprovalForDataEvaluation() }, text: amtsApprovalForDataEvaluationLabelI18n, tooltip: { title: amtsApprovalForDataEvaluationTooltipI18n }" )
+    // ko if: !!amtsBubbleCollectionImage()
+    div.bubble-image-container
+        img.bubble-image(data-bind="attr: {src: amtsBubbleCollectionImage()}, click: onBubbleImageClick")
+    // /ko
+    // ko ifnot: !!amtsBubbleCollectionImage()
+    span(data-bind="text: noResultsAvailableI18n")
+    // /ko

@@ -1,0 +1,65 @@
+div#AssignLabLogModal
+  div.row.data-block(style="padding-left: 10px; padding-right: 10px; margin-top: -10px;")
+    h4(data-bind="text: labDataI18n")
+    div.col-md-6
+      span(data-bind="text: patientLabReqReceivedI18n + ': '")
+      strong(data-bind="text: patientLabReqReceived")
+      br
+      span(data-bind="text: patientReportDateI18n + ': '")
+      strong(data-bind="text: patientReportDate")
+      br
+      span(data-bind="text: patientFirstnameI18n + ': '")
+      strong(data-bind="text: patientFirstname")
+      br
+      span(data-bind="text: patientLastnameI18n + ': '")
+      strong(data-bind="text: patientLastname")
+      br
+      span(data-bind="text: patientDobI18n + ': '")
+      strong(data-bind="text: patientDob")
+      br
+      span(data-bind="text: patientGenderI18n + ': '")
+      strong(data-bind="text: patientGender")
+    div.col-md-6
+      span(data-bind="text: patientFindingKindI18n + ': '")
+      strong(data-bind="text: patientFindingKind")
+      br
+      span(data-bind="text: patientBillingTypeI18n + ': '")
+      strong(data-bind="text: patientBillingType")
+      br
+      span(data-bind="text: patientFeeScheduleI18n + ': '")
+      strong(data-bind="text: patientFeeSchedule")
+  div.row.configuration-block(style="padding-left: 10px; padding-right: 10px;")
+    h4(data-bind="text: '1. ' + changeConfigurationI18n")
+    div
+      span.checkbox
+        label.control-label
+          strong(data-bind="text: billingFlagI18n")
+          input(type="checkbox", name="billingFlagBox", data-bind="checked: billingFlag")
+      //ko if: billingFlag()
+      span.checkbox(style="margin-left:15px;")
+        label.control-label
+          strong(data-bind="text: disallowGkvBillingI18n")
+          input(type="checkbox", name="disallowGkvBillingBox", data-bind="enable: !allowGkvBilling(), checked: disallowGkvBilling")
+      // /ko
+      span.checkbox
+        label.control-label
+          strong(data-bind="text: allowGkvBillingI18n")
+          input(type="checkbox", name="allowGkvBillingBox", data-bind="enable: !disallowGkvBilling(), checked: allowGkvBilling")
+      span.checkbox
+        label.control-label
+          strong(data-bind="text: useDataFromLabrequestIfPresentI18n")
+          input(type="checkbox", name="useDataFromLabrequestIfPresentBox", data-bind="checked: useDataFromLabrequestIfPresent")
+  div.row.patient-block(style="padding-left: 10px; padding-right: 10px;")
+    h4(data-bind="text: '2. ' + selectPatientI18n")
+    div#patientTable(data-bind="template: patientTable.template")
+  div.row.casefolder-block(style="padding-left: 10px; padding-right: 10px;", data-bind="visible: selectedPatientId")
+    h4(data-bind="text: '3. ' + selectCaseFolderI18n")
+    div.col-md-6
+      div(data-bind="foreach: caseFolders")
+        .radio
+          label
+            input(type="radio", name="casefolderRadioBoxes", value="", data-bind="checked: $parent.selectedFolder, value: $data")
+            span(data-bind="text: title")
+  div.dc-action-buttons.dc-action-buttons-right
+    button.btn.btn-default(type="button", data-bind="click: actions.cancel, text: cancelButtonI18n")
+    button.btn.btn-primary(type="button", data-bind="enable: saveButtonEnable, click: save, text: saveButtonI18n")

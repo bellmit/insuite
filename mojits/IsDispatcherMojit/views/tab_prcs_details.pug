@@ -1,0 +1,56 @@
+div#tab_prc_details
+    section.col-md-7
+        form.form-horizontal
+            .form-group
+                label.col-sm-4.control-label(data-bind="text: labelUrlI18n + ':'")
+                div.col-sm-8
+                    p.form-control-static &nbsp;
+                        a(data-bind="attr: { href: hostname }, text: hostname").form-control-static
+            .form-group
+                label.col-sm-4.control-label(data-bind="text: labelDcIdI18n + ':'")
+                div.col-sm-8
+                    p.form-control-static(data-bind="text: prcCustomerNo")
+            .form-group
+                label.col-sm-4.control-label(data-bind="text: labelPracticeI18n + ':'")
+                div.col-sm-8
+                    p.form-control-static(data-bind="text: coname")
+            .form-group
+                label.col-sm-4.control-label(data-bind="text: labelDisciplinesI18n + ':'")
+                div.col-sm-4
+                    p.form-control-static &nbsp;
+            .form-group
+                label.col-sm-4.control-label(data-bind="text: labelPatientsI18n + ':'")
+                div.col-sm-8
+                    p.form-control-static(data-bind="text: patientId && patientId.length || 0")
+
+    section.col-md-5
+        form.form-horizontal
+            .form-group
+                label &nbsp;
+                div.col-sm-8
+                    p.form-control-static &nbsp;
+            .form-group
+                label.col-sm-4.control-label(data-bind="text: labelIdI18n + ':'")
+                div.col-sm-8
+                    p.form-control-static(data-bind="text: customerId")
+            .form-group
+                label.col-sm-4.control-label(data-bind="text: labelContactI18n + ':'")
+                div.col-sm-8
+                    p.form-control-static &nbsp;
+            .form-group
+                label.col-sm-4.control-label(data-bind="text: labelTelephoneI18n + ':'")
+                div.col-sm-8
+                    p.form-control-static(data-bind="text: telephone")
+            .form-group
+                label.col-sm-4.control-label(data-bind="text: labelEmployeesI18n + ':'")
+                div.col-sm-8
+                    p.form-control-static(data-bind="text: employeeId.length")
+
+
+    section.col-md-12.employee-section
+        header(class="decoration-underline", data-bind="text: employeeHeadlineI18n + ':'")
+        div(data-bind="foreach: formattedLocationStructure()")
+            div.employee-location
+                label(data-bind="text: name + ' ' + bsnr")
+            div.employee-itself(data-bind="foreach: employee")
+                div(data-bind="text: title + ' ' + lanr")

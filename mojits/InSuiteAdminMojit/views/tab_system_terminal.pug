@@ -1,0 +1,24 @@
+#tab_system_terminal
+div.panel.panel-default
+  div.panel-heading
+    div
+      p(data-bind="text: title" style="display:inline")
+      <span> </span>
+      span.dc-info-icon(data-bind="click: info" style="cursor: pointer")
+  div.panel-body
+    form(name="terminalForm")
+      div.form-group(data-bind="ifnot: terminalConnected")
+        span(data-bind="text: errorMessage", style="color: red")
+      div.form-group.container
+        div(style="display: grid; grid-template-columns: 1.5fr 1fr 1fr 5fr; grid-gap: 10px")
+          div.panel.panel-default(style="display: grid; grid-template-columns: 1fr 1fr 1fr; grid-gap: 5px; padding: 5px")
+            label(for="grepCommend" data-bind="text: SystemCommandsI18n" style="display: none")
+            select#grepCommend.col-xs-2(name="grepCommend",data-bind="options: _buttonArray, optionsText: 'description', optionsValue: 'commandId', value: actionButton", style="min-width: 150px")
+            div(style="margin-top: 5px")
+              label(for="day" data-bind="text: insertDay")
+            input(type="checkbox" name="day" id="day" data-bind="checked: dayValue", style="margin: 0")
+          div.panel.panel-default(style="display: grid; grid-template-columns: 1fr 1fr 1fr; grid-gap: 5px; padding: 5px")
+            label(for="thread" data-bind="text: thread" style="display: none")
+            input(type="text" name="thread" id="thread" data-bind="value: threadValue, attr:{placeholder: thread}" style="width: 150px; padding")
+            input(type="submit" data-bind="click: customised, value: customisedButton", style="width: 150px;")
+        #terminal

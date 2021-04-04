@@ -1,0 +1,54 @@
+div#intimeAppointment
+  div.row
+    div.col-sm-6
+      div.panel.panel-info
+        div.panel-heading
+          h4(data-bind="text: 'Termineinstellungen (' + locname + ')'")
+        div.panel-body
+          div.form-group(data-bind="css: { 'has-error': !appointmentType() }")
+            label() Terminart
+            input.form-control(name="appointmentType", type="hidden", data-bind="select2: select2AppointmentType")
+          div.alert.alert-warning(data-bind="text: patientInfo, visible: patientInfo", style="display: none;")
+          div.row
+            div.form-group.col-md-5.col-sm-12
+              label(data-bind="text: datesFromLabelI18n")
+              div.date-picker.input-group
+                input.form-control(name="date", data-bind="datetimepicker: { value: selectedDate, options: selectedDateDatepickerOptions }")
+            div.col-md-7.col-sm-12
+              span(data-bind="text: timeRangeLabelI18n")
+              div.row
+                div.form-group.col-sm-5
+                  div.date-picker.input-group
+                    input.form-control(name="startTime", type="text", data-bind="datetimepicker:{ options: { format: 'HH:mm' }, value: startTime, valueReset: null }")
+                span.col-sm-2.mt-2.text-center(data-bind="text: timeRangeInputsConnectorLabelI18n")
+                div.form-group.col-sm-5
+                  div.date-picker.input-group
+                    input.form-control(name="endTime", type="text", data-bind="datetimepicker:{ options: { format: 'HH:mm' }, value: endTime, valueReset: null }")
+  div.row(data-bind="if: 0 < freeAppointments().length")
+    div.col-sm-6
+      div.panel.panel-info
+        div.panel-heading
+          h4 Gefundene Termine
+        div.panel-body(data-bind="foreach: freeAppointments")
+          div.schedule-item.col-xs-6()
+            div.panel.panel-default
+              div.panel-body
+                em.pull-right(data-bind="text: inDays")
+                br
+                h5
+                  i.icon.icon-calendar
+                  span(data-bind="text: date")
+                h5
+                  i.icon.icon-time
+                  span(data-bind="text: time + ' Uhr'")
+                a.pull-right.btn.btn-block.btn-primary(data-bind="click: $parent.bookAppointment") Buchen
+    div.col-sm-6(data-bind="with: adhoc")
+      div.panel.panel-info
+        div.panel-heading
+          h4 Wenn Sie jetzt ohne Termin kommen möchten
+        div.panel-body
+          p Ihre persönliche Wartezeit wäre:
+          h3(data-bind="text: waitingtime + ' Minuten'")
+          hr
+          span.btn.btn-default.pull-left.disabled#btnadhoccmb Rückruf gewünscht
+          span.btn.btn-primary.pull-right(data-bind="click: $parent.bookAdhoc") Buchen

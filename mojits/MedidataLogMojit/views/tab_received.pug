@@ -1,0 +1,6 @@
+div#tab_overview
+  div.dc-action-buttons.dc-action-buttons-top.dc-action-buttons-left
+    button.btn.btn-primary(data-bind="text: updateEntriesBtnI18n, click: obtainReferences")
+    button.btn.btn-primary(data-bind="text: downloadDocumentsBtnI18n, enable: downloadDocumentsEnabled, click: downloadDocs")
+  div#overviewTable(data-bind="template: receivedTable.template")
+include ../../../autoload/KoUI/KoSchemaValue/view/KoSchemaTemplates

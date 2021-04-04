@@ -1,0 +1,57 @@
+/* global db, ISODate, ObjectId */
+
+function run() {
+    var latestScheins = db.activities.find( {
+        status: { $ne: 'CANCELLED' },
+        timestamp: { $gte: ISODate( "2017-01-23T00:00:06.560Z" ) },
+        fk4235Set: {
+            $exists: true,
+            $not: { $size: 0 }
+        },
+        actType: { $in: [ 'SCHEIN', 'PKVSCHEIN', 'BGSCHEIN' ] }
+    } ).sort( { timestamp: 1 } );
+    var caseFolderMap = {};
+    latestScheins.forEach( currentSchein => {
+        caseFolderMap[currentSchein.caseFolderId] = caseFolderMap[currentSchein.caseFolderId] || [];
+        caseFolderMap[currentSchein.caseFolderId].push( currentSchein );
+
+    } );
+    Object.keys(caseFolderMap).forEach( caseFolderId => {
+        var caseFolderScheins = caseFolderMap[caseFolderId];
+        caseFolderScheins.forEach( (schein, index) => {
+            var nextSchein = caseFolderScheins[index+1];
+            var query = {
+                caseFolderId: schein.caseFolderId,
+                patientId: schein.patientId,
+                actType: 'TREATMENT',
+                status: { $ne: 'CANCELLED' },
+                timestamp: {
+                    $gt: schein.timestamp
+                }
+            };
+            if( nextSchein ){
+                query.timestamp.$lt = nextSchein.timestamp;
+            }
+            if( 1 === schein.activities.length ) {
+                let parentSchein = db.activities.find( { _id: ObjectId( schein.activities[ 0 ] ) } );
+                if( parentSchein.hasNext() ) {
+                    query.timestamp.$gt = parentSchein.next().timestamp;
+                }
+            }
+            schein.fk4235Set.forEach( fk4235Set => {
+                var fk4244Set = fk4235Set.fk4244Set;
+                fk4244Set.forEach( fk4244Item => {
+                    query.code = fk4244Item.fk4244;
+                    var treatments = db.activities.find( query );
+                    var scheinCount = Number( fk4244Item.fk4246 ) - Number( fk4244Item.fk4246Offset || 0 );
+                    if( treatments.count() !== scheinCount ) {
+                        print( `${schein._id.str}   ` +
+                            `Treatment code: ${fk4244Item.fk4244}  CF Count: ${treatments.count()}  ` +
+                            `Schein counts: ${fk4244Item.fk4245}/${fk4244Item.fk4246}   ${(treatments.count()>fk4244Item.fk4245)?'!!':''}` );
+                    }
+                } );
+            } );
+        });
+    });
+}
+run();

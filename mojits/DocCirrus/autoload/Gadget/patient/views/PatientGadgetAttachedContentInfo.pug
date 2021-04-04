@@ -1,0 +1,9 @@
+div.PatientGadgetAttachedContentInfo
+  h4.PatientGadget-headline
+    a(data-bind="text: attachedContentI18n")
+  div(data-bind="visible: showAttachedContentInfo", style="display: none")
+    div
+      span.attached-content(data-bind="html: attachedContentText, style: { color: attachedContentColor }")
+      | &nbsp;
+      a(name="detachActivity", href="#", data-bind="click: detachActivity")
+        span.fa.fa-close

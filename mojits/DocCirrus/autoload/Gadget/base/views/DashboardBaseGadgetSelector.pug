@@ -1,0 +1,10 @@
+div.DashboardBaseGadgetSelector
+  block header
+    // ko ifnot: gadgetsPlaceAble
+    div(data-bind="text: noGadgetsPlaceableI18n")
+    // /ko
+  block body
+    div(data-bind="foreach: gadgetNames, visible: gadgetsPlaceAble")
+      div.DashboardBaseGadgetSelector-Gadget.DashboardBaseGadgetSelector-Gadget-draggable
+        div.DashboardBaseGadgetSelector-header(data-bind="text: i18n")
+  block footer

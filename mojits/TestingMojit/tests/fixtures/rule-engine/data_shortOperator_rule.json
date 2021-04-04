@@ -1,0 +1,181 @@
+{
+  "rule": {
+    "parent" : "to be set",
+    "isDirectory" : false,
+    "isLocked" : false,
+    "isActive" : true,
+    "caseFolderType" : [
+      "PUBLIC"
+    ],
+    "metaActTypes" : [
+      "DIAGNOSIS"
+    ],
+    "metaActCodes" : [
+      "D45"
+    ],
+    "metaCriterias" : [
+      "actType",
+      "code",
+      "diagnosisTreatmentRelevance",
+      "diagnosisInvalidationDate"
+    ],
+    "description" : "Short Operator",
+    "referenceArea" : "ENTRY",
+    "periodType" : "MONTH",
+    "periodCount" : 1,
+    "periodReference" : "raum",
+    "rules" : [
+      {
+        "ruleId" : "6033ed18a9ed6a0acb000020",
+        "description" : "test generated rule",
+        "isActive" : true,
+        "validations" : {
+          "\\\\$and" : [
+            {
+              "context" : "ACTIVITY",
+              "criteria" : {
+                "actType" : "DIAGNOSIS",
+                "code" : {
+                  "\\\\$in" : [
+                    "D45"
+                  ]
+                },
+                "diagnosisTreatmentRelevance" : "TREATMENT_RELEVANT",
+                "diagnosisInvalidationDate" : null
+              }
+            }
+          ]
+        },
+        "actions" : [
+          {
+            "type" : "WARNING",
+            "template" : {
+              "urgency" : 2,
+              "details" : "",
+              "roles" : [],
+              "candidates" : [],
+              "locations" : [
+                {
+                  "_id" : "000000000000000000000001",
+                  "locname" : "TestPraxis1"
+                },
+                {
+                  "_id" : "59955f5f66e8cf1fcc577754",
+                  "locname" : "SecondLocation"
+                }
+              ],
+              "caseFolder" : "",
+              "diagnosisCert" : "NONE",
+              "toCreate" : 1,
+              "linkActivities" : false,
+              "autoCreate" : false,
+              "tempateID" : "6033eddca9ed6a0acb000021",
+              "markers" : [],
+              "type" : ""
+            }
+          }
+        ],
+        "metaCodes" : [
+          "D45"
+        ],
+        "metaActTypes" : [
+          "DIAGNOSIS"
+        ]
+      }
+    ],
+    "metaFuzzy" : false,
+    "metaCaseOpen" : false,
+    "idStr" : "6033edf46443675a22869576"
+  },
+  "schein": {
+    "actType" : "SCHEIN",
+    "attachments" : [],
+    "subType" : "",
+    "time" : "",
+    "userContent" : "ambulante Behandlung (ambulante Behandlung)",
+    "partnerInfo" : "",
+    "explanations" : "",
+    "status" : "VALID",
+    "activities" : [],
+    "referencedBy" : [],
+    "formId" : "",
+    "formVersion" : "",
+    "formPdf" : "",
+    "formLang" : "de",
+    "formGender" : "m",
+    "apkState" : "IN_PROGRESS",
+    "icds" : [],
+    "icdsExtra" : [],
+    "scheinQuarter" : "1",
+    "scheinYear" : "2019",
+    "scheinBillingArea" : "00",
+    "scheinType" : "0101",
+    "scheinSubgroup" : "00",
+    "__t" : "SCHEIN",
+    "attachedMedia" : [],
+    "content" : "ambulante Behandlung (ambulante Behandlung)",
+    "debtCollection" : "",
+    "timestamp" : "to be set",
+    "patientId" : "to be set",
+    "employeeId" : "to be set",
+    "locationId" : "to be set"
+  },
+  "diagnosis": {
+    "actType" : "DIAGNOSIS",
+    "status" : "VALID",
+    "attachments" : [],
+    "attachedMediaTags" : [],
+    "userContent" : "Akute Chagas-Krankheit mit Herzbeteiligung  (I41.2*, I98.1*)",
+    "activities" : [],
+    "referencedBy" : [],
+    "apkState" : "IN_PROGRESS",
+    "diagnosisCert" : "CONFIRM",
+    "diagnosisType" : "CONTINUOUS",
+    "diagnosisTreatmentRelevance" : "TREATMENT_RELEVANT",
+    "catalog" : true,
+    "catalogShort" : "ICD-10",
+    "catalogRef" : "DC-ICD-10-D,CH-1603091318048.json",
+    "__t" : "DIAGNOSIS",
+    "attachedMedia" : [],
+    "timestamp" : "to be set",
+    "patientId" : "to be set",
+    "employeeId" : "to be set",
+    "locationId" : "to be set",
+    "content" : "Akute Chagas-Krankheit mit Herzbeteiligung  (I41.2*, I98.1*)",
+    "comment" : "Akute Chagas-Krankheit mit Herzbeteiligung [kodiere zusätzlich I98.1*], Akute Chagas-Krankheit mit kardiovaskulärer Beteiligung [kodiere zusätzlich I98.1*], Akute Chagas-Krankheit mit Myokarditis [kodiere zusätzlich I41.2*], Akute Chagas-Krankheit mit Kardiomyopathie [kodiere zusätzlich I41.2*]",
+    "caseFolderId" : "to be set",
+    "code" : "D45",
+    "diagnosisInvalidationDate" : null
+  },
+  "rulelogExprected": {
+    "caseFolderId" : "to be set",
+    "factId" : "to be set",
+    "message" : "test generated rule",
+    "patientId" : "to be set",
+    "referenceArea" : "ENTRY",
+    "ruleLogType" : "WARNING",
+    "actCodes" : [
+      "D45"
+    ],
+    "actTypes" : [
+      "DIAGNOSIS"
+    ],
+    "activitiesToCreate" : [],
+    "affectedActivities" : [
+      {
+        "id" : "to be set",
+        "code" : "D45",
+        "actType" : "DIAGNOSIS"
+      }
+    ],
+    "allCodes" : [],
+    "caseFolderType" : [
+      "PUBLIC",
+      "PUBLIC_A"
+    ],
+    "locationId" : "to be set",
+    "requiredCodes" : [],
+    "ruleId" : "6033ed18a9ed6a0acb000020",
+    "ruleSetId" : "6033edf46443675a22869576"
+  }
+}

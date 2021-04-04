@@ -1,0 +1,16 @@
+.clearTable td {
+    padding: 0 4px;
+    font-family: monospace;
+}
+
+.KoTable .KoTable-rows tr:hover .clearTable td {
+    background-color: #FFFFFF;
+}
+
+.is-kvg {
+    display: block;
+}
+
+.treatment-list {
+    white-space: pre-wrap;
+}

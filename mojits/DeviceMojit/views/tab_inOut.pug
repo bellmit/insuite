@@ -1,0 +1,58 @@
+style(type="text/css").
+  .panel-heading{
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+  .panel-heading a {
+    color: #005580;
+    text-decoration: none;
+  }
+  .panel-heading a:hover {
+    color: #005580;
+    text-decoration: underline;
+  }
+#tab_inOut
+  div.row
+    div.col-xs-12.col-md-10.col-md-offset-1
+      div.panel.panel-default
+        div.panel-body
+          div.form-group
+            div.checkbox
+              label.control-label
+                input(name="inOutActivated", type="checkbox", data-bind="checked: inOutActivated, disable: !inOutLicensed")
+                strong(data-bind="text: inOutActivatedI18n")
+      div.text-right
+        button#tab_inOut-save.btn.btn-primary(name="tab_inOut-save", type="button", data-bind="click: save, disable: saveDisabled, text: buttonSaveI18n")
+      hr
+      h4(data-bind="text: inOutHeaderI18n")
+      #installation-accordion.panel-group
+        .panel.panel-default
+          .panel-heading
+            h2.panel-title
+              a(data-toggle="collapse", data-parent="#installation-accordion", href="#installation-MacOS", data-bind="text: macintoshHeadlineI18n")
+          #installation-MacOS.panel-collapse.collapse
+            .panel-body
+              ol
+                li(data-bind="text: macintosh1I18n")
+                li(data-bind="html: macintosh2I18n")
+                li(data-bind="text: macintosh3I18n")
+                li(data-bind="text: macintosh4I18n")
+        .panel.panel-default
+          .panel-heading
+            h2.panel-title
+              a(data-toggle="collapse", data-parent="#installation-accordion", href="#installation-Windows", data-bind="text: windowsHeadlineI18n")
+          #installation-Windows.panel-collapse.collapse
+            .panel-body
+              ol
+                li(data-bind="text: windows1I18n")
+                li(data-bind="html: windows2I18n")
+                li(data-bind="text: windows3I18n")
+                li(data-bind="text: windows4I18n")
+      // ko if: inOutIdentitiesConfigurationVisible
+      hr
+      h4(data-bind="text: inOutIdentitiesTableHeadlineI18n")
+      div(data-bind="template: inOutIdentitiesTable.template")
+      span(data-bind="template: buttonAddCard.template")
+      | &nbsp;
+      span(data-bind="template: buttonResetCard.template")
+      // /ko

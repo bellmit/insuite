@@ -1,0 +1,76 @@
+br
+br
+.container.container-fullscreen.content(id=mojit_view_id)
+
+  h3 Generate Reporting by Patient for Date range
+
+  p This is a dev/support tool to check and regenerate reporting data on systems which may have been partially migrated, or which may be missing labdata due to import issues or bugs.
+
+  hr
+
+  table
+    tr
+      td
+        b Patients active in the last
+      td(width="10px")
+      td
+        input.form-control(type="text",value="3",size="3")#txtTimePeriod
+      td
+        select.form-control#selTimeUnit
+          option(value="days") days
+          option(value="months",selected="selected") months
+          option(value="years") years
+      td(width="10px")
+      td
+        button.btn#btnFindPatients List active patient ids
+
+  br
+  div(style="display: none;")#divPatientIds
+    textarea.form-control(rows="10")#taPatientIds
+
+  hr
+
+  table
+    tr
+      td
+        b Start Date:
+      td(width="10px")
+      td
+        input.form-control(type="text")#txtStartDate
+      td(width="10px")
+
+      td
+        b End Date:
+      td(width="10px")
+      td
+        input.form-control(type="text")#txtEndDate
+      td(width="10px")
+
+      td
+        div.form-inline
+          input.form-control(type="checkbox",style="width: 40px;")#chkLabdataOnly
+          b Labdata only
+      td(width="10px")
+
+      td
+        button.btn#btnGenerate Generate missing reportings
+        button.btn(style="display:none;")#btnPauseResume Pause
+        span &nbsp;
+        button.btn#btnClear Clear
+  hr
+
+  div(style="display:none;")#divProgressArea
+    div#divProgressLabel
+    div.progress
+      div.progress-bar(role="progressbar",aria-valuenow="0",aria-valuemin="0",aria-valuemax="100",style="width:0%;")#divProgressBar
+        span.sr-only#spanProgressSr 0%
+
+  div#divStatusbar
+
+  div#divRegenerate
+
+
+
+
+
+

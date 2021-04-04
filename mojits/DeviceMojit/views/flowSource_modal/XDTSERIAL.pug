@@ -1,0 +1,10 @@
+div#sourceModel
+  div
+    label(for="sourceSerialSelect2SerialPath", data-bind="text: serialPath.i18n + ':'")
+  div.row.form-group
+    div.col-xs-11
+      div(data-bind="hasFeedback: { field: serialPath, toggle: serialPath.hasError, messages: serialPath.validationMessages }")
+        input.form-control.input-sm#sourceSerialSelect2SerialPath(type="hidden", data-bind="select2: select2SerialPath")
+    div.col-xs-1(style="padding-left: 0;")
+      button.btn.btn-default(style="padding-bottom: 3px", data-bind="click: configureDevice")
+        i.fa.fa-plus

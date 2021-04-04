@@ -1,0 +1,7 @@
+div.form-group
+  strong(data-bind="text: dmpLimitationOfEverydayActivitiesDueToBronchialAsthma_4_44.i18n")
+  span(data-bind="dmpField: { field: dmpLimitationOfEverydayActivitiesDueToBronchialAsthma_4_44 }")
+  div(data-bind="foreach: dmpLimitationOfEverydayActivitiesDueToBronchialAsthma_4_44.list, hasFeedback: { field: dmpLimitationOfEverydayActivitiesDueToBronchialAsthma_4_44, toggle: dmpLimitationOfEverydayActivitiesDueToBronchialAsthma_4_44.hasError, messages: dmpLimitationOfEverydayActivitiesDueToBronchialAsthma_4_44.validationMessages }")
+    label.radio-inline
+      span(data-bind="text: i18n")
+      input(type="radio", name="dmpLimitationOfEverydayActivitiesDueToBronchialAsthma_4_44", data-bind="value: val, checked: $parent.dmpLimitationOfEverydayActivitiesDueToBronchialAsthma_4_44, readOnly: $parent.dmpLimitationOfEverydayActivitiesDueToBronchialAsthma_4_44.readOnly")

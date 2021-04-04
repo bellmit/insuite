@@ -1,0 +1,11 @@
+div
+  // ko if: Boolean(col.renderer)
+  div.KoTableCell(style="display: block" data-bind="html: col.interceptRenderOutput(col.doRender($data), $data), attr: { title: col.interceptRenderOutput(value, $data, true) }")
+  // /ko
+  // ko ifnot: Boolean(col.renderer)
+  div.KoTableCell(data-bind="text: col.interceptRenderOutput(value, $data), attr: { title: col.interceptRenderOutput(value, $data, true) }")
+  // /ko
+  //ko if: col.displayIcon($data)
+  i(style="margin: 0 2px;" data-toggle="tooltip" data-placement="bottom" data-bind="css: col.iconClass, event: {mouseover: col.initTitle($data)}, click: col.iconClick($data), tooltip: {title: col.iconTitle, placement: 'bottom', trigger:'hover', html: true}")
+  span(style="margin: 0 1px;" data-bind="text: col.count($data)")
+  // /ko

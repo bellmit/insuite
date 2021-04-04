@@ -1,0 +1,35 @@
+div.form-group.activitySidebarViewModel
+  div.form-group(data-bind="highlightError: actType")
+    input.form-control(name="actType", type="hidden", data-bind="select2: _select2actType, readOnly: actType.readOnly")
+  // ko ifnot: showActivityActtypeNeeded()
+  div.form-group(data-bind="hasFeedback: { field: timestamp, toggle: timestamp.hasError, messages: timestamp.validationMessages }")
+    .date-picker.input-group
+      input.form-control(name="timestamp", type="text", data-bind="datetimepicker: { value: timestamp }, readOnly: timestamp.readOnly, attr: { placeholder: timestampI18n }")
+  //ko if: isDaySeparationAvailable()
+  div
+    div.form-group(data-bind="visible: !_toggleDaySeparationInputVisible()")
+      button.btn.btn-default.btn-block(name="daySeparation-toggle", type="button", data-bind="click: _toggleDaySeparation, text: _daySeparationText")
+    div.form-group(data-bind="visible: _toggleDaySeparationInputVisible")
+      div.input-group(data-bind="hasFeedback: { field: daySeparation, toggle: daySeparation.hasError, messages: daySeparation.validationMessages }")
+        span.input-group-btn
+          button.btn.btn-default(name="daySeparation-toggle", type="button",data-bind="click: _toggleDaySeparation")
+            span.fa.fa-calendar
+            span.sr-only(data-bind="text: daySeparationI18n")
+        input.form-control(name="daySeparation", type="time", data-bind="value: daySeparation, valueUpdate: 'afterkeydown', readOnly: daySeparation.readOnly, attr: { placeholder: placeholderDaySeparationI18n }")
+  // /ko
+  div.form-group
+    input.form-control(name="locationId", type="text", data-bind="readOnly: locationId.readOnly, value: locationName")
+  div.form-group(data-bind="highlightError: employeeName")
+    input.form-control(name="employeeName", type="text", data-bind="readOnly: employeeName.readOnly, value: employeeName")
+  div(data-bind="if: _id")
+    div.form-group
+      button.btn.btn-block(name="apkStateBtn", type="button", data-bind="click: onApkStateBtnClicked, css: _apkStateBtnCss, text: _apkStateBtnText")
+  // ko with: krwStatusViewModel
+  div.form-group
+    select.form-control(data-bind="value: _krwValidationStatus")
+      option(name="ALL", data-bind="text: fieldAllI18n")
+      option(name="ERRORS", data-bind="text: fieldErrorsI18n")
+  // /ko
+  div.form-group(data-bind="click: showComment")
+    textarea.form-control(name="comment", style="cursor:pointer", data-bind="value: comment, valueUpdate: 'afterkeydown', text: textAreaNoteI18n", readonly, rows="5")
+  // /ko

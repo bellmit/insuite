@@ -1,0 +1,11 @@
+div#rlv_browser
+  div.row
+    div.col-md-8.col-xs-4
+      p.pull-right(style="margin-top: 8px;", data-bind="text: calcRlvI18n")
+    div.col-md-2.col-xs-4
+      div.form-group
+        select.form-control(name="quarterList", data-bind="options: quarterList, optionsValue: 'quarter', optionsText: 'text', value: quarterToCalc")
+    div.col-md-2.col-xs-4
+      div(data-bind="template: calculateRlvBtn.template", style="")
+  div.row
+    div.col-xs-12(data-bind="template: rlvKoTable.template")

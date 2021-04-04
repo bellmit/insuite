@@ -1,0 +1,819 @@
+include DMP/Dmp-mixin
+
+div.row.mb-3
+  .col-md-3.mt-3
+    .row
+      .col-md-12
+        .form-group.mb-0
+          .col-md-4.mt-2
+            label.control-label(data-bind="text: moduleI18n + ':'")
+          .col-md-8
+            select.form-control.module-select(name="module", data-bind="options: moduleList, optionsValue: 'val', optionsText: 'i18n', value: moduleSelect")
+  .col-md-3.mt-3
+    .row
+      .col-md-12
+        div.form-group(data-bind="hasFeedback: { field: programmzk, toggle: programmzk.hasError, messages: programmzk.validationMessages }").mb-0
+          .col-md-7.mt-2
+            label.control-label(data-bind="text: programmzkI18n + ':'")
+          .col-md-5
+            input.form-control(name='programmzk', type="text", data-bind="value: programmzk")
+  div.col-md-6
+    // ko if: 'ZKA' === module()
+    h4.mb-0(data-bind="text: headlineZkaI18n")
+    // /ko
+    // ko if: 'ZKH' === module()
+    h4.mb-0(data-bind="text: headlineZkhI18n")
+    // /ko
+    // ko if: 'ZKZ' === module()
+    h4.mb-0(data-bind="text: headlineZkzI18n")
+    // /ko
+    // ko if: 'ZKP' === module()
+    h4.mb-0(data-bind="text: headlineZkpI18n")
+    // /ko
+div.row(style="display: flex; flex-flow: row wrap;")
+  div.col-md-12.col-sm-12(style="align-self:flex-start")
+    +DmpFieldset('basisI18n')
+      .col-md-4(style="margin-top: -10px;")
+        h4.mt-0(data-bind="text: insuranceI18n")
+        div.form-group(data-bind="hasFeedback: { field: kasseiknr, toggle: kasseiknr.hasError, messages: kasseiknr.validationMessages }")
+          label.control-label(style="height: 40px; display: table-cell; vertical-align: bottom;", data-bind="text: kasseiknrI18n")
+          input.form-control(name='kasseiknr', type="text", data-bind="value: kasseiknr")
+        div.form-group
+          label.control-label(data-bind="text: versichertenstatusgkvI18n")
+          input.form-control(name='versichertenstatusgkv', type="text", data-bind="value: versichertenstatusgkv")
+        div.form-group(data-bind="hasFeedback: { field: versichertenidneu, toggle: versichertenidneu.hasError, messages: versichertenidneu.validationMessages }")
+          label.control-label(data-bind="text: versichertenidneuI18n")
+          input.form-control(name='versichertenidneu', type="text", data-bind="value: versichertenidneu")
+      .col-md-4(style="margin-top: -10px;")
+        h4.mt-0(data-bind="text: patientI18n")
+        div.form-group(data-bind="hasFeedback: { field: idnrpat, toggle: idnrpat.hasError, messages: idnrpat.validationMessages }")
+          label.control-label(style="height: 40px; display: table-cell; vertical-align: bottom;", data-bind="text: idnrpatI18n")
+          input.form-control(name='idnrpat', type="text", data-bind="value: idnrpat")
+        div.form-group(data-bind="hasFeedback: { field: gebdatum, toggle: gebdatum.hasError, messages: gebdatum.validationMessages }")
+          label.control-label(data-bind="text: gebdatumI18n")
+          .date-picker.input-group
+            input.form-control(name="gebdatum", data-bind="datetimepicker: { value: gebdatum }")
+        // ko if: showGeneral
+        // ko if: 'ZKP' === module()
+        div.form-group(data-bind="hasFeedback: { field: plz3stellig, toggle: plz3stellig.hasError, messages: plz3stellig.validationMessages }")
+          label.control-label(data-bind="text: plz3stelligI18n")
+          input.form-control(name='plz3stellig', type="text", data-bind="value: plz3stellig")
+        // /ko
+        // /ko
+        // ko if: 2021 === currentYear()
+        div.form-group(data-bind="hasFeedback: { field: plz3stellig, toggle: plz3stellig.hasError, messages: plz3stellig.validationMessages }")
+          label.control-label(data-bind="text: plz3stelligI18n")
+          input.form-control(name='plz3stellig', type="text", data-bind="value: plz3stellig")
+        // /ko
+      .col-md-4(style="margin-top: -10px;")
+        h4.mt-0(data-bind="text: providerDataI18n")
+        div.form-group(data-bind="hasFeedback: { field: bsnrambulant, toggle: bsnrambulant.hasError, messages: bsnrambulant.validationMessages }")
+          label.control-label(style="height: 40px; display: table-cell; vertical-align: bottom;", data-bind="text: bsnrambulantI18n")
+          input.form-control(name='bsnrambulant', type="text", data-bind="value: bsnrambulant")
+        div.form-group
+          label.control-label(data-bind="text: nbsnrambulantI18n")
+          input.form-control(name='nbsnrambulant', type="text", data-bind="value: nbsnrambulant")
+        div.form-group(data-bind="hasFeedback: { field: lanr, toggle: lanr.hasError, messages: lanr.validationMessages }")
+          label.control-label(data-bind="text: lanrI18n")
+          input.form-control(name='lanr', type="text", data-bind="value: lanr")
+// ko if: 'ZKA' === module()
+div.row
+  div.col-md-4
+    +DmpFieldset('abkKoloskI18n')
+      div.form-group(data-bind="hasFeedback: { field: datumunt, toggle: datumunt.hasError, messages: datumunt.validationMessages }")
+        label.control-label(data-bind="text: datumuntI18n")
+        .date-picker.input-group
+          input.form-control(name='datumunt', type="text", data-bind="datetimepicker: { value: datumunt, valueUpdate: '' }")
+    +DmpFieldset('vorbefundeI18n')
+      div.form-group(data-bind="hasFeedback: { field: zytbefundvorunt, toggle: zytbefundvorunt.hasError, messages: zytbefundvorunt.validationMessages }")
+        label.control-label(data-bind="text: zytbefundvoruntI18n")
+        select.form-control(name="zytbefundvorunt", data-bind="options: zytbefundvoruntList, optionsValue: 'val', optionsText: '-de', value: zytbefundvorunt")
+      // ko if: showGeneral
+      // ko if: '1' === zytbefundvorunt()
+      div.form-group(data-bind="hasFeedback: { field: zytbefundvorunt01, toggle: zytbefundvorunt01.hasError, messages: zytbefundvorunt01.validationMessages }")
+        label.control-label(data-bind="text: zytbefundvorunt01I18n")
+        select.form-control(name="zytbefundvorunt01", data-bind="options: zytbefundvorunt01List, optionsValue: 'val', optionsText: '-de', value: zytbefundvorunt01")
+      // /ko
+      // ko if: '2' === zytbefundvorunt()
+      div.form-group(data-bind="hasFeedback: { field: zytbefundvoruntii, toggle: zytbefundvoruntii.hasError, messages: zytbefundvoruntii.validationMessages }")
+        label.control-label(data-bind="text: zytbefundvoruntiiI18n")
+        select.form-control(name="zytbefundvoruntii", data-bind="options: zytbefundvoruntiiList, optionsValue: 'val', optionsText: '-de', value: zytbefundvoruntii")
+      // /ko
+      // ko if: '3' === zytbefundvorunt()
+      div.form-group(data-bind="hasFeedback: { field: zytbefundvoruntiii, toggle: zytbefundvoruntiii.hasError, messages: zytbefundvoruntiii.validationMessages }")
+        label.control-label(data-bind="text: zytbefundvoruntiiiI18n")
+        select.form-control(name="zytbefundvoruntiii", data-bind="options: zytbefundvoruntiiiList, optionsValue: 'val', optionsText: '-de', value: zytbefundvoruntiii")
+      // /ko
+      // ko if: '4' === zytbefundvorunt()
+      div.form-group(data-bind="hasFeedback: { field: zytbefundvoruntiiid, toggle: zytbefundvoruntiiid.hasError, messages: zytbefundvoruntiiid.validationMessages }")
+        label.control-label(data-bind="text: zytbefundvoruntiiidI18n")
+        select.form-control(name="zytbefundvoruntiiid", data-bind="options: zytbefundvoruntiiidList, optionsValue: 'val', optionsText: '-de', value: zytbefundvoruntiiid")
+      // /ko
+      // ko if: '5' === zytbefundvorunt()
+      div.form-group(data-bind="hasFeedback: { field: zytbefundvoruntiv, toggle: zytbefundvoruntiv.hasError, messages: zytbefundvoruntiv.validationMessages }")
+        label.control-label(data-bind="text: zytbefundvoruntivI18n")
+        select.form-control(name="zytbefundvoruntiv", data-bind="options: zytbefundvoruntivList, optionsValue: 'val', optionsText: '-de', value: zytbefundvoruntiv")
+      // /ko
+      // ko if: '6' === zytbefundvorunt()
+      div.form-group(data-bind="hasFeedback: { field: zytbefundvoruntv, toggle: zytbefundvoruntv.hasError, messages: zytbefundvoruntv.validationMessages }")
+        label.control-label(data-bind="text: zytbefundvoruntvI18n")
+        select.form-control(name="zytbefundvoruntv", data-bind="options: zytbefundvoruntvList, optionsValue: 'val', optionsText: '-de', value: zytbefundvoruntv")
+      // /ko
+      // /ko
+      div.form-group(data-bind="hasFeedback: { field: hpvtvoruntvorhand, toggle: hpvtvoruntvorhand.hasError, messages: hpvtvoruntvorhand.validationMessages }")
+        label.control-label(data-bind="text: hpvtvoruntvorhandI18n")
+        select.form-control(name="hpvtvoruntvorhand", data-bind="options: janeinList, optionsValue: 'val', optionsText: '-de', value: hpvtvoruntvorhand")
+      // ko if: '1' === hpvtvoruntvorhand()
+      div.form-group(data-bind="hasFeedback: { field: hpvtvorbefund, toggle: hpvtvorbefund.hasError, messages: hpvtvorbefund.validationMessages }")
+        label.control-label(data-bind="text: hpvtvorbefundI18n")
+        select.form-control(name="hpvtvorbefund", data-bind="options: hpvtvorbefundList, optionsValue: 'val', optionsText: '-de', value: hpvtvorbefund")
+      // ko if: showGeneral
+      // ko if: '1' === hpvtvorbefund()
+      div.form-group(data-bind="hasFeedback: { field: hpvvirustypvorbefund, toggle: hpvvirustypvorbefund.hasError, messages: hpvvirustypvorbefund.validationMessages }")
+        label.control-label(data-bind="text: hpvvirustypvorbefundI18n")
+        select.form-control(name="hpvvirustypvorbefund", data-bind="options: hpvvirustypvorbefundList, optionsValue: 'val', optionsText: '-de', value: hpvvirustypvorbefund")
+      // /ko
+      // /ko
+      // /ko
+  div.col-md-4
+    +DmpFieldset('kolBefundRioI18n')
+      // ko if: showGeneral
+      div.form-group(data-bind="hasFeedback: { field: zervixeinstellbar, toggle: zervixeinstellbar.hasError, messages: zervixeinstellbar.validationMessages }")
+        label.control-label(data-bind="text: zervixeinstellbarI18n")
+        select.form-control(name="zervixeinstellbar", data-bind="options: janeinList, optionsValue: 'val', optionsText: '-de', value: zervixeinstellbar")
+      // /ko
+      div.form-group(data-bind="hasFeedback: { field: kolposkbefund, toggle: kolposkbefund.hasError, messages: kolposkbefund.validationMessages }")
+        label.control-label(data-bind="text: kolposkbefundI18n")
+        select.form-control(name="kolposkbefund", data-bind="options: kolposkbefundList, optionsValue: 'val', optionsText: '-de', value: kolposkbefund")
+      // ko if: '1' === kolposkbefund()
+      div.form-group(data-bind="hasFeedback: { field: pzgsichtbar, toggle: pzgsichtbar.hasError, messages: pzgsichtbar.validationMessages }")
+        label.control-label(data-bind="text: pzgsichtbarI18n")
+        select.form-control(name="pzgsichtbar", data-bind="options: pzgsichtbarList, optionsValue: 'val', optionsText: '-de', value: pzgsichtbar")
+      div.form-group(data-bind="hasFeedback: { field: tztyp, toggle: tztyp.hasError, messages: tztyp.validationMessages }")
+        label.control-label(data-bind="text: tztypI18n")
+        select.form-control(name="tztyp", data-bind="options: tztypList, optionsValue: 'val', optionsText: '-de', value: tztyp")
+      div.form-group(data-bind="hasFeedback: { field: normalbefund, toggle: normalbefund.hasError, messages: normalbefund.validationMessages }")
+        label.control-label(data-bind="text: normalbefundI18n")
+        select.form-control(name="normalbefund", data-bind="options: janeinList, optionsValue: 'val', optionsText: '-de', value: normalbefund")
+      // ko if: '0' === normalbefund()
+      div.form-group(data-bind="hasFeedback: { field: gradabnbefunde, toggle: gradabnbefunde.hasError, messages: gradabnbefunde.validationMessages }")
+        label.control-label(data-bind="text: gradabnbefundeI18n")
+        select.form-control(name="gradabnbefunde", data-bind="options: gradabnbefundeList, optionsValue: 'val', optionsText: '-de', value: gradabnbefunde")
+      // ko if: showGeneral
+      div.form-group(data-bind="hasFeedback: { field: verdachtais, toggle: verdachtais.hasError, messages: verdachtais.validationMessages }")
+        label.control-label(data-bind="text: verdachtaisI18n")
+        select.form-control(name="verdachtais", data-bind="options: janeinList, optionsValue: 'val', optionsText: '-de', value: verdachtais")
+      // /ko
+      div.form-group(data-bind="hasFeedback: { field: lokalabnbefunde, toggle: lokalabnbefunde.hasError, messages: lokalabnbefunde.validationMessages }")
+        label.control-label(data-bind="text: lokalabnbefundeI18n")
+        select.form-control(name="lokalabnbefunde", data-bind="options: lokalabnbefundeList, optionsValue: 'val', optionsText: '-de', value: lokalabnbefunde")
+      div.form-group(data-bind="hasFeedback: { field: groesselaesion, toggle: groesselaesion.hasError, messages: groesselaesion.validationMessages }")
+        label.control-label(data-bind="text: groesselaesionI18n")
+        select.form-control(name="groesselaesion", data-bind="options: groesselaesionList, optionsValue: 'val', optionsText: '-de', value: groesselaesion")
+      div.form-group(data-bind="hasFeedback: { field: verdachtinvasion, toggle: verdachtinvasion.hasError, messages: verdachtinvasion.validationMessages }")
+        label.control-label(data-bind="text: verdachtinvasionI18n")
+        select.form-control(name="verdachtinvasion", data-bind="options: janeinList, optionsValue: 'val', optionsText: '-de', value: verdachtinvasion")
+      // /ko
+      // /ko
+      // ko if: showGeneral
+      // ko if: '0' === normalbefund()
+      div.form-group(data-bind="hasFeedback: { field: weiterebefunde, toggle: weiterebefunde.hasError, messages: weiterebefunde.validationMessages }")
+        label.control-label(data-bind="text: weiterebefundeI18n")
+        select.form-control(name="weiterebefunde", data-bind="options: janeinList, optionsValue: 'val', optionsText: '-de', value: weiterebefunde")
+      // /ko
+      // /ko
+      // ko if: 2021 === currentYear()
+      div.form-group(data-bind="hasFeedback: { field: weiterebefunde, toggle: weiterebefunde.hasError, messages: weiterebefunde.validationMessages }")
+        label.control-label(data-bind="text: weiterebefundeI18n")
+        select.form-control(name="weiterebefunde", data-bind="options: janeinList, optionsValue: 'val', optionsText: '-de', value: weiterebefunde")
+      // /ko
+      // ko if: '1' === weiterebefunde()
+      div.form-group(data-bind="hasFeedback: { field: kongenanomalie, toggle: kongenanomalie.hasError, messages: kongenanomalie.validationMessages }")
+        label.control-label(data-bind="text: kongenanomalieI18n")
+        select.form-control(name="kongenanomalie", data-bind="options: jaList, optionsValue: 'val', optionsText: '-de', value: kongenanomalie")
+      div.form-group(data-bind="hasFeedback: { field: kondylome, toggle: kondylome.hasError, messages: kondylome.validationMessages }")
+        label.control-label(data-bind="text: kondylomeI18n")
+        select.form-control(name="kondylome", data-bind="options: jaList, optionsValue: 'val', optionsText: '-de', value: kondylome")
+      div.form-group(data-bind="hasFeedback: { field: endometriose, toggle: endometriose.hasError, messages: endometriose.validationMessages }")
+        label.control-label(data-bind="text: endometrioseI18n")
+        select.form-control(name="endometriose", data-bind="options: jaList, optionsValue: 'val', optionsText: '-de', value: endometriose")
+      div.form-group(data-bind="hasFeedback: { field: ektoendopolypen, toggle: ektoendopolypen.hasError, messages: ektoendopolypen.validationMessages }")
+        label.control-label(data-bind="text: ektoendopolypenI18n")
+        select.form-control(name="ektoendopolypen", data-bind="options: jaList, optionsValue: 'val', optionsText: '-de', value: ektoendopolypen")
+      div.form-group(data-bind="hasFeedback: { field: entzuendung, toggle: entzuendung.hasError, messages: entzuendung.validationMessages }")
+        label.control-label(data-bind="text: entzuendungI18n")
+        select.form-control(name="entzuendung", data-bind="options: jaList, optionsValue: 'val', optionsText: '-de', value: entzuendung")
+      div.form-group(data-bind="hasFeedback: { field: stenose, toggle: stenose.hasError, messages: stenose.validationMessages }")
+        label.control-label(data-bind="text: stenoseI18n")
+        select.form-control(name="stenose", data-bind="options: jaList, optionsValue: 'val', optionsText: '-de', value: stenose")
+      div.form-group(data-bind="hasFeedback: { field: postopveraend, toggle: postopveraend.hasError, messages: postopveraend.validationMessages }")
+        label.control-label(data-bind="text: postopveraendI18n")
+        select.form-control(name="postopveraend", data-bind="options: jaList, optionsValue: 'val', optionsText: '-de', value: postopveraend")
+      div.form-group(data-bind="hasFeedback: { field: sonstweitbefunde, toggle: sonstweitbefunde.hasError, messages: sonstweitbefunde.validationMessages }")
+        label.control-label(data-bind="text: sonstweitbefundeI18n")
+        select.form-control(name="sonstweitbefunde", data-bind="options: jaList, optionsValue: 'val', optionsText: '-de', value: sonstweitbefunde")
+      // ko if: '1' === sonstweitbefunde()
+      div.form-group(data-bind="hasFeedback: { field: sonstbefunde, toggle: sonstbefunde.hasError, messages: sonstbefunde.validationMessages }")
+        label.control-label(data-bind="text: sonstbefundeI18n")
+        input.form-control(name='sonstbefunde', type="text", data-bind="value: sonstbefunde")
+      // /ko
+      // /ko
+  div.col-md-4
+    +DmpFieldset('durchgefMassnahmenI18n')
+      div.form-group(data-bind="hasFeedback: { field: massnahmen, toggle: massnahmen.hasError, messages: massnahmen.validationMessages }")
+        label.control-label(data-bind="text: massnahmenI18n")
+        select.form-control(name="massnahmen", data-bind="options: massnahmenList, optionsValue: 'val', optionsText: '-de', value: massnahmen")
+      // ko if: '1' === massnahmen() || '4'=== massnahmen()
+      div.form-group(data-bind="hasFeedback: { field: anzahlbiopsien, toggle: anzahlbiopsien.hasError, messages: anzahlbiopsien.validationMessages }")
+        label.control-label(data-bind="text: anzahlbiopsienI18n")
+        input.form-control(name='anzahlbiopsien', type="text", data-bind="value: anzahlbiopsien")
+      // /ko
+    // ko if: ( showGeneral() && ( '1' === massnahmen() || '2' === massnahmen() ) ) || ( 2021 === currentYear() && ( '1' === massnahmen() || '4' === massnahmen() ) )
+    +DmpFieldset('ergebnisBiopsieI18n')
+      // ko if: showGeneral
+      // ko if: '1' === massnahmen() || '2' === massnahmen()
+      div.form-group(data-bind="hasFeedback: { field: befundbiopskueret, toggle: befundbiopskueret.hasError, messages: befundbiopskueret.validationMessages }")
+        label.control-label(data-bind="text: befundbiopskueretI18n")
+        select.form-control(name="befundbiopskueret", data-bind="options: befundbiopskueretList, optionsValue: 'val', optionsText: '-de', value: befundbiopskueret")
+      // /ko
+      // /ko
+      // ko if: 2021 === currentYear()
+      // ko if: '1' === massnahmen() || '4' === massnahmen()
+      div.form-group(data-bind="hasFeedback: { field: befundbiopskueret, toggle: befundbiopskueret.hasError, messages: befundbiopskueret.validationMessages }")
+        label.control-label(data-bind="text: befundbiopskueretI18n")
+        select.form-control(name="befundbiopskueret", data-bind="options: befundbiopskueretList, optionsValue: 'val', optionsText: '-de', value: befundbiopskueret")
+      // /ko
+      // /ko
+      //ko if: '8' === befundbiopskueret()
+      div.form-group(data-bind="hasFeedback: { field: karzinomtyp, toggle: karzinomtyp.hasError, messages: karzinomtyp.validationMessages }")
+       label.control-label(data-bind="text: karzinomtypI18n")
+       input.form-control(name='karzinomtyp', type="text", data-bind="value: karzinomtyp")
+      // /ko
+      //ko if: '88' === befundbiopskueret()
+      div.form-group(data-bind="hasFeedback: { field: sonstbefbiopskueret, toggle: sonstbefbiopskueret.hasError, messages: sonstbefbiopskueret.validationMessages }")
+        label.control-label(data-bind="text: sonstbefbiopskueretI18n")
+        input.form-control(name='sonstbefbiopskueret', type="text", data-bind="value: sonstbefbiopskueret")
+      // /ko
+      // ko if: showGeneral
+      // ko if: '2' === befundbiopskueret()
+      div.form-group(data-bind="hasFeedback: { field: metaplasievorgaenge, toggle: metaplasievorgaenge.hasError, messages: metaplasievorgaenge.validationMessages }")
+        label.control-label(data-bind="text: metaplasievorgaengeI18n")
+        select.form-control(name="metaplasievorgaenge", data-bind="options: metaplasievorgaengeList, optionsValue: 'val', optionsText: '-de', value: metaplasievorgaenge, disable: metaplasievorgaenge.readOnly")
+      div.form-group(data-bind="hasFeedback: { field: adenocarcinomainsitu, toggle: adenocarcinomainsitu.hasError, messages: adenocarcinomainsitu.validationMessages }")
+        label.control-label(data-bind="text: adenocarcinomainsituI18n")
+        select.form-control(name="adenocarcinomainsitu", data-bind="options: jaList, optionsValue: 'val', optionsText: '-de', value: adenocarcinomainsitu, disable: adenocarcinomainsitu.readOnly")
+      div.form-group(data-bind="hasFeedback: { field: invasivplattenepithelkarz, toggle: invasivplattenepithelkarz.hasError, messages: invasivplattenepithelkarz.validationMessages }")
+        label.control-label(data-bind="text: invasivplattenepithelkarzI18n")
+        select.form-control(name="invasivplattenepithelkarz", data-bind="options: jaList, optionsValue: 'val', optionsText: '-de', value: invasivplattenepithelkarz, disable: invasivplattenepithelkarz.readOnly")
+      div.form-group(data-bind="hasFeedback: { field: invasivadenokarz, toggle: invasivadenokarz.hasError, messages: invasivadenokarz.validationMessages }")
+        label.control-label(data-bind="text: invasivadenokarzI18n")
+        select.form-control(name="invasivadenokarz", data-bind="options: jaList, optionsValue: 'val', optionsText: '-de', value: invasivadenokarz, disable: invasivadenokarz.readOnly")
+      div.form-group(data-bind="hasFeedback: { field: sonstmetaplasiebefunde, toggle: sonstmetaplasiebefunde.hasError, messages: sonstmetaplasiebefunde.validationMessages }")
+        label.control-label(data-bind="text: sonstmetaplasiebefundeI18n")
+        select.form-control(name="sonstmetaplasiebefunde", data-bind="options: jaList, optionsValue: 'val', optionsText: '-de', value: sonstmetaplasiebefunde, disable: sonstmetaplasiebefunde.readOnly")
+      // ko if: '1' === sonstmetaplasiebefunde()
+      div.form-group(data-bind="hasFeedback: { field: sonstbefbiopskueret, toggle: sonstbefbiopskueret.hasError, messages: sonstbefbiopskueret.validationMessages }")
+        label.control-label(data-bind="text: sonstbefbiopskueretI18n")
+        input.form-control(name='sonstbefbiopskueret', type="text", data-bind="value: sonstbefbiopskueret")
+      // /ko
+      // /ko
+      // /ko
+    // /ko
+    +DmpFieldset('empfohlMassnahmeI18n')
+      div.form-group(data-bind="hasFeedback: { field: empfohlenemassnahmebiops, toggle: empfohlenemassnahmebiops.hasError, messages: empfohlenemassnahmebiops.validationMessages }")
+        label.control-label(data-bind="text: empfohlenemassnahmebiopsI18n")
+        select.form-control(name="empfohlenemassnahmebiops", data-bind="options: empfohlenemassnahmebiopsList, optionsValue: 'val', optionsText: '-de', value: empfohlenemassnahmebiops")
+      // ko if: '1' === empfohlenemassnahmebiops()
+      div.form-group(data-bind="hasFeedback: { field: empfohlenekontrabkl, toggle: empfohlenekontrabkl.hasError, messages: empfohlenekontrabkl.validationMessages }")
+        label.control-label(data-bind="text: empfohlenekontrabklI18n")
+        select.form-control(name="empfohlenekontrabkl", data-bind="options: empfohlenekontrabklList, optionsValue: 'val', optionsText: '-de', value: empfohlenekontrabkl")
+      // ko if: '4' === empfohlenekontrabkl()
+      div.form-group(data-bind="hasFeedback: { field: zeithorizontkontrabkl, toggle: zeithorizontkontrabkl.hasError, messages: zeithorizontkontrabkl.validationMessages }")
+        label.control-label(data-bind="text: zeithorizontkontrabklI18n")
+        select.form-control(name="zeithorizontkontrabkl", data-bind="options: zeithorizontkontrabklList, optionsValue: 'val', optionsText: '-de', value: zeithorizontkontrabkl")
+      // ko if: '2' === zeithorizontkontrabkl()
+      div.form-group(data-bind="hasFeedback: { field: zeithorizont, toggle: zeithorizont.hasError, messages: zeithorizont.validationMessages }")
+        label.control-label(data-bind="text: zeithorizontI18n")
+        input.form-control(name='zeithorizont', type="text", data-bind="value: zeithorizont")
+      // /ko
+      // /ko
+      // /ko
+      // ko if: '2' === empfohlenemassnahmebiops()
+      div.form-group(data-bind="hasFeedback: { field: therapieempfehlung, toggle: therapieempfehlung.hasError, messages: therapieempfehlung.validationMessages }")
+        label.control-label(data-bind="text: therapieempfehlungI18n")
+        select.form-control(name="therapieempfehlung", data-bind="options: therapieempfehlungList, optionsValue: 'val', optionsText: '-de', value: therapieempfehlung")
+      // ko if: 2021 === currentYear()
+      // ko if: '1' === therapieempfehlung() || '2' === therapieempfehlung()
+      div.form-group(data-bind="hasFeedback: { field: op, toggle: op.hasError, messages: op.validationMessages }")
+        label.control-label(data-bind="text: opI18n")
+        select.form-control(name="op", data-bind="options: anamabweichvoruntList, optionsValue: 'val', optionsText: '-de', value: op")
+      // /ko
+      // ko if: '0' === op()
+      div.form-group(data-bind="hasFeedback: { field: opeingriff, toggle: opeingriff.hasError, messages: opeingriff.validationMessages }")
+        label.control-label(data-bind="text: opeingriffI18n")
+        select.form-control(name="opeingriff", data-bind="options: janeinList, optionsValue: 'val', optionsText: '-de', value: opeingriff")
+      // /ko
+      // /ko
+      // ko if: ( showGeneral() && '3' === therapieempfehlung() ) || ( 2021 === currentYear() && '2' === therapieempfehlung() )
+      div.form-group(data-bind="hasFeedback: { field: sonstopeingr, toggle: sonstopeingr.hasError, messages: sonstopeingr.validationMessages }")
+        label.control-label(data-bind="text: sonstopeingrI18n")
+        input.form-control(name='sonstopeingr', type="text", data-bind="value: sonstopeingr")
+      // /ko
+      // ko if: '8' === therapieempfehlung()
+      div.form-group(data-bind="hasFeedback: { field: weiteretherapieempf, toggle: weiteretherapieempf.hasError, messages: weiteretherapieempf.validationMessages }")
+        label.control-label(data-bind="text: weiteretherapieempfI18n")
+        input.form-control(name='weiteretherapieempf', type="text", data-bind="value: weiteretherapieempf")
+      // /ko
+      // /ko
+    // ko if: ( showGeneral() && '1' === therapieempfehlung() || '2' === therapieempfehlung() || '3' === therapieempfehlung() ) || ( 2021 === currentYear() && ( '1' === op() || '1' === opeingriff() ) )
+    +DmpFieldset('opI18n')
+      // ko if: showGeneral
+      div.form-group(data-bind="hasFeedback: { field: opdatum, toggle: opdatum.hasError, messages: opdatum.validationMessages }")
+        label.control-label(data-bind="text: opdatumI18n")
+        .date-picker.input-group
+          input.form-control(name='opdatum', type="text", data-bind="datetimepicker: { value: opdatum }")
+      // /ko
+      // ko if: 2021 === currentYear()
+      // ko if: '1' === op() || '1' === opeingriff()
+      div.form-group(data-bind="hasFeedback: { field: opdatum, toggle: opdatum.hasError, messages: opdatum.validationMessages }")
+        label.control-label(data-bind="text: opdatumI18n")
+        .date-picker.input-group
+          input.form-control(name='opdatum', type="text", data-bind="datetimepicker: { value: opdatum }")
+      div.form-group(data-bind="hasFeedback: { field: histobef, toggle: histobef.hasError, messages: histobef.validationMessages }")
+        label.control-label(data-bind="text: histobefI18n")
+        select.form-control(name="histobef", data-bind="options: befundbiopskueretList, optionsValue: 'val', optionsText: '-de', value: histobef")
+      // ko if: '8' === histobef()
+      div.form-group(data-bind="hasFeedback: { field: karzinomtyp2, toggle: karzinomtyp2.hasError, messages: karzinomtyp2.validationMessages }")
+        label.control-label(data-bind="text: karzinomtypI18n")
+        input.form-control(name='karzinomtyp2', type="text", data-bind="value: karzinomtyp2")
+      // /ko
+      // ko if: '88' === histobef()
+      div.form-group(data-bind="hasFeedback: { field: sonstbef, toggle: sonstbef.hasError, messages: sonstbef.validationMessages }")
+        label.control-label(data-bind="text: sonstbefundeI18n")
+        input.form-control(name='sonstbef', type="text", data-bind="value: sonstbef")
+      // /ko
+      // /ko
+      // ko if: '1' === op()
+      div.form-group(data-bind="hasFeedback: { field: methokonisation, toggle: methokonisation.hasError, messages: methokonisation.validationMessages }")
+        label.control-label(data-bind="text: methokonisation2021I18n")
+        select.form-control(name="methokonisation", data-bind="options: methokonisationList, optionsValue: 'val', optionsText: '-de', value: methokonisation")
+      div.form-group(data-bind="hasFeedback: { field: methoexzision, toggle: methoexzision.hasError, messages: methoexzision.validationMessages }")
+        label.control-label(data-bind="text: methoexzision2021I18n")
+        select.form-control(name="methoexzision", data-bind="options: methoexzisionList, optionsValue: 'val', optionsText: '-de', value: methoexzision")
+      div.form-group(data-bind="hasFeedback: { field: tiefekonus, toggle: tiefekonus.hasError, messages: tiefekonus.validationMessages }")
+        label.control-label(data-bind="text: tiefekonus2021I18n")
+        input.form-control(name='tiefekonus', type="text", data-bind="value: tiefekonus")
+      div.form-group(data-bind="hasFeedback: { field: umfangexzision, toggle: umfangexzision.hasError, messages: umfangexzision.validationMessages }")
+        label.control-label(data-bind="text: umfangexzision2021I18n")
+        input.form-control(name='umfangexzision', type="text", data-bind="value: umfangexzision")
+      // /ko
+      // /ko
+      // ko if: showGeneral
+      div.form-group(data-bind="hasFeedback: { field: artopeingriff, toggle: artopeingriff.hasError, messages: artopeingriff.validationMessages }")
+        label.control-label(data-bind="text: artopeingriffI18n")
+        select.form-control(name="artopeingriff", data-bind="options: artopeingriffList, optionsValue: 'val', optionsText: '-de', value: artopeingriff")
+      // ko if: '1' === artopeingriff()
+      div.form-group(data-bind="hasFeedback: { field: methokonisation, toggle: methokonisation.hasError, messages: methokonisation.validationMessages }")
+        label.control-label(data-bind="text: methokonisationI18n")
+        select.form-control(name="methokonisation", data-bind="options: methokonisationList, optionsValue: 'val', optionsText: '-de', value: methokonisation")
+      div.form-group(data-bind="hasFeedback: { field: tiefekonus, toggle: tiefekonus.hasError, messages: tiefekonus.validationMessages }")
+        label.control-label(data-bind="text: tiefekonusI18n")
+        input.form-control(name='tiefekonus', type="text", data-bind="value: tiefekonus")
+      // /ko
+      // ko if: '2' === artopeingriff()
+      div.form-group(data-bind="hasFeedback: { field: methoexzision, toggle: methoexzision.hasError, messages: methoexzision.validationMessages }")
+        label.control-label(data-bind="text: methoexzisionI18n")
+        select.form-control(name="methoexzision", data-bind="options: methoexzisionList, optionsValue: 'val', optionsText: '-de', value: methoexzision")
+      div.form-group(data-bind="hasFeedback: { field: umfangexzision, toggle: umfangexzision.hasError, messages: umfangexzision.validationMessages }")
+        label.control-label(data-bind="text: umfangexzisionI18n")
+        input.form-control(name='umfangexzision', type="text", data-bind="value: umfangexzision")
+      // /ko
+      // ko if: '8' === artopeingriff()
+      div.form-group(data-bind="hasFeedback: { field: sonstopeingr2, toggle: sonstopeingr2.hasError, messages: sonstopeingr2.validationMessages }")
+        label.control-label(data-bind="text: sonstopeingr2I18n")
+        input.form-control(name='sonstopeingr2', type="text", data-bind="value: sonstopeingr2")
+      // /ko
+      // /ko
+      // ko if: showGeneral
+      div.form-group(data-bind="hasFeedback: { field: endhistolbefundvorh, toggle: endhistolbefundvorh.hasError, messages: endhistolbefundvorh.validationMessages }")
+        label.control-label(data-bind="text: endhistolbefundvorhI18n")
+        select.form-control(name="endhistolbefundvorh", data-bind="options: janeinList, optionsValue: 'val', optionsText: '-de', value: endhistolbefundvorh")
+      // /ko
+      // ko if: '1' === endhistolbefundvorh() || '6' === histobef() || '7' === histobef() || '8' === histobef()
+      div.form-group(data-bind="hasFeedback: { field: grading, toggle: grading.hasError, messages: grading.validationMessages }")
+        label.control-label(data-bind="text: gradingI18n")
+        select.form-control(name="grading", data-bind="options: gradingList, optionsValue: 'val', optionsText: '-de', value: grading")
+      // ko if: showGeneral
+      div.form-group(data-bind="hasFeedback: { field: stagingfigo, toggle: stagingfigo.hasError, messages: stagingfigo.validationMessages }")
+        label.control-label(data-bind="text: stagingfigoI18n")
+        select.form-control(name="stagingfigo", data-bind="options: stagingfigoList, optionsValue: 'val', optionsText: '-de', value: stagingfigo")
+      // /ko
+      div.form-group(data-bind="hasFeedback: { field: tnmpt, toggle: tnmpt.hasError, messages: tnmpt.validationMessages }")
+        label.control-label(data-bind="text: tnmptI18n")
+        select.form-control(name="tnmpt", data-bind="options: tnmptList, optionsValue: 'val', optionsText: '-de', value: tnmpt")
+      div.form-group(data-bind="hasFeedback: { field: tnmpn, toggle: tnmpn.hasError, messages: tnmpn.validationMessages }")
+        label.control-label(data-bind="text: tnmpnI18n")
+        select.form-control(name="tnmpn", data-bind="options: tnmpnList, optionsValue: 'val', optionsText: '-de', value: tnmpn")
+      div.form-group(data-bind="hasFeedback: { field: tnmpm, toggle: tnmpm.hasError, messages: tnmpm.validationMessages }")
+        label.control-label(data-bind="text: tnmpmI18n")
+        select.form-control(name="tnmpm", data-bind="options: tnmpmList, optionsValue: 'val', optionsText: '-de', value: tnmpm")
+      // /ko
+      // ko if: 2021 === currentYear()
+      // ko if: '1' === endhistolbefundvorh() || '6' === histobef() || '7' === histobef() || '8' === histobef()
+      div.form-group(data-bind="hasFeedback: { field: stagingfigo, toggle: stagingfigo.hasError, messages: stagingfigo.validationMessages }")
+        label.control-label(data-bind="text: stagingfigoI18n")
+        select.form-control(name="stagingfigo", data-bind="options: stagingfigoList, optionsValue: 'val', optionsText: '-de', value: stagingfigo")
+      // /ko
+      // ko if: ( '2' === histobef() || '3' === histobef() || '4' === histobef() || '5' === histobef() || '6' === histobef() || '7' === histobef() || '8' === histobef() )
+      div.form-group(data-bind="hasFeedback: { field: residualstatus, toggle: residualstatus.hasError, messages: residualstatus.validationMessages }")
+        label.control-label(data-bind="text: residualstatusI18n")
+        select.form-control(name="residualstatus", data-bind="options: residualstatusList, optionsValue: 'val', optionsText: '-de', value: residualstatus")
+      // /ko
+      // /ko
+    // /ko
+// /ko
+// ko if: 'ZKH' === module()
+div.row
+  div.col-md-4(style="align-self:flex-start")
+    +DmpFieldset('hpvtestI18n')
+      div.form-group(data-bind="hasFeedback: { field: datumunt, toggle: datumunt.hasError, messages: datumunt.validationMessages }")
+        label.control-label(data-bind="text: datumuntI18n")
+        .date-picker.input-group
+          input.form-control(name="datumunt", data-bind="datetimepicker: { value: datumunt, valueUpdate: '' }")
+      div.form-group(data-bind="hasFeedback: { field: untersuchungsnummer, toggle: untersuchungsnummer.hasError, messages: untersuchungsnummer.validationMessages }")
+        label.control-label(data-bind="text: untersuchungsnummerI18n")
+        input.form-control(name='untersuchungsnummer', type="text", data-bind="value: untersuchungsnummer")
+      // 2020 fields only
+      // ko if: showGeneral()
+      div.form-group(data-bind="hasFeedback: { field: pznvorhanden, toggle: pznvorhanden.hasError, messages: pznvorhanden.validationMessages }")
+        label.control-label(data-bind="text: pznvorhandenI18n")
+        select.form-control(name="pznvorhanden", data-bind="options: janeinList, optionsValue: 'val', optionsText: '-de', value: pznvorhanden")
+      // ko if: '1' === pznvorhanden()
+      div.form-group(data-bind="hasFeedback: { field: pzn, toggle: pzn.hasError, messages: pzn.validationMessages }")
+        label.control-label(data-bind="text: pznI18n")
+        input.form-control(name='pzn', type="text", data-bind="value: pzn")
+      // /ko
+      // ko if: '0' === pznvorhanden()
+      div.form-group(data-bind="hasFeedback: { field: produkt, toggle: produkt.hasError, messages: produkt.validationMessages }")
+        label.control-label(data-bind="text: produktI18n")
+        input.form-control(name='produkt', type="text", data-bind="value: produkt")
+      // /ko
+      // /ko
+      // ko if: 2021 === currentYear()
+      div.form-group(data-bind="hasFeedback: { field: produkt, toggle: produkt.hasError, messages: produkt.validationMessages }")
+        label.control-label(data-bind="text: produktI18n")
+        input.form-control(name='produkt', type="text", data-bind="value: produkt")
+      // /ko
+      div.form-group(data-bind="hasFeedback: { field: hpvtergebnis, toggle: hpvtergebnis.hasError, messages: hpvtergebnis.validationMessages }")
+        label.control-label(data-bind="text: hpvtergebnisI18n")
+        select.form-control(name="hpvtergebnis", data-bind="options: hpvtergebnisList, optionsValue: 'val', optionsText: '-de', value: hpvtergebnis")
+      // ko if: '1' === hpvtergebnis()
+      div.form-group(data-bind="hasFeedback: { field: hpvvirustyp, toggle: hpvvirustyp.hasError, messages: hpvvirustyp.validationMessages }")
+        // ko if: showGeneral
+        label.control-label(data-bind="text: hpvvirustypI18n")
+        // /ko
+        // ko if: 2021 === currentYear()
+        label.control-label(data-bind="text: hpvvirustyp2021I18n")
+        // /ko
+        select.form-control(name="hpvvirustyp", data-bind="options: hpvvirustypList, optionsValue: 'val', optionsText: '-de', value: hpvvirustyp")
+      // ko if: 2021 === currentYear()
+      // ko if: '1' === hpvvirustyp()
+      div.form-group(data-bind="hasFeedback: { field: welchhpvtyp, toggle: welchhpvtyp.hasError, messages: welchhpvtyp.validationMessages }")
+        label.control-label(data-bind="text: welchhpvtypI18n")
+        select.form-control(name="welchhpvtyp", data-bind="options: welchhpvtypList, optionsValue: 'val', optionsText: '-de', value: welchhpvtyp")
+      // /ko
+      // /ko
+      // /ko
+// /ko
+// ko if: 'ZKP' === module()
+div.row
+  div.col-md-4
+    +DmpFieldset('primarScreeningI18n')
+      div.form-group(data-bind="hasFeedback: { field: datumunt, toggle: datumunt.hasError, messages: datumunt.validationMessages }")
+        label.control-label(data-bind="text: datumuntI18n")
+        .date-picker.input-group
+          input.form-control(name='datumunt', type="text", data-bind="datetimepicker: { value: datumunt, valueUpdate: '' }")
+    +DmpFieldset('hpvImpfStatusI18n')
+      // ko if: 2021 === currentYear()
+      div.form-group(data-bind="hasFeedback: { field: herkunftimpfstatus, toggle: herkunftimpfstatus.hasError, messages: herkunftimpfstatus.validationMessages }")
+        label.control-label(data-bind="text: herkunftimpfstatusI18n")
+        select.form-control(name="herkunftimpfstatus", data-bind="options: herkunftimpfstatusList, optionsValue: 'val', optionsText: '-de', value: herkunftimpfstatus")
+      // /ko
+      div.form-group(data-bind="hasFeedback: { field: hpvimpfung, toggle: hpvimpfung.hasError, messages: hpvimpfung.validationMessages }")
+        label.control-label(data-bind="text: hpvimpfungI18n")
+        select.form-control(name="hpvimpfung", data-bind="options: hpvimpfungList, optionsValue: 'val', optionsText: '-de', value: hpvimpfung")
+      // ko if: 2021 === currentYear()
+      //ko if: ( '1' === hpvimpfung() || '2' === hpvimpfung() ) && '1' === herkunftimpfstatus()
+      div.form-group(data-bind="hasFeedback: { field: produkt, toggle: produkt.hasError, messages: produkt.validationMessages }")
+        label.control-label(data-bind="text: produktZKPI18n")
+        input.form-control(name='produkt', type="text", data-bind="value: produkt")
+      // /ko
+      // /ko
+      // ko if: showGeneral
+      //ko if: '1' === hpvimpfung() || '2' === hpvimpfung()
+      div.form-group(data-bind="hasFeedback: { field: produkt, toggle: produkt.hasError, messages: produkt.validationMessages }")
+        label.control-label(data-bind="text: produktZKPI18n")
+        input.form-control(name='produkt', type="text", data-bind="value: produkt")
+      // /ko
+      div.form-group(data-bind="hasFeedback: { field: herkunftimpfstatus, toggle: herkunftimpfstatus.hasError, messages: herkunftimpfstatus.validationMessages }")
+        label.control-label(data-bind="text: herkunftimpfstatusI18n")
+        select.form-control(name="herkunftimpfstatus", data-bind="options: herkunftimpfstatusList, optionsValue: 'val', optionsText: '-de', value: herkunftimpfstatus")
+      // /ko
+    +DmpFieldset('untersuchungI18n')
+      div.form-group(data-bind="hasFeedback: { field: artuanlunt, toggle: artuanlunt.hasError, messages: artuanlunt.validationMessages }")
+        label.control-label(data-bind="text: artuanluntI18n")
+        select.form-control(name="artuanlunt", data-bind="options: artuanluntList, optionsValue: 'val', optionsText: '-de', value: artuanlunt")
+  div.col-md-4
+    +DmpFieldset('vorangeUntersuchungI18n')
+      div.form-group(data-bind="hasFeedback: { field: befundevoruntvorh, toggle: befundevoruntvorh.hasError, messages: befundevoruntvorh.validationMessages }")
+        label.control-label(data-bind="text: befundevoruntvorhI18n")
+        select.form-control(name="befundevoruntvorh", data-bind="options: janeinList, optionsValue: 'val', optionsText: '-de', value: befundevoruntvorh")
+      //ko if: '1' === befundevoruntvorh()
+      div.form-group(data-bind="hasFeedback: { field: herkunftergebvoru, toggle: herkunftergebvoru.hasError, messages: herkunftergebvoru.validationMessages }")
+        label.control-label(data-bind="text: herkunftergebvoruI18n")
+        select.form-control(name="herkunftergebvoru", data-bind="options: herkunftergebvoruList, optionsValue: 'val', optionsText: '-de', value: herkunftergebvoru")
+      div.form-group(data-bind="hasFeedback: { field: voruntdatum, toggle: voruntdatum.hasError, messages: voruntdatum.validationMessages }")
+        label.control-label(data-bind="text: voruntdatumI18n")
+        input.form-control(name='voruntdatum', type="text", data-bind="value: voruntdatum")
+      div.form-group(data-bind="hasFeedback: { field: zytbefundvoruntvorh, toggle: zytbefundvoruntvorh.hasError, messages: zytbefundvoruntvorh.validationMessages }")
+        label.control-label(data-bind="text: zytbefundvoruntvorhI18n")
+        select.form-control(name="zytbefundvoruntvorh", data-bind="options: janeinList, optionsValue: 'val', optionsText: '-de', value: zytbefundvoruntvorh")
+      //ko if: '1' === zytbefundvoruntvorh()
+      div.form-group(data-bind="hasFeedback: { field: zytbefundvorunt, toggle: zytbefundvorunt.hasError, messages: zytbefundvorunt.validationMessages }")
+        label.control-label(data-bind="text: zytbefundvoruntI18n")
+        select.form-control(name="zytbefundvorunt", data-bind="options: zytbefundvoruntList, optionsValue: 'val', optionsText: '-de', value: zytbefundvorunt")
+      // ko if: showGeneral
+      //ko if: '1' === zytbefundvorunt()
+      div.form-group(data-bind="hasFeedback: { field: zytbefundvorunt01, toggle: zytbefundvorunt01.hasError, messages: zytbefundvorunt01.validationMessages }")
+        label.control-label(data-bind="text: zytbefundvorunt01I18n")
+        select.form-control(name="zytbefundvorunt01", data-bind="options: zytbefundvorunt01List, optionsValue: 'val', optionsText: '-de', value: zytbefundvorunt01")
+      // /ko
+      //ko if: '2' === zytbefundvorunt()
+      div.form-group(data-bind="hasFeedback: { field: zytbefundvoruntii, toggle: zytbefundvoruntii.hasError, messages: zytbefundvoruntii.validationMessages }")
+        label.control-label(data-bind="text: zytbefundvoruntiiI18n")
+        select.form-control(name="zytbefundvoruntii", data-bind="options: zytbefundvoruntiiList, optionsValue: 'val', optionsText: '-de', value: zytbefundvoruntii")
+      // /ko
+      //ko if: '3' === zytbefundvorunt()
+      div.form-group(data-bind="hasFeedback: { field: zytbefundvoruntiii, toggle: zytbefundvoruntiii.hasError, messages: zytbefundvoruntiii.validationMessages }")
+        label.control-label(data-bind="text: zytbefundvoruntiiiI18n")
+        select.form-control(name="zytbefundvoruntiii", data-bind="options: zytbefundvoruntiiiList, optionsValue: 'val', optionsText: '-de', value: zytbefundvoruntiii")
+      // /ko
+      //ko if: '4' === zytbefundvorunt()
+      div.form-group(data-bind="hasFeedback: { field: zytbefundvoruntiiid, toggle: zytbefundvoruntiiid.hasError, messages: zytbefundvoruntiiid.validationMessages }")
+        label.control-label(data-bind="text: zytbefundvoruntiiidI18n")
+        select.form-control(name="zytbefundvoruntiiid", data-bind="options: zytbefundvoruntiiidList, optionsValue: 'val', optionsText: '-de', value: zytbefundvoruntiiid")
+      // /ko
+      //ko if: '5' === zytbefundvorunt()
+      div.form-group(data-bind="hasFeedback: { field: zytbefundvoruntiv, toggle: zytbefundvoruntiv.hasError, messages: zytbefundvoruntiv.validationMessages }")
+        label.control-label(data-bind="text: zytbefundvoruntivI18n")
+        select.form-control(name="zytbefundvoruntiv", data-bind="options: zytbefundvoruntivList, optionsValue: 'val', optionsText: '-de', value: zytbefundvoruntiv")
+      // /ko
+      //ko if: '6' === zytbefundvorunt()
+      div.form-group(data-bind="hasFeedback: { field: zytbefundvoruntv, toggle: zytbefundvoruntv.hasError, messages: zytbefundvoruntv.validationMessages }")
+        label.control-label(data-bind="text: zytbefundvoruntvI18n")
+        select.form-control(name="zytbefundvoruntv", data-bind="options: zytbefundvoruntvList, optionsValue: 'val', optionsText: '-de', value: zytbefundvoruntv")
+      // /ko
+      // /ko
+      // /ko
+      div.form-group(data-bind="hasFeedback: { field: hpvtvoruntvorhand, toggle: hpvtvoruntvorhand.hasError, messages: hpvtvoruntvorhand.validationMessages }")
+        label.control-label(data-bind="text: hpvtvoruntvorhandZKPI18n")
+        select.form-control(name="hpvtvoruntvorhand", data-bind="options: janeinList, optionsValue: 'val', optionsText: '-de', value: hpvtvoruntvorhand")
+      //ko if: '1' === hpvtvoruntvorhand()
+      div.form-group(data-bind="hasFeedback: { field: hpvtvorbefund, toggle: hpvtvorbefund.hasError, messages: hpvtvorbefund.validationMessages }")
+        // ko if: showGeneral
+        label.control-label(data-bind="text: hpvtvorbefundI18n")
+        // /ko
+        // ko if: 2021 === currentYear()
+        label.control-label(data-bind="text: hpvtvorbefundZKPI18n")
+        // /ko
+        select.form-control(name="hpvtvorbefund", data-bind="options: hpvtvorbefundList, optionsValue: 'val', optionsText: '-de', value: hpvtvorbefund")
+      // ko if: showGeneral
+      //ko if: '1' === hpvtvorbefund()
+      div.form-group(data-bind="hasFeedback: { field: hpvvirustypvorbefund, toggle: hpvvirustypvorbefund.hasError, messages: hpvvirustypvorbefund.validationMessages }")
+        label.control-label(data-bind="text: hpvvirustypvorbefundI18n")
+        select.form-control(name="hpvvirustypvorbefund", data-bind="options: hpvvirustypvorbefundList, optionsValue: 'val', optionsText: '-de', value: hpvvirustypvorbefund")
+      // /ko
+      // /ko
+      // /ko
+      div.form-group(data-bind="hasFeedback: { field: histologvorbefundvorunt, toggle: histologvorbefundvorunt.hasError, messages: histologvorbefundvorunt.validationMessages }")
+        label.control-label(data-bind="text: histologvorbefundvoruntI18n")
+        select.form-control(name="histologvorbefundvorunt", data-bind="options: histologvorbefundvoruntList, optionsValue: 'val', optionsText: '-de', value: histologvorbefundvorunt")
+      //ko if: 2021 === currentYear()
+      //ko if: '88' === histologvorbefundvorunt()
+      div.form-group(data-bind="hasFeedback: { field: sonstbefunde, toggle: sonstbefunde.hasError, messages: sonstbefunde.validationMessages }")
+        label.control-label(data-bind="text: sonstbefundeI18n")
+        input.form-control(name='sonstbefunde', type="text", data-bind="value: sonstbefunde")
+      // /ko
+      //ko if: '8' === histologvorbefundvorunt()
+      div.form-group(data-bind="hasFeedback: { field: karzinomtyp, toggle: karzinomtyp.hasError, messages: karzinomtyp.validationMessages }")
+        label.control-label(data-bind="text: karzinomtypI18n")
+        input.form-control(name='karzinomtyp', type="text", data-bind="value: karzinomtyp")
+      // /ko
+      // /ko
+      //ko if: showGeneral
+      //ko if: '2' === histologvorbefundvorunt()
+      div.form-group(data-bind="hasFeedback: { field: metaplasievorgaenge, toggle: metaplasievorgaenge.hasError, messages: metaplasievorgaenge.validationMessages }")
+        label.control-label(data-bind="text: metaplasievorgaengeZKPI18n")
+        select.form-control(name="metaplasievorgaenge", data-bind="options: metaplasievorgaengeList, optionsValue: 'val', optionsText: '-de', value: metaplasievorgaenge, disable: metaplasievorgaenge.readOnly")
+      div.form-group(data-bind="hasFeedback: { field: adenocarcinomainsitu, toggle: adenocarcinomainsitu.hasError, messages: adenocarcinomainsitu.validationMessages }")
+        label.control-label(data-bind="text: adenocarcinomainsituI18n")
+        select.form-control(name="adenocarcinomainsitu", data-bind="options: jaList, optionsValue: 'val', optionsText: '-de', value: adenocarcinomainsitu, disable: adenocarcinomainsitu.readOnly")
+      div.form-group(data-bind="hasFeedback: { field: invasivplattenepithelkarz, toggle: invasivplattenepithelkarz.hasError, messages: invasivplattenepithelkarz.validationMessages }")
+        label.control-label(data-bind="text: invasivplattenepithelkarzI18n")
+        select.form-control(name="invasivplattenepithelkarz", data-bind="options: jaList, optionsValue: 'val', optionsText: '-de', value: invasivplattenepithelkarz, disable: invasivplattenepithelkarz.readOnly")
+      div.form-group(data-bind="hasFeedback: { field: invasivadenokarz, toggle: invasivadenokarz.hasError, messages: invasivadenokarz.validationMessages }")
+        label.control-label(data-bind="text: invasivadenokarzI18n")
+        select.form-control(name="invasivadenokarz", data-bind="options: jaList, optionsValue: 'val', optionsText: '-de', value: invasivadenokarz, disable: invasivadenokarz.readOnly")
+      div.form-group(data-bind="hasFeedback: { field: sonstmetaplasiebefunde, toggle: sonstmetaplasiebefunde.hasError, messages: sonstmetaplasiebefunde.validationMessages }")
+        label.control-label(data-bind="text: sonstmetaplasiebefundeI18n")
+        select.form-control(name="sonstmetaplasiebefunde", data-bind="options: jaList, optionsValue: 'val', optionsText: '-de', value: sonstmetaplasiebefunde, disable: sonstmetaplasiebefunde.readOnly")
+      //ko if: '1' === sonstmetaplasiebefunde()
+      div.form-group(data-bind="hasFeedback: { field: sonstbefunde, toggle: sonstbefunde.hasError, messages: sonstbefunde.validationMessages }")
+        label.control-label(data-bind="text: sonstbefundeI18n")
+        input.form-control(name='sonstbefunde', type="text", data-bind="value: sonstbefunde")
+      // /ko
+      // /ko
+      // /ko
+      // /ko
+    +DmpFieldset('anamAngabenI18n')
+      //ko if: '3' === artuanlunt()
+      div.form-group(data-bind="hasFeedback: { field: anamabweichvorunt, toggle: anamabweichvorunt.hasError, messages: anamabweichvorunt.validationMessages }")
+        label.control-label(data-bind="text: anamabweichvoruntI18n")
+        select.form-control(name="anamabweichvorunt", data-bind="options: anamabweichvoruntList, optionsValue: 'val', optionsText: '-de', value: anamabweichvorunt")
+      // /ko
+      //ko if: '1' === artuanlunt() ||   '2' === artuanlunt() || '1' === anamabweichvorunt() || '9' === anamabweichvorunt()
+      div.form-group(data-bind="hasFeedback: { field: ausflusspathblutung, toggle: ausflusspathblutung.hasError, messages: ausflusspathblutung.validationMessages }")
+        label.control-label(data-bind="text: ausflusspathblutungI18n")
+        select.form-control(name="ausflusspathblutung", data-bind="options: janeinList, optionsValue: 'val', optionsText: '-de', value: ausflusspathblutung")
+      div.form-group(data-bind="hasFeedback: { field: iup, toggle: iup.hasError, messages: iup.validationMessages }")
+        label.control-label(data-bind="text: iupI18n")
+        select.form-control(name="iup", data-bind="options: janeinList, optionsValue: 'val', optionsText: '-de', value: iup")
+      div.form-group(data-bind="hasFeedback: { field: hormonanwendungen, toggle: hormonanwendungen.hasError, messages: hormonanwendungen.validationMessages }")
+        label.control-label(data-bind="text: hormonanwendungenI18n")
+        select.form-control(name="hormonanwendungen", data-bind="options: janeinList, optionsValue: 'val', optionsText: '-de', value: hormonanwendungen")
+      div.form-group(data-bind="hasFeedback: { field: gynopradiatio, toggle: gynopradiatio.hasError, messages: gynopradiatio.validationMessages }")
+        label.control-label(data-bind="text: gynopradiatioI18n")
+        select.form-control(name="gynopradiatio", data-bind="options: janeinList, optionsValue: 'val', optionsText: '-de', value: gynopradiatio")
+      // /ko
+      div.form-group(data-bind="hasFeedback: { field: graviditaet, toggle: graviditaet.hasError, messages: graviditaet.validationMessages }")
+        label.control-label(data-bind="text: graviditaetI18n")
+        select.form-control(name="graviditaet", data-bind="options: janeinList, optionsValue: 'val', optionsText: '-de', value: graviditaet")
+      div.form-group(data-bind="hasFeedback: { field: klinischerbefund, toggle: klinischerbefund.hasError, messages: klinischerbefund.validationMessages }")
+        label.control-label(data-bind="text: klinischerbefundI18n")
+        select.form-control(name="klinischerbefund", data-bind="options: klinischerbefundList, optionsValue: 'val', optionsText: '-de', value: klinischerbefund")
+  div.col-md-4
+    +DmpFieldset('ergebnisZytUntersuchungI18n')
+      //ko if: 2021 === currentYear()
+      //ko if: '3' === artuanlunt()
+      div.form-group(data-bind="hasFeedback: { field: untersuchung, toggle: untersuchung.hasError, messages: untersuchung.validationMessages }")
+        label.control-label(data-bind="text: untersuchungI18n")
+        select.form-control(name="untersuchung", data-bind="options: janeinList, optionsValue: 'val', optionsText: '-de', value: untersuchung")
+      // /ko
+      // /ko
+      //ko if: '1' === untersuchung() || '1' === artuanlunt() || '2' === artuanlunt()
+      div.form-group(data-bind="hasFeedback: { field: untersuchungsnummer, toggle: untersuchungsnummer.hasError, messages: untersuchungsnummer.validationMessages }")
+        label.control-label(data-bind="text: untersuchungsnummerI18n")
+        input.form-control(name='untersuchungsnummer', type="text", data-bind="value: untersuchungsnummer")
+      // /ko
+      div.form-group
+        label.control-label(data-bind="text: zytbefundI18n")
+        select.form-control(name="zytbefund", data-bind="options: zytbefundvoruntList, optionsValue: 'val', optionsText: '-de', value: zytbefund")
+      // ko if: showGeneral
+      //ko if: '1' === zytbefund()
+      div.form-group(data-bind="hasFeedback: { field: zytbefund01, toggle: zytbefund01.hasError, messages: zytbefund01.validationMessages }")
+        label.control-label(data-bind="text: zytbefund01I18n")
+        select.form-control(name="zytbefund01", data-bind="options: zytbefundvorunt01List, optionsValue: 'val', optionsText: '-de', value: zytbefund01")
+      // /ko
+      //ko if: '2' === zytbefund()
+      div.form-group(data-bind="hasFeedback: { field: zytbefundii, toggle: zytbefundii.hasError, messages: zytbefundii.validationMessages }")
+        label.control-label(data-bind="text: zytbefundiiI18n")
+        select.form-control(name="zytbefundii", data-bind="options: zytbefundvoruntiiList, optionsValue: 'val', optionsText: '-de', value: zytbefundii")
+      // /ko
+      //ko if: '3' === zytbefund()
+      div.form-group(data-bind="hasFeedback: { field: zytbefundiii, toggle: zytbefundiii.hasError, messages: zytbefundiii.validationMessages }")
+        label.control-label(data-bind="text: zytbefundiiiI18n")
+        select.form-control(name="zytbefundiii", data-bind="options: zytbefundvoruntiiiList, optionsValue: 'val', optionsText: '-de', value: zytbefundiii")
+      // /ko
+      //ko if: '4' === zytbefund()
+      div.form-group(data-bind="hasFeedback: { field: zytbefundiiid, toggle: zytbefundiiid.hasError, messages: zytbefundiiid.validationMessages }")
+        label.control-label(data-bind="text: zytbefundiiidI18n")
+        select.form-control(name="zytbefundiiid", data-bind="options: zytbefundvoruntiiidList, optionsValue: 'val', optionsText: '-de', value: zytbefundiiid")
+      // /ko
+      //ko if: '5' === zytbefund()
+      div.form-group(data-bind="hasFeedback: { field: zytbefundiv, toggle: zytbefundiv.hasError, messages: zytbefundiv.validationMessages }")
+        label.control-label(data-bind="text: zytbefundivI18n")
+        select.form-control(name="zytbefundiv", data-bind="options: zytbefundvoruntivList, optionsValue: 'val', optionsText: '-de', value: zytbefundiv")
+      // /ko
+      //ko if: '6' === zytbefund()
+      div.form-group(data-bind="hasFeedback: { field: zytbefundv, toggle: zytbefundv.hasError, messages: zytbefundv.validationMessages }")
+        label.control-label(data-bind="text: zytbefundvI18n")
+        select.form-control(name="zytbefundv", data-bind="options: zytbefundvoruntvList, optionsValue: 'val', optionsText: '-de', value: zytbefundv")
+      // /ko
+      // /ko
+  div.col-md-4
+    +DmpFieldset('ergebnisHpvTestI18n')
+      // ko if: showGeneral
+      div.form-group(data-bind="hasFeedback: { field: hpvtest, toggle: hpvtest.hasError, messages: hpvtest.validationMessages }")
+        label.control-label(data-bind="text: hpvtestI18n")
+        select.form-control(name="hpvtest", data-bind="options: janeinList, optionsValue: 'val', optionsText: '-de', value: hpvtest")
+      // /ko
+      // ko if: 2021 === currentYear()
+      // ko if: '3' === artuanlunt()
+      div.form-group(data-bind="hasFeedback: { field: hpvtest, toggle: hpvtest.hasError, messages: hpvtest.validationMessages }")
+        label.control-label(data-bind="text: hpvtestI18n")
+        select.form-control(name="hpvtest", data-bind="options: janeinList, optionsValue: 'val', optionsText: '-de', value: hpvtest")
+      // /ko
+      // /ko
+      //ko if: '1' === hpvtest()
+      div.form-group(data-bind="hasFeedback: { field: hpvtergebnis, toggle: hpvtergebnis.hasError, messages: hpvtergebnis.validationMessages }")
+        label.control-label(data-bind="text: hpvtergebnisI18n")
+        select.form-control(name="hpvtergebnis", data-bind="options: hpvtergebnisList, optionsValue: 'val', optionsText: '-de', value: hpvtergebnis")
+      //ko if: '1' === hpvtergebnis()
+      div.form-group(data-bind="hasFeedback: { field: hpvvirustyp, toggle: hpvvirustyp.hasError, messages: hpvvirustyp.validationMessages }")
+        // ko if: showGeneral
+        label.control-label(data-bind="text: hpvvirustypI18n")
+        // /ko
+        // ko if: 2021 === currentYear()
+        label.control-label(data-bind="text: hpvvirustyp2021I18n")
+        // /ko
+        select.form-control(name="hpvvirustyp", data-bind="options: hpvvirustypList, optionsValue: 'val', optionsText: '-de', value: hpvvirustyp")
+      // /ko
+      // /ko
+    +DmpFieldset('empfohlMassnahmeI18n')
+      div.form-group(data-bind="hasFeedback: { field: empfohlenemassnahme, toggle: empfohlenemassnahme.hasError, messages: empfohlenemassnahme.validationMessages }")
+        label.control-label(data-bind="text: empfohlenemassnahmeI18n")
+        select.form-control(name="empfohlenemassnahme", data-bind="options: empfohlenemassnahmeList, optionsValue: 'val', optionsText: '-de', value: empfohlenemassnahme")
+      //ko if: '1' === empfohlenemassnahme()
+      div.form-group(data-bind="hasFeedback: { field: empfohlenekontrabkl, toggle: empfohlenekontrabkl.hasError, messages: empfohlenekontrabkl.validationMessages }")
+        label.control-label(data-bind="text: empfohlenekontrabklI18n")
+        select.form-control(name="empfohlenekontrabkl", data-bind="options: empfohlenekontrabklList, optionsValue: 'val', optionsText: '-de', value: empfohlenekontrabkl")
+      div.form-group(data-bind="hasFeedback: { field: zeithorizontkontrabkl, toggle: zeithorizontkontrabkl.hasError, messages: zeithorizontkontrabkl.validationMessages }")
+        label.control-label(data-bind="text: zeithorizontkontrabklZKPI18n")
+        select.form-control(name="zeithorizontkontrabkl", data-bind="options: zeithorizontkontrabklList, optionsValue: 'val', optionsText: '-de', value: zeithorizontkontrabkl")
+      //ko if: '2' === zeithorizontkontrabkl()
+      div.form-group(data-bind="hasFeedback: { field: zeithorizont, toggle: zeithorizont.hasError, messages: zeithorizont.validationMessages }")
+        label.control-label(data-bind="text: zeithorizontI18n")
+        input.form-control(name='zeithorizont', type="text", data-bind="value: zeithorizont")
+      // /ko
+      // /ko
+// /ko
+// ko if: 'ZKZ' === module()
+div.row
+  div.col-md-4
+    +DmpFieldset('zytTestI18n')
+          div.form-group(data-bind="hasFeedback: { field: datumunt, toggle: datumunt.hasError, messages: datumunt.validationMessages }")
+            label.control-label(data-bind="text: datumuntI18n")
+            .date-picker.input-group
+              input.form-control(name='datumunt', type="text", data-bind="datetimepicker: { value: datumunt, valueUpdate: '' }")
+          div.form-group(data-bind="hasFeedback: { field: untersuchungsnummer, toggle: untersuchungsnummer.hasError, messages: untersuchungsnummer.validationMessages }")
+            label.control-label(data-bind="text: untersuchungsnummerI18n")
+            input.form-control(name='untersuchungsnummer', type="text", data-bind="value: untersuchungsnummer")
+          div.form-group(data-bind="hasFeedback: { field: methoabstrentnahme, toggle: methoabstrentnahme.hasError, messages: methoabstrentnahme.validationMessages }")
+            label.control-label(data-bind="text: methoabstrentnahmeI18n")
+            select.form-control(name="methoabstrentnahme", data-bind="options: methoabstrentnahmeList, optionsValue: 'val', optionsText: '-de', value: methoabstrentnahme")
+          //ko if: '2' === methoabstrentnahme()
+          div.form-group(data-bind="hasFeedback: { field: produkt, toggle: produkt.hasError, messages: produkt.validationMessages }")
+            // ko if: showGeneral
+            label.control-label(data-bind="text: produktZKZI18n")
+            // /ko
+            // ko if: 2021 === currentYear()
+            label.control-label(data-bind="text: produkt2021ZKZI18n")
+            // /ko
+            input.form-control(name='produkt', type="text", data-bind="value: produkt")
+          // /ko
+          div.form-group(data-bind="hasFeedback: { field: zytbefund, toggle: zytbefund.hasError, messages: zytbefund.validationMessages }")
+            label.control-label(data-bind="text: zytbefundI18n")
+            select.form-control(name="zytbefund", data-bind="options: zytbefundvoruntList, optionsValue: 'val', optionsText: '-de', value: zytbefund")
+          // ko if: showGeneral
+          //ko if: '1' === zytbefund()
+          div.form-group(data-bind="hasFeedback: { field: zytbefund01, toggle: zytbefund01.hasError, messages: zytbefund01.validationMessages }")
+            label.control-label(data-bind="text: zytbefund01I18n")
+            select.form-control(name="zytbefund01", data-bind="options: zytbefundvorunt01List, optionsValue: 'val', optionsText: '-de', value: zytbefund01")
+          // /ko
+          //ko if: '2' === zytbefund()
+          div.form-group(data-bind="hasFeedback: { field: zytbefundii, toggle: zytbefundii.hasError, messages: zytbefundii.validationMessages }")
+            label.control-label(data-bind="text: zytbefundiiI18n")
+            select.form-control(name="zytbefundii", data-bind="options: zytbefundvoruntiiList, optionsValue: 'val', optionsText: '-de', value: zytbefundii")
+          // /ko
+          //ko if: '3' === zytbefund()
+          div.form-group(data-bind="hasFeedback: { field: zytbefundiii, toggle: zytbefundiii.hasError, messages: zytbefundiii.validationMessages }")
+            label.control-label(data-bind="text: zytbefundiiiI18n")
+            select.form-control(name="zytbefundiii", data-bind="options: zytbefundvoruntiiiList, optionsValue: 'val', optionsText: '-de', value: zytbefundiii")
+          // /ko
+          //ko if: '4' === zytbefund()
+          div.form-group(data-bind="hasFeedback: { field: zytbefundiiid, toggle: zytbefundiiid.hasError, messages: zytbefundiiid.validationMessages }")
+            label.control-label(data-bind="text: zytbefundiiidI18n")
+            select.form-control(name="zytbefundiiid", data-bind="options: zytbefundvoruntiiidList, optionsValue: 'val', optionsText: '-de', value: zytbefundiiid")
+          // /ko
+          //ko if: '5' === zytbefund()
+          div.form-group(data-bind="hasFeedback: { field: zytbefundiv, toggle: zytbefundiv.hasError, messages: zytbefundiv.validationMessages }")
+            label.control-label(data-bind="text: zytbefundivI18n")
+            select.form-control(name="zytbefundiv", data-bind="options: zytbefundvoruntivList, optionsValue: 'val', optionsText: '-de', value: zytbefundiv")
+          // /ko
+          //ko if: '6' === zytbefund()
+          div.form-group(data-bind="hasFeedback: { field: zytbefundv, toggle: zytbefundv.hasError, messages: zytbefundv.validationMessages }")
+            label.control-label(data-bind="text: zytbefundvI18n")
+            select.form-control(name="zytbefundv", data-bind="options: zytbefundvoruntvList, optionsValue: 'val', optionsText: '-de', value: zytbefundv")
+          // /ko
+          // /ko
+// /ko

@@ -1,0 +1,55 @@
+div#divActivityDocumentsContainer.ActivitySectionDocumentViewModel(data-bind="notifyBind: { method: onTemplateReady, namespace: $data }")
+    div#divMediaLockedMsg
+      //i #{__i18n('InCaseMojit.casefile_attachments.text.ACTIVITY_INFO')}
+    h4(style="display:none;", data-bind="text: attachedIDI18n")#hAttachments
+    button.btn(style="display:none;", data-bind="text: buttonTestI18n")#btnTestDocuments
+    div#divMediaDocs(data-bind="foreach: mediaDocs")
+      div.row(style="margin-top: 10px", data-bind="css: { 'malware-warning': hasMalwareWarning } ")
+        div.col-sm-6
+          div.row
+            div.col-sm-3
+              a(data-bind="attr: { href: fullUrl(), target: '_doc' + _id() }")
+                img(data-bind="attr: { src: thumbUrl() }",width="68",height="68",style="border-radius: 5px;")
+            div.col-sm-9
+              div.row
+                div.col-sm-3
+                  b Typ:
+                div.col-sm-9
+                  select.form-control(data-bind="value: type, enable: $parent.canEdit() && !$parent.readOnly(), options: $parent.mediaDocTypes, optionsText: 'i18n', optionsValue: 'val'")
+              div.row
+                div.col-sm-3
+                  b Datum:
+                div.col-sm-9
+                  div.date-picker.input-group
+                    input.form-control(name="createdOn", data-bind="datetimepicker: { value: createdOn, options: $parent.createdOnOptions }, enable: $parent.canEdit() && !$parent.readOnly()")
+        div.col-sm-4
+          div.row
+            div.col-sm-10
+              input.form-control#select2Tags(name="select2Tags", type="hidden", data-bind="select2: select2Tags, disable: $parent.select2TagsReadOnly() || $parent.readOnly()")
+
+          div.row(style="margin-top: 8px;")
+            div.col-sm-10
+              span(data-bind="html: caption")
+              br
+              span(data-bind="text: $parent.documentTypeTextI18n + ':'")
+              | &nbsp;
+              //| &nbsp;
+              a(data-bind="attr: { href: fullUrl(), target: '_doc' + _id() }, text: fileExt, tooltip: {title: caption}")
+
+        div.col-sm-2
+          button.btn(data-bind="click: $parent.deleteAttachmentClick, visible: $parent.canEdit, readOnly: $parent.readOnly")
+            i.fa.fa-trash-o
+          span &nbsp;
+          button.btn(data-bind="click: $parent.editImageClick, visible: ( $parent.canEdit() && isEditableImage() ), readOnly: $parent.readOnly")
+            i.fa.fa-pencil
+      div.row( data-bind="visible: hasMalwareWarning, css: { 'malware-warning': hasMalwareWarning }")
+        div.col-sm-12(data-bind='html: malwareWarningHtml()')
+      div.row( data-bind="visible: hasMalwareWarning, css: { 'malware-warning': hasMalwareWarning }")
+        div.col-sm-12
+          button.btn(style="float: right", data-bind="click: markFalsePositive, text: MARK_FALSE_POSITIVE")
+          br
+          br
+
+div(data-bind="visible: ( canEdit() && canSave() )", style="margin-top: 10px")#divUploadContainer
+      // ko template: { name:'fineViewModel', data: fineViewModel }
+      // /ko

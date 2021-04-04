@@ -1,0 +1,21 @@
+{
+  "actType" : "TREATMENT",
+  "status" : "VALID",
+  "timestamp" : "2015-12-16T12:32:06.198Z",
+  "patientId" : "10000000000000000000000d",
+  "employeeId" : "100000000000000000000003",
+  "employeeName" : "Dr.1 admin1, prac1",
+  "locationId" : "000000000000000000000001",
+  "userContent" : "MRT-Untersuchung von Teilen der Wirbelsäule",
+  "partnerInfo" : "",
+  "explanations" : "",
+  "caseFolderId" : "55474807d3effab3711763b9",
+  "apkState" : "IN_PROGRESS",
+  "catalog" : true,
+  "catalogShort" : "EBM",
+  "code" : "34411",
+  "forInsuranceType" : "",
+  "fk5012Set" : [],
+  "fk5036Set" : [],
+  "comment": "API2TestingActivity"
+}

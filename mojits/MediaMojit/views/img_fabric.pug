@@ -1,0 +1,64 @@
+div#divAnnotateImage
+  table(noborder="noborder")#tblButtons
+    tr
+
+      td
+        button.btn.btn-primary(data-bind="click: onClearClick, text: btnClearI18n")#btnClearCanvas
+        span &nbsp;
+
+      td
+        button.btn(data-bind="click: onDeleteClick, visible: showShapeButtons")#btnDeleteObj
+          i.fa.fa-trash
+        span &nbsp;
+
+      td
+        button.btn(data-bind="click: onTextClick, visible: showShapeButtons")#btnAddText
+          i.fa.fa-text-height
+        span &nbsp;
+
+      td
+        button.btn(data-bind="click: onArrowClick, visible: showShapeButtons")#btnAddArrow
+          i.fa.fa-arrow-right
+        button.btn(data-bind="click: onCircleClick, visible: showShapeButtons")#btnAddCircle
+          i.fa.fa-circle-o
+        button.btn(data-bind="click: onCrossClick, visible: showShapeButtons")#btnAddCross
+          i.fa.fa-times
+        button.btn(data-bind="click: onBoxClick, visible: showShapeButtons")#btnAddBox
+          i.fa.fa-square-o
+        span &nbsp;
+
+      td
+        button.btn(data-bind="click: onPencilClick")#btnFreeDraw
+          i.fa.fa-pencil
+        span &nbsp;
+
+      td#tdLineWidth
+        select.form-control(data-bind="value: strokeWidth")#selLineWidth
+          option(value="1") 1px
+          option(value="2") 2px
+          option(value="3") 3px
+          option(value="5") 5px
+          option(value="10") 10px
+
+      td#tdLineWidthSpacer
+        span &nbsp;
+
+      td
+        input.form-control.input-color(name="fillColor", type="hidden", data-bind="value: fillColor")#txtFillColor
+        span &nbsp;
+        button.btn(data-bind="click: onFilledBoxClick, visible: showShapeButtons")#btnAddFilledBox
+          i.fa.fa-adjust
+
+      td
+        //  ko if: showLoadingThrobber
+        img(src="/static/DocCirrus/assets/images/ajax-loader.gif")
+        //  /ko
+        //  ko if: showSaveButton
+        button.btn.btn-primary(data-bind="click: onSaveClick, text: btnSaveI18n")#btnSave
+        //  /ko
+
+        //button.btn.btn-primary(data-bind="click: onTestClick")#btnTest Test
+        //span(data-bind="text: debugString")
+  br
+
+  canvas(width="600",height="400")#cnvImageFabric

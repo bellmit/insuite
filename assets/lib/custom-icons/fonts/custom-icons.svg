@@ -1,0 +1,12 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg">
+<metadata>Copyright (C) 2020 by original authors @ fontello.com</metadata>
+<defs>
+<font id="custom-icons" horiz-adv-x="1000" >
+<font-face font-family="custom-icons" font-weight="400" font-stretch="normal" units-per-em="1000" ascent="850" descent="-150" />
+<missing-glyph horiz-adv-x="1000" />
+<glyph glyph-name="syringe-vaccine-svgrepo-com" unicode="&#xe800;" d="M940 653c14-14 36-14 50 0 13 13 13 35 0 49l-138 138c-14 13-36 13-49 0s-14-36 0-49l44-45-71-70-138 138c-13 13-36 13-49 0s-14-36 0-50l35-35-77-78 96-96c13-13 13-35 0-49-14-14-36-14-50 0l-96 96-54-54 96-96c14-14 14-36 0-49-13-14-35-14-49 0l-96 96-102-103c-14-13-14-36 0-49l205-205c13-14 36-14 49 0l333 332 35-35c14-14 36-14 50 0 13 13 13 36 0 49l-138 138 70 71 44-44z m-710-386c-14-14-14-36 0-49l44-44-264-264c-13-14-13-36 0-50 14-13 36-13 50 0l264 264 44-44c13-14 35-14 49 0l21 21-187 187-21-21z" horiz-adv-x="1000" />
+</font>
+</defs>
+</svg>

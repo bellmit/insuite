@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xs:schema xmlns="urn::sciphox-org/sciphox" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="urn::sciphox-org/sciphox" elementFormDefault="qualified">
+	<!-- Schema -->
+	<xs:simpleType name="Hoergeraeteerstversorgung">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Ja"/>
+			<xs:enumeration value="Nein"/>
+			<xs:enumeration value="nicht bekannt"/>
+		</xs:restriction>
+	</xs:simpleType>
+		
+	<xs:simpleType name="Bauform">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="IO"/>
+			<xs:enumeration value="HdO"/>
+			<xs:enumeration value="andere"/>
+		</xs:restriction>
+	</xs:simpleType>	
+	
+	<xs:simpleType name="ZentraleHoerstoerung">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Ja"/>
+			<xs:enumeration value="Nein"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="Sprachtestmaterial">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Freiburger Einsilber"/>
+			<xs:enumeration value="Freiburger Zahlen"/>
+			<xs:enumeration value="OLSA"/>
+			<xs:enumeration value="GÖSA"/>
+			<xs:enumeration value="anderes"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="Lokalisation">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="links"/>
+			<xs:enumeration value="rechts"/>
+		</xs:restriction>
+	</xs:simpleType> 
+
+	<xs:simpleType name="Sprachtestmoeglich">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Ja"/>
+			<xs:enumeration value="Nein"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="SchweregradHoerstoerung">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="normalhörig"/>
+			<xs:enumeration value="geringgradig schwerhörig"/>
+			<xs:enumeration value="mittelgradig schwerhörig"/>
+			<xs:enumeration value="hochgradig schwerhörig"/>
+			<xs:enumeration value="Hörreste"/>
+			<xs:enumeration value="Taubheit"/>
+		</xs:restriction>
+	</xs:simpleType> 
+	
+	<xs:simpleType name="SonstigeVersorgungsrelevanteDiagnosen">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Tinnitus"/>
+			<xs:enumeration value="Otitis externa"/>
+			<xs:enumeration value="Radikalhöhle"/>
+			<xs:enumeration value="andere"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="Luftleitung">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="HdO"/>
+			<xs:enumeration value="IO"/>
+			<xs:enumeration value="offene Versorgung"/>
+			<xs:enumeration value="geschlossene Versorgung"/>
+			<xs:enumeration value="Ex Hörer"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="Knochenleitung">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Knochenleitungsbügel"/>
+			<xs:enumeration value="teilimplantiertes Knochenleitungsgerät"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="Sonderversorgung">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="CROS / BiCROS"/>
+			<xs:enumeration value="andere"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="HoergeraeteversorgungsvorschlagEntsprichtVersorgungskonzept">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Ja"/>
+			<xs:enumeration value="Nein"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="Festbetrag">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Ja"/>
+			<xs:enumeration value="Nein"/>
+		</xs:restriction>
+	</xs:simpleType>	
+</xs:schema>

@@ -1,0 +1,100 @@
+// ko ifnot: editMode
+td(data-bind="text: displayTimestamp")
+td(data-bind="text: phPZN")
+td(data-bind="text: displayPhIngr")
+td(data-bind="text: phNLabel")
+td(data-bind="text: displayStrength")
+td(data-bind="text: phForm")
+td(data-bind="text: displayDosis")
+td(data-bind="text: phUnit")
+td(data-bind="text: phReason")
+td(data-bind="text: phNote")
+// /ko
+// ko if: editMode
+td(colspan=10, style="overflow: unset!important;")
+  .row
+    .col-sm-2
+      div.form-group
+        label.control-label(data-bind="text: timestamp.i18n")
+        .date-picker.input-group
+          input.form-control(name="timestamp", type="text", data-bind="datetimepicker: { value: timestamp }, readOnly: timestamp.readOnly")
+    .col-sm-2
+      div.form-group(data-bind="hasFeedback: { field: phPZN, toggle: phPZN.hasError, messages: phPZN.validationMessages }")
+        label.control-label(data-bind="text: phPZN.i18n")
+        input.form-control(name="phPZN", type="text", data-bind="textInput: phPZN, readOnly: phPZNReadOnly")
+    .col-sm-8
+      div.form-group(data-bind="hasFeedback: { field: phNLabel, toggle: phNLabel.hasError, messages: phNLabel.validationMessages }")
+        label.control-label(data-bind="text: 'Rezepteintrag'")
+        input.form-control(name="phNLabel", type="text", data-bind="textInput: phNLabel, readOnly: phNLabel.readOnly")
+  .row
+    .col-sm-8
+      div
+        label.control-label(data-bind="text: phIngr.i18n")
+        a.pull-right(href="#", data-bind="click: addPhIngr, readOnly: phIngr.readOnly")
+          i.icon.fa.fa-plus
+        div.row
+          // ko foreach: phIngr
+          div.col-xs-12
+            div(style="display: flex;")
+              div.form-group(style="width: 70%", data-bind="highlightError: name")
+                input.form-control(name="ingredientList", type="hidden", data-bind="select2: select2Name, valueUpdate:'afterkeydown', readOnly: name.readOnly")
+              .input-group(data-bind="highlightError: strength", style="width: 30%;")
+                input.form-control(style="border-top-left-radius: 0; border-bottom-left-radius: 0", data-bind="textInput: strength, readOnly: strength.readOnly, attr: {placeholder: strength.i18n}")
+                .input-group-btn
+                  button.btn.btn-default(type="button", data-bind="click: $parent.removePhIngr.bind($parent), readOnly: $parent.phIngr.readOnly")
+                    span.glyphicon.glyphicon-trash
+          // /ko
+    .col-sm-4
+      div.form-group(data-bind="hasFeedback: { field: phForm, toggle: phForm.hasError, messages: phForm.validationMessages }")
+        label.control-label(data-bind="text: 'DRF'")
+        input.form-control(name="phForm", type="text", data-bind="select2: select2phForm, readOnly: phForm.readOnly")
+  .row
+    .col-xs-12( data-bind="notifyBind: { method: 'templateReady', namespace: $data }")
+      div
+        label.control-label(data-bind="text: labelPhDosisI18n")
+      div.form-group.row(data-bind="foreach: phDosisTypes")
+        div.col-sm-2
+          div.radio(style="margin-bottom: 0;")
+            label
+              input(type="radio", name="dosisType", data-bind="checkedValue: val, checked: $parent.phDosisType, readOnly: $parent.phDosisType.readOnly")
+              strong(data-bind="text: i18n")
+      // ko if: showPhDosisSchedule
+      div.form-group
+        div.col-md-2.col-sm-12
+          label.control-label(data-bind="text: phDosisMorning.i18n")
+          input.form-control(name="phDosisMorning", data-bind="textInput: phDosisMorning, readOnly: phDosisMorning.readOnly()")
+        div.col-md-2.col-sm-12
+          label.control-label(data-bind="text: phDosisAfternoon.i18n")
+          input.form-control(name="phDosisAfternoon", data-bind="textInput: phDosisAfternoon, readOnly: phDosisMorning.readOnly()")
+        div.col-md-2.col-sm-12
+          label.control-label(data-bind="text: phDosisEvening.i18n")
+          input.form-control(name="phDosisEvening", data-bind="textInput: phDosisEvening, readOnly: phDosisMorning.readOnly()")
+        div.col-md-2.col-sm-12
+          label.control-label(data-bind="text: phDosisNight.i18n")
+          input.form-control(name="phDosisNight", data-bind="textInput: phDosisNight, readOnly: phDosisMorning.readOnly()")
+      // /ko
+      // ko if: showPhDosisText
+      div.form-group
+        div.col-sm-8
+          label.control-label(data-bind="text: dosis.i18n")
+          input.form-control(name="dosis", type="hidden", data-bind="select2: select2Dosis, valueUpdate: 'afterkeydown', readOnly: dosis.readOnly")
+      // /ko
+      .col-sm-4
+        div.form-group(data-bind="hasFeedback: { field: phUnit, toggle: phUnit.hasError, messages: phUnit.validationMessages }")
+          label.control-label(data-bind="text: phUnit.i18n")
+          input.form-control(name="phUnit", type="text", data-bind="select2: select2phUnitCode, readOnly: phUnit.readOnly")
+  .row
+    .col-sm-6
+      div.form-group(data-bind="hasFeedback: { field: phReason, toggle: phReason.hasError, messages: phReason.validationMessages }")
+        label.control-label(data-bind="text: phReason.i18n")
+        input.form-control(name="phReason", type="hidden", data-bind="select2: select2PhReason, readOnly: phReason.readOnly")
+    .col-sm-6
+      div.form-group(data-bind="hasFeedback: { field: phNote, toggle: phNote.hasError, messages: phNote.validationMessages }")
+        label.control-label(data-bind="text: phNote.i18n")
+        input.form-control(name="phNote", type="hidden", data-bind="select2: select2PhNote, readOnly: phNote.readOnly")
+  .row
+    .col-sm-9
+      span(type="button", name="searchButton", data-bind="template: searchButton.template")
+    .col-sm-3.text-right
+      include KBVMedicationPlan-EditingButtons
+// /ko

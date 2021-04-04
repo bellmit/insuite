@@ -1,0 +1,9 @@
+div.form-group
+  div.row
+    div.col-xs-5
+      strong(data-bind="text: dmpSystemicGlucocorticosteroids.i18n")
+      span(data-bind="dmpField: { field: dmpSystemicGlucocorticosteroids }")
+    div.col-xs-7(data-bind="foreach: dmpSystemicGlucocorticosteroids.list, hasFeedback: { field: dmpSystemicGlucocorticosteroids, toggle: dmpSystemicGlucocorticosteroids.hasError, messages: dmpSystemicGlucocorticosteroids.validationMessages }")
+      label.checkbox-inline
+        span(data-bind="text: i18n")
+        input(type="checkbox", name="dmpSystemicGlucocorticosteroids", data-bind="value: val, checked: $parent.dmpSystemicGlucocorticosteroids, readOnly: $parent.dmpSystemicGlucocorticosteroids.readOnly, attr: { name: $element.name + '-' + val }")

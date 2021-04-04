@@ -1,0 +1,11 @@
+div(id=mojit_view_id)
+  .container.container-fullscreen(style="padding-top: 30px")
+    h1 KoTable Linked
+    hr
+    #aKoTable(data-bind="template: aKoTable.template")
+    span(data-bind="template: aKoButtonLinkFirst.template")
+    = ' '
+    span(data-bind="template: aKoButtonUnlinkFirst.template")
+    h3 checked
+    hr
+    pre(data-bind="text: checked")

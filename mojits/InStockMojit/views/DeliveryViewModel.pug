@@ -1,0 +1,22 @@
+div.deliveryViewModel
+    div.col-md-12.col-xs-12.col-sm-12(data-bind="with: actionButtons")
+        div.dc-action-buttons.dc-action-buttons-top.dc-action-buttons-left.clearfix.row
+            span.col-md-5
+                //ko if: createFrom.visible
+                span
+                  button#btn_crt_from.btn.btn-primary(type="button", data-bind="click: createFrom.action, text: buttonCreateFromI18n, enable: createFrom.enabled")
+                // /ko
+                //ko if: createFrom.visible
+                span(style="margin-left: 5px;")
+                  button#btn_booking.btn.btn-primary(type="button", data-bind="click: booking.action, text: buttonBookingI18n, enable: booking.enabled")
+                // /ko
+                //ko if: fulfill.visible
+                span
+                  button#btn_arrive.btn.btn-primary(type="button", data-bind=" click: fulfill.action, text: buttonFulfillI18n, enable: fulfill.enabled")
+                // /ko
+            span.checkbox.col-md-3
+                input(type="checkbox", data-bind="checked: $parent.filterDelivery")
+                span(data-bind="text: $parent.filterDeliveryI18n")
+
+    div.col-xs-12
+        div(data-bind="template: deliveryTable.template")

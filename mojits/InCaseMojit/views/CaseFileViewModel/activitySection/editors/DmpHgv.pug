@@ -1,0 +1,512 @@
+include DMP/Dmp-mixin
+
+div.row
+    div.col-xs-3
+        div.radio
+            label.control-label
+                span(data-bind="text: '(Vor-)Verordnung'")
+                input(type="radio", name="dmpType", value="FIRST", data-bind="checked: dmpType, readOnly: dmpType.readOnly")
+    div.col-xs-3
+        div.radio
+            label.control-label
+                span(data-bind="text: 'Nachverordnung'")
+                input(type="radio", name="dmpType", value="FOLLOWING", data-bind="checked: dmpType, readOnly: dmpType.readOnly")
+div.row
+    div.col-xs-6
+        div.form-group
+            label.control-label(data-bind="text: 'Patienten-ID'")
+            input.form-control(name='patientID', type="text", data-bind="value: renderPatientID, readOnly: true")
+    div.col-xs-3
+        div.form-group
+            label.control-label(data-bind="text: 'Geburtsjahr'")
+            input.form-control(name='patientAge', type="text", data-bind="value: renderYearOfBirth, readOnly: true")
+    div.col-xs-3
+        div.form-group
+            label.control-label(data-bind="text: genderI18n")
+            input.form-control(name='displayPatientGender', type="text", data-bind="value: displayPatientGender, readOnly: true")
+
+br
+
+//ko if: dmpType() !== "FOLLOWING"
+
++DmpFieldset('hearingAidDataI18n')
+
+    div.row
+
+        div.col-xs-6
+            div.form-group(data-bind="hasFeedback: { field: dmpExaminationDate, toggle: dmpExaminationDate.hasError, messages: dmpExaminationDate.validationMessages }")
+                label.control-label
+                    span(data-bind="text: dmpExaminationDate.i18n")
+                    span(data-bind="dmpField: { field: dmpExaminationDate }")
+                .date-picker.input-group
+                    input.form-control(name="dmpExaminationDate", data-bind="datetimepicker: { value: dmpExaminationDate }, readOnly: dmpExaminationDate.readOnly")
+
+    div.row
+
+        div.col-xs-6.form-group
+            strong(data-bind="text: dmpHearingAidFirstMedication.i18n")
+            span(data-bind="dmpField: { field: dmpHearingAidFirstMedication }")
+            div(data-bind="foreach: dmpHearingAidFirstMedication.list, hasFeedback: { field: dmpHearingAidFirstMedication, toggle: dmpHearingAidFirstMedication.hasError, messages: dmpHearingAidFirstMedication.validationMessages }")
+                label.radio-inline
+                    span(data-bind="text: i18n")
+                    input(type="radio", name="dmpHearingAidFirstMedication", data-bind="value: val, checked: $parent.dmpHearingAidFirstMedication, attr: { name: $element.name + '-' + val }, readOnly: $parent.dmpHearingAidFirstMedication.readOnly")
+
+        div.col-xs-6
+            div.form-group(data-bind="hasFeedback: { field: dmpFirstMedicationDate, toggle: dmpFirstMedicationDate.hasError, messages: dmpFirstMedicationDate.validationMessages }")
+                label.control-label
+                    span(data-bind="text: dmpFirstMedicationDate.i18n")
+                .date-picker.input-group
+                    input.form-control(name="dmpFirstMedicationDate", data-bind="datetimepicker: { value: dmpFirstMedicationDate }, readOnly: dmpFirstMedicationDate.readOnly() || !dmpHearingAidFirstMedicationNoSelected()")
+
+    //ko if: dmpAge() === "ADULT"
+
+    div.row
+
+        div.col-xs-6.form-group
+            strong(data-bind="text: dmpHearingAidType.i18n")
+            span(data-bind="dmpField: { field: dmpHearingAidType }")
+            div(data-bind="foreach: dmpHearingAidType.list")
+                label.checkbox-inline
+                    span(data-bind="text: i18n")
+                    input(type="checkbox", name="dmpHearingAidType", data-bind="value: val, checked: $parent.dmpHearingAidType, attr: { me: $element.name + '-' + val }, readOnly: $parent.dmpHearingAidType.readOnly() || !$parent.dmpHearingAidFirstMedicationNoSelected()")
+
+        div.col-xs-6.form-group
+            label.control-label(data-bind="text: 'andere'")
+            input.form-control(name='dmpHearingAidTypeOther', type="text", data-bind="value: dmpHearingAidTypeOther, readOnly: dmpHearingAidTypeOther.readOnly() || !dmpHearingAidTypeOtherSelected()")
+
+    // /ko
+
+    //ko if: dmpAge() === "CHILD"
+
+    div.row
+
+        div.col-xs-6.form-group
+            strong(data-bind="text: dmpSpeechDevelopmentDisturbance.i18n")
+            span(data-bind="dmpField: { field: dmpSpeechDevelopmentDisturbance }")
+            div(data-bind="foreach: dmpSpeechDevelopmentDisturbance.list, hasFeedback: { field: dmpSpeechDevelopmentDisturbance, toggle: dmpSpeechDevelopmentDisturbance.hasError, messages: dmpSpeechDevelopmentDisturbance.validationMessages }")
+                label.radio-inline
+                    span(data-bind="text: i18n")
+                    input(type="radio", name="dmpSpeechDevelopmentDisturbance", data-bind="value: val, checked: $parent.dmpSpeechDevelopmentDisturbance, attr: { name: $element.name + '-' + val }, readOnly: $parent.dmpSpeechDevelopmentDisturbance.readOnly")
+
+        div.col-xs-6.form-group
+            label.control-label(data-bind="text: 'andere Ursache'")
+            input.form-control(name='dmpSpeechDevelopmentDisturbanceOther', type="text", data-bind="value: dmpSpeechDevelopmentDisturbanceOther, readOnly: dmpSpeechDevelopmentDisturbanceOther.readOnly() || !dmpSpeechDevelopmentDisturbanceOtherSelected()")
+    // /ko
+
+    //ko if: dmpAge() === "ADULT"
+
+    div.row
+
+        div.col-xs-12.form-group
+            strong(data-bind="text: dmpCentralAuditoryDefectExcluded.i18n")
+            span(data-bind="dmpField: { field: dmpSpeechDevelopmentDisturbance }")
+            div(data-bind="foreach: dmpCentralAuditoryDefectExcluded.list")
+                label.radio-inline
+                    span(data-bind="text: i18n")
+                    input(type="radio", name="dmpCentralAuditoryDefectExcluded", data-bind="value: val, checked: $parent.dmpCentralAuditoryDefectExcluded, attr: { name: $element.name + '-' + val }, readOnly: $parent.dmpCentralAuditoryDefectExcluded.readOnly")
+
+    // /ko
+
+//ko if: dmpAge() === "ADULT"
+
++DmpFieldset('hearingAidRecognitionI18n')
+
+    div.row
+
+        div.col-xs-12.form-group
+            strong(data-bind="text: dmpSpeakingTestPossible.i18n")
+            span(data-bind="dmpField: { field: {hint: 'Am schlechteren Ohr gemessen', i18n: 'Sprachverstehen:'} }")
+            div(data-bind="foreach: dmpSpeakingTestPossible.list, hasFeedback: { field: dmpSpeakingTestPossible, toggle: dmpSpeakingTestPossible.hasError, messages: 'test' }")
+                label.radio-inline
+                    span(data-bind="text: i18n")
+                    input(type="radio", name="dmpSpeakingTestPossible", data-bind="value: val, checked: $parent.dmpSpeakingTestPossible, attr: { name: $element.name + '-' + val }, readOnly: $parent.dmpSpeakingTestPossible.readOnly")
+
+    div.row
+
+        div.col-xs-12
+            strong(data-bind="text: 'Sprachverstehen: mit Kopfhörer am dBopt'")
+        div.col-xs-4
+            div.form-group(data-bind="hasFeedback: { field: dmpSpeechComprehensionDB, toggle: dmpSpeechComprehensionDB.hasError, messages: dmpSpeechComprehensionDB.validationMessages }")
+                label.control-label(data-bind="text: dmpSpeechComprehensionDB.i18n")
+                span(data-bind="dmpField: { field: dmpSpeechComprehensionDB }")
+                input.form-control(name='dmpSpeechComprehensionDB', type="text", data-bind="value: dmpSpeechComprehensionDB, readOnly: dmpSpeechComprehensionDB.readOnly() || !dmpSpeakingTestPossibleYesSelected()")
+        div.col-xs-4
+            div.form-group(data-bind="hasFeedback: { field: dmpSpeechComprehensionEZ, toggle: dmpSpeechComprehensionEZ.hasError, messages: dmpSpeechComprehensionEZ.validationMessages }")
+                label.control-label(data-bind="text: dmpSpeechComprehensionEZ.i18n")
+                span(data-bind="dmpField: { field: dmpSpeechComprehensionEZ }")
+                input.form-control(name='dmpSpeechComprehensionEZ', type="text", data-bind="value: dmpSpeechComprehensionEZ, readOnly: dmpSpeechComprehensionEZ.readOnly() || !dmpSpeakingTestPossibleYesSelected()")
+        div.col-xs-4
+            div.form-group(data-bind="hasFeedback: { field: dmpSpeechComprehensionSVS, toggle: dmpSpeechComprehensionSVS.hasError, messages: dmpSpeechComprehensionSVS.validationMessages }")
+                label.control-label(data-bind="text: dmpSpeechComprehensionSVS.i18n")
+                span(data-bind="dmpField: { field: dmpSpeechComprehensionSVS }")
+                input.form-control(name='dmpSpeechComprehensionSVS', type="text", data-bind="value: dmpSpeechComprehensionSVS, readOnly: dmpSpeechComprehensionSVS.readOnly() || !dmpSpeakingTestPossibleYesSelected()")
+        // ko if: showSpeechUnderstandingOptionalPlausibilityPanel
+        div.col-xs-12
+            div.alert.alert-warning(data-bind="text: speechUnderstandingI18n")
+        // /ko
+
+    div.row
+
+        div.col-xs-6.form-group
+            strong(data-bind="text: dmpSpeechComprehensionMaterial.i18n")
+            span(data-bind="dmpField: { field: dmpSpeechComprehensionMaterial }")
+            div(data-bind="foreach: dmpSpeechComprehensionMaterial.list, hasFeedback: { field: dmpSpeechComprehensionMaterial, toggle: dmpSpeechComprehensionMaterial.hasError, messages: dmpSpeechComprehensionMaterial.validationMessages }")
+                label.checkbox-inline
+                    span(data-bind="text: i18n")
+                    input(type="checkbox", name="dmpSpeechComprehensionMaterial", data-bind="value: val, checked: $parent.dmpSpeechComprehensionMaterial, attr: { me: $element.name + '-' + val }, readOnly: $parent.dmpSpeechComprehensionMaterial.readOnly() || !$parent.dmpSpeakingTestPossibleYesSelected()")
+
+        div.col-xs-6.form-group
+            label.control-label(data-bind="text: 'anderes'")
+            input.form-control(name='dmpSpeechComprehensionMaterialOther', type="text", data-bind="value: dmpSpeechComprehensionMaterialOther, readOnly: dmpSpeechComprehensionMaterialOther.readOnly() || !dmpSpeechComprehensionMaterialOtherSelected()")
+
+// /ko
+
++DmpFieldset('hearingAidAmblyacousiaI18n')
+
+    div.row
+
+        div.col-xs-4.form-group
+            strong(data-bind="text: dmpNoiseReceptionAmblyacousia.i18n")
+            span(data-bind="dmpField: { field: dmpNoiseReceptionAmblyacousia }")
+            div(data-bind="foreach: dmpNoiseReceptionAmblyacousia.list, hasFeedback: { field: dmpNoiseReceptionAmblyacousia, toggle: dmpNoiseReceptionAmblyacousia.hasError, messages: dmpNoiseReceptionAmblyacousia.validationMessages }")
+                label.checkbox-inline
+                    span(data-bind="text: i18n")
+                    input(type="checkbox", name="dmpNoiseReceptionAmblyacousia", data-bind="value: val, checked: $parent.dmpNoiseReceptionAmblyacousia, attr: { me: $element.name + '-' + val }, readOnly: $parent.dmpNoiseReceptionAmblyacousia.readOnly")
+
+        div.col-xs-4.form-group
+            strong(data-bind="text: dmpNoiseFlowAmblyacousia.i18n")
+            span(data-bind="dmpField: { field: dmpNoiseFlowAmblyacousia }")
+            div(data-bind="foreach: dmpNoiseFlowAmblyacousia.list, hasFeedback: { field: dmpNoiseFlowAmblyacousia, toggle: dmpNoiseFlowAmblyacousia.hasError, messages: dmpNoiseFlowAmblyacousia.validationMessages }")
+                label.checkbox-inline
+                    span(data-bind="text: i18n")
+                    input(type="checkbox", name="dmpNoiseFlowAmblyacousia", data-bind="value: val, checked: $parent.dmpNoiseFlowAmblyacousia, attr: { me: $element.name + '-' + val }, readOnly: $parent.dmpNoiseFlowAmblyacousia.readOnly")
+
+        div.col-xs-4.form-group
+            strong(data-bind="text: dmpCombinedAmblyacousia.i18n")
+            span(data-bind="dmpField: { field: dmpCombinedAmblyacousia }")
+            div(data-bind="foreach: dmpCombinedAmblyacousia.list, hasFeedback: { field: dmpCombinedAmblyacousia, toggle: dmpCombinedAmblyacousia.hasError, messages: dmpNoiseFlowAmblyacousia.validationMessages }")
+                label.checkbox-inline
+                    span(data-bind="text: i18n")
+                    input(type="checkbox", name="dmpCombinedAmblyacousia", data-bind="value: val, checked: $parent.dmpCombinedAmblyacousia, attr: { me: $element.name + '-' + val }, readOnly: $parent.dmpCombinedAmblyacousia.readOnly")
+        // ko if: showHardnessOfHearingOptionalPlausibilityPanel
+        div.col-xs-12
+            div.alert.alert-warning(data-bind="text: hardnessOfHearingI18n")
+        // /ko
+
++DmpFieldset('hearingAidAmblyacousiaSeverityI18n')
+
+    div.row
+
+        div.col-xs-12.form-group
+            strong(data-bind="text: 'links'")
+            //ko if: dmpAge() === "CHILD"
+            span(data-bind="dmpField: { field: dmpAmblyacousiaSeverityChildLeft }")
+            div(data-bind="foreach: dmpAmblyacousiaSeverityChildLeft.list, hasFeedback: { field: dmpAmblyacousiaSeverityChildLeft, toggle: dmpAmblyacousiaSeverityChildLeft.hasError, messages: dmpAmblyacousiaSeverityChildLeft.validationMessages }")
+                label.radio-inline
+                    span(data-bind="text: i18n")
+                    input(type="radio", name="dmpAmblyacousiaSeverityChildLeft", data-bind="value: val, checked: $parent.dmpAmblyacousiaSeverityChildLeft, attr: { name: $element.name + '-' + val }, readOnly: $parent.dmpAmblyacousiaSeverityChildLeft.readOnly")
+            // /ko
+            //ko if: dmpAge() === "ADULT"
+            span(data-bind="dmpField: { field: {hint: dmpAmblyacousiaSeverityLeft.hint, i18n: dmpAmblyacousiaSeverityLeft.i18n, hintLevel: 'OPTIONAL'} }")
+            div(data-bind="foreach: dmpAmblyacousiaSeverityLeft.list, hasFeedback: { field: dmpAmblyacousiaSeverityLeft, toggle: dmpAmblyacousiaSeverityLeft.hasError, messages: dmpAmblyacousiaSeverityLeft.validationMessages }")
+                label.radio-inline
+                    span(data-bind="text: i18n")
+                    input(type="radio", name="dmpAmblyacousiaSeverityLeft", data-bind="value: val, checked: $parent.dmpAmblyacousiaSeverityLeft, attr: { name: $element.name + '-' + val }, readOnly: $parent.dmpAmblyacousiaSeverityLeft.readOnly")
+            // /ko
+
+    div.row
+
+        div.col-xs-12.form-group
+            strong(data-bind="text: 'rechts'")
+            //ko if: dmpAge() === "CHILD"
+            span(data-bind="dmpField: { field: dmpAmblyacousiaSeverityChildRight }")
+            div(data-bind="foreach: dmpAmblyacousiaSeverityChildRight.list, hasFeedback: { field: dmpAmblyacousiaSeverityChildRight, toggle: dmpAmblyacousiaSeverityChildRight.hasError, messages: dmpAmblyacousiaSeverityChildRight.validationMessages }")
+                label.radio-inline
+                    span(data-bind="text: i18n")
+                    input(type="radio", name="dmpAmblyacousiaSeverityChildRight", data-bind="value: val, checked: $parent.dmpAmblyacousiaSeverityChildRight, attr: { name: $element.name + '-' + val }, readOnly: $parent.dmpAmblyacousiaSeverityChildRight.readOnly")
+            // /ko
+            //ko if: dmpAge() === "ADULT"
+            span(data-bind="dmpField: { field: {hint: dmpAmblyacousiaSeverityRight.hint, i18n: dmpAmblyacousiaSeverityRight.i18n, hintLevel: 'OPTIONAL'} }")
+            div(data-bind="foreach: dmpAmblyacousiaSeverityRight.list, hasFeedback: { field: dmpAmblyacousiaSeverityRight, toggle: dmpAmblyacousiaSeverityRight.hasError, messages: dmpAmblyacousiaSeverityRight.validationMessages }")
+                label.radio-inline
+                    span(data-bind="text: i18n")
+                    input(type="radio", name="dmpAmblyacousiaSeverityRight", data-bind="value: val, checked: $parent.dmpAmblyacousiaSeverityRight, attr: { name: $element.name + '-' + val }, readOnly: $parent.dmpAmblyacousiaSeverityRight.readOnly")
+            // /ko
+
+//ko if: dmpAge() === "ADULT"
+
++DmpFieldset('hearingAidAmblyacousiaSeverityWHOI18n')
+
+    div.row
+
+        div.col-xs-12.form-group
+            strong(data-bind="text: dmpAmblyacousiaSeverityWHO.i18n")
+            span(data-bind="dmpField: { field: dmpAmblyacousiaSeverityWHO }")
+            div(data-bind="foreach: dmpAmblyacousiaSeverityWHO.list")
+                label.checkbox-inline
+                    span(data-bind="text: i18n")
+                    input(type="checkbox", name="dmpAmblyacousiaSeverityWHO", data-bind="value: val, checked: $parent.dmpAmblyacousiaSeverityWHO, attr: { me: $element.name + '-' + val }, readOnly: $parent.dmpAmblyacousiaSeverityWHO.readOnly")
+
+    div.row
+
+        div.col-xs-6.form-group
+            strong(data-bind="text: dmpFurtherDiagnosis.i18n")
+            span(data-bind="dmpField: { field: dmpFurtherDiagnosis }")
+            div(data-bind="foreach: dmpFurtherDiagnosis.list")
+                label.checkbox-inline
+                    span(data-bind="text: i18n")
+                    input(type="checkbox", name="dmpFurtherDiagnosis", data-bind="value: val, checked: $parent.dmpFurtherDiagnosis, attr: { me: $element.name + '-' + val }, readOnly: $parent.dmpFurtherDiagnosis.readOnly")
+
+        div.col-xs-6.form-group
+            label.control-label(data-bind="text: 'andere'")
+            input.form-control(name='dmpFurtherDiagnosisOther', type="text", data-bind="value: dmpFurtherDiagnosisOther, readOnly: dmpFurtherDiagnosisOther.readOnly() || !dmpFurtherDiagnosisOtherSelected()")
+
+// /ko
+
++DmpFieldset('hearingAidAmblyacousiaAidsI18n')
+
+    div.row
+
+        div.col-xs-6.form-group
+            strong(data-bind="text: dmpAirLine.i18n")
+            span(data-bind="dmpField: { field: dmpAirLine }")
+            div(data-bind="foreach: dmpAirLine.list")
+                //ko if: $parent.dmpAge() !== hide
+                label.checkbox-inline
+                    span(data-bind="text: i18n")
+                    input(type="checkbox", name="dmpAirLine", data-bind="value: val, checked: $parent.dmpAirLine, attr: { me: $element.name + '-' + val }, readOnly: $parent.dmpAirLine.readOnly")
+                // /ko
+
+        //ko if: dmpAge() === "CHILD"
+
+        div.col-xs-6.form-group
+            label.control-label(data-bind="text: 'andere'")
+            input.form-control(name='dmpAirLineOther', type="text", data-bind='value: dmpAirLineOther, readOnly: dmpAirLineOther.readOnly() || !dmpAirLineOtherSelected()')
+
+        // /ko
+
+    div.row
+
+        div.col-xs-12.form-group
+            strong(data-bind="text: dmpBoneLine.i18n")
+            span(data-bind="dmpField: { field: dmpBoneLine }")
+            div(data-bind="foreach: dmpBoneLine.list")
+                //ko if: $parent.dmpAge() !== hide
+                label.checkbox-inline
+                    span(data-bind="text: i18n")
+                    input(type="checkbox", name="dmpBoneLine", data-bind="value: val, checked: $parent.dmpBoneLine, attr: { me: $element.name + '-' + val }, readOnly: $parent.dmpBoneLine.readOnly")
+                // /ko
+
+    //ko if: dmpAge() === "ADULT"
+
+    div.row
+
+        div.col-xs-6.form-group
+            strong(data-bind="text: dmpSpecialMedication.i18n")
+            span(data-bind="dmpField: { field: dmpSpecialMedication }")
+            div(data-bind="foreach: dmpSpecialMedication.list")
+                label.checkbox-inline
+                    span(data-bind="text: i18n")
+                    input(type="checkbox", name="dmpSpecialMedication", data-bind="value: val, checked: $parent.dmpSpecialMedication, attr: { me: $element.name + '-' + val }, readOnly: $parent.dmpSpecialMedication.readOnly")
+
+        div.col-xs-6.form-group
+            label.control-label(data-bind="text: 'andere'")
+            input.form-control(name='dmpSpecialMedicationOther', type="text", data-bind="value: dmpSpecialMedicationOther, readOnly: dmpSpecialMedicationOther.readOnly() || !dmpSpecialMedicationOtherSelected()")
+
+    // /ko
+
+// /ko
+
+//ko if: dmpType() === "FOLLOWING"
+
++DmpFieldset('hearingAidDataI18n')
+
+    div.row
+
+        div.col-xs-6
+            div.form-group(data-bind="hasFeedback: { field: dmpExaminationDate_following, toggle: dmpExaminationDate_following.hasError, messages: dmpExaminationDate_following.validationMessages }")
+                label.control-label
+                    span(data-bind="text: dmpExaminationDate_following.i18n")
+                    span(data-bind="dmpField: { field: dmpExaminationDate_following }")
+                .date-picker.input-group
+                    input.form-control(name="dmpExaminationDate_following", data-bind="datetimepicker: { value: dmpExaminationDate_following }, readOnly: dmpExaminationDate_following.readOnly")
+
+    div.row
+
+        div.col-xs-12.form-group
+            strong(data-bind="text: dmpMedicationConform.i18n")
+            span(data-bind="dmpField: { field: dmpMedicationConform }")
+            div(data-bind="foreach: dmpMedicationConform.list")
+                label.radio-inline
+                    span(data-bind="text: i18n")
+                    input(type="radio", name="dmpMedicationConform", data-bind="value: val, checked: $parent.dmpMedicationConform, attr: { me: $element.name + '-' + val }, readOnly: $parent.dmpMedicationConform.readOnly")
+
+    div.row
+
+        div.col-xs-6.form-group
+            strong(data-bind="text: 'Abweichung in Luftleitung'")
+            span(data-bind="dmpField: { field: dmpAirLineAnomaly }")
+            div(data-bind="foreach: dmpAirLineAnomaly.list")
+                //ko if: $parent.dmpAge() !== hide
+                label.checkbox-inline
+                    span(data-bind="text: i18n")
+                    input(type="checkbox", name="dmpAirLineAnomaly", data-bind="value: val, checked: $parent.dmpAirLineAnomaly, attr: { me: $element.name + '-' + val }, readOnly: $parent.dmpAirLineAnomaly.readOnly() || !$parent.dmpMedicationConformNoSelected()")
+                // /ko
+
+        //ko if: dmpAge() === "CHILD"
+
+        div.col-xs-6.form-group
+            label.control-label(data-bind="text: 'andere'")
+            input.form-control(name='dmpAirLineAnomalyOther', type="text", data-bind="value: dmpAirLineAnomalyOther, readOnly: dmpAirLineAnomalyOther.readOnly() || !dmpAirLineAnomalyOtherSelected()")
+
+        // /ko
+
+    div.row
+
+        div.col-xs-12.form-group
+            strong(data-bind="text: 'Abweichung in Knochenleitung'")
+            span(data-bind="dmpField: { field: dmpBoneLineAnomaly }")
+            div(data-bind="foreach: dmpBoneLineAnomaly.list")
+                //ko if: $parent.dmpAge() !== hide
+                label.checkbox-inline
+                    span(data-bind="text: i18n")
+                    input(type="checkbox", name="dmpBoneLineAnomaly", data-bind="value: val, checked: $parent.dmpBoneLineAnomaly, attr: { me: $element.name + '-' + val }, readOnly: $parent.dmpBoneLineAnomaly.readOnly() || !$parent.dmpMedicationConformNoSelected()")
+                // /ko
+
+
+    //ko if: dmpAge() === "ADULT"
+
+    div.row
+
+        div.col-xs-6.form-group
+            strong(data-bind="text: 'Abweichung in Sonderversorgung'")
+            span(data-bind="dmpField: { field: dmpSpecialMedicationAnomaly }")
+            div(data-bind="foreach: dmpSpecialMedicationAnomaly.list")
+                label.checkbox-inline
+                    span(data-bind="text: i18n")
+                    input(type="checkbox", name="dmpSpecialMedicationAnomaly", data-bind="value: val, checked: $parent.dmpSpecialMedicationAnomaly, attr: { me: $element.name + '-' + val }, readOnly: $parent.dmpSpecialMedicationAnomaly.readOnly() || !$parent.dmpMedicationConformNoSelected()")
+
+        div.col-xs-6.form-group
+            label.control-label(data-bind="text: 'andere'")
+            input.form-control(name='dmpSpecialMedicationAnomalyOther', type="text", data-bind="value: dmpSpecialMedicationAnomalyOther, readOnly: dmpSpecialMedicationAnomalyOther.readOnly() || !dmpSpecialMedicationAnomalyOtherSelected()")
+    // /ko
+
+//ko if: dmpAge() === "ADULT"
+
++DmpFieldset('hearingAidRecognitionI18n')
+
+    div.row
+
+        div.col-xs-12.form-group
+            strong(data-bind="text: dmpSpeakingTestPossible_following.i18n")
+            span(data-bind="dmpField: { field: dmpSpeakingTestPossible_following }")
+            div(data-bind="foreach: dmpSpeakingTestPossible_following.list, hasFeedback: { field: dmpSpeakingTestPossible_following, toggle: dmpSpeakingTestPossible_following.hasError, messages: dmpSpeakingTestPossible_following.validationMessages }")
+                label.radio-inline
+                    span(data-bind="text: i18n")
+                    input(type="radio", name="dmpSpeakingTestPossible_following", data-bind="value: val, checked: $parent.dmpSpeakingTestPossible_following, attr: { name: $element.name + '-' + val }, readOnly: $parent.dmpSpeakingTestPossible_following.readOnly")
+
+    div.row
+
+        div.col-xs-6
+            div.form-group(data-bind="hasFeedback: { field: dmpSpeechComprehensionFreeFieldEZ, toggle: dmpSpeechComprehensionFreeFieldEZ.hasError, messages: dmpSpeechComprehensionFreeFieldEZ.validationMessages }")
+                strong(data-bind="text: 'Erzieltes Sprachverstehen im Freifeld mit Hörgerät(en):'")
+                span(data-bind="dmpField: { field: {hint: 'Binaural (bei ggf. einseitiger Normalhörigkeit ohne Vertäubung des normalhörigen Ohres)', i18n: 'Erzieltes Sprachverstehen im Freifeld mit Hörgerät(en):'} }")
+                br
+                label.control-label(data-bind="text: dmpSpeechComprehensionFreeFieldEZ.i18n")
+                span(data-bind="dmpField: { field: dmpSpeechComprehensionFreeFieldEZ }")
+                input.form-control(name='dmpSpeechComprehensionFreeFieldEZ', type="text", data-bind="value: dmpSpeechComprehensionFreeFieldEZ, readOnly: dmpSpeechComprehensionFreeFieldEZ.readOnly() || !dmpSpeakingTestPossible_following_YesSelected()")
+
+        div.col-xs-6
+            div.form-group(data-bind="hasFeedback: { field: dmpSpeechComprehensionFreeFieldSVS, toggle: dmpSpeechComprehensionFreeFieldSVS.hasError, messages: dmpSpeechComprehensionFreeFieldSVS.validationMessages }")
+                strong(data-bind="text: 'Erzieltes Sprachverstehen im Freifeld mit Hörgerät(en):'")
+                span(data-bind="dmpField: { field: {hint: 'Binaural (bei ggf. einseitiger Normalhörigkeit ohne Vertäubung des normalhörigen Ohres)', i18n: 'Erzieltes Sprachverstehen im Freifeld mit Hörgerät(en):'} }")
+                br
+                label.control-label(data-bind="text: dmpSpeechComprehensionFreeFieldSVS.i18n")
+                span(data-bind="dmpField: { field: dmpSpeechComprehensionFreeFieldSVS }")
+                input.form-control(name='dmpSpeechComprehensionFreeFieldSVS', type="text", data-bind="value: dmpSpeechComprehensionFreeFieldSVS, readOnly: dmpSpeechComprehensionFreeFieldSVS.readOnly() || !dmpSpeakingTestPossible_following_YesSelected()")
+
+        div.col-xs-6
+            div.form-group(data-bind="hasFeedback: { field: dmpListeningRangeWithoutHG, toggle: dmpListeningRangeWithoutHG.hasError, messages: dmpListeningRangeWithoutHG.validationMessages }")
+                strong(data-bind="text: 'keine FF-Untersuchung möglich:'")
+                br
+                label.control-label(data-bind="text: dmpListeningRangeWithoutHG.i18n")
+                span(data-bind="dmpField: { field: dmpListeningRangeWithoutHG }")
+                input.form-control(name='dmpListeningRangeWithoutHG', type="text", data-bind="value: dmpListeningRangeWithoutHG, readOnly: dmpListeningRangeWithoutHG.readOnly() || !dmpSpeakingTestPossible_following_NoSelected()")
+
+        div.col-xs-6
+            div.form-group(data-bind="hasFeedback: { field: dmpListeningRangeWithHG, toggle: dmpListeningRangeWithHG.hasError, messages: dmpListeningRangeWithHG.validationMessages }")
+                strong(data-bind="text: 'keine FF-Untersuchung möglich:'")
+                br
+                label.control-label(data-bind="text: dmpListeningRangeWithHG.i18n")
+                span(data-bind="dmpField: { field: dmpListeningRangeWithHG }")
+                input.form-control(name='dmpListeningRangeWithHG', type="text", data-bind="value: dmpListeningRangeWithHG, readOnly: dmpListeningRangeWithHG.readOnly() || !dmpSpeakingTestPossible_following_NoSelected()")
+
+// /ko
+
++DmpFieldset('furtherDataI18n')
+
+    //ko if: dmpAge() === "ADULT"
+
+    div.row
+
+        div.col-xs-4
+            strong(data-bind="text: 'Nutzen (Verbesserung der Hörfähigkeit) mittels APHAB-Fragebogen (vor / nach HG-Versorgung):'")
+            br
+            div.form-group(data-bind="hasFeedback: { field: dmpAdvantageWithHG, toggle: dmpAdvantageWithHG.hasError, messages: dmpAdvantageWithHG.validationMessages }")
+                label.control-label(data-bind="text: dmpAdvantageWithHG.i18n")
+                span(data-bind="dmpField: { field: dmpAdvantageWithHG }")
+                input.form-control(name='dmpAdvantageWithHG', type="text", data-bind="value: dmpAdvantageWithHG, readOnly: dmpAdvantageWithHG.readOnly")
+            br
+
+    div.row
+
+        div.col-xs-12.form-group
+            strong(data-bind="text: dmpMedicationForFixedAmount.i18n")
+            span(data-bind="dmpField: { field: dmpMedicationForFixedAmount }")
+            div(data-bind="foreach: dmpMedicationForFixedAmount.list")
+                label.radio-inline
+                    span(data-bind="text: i18n")
+                    input(type="radio", name="dmpMedicationForFixedAmount", data-bind="value: val, checked: $parent.dmpMedicationForFixedAmount, attr: { name: $element.name + '-' + val }, readOnly: $parent.dmpMedicationForFixedAmount.readOnly")
+
+    // /ko
+
+    //ko if: dmpAge() === "CHILD"
+
+    div.row
+
+        div.col-xs-12.form-group
+            strong(data-bind="text: dmpHearingAidSuccessDetectable.i18n")
+            span(data-bind="dmpField: { field: dmpHearingAidSuccessDetectable }")
+            div(data-bind="foreach: dmpHearingAidSuccessDetectable.list, hasFeedback: { field: dmpHearingAidSuccessDetectable, toggle: dmpHearingAidSuccessDetectable.hasError, messages: dmpHearingAidSuccessDetectable.validationMessages }")
+                label.radio-inline
+                    span(data-bind="text: i18n")
+                    input(type="radio", name="dmpHearingAidSuccessDetectable", data-bind="value: val, checked: $parent.dmpHearingAidSuccessDetectable, attr: { name: $element.name + '-' + val }, readOnly: $parent.dmpHearingAidSuccessDetectable.readOnly")
+
+        div.col-xs-12.form-group
+            strong(data-bind="text: dmpHearingAidSuccessMeasurementThrough.i18n")
+            span(data-bind="dmpField: { field: dmpHearingAidSuccessMeasurementThrough }")
+            div(data-bind="foreach: dmpHearingAidSuccessMeasurementThrough.list")
+                label.checkbox-inline
+                    span(data-bind="text: i18n")
+                    input(type="checkbox", name="dmpHearingAidSuccessMeasurementThrough", data-bind="value: val, checked: $parent.dmpHearingAidSuccessMeasurementThrough, attr: { me: $element.name + '-' + val }, readOnly: $parent.dmpHearingAidSuccessMeasurementThrough.readOnly() || !$parent.dmpHearingAidSuccessDetectableYesSelected()")
+
+        div.col-xs-12.form-group
+            strong(data-bind="text: dmpMedicationForFree.i18n")
+            span(data-bind="dmpField: { field: dmpMedicationForFree }")
+            div(data-bind="foreach: dmpMedicationForFree.list")
+                label.radio-inline
+                    span(data-bind="text: i18n")
+                    input(type="radio", name="dmpMedicationForFree", data-bind="value: val, checked: $parent.dmpMedicationForFree, attr: { name: $element.name + '-' + val }, readOnly: $parent.dmpMedicationForFree.readOnly")
+
+        div.col-xs-12.form-group
+            strong(data-bind="text: dmpCooperation.i18n")
+            span(data-bind="dmpField: { field: dmpCooperation }")
+            div(data-bind="foreach: dmpCooperation.list")
+                label.checkbox-inline
+                    span(data-bind="text: i18n")
+                    input(type="checkbox", name="dmpCooperation", data-bind="value: val, checked: $parent.dmpCooperation, attr: { me: $element.name + '-' + val }, readOnly: $parent.dmpCooperation.readOnly")
+
+
+    // /ko
+
+// /ko

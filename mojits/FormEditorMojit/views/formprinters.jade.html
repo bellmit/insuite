@@ -1,0 +1,32 @@
+.container.container-fullscreen(id=mojit_view_id)
+
+  h4(data-bind="text: labelsTitleI18n")
+
+  select.form-control(data-bind="options: locations, optionsText: _getLocName , value: currentLocation")#selLocation
+  select.form-control(data-bind="options: users, optionsText: _getUserName, value: currentUser")#selUser
+
+  //button.btn.btn-primary#btnSave #{__i18n( 'FormEditorMojit.formprinters.labels.BTN_SAVE' )}
+  //button.btn.btn-primary#btnSaveDefault #{__i18n( 'FormEditorMojit.formprinters.labels.BTN_SAVEDEFAULT' )}
+
+  hr
+  div.row
+    div.col-lg-3.col-md-5.col-xs-12
+      div.form-group
+        input#txtFilter.form-control(placeholder="Filter Form List",data-bind="value: filterString")
+
+  div.connected.row(style="overflow-x: scroll;")#divFormAssignments
+    table(noborder="noboder")
+      tr(data-bind="foreach: tableCols")
+        td.form_list_sortable(valign="top", data-bind="attr: { dcPrinterName: title }")
+          h4(data-bind="text: title")
+          hr
+          div(data-bind="foreach: formCats")
+            div(data-bind="attr: { dcPrinterName: printerName } ")
+              b(data-bind="text: canonical")
+              br
+              ol.form_list_sortable.vertical(data-bind="attr: { id: dragGroup }, foreach: forms")
+                li(data-bind="attr: { dcFormId: formId }, click: function() { $root._onFormClick( $root, formId, title.de ) }")
+                  span &nbsp;
+                  i.fa.fa-file-text-o
+                  span &nbsp;&nbsp;
+                  span(data-bind="text: title.de")

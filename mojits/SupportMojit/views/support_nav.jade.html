@@ -1,0 +1,15 @@
+div(id=mojit_view_id)
+  .container.container-fullscreen
+    .col-md-12
+      h3(data-bind="text: tableHeadlineI18n")
+      div(style="position: absolute; right: 0; top: 0;")
+        button.btn.btn-sm.btn-default(
+        name="toggleFullScreen", type="button", data-bind="click: toggleFullScreenHandler, attr: { title: viewPortBtnI18n }",
+        style="margin-top: 10px; margin-right: 10px;")
+          span.fa.fa-arrows-alt
+    .col-md-12
+      //ko if: requestsTable
+      div#requestsTable(data-bind="template: requestsTable().template")
+      // /ko
+
+include ../../../autoload/KoUI/KoSchemaValue/view/KoSchemaTemplates

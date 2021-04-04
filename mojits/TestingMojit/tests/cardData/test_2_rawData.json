@@ -1,0 +1,17 @@
+{
+  "status" : {
+    "details" : "005002000000300000",
+    "created" : "2014-12-10T09:17:32.000Z"
+  },
+  "patient" : "<?xml version=\"1.0\" encoding=\"ISO-8859-15\" standalone=\"yes\"?><UC_PersoenlicheVersichertendatenXML CDM_VERSION=\"5.2.0\" xmlns=\"http://ws.gematik.de/fa/vsdm/vsd/v5.2\"><Versicherter><Versicherten_ID>X110380197</Versicherten_ID><Person><Geburtsdatum>20111104</Geburtsdatum><Vorname>Mãrianne</Vorname><Nachname>Hünsch</Nachname><Geschlecht>W</Geschlecht><Titel>Dr.</Titel><StrassenAdresse><Postleitzahl>86551</Postleitzahl><Ort>Aichach</Ort><Land><Wohnsitzlaendercode>D</Wohnsitzlaendercode></Land><Strasse>Rosenau</Strasse><Hausnummer>3</Hausnummer></StrassenAdresse></Person></Versicherter></UC_PersoenlicheVersichertendatenXML>",
+  "insurance" : {
+    "protected" : "<?xml version=\"1.0\" encoding=\"ISO-8859-15\" standalone=\"yes\"?><UC_GeschuetzteVersichertendatenXML CDM_VERSION=\"5.2.0\" xmlns=\"http://ws.gematik.de/fa/vsdm/vsd/v5.2\"><Zuzahlungsstatus><Status>0</Status></Zuzahlungsstatus><Selektivvertraege><Aerztlich>0</Aerztlich><Zahnaerztlich>0</Zahnaerztlich></Selektivvertraege></UC_GeschuetzteVersichertendatenXML>",
+    "common" : "<?xml version=\"1.0\" encoding=\"ISO-8859-15\" standalone=\"yes\"?><UC_AllgemeineVersicherungsdatenXML CDM_VERSION=\"5.2.0\" xmlns=\"http://ws.gematik.de/fa/vsdm/vsd/v5.2\"><Versicherter><Versicherungsschutz><Beginn>20141210</Beginn><Kostentraeger><Kostentraegerkennung>999567890</Kostentraegerkennung><Kostentraegerlaendercode>D</Kostentraegerlaendercode><Name>gematik Musterkasse1GKV</Name><AbrechnenderKostentraeger><Kostentraegerkennung>998334567</Kostentraegerkennung><Kostentraegerlaendercode>D</Kostentraegerlaendercode><Name>gematik Musterkasse1GKV</Name></AbrechnenderKostentraeger></Kostentraeger></Versicherungsschutz><Zusatzinfos><ZusatzinfosGKV><Versichertenart>1</Versichertenart><Zusatzinfos_Abrechnung_GKV><Kostenerstattung><AerztlicheVersorgung>0</AerztlicheVersorgung><ZahnaerztlicheVersorgung>0</ZahnaerztlicheVersorgung><StationaererBereich>0</StationaererBereich><VeranlassteLeistungen>0</VeranlassteLeistungen></Kostenerstattung><WOP>71</WOP></Zusatzinfos_Abrechnung_GKV></ZusatzinfosGKV></Zusatzinfos></Versicherter></UC_AllgemeineVersicherungsdatenXML>"
+  },
+  "cardVersion" : "G2",
+  "deviceType" : "stationary",
+  "serialNo" : {
+    "serial" : "00004968",
+    "issuerId" : "68831100"
+  }
+}

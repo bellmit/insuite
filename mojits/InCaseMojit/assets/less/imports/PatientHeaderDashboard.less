@@ -1,0 +1,107 @@
+& {
+  @import "../../../../../less/variables/bootstrap.less";
+
+  @gadget-bgColor: #000000;
+  @gadget-proxy-valid-border-color: @brand-success;
+  @gadget-proxy-invalid-border-color: @brand-danger;
+
+  .panel-body-with-PatientHeaderDashboard {
+    padding-top: 0;
+    padding-bottom: 0;
+    min-height: 105px;
+    max-height: 420px;
+    font-size: 11px;
+  }
+
+  .panel-body-with-PatientHeaderDashboard .alert {
+    margin-bottom: 10px;
+    padding: 7px;
+  }
+
+  .panel-body-with-PatientHeaderDashboard .Gadget {
+    overflow: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  .panel-body-with-PatientHeaderDashboard-inEditMode .Gadget {
+    position: relative;
+    background-color: fade(@gadget-bgColor, 20%);
+    overflow: hidden;
+  }
+
+  .panel-body-with-PatientHeaderDashboard-inEditMode .Gadget.Gadget-draggable.Gadget-dragHandle {
+    cursor: move;
+  }
+
+  .PatientGadget-headline {
+    font-size: 14px;
+    margin: 0 0 3px;
+  }
+
+  .PatientGadget-headline .glyphicon,
+  .PatientGadget-headline .fa {
+    font-size: 18px;
+    vertical-align: middle;
+  }
+
+  .PatientGadgetMarkers .glyphicon {
+    font-size: 14px;
+    vertical-align: middle;
+  }
+
+  .PatientGadgetEditGadget-header {
+    padding: 1px 3px;
+    font-size: 10px;
+  }
+
+  .PatientGadgetEditGadget-remove {
+    cursor: pointer;
+    vertical-align: text-top;
+  }
+
+  .PatientHeaderDashboard-drag {
+  }
+
+  .PatientHeaderDashboard-proxy {
+    z-index: 10 !important; /* ensures proxy above, important because of '.yui3-resize' */
+    box-shadow: 0 5px 5px fade(@gadget-bgColor, 20%);
+  }
+
+  .PatientHeaderDashboard-proxy-valid,
+  .PatientHeaderDashboard-resize-valid,
+  .PatientHeaderDashboardGadgetSelector-proxy-valid {
+    border: 2px solid @gadget-proxy-valid-border-color;
+  }
+
+  .PatientHeaderDashboard-proxy-invalid,
+  .PatientHeaderDashboard-resize-invalid,
+  .PatientHeaderDashboardGadgetSelector-proxy-invalid {
+    border: 2px solid @gadget-proxy-invalid-border-color;
+  }
+
+  .PatientHeaderDashboardGadgetSelector-drag {
+    opacity: 0.6;
+  }
+
+  .PatientHeaderDashboardGadgetSelector-proxy {
+  }
+
+  .PatientHeaderDashboard-proxy.Gadget,
+  .PatientHeaderDashboardGadgetSelector-proxy.DashboardBaseGadgetSelector-Gadget {
+    background-color: fade(@gadget-bgColor, 15%);
+  }
+
+  .PatientHeaderDashboardGadgetSelector-proxy .DashboardBaseGadgetSelector-header {
+    padding: 1px 3px;
+    font-size: 10px;
+  }
+
+  .PatientGadgetConfigurableTableBase .table tbody td {
+    padding: 2px 3px;
+    white-space: pre-line;
+  }
+
+  @import "../../../../../mojits/DocCirrus/autoload/Gadget/patient/less/PatientGadgetAlarmClock.less";
+
+}

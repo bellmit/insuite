@@ -1,0 +1,70 @@
+div.activityPatientInfoViewModel.panel.panel-default(data-bind="panelCollapse: { name: 'patient_short_info' }")
+  div.panel-heading
+    span(style="font-weight:bold;")
+      span(data-bind="text: panelTitle")
+      span(data-bind="visible: hasBirthday", style="display: none")
+        span.fa.fa-birthday-cake.dc-fade-animation-rev.dc-red
+      | &nbsp;
+      span(data-bind="text: displayInsuranceTypes")
+      | &nbsp;
+      span.glyphicon.glyphicon-tag(
+      data-bind="style: { color: getPublicCardColor }, visible: hasPublicCard, attr: { title: getPublicCardTitle }",
+      style="vertical-align: middle; display: none"
+      )
+      | &nbsp;
+    span(data-bind="visible: showAttachedContentHeader", style="display: none")
+      | '| '
+      span.attached-content(data-bind="html: attachedContentText, style: { color: attachedContentColor }")
+      | &nbsp;
+      a(name="detachActivity", href="#", data-bind="click: detachActivity")
+        span.fa.fa-close
+      | &nbsp;|
+  div.panel-collapse.collapse.in
+    div.panel-body
+      div.row
+        div.col-md-2.hidden-xs.hidden-sm.text-center
+          img(name="profilePicture", data-bind="mediaSetImgFromDefault: mediaSetImgFromDefaultProfilePicture")
+        div.col-md-10
+          div.panel.panel-default(style="margin-bottom:0")
+            div.panel-body
+              div.row
+                div.col-md-6
+                  div.row
+                    div.col-md-6.hidden-xs.hidden-sm
+                      h4(style="margin-top:0")
+                        span(data-bind="text: labelCommunicationI18n")
+                      ul.list-unstyled(data-bind="foreach: communicationLinks")
+                        li.dc-text-crop(data-bind="html: $data")
+                      div(style="display: none;", data-bind="visible: _isPatientShortInfoInsuranceStatusVisible")
+                        h4
+                          span(data-bind="text: insuranceStatusI18n")
+                        ul.list-unstyled
+                          // ko if: _isPatientShortInfoFirstInsuranceNameVisible
+                          li.dc-text-crop(data-bind="text: _firstInsuranceName")
+                          // /ko
+                          // ko if: _isPatientShortInfoFirstInsuranceEmployeeNameVisible
+                          li.dc-text-crop(data-bind="text: _firstInsuranceEmployeeName")
+                          // /ko
+                    div.col-md-6.hidden-xs.hidden-sm(data-bind="visible: !crmInfoVisible()")
+                      h4(style="margin-top:0")
+                        span(data-bind="text: preventionI18n")
+                    div.col-md-6.hidden-xs.hidden-sm(data-bind="visible: crmInfoVisible")
+                      h4(style="margin-top:0")
+                        a CRM
+                      ul(data-bind="foreach: crmInfo").list-unstyled
+                        li.dc-text-crop(data-bind="text: $data")
+                      p(data-bind="text: _displayCrmReminder, visible: _displayCrmReminder")
+                      p(data-bind="html: _displayCrmAppointment, visible: _displayCrmAppointment")
+                  div.row(data-bind="visible: showAttachedContentInfo", style="display: none")
+                    hr
+                    div.col-md-12
+                      span.attached-content(data-bind="html: attachedContentText, style: { color: attachedContentColor }")
+                div.col-md-2.hidden-xs.hidden-sm
+                  h4(style="margin-top:0")
+                    span(data-bind="text: markerI18n")
+                  ul.list-unstyled(data-bind="foreach: markers")
+                    li.dc-text-crop(data-bind="style: {color: color}, attr: { title: description}")
+                      span(data-bind="attr: {class: icon}") &nbsp;
+                      span(data-bind="text: description")
+                div.col-md-4
+                  textarea.form-control(data-bind="value: _comment", disabled="disabled" rows="5",contenteditable="true", style="height: 110px;background-color:#fafafa;")

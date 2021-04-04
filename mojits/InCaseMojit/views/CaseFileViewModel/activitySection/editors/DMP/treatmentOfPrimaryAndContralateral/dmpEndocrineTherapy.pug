@@ -1,0 +1,9 @@
+div.form-group
+    div.row
+        div.col-xs-3
+            strong(data-bind="text: dmpEndocrineTherapy.i18n")
+            span(data-bind="dmpField: { field: dmpEndocrineTherapy }")
+        div.col-xs-9(data-bind="foreach: dmpEndocrineTherapy.list, hasFeedback: { field: dmpEndocrineTherapy, toggle: dmpEndocrineTherapy.hasError, messages: dmpEndocrineTherapy.validationMessages }")
+            label.radio-inline
+                span(data-bind="text: i18n")
+                input(type="radio", name="dmpEndocrineTherapy", data-bind="value: val, checked: $parent.dmpEndocrineTherapy, readOnly: $parent.dmpEndocrineTherapy.readOnly, attr: { name: $element.name + '-' + val }")

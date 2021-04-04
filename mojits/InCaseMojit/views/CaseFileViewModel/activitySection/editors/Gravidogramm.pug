@@ -1,0 +1,91 @@
+div
+
+  //  numbers
+  div.row
+    div.col-md-4
+      strong(data-bind="text: fetusesI18n")
+      select.form-control(data-bind="value: fetuses")
+        option(value="1") 1
+        option(value="2") 2
+        option(value="3") 3
+        option(value="4") 4
+        option(value="5") 5
+
+    div.col-md-4
+      strong(data-bind="text: initialWeight.i18n + ' (kg)'")
+      input.form-control(data-bind="value: initialWeight, valueUpdate: 'afterkeydown'")
+    div.col-md-4
+      strong(data-bind="text: glucoseTolerance.i18n")
+      input.form-control(data-bind="value: glucoseTolerance, valueUpdate: 'afterkeydown'")
+
+  //  estimated pelvic measurements
+  div.row
+    div.col-md-3
+      strong(data-bind="text: pelvicMeasurementSP25I18n + ' (cm)'")
+      input.form-control(data-bind="value: pelvicMeasurementSP25, valueUpdate: 'afterkeydown'")
+    div.col-md-3
+      strong(data-bind="text: pelvicMeasurementCR28I18n + ' (cm)'")
+      input.form-control(data-bind="value: pelvicMeasurementCR28, valueUpdate: 'afterkeydown'")
+    div.col-md-3
+      strong(data-bind="text: pelvicMeasurementTR31I18n + ' (cm)'")
+      input.form-control(data-bind="value: pelvicMeasurementTR31, valueUpdate: 'afterkeydown'")
+    div.col-md-3
+      strong(data-bind="text: pelvicMeasurementC20I18n+ ' (cm)'")
+      input.form-control(data-bind="value: pelvicMeasurementC20, valueUpdate: 'afterkeydown'")
+
+  //  disease status
+  div.row
+    div.col-md-3
+      div.checkbox(style="margin-top: 0; margin-bottom: 0;")
+        label
+          input(type="checkbox", name="rubella", data-bind="checked: rubellaTiter")
+          strong(data-bind="text: rubellaTiter.i18n")
+
+    div.col-md-3
+      div.checkbox(style="margin-top: 0; margin-bottom: 0;")
+        label
+          input(type="checkbox", name="antibody1", data-bind="checked: antibody1")
+          strong(data-bind="text: antibody1.i18n")
+    div.col-md-3
+      div.checkbox(style="margin-top: 0; margin-bottom: 0;")
+        label
+          input(type="checkbox", name="antibody2", data-bind="checked: antibody2")
+          strong(data-bind="text: antibody2.i18n")
+    div.col-md-3
+      div.checkbox(style="margin-top: 0; margin-bottom: 0;")
+        label
+          input(type="checkbox", name="HBsAg", data-bind="checked: HBsAg")
+          strong(data-bind="text: HBsAg.i18n")
+
+  div.row
+    div.col-md-3
+      div.checkbox(style="margin-top: 0; margin-bottom: 0;")
+        label
+          input(type="checkbox", name="syphillis", data-bind="checked: syphillis")
+          strong(data-bind="text: syphillis.i18n")
+    div.col-md-3
+      div.checkbox(style="margin-top: 0; margin-bottom: 0;")
+        label
+          input(type="checkbox", name="toxoplasmosis", data-bind="checked: toxoplasmosis")
+          strong(data-bind="text: toxoplasmosis.i18n")
+    div.col-md-3
+      div.checkbox(style="margin-top: 0; margin-bottom: 0;")
+        label
+          input(type="checkbox", name="HIV", data-bind="checked: HIV")
+          strong(data-bind="text: HIV.i18n")
+    div.col-md-3
+      div.checkbox(style="margin-top: 0; margin-bottom: 0;")
+        label
+          input(type="checkbox", name="chlamidia", data-bind="checked: chlamidia")
+          strong(data-bind="text: chlamidia.i18n")
+
+  //  userContent / Hinweis
+  div.row
+    div.col-md-12
+      div.form-group
+        hr
+        //  caretposition only needed if Textbausteine enabled
+        textarea.form-control(name="userContent", data-bind="attr:{rows: '10'}, value: userContent, valueUpdate: 'afterkeydown', hasFocus: true, readOnly: userContent.readOnly, caretPosition: userContent.caretPosition")
+
+  br
+  br

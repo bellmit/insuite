@@ -1,0 +1,46 @@
+div#myModalContainer
+div.visible-xs.visible-sm(style="padding: 15px")
+div.visible-md.visible-lg(style="padding: 35px")
+div.container.container-fullscreen(id=mojit_view_id)
+
+  div#divCarouselModal
+
+  div
+    input(type="hidden", name="profileId")#profileId
+    .row
+      .col-xs-2.hoverbox#logoarea
+        img#logo
+      .col-xs-6.hoverbox#head
+        h2
+          strong#heading
+        h4
+          strong(style="color: #bbbbbb;")#subheading
+        h5#subsubheading
+      .col-xs-3.col-xs-offset-1(style="text-align:center;")
+        .row
+          div.date#date
+          div.clock#clock
+    .row
+      .col-xs-8
+        <br>
+        div#msg
+        <br>
+        div.hoverbox.carousel.slide#carousel
+        dix#imgTest
+        button.btn(style="display:none;")#btnEditCarousel Edit Carousel
+
+      .col-xs-3.col-xs-offset-1
+        div#scheduler
+        div#upper
+  p
+  hr
+  .footer.dc_footer
+    p
+      em
+        small Powered by Doc Cirrus GmbH
+        small &nbsp;©&nbsp;
+      em
+        small#current_year
+
+style
+  .dc-SystemMessages { display:none!important }

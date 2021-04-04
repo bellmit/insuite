@@ -1,0 +1,57 @@
+div.insight-regenrate-viewmodel
+  header
+    h4(data-bind="text: generalTitleI18n")
+  div
+    div.row
+      div.col-md-12
+        div.alert.alert-warning(data-bind="html: regenerateTextWarnI18n")
+    div.row(data-bind="visible: isLoadHigh")
+      div.col-md-12
+        div.alert.alert-warning(data-bind="text: HIGH_LOAD")
+  div.panel.panel-default
+    div.panel-body
+      div.row
+        div.col-md-12
+          button.btn.btn-default( data-bind="click: clearReportings, disable: disableClearReportings, text: CLEAR_REPORTINGS")
+          button.btn.btn-default(style="margin-left: 10px;", data-bind="click: clearSyncreportings, disable: disableClearSyncreportings, text: CLEAR_SYNCREPORTINGS") Clear Regeneration Queue
+          span &nbsp;&nbsp;
+          span(style="margin-left: 10px;", data-bind="html: statSummaryLine")
+      hr
+      h4(data-bind="text: regenerateTitleI18n")
+      div.row
+        div.col-md-4(style="margin: 10px 0px;")
+          span(data-bind="text: selectPeriodI18n")
+      div.row
+        div.col-lg-12.predefined-reports
+          div(data-bind="template: timeline.template")
+      div.row
+        div.col-md-4
+          span(data-bind="text: selectDataTypeI18n")
+      div.row
+        div.col-md-2
+          div.checkbox
+            input(type="checkbox", data-bind="checked: genLabdata")
+            label(data-bind="text: GEN_LABDATA")
+        div.col-md-2
+          div.checkbox
+            input(type="checkbox", data-bind="checked: genTasks")
+            label(data-bind="text: GEN_TASKS")
+        div.col-md-2
+          div.checkbox
+            input(type="checkbox", data-bind="checked: genSchedules")
+            label(data-bind="text: GEN_SCHEDULES")
+        div.col-md-4
+          div.checkbox
+            input(type="checkbox", data-bind="checked: genActivities")
+            label(data-bind="text: GEN_ACTIVITIES")
+
+      div.row(align='right', style='margin: inherit;')
+        button.btn.btn-default(data-bind="click: cancelRegenerate, visible: isRegenerating, disable: isCanceling, text: regenerateButtonCancelI18n")
+        button.btn.btn-primary(style="margin-left: 10px;", data-bind="click: startRegenerate, disable: isRegenerating, text: REGENERATE")
+
+      //ko if: restartVisible()
+      footer.row.modal-footer(style="padding: inherit; padding-bottom: 0px;")
+        div.col-md-9(align='left')
+          span(data-bind="text: restartWorkerInfo")
+        button.btn.btn-danger(data-bind="click: restartWorker, disable: isRegenerating, text: restartWorkerI18n")
+      // /ko

@@ -1,0 +1,445 @@
+div
+  div.row
+    div.col-xs-12
+      div.form-group(data-bind="hasFeedback: { field: labRequestType, toggle: labRequestType.hasError, messages: labRequestType.validationMessages }")
+        label.control-label(data-bind="text: labRequestType.i18n")
+        select.form-control(name="labRequestType", data-bind="options: labRequestTypeList, optionsValue: 'val', optionsText: '-de', value: labRequestType, readOnly: scheinSlipMedicalTreatment.readOnly")
+  div.row(data-bind="if: 'LABREQUESTTYPE_A' !== labRequestType()")
+    div.col-xs-6
+      div.form-group(data-bind="hasFeedback: { field: scheinEstablishment, toggle: scheinEstablishment.hasError, messages: scheinEstablishment.validationMessages }")
+        label.control-label(data-bind="text: labelBSNRI18n")
+        input.form-control(name="scheinEstablishment", data-bind="select2: _scheinEstablishmentCfgAutoComplete, readOnly: scheinEstablishment.readOnly")
+    div.col-xs-6
+      div.form-group(data-bind="hasFeedback: { field: scheinRemittor, toggle: scheinRemittor.hasError, messages: scheinRemittor.validationMessages }")
+        label.control-label(data-bind="text: labelLanrI18n")
+        input.form-control(name="scheinRemittor", data-bind="select2: _scheinRemittorCfgAutoComplete, value: scheinRemittor, readOnly: scheinRemittor.readOnly")
+  // ko if: isAfterQ32020
+  div.row
+    div.col-xs-6
+      div.form-group(data-bind="hasFeedback: { field: knappschaftskennzeichen, toggle: knappschaftskennzeichen.hasError, messages: knappschaftskennzeichen.validationMessages }")
+        label.control-label(data-bind="text: knappschaftskennzeichen.i18n")
+        input.form-control(name="knappschaftskennzeichen", data-bind="textInput: knappschaftskennzeichen, readOnly: knappschaftskennzeichen.readOnly")
+    div.col-xs-6
+      div.form-group(data-bind="hasFeedback: { field: ssw, toggle: ssw.hasError, messages: ssw.validationMessages }")
+        label.control-label(data-bind="text: ssw.i18n")
+        input.form-control(name="ssw", data-bind="textInput: ssw, readOnly: knappschaftskennzeichen.readOnly")
+  // /ko
+  div.row
+    div.col-xs-3
+      div.radio(data-bind="highlightError: scheinSlipMedicalTreatment")
+        label.control-label
+          strong(data-bind="text: scheinSlipMedicalTreatment1I18n")
+          input(type="radio", name="scheinSlipMedicalTreatment", value="1", data-bind="checked: scheinSlipMedicalTreatment, readOnly: scheinSlipMedicalTreatment.readOnly")
+    div.col-xs-3
+      div.radio(data-bind="highlightError: scheinSlipMedicalTreatment")
+        label.control-label
+          strong(data-bind="text: scheinSlipMedicalTreatment2I18n")
+          input(type="radio", name="scheinSlipMedicalTreatment", value="2", data-bind="checked: scheinSlipMedicalTreatment, readOnly: scheinSlipMedicalTreatment.readOnly")
+    // ko if: 'LABREQUESTTYPE_A' !== labRequestType()
+    div.col-xs-6
+      div.radio(data-bind="highlightError: scheinSlipMedicalTreatment")
+        label.control-label
+          strong(data-bind="text: scheinSlipMedicalTreatment3I18n")
+          input(type="radio", name="scheinSlipMedicalTreatment", value="3", data-bind="checked: scheinSlipMedicalTreatment, readOnly: scheinSlipMedicalTreatment.readOnly")
+    // /ko
+    div.col-xs-6
+      div.radio(data-bind="highlightError: scheinSlipMedicalTreatment")
+        label.control-label
+          strong(data-bind="text: scheinSlipMedicalTreatment4I18n")
+          input(type="radio", name="scheinSlipMedicalTreatment", value="4", data-bind="checked: scheinSlipMedicalTreatment, readOnly: scheinSlipMedicalTreatment.readOnly")
+    div.col-md-6
+      div.form-group
+        label.control-label(data-bind="text: ggfKennziffer.i18n")
+        input.form-control(name="ggfKennziffer", placeholder="", data-bind="value: ggfKennziffer, readOnly: ggfKennziffer.readOnly")
+  div.row
+    div.col-xs-3
+      div.checkbox
+        label.control-label
+          strong(data-bind="text: fk4202.i18n")
+          input(type="checkbox", name="fk4202", data-bind="checked: fk4202, readOnly: fk4202.readOnly")
+    //ko if: 'LABREQUESTTYPE_A' !== labRequestType()
+    div.col-xs-3
+      div.checkbox
+        label.control-label
+          strong(data-bind="text: kontrollunters.i18n")
+          input(type="checkbox", name="kontrollunters", data-bind="checked: kontrollunters, readOnly: kontrollunters.readOnly")
+    div.col-xs-3
+      div.checkbox
+        label.control-label
+          strong(data-bind="text: fk4204.i18n")
+          input(type="checkbox", name="fk4204", data-bind="checked: fk4204, readOnly: fk4204.readOnly")
+    div.col-xs-3
+      div(data-bind="if: !_asvContext()")
+        div.checkbox
+          label.control-label
+            strong(data-bind="text: behandlungGemaess.i18n")
+            input(type="checkbox", name="behandlungGemaess", data-bind="checked: behandlungGemaess, readOnly: behandlungGemaess.readOnly")
+      div(data-bind="if: _asvContext")
+        div.checkbox
+          label.control-label
+            strong(data-bind="text: asvTeamReferral.i18n")
+            input(type="checkbox", name="asvTeamReferral", data-bind="checked: asvTeamReferral, readOnly: asvTeamReferral.readOnly")
+    // /ko
+  div.row
+    div.col-xs-3
+      div.form-group
+        label.control-label(data-bind="text: labRequestId.i18n")
+        input.form-control(name="labRequestId", data-bind="value: labRequestId, hasFocus: true, readOnly: labRequestId.readOnly")
+
+    div.col-xs-3
+      div.checkbox
+        label.control-label
+          strong(data-bind="text: befEilt.i18n")
+          input(type="checkbox", name="befEilt", data-bind="checked: befEilt, readOnly: befEilt.readOnly")
+    // ko if: showPhoneOrFax() && !isAfterQ32020()
+    div.col-xs-3
+      div.form-group(data-bind="hasFeedback: { field: befEiltTel, toggle: befEiltTel.hasError, messages: befEiltTel.validationMessages }")
+        label.control-label(data-bind="text: befEiltTel.i18n")
+        input.form-control(name="befEiltTel", placeholder="", data-bind="value: befEiltTel, readOnly: _phoneFaxReadOnly")
+    div.col-xs-3
+      div.form-group(data-bind="hasFeedback: { field: befEiltFax, toggle: befEiltFax.hasError, messages: befEiltFax.validationMessages }")
+        label.control-label(data-bind="text: befEiltFax.i18n")
+        input.form-control(name="befEiltFax", placeholder="", data-bind="value: befEiltFax, readOnly: _phoneFaxReadOnly")
+    // /ko
+    // ko if: showPhoneOrFax() && isAfterQ32020()
+    div.col-xs-2
+      div.checkbox
+        label.control-label
+          strong(data-bind="text: befEiltTelBool.i18n")
+          input(type="checkbox", name="befEiltTelBool", data-bind="checked: befEiltTelBool, readOnly: _phoneFaxReadOnly")
+    div.col-xs-2
+      div.checkbox
+        label.control-label
+          strong(data-bind="text: befEiltFaxBool.i18n")
+          input(type="checkbox", name="befEiltFaxBool", data-bind="checked: befEiltFaxBool, readOnly: _phoneFaxReadOnly")
+    div.col-xs-2
+      div.form-group(data-bind="hasFeedback: { field: befEiltNr, toggle: befEiltNr.hasError, messages: befEiltNr.validationMessages }")
+        label.control-label(data-bind="text: befEiltNr.i18n")
+        input.form-control(name="befEiltNr", placeholder="", data-bind="value: befEiltNr, readOnly: _phoneFaxReadOnly() || (!befEiltTelBool() && !befEiltFaxBool())")
+    // /ko
+  div.row(data-bind="if: 'LABREQUESTTYPE_A' !== labRequestType()")
+    div.col-xs-12
+      div.form-group(data-bind="hasFeedback: { field: auftrag, toggle: auftrag.hasError, messages: auftrag.validationMessages }")
+        label.control-label(data-bind="text: auftrag.i18n")
+        textarea.form-control(name="auftrag", data-bind="value: auftrag, readOnly: auftrag.readOnly")
+  div.row(data-bind="if: 'LABREQUESTTYPE_A' === labRequestType() && isAfterQ32020()")
+    div.col-xs-12
+      div.form-group(data-bind="hasFeedback: { field: zuAngaben, toggle: zuAngaben.hasError, messages: zuAngaben.validationMessages }")
+        label.control-label(data-bind="text: zuAngaben.i18n")
+        textarea.form-control(name="zuAngaben", data-bind="value: zuAngaben, readOnly: zuAngaben.readOnly")
+  div.row(data-bind="if: 'LABREQUESTTYPE_A' === labRequestType()")
+    div.col-xs-12
+      hr
+      h4(data-bind="text: labelEdtaI18n")
+  div.row(data-bind="if: 'LABREQUESTTYPE_A' === labRequestType()")
+    div.col-xs-3
+      div.checkbox
+        label.control-label
+          strong(data-bind="text: edtaGrBlutbild.i18n")
+          input(type="checkbox", name="edtaGrBlutbild", data-bind="checked: edtaGrBlutbild, readOnly: edtaGrBlutbild.readOnly")
+    div.col-xs-3
+      div.checkbox
+        label.control-label
+          strong(data-bind="text: edtaKlBlutbild.i18n")
+          input(type="checkbox", name="edtaKlBlutbild", data-bind="checked: edtaKlBlutbild, readOnly: edtaKlBlutbild.readOnly")
+    div.col-xs-3
+      div.checkbox
+        label.control-label
+          strong(data-bind="text: edtaHbA1c.i18n")
+          input(type="checkbox", name="edtaHbA1c", data-bind="checked: edtaHbA1c, readOnly: edtaHbA1c.readOnly")
+    div.col-xs-3
+      div.checkbox
+        label.control-label
+          strong(data-bind="text: edtaReti.i18n")
+          input(type="checkbox", name="edtaReti", data-bind="checked: edtaReti, readOnly: edtaReti.readOnly")
+    div.col-xs-3
+      div.checkbox
+        label.control-label
+          strong(data-bind="text: edtaBlutsenkung.i18n")
+          input(type="checkbox", name="edtaBlutsenkung", data-bind="checked: edtaBlutsenkung, readOnly: edtaBlutsenkung.readOnly")
+  div.row(data-bind="if: 'LABREQUESTTYPE_A' === labRequestType()")
+    div.col-xs-12
+      hr
+      h4(data-bind="text: labelCitratI18n")
+  div.row(data-bind="if: 'LABREQUESTTYPE_A' === labRequestType()")
+    div.col-xs-3
+      div.checkbox
+        label.control-label
+          strong(data-bind="text: citratQu.i18n")
+          input(type="checkbox", name="citratQu", data-bind="checked: citratQu, readOnly: citratQu.readOnly")
+    div.col-xs-3
+      div.checkbox
+        label.control-label
+          strong(data-bind="text: citratQuMarcumar.i18n")
+          input(type="checkbox", name="citratQuMarcumar", data-bind="checked: citratQuMarcumar, readOnly: citratQuMarcumar.readOnly")
+    div.col-xs-3
+      div.checkbox
+        label.control-label
+          strong(data-bind="text: citratThrombin.i18n")
+          input(type="checkbox", name="citratThrombin", data-bind="checked: citratThrombin, readOnly: citratThrombin.readOnly")
+    div.col-xs-3
+      div.checkbox
+        label.control-label
+          strong(data-bind="text: citratPTT.i18n")
+          input(type="checkbox", name="citratPTT", data-bind="checked: citratPTT, readOnly: citratPTT.readOnly")
+  div.row(data-bind="if: 'LABREQUESTTYPE_A' === labRequestType()")
+    div.col-xs-12
+      hr
+      h4(data-bind="text: labelSerumVollBlutI18n")
+  div.row(data-bind="if: 'LABREQUESTTYPE_A' === labRequestType()")
+    div.col-xs-3
+      div.checkbox
+        label.control-label
+          strong(data-bind="text: svbAlkPhos.i18n")
+          input(type="checkbox", name="svbAlkPhos", data-bind="checked: svbAlkPhos, readOnly: svbAlkPhos.readOnly")
+    div.col-xs-3
+      div.checkbox
+        label.control-label
+          strong(data-bind="text: svbAmylase.i18n")
+          input(type="checkbox", name="svbAmylase", data-bind="checked: svbAmylase, readOnly: svbAmylase.readOnly")
+    div.col-xs-3
+      div.checkbox
+        label.control-label
+          strong(data-bind="text: svbASL.i18n")
+          input(type="checkbox", name="svbASL", data-bind="checked: svbASL, readOnly: svbASL.readOnly")
+    div.col-xs-3
+      div.checkbox
+        label.control-label
+          strong(data-bind="text: svbBiliD.i18n")
+          input(type="checkbox", name="svbBiliD", data-bind="checked: svbBiliD, readOnly: svbBiliD.readOnly")
+    div.col-xs-3
+      div.checkbox
+        label.control-label
+          strong(data-bind="text: svbBiliG.i18n")
+          input(type="checkbox", name="svbBiliG", data-bind="checked: svbBiliG, readOnly: svbBiliG.readOnly")
+    div.col-xs-3
+      div.checkbox
+        label.control-label
+          strong(data-bind="text: svbCalc.i18n")
+          input(type="checkbox", name="svbCalc", data-bind="checked: svbCalc, readOnly: svbCalc.readOnly")
+    div.col-xs-3
+      div.checkbox
+        label.control-label
+          strong(data-bind="text: svbCholesterin.i18n")
+          input(type="checkbox", name="svbCholesterin", data-bind="checked: svbCholesterin, readOnly: svbCholesterin.readOnly")
+    div.col-xs-3
+      div.checkbox
+        label.control-label
+          strong(data-bind="text: svbCholin.i18n")
+          input(type="checkbox", name="svbCholin", data-bind="checked: svbCholin, readOnly: svbCholin.readOnly")
+    div.col-xs-3
+      div.checkbox
+        label.control-label
+          strong(data-bind="text: svbCK.i18n")
+          input(type="checkbox", name="svbCK", data-bind="checked: svbCK, readOnly: svbCK.readOnly")
+    div.col-xs-3
+      div.checkbox
+        label.control-label
+          strong(data-bind="text: svbCRP.i18n")
+          input(type="checkbox", name="svbCRP", data-bind="checked: svbCRP, readOnly: svbCRP.readOnly")
+    div.col-xs-3
+      div.checkbox
+        label.control-label
+          strong(data-bind="text: svbEisen.i18n")
+          input(type="checkbox", name="svbEisen", data-bind="checked: svbEisen, readOnly: svbEisen.readOnly")
+    div.col-xs-3
+      div.checkbox
+        label.control-label
+          strong(data-bind="text: svbEiwE.i18n")
+          input(type="checkbox", name="svbEiwE", data-bind="checked: svbEiwE, readOnly: svbEiwE.readOnly")
+    div.col-xs-3
+      div.checkbox
+        label.control-label
+          strong(data-bind="text: svbEiwG.i18n")
+          input(type="checkbox", name="svbEiwG", data-bind="checked: svbEiwG, readOnly: svbEiwG.readOnly")
+    div.col-xs-3
+      div.checkbox
+        label.control-label
+          strong(data-bind="text: svbGammaGT.i18n")
+          input(type="checkbox", name="svbGammaGT", data-bind="checked: svbGammaGT, readOnly: svbGammaGT.readOnly")
+    div.col-xs-3
+      div.checkbox
+        label.control-label
+          strong(data-bind="text: svbGlukose.i18n")
+          input(type="checkbox", name="svbGlukose", data-bind="checked: svbGlukose, readOnly: svbGlukose.readOnly")
+    div.col-xs-3
+      div.checkbox
+        label.control-label
+          strong(data-bind="text: svbGOT.i18n")
+          input(type="checkbox", name="svbGOT", data-bind="checked: svbGOT, readOnly: svbGOT.readOnly")
+    div.col-xs-3
+      div.checkbox
+        label.control-label
+          strong(data-bind="text: svbGPT.i18n")
+          input(type="checkbox", name="svbGPT", data-bind="checked: svbGPT, readOnly: svbGPT.readOnly")
+    div.col-xs-3
+      div.checkbox
+        label.control-label
+          strong(data-bind="text: svbHarnsäure.i18n")
+          input(type="checkbox", name="svbHarnsäure", data-bind="checked: svbHarnsäure, readOnly: svbHarnsäure.readOnly")
+    div.col-xs-3
+      div.checkbox
+        label.control-label
+          strong(data-bind="text: svbHarnstoff.i18n")
+          input(type="checkbox", name="svbHarnstoff", data-bind="checked: svbHarnstoff, readOnly: svbHarnstoff.readOnly")
+    div.col-xs-3
+      div.checkbox
+        label.control-label
+          strong(data-bind="text: svbHDL.i18n")
+          input(type="checkbox", name="svbHDL", data-bind="checked: svbHDL, readOnly: svbHDL.readOnly")
+    div.col-xs-3
+      div.checkbox
+        label.control-label
+          strong(data-bind="text: svbLgA.i18n")
+          input(type="checkbox", name="svbLgA", data-bind="checked: svbLgA, readOnly: svbLgA.readOnly")
+    div.col-xs-3
+      div.checkbox
+        label.control-label
+          strong(data-bind="text: svbLgG.i18n")
+          input(type="checkbox", name="svbLgG", data-bind="checked: svbLgG, readOnly: svbLgG.readOnly")
+    div.col-xs-3
+      div.checkbox
+        label.control-label
+          strong(data-bind="text: svbLgM.i18n")
+          input(type="checkbox", name="svbLgM", data-bind="checked: svbLgM, readOnly: svbLgM.readOnly")
+    div.col-xs-3
+      div.checkbox
+        label.control-label
+          strong(data-bind="text: svbKali.i18n")
+          input(type="checkbox", name="svbKali", data-bind="checked: svbKali, readOnly: svbKali.readOnly")
+    div.col-xs-3
+      div.checkbox
+        label.control-label
+          strong(data-bind="text: svbKrea.i18n")
+          input(type="checkbox", name="svbKrea", data-bind="checked: svbKrea, readOnly: svbKrea.readOnly")
+    div.col-xs-3
+      div.checkbox
+        label.control-label
+          strong(data-bind="text: svbKreaC.i18n")
+          input(type="checkbox", name="svbKreaC", data-bind="checked: svbKreaC, readOnly: svbKreaC.readOnly")
+    div.col-xs-3
+      div.checkbox
+        label.control-label
+          strong(data-bind="text: svbLDH.i18n")
+          input(type="checkbox", name="svbLDH", data-bind="checked: svbLDH, readOnly: svbLDH.readOnly")
+    div.col-xs-3
+      div.checkbox
+        label.control-label
+          strong(data-bind="text: svbLDL.i18n")
+          input(type="checkbox", name="svbLDL", data-bind="checked: svbLDL, readOnly: svbLDL.readOnly")
+    div.col-xs-3
+      div.checkbox
+        label.control-label
+          strong(data-bind="text: svbLipase.i18n")
+          input(type="checkbox", name="svbLipase", data-bind="checked: svbLipase, readOnly: svbLipase.readOnly")
+    div.col-xs-3
+      div.checkbox
+        label.control-label
+          strong(data-bind="text: svbNatrium.i18n")
+          input(type="checkbox", name="svbNatrium", data-bind="checked: svbNatrium, readOnly: svbNatrium.readOnly")
+    div.col-xs-3
+      div.checkbox
+        label.control-label
+          strong(data-bind="text: svbOPVorb.i18n")
+          input(type="checkbox", name="svbOPVorb", data-bind="checked: svbOPVorb, readOnly: svbOPVorb.readOnly")
+    div.col-xs-3
+      div.checkbox
+        label.control-label
+          strong(data-bind="text: svbPhos.i18n")
+          input(type="checkbox", name="svbPhos", data-bind="checked: svbPhos, readOnly: svbPhos.readOnly")
+    div.col-xs-3
+      div.checkbox
+        label.control-label
+          strong(data-bind="text: svbTransf.i18n")
+          input(type="checkbox", name="svbTransf", data-bind="checked: svbTransf, readOnly: svbTransf.readOnly")
+    div.col-xs-3
+      div.checkbox
+        label.control-label
+          strong(data-bind="text: svbTrigl.i18n")
+          input(type="checkbox", name="svbTrigl", data-bind="checked: svbTrigl, readOnly: svbTrigl.readOnly")
+    div.col-xs-3
+      div.checkbox
+        label.control-label
+          strong(data-bind="text: svbTSHBasal.i18n")
+          input(type="checkbox", name="svbTSHBasal", data-bind="checked: svbTSHBasal, readOnly: svbTSHBasal.readOnly")
+  div.row(data-bind="if: 'LABREQUESTTYPE_A' === labRequestType()")
+    div.col-xs-12
+      hr
+      h4(data-bind="text: labelGlucoseI18n")
+  div.row(data-bind="if: 'LABREQUESTTYPE_A' === labRequestType()")
+    div.col-xs-3
+      div.checkbox
+        label.control-label
+          strong(data-bind="text: glu1.i18n")
+          input(type="checkbox", name="glu1", data-bind="checked: glu1, readOnly: glu1.readOnly")
+    div.col-xs-3
+      div.checkbox
+        label.control-label
+          strong(data-bind="text: glu2.i18n")
+          input(type="checkbox", name="glu2", data-bind="checked: glu2, readOnly: glu2.readOnly")
+    div.col-xs-3
+      div.checkbox
+        label.control-label
+          strong(data-bind="text: glu3.i18n")
+          input(type="checkbox", name="glu3", data-bind="checked: glu3, readOnly: glu3.readOnly")
+    div.col-xs-3
+      div.checkbox
+        label.control-label
+          strong(data-bind="text: glu4.i18n")
+          input(type="checkbox", name="glu4", data-bind="checked: glu4, readOnly: glu4.readOnly")
+  div.row(data-bind="if: 'LABREQUESTTYPE_A' === labRequestType()")
+    div.col-xs-12
+      hr
+      h4(data-bind="text: labelUrinI18n")
+  div.row(data-bind="if: 'LABREQUESTTYPE_A' === labRequestType()")
+    div.col-xs-3
+      div.checkbox
+        label.control-label
+          strong(data-bind="text: urinStatus.i18n")
+          input(type="checkbox", name="urinStatus", data-bind="checked: urinStatus, readOnly: urinStatus.readOnly")
+    div.col-xs-3
+      div.checkbox
+        label.control-label
+          strong(data-bind="text: urinMikroalb.i18n")
+          input(type="checkbox", name="urinMikroalb", data-bind="checked: urinMikroalb, readOnly: urinMikroalb.readOnly")
+    div.col-xs-3
+      div.checkbox
+        label.control-label
+          strong(data-bind="text: urinGlukose.i18n")
+          input(type="checkbox", name="urinGlukose", data-bind="checked: urinGlukose, readOnly: urinGlukose.readOnly")
+    div.col-xs-3
+      div.checkbox
+        label.control-label
+          strong(data-bind="text: urinSediment.i18n")
+          input(type="checkbox", name="urinSediment", data-bind="checked: urinSediment, readOnly: urinSediment.readOnly")
+  div.row(data-bind="if: 'LABREQUESTTYPE_A' === labRequestType()")
+    div.col-xs-12
+      hr
+  div.row(data-bind="if: 'LABREQUESTTYPE_A' === labRequestType()")
+    div.col-xs-3
+      div.checkbox
+        label.control-label
+          strong(data-bind="text: sonstiges.i18n")
+          input(type="checkbox", name="sonstiges", data-bind="checked: sonstiges, readOnly: sonstiges.readOnly")
+    div.col-xs-9(data-bind="if: sonstiges")
+      input.form-control(type="text", name="sonstigesText", placeholder="", data-bind="textInput: sonstigesText, readOnly: sonstigesText.readOnly")
+  div.row(data-bind="if: 'LABREQUESTTYPE_A' === labRequestType()")
+    div.col-xs-12
+      hr
+      h4(data-bind="text: labelHealthExaminationI18n")
+  div.row(data-bind="if: 'LABREQUESTTYPE_A' === labRequestType()")
+    div.col-xs-3
+      div.checkbox
+        label.control-label
+          strong(data-bind="text: harnStreifenTest.i18n")
+          input(type="checkbox", name="harnStreifenTest", data-bind="checked: harnStreifenTest, readOnly: harnStreifenTest.readOnly")
+    div.col-xs-3
+      div.checkbox
+        label.control-label
+          strong(data-bind="text: nuechternPlasmaGlukose.i18n")
+          input(type="checkbox", name="nuechternPlasmaGlukose", data-bind="checked: nuechternPlasmaGlukose, readOnly: nuechternPlasmaGlukose.readOnly")
+    div.col-xs-3
+      div.checkbox
+        label.control-label
+          strong(data-bind="text: lipidprofil.i18n")
+          input(type="checkbox", name="lipidprofil", data-bind="checked: lipidprofil, readOnly: lipidprofil.readOnly")

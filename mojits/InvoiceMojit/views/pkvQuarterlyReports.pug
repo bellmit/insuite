@@ -1,0 +1,22 @@
+#pkvQuarterlyReports.row
+    div.row
+        div.col-md-5.col-xs-4
+            div.form-group
+                p.pull-right(style="margin-top: 8px;", data-bind="text: table1PtsI18n")
+        div.col-md-2.col-xs-4
+            textarea.form-control(name= 'totalPrice', data-bind="text: totalPrice", rows="1", disabled)
+        div.col-md-2.col-xs-4
+            div.form-group
+                select.form-control(name="pvslogsList", data-bind="options: pvslogsList, optionsValue: '_id', optionsText: 'startEndDate', value: pvsLogIdToCalc")
+        div.col-md-2.col-xs-4
+            div(data-bind="template: calculateBtn.template", style="")
+    .panel.panel-default
+        div.panel-heading
+            header(data-bind="text: table1HeaderI18n")
+        div.panel-body
+            div.first-table(data-bind="template: firstTable.template")
+    .panel.panel-default
+        div.panel-heading
+            header(data-bind="text: table2HeaderI18n")
+        div.panel-body
+            div.first-table(data-bind="template: secondTable.template")

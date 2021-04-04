@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<invoice:response xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:xenc="http://www.w3.org/2001/04/xmlenc#" xmlns:invoice="http://www.forum-datenaustausch.ch/invoice" xmlns="http://www.forum-datenaustausch.ch/invoice" xsi:schemaLocation="http://www.forum-datenaustausch.ch/invoice generalInvoiceResponse_450.xsd" language="de" modus="test">
+    <invoice:processing>
+        <invoice:transport from="7601001304994" to="2099988884595">
+            <invoice:via via="7601001304307" sequence_id="1"/>
+        </invoice:transport>
+    </invoice:processing>
+    <invoice:payload storno="false" response_timestamp="1497692996" copy="false" type="invoice">
+        <invoice:credit request_timestamp="1491805958" request_date="2017-03-20T00:00:00" request_id="Main_1702944"/>
+        <invoice:invoice request_date="2017-04-05T00:00:00" request_id="Main_1702944" request_timestamp="1491805957"/>
+        <invoice:body>
+            <invoice:prolog>
+                <invoice:package name="RETEP" copyright="MediData" description="MediData eLA" id="303" version="404"/>
+                <invoice:generator name="CHOLB" copyright="MediData" description="XML Generator" id="101" version="202">
+                    <invoice:depends_on name="miscValidator ATL Module" copyright="Suva" version="200" id="1001090101"/>
+                </invoice:generator>
+            </invoice:prolog>
+            <invoice:biller ean_party="7601001305007"/>
+            <invoice:debitor ean_party="7601003002294"/>
+            <invoice:provider ean_party="7601001304987"/>
+            <invoice:insurance ean_party="7601003002294"/>
+            <invoice:patient birthdate="1956-04-10T00:00:00" gender="male" ssn="7561234567897">
+                <invoice:person salutation="Herr" title="Patient">
+                    <invoice:familyname>Patnachname</invoice:familyname>
+                    <invoice:givenname>Patvorname</invoice:givenname>
+                    <invoice:subaddressing>Patsubadresse</invoice:subaddressing>
+                    <invoice:postal>
+                        <invoice:pobox>Patpostfach</invoice:pobox>
+                        <invoice:street>Patstrasse</invoice:street>
+                        <invoice:zip countrycode="CH" statecode="LU">9999</invoice:zip>
+                        <invoice:city>Patort</invoice:city>
+                    </invoice:postal>
+                    <invoice:telecom>
+                        <invoice:phone>++41 41 555 55 55</invoice:phone>
+                        <invoice:fax>++41 41 444 44 44</invoice:fax>
+                    </invoice:telecom>
+                    <invoice:online>
+                        <invoice:email>patemail@patemail.ch</invoice:email>
+                        <invoice:url>www.patient.ch/herr-patient</invoice:url>
+                    </invoice:online>
+                </invoice:person>
+            </invoice:patient>
+            <invoice:treatment acid="ACID-25" apid="APID-25"/>
+            <invoice:contact ean_party="7601003002294">
+                <invoice:company>
+                    <invoice:companyname>Versicherer</invoice:companyname>
+                    <invoice:department>Sanitas</invoice:department>
+                    <invoice:postal>
+                        <invoice:street>Jaegergasse 3</invoice:street>
+                        <invoice:zip countrycode="CH">8021</invoice:zip>
+                        <invoice:city>Zuerich</invoice:city>
+                    </invoice:postal>
+                    <invoice:telecom>
+                        <invoice:phone>++41 41 555 54 54</invoice:phone>
+                        <invoice:fax>++41 41 444 45 45</invoice:fax>
+                    </invoice:telecom>
+                    <invoice:online>
+                        <invoice:email>contactemail@contactemail.ch</invoice:email>
+                        <invoice:url>www.contact.ch/herr-contact</invoice:url>
+                    </invoice:online>
+                </invoice:company>
+                <invoice:employee salutation="Herr">
+                    <invoice:familyname>Sachbearbeiter</invoice:familyname>
+                    <invoice:givenname>Peter</invoice:givenname>
+                    <invoice:telecom>
+                        <invoice:phone>041 123 45 67</invoice:phone>
+                        <invoice:fax>041 123 45 68</invoice:fax>
+                    </invoice:telecom>
+                    <invoice:online>
+                        <invoice:email>p.sachearbeiter@insurance.ch</invoice:email>
+                    </invoice:online>
+                </invoice:employee>
+            </invoice:contact>
+            <invoice:pending status_in="frozen" status_out="frozen">
+                <invoice:explanation>
+                    Dies ist eine Einforderung von Unterlagen und einem &quot;Minimal Clinival Dataset&quot; Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+                </invoice:explanation>
+                <invoice:message code="eK7.2.1" text="Zahlungsverzögerung wegen Abklärungen mit ........."/>
+                <invoice:message code="eK7.2.5" text="Vorsorgliche Einsprache wegen xyz"/>
+                <invoice:message code="eK99.1.1999999854444444444444444445" text="MCD zu Rechnung fehlt. Bitte  MCD dem VAD zustellen. Adresse ....."/>
+            </invoice:pending>
+        </invoice:body>
+    </invoice:payload>
+</invoice:response>

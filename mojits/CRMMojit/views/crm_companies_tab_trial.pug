@@ -1,0 +1,19 @@
+div#companyListTrial
+  div.row
+    div.col-md-12(data-bind="template: companiesKoTable.template")
+  div.row
+    div.col-md-12
+      // ko if: isVPRCAdmin
+      div.pull-left(data-bind="template: createTenant.template", style="margin-right: 10px; margin-bottom:10px; display:inline-block;")
+      // /ko
+      // ko ifnot: isVPRCAdmin
+      div.pull-left(data-bind="template: createMTS.template", style="margin-right: 10px; margin-bottom:10px; display:inline-block;")
+      // /ko
+      div.pull-left(data-bind="template: activate.template", style="margin-right: 10px; margin-bottom:10px; display:inline-block;")
+      div.pull-left(data-bind="template: deactivate.template", style="margin-right: 10px; margin-bottom:10px; display:inline-block;")
+      // ko if: isVPRCAdmin
+      div.pull-left(data-bind="template: deleteTenantBtn.template", style="margin-right: 10px; margin-bottom:10px; display:inline-block;")
+      //div.pull-left(data-bind="template: transformToPRCBtn.template", style="margin-right: 10px; margin-bottom:10px; display:inline-block;")
+      div.pull-left(data-bind="template: replicateACData.template", style="margin-right: 10px; margin-bottom:10px; display:inline-block;")
+      div.pull-left(data-bind="template: replicateFormData.template", style="margin-right: 10px; margin-bottom:10px; display:inline-block;")
+      // /ko

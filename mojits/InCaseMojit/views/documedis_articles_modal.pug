@@ -1,0 +1,52 @@
+div.documedisArticles
+    //ko if: textToShow
+    h4(data-bind="text: canNotBeAddedI18n").articles-header
+    span(data-bind="text: textToShow")
+    br
+    // /ko
+    //ko if: willBeCreated.length
+    h4(data-bind="text: canBeAddedI18n").articles-header
+    div.col-md-12.col-sm-12.col-xs-12.panel.panel-default.panel-body.container.container-fullscreen(data-bind="foreach: willBeCreated")
+        div(data-bind="text: phDescription")
+    br
+    // /ko
+    //ko if: showGroups
+    h4(data-bind="text: needToBeChosenI18n").articles-header
+    div(data-bind="foreach: {data: radioBoxModel, as: 'medGroup'}")
+        div.col-md-12.col-sm-12.col-xs-12.panel.panel-default.panel-body.container.container-fullscreen(data-bind="foreach: {data: medGroup.medicationGroup, as: 'med'}")
+            div.col-md-12.col-sm-12.col-xs-12
+                label.radio-inline.row
+                    span(data-bind="text: med.title")
+                    input(type="radio",   data-bind="checked: medGroup.isSelected, value: med.medication, attr: {'name': med.name}" )
+    br
+    // /ko
+    //ko if: activitiesToUpdate.length
+    h4(data-bind="text: willBeUpdatedI18n").articles-header
+    div.col-md-12.col-sm-12.col-xs-12.panel.panel-default.panel-body.container.container-fullscreen(data-bind="foreach: activitiesToUpdate")
+       div(data-bind="text: content")
+    br
+    // /ko
+    //ko if: activitiesToDelete.length
+    h4(data-bind="text: willBeDeletedI18n").articles-header
+    div.col-md-12.col-sm-12.col-xs-12.panel.panel-default.panel-body.container.container-fullscreen(data-bind="foreach: activitiesToDelete")
+        div(data-bind="text: content")
+    // /ko
+    br
+    //ko if: changedBiometrics.length || changedAllergies.length
+    h4(data-bind="text: medDataI18n").articles-header
+    div.col-md-12.col-sm-12.col-xs-12.panel.panel-default.panel-body.container.container-fullscreen
+         //ko if: changedBiometrics.length
+         h4(data-bind="text: biometricsI18n" )
+         div(data-bind="foreach: changedBiometrics")
+           div
+             span(data-bind="text: type")
+             span(data-bind="text: ': '")
+             span(data-bind="text: value")
+         // /ko
+         //ko if: changedAllergies.length
+         h4(data-bind="text: allergiesI18n" )
+         div(data-bind="foreach: changedAllergies")
+           div(data-bind="text: type")
+         // /ko
+
+    // /ko

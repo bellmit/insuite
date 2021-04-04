@@ -1,0 +1,54 @@
+div.row
+  div.col-md-8
+    div.form-group(data-bind="highlightError: assDescription")
+      label.control-label(data-bind="text: assDescription.i18n + ':'")
+      input.form-control(name="assDescription", data-bind="textInput: assDescription, readOnly: !code() || assDescription.readOnly")
+    div.form-group
+      label.control-label(data-bind="text: assManufacturer.i18n + ':'")
+      input.form-control(name="assManufacturer", data-bind="textInput: assManufacturer, readOnly: !code() || assManufacturer.readOnly")
+    div.form-group
+      label.control-label(data-bind="text: assDose.i18n + ':'")
+      input.form-control(name="assDose", data-bind="textInput: assDose, readOnly: assDose.readOnly", rows="6")
+    div.form-group
+      label.control-label(data-bind="text: assPrescPeriod.i18n + ':'")
+      input.form-control(name="assPrescPeriod", data-bind="textInput: assPrescPeriod, readOnly: assPrescPeriod.readOnly")
+    div.form-group
+      label.control-label(data-bind="text: assCharacteristics.i18n + ':'")
+      textarea.form-control(name="assCharacteristics", data-bind="textInput: assCharacteristics, readOnly: !code() || assCharacteristics.readOnly", rows="6")
+    div.row
+      div.col-md-6
+        div.form-group
+          label.control-label(data-bind="text: assDateAdded.i18n + ':'")
+          input.form-control(name="assDateAdded", data-bind="textInput: _displayAssDateAdded", readonly)
+      div.col-md-6
+        div.form-group
+          label.control-label(data-bind="text: assDateChanged.i18n + ':'")
+          input.form-control(name="assDateChanged", data-bind="textInput: _displayAssDateChanged", readonly)
+  div.col-md-4
+    div(data-bind="ifnot: isINCARE")
+      div.form-group
+        label.control-label
+          strong(data-bind="text: assId.i18n")
+        input.form-control(name="assId", type="text", data-bind="value: assId", readOnly)
+      div.form-group(data-bind="if: isModified() && canModifyHomeCatalog()")
+        div.checkbox
+          label.control-label
+            strong(data-bind="text: modifyHomeCatI18n")
+            input(type="checkbox", name="modifyHomeCat", data-bind="checked: modifyHomeCat, readOnly: modifyHomeCat.readOnly")
+      div.form-group
+        label.control-label(data-bind="text: assCatalogUsageSearchI18n + ':'")
+        input.form-control(name="tag", data-bind="select2: select2tags, valueUpdate: 'afterkeydown', readOnly: assDescription.readOnly")
+      div.form-group
+        input.form-control(name="_assistiveAliasAutoComplete", data-bind="select2: _assistiveAliasAutoComplete, valueUpdate: 'afterkeydown', hasFocus: true, readOnly: assDescription.readOnly")
+      div.form-group
+        label.control-label(data-bind="text: assCatalogSearchI18n + ': ' + _assistiveFiltersDisplay()")
+        input.form-control(name="_assistiveFilterAutoComplete", type="hidden", data-bind="select2: _assistiveFilterAutoComplete, readOnly: assDescription.readOnly")
+      div.form-group
+        input.form-control(name="_assistiveSearchAutoComplete", data-bind="select2: _assistiveSearchAutoComplete, readOnly: assDescription.readOnly")
+    div(data-bind="if: isINCARE")
+      div.form-group
+        label.control-label
+          span(data-bind="text: $parent.assCatalogSearchI18n")
+          i.dc-info-icon(data-bind="tooltip: {title: 'Suche im GHD-Hilfsmittelkatalog nach PZN, HMV-Nr. und Bezeichnung'}")
+          span :
+        input.form-control(name="_assistiveGHDSearchAutoComplete", data-bind="select2: _assistiveGHDSearchAutoComplete, readOnly: assDescription.readOnly")

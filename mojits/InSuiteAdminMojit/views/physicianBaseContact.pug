@@ -1,0 +1,115 @@
+.row
+  .col-sm-3
+    h4(data-bind="text: generalTextI18n")
+    div.panel.panel-default
+      div.panel-body
+        div.form-group(data-bind="hasFeedback: { field: baseContactType, toggle: baseContactType.hasError, messages: baseContactType.validationMessages }")
+          label.control-label(for="tab_contacts_detail_baseContactType", data-bind="text: baseContactTypeI18n")
+          input#tab_contacts_detail_baseContactType.form-control(name="baseContactType", type="text", data-bind="select2: select2BaseContactType, readOnly: readOnlyBaseContactType")
+    h4(data-bind="text: baseContactTypeComputed")
+    div.panel.panel-default
+      div.panel-body
+        div.row
+          div.col-sm-6
+            div.form-group(data-bind="hasFeedback: { field: talk, toggle: talk.hasError, messages: talk.validationMessages }")
+              label.control-label(data-bind="text: talk.i18n")
+              input.form-control(name="talk", type="hidden", data-bind="select2: select2Talk")
+          div.col-sm-6
+            div.form-group(data-bind="hasFeedback: { field: title, toggle: title.hasError, messages: title.validationMessages }")
+              label.control-label(for="tab_contacts_detail_title", data-bind="text: title.i18n")
+              input#tab_contacts_detail_title.form-control(name="title", type="text", data-bind="textInput: title")
+        div.row
+          div.col-sm-12
+            div.form-group(data-bind="hasFeedback: { field: firstname, toggle: firstname.hasError, messages: firstname.validationMessages }")
+              label.control-label(for="tab_contacts_detail_firstname", data-bind="text: firstname.i18n")
+              input#tab_contacts_detail_firstname.form-control(name="firstname", type="text", data-bind="textInput: firstname")
+          div.col-sm-12
+            div.form-group(data-bind="hasFeedback: { field: nameaffix, toggle: nameaffix.hasError, messages: nameaffix.validationMessages }")
+              label.control-label(for="tab_contacts_detail_nameaffix", data-bind="text: nameaffix.i18n")
+              input#tab_contacts_detail_nameaffix.form-control(name="nameaffix", type="text", data-bind="textInput: nameaffix")
+          div.col-sm-12
+            div.form-group(data-bind="hasFeedback: { field: lastname, toggle: lastname.hasError, messages: lastname.validationMessages }")
+              label.control-label(for="tab_contacts_detail_lastname", data-bind="text: lastname.i18n")
+              input#tab_contacts_detail_lastname.form-control(name="lastname", type="text", data-bind="textInput: lastname")
+          div.col-sm-12
+            div.form-group(data-bind="hasFeedback: { field: institutionType, toggle: institutionType.hasError, messages: institutionType.validationMessages }")
+              label.control-label(data-bind="text: institutionType.i18n")
+              input.form-control(name="institutionType", type="hidden", data-bind="select2: select2InstitutionType")
+          // ko if: baseContactType() === 'PHYSICIAN'
+          // ko if: countryModeIncludesGermany()
+          div.col-sm-12
+            div.form-group(data-bind="hasFeedback: { field: expertise, toggle: expertise.hasError, messages: expertise.validationMessages }")
+              label.control-label(data-bind="text: expertise.i18n")
+              input.form-control(name="expertise", type="hidden", data-bind="select2: select2Expertise")
+          div.col-sm-12
+            div.form-group(data-bind="hasFeedback: { field: officialNo, toggle: officialNo.hasError, messages: officialNo.validationMessages }")
+              label.control-label(data-bind="text: officialNo.i18n")
+              span.text-danger(data-bind="if: nonStandardOfficialNo") &nbsp;Ausnahmewert
+              input.form-control(name="officialNo", type="hidden", data-bind="select2: select2OfficialNo")
+          div.col-sm-12
+            div.form-group
+              label.control-label(data-bind="text: inEstI18n")
+              input.form-control(name="bsnrs", type="hidden", data-bind="select2: select2Bsnrs")
+          div.col-sm-12
+            div.form-group
+              label.control-label(data-bind="text: asvTeamNumbers.i18n")
+              input.form-control(name="asvTeamNumbersSelect2", type="hidden", data-bind="select2: asvTeamNumbersSelect2")
+          // /ko
+          // ko if: countryModeIncludesSwitzerland()
+          div.col-sm-12
+            div.form-group(data-bind="hasFeedback: { field: _glnNumber, toggle: _glnNumber.hasError, messages: _glnNumber.validationMessages }")
+                label.control-label(data-bind="text: glnNumber.i18n")
+                .form-group
+                    input.form-control(name="glnNumber", data-bind="value: glnNumber, readOnly: glnNumber.readOnly, valueUpdate: '', attr: { placeholder: placeholderGlnNumberI18n }")
+          div.col-sm-12
+            div.form-group(data-bind="hasFeedback: { field: _zsrNumber, toggle: _zsrNumber.hasError, messages: _zsrNumber.validationMessages }")
+                label.control-label(data-bind="text: zsrNumber.i18n")
+                .form-group
+                    input.form-control(name="zsrNumber", data-bind="value: zsrNumber, readOnly: zsrNumber.readOnly, valueUpdate: '', attr: { placeholder: placeholderZsrNumberI18n }")
+          // /ko
+          // /ko
+          div.col-sm-12
+            div.form-group(data-bind="hasFeedback: { field: workDescription, toggle: workDescription.hasError, messages: workDescription.validationMessages }")
+              label.control-label(for="tab_physician_detail-employee-field-workDescription", data-bind="text: workDescription.i18n")
+              input#tab_physician_detail-employee-field-workDescription.form-control(name="workDescription", type="text", data-bind="attr: {placeholder: workDescription.i18n}, textInput: workDescription")
+
+          div.col-sm-12
+            div.form-group
+              label.control-label(data-bind="text: contactsI18n")
+              // ko if: addContact
+              small(style="margin-left: 5px")
+                a(href="#", data-bind="click: addContact")
+                  i.icon.fa.fa-plus
+              // /ko
+              input.form-control(name="contacts", type="hidden", data-bind="select2: select2Contacts")
+
+
+
+  .col-sm-9
+    .row
+      .col-sm-7
+        h4
+          span(data-bind="text: addresses.i18n")
+          | &nbsp;
+          small
+            a(href="#", data-bind="click: addresses.push")
+              i.icon.fa.fa-plus
+        div(data-bind="foreach: addresses")
+          include tab_contacts_address
+      .col-sm-5
+        h4
+          span(data-bind="text: communications.i18n")
+          | &nbsp;
+          small
+            a(href="#", data-bind="click: communications.push")
+              i.icon.fa.fa-plus
+        div(data-bind="foreach: communications")
+          include tab_contacts_communications
+    .row
+      // ko foreach: contactList
+      .col-sm-6.col-md-4
+        div.panel.panel-default
+          div.panel-body
+            p.text-center(data-bind="html: $parent.getContactContent($data)")
+      // /ko
+

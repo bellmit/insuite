@@ -1,0 +1,136 @@
+div.row
+  div.col-xs-7.col-lg-8
+    div.row
+      div(data-bind="css: {'col-xs-11': !userContent.readOnly(), 'col-xs-12': userContent.readOnly}")
+        div.form-group
+          textarea#textform-sd3-content.form-control(name="userContent", data-bind="textInput: userContent, readOnly: userContent.readOnly, event: { focus: onDocTreeFocus, blur: onDocTreeBlur }, caretPosition: userContent.caretPosition, attr: { placeholder: contentDiagnosisI18n }", rows="7")
+        div.form-group
+          textarea#textform-sd4-catalogContent.form-control(name="originalCatalogText", data-bind="textInput: originalCatalogText() == '' ? originalCatalogPlaceholder : originalCatalogText, readOnly: true, event: { focus: onDocTreeFocus, blur: onDocTreeBlur }, attr: { placeholder: catalogTextI18n }", rows="7")
+      // ko if: !userContent.readOnly()
+      div.col-xs-1(style="padding-left: 0", data-bind="foreach: catalogTexts")
+        button.btn-default.btn(data-bind="text: title, tooltip: {title: text()}, css: {'dc-grey-text': !text() && !active(), 'dc-grey': text() && !active(), 'btn-primary-disabled': usedInUserContent() && !active(), 'btn-primary': active }, click: $parent.activateCatalogTextItem", style="width: 40px; height: 40px; margin-bottom: 2px")
+      // /ko
+    div.row
+      div(data-bind="css: {'col-xs-11': !userContent.readOnly(), 'col-xs-12': userContent.readOnly}")
+        div.form-group
+          textarea#textform-sd3-explanations.form-control(name="explanations", data-bind="textInput: explanations, readOnly: explanations.readOnly, event: { focus: onDocTreeFocus, blur: onDocTreeBlur }, caretPosition: explanations.caretPosition, attr: { placeholder: sd3ExplanationsI18n }", rows="7")
+  div.col-xs-5.col-lg-4
+    div.form-group(data-bind="if: isModified() && canModifyHomeCatalog()")
+      div.checkbox
+        label.control-label
+          strong(data-bind="text: modifyHomeCatI18n")
+          input(type="checkbox", name="modifyHomeCat", data-bind="checked: modifyHomeCat, readOnly: modifyHomeCat.readOnly")
+    div.form-group
+      input.form-control(name="tag", type="hidden", data-bind="select2: select2tags, valueUpdate: 'afterkeydown', readOnly: code.readOnly")
+    div.row
+      div.col-xs-9
+        div.form-group(data-bind="hasFeedback: { field: code, toggle: code.hasError, messages: code.validationMessages }")
+          input.form-control(name="code", type="hidden", data-bind="select2: select2Code, readOnly: code.readOnly, hasFocus: true")
+      div.col-xs-3
+        button.btn.btn-default.col-xs-12(data-bind="click: showCatalogViewer, readOnly: code.readOnly, disable: showSwitzFields")
+          span.glyphicon.glyphicon-zoom-in
+    div.form-group
+      select.form-control(name="_catalog", data-bind="options: _catalogBase, optionsValue: 'short', optionsText: 'short', value: catalogShort, readOnly: code.readOnly")
+    // ko ifnot: showSwitzFields
+    div.form-group(data-bind="hasFeedback: { field: diagnosisCert, toggle: diagnosisCert.hasError, messages: diagnosisCert.validationMessages }")
+      select.form-control(name="diagnosisCert", data-bind="options: _diagnosisCertList, optionsValue: 'val', optionsText: 'i18n', value: diagnosisCert, readOnly: diagnosisCert.readOnly")
+    div.form-group
+      select.form-control(name="diagnosisSite", data-bind="options: _diagnosisSiteList, optionsValue: 'val', optionsText: 'i18n', value: diagnosisSite, readOnly: diagnosisSite.readOnly, attr: { placeholder: diagnosisSiteI18n }")
+    div.form-group
+      input.form-control(name="diagnosisDerogation", data-bind="textInput: diagnosisDerogation, readOnly: diagnosisDerogation.readOnly, attr: { placeholder: diagnosisDerogationI18n }")
+    // /ko
+    // ko if: showSwitzFields
+    div.form-group
+      select.form-control(name="diagnosisLaterality", data-bind="options: _diagnosisLateralityList, optionsValue: 'val', optionsText: 'i18n', value: diagnosisLaterality, readOnly: diagnosisLaterality.readOnly")
+    // /ko
+    div.row
+      // ko ifnot: showSwitzFields
+      div.col-xs-6
+        div.form-group
+          select.form-control(name="diagnosisType", data-bind="options: _diagnosisTypeList, optionsValue: 'val', optionsText: 'i18n', value: diagnosisType, readOnly: diagnosisType.readOnly, event: { change: diagnosisTypeChangeHandler }")
+      // /ko
+      // ko if: showSwitzFields
+      div.col-xs-6
+        div.form-group
+          select.form-control(name="diagnosisPeriod", data-bind="options: _diagnosisPeriodList, optionsValue: 'val', optionsText: 'i18n', value: diagnosisPeriod, readOnly: diagnosisPeriod.readOnly")
+      // /ko
+      div.col-xs-6
+        div.form-group
+          select.form-control(name="diagnosisTreatmentRelevance", data-bind="options: _diagnosisTreatmentRelevanceList, optionsValue: 'val', optionsText: 'i18n', value: diagnosisTreatmentRelevance, readOnly: diagnosisTreatmentRelevance.readOnly")
+    // ko if: showSwitzFields
+    div.row
+      div.col-md-6
+        div.checkbox(style="margin-bottom: 0;")
+          label
+            span(data-bind="text: labelInfectiousI18n")
+            input(type="checkbox", data-bind="checked: diagnosisInfectious")
+      div.col-md-6
+        div.checkbox(style="margin-bottom: 0;")
+          label
+            span(data-bind="text: labelFunctionalI18n")
+            input(type="checkbox", data-bind="checked: diagnosisFunctional")
+      div.col-md-6
+        div.checkbox(style="margin-bottom: 0;")
+          label
+            span(data-bind="text: labelNeoplasiaI18n")
+            input(type="checkbox", data-bind="checked: diagnosisNeoplasia")
+      div.col-md-6
+        div.checkbox(style="margin-bottom: 0;")
+          label
+            span(data-bind="text: labelOcupationallyI18n")
+            input(type="checkbox", data-bind="checked: diagnosisOcupationally")
+    // /ko
+    div.form-group(data-bind="visible: hasSpecial", style="margin-top: 10px;")
+      strong(style="display:block;", data-bind="text: groupPropertiesI18n")
+      span(data-bind="visible: hasUExtra('meldepflicht')")
+        span.label.label-danger(style="font-weight:normal;", data-bind="text: labelNotifiableI18n")
+        | &nbsp;
+      span(data-bind="visible: hasUExtra('abrechenbar')")
+        span.label.label-default(style="font-weight:normal;", data-bind="text: labelBillableI18n")
+        | &nbsp;
+
+    // ko if: relatedCodes() && relatedCodes().length > 0 && code() && 'ICD-10' === catalogShort()
+    div.row(style="margin-top: 10px;")
+      div.panel.panel-default(data-bind="panelCollapse: { name: 'textform-panel-body-related-codes' }")
+        div.panel-heading
+          a(href="#textform-panel-body-related-codes", data-toggle="collapse", data-parent="#textform-panel-group")
+            strong(data-bind="text: 'Code'")
+        div#textform-panel-body-tax-points.panel-collapse.collapse
+          div.panel-body
+            div.markers_config_table(style="max-height:267px; overflow-y:auto;")
+              table.table.table-bordered
+                colgroup
+                  col(width="32")
+                  col(width="64")
+                  col(width="100%")
+                  col(width="32")
+                  col(width="32")
+                  col(width="32")
+                  col(width="32")
+                thead
+                  tr
+                    th
+                      input(type="checkbox", data-bind="checked: checkedAll")
+                    th Code
+                    th Text
+                    th(data-bind="attr: {title: labelFunctionalI18n}, text: 'F'")
+                    th(data-bind="attr: {title: labelInfectiousI18n}, text: 'I'")
+                    th(data-bind="attr: {title: labelNeoplasiaI18n}, text: 'N'")
+                    th(data-bind="attr: {title: labelOcupationallyI18n}, text: 'B'")
+                tbody(data-bind="foreach: relatedCodes")
+                  tr
+                    td(style="text-align:center;")
+                      input(type="checkbox", data-bind="checked: checked")
+                    td
+                      span(data-bind="text: seq")
+                    td
+                      span(data-bind="text: title")
+                    td(style="text-align:center;")
+                      input(type="checkbox", data-bind="checked: F")
+                    td(style="text-align:center;")
+                      input(type="checkbox", data-bind="checked: I")
+                    td(style="text-align:center;")
+                      input(type="checkbox", data-bind="checked: N")
+                    td(style="text-align:center;")
+                      input(type="checkbox", data-bind="checked: B")
+    // /ko

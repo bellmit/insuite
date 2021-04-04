@@ -1,0 +1,20 @@
+{
+    "all": true,
+    "cache": false,
+    "include": [
+        "addons/**/*.js",
+        "autoload/**/*.js",
+        "client/**/*.js",
+        "middleware/**/*.js",
+        "models/**/*.js",
+        "mojits/**/*.js",
+        "oauthmodels/**/*.js"
+    ],
+    "exclude": [
+        "**/*.test.js",
+        "mojits/**/assets/**/*.js"
+    ],
+    "reporter": [
+        "text-summary"
+    ]
+}

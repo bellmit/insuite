@@ -1,0 +1,11 @@
+.modal.fade#informationModal
+  .modal-dialog
+    .modal-content
+      .modal-header
+        button.close(type="button", data-dismiss="modal", aria-hidden="true")
+          | &times;
+        h4.modal-title #{title}
+      .modal-body
+        p #{message}
+      .modal-footer
+        button.btn.btn-primary#acceptModal Bestätigen

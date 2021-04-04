@@ -1,0 +1,119 @@
+[
+  {
+    "active": true,
+    "official": true,
+    "confirmOfficial": false,
+    "careProvider": "",
+    "utilityName": "Psychisch-funkt. Beh.",
+    "utilityPositionNo": "X4105",
+    "kv": "72",
+    "insuranceType": "PUBLIC",
+    "prices": [
+      {
+        "insuranceGroupId": "000000000000000000000222",
+        "price": 65.72
+      }
+    ]
+  },
+  {
+    "active": true,
+    "official": true,
+    "confirmOfficial": false,
+    "careProvider": "",
+    "utilityName": "Psychisch-funkt. Beh. Gruppe",
+    "utilityPositionNo": "X4208",
+    "kv": "72",
+    "insuranceType": "PUBLIC",
+    "prices": [
+      {
+        "insuranceGroupId": "000000000000000000000666",
+        "price": 10
+      },
+      {
+        "insuranceGroupId": "000000000000000000000222",
+        "price": 66
+      }
+    ]
+  },
+  {
+    "active": true,
+    "official": false,
+    "confirmOfficial": false,
+    "careProvider": "",
+    "utilityName": "Hirnleistungstraining/neuropsych. orientierte Beh.",
+    "utilityPositionNo": "X4104",
+    "kv": "72",
+    "insuranceType": "PUBLIC",
+    "prices": [
+      {
+        "insuranceGroupId": "000000000000000000000222",
+        "price": 99
+      }
+    ]
+  },
+  {
+    "active": true,
+    "official": false,
+    "confirmOfficial": false,
+    "careProvider": "",
+    "utilityName": "Hirnleistungstraining Gruppe",
+    "utilityPositionNo": "X4207",
+    "kv": "72",
+    "insuranceType": "PUBLIC",
+    "prices": [
+      {
+        "insuranceGroupId": "000000000000000000000222",
+        "price": 34
+      }
+    ]
+  },
+  {
+    "active": true,
+    "official": true,
+    "confirmOfficial": false,
+    "careProvider": "",
+    "utilityName": "Sensomotorisch-perz. Beh.",
+    "utilityPositionNo": "X4103",
+    "kv": "72",
+    "insuranceType": "PUBLIC",
+    "prices": [
+      {
+        "insuranceGroupId": "000000000000000000000222",
+        "price": 52.5
+      }
+    ]
+  },
+  {
+    "active": true,
+    "official": true,
+    "confirmOfficial": false,
+    "careProvider": "",
+    "utilityName": "Sensomotorisch-perz. Beh. Gruppe",
+    "utilityPositionNo": "X4206",
+    "kv": "72",
+    "insuranceType": "PUBLIC",
+    "prices": [
+      {
+        "insuranceGroupId": "000000000000000000000666",
+        "price": 10
+      }
+    ]
+  },
+  {
+    "active": true,
+    "official": true,
+    "confirmOfficial": false,
+    "careProvider": "",
+    "utilityName": "random price",
+    "utilityPositionNo": "X4206",
+    "kv": "72",
+    "insuranceType": "PUBLIC",
+    "officialPrice": null,
+    "prices": [
+      {
+        "insuranceGroupId": "000000000000000000000222",
+        "price": 22
+      }
+    ]
+  }
+]

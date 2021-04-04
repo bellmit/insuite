@@ -1,0 +1,20 @@
+div
+  div
+    div.row
+      div.col-xs-6
+        div.form-group
+          label.control-label(data-bind="text: scheinNotes.i18n")
+          textarea.form-control(name="scheinNotes", data-bind="value: scheinNotes, valueUpdate: 'afterkeydown', readOnly: scheinNotes.readOnly")
+      .col-xs-6
+        .row
+          .col-xs-6
+            div.form-group
+              label(style="padding-top: 30px;", data-bind="text: scheinSettledDate.i18n")
+              input.form-control(name="scheinSettledDate", data-bind="readOnly: true, value: _showScheinSettledDate")
+        .row
+          .col-xs-6
+            div.form-group
+              select.form-control(name="treatmentType", data-bind="readOnly: treatmentType.readOnly, options: _treatmentTypeList, optionsValue: 'val', optionsText: '-de', value: treatmentType")
+            div.form-group(data-bind="visible: 'STATIONARY' === treatmentType()")
+              label(data-bind="text: scheinClinicID.i18n")
+              input.form-control(name="scheinClinicID", data-bind="readOnly: scheinClinicID.readOnly, value: scheinClinicID")

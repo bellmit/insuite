@@ -1,0 +1,9 @@
+div(data-bind="visible: dmpManifestationOfContralateralBreastCancerVisible()")
+    div(data-bind='hasFeedback: { field: dmpManifestationOfContralateralBreastCancer, toggle: dmpManifestationOfContralateralBreastCancer.hasError, messages: dmpManifestationOfContralateralBreastCancer.validationMessages }')
+        div.col-xs-6
+            div.form-group
+                label.control-label
+                    span(data-bind="text: dmpManifestationOfContralateralBreastCancer.i18n")
+                    span(data-bind="dmpField: { field: dmpManifestationOfContralateralBreastCancer }")
+        div.col-xs-5.date-picker.input-group
+            input.form-control(name="dmpManifestationOfContralateralBreastCancer", data-bind="datetimepicker: { value: dmpManifestationOfContralateralBreastCancer, options: { parseInputDate: parseInputDateBK } }, readOnly: dmpManifestationOfContralateralBreastCancer.readOnly")

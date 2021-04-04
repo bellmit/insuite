@@ -1,0 +1,45 @@
+div.pull-right
+  small Adresse
+  br
+div.control-group#ckind_cg
+  label(for="kind").control-label
+    b Adressart
+  div.controls
+    select(name='kind',dcschema='contact',dctype='Address_T', tabindex='5').dcvalidate
+      option bitte wählen
+      option(value='POSTAL') Postadresse
+      option(value='BILLING') Rechnungsadresse
+      option(value='VISIT') Besuchsadresse
+      option(value='BRANCH') Niederlassung
+    span.help-inline#ckind_help_div
+.row-fluid
+  label(for="street").control-label
+        b Strasse, Nr.
+  .control-group.pull-left.margin-left#cstreet_cg
+      input(type='text', name='street',dcschema='contact',dctype='Address_T', tabindex='5').dcvalidate.span9
+      span.help-inline#cstreet_help_div
+  .control-group.pull-left#chouseno_cg
+      input(type='text', name='houseno',dcschema='contact',dctype='Address_T',style='margin-left:-5%', tabindex='5').dcvalidate.span4.margin-left-negative-tiny
+      span.help-inline#cshouseno_help_div
+.row-fluid
+    label(for="zip").control-label
+        b PLZ, Stadt
+    .control-group.pull-left.margin-left#czip_cg
+        input(type='text', maxlength='10', name='zip',dcschema='contact',dctype='Address_T', tabindex='5').dcvalidate.span5
+        span.help-inline#czip_help_div
+    .control-group.pull-left#ccity_cg
+        input(type='text', name='city',dcschema='contact',dctype='Address_T',style='margin-left:-30%', tabindex='5').dcvalidate.span7.margin-left-negative-big
+        span.help-inline#ccity_help_div
+.row-fluid
+
+  div.control-group#cpostbox_cg
+    label(for="postbox").control-label
+      b Postfach
+    div.controls
+      input(type='text', name='postbox',dcschema='contact',dctype='Address_T', tabindex='5').dcvalidate
+  div.control-group#ccountry_cg
+    label(for="country").control-label
+      b Land
+    div.controls
+      input.inputCountry.dcvalidate(name="countryCode", tabindex="5", data-type="select2", data-id="countryCode", value=typeof(countryCode)=='undefined'? 'D' : countryCode, dcschema="contact", dctype="Address_T")
+      span.help-inline#ccountry_help_div

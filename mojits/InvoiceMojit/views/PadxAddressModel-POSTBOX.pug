@@ -1,0 +1,32 @@
+div.panel.panel-default
+  div.panel-heading(data-bind="css: { 'has-error': kind.hasError }")
+    select.form-control.input-sm(style="width: auto", data-bind="options: _kindList, optionsValue: 'val', optionsText: 'i18n', value: kind, readOnly: kind.readOnly, optionsCaption: pleaseSelectI18n")
+  div.panel-body
+    div.row
+      div.col-xs-12
+        div.form-group(data-bind="hasFeedback: { field: postbox, toggle: postbox.hasError, messages: postbox.validationMessages }")
+          label(data-bind="text: postbox.i18n")
+          input.form-control(type="text", name="postbox", data-bind="value: postbox, readOnly: postbox.readOnly, valueUpdate: 'afterkeydown', attr: { title: postbox }")
+      div.col-xs-12
+        label(data-bind="text: zip.i18n + ', ' + city.i18n")
+
+      // ko if: _zipAutoCompleteDisabled
+      div.col-xs-4
+        div.form-group(data-bind="hasFeedback: { field: zip, toggle: zip.hasError, messages: zip.validationMessages }")
+          input.form-control(name="zip", maxlength="10", data-bind="value: zip, readOnly: zip.readOnly, valueUpdate: 'afterkeydown', attr: { title: zip }")
+      div.col-xs-8
+        div.form-group(data-bind="hasFeedback: { field: city, toggle: city.hasError, messages: city.validationMessages }")
+          input.form-control(type="text", name="city", data-bind="value: city, readOnly: city.readOnly, valueUpdate: 'afterkeydown', attr: { title: city }")
+      // /ko
+      // ko ifnot: _zipAutoCompleteDisabled
+      div.col-xs-4
+        div.form-group(data-bind="hasFeedback: { field: zip, toggle: zip.hasError, messages: zip.validationMessages }")
+          input.form-control(name="zip", maxlength="10", data-bind="select2: _zipCfgAutoComplete, readOnly: zip.readOnly")
+      div.col-xs-8
+        div.form-group(data-bind="hasFeedback: { field: city, toggle: city.hasError, messages: city.validationMessages }")
+          input.form-control(name="city", type="text", data-bind="select2: _cityCfgAutoComplete, readOnly: city.readOnly, attr: { title: city }")
+      // /ko
+      div.col-xs-12
+        div.form-group(data-bind="hasFeedback: { field: country, toggle: country.hasError, messages: country.validationMessages }")
+          label(data-bind="text: country.i18n")
+          input.form-control(name="country", data-bind="select2: _countryCfgAutoComplete, readOnly: country.readOnly")

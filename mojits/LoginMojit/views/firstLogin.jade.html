@@ -1,0 +1,37 @@
+div.visible-xs.visible-sm(style="padding: 15px")
+div.visible-md.visible-lg(style="padding: 35px")
+div.container.container-fullscreen(id=mojit_view_id)
+  .jumbotron(style="border-radius: 30px;")
+    .row
+      div.col-sm-5.col-sm-push-7
+        div.form-group.text-center
+          a(href="/")
+            img(src='/static/DocCirrus/assets/images/dc_logo_300x103_trans.png', alt="Doc Cirrus – Your Safe Medical Cloud", style="max-width: 100%")
+      div.col-sm-6.col-sm-pull-5
+        if (isTokenValid)
+          h3
+            strong=setPwI18n
+          div!=pleaseSetPwI18n
+        else
+          p=resetLinkI18n
+
+    if (isTokenValid)
+      hr(style="border-color: #fff;")
+      .row
+        .col-sm-6
+          p=indicatorI18n
+          //p Sie benötigen für diesen einmaligen Vorgang die PIN, die wir Ihnen per E-Mail zugeschickt haben.
+        .col-sm-5.col-sm-offset-1
+          .row
+            div.col-xs-8.col-xs-offset-2.col-sm-12.col-sm-offset-0.col-md-10.col-md-offset-1.col-lg-8.col-lg-offset-2
+              form#frmFirstLogin(action='/register/firstlogin?id=' + employeeId,method='post')
+                input#pin(name="token", value=token, type="hidden", placeholder=placeholderPinI18n)
+                div.form-group
+                  input#newPw.form-control(name="password", type="password", placeholder=placeholderPwI18n)
+                div.form-group
+                  input#newPw2.form-control(name="passwordCheck", type="password", placeholder=placeholderRePwI18n)
+                div.progress
+                  div.progress-bar.progress-bar-danger(style="width: 5%;")
+                div
+                  button#btnSubmit.btn.btn-primary(type='submit') Fertigstellen
+  include ../../DocCirrus/views/footer

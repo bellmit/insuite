@@ -1,0 +1,218 @@
+h4
+  span(data-bind="text: invoiseNumbersI18n")
+  | &nbsp;
+  small
+    a(name="addInvoiceNumberSchema", href="javascript:void(0);", data-bind="click: addInvoiceNumberSchema")
+      i.icon.fa.fa-plus
+
+div(data-bind="foreach: invoiceNumberSchemes")
+  div.panel.panel-default
+    div.panel-heading
+      .row
+        .col-md-8
+          select.form-control(name="locationId", data-bind="options: $parent._locationList, optionsValue: '_id', optionsText: 'locname', value: locationId, valueAllowUnset: true")
+
+    div.panel-body
+      .row
+        .col-sm-4
+          div.form-group
+            label(for="year", data-bind="text: $parent.labelStammI18n").control-label
+            input.form-control(data-bind="value: year, attr: {placeholder: _year_ph}, valueUpdate: 'afterkeydown'")
+
+        .col-sm-4
+          div.form-group(data-bind="hasFeedback: { field: digits, toggle: digits.hasError, messages: digits.validationMessages }")
+            label(for="digits", data-bind="text: $parent.labelCounterPositionI18n").control-label
+            input.form-control(data-bind="value: digits, valueUpdate: 'afterkeydown'")
+
+        .col-sm-4
+          div.form-group(data-bind="hasFeedback: { field: nextNumber, toggle: nextNumber.hasError, messages: nextNumber.validationMessages }")
+            label(for="nextNumber", data-bind="text: $parent.labelCounterStartI18n").control-label
+            input.form-control(data-bind="value: nextNumber, valueUpdate: 'afterkeydown'")
+      .row
+        .col-sm-6
+          i (
+            span(data-bind="text: $parent.itemTextExampleI18n")
+            | &nbsp;
+            span( data-bind='text: example')
+          i )
+        .col-sm-6
+          button.btn.btn-default(type='button', data-bind='click: deleteInvoiceNumberScheme.bind($context, $parent)').pull-right
+            span.glyphicon.glyphicon-trash
+
+h4
+  span(data-bind="text: groupReceiptNumbersI18n")
+  | &nbsp;
+  small
+    a.margin-bottom-small(name="addReceiptNumberSchema", href="#", data-bind="click: addReceiptNumberSchema")
+      i.icon.fa.fa-plus
+
+div(data-bind="foreach: receiptNumberSchemes")
+  div.panel.panel-default
+    div.panel-heading
+      .row
+        .col-md-8
+          select.form-control(name="locationId", data-bind="options: uniqueLocationsList, optionsValue: '_id', optionsText: 'locname', value: locationId, valueAllowUnset: true")
+
+    div.panel-body
+      .row
+        .col-sm-4
+          div.form-group
+            label(for="year", data-bind="text: $parent.labelStammI18n").control-label
+            input.form-control(data-bind="value: year, attr: {placeholder: _year_ph}, valueUpdate: 'afterkeydown'")
+
+        .col-sm-4
+          div.form-group(data-bind="hasFeedback: { field: digits, toggle: digits.hasError, messages: digits.validationMessages }")
+            label(for="digits", data-bind="text: $parent.labelCounterPositionI18n").control-label
+            input.form-control(data-bind="value: digits, valueUpdate: 'afterkeydown'")
+
+        .col-sm-4
+          div.form-group(data-bind="hasFeedback: { field: nextNumber, toggle: nextNumber.hasError, messages: nextNumber.validationMessages }")
+            label(for="nextNumber", data-bind="text: $parent.labelCounterStartI18n").control-label
+            input.form-control(data-bind="value: nextNumber, valueUpdate: 'afterkeydown'")
+      .row
+        .col-sm-6
+          i (
+            span(data-bind="text: $parent.itemTextExampleI18n")
+            | &nbsp;
+            span( data-bind='text: example')
+          i )
+        .col-sm-6
+          button.btn.btn-default(type='button', data-bind='click: deleteReceiptNumberScheme.bind($context, $parent)').pull-right
+            span.glyphicon.glyphicon-trash
+
+h4
+  span(data-bind="text: groupDunningI18n")
+  | &nbsp;
+  small
+    a.margin-bottom-small(name="addDunningSchema", href="#", data-bind="click: addDunningSchema")
+      i.icon.fa.fa-plus
+div(data-bind="foreach: dunningSchemes")
+  div.panel.panel-default
+    div.panel-heading
+      .row
+        .col-md-8
+          select.form-control(name="locationId", data-bind="options: $parent._locationList, optionsValue: '_id', optionsText: 'locname', value: locationId, valueAllowUnset: true")
+    div.panel-body
+      .row
+        .col-sm-4
+          h4
+            span(data-bind="text: $parent.titleLimitsI18n + ':'")
+            | &nbsp;
+            i.dc-info-icon(data-bind="click: $parent.showIdentityInfoDialog.bind($context, 'textLimits')")
+        .col-sm-4
+          h4
+            span(data-bind="text: $parent.titleFeesI18n + ':'")
+            | &nbsp;
+            i.dc-info-icon(data-bind="click: $parent.showIdentityInfoDialog.bind($context, 'textFees')")
+        //ko if: countryModeSwiss
+        .col-sm-4
+          h4
+            span(data-bind="text: $parent.titleTextsI18n + ':'")
+            | &nbsp;
+            i.dc-info-icon(data-bind="click: $parent.showIdentityInfoDialog.bind($context, 'textTexts')")
+        // /ko
+      // ko if: countryModeSwiss
+      .row
+        .col-sm-12
+          label(for="invoice", data-bind="text: invoiceI18n").control-label
+        .col-sm-4
+          div.form-group(data-bind="hasFeedback: { field: invoiceDays, toggle: invoiceDays.hasError, messages: invoiceDays.validationMessages }")
+            input#invoice.form-control(data-bind="value: invoiceDays, valueUpdate: 'afterkeydown'")
+        .col-sm-4
+        .col-sm-4
+          div.form-group(data-bind="hasFeedback: { field: invoiceText, toggle: invoiceText.hasError, messages: invoiceText.validationMessages }")
+            input#invoiceText.form-control(data-bind="value: invoiceText")
+      // /ko
+      .row
+        .col-sm-12
+          label(for="reminder", data-bind="text: remindI18n").control-label
+        .col-sm-4
+          div.form-group(data-bind="hasFeedback: { field: reminderDays, toggle: reminderDays.hasError, messages: reminderDays.validationMessages }")
+            input#reminder.form-control(data-bind="value: reminderDays, valueUpdate: 'afterkeydown'")
+        //ko if: countryModeSwiss
+        .col-sm-4
+        .col-sm-4
+          div.form-group(data-bind="hasFeedback: { field: reminderText, toggle: reminderDays.hasError, messages: reminderText.validationMessages }")
+            input#reminderText.form-control(data-bind="value: reminderText, valueUpdate: 'afterkeydown'")
+        // /ko
+      .row
+        .col-sm-12
+          label(for="warning1", data-bind="text: warn1I18n").control-label
+        .col-sm-4
+          div.form-group(data-bind="hasFeedback: { field: warning1Days, toggle: warning1Days.hasError, messages: warning1Days.validationMessages }")
+            input#warning1.form-control(data-bind="value: warning1Days, valueUpdate: 'afterkeydown'")
+        .col-sm-4
+          div.form-group(data-bind="hasFeedback: { field: _warning1Value, toggle: _warning1Value.hasError, messages: _warning1Value.validationMessages }")
+            input#warning1Value.form-control(data-bind="value: _warning1Value")
+        //ko if: countryModeSwiss
+        .col-sm-4
+          div.form-group(data-bind="hasFeedback: { field: warning1Text, toggle: warning1Text.hasError, messages: warning1Text.validationMessages }")
+            input#warning1Text.form-control(data-bind="value: warning1Text")
+        // /ko
+      .row
+        .col-sm-12
+          label(for="warning2", data-bind="text: warn2I18n").control-label
+        .col-sm-4
+          div.form-group(data-bind="hasFeedback: { field: warning2Days, toggle: warning2Days.hasError, messages: warning2Days.validationMessages }")
+            input#warning2.form-control(data-bind="value: warning2Days, valueUpdate: 'afterkeydown'")
+        .col-sm-4
+          div.form-group(data-bind="hasFeedback: { field: _warning2Value, toggle: _warning2Value.hasError, messages: _warning2Value.validationMessages }")
+            input#warning2Value.form-control(data-bind="value: _warning2Value")
+        //ko if: countryModeSwiss
+        .col-sm-4
+          div.form-group(data-bind="hasFeedback: { field: warning2Text, toggle: warning2Text.hasError, messages: warning2Text.validationMessages }")
+            input#warning2Text.form-control(data-bind="value: warning2Text")
+        // /ko
+      .row
+        .col-sm-12
+          button.btn.btn-default(type='button', data-bind='click: deleteDunningScheme.bind($context, $parent)').pull-right
+            span.glyphicon.glyphicon-trash
+// ko if: showIncash
+h4
+  span(data-bind="text: groupCashbookI18n")
+  | &nbsp;
+  small
+    a.margin-bottom-small(name="addReceiptsSchema", href="#", data-bind="click: addReceiptsSchema")
+      i.icon.fa.fa-plus
+div(data-bind="foreach: receiptsSchemes")
+  div.panel.panel-default
+    div.panel-heading
+      .row
+        .col-md-8
+          div.form-group(data-bind="hasFeedback: { field: locationId, toggle: locationId.hasError, messages: locationId.validationMessages }")
+            select.form-control(name="locationId", data-bind="options: $parent._locationList, optionsValue: '_id', optionsText: 'locname', value: locationId, valueAllowUnset: true")
+    div.panel-body
+      .row
+        .col-sm-4
+          div.form-group(data-bind="hasFeedback: { field: name, toggle: name.hasError, messages: name.validationMessages }")
+            label(for="receiptName", data-bind="text: $parent.labelNameI18n").control-label
+            input.form-control#receiptName(data-bind="value: name")
+      .row
+        .col-sm-4
+          div.form-group
+            label(for="receiptYear", data-bind="text: $parent.labelStammReceiptI18n").control-label
+            input.form-control#receiptYear(data-bind="value: year, attr: {placeholder: _year_ph}, valueUpdate: 'afterkeydown'")
+
+        .col-sm-4
+          div.form-group(data-bind="hasFeedback: { field: digits, toggle: digits.hasError, messages: digits.validationMessages }")
+            label(for="receiptDigits", data-bind="text: $parent.labelCounterPositionI18n").control-label
+            input.form-control#receiptDigits(data-bind="value: digits, valueUpdate: 'afterkeydown'")
+
+        .col-sm-4
+          div.form-group(data-bind="hasFeedback: { field: nextNumber, toggle: nextNumber.hasError, messages: nextNumber.validationMessages }")
+            label(for="receiptNextNumber", data-bind="text: $parent.labelCounterStartI18n").control-label
+            input.form-control#receiptNextNumber(data-bind="value: nextNumber, valueUpdate: 'afterkeydown'")
+      .row
+        .col-sm-6
+          i (
+            span(data-bind="text: $parent.itemTextExampleI18n")
+            | &nbsp;
+            span( data-bind='text: example')
+          i )
+        .col-sm-6
+          button.btn.btn-default(type='button', data-bind='click: deleteReceiptsScheme.bind($context, $parent)').pull-right
+            span.glyphicon.glyphicon-trash
+// /ko
+div.checkbox(data-bind="if: countryModeIncludesSwitzerland")
+  input(type="checkbox", data-bind="checked: isMocking")
+  span(data-bind="text: demoModeI18n")

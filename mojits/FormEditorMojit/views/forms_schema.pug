@@ -1,0 +1,14 @@
+div#divSchemaAssignment
+
+  div.alert.alert-info(data-bind="visible: hasNoValueEditor, text: LBL_NO_EDITOR")
+
+  input.form-control.form-control-search(type="text", data-bind="visible: hasSchema, value: filterText, valueUpdate: 'afterkeydown'")#txtFilterSchema
+
+  div(data-bind="visible: hasSchema, foreach: allSchemaMembers")#divSchemaMemberList
+    div(style="margin-top: 2px;", data-bind="visible: isVisible")
+      button.btn.btn-xs.btn-info(data-bind="click: $parent.onButtonClick")
+        i.icon-tags
+        span &nbsp;
+        span(data-bind="text: $parent.getLabel($data)")
+
+  div(data-bind="visible: hasNoSchema, text: ")#divNoSchemaSelected

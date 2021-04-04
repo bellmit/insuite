@@ -1,0 +1,18 @@
+{
+  "meta": {
+    "errors": [],
+    "warnings": [],
+    "query": {},
+    "itemsPerPage": null,
+    "totalItems": 1,
+    "page": null,
+    "replyCode": 200
+  },
+  "data": [
+  {
+    "title": "Blabla (PRIVATE_CH)",
+    "patientId": "54be764fc404c1d77a286d4d",
+    "type": "PRIVATE_CH"
+  }
+]
+ }

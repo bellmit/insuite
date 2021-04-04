@@ -1,0 +1,9 @@
+div.form-group(data-bind="visible: dmpTnmClassification_4_23Visible()")
+    div.row
+        div.col-xs-4
+            strong(data-bind="text: dmpTnmClassification_4_23.i18n")
+            span(data-bind="dmpField: { field: dmpTnmClassification_4_23 }")
+        div.align-top.col-xs-8(data-bind="foreach: dmpTnmClassification_4_23.list, hasFeedback: { field: dmpTnmClassification_4_23, toggle: dmpTnmClassification_4_23.hasError, messages: dmpTnmClassification_4_23.validationMessages }")
+            label.radio(style="margin-top: 0")
+                span(data-bind="text: i18n")
+                input.align-top(type="radio", name="dmpTnmClassification_4_23", data-bind="value: val, checked: $parent.dmpTnmClassification_4_23, readOnly: $parent.dmpTnmClassification_4_23.readOnly, attr: { name: $element.name + '-' + val }")

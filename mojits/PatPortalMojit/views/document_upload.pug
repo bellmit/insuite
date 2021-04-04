@@ -1,0 +1,20 @@
+//TRANSLATION INCOMPLETE!! MOJ-3201
+div#divPPUploadContainer
+  br
+  div(style="display: none;")#divAttachmentsAdd
+    p Datei hier hin ziehen oder Knopf "Dateien auswählen" nutzen
+
+    div.well(style="height: 40px; background-color: rgba(100, 255, 100, 0.3);")#divDragDrop
+      small
+        span.document_upload-uploadInfo
+        div#divUploadList
+    div#divMultiUpload
+      table(noborder="noborder",width="100%")
+        tr
+          td
+            input.btn(type="file",name="multiFile",multiple="multiple")#fileMulti
+          td
+            button.btn#btnMulti Hinzufügen
+
+  div#divUploadStatus
+    span#spanUploadStatus

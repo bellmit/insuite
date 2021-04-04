@@ -1,0 +1,14 @@
+div(id=mojit_view_id)
+  .container.container-fullscreen(style="padding-top: 30px")
+    .row
+      .col-xs-3
+        .form-group
+          button.btn.btn-default.btn-block(type="button", data-bind="click: callOnce") One Call
+          button.btn.btn-default.btn-block(type="button", data-bind="click: callTwice") Two Calls
+          button.btn.btn-default.btn-block(type="button", data-bind="click: testWarnings") Test Warnings
+          button.btn.btn-default.btn-block(type="button", data-bind="click: testErrors") Test Errors
+      .col-xs-9
+        .form-group
+          textarea.form-control(data-bind="value: log", style="height: 250px")
+        .form-group
+          textarea.form-control(data-bind="value: error", style="height: 250px")

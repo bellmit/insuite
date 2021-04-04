@@ -1,0 +1,54 @@
+div.row
+  div.col-xs-7.col-lg-8
+    div.row
+      div(data-bind="css: {'col-xs-11': !userContent.readOnly(), 'col-xs-12': userContent.readOnly}")
+        div.form-group
+          textarea#textform-sd3-content.form-control(name="userContent", data-bind="textInput: userContent, readOnly: userContent.readOnly, event: { focus: onDocTreeFocus, blur: onDocTreeBlur }, caretPosition: userContent.caretPosition, attr: { placeholder: contentDiagnosisI18n }", rows="7")
+        div.form-group
+          textarea#textform-sd4-catalogContent.form-control(name="originalCatalogText", data-bind="textInput: originalCatalogText() == '' ? originalCatalogPlaceholder : originalCatalogText, readOnly: true, event: { focus: onDocTreeFocus, blur: onDocTreeBlur }, attr: { placeholder: catalogTextI18n }", rows="7")
+      // ko if: !userContent.readOnly()
+      div.col-xs-1(style="padding-left: 0", data-bind="foreach: catalogTexts")
+        button.btn-default.btn(data-bind="text: title, tooltip: {title: text()}, css: {'dc-grey-text': !text() && !active(), 'dc-grey': text() && !active(), 'btn-primary-disabled': usedInUserContent() && !active(), 'btn-primary': active }, click: $parent.activateCatalogTextItem", style="width: 40px; height: 40px; margin-bottom: 2px")
+      // /ko
+    div.row
+      div(data-bind="css: {'col-xs-11': !userContent.readOnly(), 'col-xs-12': userContent.readOnly}")
+        div.form-group
+          textarea#textform-sd3-explanations.form-control(name="explanations", data-bind="textInput: explanations, readOnly: explanations.readOnly, event: { focus: onDocTreeFocus, blur: onDocTreeBlur }, caretPosition: explanations.caretPosition, attr: { placeholder: sd3ExplanationsI18n }", rows="7")
+  div.col-xs-5.col-lg-4
+    div.form-group(data-bind="if: isModified() && canModifyHomeCatalog()")
+      div.checkbox
+        label.control-label
+          strong(data-bind="text: modifyHomeCatI18n")
+          input(type="checkbox", name="modifyHomeCat", data-bind="checked: modifyHomeCat, readOnly: modifyHomeCat.readOnly")
+    div.form-group
+      input.form-control(name="tag", type="hidden", data-bind="select2: select2tags, valueUpdate: 'afterkeydown', readOnly: code.readOnly")
+    div.row
+      div.col-xs-9
+        div.form-group(data-bind="hasFeedback: { field: code, toggle: code.hasError, messages: code.validationMessages }")
+          input.form-control(name="code", type="hidden", data-bind="select2: select2Code, readOnly: code.readOnly, hasFocus: true")
+      div.col-xs-3
+        button.btn.btn-default.col-xs-12(data-bind="click: showCatalogViewer, readOnly: code.readOnly")
+          span.glyphicon.glyphicon-zoom-in
+    div.form-group
+      select.form-control(name="_catalog", data-bind="options: _catalogBase, optionsValue: 'short', optionsText: 'short', value: catalogShort, readOnly: code.readOnly")
+    div.form-group(data-bind="hasFeedback: { field: diagnosisCert, toggle: diagnosisCert.hasError, messages: diagnosisCert.validationMessages }")
+      select.form-control(name="diagnosisCert", data-bind="options: _diagnosisCertList, optionsValue: 'val', optionsText: 'i18n', value: diagnosisCert, readOnly: diagnosisCert.readOnly")
+    div.form-group
+      select.form-control(name="diagnosisSite", data-bind="options: _diagnosisSiteList, optionsValue: 'val', optionsText: 'i18n', value: diagnosisSite, readOnly: diagnosisSite.readOnly, attr: { placeholder: diagnosisSiteI18n }")
+    div.form-group
+      input.form-control(name="diagnosisDerogation", data-bind="textInput: diagnosisDerogation, readOnly: diagnosisDerogation.readOnly, attr: { placeholder: diagnosisDerogationI18n }")
+    div.row
+      div.col-xs-6
+        div.form-group
+          select.form-control(name="diagnosisType", data-bind="options: _diagnosisTypeList, optionsValue: 'val', optionsText: 'i18n', value: diagnosisType, readOnly: diagnosisType.readOnly, event: { change: diagnosisTypeChangeHandler }")
+      div.col-xs-6
+        div.form-group
+          select.form-control(name="diagnosisTreatmentRelevance", data-bind="options: _diagnosisTreatmentRelevanceList, optionsValue: 'val', optionsText: 'i18n', value: diagnosisTreatmentRelevance, readOnly: diagnosisTreatmentRelevance.readOnly")
+    div.form-group(data-bind="visible: hasSpecial")
+      strong(style="display:block;", data-bind="text: groupPropertiesI18n")
+      span(data-bind="visible: hasUExtra('meldepflicht')")
+        span.label.label-danger(style="font-weight:normal;", data-bind="text: labelNotifiableI18n")
+        | &nbsp;
+      span(data-bind="visible: hasUExtra('abrechenbar')")
+        span.label.label-default(style="font-weight:normal;", data-bind="text: labelBillableI18n")
+        | &nbsp;

@@ -1,0 +1,61 @@
+br
+br
+.container.container-fullscreen.content(id=mojit_view_id)
+
+  h3 Replace form versions used by inCase activities
+
+  p Activities may be linked to a form when they are created.  Typically activities will keep a reference to a specific form version for their whole lifetimes.  However, if a form has an error or must be replaced with a different form after an activity has been created, this tool may be used.
+
+  p It is important to note that the replacement form must be compatible at the element level: element ids and bindings of the new form must match the old, or the contents of the previous forms will not be correctly loaded from activities.
+
+  div#divReplaceForms
+
+    b Allowed forms
+    textarea.form-control(rows="6",style="width: 100%")#taFormIds *
+
+    table(style="width: 100%")
+      tr
+        td
+          b Start Date
+        td
+          b End Date
+      tr
+        td
+          input.form-control(type="text")#txtStartDate
+        td
+          input.form-control(type="text")#txtEndDate
+      tr
+        td
+          span#spnStartDate
+        td
+          span#spnEndDate
+
+  div(style="display:none;")#divProgressArea
+    div#divProgressLabel
+    div.progress
+      div.progress-bar(role="progressbar",aria-valuenow="0",aria-valuemin="0",aria-valuemax="100",style="width:0%;")#divProgressBar
+        span.sr-only#spanProgressSr 0%
+  hr
+
+  div#divStatusbar
+
+  div(style="display: none;")#divConfirm
+    p Ready to regenerate activity PDFs.  This action cannot be undone.  Please check your backup before you proceed.
+    button.btn#btnConfirm Confirm replacement of form
+    hr
+
+  div(style="display: none;")#divReplace
+    button.btn#btnReplace Create list of activities using the forms to be replaced
+    div#divFormDocList
+    hr
+
+  hr
+
+  div#divListForms
+
+
+
+
+
+
+

@@ -1,0 +1,17 @@
+.container.container-fullscreen.content(id=mojit_view_id)
+  div#patientHistory
+    h3 Patient History
+    div.row
+      div.col-xs-6
+        ul(data-bind="foreach: days")
+          li
+            p(data-bind="text: date")
+            ul(data-bind="foreach: times")
+              li
+                p(data-bind="text: time")
+                ul(data-bind="foreach: items")
+                  li
+                    a(data-bind="text: content, click: onClick, style: {'background-color': $root.highlight() === raw._id ? 'lightgrey' : ''}")
+      div.col-xs-6
+        div.form-group
+          textarea.form-control(data-bind="value: rawDisplay", style="height: 500px; width: 100%;")

@@ -1,0 +1,63 @@
+#kvg_settings
+    div.row
+        div.col-md-7(data-bind="with: invoiceconfiguration")
+            include ./tarmedTaxPointValues
+    hr
+    div.row
+        div.col-xs-12(data-bind="with: invoiceconfiguration")
+            div.row
+                div.col-md-6
+                    h4
+                        span(data-bind="text: kvgSettings.i18n")
+                        | &nbsp;
+                        small
+                            a(name="addKvgSetting", href="javascript:void(0);", data-bind="click: addKvgSetting")
+                                i.icon.fa.fa-plus
+            div(data-bind="template: { name: 'template-KvgSettingModel', foreach: kvgSettings }")
+    hr
+    div.row
+        div.col-xs-12(data-bind="with: invoiceconfiguration")
+            div.row
+                div.col-md-6
+                    h4
+                        span(data-bind="text: mediportDeliverySettings.i18n")
+                        // ko if: !mediportDeliverySettings || !mediportDeliverySettings().length
+                        | &nbsp;
+                        small
+                            a(name="addMediportDeliverySetting", href="javascript:void(0);", data-bind="click: addMediportDeliverySetting")
+                                i.icon.fa.fa-plus
+                        // /ko
+            div(data-bind="template: { name: 'template-MediportDeliverySettingsModel', foreach: mediportDeliverySettings }")
+    hr
+    div.row(data-bind="with: invoiceconfiguration")
+        div.col-md-6
+            h4
+                span(data-bind="text: tarmedInvoiceFactorValuesI18n")
+                | &nbsp;
+                small
+                    a(name="addInvoiceFactorSetting", href="javascript:void(0);", data-bind="click: addInvoiceFactorSetting")
+                        i.icon.fa.fa-plus
+    div.row(data-bind="with: invoiceconfiguration")
+        div(data-bind="template: { name: 'template-TarmedInvoiceFactorValueModel', foreach: tarmedInvoiceFactorValues }")
+            div(data-bind="text: $data")
+    hr
+    div.row(data-bind="with: invoiceconfiguration")
+        div.col-md-6
+            h4
+                span(data-bind="text: billingAdjustmentsI18n")
+                | &nbsp;
+                small
+    div.row(data-bind="with: invoiceconfiguration")
+        div.panel.panel-default
+            div.panel-body
+                div.form-group
+                    div.checkbox
+                        label.control-label
+                            input(type="checkbox", data-bind="checked: hasImagingDevice, valueUpdate: 'afterkeydown'")
+                            strong(data-bind="text: imagingDeviceAvailableI18n")
+                            i.dc-info-icon(data-bind="click: showImagingDeviceInfoMessage")
+
+    div.row
+        div.col-sm-12
+            div.dc-action-buttons.dc-action-buttons-right(data-bind="with: actions")
+                button.btn.btn-primary(name="saveBtn", type="button", data-bind="enable: saveInvoiceconfigurationEnable, click: saveInvoiceconfiguration, text: buttonSaveI18n")

@@ -1,0 +1,39 @@
+h4
+  span(data-bind="text: bgInvoiseNumbersI18n")
+  small
+    a(name="bgNumberSchemes_arrayAdd", href="javascript:void(0);", data-bind="click: _arrayAdd('bgNumberSchemes')")
+      i.icon.fa.fa-plus
+
+div(data-bind="foreach: bgNumberSchemes")
+  div.panel.panel-default
+    div.panel-heading
+      .row
+        .col-md-4
+          select.form-control(name="locationId", data-bind="options: $parent._locationList, optionsValue: '_id', optionsText: 'locname', value: locationId, valueAllowUnset: true")
+
+    div.panel-body
+      .row
+        .col-sm-4
+          div.form-group
+            label(for="year").control-label(data-bind="text: $parent.bgLabelStammI18n")
+            input.form-control(data-bind="value: year, attr: {placeholder: _year_ph}, valueUpdate: 'afterkeydown'")
+
+        .col-sm-4
+          div.form-group(data-bind="hasFeedback: { field: digits, toggle: digits.hasError, messages: digits.validationMessages }")
+            label(for="digits").control-label(data-bind="text: $parent.bgLabelCounterPositionI18n")
+            input.form-control(data-bind="value: digits, valueUpdate: 'afterkeydown'")
+
+        .col-sm-4
+          div.form-group(data-bind="hasFeedback: { field: nextNumber, toggle: nextNumber.hasError, messages: nextNumber.validationMessages }")
+            label(for="nextNumber").control-label(data-bind="text: $parent.bgLabelCounterStartI18n")
+            input.form-control(data-bind="value: nextNumber, valueUpdate: 'afterkeydown'")
+      .row
+        .col-sm-6
+          i (
+            span(data-bind="text: $parent.bgTextExampleI18n")
+            | &nbsp;
+            span( data-bind='text: example')
+          i )
+        .col-sm-6
+          button.btn.btn-default(type='button', data-bind='click: _arrayDel').pull-right
+            span.glyphicon.glyphicon-trash

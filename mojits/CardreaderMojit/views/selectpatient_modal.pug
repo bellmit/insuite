@@ -1,0 +1,30 @@
+div#cr-select-patient
+  div(data-bind="visible: 'all' === current()")
+    div(data-bind="with: all")
+      div(data-bind="template: template")
+  div(data-bind="visible: 'some' === current()")
+    div(data-bind="with: some")
+      div(data-bind="template: template")
+  // ko if: kim && selectedPatientId()
+  div.row
+    div.col-xs-6
+      span(data-bind="text: selectCaseFolderI18n")
+      div(data-bind="foreach: caseFolders")
+        .radio
+          label
+            input(type="radio", name="casefolderRadioBoxes", value="", data-bind="checked: $parent.selectedFolder, value: $data")
+            span(data-bind="text: title")
+    // ko if: kimPatient
+    div.col-xs-6
+      span(data-bind="text: updatePatientDataI18n")
+      div.checkbox
+        input(type="checkbox", data-bind="checked: patientCommonData, valueUpdate: 'afterkeydown'")
+        span(data-bind="text: patientCommonDataI18n")
+      div.checkbox
+        input(type="checkbox", data-bind="checked: patientInsuranceData, valueUpdate: 'afterkeydown'")
+        span(data-bind="text: patientInsuranceDataI18n")
+      div.checkbox
+        input(type="checkbox", data-bind="checked: patientAddressData, valueUpdate: 'afterkeydown'")
+        span(data-bind="text: patientAddressDataI18n")
+    // /ko
+  // /ko

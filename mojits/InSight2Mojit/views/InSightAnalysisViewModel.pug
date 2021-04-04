@@ -1,0 +1,46 @@
+div(id="upperDiv", data-bind="notifyBind: { method: analysisReady, namespace: $data }")
+  div(id="insight_analysis")
+    div#tooltip.popover.bottom
+      .arrow
+      h3.popover-title
+      div.popover-content
+        p .
+    div.masterhead
+      //button.btn.pull-right#refresh(style="margin-right: 20px")
+      //  span.glyphicon.glyphicon-refresh
+      div
+        ul.nav.nav-pills.pull-right
+        h3(data-bind="text: analysisTitleI18n")
+    div.container.container-fullscreen-fluid(style='min-width: 700px;')
+      div.row-fluid
+        div(style='width: 700px;')#vis
+      div.container.container-fullscreen
+        div.row.analysisOpts(style="margin-top:20px;")
+          div.col-lg12
+            form
+              div.row
+                div.col-lg-2
+                  label(data-bind="text: analysisLimitI18n")
+                  input.form-control(type="number", value="10", id="opt-limit")
+                div.col-lg-2
+                  label(data-bind="text: analysisOrderTitleI18n")
+                  select.form-control(id="opt-order")
+                    option(value="-1", data-bind="text: analysisOrderASCI18n")
+                    option(value="1", data-bind="text: analysisOrderDESCI18n")
+                div.col-lg-2
+                  div.btn-wrapper
+                    button.btn(id="opt-update", data-bind="text: analysisUpdateBtnI18n")
+
+      div.row-fluid(style="margin-top:20px;")
+        //div#menu
+        .col-xs-3.col-xs-offset-1
+          h4(data-bind="text: analysisSelectedCatsI18n")
+          div#menu-buttons
+        .col-xs-3.col-xs-offset-4
+          h4(data-bind="text: analysisAvailableCatsI18n")
+          div#cat-list
+          hr
+          h4#euro-btn-wrapper
+            label(data-bind="text: analysisShowPriceI18n")
+            | &nbsp;
+            input(id='euro-btn', type='checkbox', name='euro-btn')

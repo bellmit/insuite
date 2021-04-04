@@ -1,0 +1,44 @@
+div.visible-xs.visible-sm(style="padding: 15px")
+div.visible-md.visible-lg(style="padding: 35px")
+div.container.container-fullscreen(id=mojit_view_id)
+  .jumbotron(style="border-radius: 30px;")
+    .row
+      .col-xs-3.col-md-2
+        div(style="margin-top:30px;")
+          a(href="/")
+            img(src='/static/LoginMojit/assets/HTML5-logo.png', width="100px", alt="HTML5 logo")
+      .col-xs-9.col-md-4.col-md-offset-1
+        h3
+          strong=labelNoteI18n
+        p=text1I18n
+        p=text2I18n
+      .col-xs-9.col-xs-offset-3.col-md-4.col-md-offset-1
+        h3=installNowI18n
+        ul
+          li
+            a(href="https://www.google.de/intl/de/chrome/browser/")
+              span Google Chrome (V.
+              span=chromeVersion
+              span +)
+          li
+            a(href="https://www.apple.com/de/safari/")
+              span Apple Safari (V.
+              span=safariVersion
+              span +)
+          li
+            a(href="https://www.mozilla.org/de/firefox/new/")
+              span Mozilla Firefox (V.
+              span=ffVersion
+              span +)
+          li
+            a(href="#")
+              span Microsoft Edge (V.
+              span=microsoftEdgeVersion
+              span +)
+        br
+        br
+        br
+      .clearfix.visible-xs.visible-sm
+      .col-xs-7.col-xs-offset-5.col-md-4.col-md-offset-1
+        a.btn.btn-primary(href=url)=buttonNextI18n
+  include ../../DocCirrus/views/footer

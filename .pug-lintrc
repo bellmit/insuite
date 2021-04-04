@@ -1,0 +1,12 @@
+{
+  "disallowAttributeInterpolation": true,
+  "disallowAttributeTemplateString": "all",
+  "disallowDuplicateAttributes": true,
+  "disallowLegacyMixinCall": true,
+  "disallowTagInterpolation": true,
+  "disallowTemplateString": "all",
+  "requireLowerCaseAttributes": true,
+  "requireLowerCaseTags": true,
+  "requireSpaceAfterCodeOperator": true,
+  "validateTemplateString": true
+}

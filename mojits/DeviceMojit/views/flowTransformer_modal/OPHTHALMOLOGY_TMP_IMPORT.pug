@@ -1,0 +1,29 @@
+div#transformerModel
+  div.form-group
+    div.form-group(style="display: inline-block; width: 100%;")
+      label(for="transformerTmpType", style="margin-right:5px;", data-bind="text: tmpFileTypeLabelI18n + ':'")
+      input.form-control#transformerTmpType(style="display: inline-block; width: 25%;", data-bind="value: tmpFileType")
+      div(style="float:right; width: 65%;")
+        label(for="transformerTmpTypeDescription", style="margin-right:5px;", data-bind="text: tmpFileTypeDescriptionLabelI18n + ':'")
+        input.form-control#transformerTmpTypeDescription(style="display: inline-block; width: 65%;", data-bind="value: tmpFileTypeDescription")
+    button.btn.btn-primary#btnAddRow(style="float:right", data-bind="click: onAddRowClick, text: addRowButtonI18n")
+    div.form-group
+      table.table
+        colgroup
+          col(style="width:15%")
+          col(style="width:75%")
+          col(style="width:10%")
+        thead
+          tr
+            th(data-bind="text: rowNumberHeaderI18n")
+            th(data-bind="text: labelHeaderI18n")
+            th
+        tbody(data-bind="foreach: { data: mappingTmpFileRows, as: 'rowMapping' }")
+          tr
+            td
+              input.form-control(type="text", data-bind="value: rowMapping.rowNumber")
+            td
+              input.form-control(type="text", data-bind="value: rowMapping.label")
+            td
+              button.btn.btn-primary(data-bind="click: function(data){$parent.onDeleteRowClick($index());}")
+                i.fa.fa-trash

@@ -1,0 +1,6 @@
+#confimModal
+  .form-group
+    p(data-bind="text: confirmMessageI18n")
+    input.form-control(type="password", name="modalPw", data-bind="attr: { placeholder: enterPasswordI18n }, textinput: pwFromModal")
+    #wrongPasswordMessage1(data-bind="visible: shouldShowTheWarningText")
+      p(style="color:red" data-bind="text: wrongPasswordI18n")

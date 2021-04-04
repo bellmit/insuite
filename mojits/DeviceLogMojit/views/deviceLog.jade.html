@@ -1,0 +1,14 @@
+div(id=mojit_view_id)
+    .container.container-fullscreen
+        div(style="position: relative")
+          div(style="position: absolute; right: 0; top: 0;")
+            button.btn.btn-sm.btn-default(
+            name="toggleFullScreen", type="button", data-bind="click: toggleFullScreenHandler, attr: { title: viewPortBtnI18n }",
+            style="margin-top: 5px; font-size:14px")
+              span.fa.fa-arrows-alt
+        .row
+            h3(data-bind="text: titleTextI18n")
+        .row
+            div#deviceLogDetailEntry
+        .row
+            div#overviewTable(data-bind="template: overviewTable.template")

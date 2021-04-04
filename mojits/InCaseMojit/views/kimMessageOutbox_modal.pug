@@ -1,0 +1,34 @@
+div.KimMessageOutboxModel
+  div.col-md-2
+    div#overviewTable(data-bind="template: overviewTable.template")
+  div.col-md-10
+    form.form-horizontal
+      div.form-group(data-bind="foreach: patienttransfers")
+        div(data-bind="if: $parent.currentPatientTransferId() === activityIds()[0]")
+          div.form-group(data-bind="hasFeedback: { field: kimRecipient, toggle: kimRecipient.hasError }")
+            label.control-label.col-md-1(data-bind="text: kimRecipientlabel")
+            div.col-md-10
+              div.input-group
+                input.form-control(name="kimRecipient", type="hidden", data-bind="select2: select2KimReceiver, valueUpdate:'afterkeydown'")
+                span.input-group-btn
+                  button.btn.btn-default(type="button", data-bind="click: handleSelectReceiverKim")
+                    span.glyphicon.glyphicon-search
+          div.form-group(data-bind="hasFeedback: { field: kimSender, toggle: kimSender.hasError, messages: kimSender.validationMessages }")
+            label.control-label.col-md-1(data-bind="text: kimSenderLabel")
+            div.col-md-10
+              input.form-control(name="kimSender", type="hidden", data-bind="select2: select2Sender, valueUpdate:'afterkeydown'")
+          div.form-group
+            label.control-label.col-md-1(data-bind="text: kimSubjectLabel")
+            div.col-md-10
+              input.form-control(type="text", data-bind="value: subject, readOnly: true")
+          div.form-group
+            label.control-label.col-md-1(data-bind="text: kimMailContentLabel")
+            div.col-md-10
+              textarea.form-control(name="textContent", rows="6", data-bind="value: textContent, readOnly: true")
+          div.form-group(style="padding-left: 10px")
+            label.control-label.col-md-1(data-bind="text: kimAttachtmentLabel")
+            div.col-sm-offset-1(data-bind="foreach: attachments", style="display: flex")
+              div(style="margin-right: 0.5em; border: 1px solid #bbb; border-radius: 5px; display: flex; flex-direction: column;")
+                a(data-bind="attr: { href: fullUrl }", target="_blank")
+                  img(data-bind="attr: { src: thumbUrl }", width="68", height="95")
+

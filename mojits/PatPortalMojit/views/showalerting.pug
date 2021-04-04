@@ -1,0 +1,52 @@
+//TRANSLATION INCOMPLETE!! MOJ-3201
+div.control-domain
+  #content_info
+    div.control-group
+      label(for="praxid").control-label Praxis ID
+      div.controls
+        input(type='text', required="true", name='praxid', value='', dcschema='patientalert',dctype='PatientAlert_T')#praxid.dcvalidate
+        span.help-inline
+    div.control-group
+      label(for="waitno").control-label Ihre Wartenummer
+      div.controls
+        input(type='text', required="true", name='waitno', value='', dcschema='patientalert',dctype='PatientAlert_T')#waitno.dcvalidate
+        span.help-inline
+  hr
+#content_alerting_loggedin
+  div.control-group
+    label(for="schedwantsemail").control-label
+    label(for="schedwantssms").control-label
+    div.controls
+      input(type='checkbox', name='schedwantsemail', value='', dcschema='',dctype='')#schedwantsemail
+      span(style="margin-left:10px;margin-bottom:12px;") E-Mail gewünscht?
+      span &nbsp;&nbsp;&nbsp;
+      input(type='checkbox', name='schedwantssms', value='', dcschema='',dctype='')#schedwantssms
+      span(style="margin-left:10px;margin-bottom:12px;") oder SMS?
+  #schedalertfields
+    div.control-group
+    // init with other values: min 1h, default 24h, max 48h
+    label(for="schedtimeinadvance").control-label <i>wie lange vorher</i>
+    div.controls.yui3-skin-sam
+      input(type='text', style="color:black", disabled="true", name='schedtimeinadvance')#schedtimeinadvance
+      div#schedtimeinadvance_slider.slider
+#content_alerting
+  div.control-group
+    label(for="wantsAlert").control-label
+    div.controls
+      input(type='checkbox', name='wantsAlert', value='wantsAlert', dcschema='patientalert',dctype='PatientAlert_T')#wantsAlert
+      span(style="margin-left:10px;margin-bottom:12px;") E-Mail/SMS gewünscht?
+  #alertfields
+    div.control-group
+      label(for="timeinadvance").control-label wie lange vorher
+      div.controls.yui3-skin-sam
+        input(type='text', style="color:black", disabled="true", name='timeinadvance')#timeinadvance
+        div#timeinadvance_slider.slider
+    div.control-group
+      label(for="email").control-label Ihre E-Mail-Adresse
+      div.controls
+        input(type='text', name='email', dcschema='patientalert',dctype='PatientAlert_T')#email.dcvalidate
+        span.help-inline
+      label(for="mobile").control-label oder Handy-Nummer für SMS
+      div.controls
+        input(type='text', name='mobile', dcschema='patientalert',dctype='PatientAlert_T')#mobile.dcvalidate
+        span.help-inline

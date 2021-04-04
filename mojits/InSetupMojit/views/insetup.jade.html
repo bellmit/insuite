@@ -1,0 +1,14 @@
+div(id=mojit_view_id)
+  .container.container-fullscreen(style="margin-top: 10px")
+    nav(style="position: relative")
+      div(data-bind="template: navigation.template")
+      #toggleFullScreenDiv(style="position: absolute; right: 0; top: 0;")
+        button.btn.btn-sm.btn-default(name="toggleFullScreen", type="button", data-bind="click: toggleFullScreenHandler, attr: { title: viewPortBtnI18n }", style="margin-top: 6px;")
+          span.fa.fa-arrows-alt
+    div.insight2Mojit-currentView(data-bind="with: currentView")
+      div(data-bind="template: template")
+include ../../../autoload/KoUI/include
+script(type="text/html", id="InSetupImportExportTextBlocksViewModel")
+  include InSetupImportExportTextBlocksViewModel
+
+include ../../../autoload/KoUI/include

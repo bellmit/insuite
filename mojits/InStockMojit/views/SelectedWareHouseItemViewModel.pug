@@ -1,0 +1,172 @@
+div.selecetedWareHouseItem
+    div.row
+      div.col-md-12
+        div.form-group(data-bind="hasFeedback: { field: gtinCode, toggle: gtinCode.hasError, messages: gtinCode.validationMessages }")
+          label.col-sm-4.control-label(data-bind="text: gtinCode.i18n")
+          div.col-sm-8
+            input.form-control(name="gtinCode", data-bind="value: gtinCode, readOnly: gtinCode.readOnly")
+    div.row
+      div.col-md-12
+          div.form-group(data-bind="hasFeedback: { field: phPZN, toggle: phPZN.hasError, messages: phPZN.validationMessages }")
+              label.col-sm-4.control-label(data-bind="text: phPZN.i18n")
+              div.col-sm-8
+                  input.form-control(name="phPZN", data-bind="value: phPZN, readOnly: phPZN.readOnly")
+    div.row
+      div.col-md-12
+        div.form-group(data-bind="hasFeedback: { field: prdNo, toggle: prdNo.hasError, messages: prdNo.validationMessages }")
+          label.col-sm-4.control-label(data-bind="text: prdNo.i18n")
+          div.col-sm-8
+            input.form-control(name="gtinCode", data-bind="value: prdNo, readOnly: prdNo.readOnly")
+    div.row
+        div.col-md-12
+            div.form-group(data-bind="hasFeedback: { field: description, toggle: description.hasError, messages: description.validationMessages }")
+                label.col-sm-4.control-label(data-bind="text: description.i18n")
+                div.col-sm-8
+                    textarea.form-control(name="description", data-bind="value: description, valueUpdate: 'afterkeydown', readOnly: description.readOnly")
+    div.row
+      div.col-md-12
+          div.form-group
+              label.col-sm-4.control-label(data-bind="text: ingredientsTitle")
+              div.col-sm-8.ingredients
+                  input.form-control(name="ingredients", type="hidden", data-bind="select2: select2Ingredients, readOnly: ingredients.readOnly")
+    div.row
+        div.col-md-12
+          div.form-group(data-bind="hasFeedback: { field: supplyCategory, toggle: supplyCategory.hasError, messages: supplyCategory.validationMessages }")
+            label.col-sm-4.control-label(data-bind="text: supplyCategory.i18n")
+            div.col-sm-8
+              input.form-control(name="supplyCategory", data-bind="value: supplyCategory, readOnly: supplyCategory.readOnly")
+    div.row
+        div.col-md-12
+          div.form-group(data-bind="hasFeedback: { field: articleCategory, toggle: articleCategory.hasError, messages: articleCategory.validationMessages }")
+            label.col-sm-4.control-label(data-bind="text: articleCategory.i18n")
+            div.col-sm-8
+              input.form-control(name="articleCategory", data-bind="value: articleCategory, readOnly: articleCategory.readOnly")
+    div.row
+        div.col-md-12
+          div.form-group(data-bind="hasFeedback: { field: phPriceCost, toggle: phPriceCost.hasError, messages: phPriceCost.validationMessages }")
+            label.col-sm-4.control-label(data-bind="text: phPriceCost.i18n")
+            div.col-sm-8(style="display: flex; align-items: center")
+              input.form-control(name="phPriceCost", data-bind="value: phPriceCost, readOnly: phPriceCost.readOnly")
+              span(style="padding: 5px" data-bind="text: 'CHF'")
+    div.row
+      div.col-sm-12(style="display: flex; align-items: center")
+        label.col-sm-4.control-label(data-bind="text: phPriceCostCatalogTitle")
+        div.col-sm-8(style="display: flex; align-items: center")
+          span(style="padding: 5px" data-bind="text: '['")
+          p(style="margin-bottom: 0", data-bind="text: phPriceCostCatalogCurrency")
+          span(style="padding: 5px" data-bind="text: ']'")
+    div.row
+        div.col-md-12
+          div.form-group(data-bind="hasFeedback: { field: vat, toggle: vat.hasError, messages: vat.validationMessages }")
+            label.col-sm-4.control-label(data-bind="text: vat.i18n")
+            div.col-sm-4
+              select.form-control(name="vat", data-bind="options: _vatList, optionsValue: 'code', optionsText: 'description', value: vat, readOnly: vat.readOnly")
+    div.row
+      div.col-sm-12(style="display: flex; align-items: center")
+        label.col-sm-4.control-label(data-bind="text: vatTypeCatalogTitle")
+        div.col-sm-8(style="display: flex; align-items: center")
+          span(style="padding: 5px" data-bind="text: '['")
+          p(style="margin-bottom: 0", data-bind="text: vatTypeCatalogPercent")
+          span(style="padding: 5px" data-bind="text: ']'")
+    div.row
+        div.col-md-12
+          div.form-group(data-bind="hasFeedback: { field: phPriceSale, toggle: phPriceSale.hasError, messages: phPriceSale.validationMessages }")
+            label.col-sm-4.control-label(data-bind="html: phPriceSaleLabel")
+            div.col-sm-8(style="display: flex; align-items: center")
+              input.form-control(name="phPriceSale", data-bind="value: phPriceSale, readOnly: phPriceSale.readOnly")
+              span(style="padding: 5px" data-bind="text: 'CHF'")
+    div.row
+      div.col-sm-12(style="display: flex; align-items: center")
+        label.col-sm-4.control-label(data-bind="text: phPriceSaleCatalogTitle")
+        div.col-sm-8(style="display: flex; align-items: center")
+          span(style="padding: 5px" data-bind="text: '['")
+          p(style="margin-bottom: 0", data-bind="text: phPriceSaleCatalogCurrency")
+          span(style="padding: 5px" data-bind="text: ']'")
+    div.row
+      div.col-md-12
+        div.form-group(data-bind="hasFeedback: { field: phPackSize, toggle: phPackSize.hasError, messages: phPackSize.validationMessages }")
+          label.col-sm-4.control-label(data-bind="text: phPackSize.i18n")
+          div.col-sm-8
+            input.form-control(name="phPackSize", data-bind="value: phPackSize, readOnly: phPackSize.readOnly")
+    div.row
+      div.col-md-12
+        div.form-group(data-bind="hasFeedback: { field: phUnit, toggle: phUnit.hasError, messages: phUnit.validationMessages }")
+          label.col-sm-4.control-label(data-bind="text: phUnitTitle")
+          div.col-sm-8
+            input.form-control(name="phUnit", type="text", data-bind="select2: select2phUnit, readOnly: phUnit.readOnly")
+    div.row
+      div.col-md-12
+        div.form-group(data-bind="hasFeedback: { field: isDivisible, toggle: isDivisible.hasError, messages: isDivisible.validationMessages }")
+          label.col-sm-4.control-label(data-bind="text: isDivisible.i18n")
+          div.checkbox-inline.col-sm-8(style="padding-left: 30px")
+            input(type="checkbox", name="isDivisible", data-bind="checked: isDivisible, readOnly: isDivisible.readOnly")
+    // ko if: isDivisible
+    div.row
+      div.col-md-12
+        div.form-group(data-bind="hasFeedback: { field: divisibleCount, toggle: divisibleCount.hasError, messages: divisibleCount.validationMessages }")
+          label.col-sm-4.control-label(data-bind="text: divisibleCount.i18n")
+          div.col-sm-8
+           input.form-control(name="divisibleCount", data-bind="value: divisibleCount, readOnly: divisibleCount.readOnly")
+    // /ko
+    h4
+      span(data-bind="text: warehouseInfo")
+    div.panel.panel-default(style="border-bottom: none")
+    div.row
+        div.col-md-12
+            div.form-group(data-bind="hasFeedback: { field: quantity, toggle: quantity.hasError, messages: quantity.validationMessages }")
+                label.col-sm-4.control-label(data-bind="text: quantity.i18n")
+                div.col-sm-8(style="display: flex; align-items: center")
+                    input.form-control(name="quantity", data-bind="value: roundedQuantity, readOnly: quantity.readOnly")
+                    span(style="padding: 5px" data-bind="text: '('+ OP + ')'")
+    div.row
+        div.col-md-12
+            div.form-group
+                div.col-sm-8.col-md-offset-4(style="display: flex; align-items: center")
+                    input.form-control(name="quantity", data-bind="value: quantityPart, readOnly: quantityPart.readOnly")
+                    span(style="padding: 5px" data-bind="text: '(' + TP +')'")
+    div.row
+         div.col-md-12
+             div.form-group
+                 label.col-sm-4.control-label(data-bind="text: locationId.i18n")
+                 div.col-sm-8(data-bind="with: locationSelect")
+                    div(data-bind="template: template")
+    div.row
+        div.col-md-12
+            div.form-group
+                label.col-sm-4.control-label(data-bind="text: stockLocationId.i18n")
+                div.col-sm-8(data-bind="with: stockLocationSelect")
+                    div(data-bind="template: template")
+    div.row
+        div.col-md-12
+            div.form-group(data-bind="hasFeedback: { field: minimumQuantity, toggle: minimumQuantity.hasError, messages: minimumQuantity.validationMessages }")
+                label.col-sm-4.control-label(data-bind="text: minimumQuantity.i18n")
+                div.col-sm-8
+                    input.form-control(name="quantity", data-bind="value: minimumQuantity, readOnly: minimumQuantity.readOnly")
+    h4
+      span(data-bind="text: openOreders")
+    div.panel.panel-default(style="border-bottom: none")
+    div.row
+        div.col-md-12
+            div.form-group(data-bind="hasFeedback: { field: quantityOrdered, toggle: quantityOrdered.hasError, messages: quantityOrdered.validationMessages }")
+                label.col-sm-4.control-label(data-bind="text: quantityOrdered.i18n")
+                div.col-sm-8
+                    input.form-control(name="quantityOrdered", data-bind="value: quantityOrdered, readOnly: quantityOrdered.readOnly")
+    div.row
+        div.col-md-12
+            div.form-group
+                label.col-sm-4.control-label(data-bind="text: supplierId.i18n")
+                div.col-sm-8(data-bind="with: supplierSelect")
+                    div(data-bind="template: template")
+    div.row
+        div.col-md-12
+            div.form-group
+                label.col-sm-4.control-label(data-bind="text: notes.i18n")
+                div.col-sm-8
+                    textarea.form-control(name="notes", data-bind="value: notes, valueUpdate: 'afterkeydown', readOnly: notes.readOnly")
+
+                script(type="text/html", id="SupplierSelectViewModel")
+                    include SupplierSelectViewModel
+                script(type="text/html", id="LocationSelectViewModel")
+                    include LocationSelectViewModel
+                script(type="text/html", id="StockLocationSelectViewModel")
+                    include StockLocationSelectViewModel

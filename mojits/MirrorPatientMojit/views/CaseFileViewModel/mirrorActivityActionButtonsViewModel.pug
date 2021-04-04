@@ -1,0 +1,6 @@
+div.form-group.activityActionButtonsViewModel(data-bind="notifyBind: { method: 'templateReady', namespace: $data }")
+  div.btn-group.btn-group-justified(data-bind="foreach: buttons")
+    // ko if: visible && name == 'activity-back'
+    div.btn-group
+      button.btn.btn-primary(type="button", data-bind="click: click, disable: disabled, text: text, attr: { name: name }")
+    // /ko

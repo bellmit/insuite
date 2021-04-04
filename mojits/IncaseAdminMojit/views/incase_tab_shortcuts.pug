@@ -1,0 +1,30 @@
+.container.container-fullscreen
+  .row
+    .col-md-12
+      h4(data-bind="text: headerTitleI18n")
+  .row
+    .col-md-8
+      // ko ifnot: isLoaded
+      div#loadInProgress(data-bind="ifnot: isLoaded", style="min-height: 70px;")
+      // /ko
+      table.shortcuts-table(data-bind="if: isLoaded").table.table-responsive.table-striped
+        thead
+          tr
+            th.shortcuts-table__th(data-bind="text: shortcutColumnI18n")
+            th.shortcuts-table__th(data-bind="text: activityColumnI18n")
+            th.shortcuts-table__th(data-bind="text: DCColumnI18n")
+            th.shortcuts-table__th(data-bind="text: PCColumnI18n")
+        tbody(data-bind="foreach: shortcuts")
+          tr
+            td.shortcuts-table__td.shortcuts-table__td_text-center(style="width: 10%")
+              label(data-bind="text: name")
+            td.shortcuts-table__td(style="width: 20%")
+              input(style="width: 100%" data-bind="select2: shortcutSelect2")
+            td.shortcuts-table__td(style="width: 30%")
+              input(name="formId" style="width: 100%" data-bind="select2: select2DCForm, disable: allowToSelectForm")
+            td.shortcuts-table__td(style="width: 30%")
+              input(name="formId" style="width: 100%" data-bind="select2: select2PCForm, disable: allowToSelectForm")
+
+  footer.row
+    div.col-md-2.col-xs-3
+      button.btn.btn-primary.btn-block(data-bind="click: save, text: buttonSaveI18n")

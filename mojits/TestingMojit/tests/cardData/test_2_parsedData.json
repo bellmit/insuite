@@ -1,0 +1,43 @@
+{
+  "firstname": "Mãrianne",
+  "lastname": "Hünsch",
+  "gender": "FEMALE",
+  "talk": "MS",
+  "kbvDob": "04.11.2011",
+  "addresses": [{
+    "kind": "OFFICIAL",
+    "street": "Rosenau",
+    "houseno": "3",
+    "zip": "86551",
+    "city": "Aichach",
+    "countryCode": "D",
+    "addon": ""
+  }],
+  "nameaffix": "",
+  "fk3120": "",
+  "title": "Dr.",
+  "dob": "2011-11-04T09:00:00.000Z",
+  "insuranceStatus": [{
+    "type": "PUBLIC",
+    "cardType": "EGK",
+    "terminalType": "fixed",
+    "cardTypeGeneration": "G2",
+    "cdmVersion": "5.2.0",
+    "fk4108": "",
+    "fk4133": "2014-12-09T23:00:00.000Z",
+    "fk4110": null,
+    "insuranceNo": "X110380197",
+    "insuranceName": "gematik Musterkasse1GKV",
+    "insurancePrintName": "",
+    "insuranceId": "998334567",
+    "insuranceCountry": "D",
+    "insuranceKind": "1",
+    "costCarrierBillingSection": "00",
+    "costCarrierBillingGroup": "00",
+    "locationFeatures": "71",
+    "abrechnungsbereiche": {},
+    "fused": false,
+    "address1": "",
+    "address2": ""
+  }]
+}

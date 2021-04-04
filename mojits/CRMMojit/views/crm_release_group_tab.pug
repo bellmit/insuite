@@ -1,0 +1,22 @@
+div#releaseGroupModel
+    div.panel.panel-default
+        div.panel-body
+          div.row
+            div.col-xs-12.col-md-5
+              div.form-group(data-bind="hasFeedback: { field: groups, toggle: groups.hasError, messages: groups.validationMessages }")
+                label.control-label(data-bind="text: selectGroupI18n")
+                input.form-control(name="groups", type="hidden", data-bind="select2: select2Groups")
+              div.row
+                div.col-md-3
+                  div.pull-left(data-bind="template: release.template", style="margin-right: 10px; margin-bottom:10px; display:inline-block;")
+                div.col-md-9
+                  label.control-label(data-bind="text: releaseVersion")
+                  div.checkbox
+                    label.control-label
+                      strong(data-bind="text: releaseAllI18n")
+                      input(type="checkbox", name="releaseAll", data-bind="checked: releaseAll")
+            div.col-xs-12.col-md-7
+              div.form-group
+                label.control-label(data-bind="text: emailTextI18n")
+                textarea.form-control(data-bind="value: emailText, attr: { placeholder: messageI18n }", rows="4")
+    div(data-bind="template: releaseTable.template")

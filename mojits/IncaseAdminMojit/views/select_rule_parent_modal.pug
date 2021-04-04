@@ -1,0 +1,8 @@
+div#selectRuleParent
+  div.form-group
+    p(data-bind="text: dialogTextMainI18n")
+      div(data-bind="foreach: ruleParents")
+        .radio
+          label
+            input(type="radio", name="parentRadioBoxes", value="", data-bind="checked: $parent.selected, attr: {value: _id}")
+            span(data-bind="text: name")

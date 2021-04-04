@@ -1,0 +1,32 @@
+.chart {
+  display: block;
+  position: relative;
+  margin: auto;
+  margin-top: 60px;
+  font-size: 11px;
+}
+
+rect {
+  stroke: #eee;
+  fill-opacity: 0.6;
+}
+
+rect.highlight {
+    fill-opacity: 1;
+}
+
+rect.parent {
+  cursor: pointer;
+}
+
+text {
+  pointer-events: none;
+}
+
+text.highlight {
+    font-weight: bold;
+}
+
+#tooltip {
+  position: absolute;
+}

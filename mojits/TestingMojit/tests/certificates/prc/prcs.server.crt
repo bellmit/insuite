@@ -1,0 +1,95 @@
+Certificate:
+    Data:
+        Version: 3 (0x2)
+        Serial Number: 73 (0x49)
+    Signature Algorithm: sha256WithRSAEncryption
+        Issuer: C=DE, ST=Berlin, L=Berlin, O=Doc Cirrus, OU=CI IT, CN=Doc Cirrus CA/name=HUB-VPN/emailAddress=support@doc-cirrus.com
+        Validity
+            Not Before: May 30 16:16:25 2018 GMT
+            Not After : May 27 16:16:25 2028 GMT
+        Subject: C=DE, ST=Berlin, L=Berlin, O=Doc Cirrus, OU=CI IT, CN=CIPRCS/emailAddress=support@doc-cirrus.com
+        Subject Public Key Info:
+            Public Key Algorithm: rsaEncryption
+                Public-Key: (2048 bit)
+                Modulus:
+                    00:99:0a:b8:df:4b:0d:03:4b:46:6c:b8:3e:2f:86:
+                    bd:dc:68:b8:cb:eb:54:38:e8:52:84:d9:43:4c:dd:
+                    b5:c1:fe:0c:c8:a5:3c:41:2c:86:21:3a:e3:39:c9:
+                    89:fa:d6:54:7d:af:94:29:d5:66:51:7a:a4:72:53:
+                    ff:8f:37:61:c7:c4:37:41:3d:3e:06:fe:b9:ec:a0:
+                    ac:d8:04:b1:73:8c:24:12:73:ef:99:4c:73:2d:e5:
+                    31:7b:fb:ab:aa:a0:77:fa:e3:ff:57:8a:5e:b3:95:
+                    c7:ab:1a:74:62:ef:47:90:bb:8b:09:19:4f:e1:71:
+                    d5:fa:1b:1a:94:4c:9f:82:c8:f2:ed:42:05:c1:00:
+                    27:45:c6:4c:83:58:ac:e8:70:bc:3f:b1:b7:be:8c:
+                    ed:a9:6a:97:59:4f:a9:56:a9:b8:4b:0b:61:6c:2c:
+                    90:a2:97:c2:d2:07:8d:e9:01:34:02:0e:13:1e:e8:
+                    10:10:f7:29:6b:34:aa:59:4d:01:1e:25:92:ed:04:
+                    7b:d3:ad:4e:23:85:40:29:e5:68:b0:d4:55:6e:2c:
+                    e2:8b:0e:d2:72:9c:1b:ab:24:6e:0b:d4:0e:4e:b8:
+                    4c:1a:3d:93:4d:1c:27:56:58:17:29:fd:48:ff:41:
+                    44:05:3f:78:86:dd:95:ec:dc:98:3f:16:fc:48:8e:
+                    ab:2b
+                Exponent: 65537 (0x10001)
+        X509v3 extensions:
+            X509v3 Basic Constraints:
+                CA:FALSE
+            X509v3 Subject Key Identifier:
+                BB:8D:4D:5B:27:88:02:28:7A:14:E2:BA:0F:8D:13:71:E3:00:8B:28
+            X509v3 Authority Key Identifier:
+                keyid:3E:DA:B5:6D:CA:9D:BD:A2:E0:8F:2C:5B:F0:3E:AB:C4:6B:EE:6C:67
+                DirName:/C=DE/ST=Berlin/L=Berlin/O=Doc Cirrus/OU=CI IT/CN=Doc Cirrus CA/name=HUB-VPN/emailAddress=support@doc-cirrus.com
+                serial:B0:DD:49:D2:04:A6:D2:46
+
+            X509v3 Extended Key Usage:
+                TLS Web Server Authentication, TLS Web Client Authentication
+            X509v3 Key Usage:
+                Digital Signature, Key Encipherment
+            X509v3 Subject Alternative Name:
+                DNS:CIPRCS, DNS:CIPRCS.fritz.box, DNS:CIPRCS.lan, DNS:CIPRCS.local
+    Signature Algorithm: sha256WithRSAEncryption
+         36:81:ba:8d:5e:b0:bd:2c:c4:9a:f7:f1:39:af:7a:7d:f2:44:
+         86:62:09:b0:33:14:b9:fe:89:ca:42:95:52:60:13:7c:73:e7:
+         ad:ce:c2:fb:50:1d:7c:f8:dd:73:5d:6b:10:0e:4b:d5:50:11:
+         b7:79:6a:7f:22:33:40:68:8b:e4:f3:08:85:7c:19:31:c4:f8:
+         74:01:17:d8:d9:b9:5e:bf:b2:4b:f1:70:30:53:68:b3:02:4d:
+         a9:cc:cc:ed:4c:ad:28:ea:40:d4:1b:66:85:4b:39:a7:c1:d2:
+         b8:63:5a:80:b1:83:14:28:47:73:15:9b:6c:e7:72:b3:75:be:
+         70:a1:81:14:55:93:86:bc:59:d7:e1:80:b7:12:ef:72:e0:11:
+         a1:60:c5:1e:72:84:f0:ba:c6:33:88:f7:2d:7f:24:61:30:9e:
+         38:25:b2:74:07:0d:38:90:3b:82:23:da:d4:e1:8b:58:05:04:
+         43:03:88:c6:38:dc:1b:c3:23:f3:78:4e:67:d2:6a:e2:ea:2c:
+         21:b8:bd:02:fc:db:6a:d9:06:44:39:82:c8:d4:98:bd:ae:94:
+         b0:82:73:ba:5c:80:55:8e:ce:cb:7f:57:31:e8:46:0d:a1:61:
+         b7:99:35:7c:6b:56:1a:c2:4d:e1:3f:dd:4d:83:5a:5b:48:4c:
+         b3:19:ac:a3
+-----BEGIN CERTIFICATE-----
+MIIFJjCCBA6gAwIBAgIBSTANBgkqhkiG9w0BAQsFADCBpTELMAkGA1UEBhMCREUx
+DzANBgNVBAgTBkJlcmxpbjEPMA0GA1UEBxMGQmVybGluMRMwEQYDVQQKEwpEb2Mg
+Q2lycnVzMQ4wDAYDVQQLEwVDSSBJVDEWMBQGA1UEAxMNRG9jIENpcnJ1cyBDQTEQ
+MA4GA1UEKRMHSFVCLVZQTjElMCMGCSqGSIb3DQEJARYWc3VwcG9ydEBkb2MtY2ly
+cnVzLmNvbTAeFw0xODA1MzAxNjE2MjVaFw0yODA1MjcxNjE2MjVaMIGMMQswCQYD
+VQQGEwJERTEPMA0GA1UECAwGQmVybGluMQ8wDQYDVQQHDAZCZXJsaW4xEzARBgNV
+BAoMCkRvYyBDaXJydXMxDjAMBgNVBAsMBUNJIElUMQ8wDQYDVQQDDAZDSVBSQ1Mx
+JTAjBgkqhkiG9w0BCQEWFnN1cHBvcnRAZG9jLWNpcnJ1cy5jb20wggEiMA0GCSqG
+SIb3DQEBAQUAA4IBDwAwggEKAoIBAQCZCrjfSw0DS0ZsuD4vhr3caLjL61Q46FKE
+2UNM3bXB/gzIpTxBLIYhOuM5yYn61lR9r5Qp1WZReqRyU/+PN2HHxDdBPT4G/rns
+oKzYBLFzjCQSc++ZTHMt5TF7+6uqoHf64/9Xil6zlcerGnRi70eQu4sJGU/hcdX6
+GxqUTJ+CyPLtQgXBACdFxkyDWKzocLw/sbe+jO2papdZT6lWqbhLC2FsLJCil8LS
+B43pATQCDhMe6BAQ9ylrNKpZTQEeJZLtBHvTrU4jhUAp5Wiw1FVuLOKLDtJynBur
+JG4L1A5OuEwaPZNNHCdWWBcp/Uj/QUQFP3iG3ZXs3Jg/FvxIjqsrAgMBAAGjggF2
+MIIBcjAJBgNVHRMEAjAAMB0GA1UdDgQWBBS7jU1bJ4gCKHoU4roPjRNx4wCLKDCB
+2gYDVR0jBIHSMIHPgBQ+2rVtyp29ouCPLFvwPqvEa+5sZ6GBq6SBqDCBpTELMAkG
+A1UEBhMCREUxDzANBgNVBAgTBkJlcmxpbjEPMA0GA1UEBxMGQmVybGluMRMwEQYD
+VQQKEwpEb2MgQ2lycnVzMQ4wDAYDVQQLEwVDSSBJVDEWMBQGA1UEAxMNRG9jIENp
+cnJ1cyBDQTEQMA4GA1UEKRMHSFVCLVZQTjElMCMGCSqGSIb3DQEJARYWc3VwcG9y
+dEBkb2MtY2lycnVzLmNvbYIJALDdSdIEptJGMB0GA1UdJQQWMBQGCCsGAQUFBwMB
+BggrBgEFBQcDAjALBgNVHQ8EBAMCBaAwPQYDVR0RBDYwNIIGQ0lQUkNTghBDSVBS
+Q1MuZnJpdHouYm94ggpDSVBSQ1MubGFuggxDSVBSQ1MubG9jYWwwDQYJKoZIhvcN
+AQELBQADggEBADaBuo1esL0sxJr38Tmven3yRIZiCbAzFLn+icpClVJgE3xz563O
+wvtQHXz43XNdaxAOS9VQEbd5an8iM0Boi+TzCIV8GTHE+HQBF9jZuV6/skvxcDBT
+aLMCTanMzO1MrSjqQNQbZoVLOafB0rhjWoCxgxQoR3MVm2zncrN1vnChgRRVk4a8
+WdfhgLcS73LgEaFgxR5yhPC6xjOI9y1/JGEwnjglsnQHDTiQO4Ij2tThi1gFBEMD
+iMY43BvDI/N4TmfSauLqLCG4vQL822rZBkQ5gsjUmL2ulLCCc7pcgFWOzst/VzHo
+Rg2hYbeZNXxrVhrCTeE/3U2DWltITLMZrKM=
+-----END CERTIFICATE-----

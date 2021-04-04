@@ -1,0 +1,70 @@
+div
+  // ko ifnot: textContent.readOnly
+  h3(data-bind="text: newMessageTitleI18n")
+  // /ko
+
+  div.col-md-12
+    form.form-horizontal
+      // ko ifnot: textContent.readOnly
+      div.form-group(data-bind="hasFeedback: { field: partners, toggle: partners.hasError }")
+        label.control-label.col-sm-1(data-bind="text: newMessageToI18n")
+        div.col-md-1
+          button.btn.btn-default(style="width: 100%", data-bind="click: handleSelectReceiverPartner")
+            span(data-bind="text: senderPartner")
+        div.col-sm-10
+          input.form-control(name="receiverPartners", data-bind="select2: select2PartnerReceiver, valueUpdate:'afterkeydown'")
+      // ko if: hasKim
+      div.form-group(data-bind="hasFeedback: { field: kimRecipient, toggle: kimRecipient.hasError }")
+        div.col-md-offset-1.col-md-1
+          button.btn.btn-default(style="width: 100%", data-bind="click: handleSelectReceiverKim")
+            span(data-bind="text: newMessageSenderKimI18n")
+        div.col-sm-10
+          input.form-control(name="kimRecipient", type="hidden", data-bind="select2: select2KimReceiver, valueUpdate:'afterkeydown'")
+      div.form-group(data-bind="hasFeedback: { field: kimSender, toggle: kimSender.hasError, messages: kimSender.validationMessages }")
+        label.control-label.col-sm-1(data-bind="text: 'Von'")
+        div.col-sm-11
+          input.form-control(name="sender", type="hidden", data-bind="select2: select2Sender, valueUpdate:'afterkeydown'")
+      // /ko
+      // /ko
+      // ko if: textContent.readOnly
+      div.form-group
+        label.control-label.col-sm-1(data-bind="text: newMessageWhenI18n")
+        div.col-sm-11
+          input.form-control(type="text", data-bind="value: getDate(), readOnly: true")
+      div.form-group
+        label.control-label.col-sm-1(data-bind="text: newMessageWhoI18n")
+        div.col-sm-11
+          input.form-control(type="text", data-bind="value: getSender(), readOnly: true")
+      // /ko
+      div.form-group.has-feedback
+        label.control-label.col-sm-1(data-bind="text: newMessageSubjectI18n")
+        div.col-sm-11
+          input.form-control(type="text", data-bind="value: subject, valueUpdate: 'afterkeydown', readOnly: subject.readOnly")
+      div.form-group
+        label.control-label.col-sm-1(data-bind="text: newMessageContentI18n")
+        div.col-sm-11
+          label
+            span &nbsp;
+          textarea.form-control(name="textContent", rows="6", data-bind="value: textContent, valueUpdate: 'afterkeydown', readOnly: textContent.readOnly")
+      div.form-group
+        label.control-label.col-sm-1 Anhänge
+        // ko ifnot: textContent.readOnly
+        div.col-sm-11#newMessageFileUploader(data-bind="template: fileUploader.template")
+        // /ko
+      div.form-group
+        div.col-sm-offset-1(data-bind="foreach: attachments", style="display: flex")
+          div(style="margin-right: 0.5em; border: 1px solid #bbb; border-radius: 5px; display: flex; flex-direction: column;")
+            a(data-bind="attr: { href: fullUrl }", target="_blank")
+              img(data-bind="attr: { src: thumbUrl }", width="68", height="68", style="border-top-left-radius: 5px; border-top-right-radius: 5px;")
+            // ko ifnot: $parent.textContent.readOnly
+            a.btn.glyphicon.glyphicon-remove(data-bind="click: $parent.removeAttachment.bind($parent)" style="padding: 0; margin:0;")
+            // /ko
+
+    // ko ifnot: textContent.readOnly
+    row
+      div.col-md-11
+      div.col-md-1
+        button.btn.btn-primary.btn-sm(data-bind="click: handleSendTransfer, disable: partners.hasError")
+          span.glyphicon.glyphicon-envelope
+          span(data-bind="text: ' ' + newMessageSendI18n")
+    // /ko

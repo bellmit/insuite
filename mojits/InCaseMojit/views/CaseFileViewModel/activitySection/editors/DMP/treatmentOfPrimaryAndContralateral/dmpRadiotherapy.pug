@@ -1,0 +1,9 @@
+div.form-group
+    div.row
+        div.col-xs-3
+            strong(data-bind="text: dmpRadiotherapy.i18n")
+            span(data-bind="dmpField: { field: dmpRadiotherapy }")
+        div.col-xs-9(data-bind="foreach: dmpRadiotherapy.list, hasFeedback: { field: dmpRadiotherapy, toggle: dmpRadiotherapy.hasError, messages: dmpRadiotherapy.validationMessages }")
+            label.radio-inline
+                span(data-bind="text: i18n")
+                input(type="radio", name="dmpRadiotherapy", data-bind="value: val, checked: $parent.dmpRadiotherapy, readOnly: $parent.dmpRadiotherapy.readOnly, attr: { name: $element.name + '-' + val }")

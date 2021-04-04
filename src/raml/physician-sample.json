@@ -1,0 +1,43 @@
+{
+  "meta": {
+    "errors": [],
+    "warnings": [],
+    "query": {"_id":"535e0c283da3b7eb3fac9de7"},
+    "itemsPerPage": null,
+    "totalItems": 1,
+    "page": null,
+    "replyCode": 200
+  },
+  "data": [
+  {
+    "_id": "535e0c283da3b7eb3fac9de7",
+    "addresses": [
+      {
+        "kind": "OFFICIAL",
+        "_id": "535e0c283da3b7eb3fac9de8",
+        "countryCode": "D",
+        "country": "Deutschland",
+        "city": "Berlin",
+        "zip": "12351",
+        "houseno": "20-22",
+        "street": "Lipschitzallee"
+      }
+    ],
+    "bsnrs": [
+      "99999999"
+    ],
+    "communications": [
+      {
+        "type": "PHONEJOB",
+        "value": "0306021081",
+        "_id": "535e0c283da3b7eb3fac9de9"
+      }
+    ],
+    "expertise": "INTERNAL",
+    "firstname": "Andreas",
+    "lastname": "Genrich",
+    "talk": "MR",
+    "title": "Dr. med."
+  }
+]
+ }

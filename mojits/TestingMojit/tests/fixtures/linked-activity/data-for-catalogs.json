@@ -1,0 +1,541 @@
+{
+  "mainCatalogEntry": {
+    "seq": "00.0010",
+    "treatmentCategory": "Hauptleistung",
+    "title": "Konsultation, erste 5 Min. (Grundkonsultation)",
+    "medicalText": "Beinhaltet alle ärztlichen Leistungen, die der Facharzt in seiner Praxis oder der Arzt bei ambulanten Patienten im Spital ohne oder mit einfachen Hilfsmitteln (etwa Inhalt 'Besuchskoffer') am Patienten hinsichtlich der Beschwerden und Erscheinungen erbringt, derentwegen dieser zum Facharzt kommt, bzw. gebracht wird und hinsichtlich der Beschwerden und Erscheinungen, die während der gleichen Behandlungsdauer auftreten.\r\n\r\nBeinhaltet Begrüssung, Verabschiedung, nicht besonders tarifierte Besprechungen und Untersuchungen, nicht besonders tarifierte Verrichtungen (z.B.: bestimmte Injektionen, Verbände usw.), Begleitung zu und Übergabe (inkl. Anordnungen) an Hilfspersonal betreffend Administration, technische und kurative Leistungen, Medikamentenabgabe (in Notfallsituation u/o als Starterabgabe), auf Konsultation bezogene unmittelbar vorgängige/anschliessende Akteneinsicht/Akteneinträge.",
+    "technicalText": "",
+    "divisionCode": "0001",
+    "divisionText": "Sprechzimmer",
+    "benefitsCode": "01",
+    "benefitsText": "-",
+    "medicalTaxPoints": 10.42,
+    "technicalTaxPoints": 8.19,
+    "assistanceTaxPoints": 0,
+    "assistanceQuantity": 0,
+    "medicalScalingFactor": 1,
+    "technicalScalingFactor": 1,
+    "treatmentTime": 5,
+    "preparationAndFollowUpTime": 0,
+    "reportTime": 0,
+    "roomOccupancyTime": 5,
+    "rotationTime": 0,
+    "chapter": "00.01.01",
+    "sideMandatory": false,
+    "validFrom": "2017-12-31T23:00:00.000Z",
+    "validUntil": null,
+    "u_extra": {
+      "genderRules": [],
+      "ageRules": [],
+      "dignityRules": {
+        "quantDignity": {
+          "code": "FMH05",
+          "text": "FMH 5"
+        },
+        "qualDignity": [
+          {
+            "code": "9999",
+            "description": [
+              {
+                "text": "Alle",
+                "fmh": "0",
+                "validFrom": "2000-12-31T23:00:00.000Z",
+                "validUntil": null,
+                "mutationDate": "11/08/01 00:00:00",
+                "type": "N"
+              }
+            ],
+            "validFrom": "2000-12-31T23:00:00.000Z",
+            "validUntil": null,
+            "mutationDate": "11/08/01 00:00:00",
+            "subDignities": [],
+            "superDignities": []
+          }
+        ]
+      },
+      "frequencyRules": [
+        {
+          "quantity": 1,
+          "timeQuantity": 1,
+          "timeUnit": "07",
+          "applicability": "00",
+          "validFrom": "2000-12-31T23:00:00.000Z",
+          "validUntil": null
+        }
+      ],
+      "hierarchyRules": [],
+      "combinationRules": [],
+      "blocRules": [],
+      "cumulationRules": [],
+      "treatmentGroups": [
+        {
+          "code": "03",
+          "validFrom": "2014-09-30T22:00:00.000Z",
+          "validUntil": null,
+          "mutationDate": "09/01/14 00:00:00",
+          "text": [
+            {
+              "text": "Tarifpositionen bei denen der Zuschlag für hausärztliche Leistungen in der Arztpraxis (00.0015) abgerechnet werden kann.",
+              "interpretation": "",
+              "textValidFrom": "01/01/18 00:00:00",
+              "textValidUntil": "12/31/99 00:00:00",
+              "textMutationDate": "09/01/17 00:00:00"
+            }
+          ],
+          "frequencyRules": []
+        },
+        {
+          "code": "18",
+          "validFrom": "2000-12-31T23:00:00.000Z",
+          "validUntil": null,
+          "mutationDate": "11/08/01 00:00:00",
+          "text": [
+            {
+              "text": "Allgemeine Grundleistungen",
+              "interpretation": "",
+              "textValidFrom": "01/01/01 00:00:00",
+              "textValidUntil": "12/31/99 00:00:00",
+              "textMutationDate": "11/08/01 00:00:00"
+            }
+          ],
+          "frequencyRules": []
+        },
+        {
+          "code": "58",
+          "validFrom": "2000-12-31T23:00:00.000Z",
+          "validUntil": null,
+          "mutationDate": "11/08/01 00:00:00",
+          "text": [
+            {
+              "text": "Allgemeine Grundleistungen nicht kumulierbar mit Konsilium",
+              "interpretation": "",
+              "textValidFrom": "01/01/01 00:00:00",
+              "textValidUntil": "12/31/99 00:00:00",
+              "textMutationDate": "11/08/01 00:00:00"
+            }
+          ],
+          "frequencyRules": []
+        }
+      ]
+    }
+  },
+  "secondCatalogEntry": {
+    "seq": "00.0015",
+    "treatmentCategory": "Zuschlagsleistung",
+    "title": "+ Zuschlag für hausärztliche Leistungen in der Arztpraxis",
+    "medicalText": "Darf nur im Zusammenhang mit der Erbringung von hausärztlichen Leistungen abgerechnet werden und wenn dem Patienten am selben Tag keine spezialärztlichen Leistungen durch den gleichen Leistungserbringer verrechnet werden.\r\n\r\nDarf nicht von ambulanten Diensten von Spitälern abgerechnet werden.",
+    "technicalText": "",
+    "divisionCode": "0001",
+    "divisionText": "Sprechzimmer",
+    "benefitsCode": "01",
+    "benefitsText": "-",
+    "medicalTaxPoints": 10.88,
+    "technicalTaxPoints": 0,
+    "assistanceTaxPoints": 0,
+    "assistanceQuantity": 0,
+    "medicalScalingFactor": 1,
+    "technicalScalingFactor": 1,
+    "treatmentTime": 0,
+    "preparationAndFollowUpTime": 0,
+    "reportTime": 0,
+    "roomOccupancyTime": 0,
+    "rotationTime": 0,
+    "chapter": "00.01.01",
+    "sideMandatory": false,
+    "validFrom": "2017-12-31T23:00:00.000Z",
+    "validUntil": null,
+    "u_extra": {
+      "genderRules": [],
+      "ageRules": [],
+      "dignityRules": {
+        "quantDignity": {
+          "code": "FMH05",
+          "text": "FMH 5"
+        },
+        "qualDignity": [
+          {
+            "code": "0500",
+            "description": [
+              {
+                "text": "Innere Medizin",
+                "fmh": "1",
+                "validFrom": "2000-12-31T23:00:00.000Z",
+                "validUntil": null,
+                "mutationDate": "11/08/01 00:00:00",
+                "type": "N"
+              }
+            ],
+            "validFrom": "2014-09-30T22:00:00.000Z",
+            "validUntil": null,
+            "mutationDate": "07/01/14 00:00:00",
+            "subDignities": [],
+            "superDignities": []
+          },
+          {
+            "code": "1100",
+            "description": [
+              {
+                "text": "Kinder- und Jugendmedizin",
+                "fmh": "1",
+                "validFrom": "2000-12-31T23:00:00.000Z",
+                "validUntil": null,
+                "mutationDate": "11/08/01 00:00:00",
+                "type": "N"
+              }
+            ],
+            "validFrom": "2014-09-30T22:00:00.000Z",
+            "validUntil": null,
+            "mutationDate": "07/01/14 00:00:00",
+            "subDignities": [],
+            "superDignities": []
+          },
+          {
+            "code": "3000",
+            "description": [
+              {
+                "text": "Praktischer Arzt/praktische Ärztin",
+                "fmh": "0",
+                "validFrom": "2014-06-30T22:00:00.000Z",
+                "validUntil": null,
+                "mutationDate": "07/01/14 00:00:00",
+                "type": "N"
+              }
+            ],
+            "validFrom": "2014-09-30T22:00:00.000Z",
+            "validUntil": null,
+            "mutationDate": "07/01/14 00:00:00",
+            "subDignities": [],
+            "superDignities": []
+          },
+          {
+            "code": "3010",
+            "description": [
+              {
+                "text": "Allgemeine Innere Medizin",
+                "fmh": "1",
+                "validFrom": "2014-06-30T22:00:00.000Z",
+                "validUntil": null,
+                "mutationDate": "07/01/14 00:00:00",
+                "type": "N"
+              }
+            ],
+            "validFrom": "2014-09-30T22:00:00.000Z",
+            "validUntil": null,
+            "mutationDate": "07/01/14 00:00:00",
+            "subDignities": [],
+            "superDignities": []
+          },
+          {
+            "code": "9900",
+            "description": [
+              {
+                "text": "Allgemeine Medizin",
+                "fmh": "1",
+                "validFrom": "2000-12-31T23:00:00.000Z",
+                "validUntil": null,
+                "mutationDate": "11/08/01 00:00:00",
+                "type": "N"
+              }
+            ],
+            "validFrom": "2014-09-30T22:00:00.000Z",
+            "validUntil": null,
+            "mutationDate": "07/01/14 00:00:00",
+            "subDignities": [],
+            "superDignities": []
+          }
+        ]
+      },
+      "frequencyRules": [
+        {
+          "quantity": 1,
+          "timeQuantity": 1,
+          "timeUnit": "21",
+          "applicability": "00",
+          "validFrom": "2014-09-30T22:00:00.000Z",
+          "validUntil": null
+        }
+      ],
+      "hierarchyRules": [
+        {
+          "seq": "00.0010",
+          "validFrom": "2014-09-30T22:00:00.000Z",
+          "validUntil": null
+        }
+      ],
+      "combinationRules": [],
+      "blocRules": [],
+      "cumulationRules": [],
+      "treatmentGroups": [
+        {
+          "code": "03",
+          "validFrom": "2014-09-30T22:00:00.000Z",
+          "validUntil": null,
+          "mutationDate": "09/01/14 00:00:00",
+          "text": [
+            {
+              "text": "Tarifpositionen bei denen der Zuschlag für hausärztliche Leistungen in der Arztpraxis (00.0015) abgerechnet werden kann.",
+              "interpretation": "",
+              "textValidFrom": "01/01/18 00:00:00",
+              "textValidUntil": "12/31/99 00:00:00",
+              "textMutationDate": "09/01/17 00:00:00"
+            }
+          ],
+          "frequencyRules": []
+        }
+      ]
+    }
+  },
+  "sideRelatedMainCatalogEntry": {
+    "seq" : "39.0270",
+    "treatmentCategory" : "Hauptleistung",
+    "title" : "Röntgen: Hand, erste Aufnahme",
+    "medicalText" : "Beinhaltet Radioulnokarpalgelenk bis inkl. aller Endphalangen vollständig, alle Processus unguiculares.",
+    "technicalText" : "",
+    "divisionCode" : "5003",
+    "divisionText" : "Röntgenraum I",
+    "benefitsCode" : "01",
+    "benefitsText" : "-",
+    "anaesthesiaCode" : "1",
+    "anaesthesiaText" : "I",
+    "medicalTaxPoints" : 13.44,
+    "technicalTaxPoints" : 24.6,
+    "assistanceTaxPoints" : 0,
+    "assistanceQuantity" : 0,
+    "medicalScalingFactor" : 1,
+    "technicalScalingFactor" : 1,
+    "treatmentTime" : 0,
+    "preparationAndFollowUpTime" : 0,
+    "reportTime" : 6,
+    "roomOccupancyTime" : 9,
+    "rotationTime" : 0,
+    "chapter" : "39.02.01.04",
+    "sideMandatory" : true,
+    "validFrom" : "2017-12-31T23:00:00.000Z",
+    "validUntil" : null,
+    "u_extra" : {
+      "genderRules" : [],
+      "ageRules" : [],
+      "dignityRules" : {
+        "quantDignity" : {
+          "code" : "FMH05",
+          "text" : "FMH 5"
+        },
+        "qualDignity" : [
+          {
+            "code" : "9999",
+            "description" : [
+              {
+                "text" : "Alle",
+                "fmh" : "0",
+                "validFrom" : "2000-12-31T23:00:00.000Z",
+                "validUntil" : null,
+                "mutationDate" : "11/08/01 00:00:00",
+                "type" : "N"
+              }
+            ],
+            "validFrom" : "2007-12-31T23:00:00.000Z",
+            "validUntil" : null,
+            "mutationDate" : "09/25/07 00:00:00",
+            "subDignities" : [],
+            "superDignities" : []
+          }
+        ]
+      },
+      "frequencyRules" : [
+        {
+          "quantity" : 1,
+          "timeQuantity" : 1,
+          "timeUnit" : "10",
+          "applicability" : "00",
+          "validFrom" : "2007-12-31T23:00:00.000Z",
+          "validUntil" : null
+        }
+      ],
+      "hierarchyRules" : [],
+      "combinationRules" : [],
+      "blocRules" : [
+        {
+          "code" : "53",
+          "validFrom" : "2007-12-31T23:00:00.000Z",
+          "validUntil" : null
+        }
+      ],
+      "cumulationRules" : [],
+      "treatmentGroups" : [
+        {
+          "code" : "03",
+          "validFrom" : "2014-09-30T22:00:00.000Z",
+          "validUntil" : null,
+          "mutationDate" : "09/01/14 00:00:00",
+          "text" : [
+            {
+              "text" : "Tarifpositionen bei denen der Zuschlag für hausärztliche Leistungen in der Arztpraxis (00.0015) abgerechnet werden kann.",
+              "interpretation" : "",
+              "textValidFrom" : "2017-12-31T23:00:00.000Z",
+              "textValidUntil" : null,
+              "textMutationDate" : "09/01/17 00:00:00"
+            }
+          ],
+          "frequencyRules" : []
+        },
+        {
+          "code" : "06",
+          "validFrom" : "2007-12-31T23:00:00.000Z",
+          "validUntil" : null,
+          "mutationDate" : "09/25/07 00:00:00",
+          "text" : [
+            {
+              "text" : "Bildgebende Leistungen, die nach einer Therapie dieselbe Leistung als Kontrolle oder als Aufnahme zu Vergleichszwecken zulassen",
+              "interpretation" : "",
+              "textValidFrom" : "2000-12-31T23:00:00.000Z",
+              "textValidUntil" : null,
+              "textMutationDate" : "11/08/01 00:00:00"
+            }
+          ],
+          "frequencyRules" : []
+        },
+        {
+          "code" : "32",
+          "validFrom" : "2007-12-31T23:00:00.000Z",
+          "validUntil" : null,
+          "mutationDate" : "09/25/07 00:00:00",
+          "text" : [
+            {
+              "text" : "Ärztliche Leistungen am Patienten durch den Facharzt für medizinische Radiologie/Radiodiagnostik anlässlich bildgebender Untersuchungen im Röntgeninstitut oder in der Röntgenabteilung, welche die Betriebsstelle berechtigen",
+              "interpretation" : "",
+              "textValidFrom" : "2007-12-31T23:00:00.000Z",
+              "textValidUntil" : null,
+              "textMutationDate" : "12/23/09 00:00:00"
+            }
+          ],
+          "frequencyRules" : []
+        },
+        {
+          "code" : "33",
+          "validFrom" : "2007-12-31T23:00:00.000Z",
+          "validUntil" : null,
+          "mutationDate" : "09/25/07 00:00:00",
+          "text" : [
+            {
+              "text" : "Ärztliche Leistungen am Patienten durch Nicht-Radiologen in der Arztpraxis und im Spital, welche die Grundtaxe für das Röntgen (Röntgenraum I) und die Ultraschalldiagnostik (Ultraschall gross) ({AIP}) berechtigen",
+              "interpretation" : "",
+              "textValidFrom" : "2009-02-28T23:00:00.000Z",
+              "textValidUntil" : null,
+              "textMutationDate" : "11/28/08 00:00:00"
+            }
+          ],
+          "frequencyRules" : []
+        }
+      ]
+    }
+  },
+  "sideRelatedSecondCatalogEntry": {
+    "seq" : "39.0275",
+    "treatmentCategory" : "Zuschlagsleistung",
+    "title" : "+ Röntgen: Hand, jede weitere Aufnahme",
+    "medicalText" : "",
+    "technicalText" : "",
+    "divisionCode" : "5003",
+    "divisionText" : "Röntgenraum I",
+    "benefitsCode" : "01",
+    "benefitsText" : "-",
+    "anaesthesiaCode" : "1",
+    "anaesthesiaText" : "I",
+    "medicalTaxPoints" : 6.73,
+    "technicalTaxPoints" : 10.93,
+    "assistanceTaxPoints" : 0,
+    "assistanceQuantity" : 0,
+    "medicalScalingFactor" : 1,
+    "technicalScalingFactor" : 1,
+    "treatmentTime" : 0,
+    "preparationAndFollowUpTime" : 0,
+    "reportTime" : 3,
+    "roomOccupancyTime" : 4,
+    "rotationTime" : 0,
+    "chapter" : "39.02.01.04",
+    "sideMandatory" : true,
+    "validFrom" : "2017-12-31T23:00:00.000Z",
+    "validUntil" : null,
+    "u_extra" : {
+      "genderRules" : [],
+      "ageRules" : [],
+      "dignityRules" : {
+        "quantDignity" : {
+          "code" : "FMH05",
+          "text" : "FMH 5"
+        },
+        "qualDignity" : [
+          {
+            "code" : "9999",
+            "description" : [
+              {
+                "text" : "Alle",
+                "fmh" : "0",
+                "validFrom" : "2000-12-31T23:00:00.000Z",
+                "validUntil" : null,
+                "mutationDate" : "11/08/01 00:00:00",
+                "type" : "N"
+              }
+            ],
+            "validFrom" : "2007-12-31T23:00:00.000Z",
+            "validUntil" : null,
+            "mutationDate" : "09/25/07 00:00:00",
+            "subDignities" : [],
+            "superDignities" : []
+          }
+        ]
+      },
+      "frequencyRules" : [
+        {
+          "quantity" : 1,
+          "timeQuantity" : 1,
+          "timeUnit" : "10",
+          "applicability" : "00",
+          "validFrom" : "2007-12-31T23:00:00.000Z",
+          "validUntil" : null
+        }
+      ],
+      "hierarchyRules" : [
+        {
+          "seq" : "39.0270",
+          "validFrom" : "2007-12-31T23:00:00.000Z",
+          "validUntil" : null
+        }
+      ],
+      "combinationRules" : [],
+      "blocRules" : [],
+      "cumulationRules" : [],
+      "treatmentGroups" : [
+        {
+          "code" : "03",
+          "validFrom" : "2014-09-30T22:00:00.000Z",
+          "validUntil" : null,
+          "mutationDate" : "09/01/14 00:00:00",
+          "text" : [
+            {
+              "text" : "Tarifpositionen bei denen der Zuschlag für hausärztliche Leistungen in der Arztpraxis (00.0015) abgerechnet werden kann.",
+              "interpretation" : "",
+              "textValidFrom" : "2017-12-31T23:00:00.000Z",
+              "textValidUntil" : null,
+              "textMutationDate" : "09/01/17 00:00:00"
+            }
+          ],
+          "frequencyRules" : []
+        }
+      ]
+    }
+  },
+  "diagnosis": {
+    "seq": "G9",
+    "unifiedSeq": "G9",
+    "title": "Andere infektiöse oder parasitäre Krankheiten",
+    "infos": [],
+    "u_extra": {
+      "abrechenbar": "j",
+      "krankheit_in_mitteleuropa_sehr_selten": "n",
+      "schlüsselnummer_mit_inhalt_belegt": "n",
+      "infektionsschutzgesetz_meldepflicht": "n",
+      "infektionsschutzgesetz_abrechnungsbesonderheit": "n"
+    }
+  }
+}

@@ -1,0 +1,15 @@
+// ko if: $parent._showRowDependentCollapseRows( $context )
+tr.KoTable-row(data-bind="foreach: $parent.columns,\
+    css: $parent._getCssRow( $context ),\
+    attr: { style: $parent._getStyleRow( $context ) }\
+  ")
+  // ko if: !notVisibleAtSummaryRow()
+  td(data-bind="template: { name: getTemplateNameCell( $context ), data: getTemplateDataSummaryCell( $context ) },\
+    visible: visible, css: getCss( $context )\
+  ")
+  // /ko
+  // ko if: notVisibleAtSummaryRow()
+  td(data-bind="visible: visible, css: getCss( $context )\
+    ")
+  // /ko
+// /ko

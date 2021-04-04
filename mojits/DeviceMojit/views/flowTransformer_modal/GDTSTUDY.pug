@@ -1,0 +1,36 @@
+div#transformerModel
+  div.form-group
+    h4(data-bind="text: patientNoI18n + ':'")
+    span.checkbox
+      label.control-label
+        strong(data-bind="text: showOriginalIdI18n")
+        input(type="checkbox", name="transformerShowOriginalId", data-bind="checked: showOriginalId")
+    label(for="transformerSelect2GdtVersion", data-bind="text: gdtVersionI18n + ':'")
+    input.form-control.input-sm#transformerSelect2GdtVersion(type="hidden", data-bind="select2: select2GdtExportVersion")
+    label(for="transformerSelect2GdtEncoding", data-bind="text: gdtEncodingI18n + ':'")
+    input.form-control.input-sm#transformerSelect2GdtEncoding(type="hidden", data-bind="select2: select2GdtExportEncoding")
+    label(for="transformerGdtSender", data-bind="text: gdtSenderI18n + ':'")
+    input.form-control.input-md#transformerGdtSender(data-bind="value: gdtSender, valueUpdate:'afterkeydown'")
+    label(for="transformerGdtReceiver", data-bind="text: gdtReceiverI18n + ':'")
+    input.form-control.input-md#transformerGdtReceiver(data-bind="value: gdtReceiver, valueUpdate:'afterkeydown'")
+    label(for="transformerSelect2PredefinedProcedures", data-bind="text: procedureListI18n + ':'")
+    input.form-control.input-sm#transformerSelect2PredefinedProcedures(type="hidden", data-bind="select2: select2Procedure")
+    label(for="transformerProcedure", data-bind="text: procedureI18n + ':'")
+    input.form-control.input-md#transformerProcedure(data-bind="value: procedure, valueUpdate:'afterkeydown'")
+    br
+    h4(data-bind="text: medicineDataI18n + ':'")
+    span(data-bind="text: medicineDataSubText")
+    span.checkbox
+      label.control-label
+        strong(data-bind="text: exportMedDataI18n")
+        input(type="checkbox", name="exportMedDataBox", data-bind="checked: exportMedData")
+      i.dc-info-icon(data-toggle="popover", data-bind="attr: {'data-original-title': exportMedDataPopoverTitle, 'data-content': exportMedDataPopover }", data-html="true", rel="popover", data-placement="auto left", data-trigger="click")
+    //ko if: gdtVersion() === 'gdt30'
+    br
+    h4(data-bind="text: diagnosisDataI18n + ':'")
+    span(data-bind="text: GDTdiagnosisDataSubText")
+    span.checkbox
+      label.control-label
+        strong(data-bind="text: exportDiagnosisI18n")
+        input(type="checkbox", name="exportDiagnosisBox", data-bind="checked: exportDiagnosis")
+    // /ko

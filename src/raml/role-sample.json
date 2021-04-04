@@ -1,0 +1,17 @@
+{
+  "meta": {
+    "errors": [],
+    "warnings": [],
+    "query": {"_id":"000000000000000000000001"},
+    "itemsPerPage": null,
+    "totalItems": 1,
+    "page": null,
+    "replyCode": 200
+  },
+  "data": [
+  {
+    "_id": "000000000000000000000001",
+    "value": "Empfang"
+  }
+]
+ }

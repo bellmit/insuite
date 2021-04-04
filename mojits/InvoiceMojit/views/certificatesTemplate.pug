@@ -1,0 +1,18 @@
+div.panel.panel-default
+    div.panel-body
+        div.row
+            div.col-md-3.col-sm-4
+                div.form-group
+                    label.control-label(data-bind="text: locationI18n + ':'")
+                    input.form-control.input-sm#changeLocation(type="hidden", data-bind="select2: select2Location, readOnly: locationReadOnly", name="location")
+            div.col-md-3.col-sm-4
+                div.form-group
+                    label.control-label(data-bind="text: isUnitUseI18n + ':'")
+                    input.form-control.input-sm#changeIsUnitUse(type="hidden", data-bind="select2: select2IsUnitUse", name="isUnitUse")
+        div.row
+            div.col-md-12(data-bind="template: editableTable1.template")
+        div.row
+            div.col-md-12(data-bind="template: editableTable2.template")
+        div.col-xs-12
+            button.btn.btn-default.pull-right(name="deleteCertificate", type="button", data-bind="click: deleteCertificate.bind($context, $parent), text: generalButtonDeleteI18n")
+            button.btn.btn-default.pull-right(name="clearData", type="button", data-bind="click: clearData, text: clearI18n", style="margin-right: 10px;")

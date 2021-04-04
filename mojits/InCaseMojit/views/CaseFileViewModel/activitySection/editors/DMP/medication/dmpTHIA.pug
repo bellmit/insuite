@@ -1,0 +1,9 @@
+div.form-group
+  div.row
+    div.col-xs-5
+      strong(data-bind="text: dmpTHIA.i18n")
+      span(data-bind="dmpField: { field: dmpTHIA }")
+    div.col-xs-7(data-bind="foreach: dmpTHIA.list, hasFeedback: { field: dmpTHIA, toggle: dmpTHIA.hasError, messages: dmpTHIA.validationMessages }")
+      label.checkbox-inline
+        span(data-bind="text: i18n")
+        input(type="checkbox", name="dmpTHIA", data-bind="value: val, checked: $parent.dmpTHIA, readOnly: $parent.dmpTHIA.readOnly, attr: { name: $element.name + '-' + val }")

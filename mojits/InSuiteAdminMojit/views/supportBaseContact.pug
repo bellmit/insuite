@@ -1,0 +1,51 @@
+.row
+  .col-sm-3.supp
+    h4(data-bind="text: generalTextI18n")
+    div.panel.panel-default
+      div.panel-body
+        div.form-group(data-bind="hasFeedback: { field: baseContactType, toggle: baseContactType.hasError, messages: baseContactType.validationMessages }")
+          label.control-label(for="tab_contacts_detail_baseContactType", data-bind="text: baseContactTypeI18n")
+          input#tab_contacts_detail_baseContactType.form-control(name="baseContactType", type="text", data-bind="select2: select2BaseContactType, readOnly: readOnlyBaseContactType")
+    h4(data-bind="text: baseContactTypeComputed")
+    div.panel.panel-default
+      div.panel-body
+        div.row
+          div.col-sm-6
+            div.form-group(data-bind="hasFeedback: { field: talk, toggle: talk.hasError, messages: talk.validationMessages }")
+              label.control-label(data-bind="text: talk.i18n")
+              input.form-control(name="talk", type="hidden", data-bind="select2: select2Talk")
+          div.col-sm-6
+            div.form-group(data-bind="hasFeedback: { field: title, toggle: title.hasError, messages: title.validationMessages }")
+              label.control-label(for="tab_contacts_detail_title", data-bind="text: title.i18n")
+              input#tab_contacts_detail_title.form-control(name="title", type="text", data-bind="textInput: title")
+        div.row
+          div.col-sm-12
+            div.form-group(data-bind="hasFeedback: { field: companyName, toggle: companyName.hasError, messages: companyName.validationMessages }")
+              label.control-label(for="tab_contacts_detail_companyName", data-bind="text: companyName.i18n")
+              input#tab_contacts_detail_companyName.form-control(name="companyName", type="text", data-bind="textInput: companyName")
+          div.col-sm-12
+            div.form-group(data-bind="hasFeedback: { field: firstname, toggle: firstname.hasError, messages: firstname.validationMessages }")
+              label.control-label(for="tab_contacts_detail_firstname", data-bind="text: firstname.i18n")
+              input#tab_contacts_detail_firstname.form-control(name="firstname", type="text", data-bind="textInput: firstname")
+          div.col-sm-12
+            div.form-group(data-bind="hasFeedback: { field: lastname, toggle: lastname.hasError, messages: lastname.validationMessages }")
+              label.control-label(for="tab_contacts_detail_lastname", data-bind="text: lastname.i18n")
+              input#tab_contacts_detail_lastname.form-control(name="lastname", type="text", data-bind="textInput: lastname")
+  .col-sm-6
+    h4
+      span(data-bind="text: addresses.i18n")
+      | &nbsp;
+      small
+        a(href="#", data-bind="click: addresses.push")
+          i.icon.fa.fa-plus
+    div(data-bind="foreach: addresses")
+      include tab_contacts_address
+  .col-sm-3
+    h4
+      span(data-bind="text: communications.i18n")
+      | &nbsp;
+      small
+        a(href="#", data-bind="click: communications.push")
+          i.icon.fa.fa-plus
+    div(data-bind="foreach: communications")
+      include tab_contacts_communications

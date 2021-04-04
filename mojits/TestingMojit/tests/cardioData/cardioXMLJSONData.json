@@ -1,0 +1,291 @@
+{
+  "MDC": {
+    "IDC": {
+      "DEV": {
+        "TYPE": "Monitor",
+        "MODEL": "BioMonitor 2-AF",
+        "SERIAL": "91500807",
+        "MFG": "BIO",
+        "IMPLANT_DT": "2016-04-15T00:00:00.000Z"
+      },
+      "SESS": {
+        "DTM": "2018-12-12T00:28:40.000Z",
+        "TYPE": "RemotePatientInitiated",
+        "REPROGRAMMED": "NO",
+        "DTM_PREVIOUS": "2018-12-10T15:20:54.000Z",
+        "TYPE_PREVIOUS": "InClinic",
+        "CLINICIAN_CONTACT_INFORMATION": "E-mail: rico.sroka@biotronik.com"
+      },
+      "MSMT": {
+        "BATTERY": {
+          "DTM": "2018-12-12T01:27:02.000Z",
+          "STATUS": "MOS"
+        },
+        "LEADCHNL_MIXED": {
+          "SENSING": {
+            "INTR_AMPL_MEAN_UNIT": "mV",
+            "INTR_AMPL_MEAN": 1
+          },
+          "DTM_START": "2018-12-11T01:27:04.000Z",
+          "DTM_END": "2018-12-12T01:27:00.000Z",
+          "LEAD_CHANNEL_STATUS": "Null"
+        }
+      },
+      "SET": {
+        "ZONE": [
+          {
+            "TYPE": "Zone_ATAF",
+            "VENDOR_TYPE": "BIO-Zone_AMon",
+            "STATUS": "Monitor"
+          },
+          {
+            "TYPE": "Zone_Other",
+            "VENDOR_TYPE": "BIO-Zone_ASYST",
+            "STATUS": "Monitor",
+            "DETECTION_INTERVAL_UNIT": "ms",
+            "DETECTION_INTERVAL": 5000
+          },
+          {
+            "TYPE": "Zone_Other",
+            "VENDOR_TYPE": "BIO-Zone_BRADY",
+            "STATUS": "Monitor",
+            "DETECTION_INTERVAL_UNIT": "ms",
+            "DETECTION_INTERVAL": 2000
+          },
+          {
+            "TYPE": "Zone_Other",
+            "VENDOR_TYPE": "BIO-Zone_HVR",
+            "STATUS": "Monitor",
+            "DETECTION_INTERVAL_UNIT": "ms",
+            "DETECTION_INTERVAL": 333,
+            "DETECTION_DETAILS": "Detection Counter: 24"
+          },
+          {
+            "TYPE": "Zone_Other",
+            "VENDOR_TYPE": "BIO-Zone_RateDrop",
+            "STATUS": "Inactive"
+          }
+        ]
+      },
+      "STAT": {
+        "HEART_RATE": {
+          "DTM_START": "2018-12-11T01:27:04.000Z",
+          "DTM_END": "2018-12-12T01:27:00.000Z",
+          "VENTRICULAR_MEAN_UNIT": "{beats}/min",
+          "VENTRICULAR_MEAN": 78
+        },
+        "AT": {
+          "DTM_START": "2018-12-11T01:27:04.000Z",
+          "DTM_END": "2018-12-12T01:27:00.000Z",
+          "BURDEN_PERCENT_UNIT": "%",
+          "BURDEN_PERCENT": 100
+        },
+        "EPISODE": [
+          {
+            "TYPE": "Epis_Other",
+            "VENDOR_TYPE": "BIO-Epis_ASYST",
+            "RECENT_COUNT": 0,
+            "RECENT_COUNT_DTM_START": "2018-12-11T01:27:04.000Z",
+            "RECENT_COUNT_DTM_END": "2018-12-12T01:27:00.000Z"
+          },
+          {
+            "TYPE": "Epis_Other",
+            "VENDOR_TYPE": "BIO-Epis_BRADY",
+            "RECENT_COUNT": 0,
+            "RECENT_COUNT_DTM_START": "2018-12-11T01:27:04.000Z",
+            "RECENT_COUNT_DTM_END": "2018-12-12T01:27:00.000Z"
+          },
+          {
+            "TYPE": "Epis_PatientActivated",
+            "VENDOR_TYPE": "BIO-Epis_PAT",
+            "RECENT_COUNT": 1,
+            "RECENT_COUNT_DTM_START": "2018-12-11T01:27:04.000Z",
+            "RECENT_COUNT_DTM_END": "2018-12-12T01:27:00.000Z"
+          }
+        ]
+      },
+      "EPISODE": {
+        "ID": "91",
+        "DTM": "2018-12-11T12:15:58.000Z",
+        "TYPE": "Epis_PatientActivated",
+        "TYPE_INDUCED": "NO",
+        "VENDOR_TYPE": "BIO-Epis_PAT",
+        "VENTRICULAR_INTERVAL_AT_DETECTION_UNIT": "ms",
+        "VENTRICULAR_INTERVAL_AT_DETECTION": 630
+      }
+    },
+    "ATTR": {
+      "PT": {
+        "ID": "DCBIOMonitor"
+      }
+    }
+  },
+  "BIO": {
+    "REQUEST": {
+      "HM": {
+        "STATUS": {
+          "DTM": "2018-12-12T00:30:24.000Z",
+          "COLOR": "Yellow",
+          "TEXT": "none"
+        },
+        "NOTIFICATION": [
+          {
+            "ID": "1",
+            "DTM": "2018-12-07T01:30:41.000Z",
+            "UPDATE_DTM": "2018-12-07T01:30:41.000Z",
+            "VENDOR_CODE": "Atrial burden above limit",
+            "PRIORITY": "MEDIUM",
+            "DESCRIPTION_SHORT": "Atrial burden above limit (> 5% of day)",
+            "DESCRIPTION_LONG": "Above limit since Dec 7, 2018 1:26:58 AM - Last value 100.0% of day measured on Dec 12, 2018 1:27:00 AM",
+            "STATUS": "UNACKNOWLEDGED"
+          },
+          {
+            "ID": "2",
+            "DTM": "2018-12-07T01:30:41.000Z",
+            "UPDATE_DTM": "2018-12-11T00:31:59.000Z",
+            "VENDOR_CODE": "Number of AF per day above limit",
+            "PRIORITY": "MEDIUM",
+            "DESCRIPTION_SHORT": "Number of atrial fibrillation episodes per day intermittently above limit (at least one)",
+            "DESCRIPTION_LONG": "Intermittently above limit since Dec 7, 2018 1:26:58 AM - Last value 0 episode(s) per day reported on Dec 12, 2018 1:27:00 AM",
+            "STATUS": "UNACKNOWLEDGED"
+          },
+          {
+            "ID": "3",
+            "DTM": "2018-12-12T00:30:24.000Z",
+            "UPDATE_DTM": "2018-12-12T00:30:24.000Z",
+            "VENDOR_CODE": "Patient trig. rec. per day above limit",
+            "PRIORITY": "MEDIUM",
+            "DESCRIPTION_SHORT": "Number of patient triggered recordings per day above limit (at least one)",
+            "DESCRIPTION_LONG": "Last value 1 episode(s) per day reported on Dec 12, 2018 1:27:00 AM",
+            "STATUS": "UNACKNOWLEDGED"
+          },
+          {
+            "ID": "4",
+            "DTM": "2018-12-07T01:30:41.000Z",
+            "UPDATE_DTM": "2018-12-12T00:30:24.000Z",
+            "VENDOR_CODE": "Episode details received",
+            "PRIORITY": "MEDIUM",
+            "DESCRIPTION_SHORT": "Episode details received",
+            "DESCRIPTION_LONG": "Details were received for 4 episodes, which were detected between Dec 6, 2018 11:04:44 AM and Dec 11, 2018 12:15:58 PM",
+            "STATUS": "UNACKNOWLEDGED"
+          }
+        ],
+        "USER": {
+          "ID": "HMSC",
+          "EMAIL": "rico.sroka@biotronik.com"
+        },
+        "PATIENT": {
+          "LINK": "https://www.biotronik-homemonitoring.com/hmsc_guiWeb/qs/2c9881a853fb21bf015419e382da1ca9",
+          "CLINIC_ID": "demo.de.vm",
+          "CLINIC_NAME": "BIOTRONIK Vertriebs GmbH & Co. KG",
+          "COMMENT": "Inikation: abhängig\nNYHA: II\nEF: nicht bekannt\nNeuimplantation/Wechsel/Aufrüstung:Wechsel\nImplantationsdauer (Schnitt-Naht): min.\nDauer Aufnahme-Entlassung: 2h\nDokumentiertes Vorhofflimmern:\nKardiale Medikation:\n\nMedikament 1\nMedikament 2\nMedikament 3"
+        },
+        "RECEIVER": {
+          "CLINIC_ID": "demo.de.vm",
+          "CLINIC_NAME": "BIOTRONIK Vertriebs GmbH & Co. KG"
+        }
+      },
+      "REPORTS": {
+        "STATUS_REPORT": [
+          {
+            "ID": "Status_report_DCBIOMonitor_91500807_2018-12-12_01-30-26",
+            "url": "/1/media/:download?_id=5e8af16c35a11ad0d3a2709e&mime=APPLICATION_PDF&from=casefile",
+            "mediaId": "5e8af16c35a11ad0d3a2709e"
+          }
+        ],
+        "EPISODE_REPORT": [
+          {
+            "ID": "Episode_report_91500807_91_2018-12-12_01-30-26",
+            "url": "/1/media/:download?_id=5e8af16d35a11ad0d3a270a3&mime=APPLICATION_PDF&from=casefile",
+            "mediaId": "5e8af16d35a11ad0d3a270a3"
+          }
+        ]
+      },
+      "DATE": "2018-12-12T00:30:26.000Z",
+      "ID": "94fd3dc5-9b85-4f78-8599-5aa13a9818b6"
+    },
+    "IDC": {
+      "MSMT": {
+        "LEADCHNL_MIXED": {
+          "SENSING": {
+            "INTR_AMPL_MEAN_UNIT": "mV",
+            "INTR_AMPL_MEAN": 1
+          },
+          "DTM_START": "2018-12-11T01:27:00.000Z",
+          "DTM_END": "2018-12-12T01:27:00.000Z",
+          "LEAD_CHANNEL_STATUS": "Null"
+        }
+      },
+      "STAT": {
+        "HEART_RATE": [
+          {
+            "DTM_START": "2018-12-11T01:27:04.000Z",
+            "DTM_END": "2018-12-12T01:27:00.000Z",
+            "VENTRICULAR_AT_REST_MEAN_UNIT": "{beats}/min",
+            "VENTRICULAR_AT_REST_MEAN": 77
+          },
+          {
+            "DTM_START": "2018-12-11T01:27:00.000Z",
+            "DTM_END": "2018-12-12T01:27:00.000Z",
+            "VENTRICULAR_MEAN_UNIT": "{beats}/min",
+            "VENTRICULAR_MEAN": 78,
+            "VENTRICULAR_AT_REST_MEAN_UNIT": "{beats}/min",
+            "VENTRICULAR_AT_REST_MEAN": 77
+          }
+        ],
+        "AT": [
+          {
+            "DTM_START": "2018-12-11T01:27:04.000Z",
+            "DTM_END": "2018-12-12T01:27:00.000Z",
+            "ATAF_COUNT_PER_DAY": 0
+          },
+          {
+            "DTM_START": "2018-12-11T01:27:00.000Z",
+            "DTM_END": "2018-12-12T01:27:00.000Z",
+            "ATAF_COUNT_PER_DAY": 0,
+            "BURDEN_PERCENT_UNIT": "%",
+            "BURDEN_PERCENT": 100
+          }
+        ],
+        "ACTIVITY": [
+          {
+            "DTM_START": "2018-12-11T01:27:04.000Z",
+            "DTM_END": "2018-12-12T01:27:00.000Z",
+            "PERCENT_PER_DAY_UNIT": "%",
+            "PERCENT_PER_DAY": 0
+          },
+          {
+            "DTM_START": "2018-12-11T01:27:00.000Z",
+            "DTM_END": "2018-12-12T01:27:00.000Z",
+            "PERCENT_PER_DAY_UNIT": "%",
+            "PERCENT_PER_DAY": 0
+          }
+        ],
+        "EPISODE": [
+          {
+            "TYPE": "Epis_Other",
+            "VENDOR_TYPE": "BIO-Epis_ASYST",
+            "RECENT_COUNT": 0,
+            "RECENT_COUNT_DTM_START": "2018-12-11T01:27:00.000Z",
+            "RECENT_COUNT_DTM_END": "2018-12-12T01:27:00.000Z"
+          },
+          {
+            "TYPE": "Epis_Other",
+            "VENDOR_TYPE": "BIO-Epis_BRADY",
+            "RECENT_COUNT": 0,
+            "RECENT_COUNT_DTM_START": "2018-12-11T01:27:00.000Z",
+            "RECENT_COUNT_DTM_END": "2018-12-12T01:27:00.000Z"
+          },
+          {
+            "TYPE": "Epis_PatientActivated",
+            "VENDOR_TYPE": "BIO-Epis_PAT",
+            "RECENT_COUNT": 1,
+            "RECENT_COUNT_DTM_START": "2018-12-11T01:27:00.000Z",
+            "RECENT_COUNT_DTM_END": "2018-12-12T01:27:00.000Z"
+          }
+        ]
+      }
+    }
+  },
+  "color": "yellow"
+}

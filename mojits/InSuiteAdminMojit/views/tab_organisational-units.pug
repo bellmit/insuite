@@ -1,0 +1,7 @@
+#tab_organisational-units
+    h4(data-bind="text: pageTitle")
+    div.row
+        div.col-md-12
+            div.pull-right(data-bind="template: saveButton.template", style="margin-right: 10px; margin-bottom:10px; display:inline-block;")
+    div.row
+        div.col-md-12(data-bind="template: organisationalUnitsTable.template")

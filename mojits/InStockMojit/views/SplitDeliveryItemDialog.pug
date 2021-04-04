@@ -1,0 +1,17 @@
+div#splitDeliveryItemDialog
+    h4(data-bind="text: splitDialogLabeli18n")
+    div(data-bind="with: deliveryItem")
+        div.col-md-4.text-right
+           div(data-bind="text: phPZN.i18n")
+           div(data-bind="text: description.i18n")
+           div(data-bind="text: quantity.i18n")
+           div(data-bind="text: quantityOrdered.i18n")
+           div(data-bind="text: quantityDelivered.i18n")
+        div.col-md-8.text-left
+           div(data-bind="text: phPZN")
+           div(data-bind="text: description.i18n")
+           div(data-bind="text: quantity")
+           div(data-bind="text: quantityOrdered", style="font-weight: 600")
+           div(data-bind="text: quantityDelivered", style="font-weight: 600")
+
+    div.div.col-md-12.col-sm-12.col-xs-12(data-bind="template: splitTable.template", style="margin-top: 10px")

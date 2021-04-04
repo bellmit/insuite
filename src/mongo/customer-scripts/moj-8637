@@ -1,0 +1,58 @@
+/*global db*/
+"use strict";
+
+var pid = db.patients.find( {
+    $or: [
+        {
+            lastname: "Michel", firstname: "Uwe", kbvDob: "11.11.1969"
+        },
+        {
+            lastname: "Hering",
+            firstname: "Hartmut",
+            kbvDob: "17.01.1948"
+        }, {
+            lastname: "Scheidl", firstname: "Julia", kbvDob: "15.07.1987"
+        },
+        {
+            lastname: "Özcan",
+            firstname: "Önder ",
+            kbvDob: "09.09.1982"
+        }]
+}, {lastname: 1, dob: 1} ).map( function( i ) {
+    return i._id.str;
+} );
+db.casefolders.find({patientId:{$in:pid}},{title:1,ruleWarnings:1,patientId:1}).sort({patientId:1})
+/*
+ Michel, Uwe geb. 11.11.1969
+ PVS Dr. Strässle: Patient hat nur einen PKV Fall und einen Schein (62 Einträge) - bitte alles in diesem Fall zurück setzen auf validiert (ein Importiert Ordner existiert auch)
+ Hering, Hartmut geb. 17.01.1948
+ PVS Dr. Strässle: Patient hat nur einen PKV Fall und einen Schein (60 Einträge) - bitte alles in diesem Fall zurück setzen auf validiert
+ Scheidl, Julia geb. 15.07.1987
+ PVS Dr. Walter vom 09.08.2017 auf validiert zurücksetzen
+ Özcan, Önder geb. 09.09.1982
+ PVS Dr. Walter vom 09.08.2017 auf validiert zurücksetzen
+
+Scheidl
+{ "_id" : ObjectId("5946810b71c64301a9d26a4a"), "title" : "Importiert (PKV)", "patientId" : "594676e071c64301a991b121" }
+{ "_id" : ObjectId("596868e710fe2d5f39c9dd68"), "patientId" : "594676e071c64301a991b121", "title" : "Walter", "ruleWarnings" : 5 } <---
+{ "_id" : ObjectId("596e15de786e9da64c400c22"), "patientId" : "594676e071c64301a991b121", "title" : "Physio", "ruleWarnings" : 0 }
+{ "_id" : ObjectId("59872d953a2d013058b56695"), "patientId" : "594676e071c64301a991b121", "title" : "Fuchs", "ruleWarnings" : 1 }
+Michel
+{ "_id" : ObjectId("5946947a71c64301a9d35fb8"), "title" : "Importiert (PKV)", "patientId" : "59467b5971c64301a9c5e87e" }
+{ "_id" : ObjectId("5982cd4c2f8a6a00098c72af"), "patientId" : "59467b5971c64301a9c5e87e", "title" : "Dr. Strässle", "ruleWarnings" : 1 } <---
+Oezcan
+{ "_id" : ObjectId("596c59c107d2bc944cea0813"), "patientId" : "596c59b407d2bc944cea080b", "title" : "Walter", "ruleWarnings" : 0 }
+{ "_id" : ObjectId("596c59cec47582a04c6ea191"), "patientId" : "596c59b407d2bc944cea080b", "title" : "Walter", "ruleWarnings" : 4 } <---
+{ "_id" : ObjectId("59789432691127f06fb6f1ea"), "patientId" : "596c59b407d2bc944cea080b", "title" : "Psychotherapie/Psychosomatik", "ruleWarnings" : 0 }
+Hering
+{ "_id" : ObjectId("59841b82595c0868e7cf29ca"), "patientId" : "59841b79cadff968e8c2dea9", "title" : "Strässle", "ruleWarnings" : 2 } <---
+*/
+
+var cfids = [
+    "5982cd4c2f8a6a00098c72af", /*Michel*/
+    "596868e710fe2d5f39c9dd68", /*Scheidl*/
+    "596c59cec47582a04c6ea191", /*Oezcan*/
+    "59841b82595c0868e7cf29ca"  /*Hering*/
+];
+db.activities.aggregate([{$match:{caseFolderId:{$in:cfids}}},{$out:"MOJ_8637_BACKUP"}]);
+db.activities.update({caseFolderId:{$in:cfids}},{$set:{status:"VALID"}})

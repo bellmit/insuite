@@ -1,0 +1,55 @@
+div#divElementEditPanelChartMD
+
+  br
+
+  //b Horizontal Axis (x)
+  table(noborder="noborder",width="100%")
+    tr
+      td
+        b Min&nbsp;X:&nbsp;
+      td
+        input.form-control#txtChartMdXMin
+      td
+        b &nbsp;Max&nbsp;X:&nbsp;
+      td
+        input.form-control#txtChartMdXMax
+
+  select.form-control#selChartMdX
+
+    br
+
+  //b Vertical Axis (y)
+  table(noborder="noborder",width="100%")
+    tr
+      td
+        b Min&nbsp;Y:&nbsp;
+      td
+        input.form-control#txtChartMdYMin
+      td
+        b &nbsp;Max&nbsp;Y:&nbsp;
+      td
+        input.form-control#txtChartMdYMax
+
+  select.form-control#selChartMdY
+
+  br
+
+  table(noborder="noborder",width="100%")
+    tr
+      td
+        b Patient
+      td
+        input.form-control#txtChartMdPatientId
+    tr
+      td
+        b DOB
+      td
+        input.form-control#txtChartMdPatientDOB
+    tr
+      td
+        b Timestamp
+      td
+        input.form-control#txtChartMdTimestamp
+
+  br
+  button.btn#btnSelectChartImage(data-bind="text: btnChooseImageI18n")

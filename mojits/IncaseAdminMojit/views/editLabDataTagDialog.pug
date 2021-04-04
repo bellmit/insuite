@@ -1,0 +1,12 @@
+div.row.childs-bordered#LabDataTagEditModel
+    div.row.patient-block
+        h4(data-bind="text: tagsEditableTableTitle")
+        div#LabDataTagEditorTable(data-bind="template: tagsEditableTable.template")
+    // ko if: isNotNew
+    div.row
+      h4(data-bind="text: tagsCategorySelectionTitle")
+      input.form-control.input-sm(name="categoriesSelect2", data-bind="select2: categoriesSelect2Config")
+    div.row.activity-block
+        h4(data-bind="text: tagsToUpdateTableTitle")
+        div#DistinctLabDataTags(data-bind="template: tagsToUpdateTable.template")
+    // /ko

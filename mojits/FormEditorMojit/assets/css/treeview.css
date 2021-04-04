@@ -1,0 +1,294 @@
+
+.forms-tree-anchor {
+    /*  font: normal 14px "Segoe UI", Arial, Sans-serif; */
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    color: #000;
+    text-decoration: none;
+}
+
+.forms-tree-anchor:hover {
+    /*  font: normal 14px "Segoe UI", Arial, Sans-serif; */
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    color: #000;
+    text-decoration: none;
+}
+
+.forms-tree-root {
+    /*	background-color: rgba(210, 210, 210, 0.5); --- */
+    border-radius: 3px;
+    padding: 5px;
+    position: relative;
+}
+
+.forms-tree-root .actions {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    display: none;
+}
+
+.forms-tree-root .actions a {
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+.forms-tree-root .actions .fa-edit {
+    position: relative;
+    top: 1px;
+}
+
+.forms-tree-root:hover {
+    background-color: rgba(230, 230, 230, 0.5);
+}
+
+.forms-tree-root:hover .actions {
+    display: block;
+}
+
+.forms-tree-root-x {
+    border-radius: 3px;
+    padding: 5px;
+}
+
+.forms-tree-leaf {
+    /*	background-color: rgba(210, 210, 210, 0.5); --- */
+    border-radius: 3px;
+    margin-left: 18px;
+    padding-left: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.forms-tree-leaf:hover {
+    background-color: rgba(230, 230, 230, 0.5);
+}
+
+.forms-tree-leaf-special {
+    background-color: rgba(110, 210, 110, 0.5);
+    border-radius: 3px;
+    margin-left: 18px;
+    padding-left: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.forms-tree-leaf-special:hover {
+    background-color: rgba(90, 180, 90, 0.5);
+}
+
+.forms-tree-leaf-selected {
+    background-color: rgba(210, 210, 210, 0.5);
+    border-radius: 3px;
+    margin-left: 18px;
+    padding-left: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.forms-tree-spacer {
+    height: 5px;
+}
+
+.treeview .fa-plus {
+    margin-left: 5px;
+}
+
+.treeview.v2 .folder {
+    display: inline-block;
+}
+
+.treeview.v2 .files {
+    margin-top: 5px;
+}
+
+.treeview.v2 input {
+    height: 16px;
+    padding: 0;
+    outline: 0;
+    border: 0;
+}
+
+.treeview.v2 .forms-tree-leaf-special, .treeview.v2 .forms-tree-leaf {
+    margin-bottom: 5px;
+}
+
+/*
+.css-treeview input + label + ul
+{
+    margin: 0 0 0 22px;
+}*/
+
+/*
+.css-treeview input ~ ul
+{
+    display: none;
+}
+*/
+
+/*
+.css-treeview label,
+.css-treeview label::before
+{
+    cursor: pointer;
+}
+*/
+
+
+.forms-tree-node span,
+.css-treeview span::before {
+    cursor: pointer;
+}
+
+.forms-tree-node span:hover {
+    cursor: pointer;
+    background-color: #bbbbbb;
+}
+
+.forms-tree-node-special span {
+    cursor: pointer;
+}
+
+.forms-tree-node-special span:hover {
+    cursor: pointer;
+    background-color: #bbbbbb;
+}
+
+
+/*
+.css-treeview input:disabled + label
+{
+    cursor: default;
+    opacity: .6;
+}
+
+.css-treeview input:checked:not(:disabled) ~ ul
+{
+    display: block;
+}
+
+.css-treeview label,
+.css-treeview label::before
+{
+    background: url("/static/FormEditorMojit/assets/images/icons.png") no-repeat;
+}
+
+.css-treeview label,
+.css-treeview a,
+.css-treeview label::before
+{
+    display: inline-block;
+    height: 16px;
+    line-height: 16px;,
+    vertical-align: middle;
+}
+
+.css-treeview label
+{
+    background-position: 18px 0;
+}
+
+.css-treeview label::before
+{
+    content: "";
+    width: 16px;
+    margin: 0 22px 0 0;
+    vertical-align: middle;
+    background-position: 0 -32px;
+}
+
+.css-treeview input:checked + label::before
+{
+    background-position: 0 -16px;
+}
+*/
+
+/* webkit adjacent element selector bugfix */
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+    .css-treeview {
+        -webkit-animation: webkit-adjacent-element-selector-bugfix infinite 1s;
+    }
+
+    @-webkit-keyframes webkit-adjacent-element-selector-bugfix {
+        from {
+            padding: 0;
+        }
+        to {
+            padding: 0;
+        }
+    }
+}
+
+.wyswyg_bar {
+    padding-right: 10px
+}
+
+.wyswyg_bar.affix-enabled.affix {
+    background-color: #fff;
+    padding-top: 10px;
+}
+
+.color-highlight {
+    position: relative;
+    display: inline;
+}
+
+.color-highlight .btn-group {
+    display: inline-block;
+}
+
+.color-highlight .btn-group .btn {
+    padding: 6px 6px;
+}
+
+.color-popup {
+    width: 95px;
+    background-color: #fff;
+    text-align: center;
+    border: 1px solid #808080;
+    border-radius: 4px;
+    padding: 8px 0 0;
+    position: absolute;
+    top: 35px;
+    z-index: 3001;
+    left: -30px;
+}
+
+.color-popup::after {
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -7px;
+    border-width: 7px;
+    border-style: solid;
+    border-color: transparent transparent #808080 transparent;
+}
+
+.selected-color-preview {
+    display: inline-flex;
+    margin-right: 3px;
+    height: 8px;
+    width: 8px;
+    border: 1px solid #808080;
+
+}
+
+.color-selector {
+    width: 35px;
+    height: 35px;
+    margin: 2px;
+    border-radius: 4px;
+    display: inline-block;
+}
+
+.color-selector:hover {
+    box-shadow: 1px 1px #808080;
+    cursor: pointer;
+
+}
+
+.btn-stub {
+    all: unset;
+}

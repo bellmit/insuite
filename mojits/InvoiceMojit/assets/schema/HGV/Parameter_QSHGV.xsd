@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="urn::sciphox-org/sciphox" targetNamespace="urn::sciphox-org/sciphox" elementFormDefault="qualified">
+	<!-- Schema -->
+	
+	<xs:simpleType name="Vorverordnung">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Hörgeräteerstversorgung"/>
+			<xs:enumeration value="Wenn Vorversorgung, wann"/>		
+			<xs:enumeration value="Bauform"/>
+			<xs:enumeration value="Bauform andere"/>
+			<xs:enumeration value="Zentrale Hörstörung ausgeschlossen"/>
+			<xs:enumeration value="Sprachverstehen: mit Kopfhörer am dBopt"/>			
+			<xs:enumeration value="Sprachtest möglich"/>			
+			<xs:enumeration value="Sprachtestmaterial"/>
+			<xs:enumeration value="Sprachtestmaterial anderes"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="Verordnung">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Schallempfindungsschwerhörigkeit"/>
+			<xs:enumeration value="Schallleitungsschwerhörigkeit"/>
+			<xs:enumeration value="Kombinierte Schwerhörigkeit"/>
+			<xs:enumeration value="Schweregrad der Hörstörung(WHO 2001): rechts"/>
+			<xs:enumeration value="Schweregrad der Hörstörung(WHO 2001): links"/>
+			<xs:enumeration value="Hörstörung > 80dB nach WHO 2001 tonaudiometrischer Mittelwert bei 0,5 / 1 / 2 / 4 kHz"/>
+			<xs:enumeration value="Sonstige versorgungsrelevante Diagnosen"/>
+			<xs:enumeration value="Sonstige versorgungsrelevante Diagnosen andere"/>
+			<xs:enumeration value="HNO-ärztlicher Vorschlag zur Gerätetechnik: Luftleitung"/>
+			<xs:enumeration value="HNO-ärztlicher Vorschlag zur Gerätetechnik: Knochenleitung"/>
+			<xs:enumeration value="HNO-ärztlicher Vorschlag zur Gerätetechnik: Sonderversorgung"/>
+			<xs:enumeration value="HNO-ärztlicher Vorschlag zur Gerätetechnik: Sonderversorgung andere"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="Nachverordnung">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Der Hörgeräteversorgungsvorschlag entspricht dem aufgestellten Versorgungskonzept"/>
+			<xs:enumeration value="Abweichung in Luftleitung"/>
+			<xs:enumeration value="Abweichung in Knochenleitung"/>
+			<xs:enumeration value="Abweichung in Sonderversorgung"/>
+			<xs:enumeration value="Abweichung in Sonderversorgung andere"/>
+			<xs:enumeration value="Erzieltes Sprachverstehen im Freifeld mit Hörgerät(en)"/>
+			<xs:enumeration value="Keine FF-Untersuchung möglich: Hörweite (m) ohne HG"/>
+			<xs:enumeration value="Keine FF-Untersuchung möglich: Hörweite (m) mit HG"/>
+			<xs:enumeration value="Sprachtest möglich"/>
+			<xs:enumeration value="Nutzen (Verbesserung der Hörfähigkeit) mittels APHAB-Fragebogen (vor / nach HG-Versorgung)"/>
+			<xs:enumeration value="Versorgung erfolgte zum Festbetrag"/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

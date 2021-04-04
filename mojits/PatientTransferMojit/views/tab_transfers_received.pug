@@ -1,0 +1,8 @@
+section#tab_transfers_received
+  div.form-group
+    //ko if: hasKim
+    label.control-label(data-bind="text: kimMessagePollingLasttime()")
+    | &nbsp;
+    div(data-bind="template: refreshButton.template", style="margin-right: 10px; margin-bottom:10px; display:inline-block;")
+    // /ko
+  div#overviewTable(data-bind="template: overviewTable.template")

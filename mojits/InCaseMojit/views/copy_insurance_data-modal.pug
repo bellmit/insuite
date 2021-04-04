@@ -1,0 +1,7 @@
+div
+  p(data-bind="text: copyReadInsuranceDataI18n")
+  div(data-bind="foreach: insuranceToCopyTo")
+    div.checkbox
+      label
+        strong(data-bind="text: i18n")
+        input(type="checkbox", data-bind="checked: checked")

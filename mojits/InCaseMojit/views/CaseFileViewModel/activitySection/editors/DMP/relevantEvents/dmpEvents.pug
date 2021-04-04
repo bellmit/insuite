@@ -1,0 +1,12 @@
+div.form-group
+  strong(data-bind="text: DmpEventsI18n")
+  span(data-bind="dmpField: { field: dmpEvents }")
+  div
+    span(data-bind="if: 'FIRST' === dmpType()")
+      span(data-bind="text: postfixFirstDocI18n")
+    span(data-bind="if: 'FOLLOWING' === dmpType()")
+      span(data-bind="text: postfixFollowingDocI18n")
+  div(data-bind="foreach: dmpEvents.list, hasFeedback: { field: dmpEvents, toggle: dmpEvents.hasError, messages: dmpEvents.validationMessages }")
+    label.checkbox-inline
+      span(data-bind="text: i18n")
+      input(type="checkbox", name="dmpEvents", data-bind="value: val, checked: $parent.dmpEvents, readOnly: $parent.dmpEvents.readOnly, attr: { name: $element.name + '-' + val }")

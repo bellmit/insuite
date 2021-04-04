@@ -1,0 +1,12 @@
+div.row#labDevicesCertificates
+    div.row
+        div.col-md-12
+            h4
+                span(data-bind="text: labDeviceCertificatesI18n + ' '")
+                small
+                    a.fa.fa-plus(href="javascript:;", data-bind="click: addNewCertificate")
+            div(data-bind="template: { name: 'certificatesTemplate', foreach: certificates }")
+            div.pull-right(data-bind="template: saveLabCertificates.template", style="margin-left: 10px;")
+
+        script(type="text/html", id="certificatesTemplate")
+            include certificatesTemplate

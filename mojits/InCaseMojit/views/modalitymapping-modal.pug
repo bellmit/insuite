@@ -1,0 +1,49 @@
+div#modality-mapping-dialog-content
+  form.form-group.form-horizontal
+    div.form-group(data-bind="foreach: unMappedData")
+      div.row(style="margin: 0; padding:0; margin-bottom: 0.5em")
+        div.col-sm-5.text-right
+          label.control-label
+            span(data-bind="text: comment")
+            span &nbsp; (
+            span(data-bind="text: dicomTag")
+            span )
+        div.col-sm-7
+          //ko if: contentType() === 2
+          input.form-control(name="device", type="hidden", data-bind="select2: $parent.select2Device")
+          // /ko
+          // ko ifnot: contentType() === 2
+          input.form-control(data-bind="textInput: content", type="text")
+          // /ko
+    div.form-group(data-bind="foreach: optionalUnMappedData")
+      div.row(style="margin: 0; padding:0; margin-bottom: 0.5em")
+        div.col-sm-5.text-right
+          label.control-label
+            span(data-bind="text: comment")
+            span &nbsp; (
+            span(data-bind="text: dicomTag")
+            span )
+        div.col-sm-7
+          input.form-control(name="device", type="hidden", data-bind="select2: select2Opts")
+
+  div
+    small(data-bind="text: tableTitleI18n")
+
+  table.table.table-striped.table-bordered
+    thead
+      th(data-bind="text: dicomTagI18n")
+      th(data-bind="text: tableNameI18n")
+      th(data-bind="text: tableContentI18n")
+      th(data-bind="text: tableCommentI18n")
+    tbody(data-bind="foreach: mappedDataArray")
+      tr
+        td(data-bind="text: dicomTag")
+        td(data-bind="text: name")
+        // This is for device type
+        // ko if: contentType() == 2
+        td(data-bind="text: content().name")
+        // /ko
+        // ko if: contentType() != 2
+        td(data-bind="text: content")
+        // /ko
+        td(data-bind="text: comment")

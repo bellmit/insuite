@@ -1,0 +1,91 @@
+div.visible-xs.visible-sm(style="padding: 15px")
+div.visible-md.visible-lg(style="padding: 35px")
+div.container.container-fullscreen(id=mojit_view_id style="padding: 30px")
+  .jumbotron(style="border-radius: 20px;")
+    .row
+      div.col-sm-5.col-sm-push-7
+        div.form-group.text-center
+          a(href="/")
+            img(src='/static/DocCirrus/assets/images/DC_logo_trans_300.png', alt="Doc Cirrus – Your Safe Medical Cloud", style="max-width: 100%;")
+            //img(src='/static/DocCirrus/assets/images/dc_logo_300x103_trans.png', alt="Doc Cirrus – Your Safe Medical Cloud", style="max-width: 100%;")
+        if(!noReg)
+          if(isTrial)
+            div.form-group.text-center(style="margin-top: 30px;")
+              a(href="https://doc-cirrus.com/?lang=de-DE#products")
+                em=notYetRegisteredI18n
+        hr(style="margin: 30px 0 40px; border-color: #fff;")
+        if(!noLogin)
+          .row
+            div.col-xs-10.col-xs-offset-1.col-sm-12.col-sm-offset-0.col-md-10.col-md-offset-1.col-lg-8.col-lg-offset-2
+              div#loginDelayMessage.alert.alert-danger.hidden
+              div#frmLoginContainer(data-url="/dologin?redirectTo=" + redirectTo)
+                div.form-group
+                  input#usernameField.form-control.input-sm(type='text', placeholder=i8username, name='username')
+                div.form-group
+                  input#passwordField.form-control.input-sm(type='password', placeholder=i8password,name='password')
+                case tenantId
+                  when ''
+                    div.form-group
+                      input#tenantField.form-control.input-sm(type='text', placeholder=customerNumberI18n, name='tenantId')
+                  default
+                    input#tenantField(type='hidden', placeholder=customerNumberI18n, name='tenantId', value=tenantId )
+                div.form-group
+                  if(isLdap)
+                    input.text-right#ldapField(type='checkbox')
+                    | &nbsp; LDAP
+                    a.pull-right#pwforgotten(href="#")
+                      em=pwForgottenI18n
+                  if(!isLdap)
+                    a#pwforgotten(href="#")
+                     em=pwForgottenI18n
+                div
+                  button.pull-right#doLoginBtn.btn.btn-primary.btn-sm(type='button') Login
+                  i#nfcReady.fa.fa-id-card.dc-green(style="display: none; font-size: 20px;")
+                  i#nfcNotReady.fa.fa-id-card.dc-red(style="display: none; font-size: 20px;")
+
+      //div.visible-xs.visible-sm(style="padding: 30px")
+      div.visible-sm(style="padding: 30px")
+      div.visible-md(style="padding: 10px")
+      div.col-sm-6.col-sm-pull-5.hidden-xs
+        //div(id="myCarousel", class="carousel slide", style="box-shadow:8px 8px 8px #666;")
+        div(id="myCarousel", class="carousel slide")
+          div(class="carousel-inner")
+            div(class="active item")
+              img(style="border-radius: 3px;", src="/static/DocCirrus/assets/images/aufx/Folie5.jpg", alt="inSuite 4")
+            //div(class="active item")
+              img(style="border-radius: 3px;", src="/static/DocCirrus/assets/images/aufx/Folie1.jpg", alt="Mojito InTime 1")
+            //div(class="item")
+              img(style="border-radius: 3px;", src="/static/DocCirrus/assets/images/aufx/Folie2.jpg", alt="Mojito InTime 2")
+            //div(class="item")
+              img(style="border-radius: 3px;", src="/static/DocCirrus/assets/images/aufx/Folie3.jpg", alt="Mojito InTime 3")
+            //div(class="item")
+              img(style="border-radius: 3px;", src="/static/DocCirrus/assets/images/aufx/Folie4.jpg", alt="Mojito InTime 4")
+
+  include ../../DocCirrus/views/footer
+
+  #myModal.modal.fade(tabindex="-1", role="dialog", aria-labelledby="myModalLabel", aria-hidden="true")
+    .modal-dialog(style="width: 400px")
+      .modal-content
+        .modal-header
+          button.btn(type="button", class="close", data-dismiss="modal") ×
+          h4.modal-title#myModalLabel=resetPWI18n
+        .modal-body
+          .form-group
+            label(for="username").control-label=usernameI18n
+            input#pwforgotten_username.form-control(type='text', name='username')
+        .modal-footer
+          button.btn.btn-default(type="button", data-dismiss="modal")=buttonCancelI18n
+          button#sendpwdlink.btn.btn-primary(type="button")=sendLinkI18n
+
+  #pinModal.hidden
+    p#TEXT1=text1I18n
+    .form-group.has-error.hasFeedback-container.hasFeedback.has-feedback
+      input.form-control(type='text', name='accessCode', placeholder=pinModalPlaceholderI18n)#accessCode
+    p#TEXT2=text2I18n
+
+
+script.
+  $('.carousel').carousel({
+    interval: 10000
+  });
+

@@ -1,0 +1,128 @@
+style(type="text/css").
+    .margin-left-15 {
+        margin-left: 15px;
+    }
+    .margin-top-20 {
+        margin-top: 20px;
+    }
+    .margin-top-40 {
+        margin-top: 40px;
+    }
+
+#tab_ti
+    h4(data-bind="text: tiConfigurationsTableTitle")
+    div.row.margin-top-40
+        div.col-xs-4
+            div.panel.panel-default
+                div.panel-heading
+                    h4(data-bind="text: pinOperationsHeaderI18n", style="display: inline-block")
+                    i(data-bind="click: showTiHint.bind($data, pinOperationsHintI18n)", class="dc-info-icon")
+                div.panel-body
+                    select.form-control(data-bind='options: contextInfos(), optionsText: displayCardTerminal, optionsValue: $data, value: selectedContextInfo, optionsCaption: !contextInfos().length && noContextI18n || null')
+                    br
+                    select.form-control(data-bind='options: cards, optionsText: "CardHolderName", optionsValue: "CardHandle", value: selectedCardHandle, optionsCaption: !cards().length && noSmcbI18n || null')
+                    br
+                    select.form-control(data-bind='options: pinTyp, optionsText: "display", optionsValue: "value", value: selectedPinTyp')
+                    ul.list-unstyled.margin-top-20(data-bind="foreach: availablePinOperations")
+                        button.btn.btn-default.btn-block(data-bind="text: name, click: function(data, event) { $parent.sendPinOperation($data)}, disable: !$parent.contextInfos().length || disabled()", )
+        div.col-xs-4
+            div.panel.panel-default
+                div.panel-heading
+                    h4(data-bind="text: connectorConnectionTitle", style="display: inline-block")
+                    i(data-bind="click: showTiHint.bind($data, connectorConnectionHintI18n)", class="dc-info-icon")
+                div.panel-body
+                    div.col-md-12(style="margin-bottom: 8px; margin-top: 12px")
+                        h5.panel-title(data-bind="text: connectorFQDNTitle + ':'")
+                    div.col-md-8
+                        input.form-control(name="connectorFQDN", data-bind="value: connectorFQDN, valueUpdate: 'afterkeydown'")
+                    div.col-md-2
+                        div(data-bind="template: saveConnectorFQDNButton.template")
+                    div.col-md-12(style="margin-bottom: 8px; margin-top: 12px")
+                        h5.panel-title(data-bind="text: connectionProtocolTitle + ':'")
+                    div.col-md-8
+                        div.btn-group
+                            label.btn.btn-primary(data-bind="css: {active: connectionProtocol() ==='HTTP'}")
+                                input(type="radio", value="HTTP", data-bind="checked: connectionProtocol", style="display: none")
+                                div HTTP
+                            label.btn.btn-primary(data-bind="css: {active: connectionProtocol() ==='HTTPS'}")
+                                input(type="radio", value="HTTPS", data-bind="checked: connectionProtocol", style="display: none")
+                                div HTTPS
+                    div.col-md-2
+                        div(data-bind="template: saveConnectionProtocolButton.template")
+                    div.col-md-12(data-bind="visible: connectionProtocol() === 'HTTPS'", style="margin-bottom: 8px; margin-top: 12px")
+                        h5.panel-title(data-bind="text: certificateTitle + ':'")
+                    div.col-md-12(data-bind="visible: connectionProtocol() === 'HTTPS'")
+                        h6(data-bind="text: currentCertificateI18n + ':'", style="display: inline; margin-right: 5px")
+                        h6(data-bind="text: certificateName", style="font-weight: bold; display: inline")
+                    div.col-md-12(data-bind="visible: connectionProtocol() === 'HTTPS'")
+                        div.bg-danger.text-danger(data-bind="visible: certificateName.hasError")
+                            div(data-bind="foreach: certificateName.messages")
+                                p.pl-4.pr-4.pt-4.pb-4.center-block(data-bind="text: $data" )
+                        div#uploader(data-bind="with: certificateUploaderModel")
+                            div.well
+                                div.row
+                                    div.col-md-8
+                                        input(type="file", data-bind="event: { change: function() { handleCertificate($element.files[0]) } }")
+                    //div.col-md-8
+                    //    input.form-control(name="clientCertificatePassword", type="password", data-bind="value: clientCertificatePassword, valueUpdate: 'afterkeydown', attr: {placeholder: clientCertificatePasswordI18n}")
+                    //div.col-md-2
+                    //    div(data-bind="template: saveClientCertificatePassword.template") // PASSPHRASE: Uncomment here if a passphrase is needed
+
+            div.panel.panel-default
+              div.panel-heading
+                h4(data-bind="text: ldapHeadingTitle", style="display: inline-block")
+                i(data-bind="click: showTiHint.bind($data, ldapConnectionHintI18n)", class="dc-info-icon")
+              div.panel-body
+                div.col-md-12(style="margin-bottom: 8px; margin-top: 12px")
+                  h5.panel-title(data-bind="text: ldapFQDNTitle + ':'")
+                div.col-md-8
+                  input.form-control(name="ldapFQDN", data-bind="value: ldapFQDN, valueUpdate: 'afterkeydown'")
+                div.col-md-2
+                  div(data-bind="template: saveLdapFQDNButton.template")
+                div.col-md-8
+                div.col-md-4(style="margin-bottom: 8px; margin-top: 12px; padding-right: 17px")
+                  div(data-bind="template: testLdapConnection.template")
+        div.col-xs-4
+            div.panel.panel-default
+                div.panel-heading
+                    h4(data-bind="text: statusHeaderI18n", style="display: inline-block")
+                    i(data-bind="click: showTiHint.bind($data, statusHintI18n)", class="dc-info-icon")
+                div.panel-body
+                    table
+                        tr
+                            td.col-xs-4(data-bind="text: TiStatusI18n")
+                            td.col-xs-1.fa.fa-circle(data-bind='css: vpnTiStatusColor')
+                        tr
+                            td.col-xs-4(data-bind="text: SisStatusI18n")
+                            td.col-xs-1.fa.fa-circle(data-bind='css: vpnSisStatusColor')
+            div.panel.panel-default
+                div.panel-heading
+                    h4(data-bind="text: servicesHeaderI18n", style="display: inline-block")
+                    i(data-bind="click: showTiHint.bind($data, servicesHintI18n)", class="dc-info-icon")
+                div.panel-body
+                    table
+                        tr
+                            td.col-xs-4(data-bind="text: versionsSupportedI18n")
+                            td.col-xs-1.fa.fa-circle(data-bind='css: servicesStatusColor')
+            div.panel.panel-default
+                div.panel-heading
+                    h4(data-bind='text: onlineCheckHeaderI18n', style="display: inline-block")
+                    i(data-bind="click: showTiHint.bind($data, onlineCheckHintI18n)", class="dc-info-icon")
+                div.panel-body
+                    div.row
+                        div.col-md-7
+                            select.form-control(data-bind='options: modeOnlineCheckOptions, optionsText: $data, optionsValue: $data, value: modeOnlineCheck')
+                        div.col-md-5
+                            div.pull-right(data-bind="template: saveModeOnlineCheckButton.template")
+
+
+div.panel.panel-default
+    div.panel-heading
+        h4
+            span(data-bind='text: configurationParametersHeaderI18n', style="display: inline-block")
+            i(data-bind="click: showTiHint.bind($data, configurationParametersHintI18n)", class="dc-info-icon")
+            button.pull-right.btn-link(data-bind="click: loadTiConfigurationsData", style="display: flex; align-items: center;")
+                span.glyphicon.glyphicon-repeat
+    div.panel-body
+        div.row
+            div.col-md-12(data-bind="template: tiConfigurationsTable.template")

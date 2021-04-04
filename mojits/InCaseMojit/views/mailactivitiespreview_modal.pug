@@ -1,0 +1,50 @@
+div#mailActivities
+  ul.nav.nav-tabs(data-bind="foreach: tabs")
+    li(data-bind="css: { active: isSelected }")
+      a(href="#", data-bind="click: $parent.selectedTab")
+        span(data-bind="text: title")
+  br
+  div.tab-content(data-bind="foreach: tabs")
+    div.col-xs-12.tab-pane(data-bind="css: { active: isSelected }")
+      div.form-group.row
+        div.col-xs-2
+          label.control-label(data-bind="text: mailData.to.i18n")
+        div.col-xs-5
+          input.form-control(data-bind="value: mailData.targetName")
+        div.col-xs-5
+          input.form-control(data-bind="value: mailData.to")
+      div.form-group.row
+        div.col-xs-2
+          label.control-label(data-bind="text: mailData.from.i18n")
+        div.col-xs-5
+          input.form-control(data-bind="value: mailData.from")
+        div.col-xs-5
+          input.form-control(data-bind="value: mailData.senderName")
+      div.form-group.row
+        div.col-xs-2
+          label.control-label(data-bind="text: SENDER_EMAIL")
+        div.col-xs-10
+          input.form-control(data-bind="value: mailData.from")
+      div.form-group.row
+        div.col-xs-2
+          label.control-label(data-bind="text: mailData.replyTo.i18n")
+        div.col-xs-10
+          input.form-control(data-bind="value: mailData.replyTo")
+      div.form-group.row
+        div.col-xs-2
+          label.control-label(data-bind="text: mailData.subject.i18n")
+        div.col-xs-10
+          input.form-control(data-bind="value: mailData.subject")
+      div.form-group.row
+        div.col-xs-2
+          label.control-label(data-bind="text: mailData.content.i18n")
+        div.col-xs-10
+          div.form-control(contenteditable="true"  data-bind="html: mailData.content" style="resize:both; overflow: auto; min-height: 200px;")
+      div.form-group.row
+        div.col-xs-2
+          label.control-label(data-bind="text: mailData.attachments.i18n")
+        div.col-xs-10
+          div(data-bind="foreach: mailData.attachments", style="display: flex")
+            div(style="margin-right: 0.5em; border: 1px solid #bbb; border-radius: 5px; display: flex; flex-direction: column;")
+              a(data-bind="attr: { href: fullUrl }", target="_blank")
+                img(data-bind="attr: { src: thumbUrl }", width="68", height="68", style="border-top-left-radius: 5px; border-top-right-radius: 5px;")

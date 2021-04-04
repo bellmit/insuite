@@ -1,0 +1,11 @@
+// ko if: isAfterQ42017
+div.form-group
+  div.row
+    div.col-xs-5
+      strong(data-bind="text: dmpClinicalAssessmentOfOsteoporosisRisk.i18n")
+      span(data-bind="dmpField: { field: dmpClinicalAssessmentOfOsteoporosisRisk }")
+    div.col-xs-7(data-bind="foreach: dmpClinicalAssessmentOfOsteoporosisRisk.list, hasFeedback: { field: dmpClinicalAssessmentOfOsteoporosisRisk, toggle: dmpClinicalAssessmentOfOsteoporosisRisk.hasError, messages: dmpClinicalAssessmentOfOsteoporosisRisk.validationMessages }")
+      label.checkbox-inline
+        span(data-bind="text: i18n")
+        input(type="checkbox", name="dmpClinicalAssessmentOfOsteoporosisRisk", data-bind="value: val, checked: $parent.dmpClinicalAssessmentOfOsteoporosisRisk, readOnly: $parent.dmpClinicalAssessmentOfOsteoporosisRisk.readOnly, attr: { name: $element.name + '-' + val }")
+// /ko

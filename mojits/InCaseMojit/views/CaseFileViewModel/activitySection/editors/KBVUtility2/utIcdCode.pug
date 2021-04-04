@@ -1,0 +1,12 @@
+.row
+  .col-xs-2
+    label(style="padding-top: 8px;")
+      span(data-bind="text: utIcdCode.i18n")
+      span &nbsp;
+      i.dc-info-icon(data-bind="visible: utIcdCodeIsNew, tooltip: {title: 'Wird beim Speichern erstellt!', placement: 'top', trigger:'click'}")
+  .col-xs-2
+    .form-group
+      input.form-control(name="icdCode1CatalogSelect2", type="hidden", data-bind="attr: { placeholder: placeholderDiagnosisI18n }, select2: icdCode1CatalogSelect2, readOnly: utIcdCode.readOnly")
+  .col-xs-8
+    div.form-group
+      input.form-control(name="utIcdText", placeholder="", data-bind="textInput: utIcdText, readOnly: utIcdText.readOnly")

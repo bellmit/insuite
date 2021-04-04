@@ -1,0 +1,12 @@
+div#formTreeContainer
+  div.form-group
+    input.form-control.form-control-search(data-bind="value: formSearchText, valueUpdate: 'afterkeydown', attr: { placeholder: formSearchPlaceholder }")
+
+  div.row
+    div.col-lg-5
+      div(data-bind="template: formsTreeUser.tree.template")
+    div.col-lg-1
+
+    div.col-lg-5
+      div(data-bind="template: formsTreeDefault.tree.template")
+    div.col-lg-1

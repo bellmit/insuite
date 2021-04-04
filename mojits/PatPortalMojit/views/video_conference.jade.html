@@ -1,0 +1,38 @@
+div(id=mojit_view_id)
+  div(style="background-color: #ffffff; width: 100%; height: 100%")
+    block#mainVCNavigation
+      .navbar.navbar-default.margin-bottom-small(role="navigation")
+        .container.container-fullscreen
+          .navbar-header
+            button(type="button", data-bind="attr:{title:menuI18n}", data-toggle="collapse", data-target=".navbar-ex1-collapse").navbar-toggle
+              span.sr-only
+              span.icon-bar
+              span.icon-bar
+              span.icon-bar
+            a.navbar-brand(href="", data-bind="click: openInNewTab, text: patientPortalTitleI18n")
+            a.pull-right.navbar-brand(data-toggle="tooltip", href="", data-bind="click: openInNewTab, attr: {title: openInNewTabI18n}")
+              span &nbsp;
+                img( src="/static/dcbaseapp/assets/img/doccirrus/fullscreen20x20.png" )
+              span &nbsp;
+          .navbar-collapse.collapse.navbar-ex1-collapse
+            ul.nav.navbar-nav( data-bind="foreach: elements", style="border-bottom: none;" )
+              li(data-bind="css: { active: isActive, disabled: isDisabled, hasImg: imgSrc }")
+                a(data-bind="attr:{ href: url }, visible: !isHidden() && !isDisabled(), click: $parent.collapseNavigation")
+                 span( data-bind="text: title" )
+                 span( data-bind="if: imgSrc")
+                  img( data-bind="attr: { src: imgSrc }", role='button' )
+    .container.container-fullscreen
+      #upperDiv
+        block content
+
+    block#vcFooter
+      nav.navbar.navbar-default.navbar-fixed-bottom(role="navigation")
+        #footer
+          .container.container-fullscreen
+            .col-xs-8
+              em(data-bind="text: poweredByI18n")
+              br
+              b(data-bind="html: termsOfUseI18n")
+            .col-xs-4
+              a(href="http://doc-cirrus.com",target="_blank").pull-right
+                #logoContainer

@@ -1,0 +1,8 @@
+div.col-xs-6.form-group(data-bind="hasFeedback: { field: dmpPlannedDateForNextDocumentation, toggle: dmpPlannedDateForNextDocumentation.hasError, messages: dmpPlannedDateForNextDocumentation.validationMessages }")
+    div.row
+        div.col-xs-6
+            label.control-label
+                span(data-bind="text: dmpPlannedDateForNextDocumentation.i18n")
+                span(data-bind="dmpField: { field: dmpPlannedDateForNextDocumentation }")
+        div.col-xs-6.date-picker.input-group
+            input.form-control(name="dmpPlannedDateForNextDocumentation", data-bind="datetimepicker: { value: dmpPlannedDateForNextDocumentation }, readOnly: dmpPlannedDateForNextDocumentation.readOnly")

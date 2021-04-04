@@ -1,0 +1,7 @@
+div.form-group
+  strong(data-bind="text: dmpAsthmaRelatedNightSleepDisorder_4_44.i18n")
+  span(data-bind="dmpField: { field: dmpAsthmaRelatedNightSleepDisorder_4_44 }")
+  div(data-bind="foreach: dmpAsthmaRelatedNightSleepDisorder_4_44.list, hasFeedback: { field: dmpAsthmaRelatedNightSleepDisorder_4_44, toggle: dmpAsthmaRelatedNightSleepDisorder_4_44.hasError, messages: dmpAsthmaRelatedNightSleepDisorder_4_44.validationMessages }")
+    label.radio-inline
+      span(data-bind="text: i18n")
+      input(type="radio", name="dmpAsthmaRelatedNightSleepDisorder_4_44", data-bind="value: val, checked: $parent.dmpAsthmaRelatedNightSleepDisorder_4_44, readOnly: $parent.dmpAsthmaRelatedNightSleepDisorder_4_44.readOnly")

@@ -1,0 +1,7 @@
+div.form-group
+  strong(data-bind="text: dmpRegularWeightControlRecommended.i18n")
+  span(data-bind="dmpField: { field: dmpRegularWeightControlRecommended }")
+  div(data-bind="foreach: dmpRegularWeightControlRecommended.list, hasFeedback: { field: dmpRegularWeightControlRecommended, toggle: dmpRegularWeightControlRecommended.hasError, messages: dmpRegularWeightControlRecommended.validationMessages }")
+    label.checkbox-inline
+      span(data-bind="text: i18n")
+      input(type="checkbox", name="dmpRegularWeightControlRecommended", data-bind="value: val, checked: $parent.dmpRegularWeightControlRecommended, readOnly: $parent.dmpRegularWeightControlRecommended.readOnly, attr: { name: $element.name + '-' + val }")

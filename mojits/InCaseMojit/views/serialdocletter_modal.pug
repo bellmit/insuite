@@ -1,0 +1,5 @@
+div
+  div.progress(data-bind="visible: showProgressBar")#mailMergeProgress
+    div.progress-bar(role="progressbar",aria-valuemin="0",aria-valuemax="100",data-bind="attr: { 'aria-valuenow': progressBarValue }, style: { width: progressBarWidth }, html: progressBarValue() + '%'")
+  div(data-bind="html: resultDisplay")#divMailMergeResult
+  div(data-bind="html: zipDownload")

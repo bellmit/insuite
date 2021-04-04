@@ -1,0 +1,11 @@
+{
+    "name": "The Doc Cirrus API",
+    "description": "The Doc Cirrus API",
+    "version": "1.6.0",
+    "url": "http://insuite.dev.dc",
+    "logo": "http://insuite.dev.dc/static/dcbaseapp/assets/img/doccirrus/insuite40x40.png",
+    "options": {
+        "tabtospace": 4,
+        "themedir": "./yuidoc/theme"
+    }
+}

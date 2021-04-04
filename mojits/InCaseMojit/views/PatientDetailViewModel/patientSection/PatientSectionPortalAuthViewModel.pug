@@ -1,0 +1,31 @@
+div.PatientSectionPortalAuthViewModel
+  h4(data-bind="text: portalRightsI18n")
+  // ko if: isVisiblePortal
+  div(data-bind="visible: isVisiblePortal")
+    div.panel.panel-default
+      div.panel-body
+        h4(data-bind="text: groupAppoinmentsI18n")
+        .checkbox
+          label
+            input(name="display_create_planned", type="checkbox", data-bind="checked: createPlanned, readOnly: createPlanned.readOnly")
+            span(data-bind="text: createPlanned.i18n")
+    div.panel.panel-default
+      div.panel-body
+        h4(data-bind="text: groupDocumentsI18n")
+        .checkbox
+          label
+            input(name="display_access_prc", type="checkbox", data-bind="checked: accessPRC, readOnly: accessPRC.readOnly")
+            span(data-bind="text: accessPRC.i18n")
+  // /ko
+  div(data-bind="foreach: isVisiblePortalMessages")
+    div.alert.alert-warning
+      b(data-bind="text: $data")
+  div.panel.panel-default
+    div.panel-body
+      div.row
+        div.col-xs-12.col-sm-12.col-md-12.col-lg-8
+          h4(data-bind="text: registeredDevicesI18n")
+          #registeredDevicesTable(data-bind="template: registeredDevicesTable.template")
+      div.row
+        div.col-md-12
+          span(data-bind="template: deleteDeviceKeys.template")

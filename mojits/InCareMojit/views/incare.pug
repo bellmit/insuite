@@ -1,0 +1,17 @@
+h3(data-bind="text: inCareHeadlineI18n")
+hr
+.row
+    .col-sm-12.col-md-8.col-md-offset-2.col-lg-6.col-lg-offset-0
+        h4(data-bind="text: inCareHeadingI18n")
+        div.panel.panel-default
+            div.panel-body
+                div.form-group
+                    div.checkbox
+                        label.control-label
+                            input(type="checkbox", data-bind="checked: isRestoreFromISCD, click: showRestoreFromISDCNotice, valueUpdate: 'afterkeydown'")
+                            strong(data-bind="text: inCareCheckBoxI18n")
+
+.row
+    .col-sm-12.col-md-8.col-md-offset-2.col-lg-6.col-lg-offset-0
+        .dc-action-buttons.dc-action-buttons-right#actionButtons
+            button.btn.btn-primary#saveBtn(type="button", data-bind="click: saveSettings, text: inCareButtonSaveI18n")

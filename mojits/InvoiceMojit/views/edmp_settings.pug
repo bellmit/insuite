@@ -1,0 +1,19 @@
+#edmp_settings
+  div.row
+    div.col-md-6(data-bind="with: sddaTable")
+      h3 SDDA Übersicht
+      .col-xs-12(data-bind="template: template")
+    div.col-md-6(data-bind="with: extSddaTable")
+      h3
+        span SDDA Erweiterung
+        span.pull-right.glyphicon.glyphicon-plus(aria-hidden="true", data-bind="click: $parent.addExtEntry")
+        span.pull-right.glyphicon.glyphicon-edit(aria-hidden="true", data-bind="visible: $parent.extSddaTableHasOneSelection, click: $parent.editExtEntry")
+        span.pull-right.glyphicon.glyphicon-minus(aria-hidden="true", data-bind="visible: $parent.extSddaTableHasSelection, click: $parent.removeExtEntry")
+
+      .col-xs-12(data-bind="template: template")
+
+  include qdocu_settings
+  //div.row
+  //  div.col-sm-12
+  //    div.dc-action-buttons.dc-action-buttons-right(data-bind="with: actions")
+  //      button.btn.btn-primary(name="saveBtn", type="button", data-bind="enable: saveInvoiceconfigurationAndDeliverysettingsEnable, click: saveInvoiceconfigurationAndDeliverysettings") #{__i18n('general.button.SAVE')}

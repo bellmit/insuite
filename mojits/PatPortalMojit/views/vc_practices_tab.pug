@@ -1,0 +1,63 @@
+div.container.container-fullscreen#vcPractices
+  div(data-bind="if: isReady() && 0 === practices().length")
+    p(data-bind="text: noDoctorsI18n")
+    p
+      em
+        small(data-bind="text: talkToDoctorHintI18n")
+  div(data-bind="foreach: practices")
+    div.panel.panel-info(data-bind="attr:{ id: 'practice-' + customerIdPrac }", dc-panel="prac_panel", dc-panel-actions="minimize")
+      div.panel-heading
+        h4.clearfix
+          span(data-bind="text: coname")
+          span(data-bind="if: $data.prcOffline ")
+            span.text-danger.pull-right(data-bind="text: $parent.textOfflineI18n")
+      div.panel-body#prac_panel
+        div(data-bind="if: $data.prcOffline")
+          span(data-bind="text: $parent.practiceOfflineI18n")
+        //ko if: !$data.prcOffline && $data.onlyPracticesPatientsCanBook && ( $data.noPRC || !$data.createPlanned )
+        div
+          span(data-bind="text: $parent.bookingIsBlockedI18n")
+        // /ko
+        //ko ifnot: $data.onlyPracticesPatientsCanBook && ( $data.noPRC || !$data.createPlanned )
+        div(data-bind="foreach: locations")
+          div.row.inner-panel-entry
+            div.col-xs-12
+              h4(data-bind="text: $root.locationI18n + ' ' + locname")
+              hr
+              div.row
+                div.col-sm-12.col-lg-12.col-xs-12
+                  p
+                    i.icon.icon-home.icon-2x
+                    span(data-bind="attr:{ id: _id }, text: street + ' ' + houseno" )
+                    span(data-bind="text: ', ' + zip + ' ' + city")
+                  p
+                    i.icon.icon-phone.icon-2x
+                    span(data-bind="text: phone")
+                  p(data-bind="text: $root.openTimesI18n")
+                  .table-responsive
+                    table.table.table-bordered
+                      thead
+                        tr(data-bind="foreach: openDays")
+                          th(data-bind="text: alias")
+                      tbody
+                        tr(data-bind="foreach: openDays")
+                          td
+                            // ko if: '-' === $data.times[0]
+                            span(data-bind="text: times[0]")
+                            // /ko
+                            // ko ifnot: '-' === $data.times[0]
+                            // ko foreach: times
+                            span(data-bind="text: start")
+                            | &nbsp;-&nbsp;
+                            span(data-bind="text: end")
+                            br
+                            // /ko
+                            // /ko
+                  div.row
+                    div.col-xs-12
+                      p(data-bind="text: $root.calendarI18n")
+                    div.col-xs-6
+                      input.form-control(name="calendar", type="hidden", data-bind="select2: select2Calendar")
+                    div.col-xs-6(data-bind="if: calendars.length")
+                      button.btn.btn-primary.btn-block(data-bind="click: makeAppointment, text: $root.appointmentI18n")
+        // /ko

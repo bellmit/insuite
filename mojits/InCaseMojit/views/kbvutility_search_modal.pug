@@ -1,0 +1,55 @@
+#kbvutilitymodal
+  .nav.nav-pills(style="margin-bottom: 8px;")
+    li(data-bind="css: {active: -1 !== filterBySubTypes().indexOf('PHYSIO')}")
+      a(href="#", data-bind="click: onSubTypeClick.bind( null, 'PHYSIO')", style="padding: 0px 8px;") PHYSIO
+    li(data-bind="css: {active: -1 !== filterBySubTypes().indexOf('ERGO')}")
+      a(href="#", data-bind="click: onSubTypeClick.bind( null, 'ERGO')", style="padding: 0px 8px;") ERGO
+    li(data-bind="css: {active: -1 !== filterBySubTypes().indexOf('ET')}")
+      a(href="#", data-bind="click: onSubTypeClick.bind( null, 'ET')", style="padding: 0px 8px;") ET
+    li(data-bind="css: {active: -1 !== filterBySubTypes().indexOf('LOGO')}")
+      a(href="#", data-bind="click: onSubTypeClick.bind( null, 'LOGO')", style="padding: 0px 8px;") LOGO
+  .row
+    .col-xs-5
+      .form-group
+        input.form-control(name="indicationSearch", data-bind="textInput: indicationSearch, hasFocus: true, attr: { placeholder: indicationChapterSearchI18n }")
+    .col-xs-3
+      div(data-bind="if: searchByCatalog")
+        .form-group(data-bind="hasFeedback: { field: icd, toggle: icd.toggle, messages: icd.validationMessages, popover: {placement: 'bottom'}, type: icd.toggleType }")
+          input.form-control(name="select2Code", type="hidden", data-bind="attr: { placeholder: placeholderDiagnosisI18n }, select2: select2Code, readOnly: icd.readOnly")
+      div(data-bind="ifnot: searchByCatalog")
+        .form-group(data-bind="hasFeedback: { field: icd, toggle: icd.toggle, messages: icd.validationMessages, popover: {placement: 'bottom'}, type: icd.toggleType }")
+          input.form-control(name="select2CodeIndicationSet", type="hidden", data-bind="attr: { placeholder: diagnosisByIndicationI18n }, select2: select2CodeIndicationSet, readOnly: icd.readOnly")
+    .col-xs-3
+      div(data-bind="if: searchByCatalog")
+        .form-group(data-bind="hasFeedback: { field: icd2, toggle: icd2.toggle, messages: icd2.validationMessages, popover: {placement: 'bottom'}, type: icd2.toggleType }")
+          input#icd2_1_Select2.form-control(name="select2Code2", type="hidden", data-bind="attr: { placeholder: secondaryDiagnosisI18n }, select2: select2Code2Catalog, readOnly: icd2.readOnly")
+      div(data-bind="ifnot: searchByCatalog")
+        .form-group(data-bind="hasFeedback: { field: icd2, toggle: icd2.toggle, messages: icd2.validationMessages, popover: {placement: 'bottom'}, type: icd2.toggleType }")
+          input#icd2_2_Select2.form-control(name="select2Code2", type="hidden", data-bind="attr: { placeholder: secondaryDiagnosisI18n }, select2: select2Code2, readOnly: icd2.readOnly")
+  .row
+    div.col-xs-12
+      div.checkbox-inline
+        div.form-group(data-bind="hasFeedback: { field: normalCase, toggle: normalCase.toggle, messages: normalCase.validationMessages, type: 'warning', popover: {placement: 'bottom'} }")
+          label.control-label
+            strong(data-bind="text: labelDefaultI18n")
+            input(type="checkbox", name="normalCase", data-bind="checked: noNormalCase")
+      div.checkbox-inline
+        div.form-group
+          label.control-label
+            strong(data-bind="text: filterByUtAgreementI18n")
+            input(type="checkbox", name="searchByAgreement", data-bind="checked: searchByAgreement")
+  .row
+    .col-xs-5
+      div(data-bind="if: chapters() && chapters().length")
+        div(data-bind="foreach: chapters")
+          div(data-bind="text: chapter")
+          ul(data-bind="foreach: subChapters", style="padding-left: 18px;")
+            li(data-bind="text: subChapter")
+            ul(data-bind="foreach: subSubChapters", style="padding-left: 18px;")
+              li(data-bind="text: subSubChapter")
+              ul(data-bind="foreach: data", style="padding-left: 18px;")
+                li(data-bind="style: {cursor: 'pointer', 'background-color': $root.seq() === seq ? '#ccc' : '#fff'}, click: $root.selectIndication, text: (leitsymptomatik_value ? (leitsymptomatik_value + ' ') : '') + leitsymptomatik_name")
+      div(data-bind="if: !chapters() || !chapters().length")
+        span(data-bind="text: noRecordsI18n")
+    .col-xs-7(data-bind="with: selectedIndication")
+      include kbvutility_search_modal_detail

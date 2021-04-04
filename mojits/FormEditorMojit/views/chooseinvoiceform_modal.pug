@@ -1,0 +1,15 @@
+div#divSelInvoiceForm
+  table(noborder="noborder",width="100%",height="800px")
+    tr
+      td(width="300px",valign="top",height="700px")
+        div.form-group
+          input.form-control(type="hidden", data-bind="select2: select2FormDC", name="formId")
+        div.form-group
+          input.form-control(type="hidden", data-bind="select2: select2FormPRAC", name="formId")
+
+        div#divInvoiceFormHint
+          p(data-bind="text: labelExplanationsI18n")
+      td(width="10px")
+      td(valign="top",height="800px")
+        div#divFormRender
+          img(src="/static/DocCirrus/assets/images/ajax-loader.gif")

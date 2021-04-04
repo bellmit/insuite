@@ -1,0 +1,34 @@
+include SimpleActivity
+// ko ifnot: hideInput
+div.row
+  div.col-md-2
+    div.col-md-12
+      label.radio-inline( style="margin-top: 15px;")
+        span(data-bind="text: titleDebitI18n")
+        input(type="radio", name="cashOperationTypeRadio", value= "debit", data-bind="checked: cashOperationType")
+    div.col-md-12
+      label.radio-inline( style="margin-left: 0px;")
+        span(data-bind="text: titleCreditI18n")
+        input(type="radio", name="cashOperationTypeRadio", value= "credit", data-bind="checked: cashOperationType")
+  div.col-md-2
+    b(data-bind="text: titleAmountI18n")
+    div.form-group(data-bind="hasFeedback: { field: amount, toggle: amount.hasError, messages: amount.validationMessages }")
+      input.form-control(name="amount", type="text", data-bind="value: _displayAmount, disable: lockInput" )
+  // ko if: showPaymentMethod
+  div.col-md-3
+    b(data-bind="text: titlePaymentMethodI18n")
+    div.form-group
+      select.form-control(name="paymentMethod", data-bind="disable: lockInput, options: paymentMethodList, optionsValue: 'value', optionsText: 'text', value: paymentMethod")
+  // ko if: showCashbook
+  div.col-md-3
+    b(data-bind="text: titleCashbookI18n")
+    div.form-group(data-bind="highlightError: cashbookId")
+      select.form-control(name="cashbook", data-bind="options: cashbookList, optionsValue: 'value', optionsText: 'text', value: cashbookId")
+  // /ko
+  // /ko
+div.row
+  div.col-md-3
+    i( data-bind="text: invoiceLinkText" )
+  div.col-md-3
+    i( data-bind="text: incashNo" )
+// /ko

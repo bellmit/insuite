@@ -1,0 +1,15 @@
+
+div
+  .row
+    .col-xs-12
+      h4(data-bind="hasFeedback: { field: ut2DiagnosisGroupCode, toggle: ut2DiagnosisGroupCode.hasError, messages: ut2DiagnosisGroupCode.validationMessages }")
+        span(data-bind="text: displayDiagnosisGroup")
+        span &nbsp;
+        a.KoTableSelectEditButton(name="kbvutility-diagnosisgroup-edit-element", href="#", data-bind="visible: diagnosisGroupSelect.canEdit && !ut2DiagnosisGroupCode.readOnly(), click: diagnosisGroupSelect.toggleEditModel.bind(diagnosisGroupSelect), tooltip: {title: 'Diagnosegruppe ändern'}")
+          span.fa.fa-pencil
+        span &nbsp;
+        span.glyphicon.glyphicon-certificate(style="color: #5cb85c", data-bind="visible: hasDiagnosisGroupNeed, tooltip: {title: agreementCandidatesDisplay}")
+
+  .row
+    .col-xs-12
+      div(data-bind="template: diagnosisGroupSelect.template")

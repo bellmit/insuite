@@ -1,0 +1,4 @@
+externalPrescriptionSoftware:
+  command:
+    enable: sudo dc-mmi-disable && sudo dc-fhir-enable
+    disable: sudo dc-mmi-enable && sudo dc-fhir-disable

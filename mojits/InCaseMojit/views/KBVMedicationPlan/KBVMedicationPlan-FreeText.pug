@@ -1,0 +1,11 @@
+// ko ifnot: editMode
+i(data-bind="text: freeText")
+// /ko
+// ko if: editMode
+.row
+  .col-sm-9
+    div.form-group(data-bind="hasFeedback: { field: freeText, toggle: freeText.hasError, messages: freeText.validationMessages }")
+      input.form-control(data-bind="textInput: freeText, readOnly: freeText.readOnly")
+  .col-sm-3.text-right
+    include KBVMedicationPlan-EditingButtons
+// /ko

@@ -1,0 +1,23 @@
+div#AddDocumedisIframe
+    form(action="https://documedis.hcisolutions.ch/2018-01/app/medication/medicationplan"
+        method="post"
+        target="documedis-iframe"
+        id="documedis-form"
+        name="documedis-form" )
+        input(type="hidden" id="post2documedis_access_token" name="access_token" value="C6B345E6-9A3B-4BFF-A4C3-36E7A12C22F2")
+        input(type="hidden" id="post2documedis_Accept" name="Accept" value="text/html")
+        input(type="hidden" id="post2documedis_Accept-Language" name="Accept-Language" value="de-CH")
+        input(type="hidden" id="post2documedis_HCI-CustomerId" name="HCI-CustomerId" value="447476")
+        input(type="hidden" id="post2documedis_HCI-Index" name="HCI-Index" value="medINDEX")
+        input(type="hidden" id="post2documedis_HCI-SoftwareOrgId" name="HCI-SoftwareOrgId" value="447476")
+        input(type="hidden" id="post2documedis_HCI-SoftwareOrg" name="HCI-SoftwareOrg" value="Doc Cirrus GmbH")
+        input(type="hidden" id="post2documedis_HCI-Software" name="HCI-Software" value="Doc Cirrus")
+        input(type="hidden" id="post2documedis_HCI-UserAccessType" name="HCI-UserAccessType" data-bind="value: accessType")
+        //ko ifnot: sendTypeOnly
+        input(type="hidden" id="post2documedis_HCI-UserAuthenticationLevel" name="HCI-UserAuthenticationLevel" data-bind="value: authLevel")
+        input(type="hidden" id="post2documedis_HCI-UserHealthProfession" name="HCI-UserHealthProfession" data-bind="value: employeeType")
+        // /ko
+        input( type="hidden" id="post2documedis_documedisJSON" name="documedisJSON" data-bind="value:documedis")
+    div.iframe
+        iframe(name="documedis-iframe" src="https://documedis.hcisolutions.ch/2018-01/app/medication/medicationplan",
+            sandbox="allow-same-origin allow-scripts allow-top-navigation allow-popups allow-forms" data-bind="attr:{onload: onIframeLoaded()}")

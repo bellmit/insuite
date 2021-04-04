@@ -1,0 +1,49 @@
+div#ivImageControls
+
+  div#divCameraControls(style="display:none;")
+    div#divUserMediaMsg
+      span#spanMsgAllow
+        span(data-bind="text: pleaseApproveWebcamI18n")
+    video(width="520",height="400",style="display:none;")#vidStream
+    canvas(width="520",height="400",style="display:none;")#canvasFrame
+    button.btn.btn-primary(style="display:none;", data-bind="text: btnBackI18n")#btnSnapshotBack
+    button.btn.btn-primary(style="display:none;", data-bind="text: btnSnapshotI18n")#btnSnapshot
+
+
+  div#divUploadControls
+    form(action="/1/media/:upload",method="POST",target="saveTarget",enctype="multipart/form-data")#frmSingleImg
+        input(type="hidden", name="setId", value="").setId
+        input(type="hidden",name="ownerCollection",value="test")#hdnOwnerCollection
+        input(type="hidden",name="ownerId",value="test")#hdnOwnerId
+        input(type="hidden",name="label",value="logo")#hdnLabel
+
+        .row
+            .col-md-11.col-md-offset-1
+                  h4(data-bind="text: lblPreviewI18n")
+
+        .row
+            .col-md-4.col-md-offset-1
+                  .showbox#imgPreviewDiv
+                      img(src="")#imgPreview.img-thumbnail
+                      img(src="/static/FormEditorMojit/assets/images/throbber.gif",style="position: absolute; display: none;")#imgThrobber.img-thumbnail
+                  a.btn#btnCamera
+                    i.fa.fa-camera
+
+            .col-md-5
+
+                  div#divSelAttachedImg
+                    select.form-control#selAttachedImg
+
+                  em
+                    u(data-bind="text: uLogoFormatI18n")
+                    span(data-bind="text: lblLogoFormatI18n")
+                  hr
+                  label(for="fileUploadBox",style="display: none;")
+                    input(type="file",name="myFile")#fileUploadBox
+                    input(type="submit")#btnSubmitLegacy
+                  input(type='file', accept='image/*', capture='camera', name="myFile", style="width:300px;",width="300px")#fileSelect
+                  input(type="hidden", name="filename", value="")#txtFilename
+                  a.btn.btn-small#btnReset(data-bind="text: btnResetI18n")
+
+
+                  iframe(name="saveTarget",width="10px",height="10px",frameborder="0")#ifSaveTarget

@@ -1,0 +1,24 @@
+#tab_contacts_overview
+  h3(data-bind="text: menuitemContactsI18n")
+  div(style="position: absolute; right: 0; top: 0;")
+    button.btn.btn-sm.btn-default(
+    name="toggleFullScreen", type="button", data-bind="click: toggleFullScreenHandler, attr: { title: viewPortBtnI18n }",
+    style="margin-top: 10px; margin-right: 10px;"
+    )
+      span.fa.fa-arrows-alt
+  #contactsTable(data-bind="template: contactsTable.template")
+  div.pull-right
+    span(data-bind="template: createSerialEMail.template, fadeVisible: isTaskSelected")
+    | &nbsp;
+    button#tab_contacts_overview-button-deleteContact.btn.btn-default(name="deleteContact", type="button", data-bind="click: deleteContact, disable: deleteContactDisabled")
+      span.glyphicon.glyphicon-minus
+      span(data-bind="text: ' ' + buttonDeleteI18n")
+    | &nbsp;
+    div.btn-group.dropup
+      button#tab_contacts_overview-button-createContact.btn.btn-primary.dropdown-toggle(name="createContact", type="button", data-toggle="dropdown", data-bind="disable: createContactDisabled")
+        span.glyphicon.glyphicon-plus
+        span(data-bind="text: ' ' + buttonCreateI18n + ' '")
+        span.caret
+      ul.dropdown-menu(role="menu", data-bind="foreach: baseContactTypes")
+        li(data-bind="style: style")
+          a(data-bind="text: text, click: $parent.createContact")

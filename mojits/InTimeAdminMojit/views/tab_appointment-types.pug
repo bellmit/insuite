@@ -1,0 +1,193 @@
+#tab_appointment-types
+  h4(data-bind="text: headlineI18n")
+  hr
+  // ko ifnot: editing
+  div.row
+    div.col-xs-12
+      div.form-group
+        button#tab_appointment-types-add.btn.btn-primary(name="tab_appointment-types-add", type="button", data-bind="click: addItem")
+          span.fa.fa-plus
+          span(data-bind="text: ' ' + buttonAddI18n")
+  div.row
+    div.col-xs-12
+      div(data-bind="foreach: items")
+        .panel.panel-default
+          div.panel-heading(data-bind="style: {'color': $parent.getForegroundColor($data.color), 'background-color': $data.color, 'background-image': $parent.getBackgroundImage()}")
+            h3.panel-title.clearfix
+              span(data-bind="text: name", style="line-height: 1.4;")
+              span.pull-right
+                button.btn.btn-link(name="tab_appointment-types-editItem", type="button", data-bind="click: $parent.editItem, style: {'color': $parent.getForegroundColor($data.color)}", style="padding: 0; margin: 0;")
+                  span.fa.fa-edit
+                // ko ifnot: $parent.isStandardId(_id)
+                span(style="display: inline-block; height: 14px; margin: 0 4px; vertical-align: middle; border-right: 1px solid #ddd;")
+                button.btn.btn-link(name="tab_appointment-types-confirmDeleteItem", type="button", data-bind="click: $parent.confirmDeleteItem, style: {'color': $parent.getForegroundColor($data.color)}", style="padding: 0; margin: 0;" )
+                  span.fa.fa-trash
+                // /ko
+          div.panel-body
+            dl.dl-horizontal(style="margin-bottom: 0")
+              dt(style="width: 175px;", data-bind="text: $parent.healthPortalI18n")
+              dd
+                // ko if: isPublic
+                span.text-success
+                  span.fa.fa-unlock
+                  span(data-bind="text: ' ' + $parent.visibleTextI18n")
+                // /ko
+                // ko ifnot: isPublic
+                span.text-danger
+                  span.fa.fa-lock
+                  span(data-bind="text: ' ' + $parent.notVisibleTextI18n")
+                // /ko
+                | &nbsp;
+              dt(style="width: 175px;", data-bind="text: $parent.appointmentsDurationI18n")
+              dd
+                span(data-bind="text: duration")
+                span(data-bind="text: ' ' + $parent.appointmentsMinutesI18n")
+                | &nbsp;
+              dt(style="width: 175px;", data-bind="text: $parent.appointmentsInformationI18n")
+              dd
+                span(data-bind="text: info")
+                | &nbsp;
+              dt(style="width: 175px;", data-bind="text: $parent.appointmentsTypeI18n")
+              dd
+                span(data-bind="text: $parent.getTypeForItem($data)")
+                | &nbsp;
+              // ko if: capacity
+              dt(style="width: 175px;", data-bind="text: $parent.appointmentsCapacityI18n")
+              dd
+                span(data-bind="text: capacity")
+                // ko if: isPreconfigured
+                | &nbsp;
+                span(data-bind="text: $parent.appointmentsPreconfiguredI18n")
+                // /ko
+                | &nbsp;
+              // /ko
+              dt(style="width: 175px;", data-bind="text: $parent.numberOfSuggestedAppointmentsI18n")
+              dd
+                br
+                span(data-bind="text: numberOfSuggestedAppointments")
+                | &nbsp;
+              dt(style="width: 175px;", data-bind="text: $parent.noPatientMessageShortI18n")
+              dd
+                span(data-bind="text: noPatientMessage ? $parent.noI18n : $parent.yesI18n")
+                | &nbsp;
+              dt(style="width: 175px;", data-bind="text: $parent.appointmentsACalI18n")
+              dd
+                // ko if: $parent.isStandardId(_id)
+                em(data-bind="text: $parent.appointmentsValidAllI18n")
+                // /ko
+                // ko ifnot: $parent.isStandardId(_id)
+                span(data-bind="text: $parent.displayCalendarNames(calendarRefs)")
+                // /ko
+                | &nbsp;
+              // ko if: requiredResources && requiredResources.length
+              dt(style="width: 175px;", data-bind="text: $parent.requiredResourcesI18n + ':'")
+              dd
+                span(data-bind="text: $parent.displayResourcesComputed(requiredResources)")
+                | &nbsp;
+              // /ko
+  div.row(data-bind="visible: items().length>4")
+    div.col-xs-12
+      div.form-group
+        button#tab_appointment-types-add-bottom.btn.btn-primary(name="tab_appointment-types-add-bottom", type="button", data-bind="click: addItem")
+          span.fa.fa-plus
+          span(data-bind="text: ' ' + buttonAddI18n")
+  // /ko
+  // ko if: editing
+  div.row
+    div.col-xs-12
+      div#tab_appointment-types-editing.panel.panel-default(data-bind="with: editing")
+        div.panel-heading(data-bind="style: {'background-color': color, 'background-image': $parent.getBackgroundImage() }")
+          h3.panel-title.clearfix
+            span.form-inline(data-bind="highlightError: name")
+              input.form-control.input-sm(name="name", type="text", data-bind="textInput: name, hasFocus: isNew(), attr: {placeholder: $parent.appointmentsNamePlaceholderI18n}", style="display: inline-block; width: auto;")
+            span.pull-right
+              button.btn.btn-link(name="tab_appointment-types-closeEditingItem", type="button", data-bind="click: $parent.closeEditingItem, hasFocus: !isNew(), style: {'color': $parent.getForegroundColor(color)}", style="padding: 0; margin: 0;")
+                span.fa.fa-remove
+        div.panel-body
+          div.row
+            div.col-md-6
+              .form-horizontal
+                div.form-group
+                  label.col-sm-5.control-label(for="tab_appointment-types-isPublic", data-bind="text: $parent.healthPortalI18n")
+                  .col-sm-7
+                    .checkbox
+                      label(data-bind="attr: {title: $parent.appointmentsAppTypeI18n}")
+                        input#tab_appointment-types-isPublic(name="isPublic", type="checkbox", data-bind="checked: isPublic")
+                        span(data-bind="css: { 'text-success': isPublic(), 'text-danger': !isPublic() }")
+                          // ko if: isPublic
+                          span.fa.fa-unlock
+                          span(data-bind="text: ' ' + $parent.appointmentsIsPublicTrueI18n")
+                          // /ko
+                          // ko ifnot: isPublic
+                          span.fa.fa-lock
+                          span(data-bind="text: ' ' + $parent.appointmentsIsPublicFalseI18n")
+                          // /ko
+                div.form-group
+                  .row
+                    .col-xs-4.col-sm-offset-5
+                      input#tab_appointment-types-type.form-control(name="type", type="hidden", data-bind="select2: typeSelect2")
+                    .col-xs-1(style="padding-left: 0px")
+                      i.dc-info-icon(data-bind="click: showTypesDescription", style="font-size: 15px")
+                div.form-group(data-bind="hasFeedback: { field: duration, toggle: duration.hasError, messages: duration.validationMessages }")
+                  label.col-sm-5.control-label(for="tab_appointment-types-duration", data-bind="text: $parent.appointmentsDurationInMinutesI18n, attr: {title: $parent.appointmentsAutoDurationI18n}")
+                  .col-sm-7
+                    input#tab_appointment-types-duration.form-control(name="duration", type="text", data-bind="textInput: duration")
+                div.form-group(data-bind="hasFeedback: { field: capacity, toggle: capacity.hasError, messages: capacity.validationMessages }")
+                  label.col-sm-5.control-label(for="tab_appointment-types-capacity", data-bind="text: $parent.appointmentsCapacityI18n")
+                  .col-sm-7
+                    .row
+                      .col-xs-4
+                        input#tab_appointment-types-capacity.form-control(name="capacity", type="text", data-bind="textInput: capacity")
+                      .col-xs-8
+                        div.form-control-static(data-bind="text: $parent.appointmentsNoCapacityI18n")
+                div.form-group
+                  .col-sm-offset-5.col-sm-7
+                    .checkbox
+                      label(data-bind="attr: {title: $parent.appointmentsOnlyPreconI18n}")
+                        input(name="isPreconfigured", type="checkbox", data-bind="checked: isPreconfigured")
+                        span(data-bind="text: $parent.appointmentsPreconfiguredI18n")
+                div.form-group
+                  .col-sm-offset-5.col-sm-7
+                      .checkbox
+                        input(name="noPatientMessage", type="checkbox", data-bind="checked: noPatientMessageDisplay")
+                        span(data-bind="text: $parent.noPatientMessageI18n")
+            div.col-md-6
+              .form-horizontal
+                div.form-group
+                  label.col-sm-5.control-label(for="tab_appointment-types-info", data-bind="text: $parent.appointmentsPatientInfoI18n, attr:{title: $parent.appointmentsAddInfoI18n}")
+                  .col-sm-7
+                    input#tab_appointment-types-info.form-control(name="info", type="text", data-bind="textInput: info")
+                div.form-group
+                  label.col-sm-5.control-label(for="tab_appointment-types-calendarRefs", data-bind="text: $parent.appointmentsACalI18n, attr:{title: $parent.appointmentsWhichCalendarI18n}")
+                  .col-sm-7
+                    // ko if: $parent.isStandardId(_id())
+                    div.form-control-static
+                      em(data-bind="text: $parent.appointmentsValidAllI18n")
+                    // /ko
+                    // ko ifnot: $parent.isStandardId(_id())
+                    input#tab_appointment-types-calendarRefs.form-control(name="calendarRefs", type="hidden", data-bind="select2: select2CalendarRefs")
+                    // /ko
+
+                //ko if: $parent.practice().colorMode === 'MEETING'
+                div.form-group
+                  label.col-sm-5.control-label(for="tab_calendars-editing-field-color", data-bind="text: $parent.appointmentsLabelColorI18n")
+                  .col-sm-7
+                    input#tab_calendars-editing-field-color.form-control(name="color", type="text", data-bind="minicolors: { value: color }")
+                // /ko
+                div.form-group(data-bind="hasFeedback: { field: numberOfSuggestedAppointments, toggle: numberOfSuggestedAppointments.hasError, messages: numberOfSuggestedAppointments.validationMessages }")
+                  label.col-sm-5.control-label(for="tab_appointment-types-numberOfSuggestedAppointments", data-bind="text: $parent.numberOfSuggestedAppointmentsI18n")
+                  .col-sm-7
+                    .row
+                      .col-xs-6
+                        input#tab_appointment-types-numberOfSuggestedAppointments.form-control.mt-3(name="numberOfSuggestedAppointments", type="text", data-bind="textInput: numberOfSuggestedAppointments || 10")
+          //ko if: isStandardType()
+          hr
+          h4(data-bind="text: requiredResourcesI18n")
+          div.row
+            div.col-md-12(data-bind="template: requiredResourcesEditableTable.template")
+          // /ko
+          div.row
+            div.col-xs-12.text-right
+              button#tab_appointment-types-save.btn.btn-primary(name="tab_appointment-types-save", type="button", data-bind="click: save, disable: saveDisabled, text: $parent.buttonSaveI18n")
+
+  // /ko

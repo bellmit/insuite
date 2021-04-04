@@ -1,0 +1,47 @@
+.container.container-fullscreen.content(id=mojit_view_id)
+
+    input(type="hidden",id="YUI_SERVER_LANG",value=YUI_SERVER_LANG);
+
+    h4 Migration
+    p This will reimport legacy dataset into new revisions and media format to allow export and import form .zip
+
+    div
+        button.btn#btnImportDefaultImages Import any default images, or disk images migrated by other tenants
+        br
+        br
+
+    div
+        button.btn#btnMoveDBForms Separate forms in database from their revision history and reindex
+        br
+        br
+
+    div
+        button.btn#btnUpdateActivities Update references to forms in activities collection
+        br
+        br
+
+    div
+        button.btn#btnUpdateDocuments Update references to forms in documents collection
+        br
+        br
+
+    h4 Forms Configuration
+    p This defines default forms to use with FEM and CaseFile
+    div#divSettings
+
+    h4 Form image migration history
+    p This is a record of old and new identifiers for images which were previously serialized to disk in the FEM
+    div#divImageHistory
+
+    h4 Form template migration history
+    p This is a record of old and new identifiers for form templates which have been migrated from disk or db
+    div#divFormHistory
+
+    h4 Forms collection (data migrated from here)
+    div#divShowform
+
+    h4 Form Template collection (data migrated to here)
+    div#divShowformtemplate
+
+    h4 Form Template Version collection (created by version increase or import from zip)
+    div#divShowformtemplateversion

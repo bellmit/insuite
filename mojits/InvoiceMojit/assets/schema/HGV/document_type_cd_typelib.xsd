@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- automatische Dokumentation, generiert durch Visual Source Safe 
+	$Workfile: document_type_cd_typelib.xsd $  
+	$Modtime: 9.07.04 11:06 $  
+	$Revision: 10 $  
+-->
+<xs:schema targetNamespace="urn::hl7-org/cda" xmlns:kbv="urn::hl7-org/kbv" xmlns="urn::hl7-org/cda" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+	<xs:import namespace="urn::hl7-org/kbv" schemaLocation="all_kbv_typelib.xsd"/>
+	<!-- ****************************** document_type_cd_dmp ****************************** -->
+	<xs:complexType name="dmp_document_type_cd_typ">
+		<xs:annotation>
+			<xs:appinfo>Dokumenttyp</xs:appinfo>
+		</xs:annotation>
+		<xs:attribute name="V" type="kbv:string_max_60_typ" use="required"/>
+		<xs:attribute name="S" type="xs:string" use="required" fixed="1.2.276.0.76.5.100"/>
+		<xs:attribute name="SN" type="xs:string" use="optional" fixed="KBV"/>
+		<xs:attribute name="DN" type="xs:string" use="optional"/>
+		<!-- DMP_041; DMP_042; etc -->
+	</xs:complexType>
+</xs:schema>

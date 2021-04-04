@@ -1,0 +1,7 @@
+{
+  "_comment": "If you are changing MEDICATION properties to new one, please make sure that medicationcatalog contains that value, if needed update catalogShort value in createMedIndexCatalog.js file in catalogTool and generate new medicationsCatalog",
+  "MEDICATION": {
+    "catalogShort": "HCI",
+    "filename": "HCI"
+  }
+}

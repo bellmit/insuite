@@ -1,0 +1,198 @@
+{
+  "rule": {
+    "parent" : "5bdc0264e5b78a03d8cbe916",
+    "isDirectory" : false,
+    "isLocked" : true,
+    "isActive" : true,
+    "caseFolderType" : [
+      "PUBLIC"
+    ],
+    "metaActTypes" : [
+      "TREATMENT"
+    ],
+    "metaActCodes" : [
+      "32784",
+      "34291"
+    ],
+    "rules" : [
+      {
+        "isActive" : true,
+        "description" : "Ausschlussliste für 32784 (EBM) in derselben Sitzung",
+        "validations" : {
+          "\\\\$and" : [
+            {
+              "context" : "ACTIVITY",
+              "criteria" : {
+                "actType" : "TREATMENT",
+                "code" : "32784",
+                "areTreatmentDiagnosesBillable" : "1"
+              }
+            },
+            {
+              "\\\\$or" : [
+                {
+                  "context" : "ACTIVITY",
+                  "criteria" : {
+                    "actType" : "TREATMENT",
+                    "code" : "34291",
+                    "areTreatmentDiagnosesBillable" : "1"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "actions" : [
+          {
+            "type" : "ERROR"
+          }
+        ],
+        "ruleId" : "5baa5b43abbb442b8c2a5b3e",
+        "metaCodes" : [
+          "32784",
+          "34291"
+        ],
+        "metaActTypes" : [
+          "TREATMENT"
+        ]
+      }
+    ],
+    "description" : "EBM 32784 in derselben Sitzung",
+    "fromCatalog" : "DC-EBM-D-1537801466952.json",
+    "fromCatalogShort" : "EBM",
+    "referenceArea" : "APK",
+    "metaFuzzy" : false
+  },
+  "schein": {
+    "actType" : "SCHEIN",
+    "attachments" : [],
+    "subType" : "",
+    "time" : "",
+    "backupEmployeeIds" : [],
+    "userContent" : "ambulante Behandlung (ambulante Behandlung)",
+    "mediaImportError" : "",
+    "partnerInfo" : "",
+    "explanations" : "",
+    "status" : "VALID",
+    "activities" : [],
+    "referencedBy" : [],
+    "formId" : "",
+    "formVersion" : "",
+    "formPdf" : "",
+    "formLang" : "de",
+    "formGender" : "m",
+    "apkState" : "IN_PROGRESS",
+    "unlinkedMirrorIds" : [],
+    "forInsuranceType" : "",
+    "locationFeatures" : "",
+    "scheinRemittor" : "",
+    "scheinEstablishment" : "",
+    "scheinSpecialisation" : "",
+    "scheinOrder" : "",
+    "scheinDiagnosis" : "",
+    "scheinFinding" : "",
+    "scheinNotes" : "This is note",
+    "scheinClinicalTreatmentFrom" : null,
+    "scheinClinicalTreatmentTo" : null,
+    "scheinNextTherapist" : "",
+    "fk4234" : false,
+    "fk4219" : "",
+    "continuousIcds" : [],
+    "createContinuousDiagnosisOnSave" : false,
+    "icds" : [],
+    "icdsExtra" : [],
+    "scheinQuarter" : "2",
+    "scheinYear" : "2019",
+    "scheinBillingArea" : "00",
+    "scheinType" : "0101",
+    "scheinSubgroup" : "00",
+    "scheinTransferTypeInfo" : "",
+    "fk4124" : "",
+    "fk4126" : "",
+    "fk4125from" : null,
+    "fk4125to" : null,
+    "fk4123" : "",
+    "fk4206" : null,
+    "fk4236" : false,
+    "fk4241" : "",
+    "fk4217" : "",
+    "scheinSlipMedicalTreatment" : "",
+    "__t" : "SCHEIN",
+    "attachedMedia" : [],
+    "content" : "This is note",
+    "editor" : [
+      {
+        "name" : "Jhony Dredn04",
+        "employeeNo" : "01234",
+        "initials" : "JD"
+      }
+    ],
+    "debtCollection" : "",
+    "fk4235Set" : [],
+    "invoiceData" : [],
+    "scheinTransferType" : "",
+    "employeeName" : "Dredn04, Jhony",
+    "employeeInitials" : "JD",
+    "patientLastName" : "1",
+    "patientFirstName" : "NewForTransfer",
+    "code" : null
+  },
+  "treatments": [
+    {
+      "actType" : "TREATMENT",
+      "status" : "VALID",
+      "attachments" : [],
+      "subType" : "",
+      "time" : "",
+      "userContent" : "Nachweis von CMV",
+      "areTreatmentDiagnosesBillable" : "1",
+      "catalog" : true,
+      "catalogShort" : "EBM",
+      "code" : "32784"
+    },
+    {
+      "actType" : "TREATMENT",
+      "status" : "VALID",
+      "attachments" : [],
+      "subType" : "",
+      "time" : "",
+      "userContent" : "Herzkatheteruntersuchung mit Koronarangiographie",
+      "areTreatmentDiagnosesBillable" : "1",
+      "catalog" : true,
+      "catalogShort" : "EBM",
+      "code" : "34291"
+    }
+  ],
+  "rulelog": {
+    "message" : "Ausschlussliste für 32784 (EBM) in derselben Sitzung",
+    "referenceArea" : "APK",
+    "ruleLogType" : "ERROR",
+    "actCodes" : [
+      "32784",
+      "34291"
+    ],
+    "actTypes" : [
+      "TREATMENT"
+    ],
+    "activitiesToCreate" : [],
+    "affectedActivities" : [
+      {
+        "id" : "5cd935b1e785561d282871a4",
+        "code" : "32784",
+        "actType" : "TREATMENT"
+      },
+      {
+        "id" : "5cd935ce18b6df1d1299786c",
+        "code" : "34291",
+        "actType" : "TREATMENT"
+      }
+    ],
+    "allCodes" : [],
+    "caseFolderType" : [
+      "PUBLIC"
+    ],
+    "ruleId" : "5baa5b43abbb442b8c2a5b3e",
+    "ruleSetId" : "5c0a8d5ff2f8fd4821b3d025",
+    "requiredCodes": []
+  }
+}

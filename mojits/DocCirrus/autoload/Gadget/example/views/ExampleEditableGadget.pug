@@ -1,0 +1,11 @@
+div.panel.panel-warning
+  div.panel-heading.Gadget-dragHandle ExampleEditableGadget title
+    span.pull-right
+      include ../../base/views/GadgetHeaderControls
+  div.panel-body
+    // ko if: somethingFromConfig
+    span(data-bind="text: somethingFromConfig")
+    // /ko
+    // ko ifnot: somethingFromConfig
+    | ExampleEditableGadget
+    // /ko

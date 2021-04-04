@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="urn::sciphox-org/sciphox" targetNamespace="urn::sciphox-org/sciphox" elementFormDefault="qualified">
+	<!-- Schema -->
+	<xs:simpleType name="Vorverordnung">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Hörgeräteerstversorgung"/>
+			<xs:enumeration value="Wenn Vorversorgung, wann"/>
+			<xs:enumeration value="Sprachentwicklungsstörung"/>
+			<xs:enumeration value="Sprachentwicklungsstörung andere Ursache"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Verordnung">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Schallempfindungsschwerhörigkeit"/>
+			<xs:enumeration value="Schallleitungsschwerhörigkeit"/>
+			<xs:enumeration value="Kombinierte Schwerhörigkeit"/>
+			<xs:enumeration value="Schweregrad der Hörstörung(WHO 2001): rechts"/>
+			<xs:enumeration value="Schweregrad der Hörstörung(WHO 2001): links"/>
+			<xs:enumeration value="Ärztlicher Vorschlag zur Gerätetechnik: Luftleitung"/>
+			<xs:enumeration value="Ärztlicher Vorschlag zur Gerätetechnik: Luftleitung andere"/>
+			<xs:enumeration value="Ärztlicher Vorschlag zur Gerätetechnik: Knochenleitung"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Nachsorge">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Der Hörgeräteversorgungsvorschlag entspricht dem aufgestellten Versorgungskonzept"/>
+			<xs:enumeration value="Abweichung in Luftleitung"/>
+			<xs:enumeration value="Abweichung in Luftleitung andere"/>
+			<xs:enumeration value="Abweichung in Knochenleitung"/>
+			<xs:enumeration value="War der Hörgeräte-Versorgungserfolg ermittelbar"/>
+			<xs:enumeration value="Hörgeräte-Versorgungserfolg ermittelt durch"/>
+			<xs:enumeration value="Versorgung erfolgte zuzahlungsfrei"/>
+			<xs:enumeration value="Kooperation erfolgt mit"/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

@@ -1,0 +1,102 @@
+div.row
+  div.col-md-12
+    div.form-group
+      textarea.form-control(rows="10", name="userContent", data-bind="value: userContent, valueUpdate: 'afterkeydown'")
+
+//
+  div.row
+    div.col-xs-4
+      div.checkbox
+        br
+        label.control-label(data-bind="text: repeatedExam.i18n")
+        input(type="checkbox", name="repeatedExam", data-bind="checked: repeatedExam, readOnly: repeatedExam.readOnly")
+    div.col-xs-4
+      div.form-group
+        label.control-label(data-bind="text: insuranceType.i18n")
+        select.form-control(data-bind="options: insuranceTypes, value: insuranceType, optionsValue: 'val', optionsText: 'i18n'")
+    div.col-xs-4
+      div.form-group
+        label.control-label(data-bind="text: ageGroup.i18n")
+        select.form-control(data-bind="options: ageGroups, value: ageGroup, optionsValue: 'val', optionsText: 'i18n'")
+  div.row
+    br
+  div.row
+    br
+  div.row
+    div.col-xs-3
+      div.form-group
+        label.control-label #{__i18n( 'activity-schema.HealthExaminationSurvey_T.hypertonia.i18n' )}
+    div.col-xs-3
+      div.form-group
+        select.form-control(data-bind="options: SurveyAnamneses, value: hypertonia, optionsValue: 'val', optionsText: 'i18n'")
+    div.col-xs-1
+    div.col-xs-5
+      div.checkbox
+        label.control-label(data-bind="text: nicotineAbuse.i18n")
+        input(type="checkbox", name="nicotineAbuse", data-bind="checked: nicotineAbuse, readOnly: nicotineAbuse.readOnly")
+  div.row
+    div.col-xs-3
+      div.form-group
+        label.control-label #{__i18n('activity-schema.HealthExaminationSurvey_T.coronalHeartDisease.i18n')}
+    div.col-xs-3
+      div.form-group
+        select.form-control(data-bind="options: SurveyAnamneses, value: coronalHeartDisease, optionsValue: 'val', optionsText: 'i18n'")
+    div.col-xs-1
+    div.col-xs-5
+      div.checkbox
+        label.control-label(data-bind="text: chronicEmotionalStressFactor.i18n")
+        input(type="checkbox", name="chronicEmotionalStressFactor", data-bind="checked: chronicEmotionalStressFactor, readOnly: chronicEmotionalStressFactor.readOnly")
+  div.row
+    div.col-xs-3
+      div.form-group
+        label.control-label #{__i18n('activity-schema.HealthExaminationSurvey_T.otherArterialClosure.i18n')}
+    div.col-xs-3
+      div.form-group
+        select.form-control(data-bind="options: SurveyAnamneses, value: otherArterialClosure, optionsValue: 'val', optionsText: 'i18n'")
+    div.col-xs-1
+    div.col-xs-5
+      div.checkbox
+        label.control-label(data-bind="text: sedentaryLifestyle.i18n")
+        input(type="checkbox", name="sedentaryLifestyle", data-bind="checked: sedentaryLifestyle, readOnly: sedentaryLifestyle.readOnly")
+  div.row
+    div.col-xs-3
+      div.form-group
+        label.control-label #{__i18n('activity-schema.HealthExaminationSurvey_T.diabetesMellitus.i18n')}
+    div.col-xs-3
+      div.form-group
+        select.form-control(data-bind="options: SurveyAnamneses, value: diabetesMellitus, optionsValue: 'val', optionsText: 'i18n'")
+    div.col-xs-1
+    div.col-xs-5
+      div.checkbox
+        label.control-label(data-bind="text: adipositas.i18n")
+        input(type="checkbox", name="adipositas", data-bind="checked: adipositas, readOnly: adipositas.readOnly")
+  div.row
+    div.col-xs-3
+      div.form-group
+        label.control-label #{__i18n( 'activity-schema.HealthExaminationSurvey_T.hyperlipidemia.i18n' )}
+    div.col-xs-3
+      div.form-group
+        select.form-control(data-bind="options: SurveyAnamneses, value: hyperlipidemia, optionsValue: 'val', optionsText: 'i18n'")
+    div.col-xs-1
+    div.col-xs-5
+      div.checkbox
+        label.control-label(data-bind="text: alcoholAbuse.i18n")
+        input(type="checkbox", name="alcoholAbuse", data-bind="checked: alcoholAbuse, readOnly: alcoholAbuse.readOnly")
+  div.row
+    div.col-xs-3
+      div.form-group
+        label.control-label #{__i18n('activity-schema.HealthExaminationSurvey_T.kidneyDiseases.i18n')}
+    div.col-xs-3
+      div.form-group
+        select.form-control(data-bind="options: SurveyAnamneses, value: kidneyDiseases, optionsValue: 'val', optionsText: 'i18n'")
+  div.row
+    div.col-xs-3
+      div.form-group
+        label.control-label #{__i18n('activity-schema.HealthExaminationSurvey_T.lungDiseases.i18n')}
+    div.col-xs-3
+      div.form-group
+        select.form-control(data-bind="options: SurveyAnamneses, value: lungDiseases, optionsValue: 'val', optionsText: 'i18n'")
+  div.row
+    br
+  div.row
+    br

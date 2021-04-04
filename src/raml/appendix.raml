@@ -1,0 +1,267 @@
+
+/2/drug:
+  type:
+    custom-function:
+      exampleData: !include drug-sample.json
+  description: |
+    Provides READ-ONLY access to medical products if MMI license is available (inScribe).
+
+    **GET** (/2/drug) is only allowed with **query string parameters** and will return a list of drugs i.e. medication products.
+    * Required parameter:
+        * `catalogShort` e.g. ?catalogShort=MMI
+    * Filter parameters, used to filter the results according to product name (brand), molecule name (generic), ICD10 code, etc. Click on the requests bellow for more information.
+    * Flag parameters, used to include extra data in the response:
+        * `fetchProductInfo`
+        * `fetchPackageDetails`
+        * `originalResult`
+
+    **POST** calls are used to call the path parameters: `:getMoleculesByName`, `:getATCCatalogEntries` and `:getShortCodeMap`.
+    The **query parameters** of these POST calls are to be **included inside the body**.
+  get:
+    description: |
+        Returns a list of drugs i.e. medication products.
+    queryParameters:
+      catalogShort:
+        description: "Short-code for the medication catalog type (for Germany: MMI)"
+        type: "string"
+        required: true
+      atc:
+        description: ATC code (to filter)
+        type: "string"
+      productName:
+        description: Product or brand name (to filter)
+        type: "string"
+      pzn:
+        description: PZN code (to filter)
+        type: "string"
+      moleculeName:
+        description: Molecule or generic name (to filter)
+        type: "string"
+      fetchProductInfo:
+        description: |
+            Add complete product information to response (slower response).
+            When set to *true* this will add a list of product information text blocks in HTML under the `documents` field.
+            If `originalResult` is set to *true* the original MMI response is also added.
+        type: "boolean"
+      fetchPackageDetails:
+        description: |
+            Add package details such as price history to response (slower response).
+            When set to *true* this will add the price history to the `packageList` response field.
+        type: "boolean"
+      icd10:
+        description: ICD10 code (to filter)
+        type: "string"
+      maxResult:
+        description: Limit the reponse length (to filter)
+        type: "string"
+      originalResult:
+        description: |
+            Add original MMI reponse to response (larger reponse).
+            This will include ALL the original responses from MMI (including product information and package information if either `fetchProductInfo` or `fetchPackageDetails` are set to *true*)
+        type: "boolean"
+
+  /:getMoleculesByName:
+    description: Provides a list of molecules with name and ID.
+    post:
+      description: |
+            Provides a list of molecules with name and ID.
+      securedBy: [basic, oauth2]
+      queryParameters:
+          name:
+            description: Molecule name
+            type: "string"
+          maxResult:
+            type: "number"
+      body:
+        application/json:
+          schema: !include drug-molecule-call-sample.json
+      responses:
+        200:
+          body:
+            application/json:
+              example: !include drug-molecule-ids-sample.json
+
+  /:getATCCatalogEntries:
+    description: Provides the ATC tree for a given ATC code.
+    post:
+      description: |
+            Provides the ATC tree for a given ATC code. The structure has two variations:
+            * **Tree**: when using an anatomical level ATC code with 2 or more children.
+            * **List**: when using any other ATC level or with an anatomical level ATC code with less than 2 children.
+      securedBy: [basic, oauth2]
+      queryParameters:
+          atc:
+            description: "ATC code: if using an anatomical level code (e.g. 'J'), with 2 or more children, the response will have a tree structure"
+            type: "string"
+          parents:
+            description: Number of parents for ATC code to include
+            type: "string"
+          children:
+            description: Number of children for ATC code to include
+            type: "string"
+      body:
+        application/json:
+          schema: !include drug-atc-call-sample.json
+      responses:
+        200:
+          body:
+            application/json:
+              example: !include drug-atc-tree-sample.json
+
+  /:getShortCodeMap:
+    description: Returns the short-code dictionary for ATC and ICD10 code levels, drug information types and molecule types.
+    post:
+      description: |
+            Returns the short-code dictionary for ATC and IDC10 code levels, drug information types and molecule types.
+      securedBy: [basic, oauth2]
+      body:
+        application/json:
+          schema: |
+              {}
+      responses:
+        200:
+          body:
+            application/json:
+              example: !include drug-shortcode-map-sample.json
+
+/2/cardreader:
+  type:
+    custom-function:
+      exampleData: !include cardreader-sample.json
+  description: The card reader delivers you a list of all registered cardreaders' details, including, _id, name, and type. Specifying a name query parameter, with a valid name will trigger the cardread process at the cardreader. Please refer to the sample responses. To query, the caller must use the RPC syntax call to the patient API, passing the _id of the cardreader e.g. <pre> /2/cardreader  //  list all cardreaders, one of which has _id 5afd4c40b83294c249999999</pre>Then call the patient API to get the patient info from a card:<pre> /2/patient/:readCard?_id=5afd4c40b83294c249999999 </pre> See also <a href='#_2_patient'>/2/patient</a>
+  get:
+    securedBy: [basic, oauth2]
+    is: [
+        sortable: { fieldsList: 'name' },
+        pageable
+      ]
+    queryParameters:
+
+      name:
+        type: "string"
+
+/2/formportal:
+  description: Formportal. For v.2. exposing /:getActivePortalList and /:sendUrl methods.
+
+  /:getActivePortalList:
+    post:
+      description: Returns array of active form portals of user tenant.
+      securedBy: [basic, oauth2]
+      responses:
+          200:
+            body:
+              application/json:
+                example: !include formportal-sample.json
+
+  /:sendUrl:
+    post:
+      description: Checks restricted portal by portal ID, if found it updates activeUrl and emits socket event for client.
+      securedBy: [basic, oauth2]
+      queryParameters:
+        portalId:
+          type: "string"
+        activeUrl:
+          type: "string"
+        force:
+          type: "boolean"
+
+/2/printer:
+  type:
+    custom-function:
+      exampleData: !include printer-sample.json
+  description: The printer call delivers you a list of all registered printers in the CUPS system. You can get further information about each printer via its ipp URI, e.g. ipp://datasafe-ip-address:631/printers/printer-name-attribute. There are no parameters available for this endpoint.
+  get:
+    securedBy: [basic, oauth2]
+
+/2/complexprescription:
+  description: Create Prescriptions and Medications using one single complexprescription REST /2 POST.
+  post:
+    description: |
+      Add a new complexprescription.
+    securedBy: [basic, oauth2]
+    body:
+      application/json:
+        schema: !include complexprescription-sample.json
+    responses:
+      200:
+        body:
+          application/json:
+            example: |
+              {
+                "meta": {
+                  "errors": [],
+                  "warnings": [],
+                  "model": "complexprescription",
+                  "query": null,
+                  "itemsPerPage": null,
+                  "totalItems": 1,
+                  "page": null,
+                  "replyCode": 200
+                },
+                "data": :[
+                  {"requestId":"5c3dc019fb615730f859ec4c"}
+                ]
+              }
+
+/2/catalog:
+  description: |
+    Provides READ-ONLY access to ICD10 catalog.
+
+    **POST** calls are used to call the path parameter: `:getIcd10Catalog`.
+    The **query parameters** of these POST calls are to be **included inside the body**.
+  /:getIcd10Catalog:
+    description: Provides a list of ICD10 catalogs.
+    post:
+      description: |
+        Provides a list of ICD10 catalogs.
+        Matching results for the provided title in properties:
+        * **seq**
+        * **title**
+        * **infos**
+      securedBy: [basic, oauth2]
+      queryParameters:
+          title:
+            type: "string"
+      body:
+        application/json:
+          schema: !include icd10catalog-call-sample.json
+      responses:
+        200:
+          body:
+            application/json:
+              example: !include icd10catalog-sample.json
+
+/3/inphone:
+  type:
+    custom-function:
+      exampleData: !include inphone-sample.json
+  description: The /3/inphone endpoint is a facility for the integration of VoIP / PBX systems. There is no authentication. It must be called with the RPC extension "inboundphonecall", as <pre>/3/inphone/:inboundphonecall?caller=0049306352676&callee=620&extension=true</pre>
+               With the "extension" flag, you can prevent the interpretation of the callee number. In inSuite 3.9 this will match against the extension (Nebenstelle/Durchwahl) type of communication.
+  get:
+    is: [
+        sortable: { fieldsList: 'name' },
+        pageable
+      ]
+    queryParameters:
+      caller:
+        type: "string"
+        required: "true"
+      callee:
+        type: "string"
+        required: "true"
+      callername:
+        type: "string"
+      calleename:
+        type: "string"
+      extension:
+        type: "boolean"
+
+/3/statuscheck:
+  type:
+    custom-function:
+      exampleData: !include statuscheck-sample.json
+  description: The /3/statuscheck endpoint is a facility for remote monitoring of the datasafe in a simple manner (without auth). It returns stats like mem usage, load, etc.
+  get:
+    is: [
+      ]
+    queryParameters:

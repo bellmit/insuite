@@ -1,0 +1,64 @@
+//TRANSLATION INCOMPLETE!! MOJ-3201
+.container.container-fullscreen
+  .col-xs-12.col-md-3#waitingtimeSettings
+    .panel.panel-info
+      .panel-heading(style='cursor:pointer;')#settings_title
+        h4 Einstellungen
+      .panel-body#settings_panel
+        .control-domain
+          form(role="form").form-horizontal#content_info
+            .form-group
+              .col-xs-12
+                label(for="praxid") Praxisnummer
+                input(type='text', required="true", name='praxid', value='', dcschema='_simple',dctype='PatientAlert_T_praxid', placeholder='Praxisnummer')#praxid.dcvalidate.form-control
+            .form-group
+              .col-xs-12
+                label(for="waitno") Ihre Wartenummer
+                input(type='text', required="true", name='waitno', value='', dcschema='_simple',dctype='PatientAlert_T_waitno', placeholder='Wartenummer')#waitno.dcvalidate.form-control
+            #content_alerting_loggedin
+              #schedalertfields.hide
+                .form-group
+                  .col-xs-12
+                    label(for="schedtimeinadvance") Minuten vor Termin
+                    input(type='text', style="color:black", value='5', name='schedtimeinadvance')#schedtimeinadvance.form-control
+            #content_alerting
+              .form-group
+                .col-xs-12
+                  input(type='checkbox', name='wantsAlert', value='wantsAlert', dcschema='patientalert',dctype='PatientAlert_T')#wantsAlert
+                  b &nbsp;per E-Mail/SMS erinnern?
+              #alertfields.hide
+                .form-group
+                  .col-xs-12
+                    label(for="timeinadvance") Minuten vor Termin
+                    input(type='text', style="color:black", value='5', name='timeinadvance')#timeinadvance.form-control
+                .form-group
+                  .col-xs-12
+                    label(for="email") E-Mail-Adresse
+                    input(type='text', name='email', dcschema='patientalert',dctype='PatientAlert_T')#email.dcvalidate.form-control
+                .form-group
+                  .col-xs-12
+                    label(for="mobile") Handy-Nummer für SMS
+                    input(type='text', name='mobile', dcschema='patientalert',dctype='PatientAlert_T')#mobile.dcvalidate.form-control
+              .form-group
+                .col-xs-12
+                  a.btn.btn-primary.btn-block#btnSend(href="#waitingtimeAnimation") Anzeigen
+  .col-xs-12.col-md-8#waitingtimeAnimation
+    .container.container-fullscreen
+      .resp-quad-container
+        ul.resp-quad-list
+          li.circle-middle
+            div
+          li.circle.circle-timeleft
+          li.circle.circle-timeleft
+          li.circle
+          li.circle
+          li.circle
+          li.circle
+          li.text-container
+            .text-triangle
+              .container.container-fullscreen
+                h1.text-center.blue-intime#timeleft ??:??
+                h2.text-center.blue-intime#timeleftText Minuten bis zu Ihrem Termin
+          li.symbol.symbol-1
+          li.symbol.symbol-2
+          li.symbol.symbol-3

@@ -1,0 +1,19 @@
+style(type="text/css").
+  #verticalAlign {
+    display: flex;
+    align-items: center;
+  }
+  #tab_labLog h3 {
+    margin: 10px auto;
+  }
+
+div#tab_labLog
+  div.row#verticalAlign
+    div.col-sm-12
+      h3(data-bind="text: labLogHeadlineI18n")
+    div.col-sm-2
+      div.pull-right
+        button.btn.btn-primary#triggerLabProcess(data-bind="visible: isSupport, click: triggerLabProcess")
+          i.fa.fa-refresh
+  div#labLogTable(data-bind="template: labLogTable.template")
+include ../../../autoload/KoUI/KoSchemaValue/view/KoSchemaTemplates

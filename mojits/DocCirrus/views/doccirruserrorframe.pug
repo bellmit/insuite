@@ -1,0 +1,35 @@
+doctype html
+html(class="yui3-js-enabled")
+  head
+    title
+      | Error Page
+      != statusCode
+    <link rel="stylesheet" type="text/css" href="/static/dcbaseapp/assets/lib/bootstrap/3.1.1/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/static/DocCirrus/assets/css/dc.css"/>
+  body
+    div(id="yui3-css-stamp",style="position: absolute !important; visibility: hidden !important", class="")
+    .container.container-fullscreen.dc_shift_top
+      .hero-unit.dc_hero-unit
+        .row
+          .span12
+            .row
+              .span5
+                h2
+                  | FEHLER (
+                  != statusCode
+                  | )
+                hr
+                h4(style="color:#8D1717;") unter dieser URL haben wir keine Inhalte vorgesehen.
+                hr
+                p!= reasonPhrase
+              .span5.offset2
+                a(href="/")
+                  img(src='/static/DocCirrus/assets/images/dc_logo_300x103_trans.png', alt="Doc Cirrus – Your Safe Medical Cloud")
+      div(style="padding-left:15px; padding-right:30px;")
+        hr
+        em
+          small Doc Cirrus GmbH 2012 | <a href="/impress">Impressum</a>
+        a(href="https://www.xing.com/companies/doccirrusgmbh")
+          img(src='/static/dcbaseapp/assets/img/doccirrus/xing_mail_icon.png', align='right')
+        a(href="https://www.facebook.com/pages/Doc-Cirrus-GmbH/391711784228701")
+          img(src='/static/dcbaseapp/assets/img/doccirrus/facebook_mail_icon.png', align='right')

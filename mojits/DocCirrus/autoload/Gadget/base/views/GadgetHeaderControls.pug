@@ -1,0 +1,6 @@
+span.GadgetHeaderControls
+  span.GadgetHeaderControl.fa(data-bind="click: handlerMaximize, css: maximizeIcon")
+  // ko if: editable
+  span.GadgetHeaderControl.fa.fa-pencil(data-bind="click: handlerEditGadget")
+  // /ko
+  span.GadgetHeaderControl.fa.fa-close(data-bind="click: handlerRemoveFromGadgetCollection")

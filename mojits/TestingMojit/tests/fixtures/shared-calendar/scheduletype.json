@@ -1,0 +1,15 @@
+{
+  "name": "Standard Master",
+  "duration": 15,
+  "isPublic": true,
+  "durationUnit": "MINUTES",
+  "calendarRefs": [
+    {
+      "calendarId": "515ae9604013671c12c1c900"
+    }
+  ],
+  "capacity": 0,
+  "numberOfSuggestedAppointments": 10,
+  "info": "",
+  "isPreconfigured": false
+}

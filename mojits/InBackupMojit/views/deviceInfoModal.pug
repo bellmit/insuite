@@ -1,0 +1,21 @@
+#deviceInfoModel
+    div(data-bind="with: data")
+        dl.dl-horizontal
+            dt(data-bind="text: labelStateI18n + ':'")
+            dd(data-bind="text: state")
+        dl.dl-horizontal
+            dt(data-bind="text: labelDeviceI18n + ':'")
+            dd(data-bind="text: model")
+        dl.dl-horizontal
+            dt Id:
+            dd(data-bind="text: id")
+        dl.dl-horizontal
+            dt(data-bind="text: labelFreeSizeI18n + ':'")
+            dd(data-bind="text: freeSize")
+        dl.dl-horizontal
+            dt(data-bind="text: labelTotalSizeI18n + ':'")
+            dd(data-bind="text: totalSize")
+        dl.dl-horizontal
+            dt(data-bind="text: labelBacupPointsTitleI18n + ':'")
+            dd: ul(data-bind="foreach: points")
+                li(data-bind="text: date")

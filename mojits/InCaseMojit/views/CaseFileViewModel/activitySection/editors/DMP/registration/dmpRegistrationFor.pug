@@ -1,0 +1,6 @@
+div(data-bind='visible: dmpRegistrationForVisible()')
+    div.col-xs-12.form-group
+        div(data-bind="foreach: dmpRegistrationFor.list, hasFeedback: { field: dmpRegistrationFor, toggle: dmpRegistrationFor.hasError, messages: dmpRegistrationFor.validationMessages }")
+            label.radio-inline
+                span(data-bind="text: i18n")
+                input(type="radio", name="dmpRegistrationFor", data-bind="value: val, checked: $parent.dmpRegistrationFor, readOnly: $parent.dmpRegistrationFor.readOnly, attr: { name: $element.name + '-' + val }")

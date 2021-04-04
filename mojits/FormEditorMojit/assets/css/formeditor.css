@@ -1,0 +1,41 @@
+/* form editor layout - much is still to be moved here from jade files */
+
+@font-face {
+    font-family: 'george-williams-monospace';
+    src: url('/static/FormEditorMojit/assets/fonts/george-williams-monospace.ttf');
+}
+
+td .affix {
+    position: fixed;
+    top: 0px;
+    /*  overflow-y: auto; -- prevents menu from appearing when adding elements */
+}
+
+div .affix {
+    position: fixed;
+    top: 0px;
+    width: 675px;
+    /* height: 100vh; */
+    z-index: 1005;
+}
+
+table.formtable {
+    width: 100%;
+    border-collapse: collapse;
+    border: 2px;
+    border-color: black;
+}
+
+th.formtable {
+    vertical-align: top;
+    padding: 5px;
+}
+
+td.formtable {
+    vertical-align: top;
+    padding: 5px;
+}
+
+div.TablePropertiesDialog td {
+    vertical-align: top;
+}

@@ -1,0 +1,44 @@
+div.container.container-fullscreen#vcSchedules
+  div
+    div.col-xs-12
+      div.panel.panel-info
+        div.panel-heading
+          h4
+            span(data-bind="text: practiceI18n + practice.coname")
+        div.panel-body
+          div#vcSchedulesBody
+            a
+              span(data-bind="text: schedule.calendarName")
+              span(data-bind="text: schedule.formattedDate").pull-right
+            div.panel
+              div.panel-body
+                div.row
+                  div.col-lg-6
+                    p(data-bind="text: schedule.scheduleTypeName")
+                    p(data-bind="text: schedule.locationData")
+            div.panel
+              div.panel-body
+                div.form-group(data-bind="hasFeedback: { field: firstName, toggle: firstName.hasError, messages: firstName.validationMessages }")
+                  label.control-label(for="firstName", data-bind="text: firstnameI18n")
+                  input.form-control#firstname(type='text', name='firstName', data-bind="textInput: firstName, attr: {placeholder: firstnameI18n}")
+                div.form-group(data-bind="hasFeedback: { field: lastName, toggle: lastName.hasError, messages: lastName.validationMessages }")
+                  label.control-label(for="lastName", data-bind="text: lastnameI18n")
+                  input.form-control#lastname(type='text', name='lastName', data-bind="textInput: lastName, attr: {placeholder: lastnameI18n}")
+                div.form-group(data-bind="hasFeedback: { field: email, toggle: email.hasError, messages: email.validationMessages }")
+                  label.control-label(for="email", data-bind="text: emailI18n")
+                  input.form-control#email(type='email', name='email', data-bind="textInput: email, attr: {placeholder: emailI18n}")
+                div.form-group(data-bind="hasFeedback: { field: emailVerify, messages: emailVerify.validationMessages }" style="display: none;")
+                  label.control-label(for="emailVerify", data-bind="text: emailVerifyI18n")
+                  input.form-control#emailVerify(type='email', name='emailVerify', data-bind="textInput: emailVerify, attr: {placeholder: emailVerifyI18n}")
+                div.form-group(data-bind="highlightError: privacyPolicy")
+                  label.checkbox.control-label
+                    input#privacyPolicy(type='checkbox', value='', name='privacyPolicy', data-bind="checked: privacyPolicy")
+                    n(data-bind="html: acceptPrivacyPolicyI18n")
+                div.form-group(data-bind="highlightError: termsOfUse")
+                  label.checkbox.control-label
+                    input#termsOfUse(type='checkbox', value='', name='termsOfUse', data-bind="checked: termsOfUse")
+                    n(data-bind="html: acceptTermsOfUseI18n")
+                div.form-group()
+                  div.g-recaptcha()#example1
+
+                button.btn.btn-block.btn-primary(data-bind="text: confirmI18n, enable: _isValid, click: createPatientAndAppointment, ", name="confirm")

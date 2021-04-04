@@ -1,0 +1,32 @@
+// ko if: showSortConfig
+span.KoTableColumnTools-sort
+  // ko switch: $data
+  // ko case: !$value.isInSorters()
+  span.KoTableColumnTools-sort-indication
+    span.KoTableColumnTools-sort-indicator(
+      data-bind="attr: { title: i18n('KoUI.KoTableColumnTools.sort.indicator.NOT.title') }"
+      )
+      span.fa.fa-long-arrow-down
+      span.fa.fa-long-arrow-up
+  // /ko
+  // ko case: $value.sortDirectionEnabled('DESC')
+  span.KoTableColumnTools-sort-indication
+    span.KoTableColumnTools-sort-indicator.fa.fa-long-arrow-down(
+      data-bind="attr: { title: i18n('KoUI.KoTableColumnTools.sort.indicator.DESC.title') }"
+    )
+    sup.KoTableColumnTools-sort-prioritisationInSorters(
+      data-bind="text: getPrioritisationInSorters(), attr: { title: i18n('KoUI.KoTableColumnTools.sort.prioritisationInSorters.title') }"
+    )
+  // /ko
+  // ko case: $value.sortDirectionEnabled('ASC')
+  span.KoTableColumnTools-sort-indication
+    span.KoTableColumnTools-sort-indicator.fa.fa-long-arrow-up(
+      data-bind="attr: { title: i18n('KoUI.KoTableColumnTools.sort.indicator.ASC.title') }"
+    )
+    sup.KoTableColumnTools-sort-prioritisationInSorters(
+      data-bind="text: getPrioritisationInSorters(), attr: { title: i18n('KoUI.KoTableColumnTools.sort.prioritisationInSorters.title') }"
+    )
+  // /ko
+  // /ko
+// /ko
+//-td.KoTableColumnTools-menu

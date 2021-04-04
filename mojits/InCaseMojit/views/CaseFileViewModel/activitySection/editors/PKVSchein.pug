@@ -1,0 +1,193 @@
+div
+  // ko if: isSwiz
+  div.col-xs-12.ppl-0
+    div.col-xs-6.ppl-0
+      div.form-group
+        label.radio-inline
+          span(data-bind="text: isTiersGarantI18n")
+          input(type="radio",  name='isTiers'  data-bind="checked: isTierSelected, value: 'isTiersGarant'" )
+        label.radio-inline.row(style="margin-left: 30px")
+          span(data-bind="text: isTiersPayantI18n")
+          input(type="radio",  name='isTiers' data-bind="checked: isTierSelected, value: 'isTiersPayant'")
+        div.form-group
+          label.checkbox
+            span(data-bind="text: mediportCommunicatorDocPrintI18n")
+            input(name="docPrinted", type="checkbox", data-bind="checked: docPrintedSelected")
+        // ko if: canPutOnHold
+        div.form-group
+          label.checkbox
+            span(data-bind="text: putOnHoldI18n")
+            input(name="onHold", type="checkbox", data-bind="checked: onHold")
+        // /ko
+        // ko if: onHold
+        div.form-group
+          label.control-label(data-bind="text: onHoldNotesI18n")
+          textarea.form-control(name="onHoldNotes", data-bind="value: onHoldNotes, valueUpdate: 'afterkeydown'")
+        // /ko
+    .col-xs-6
+      //ko if: showPatientVersions
+      div.form-group
+        button.btn.btn-primary.btn-block(name="editPatientVersion", type="button", data-bind="click: editPatientVersion, disable: editPatientVersionDisabled, text: patientDataI18n")
+      // /ko
+      div.form-group(data-bind="hasFeedback: { field: reasonType, toggle: reasonType.hasError, messages: reasonType.validationMessages }")
+        label(data-bind="text: treatmentReasonI18n")
+        select.form-control(name="scheinReason", data-bind="options: _reasonTypeList, optionsValue: 'val', optionsText: 'i18n', value: reasonType")
+      div.form-group
+        label(data-bind="text: caseIdI18n")
+        input.form-control(type="text", data-bind="value: caseNumber, readOnly: caseNumber.readOnly, valueUpdate: 'afterkeydown'")
+      // ko if: uvgCase
+      div.form-group
+        .date-picker.input-group
+          input.form-control(name="timestamp", type="text", data-bind="datetimepicker: { value: dayOfAccident }, readOnly: dayOfAccident.readOnly, attr: {placeholder: accidentDateI18n}")
+      // /ko
+  // /ko
+  div
+    div.row
+      div.col-xs-6
+        div.form-group
+          label.control-label(data-bind="text: scheinNotes.i18n")
+          textarea.form-control(name="scheinNotes", data-bind="value: scheinNotes, valueUpdate: 'afterkeydown', readOnly: scheinNotes.readOnly")
+      .col-xs-6
+        // ko if: isGermany
+        .row
+          .col-xs-6
+            div.form-group
+              label(data-bind="text: invoiceTypeI18n")
+              input.form-control(name="scheinSettledDate", data-bind="readOnly: true, value: _showScheinSettledDate")
+          .col-xs-6
+            label(style="padding-top: 30px;", data-bind="text: scheinSettledDate.i18n")
+        .row
+          .col-xs-6
+            div.form-group
+              label(data-bind="text: billingFactorValueI18n")
+              input.form-control(name="scheinBillingFactorValue", data-bind="readOnly: scheinBillingFactorValue.readOnly, value: displayScheinBillingFactorValue")
+        // /ko
+        .row
+          .col-xs-6
+            div.form-group
+              select.form-control(name="treatmentType", data-bind="readOnly: treatmentType.readOnly, options: _treatmentTypeList, optionsValue: 'val', optionsText: '-de', value: treatmentType")
+            // ko if: isGermany
+            div.form-group
+              label(data-bind="text: scheinClinicID.i18n")
+              input.form-control(name="scheinClinicID", data-bind="readOnly: scheinClinicID.readOnly, value: scheinClinicID")
+            // /ko
+          .col-xs-6
+            div.form-group
+              // ko if: isGermany
+              div.checkbox
+                label.control-label
+                  span(data-bind="text: includesBSK.i18n")
+                  input(name="includesBSK", type="checkbox", data-bind="readOnly: includesBSK.readOnly, checked: includesBSK")
+              // /ko
+              div.checkbox(data-bind="visible: 'STATIONARY' === treatmentType()")
+                label.control-label
+                  span(data-bind="text: isChiefPhysician.i18n")
+                  input(name="isChiefPhysician", type="checkbox", data-bind="readOnly: isChiefPhysician.readOnly, checked: isChiefPhysician")
+  if mvprc
+    div.row
+      div.col-xs-6
+        label.col-sm-4.control-label
+          span.pull-right Medneo
+        div.col-sm-8.form-group
+          label.control-label(data-bind="text: debtCollection.i18n")
+          div.form-group
+            select.form-control(name="debtCollection", data-bind="options: debtCollection.list, optionsValue: 'val', optionsText: 'i18n', value: debtCollection, readOnly: debtCollection.readOnly")
+      div.col-xs-6
+        div.form-group.col-xs-6
+          label.control-label(data-bind="text: orderAccounting.i18n")
+          div.date-picker.input-group
+            input.form-control(name="orderAccounting", type="text", data-bind="value: orderAccounting, readOnly: orderAccounting.readOnly")
+        div.form-group.col-xs-6
+          label.control-label(data-bind="text: agencyCost.i18n")
+          div.date-picker.input-group
+            input.form-control(name="agencyCost", type="text", data-bind="value: agencyCost, readOnly: agencyCost.readOnly")
+  div.row
+    div.col-xs-12
+      div.form-group(data-bind="hasFeedback: { field: continuousIcds, toggle: continuousIcds.hasError, messages: continuousIcds.validationMessages }")
+        label.control-label(data-bind="text: continuousIcds.i18n")
+        input.form-control(name="continuousIcds", type="hidden", data-bind="select2: _select2continuousDiagnoses, readOnly: continuousIcds.readOnly")
+        div.checkbox
+          label.control-label
+            strong(data-bind="text: createContinuousDiagnosisOnSave.i18n")
+            input(type="checkbox", name="createContinuousDiagnosisOnSave", data-bind="checked: createContinuousDiagnosisOnSave, readOnly: continuousIcds.readOnly")
+  // commented for later usage MOJ-13152
+  //div.row
+    div.col-xs-12
+      div.form-group(data-bind="hasFeedback: { field: continuousMedications, toggle: continuousMedications.hasError, messages: continuousMedications.validationMessages }")
+        label.control-label(data-bind="text: continuousMedications.i18n")
+        input.form-control(name="continuousMedications", type="hidden", data-bind="select2: _select2continuousMedications, readOnly: continuousMedications.readOnly")
+        div.checkbox
+          label.control-label
+            strong(data-bind="text: createContinuousMedicationsOnSave.i18n")
+            input(type="checkbox", name="createContinuousMedicationsOnSave", data-bind="checked: createContinuousMedicationsOnSave, readOnly: continuousMedications.readOnly")
+
+  // ko if: isGermany
+  div.row
+    div.col-xs-12
+      div.form-group(data-bind="hasFeedback: { field: scheinNextTherapist, toggle: scheinNextTherapist.hasError, messages: scheinNextTherapist.validationMessages }")
+        span
+        label.control-label(data-bind="text: scheinNextTherapist.i18n")
+        input.form-control(name="scheinNextTherapist", data-bind="value: scheinNextTherapist, valueUpdate: 'afterkeydown', readOnly: scheinNextTherapist.readOnly")
+  h4
+    a(href="javascript:;", data-bind="readOnly: scheinEstablishment.readOnly, click: selectPhysicianRemittor, text: groupRemittorI18n")
+  div.row
+    div.col-xs-6
+      div.form-group(data-bind="hasFeedback: { field: scheinEstablishment, toggle: scheinEstablishment.hasError, messages: scheinEstablishment.validationMessages }")
+        label.control-label(data-bind="text: labelBSNRI18n")
+        input.form-control(name="scheinEstablishment", data-bind="select2: _scheinEstablishmentCfgAutoComplete, readOnly: scheinEstablishment.readOnly")
+    div.col-xs-6
+      div.form-group(data-bind="hasFeedback: { field: scheinRemittor, toggle: scheinRemittor.hasError, messages: scheinRemittor.validationMessages }")
+        label.control-label(data-bind="text: labelLanrI18n")
+        input.form-control(name="scheinRemittor", data-bind="select2: _scheinRemittorCfgAutoComplete, value: scheinRemittor, readOnly: scheinRemittor.readOnly")
+  div.row
+    div.col-xs-6
+      div.form-group(data-bind="hasFeedback: { field: fk4219, toggle: fk4219.hasError, messages: fk4219.validationMessages }")
+        label.control-label(data-bind="text: fk4219.i18n")
+        input.form-control(name="fk4219", maxlength="60", data-bind="value: fk4219, valueUpdate: 'afterkeydown', readOnly: fk4219.readOnly, attr: { placeholder: fk4219.i18n }")
+  div.row
+    div.col-xs-4
+      div.form-group(data-bind="hasFeedback: { field: icds, toggle: icds.hasError, messages: icds.validationMessages }")
+        label.control-label(data-bind="text: icds.i18n")
+        input.form-control(name="icds", type="hidden", data-bind="select2: _select2scheinCaseHistory, readOnly: icds.readOnly")
+    div.col-xs-6.col-xs-offset-2
+      div.form-group(data-bind="hasFeedback: { field: scheinDiagnosis, toggle: scheinDiagnosis.hasError, messages: scheinDiagnosis.validationMessages }")
+        label.control-label(data-bind="text: scheinDiagnosis.i18n")
+        textarea.form-control(name="scheinDiagnosis", data-bind="value: scheinDiagnosis, valueUpdate: 'afterkeydown', readOnly: scheinDiagnosis.readOnly")
+  div.row
+    div.col-xs-6
+      div.form-group(data-bind="hasFeedback: { field: scheinOrder, toggle: scheinOrder.hasError, messages: scheinOrder.validationMessages }")
+        label.control-label(data-bind="text: scheinOrder.i18n")
+        textarea.form-control(name="scheinOrder", data-bind="value: scheinOrder, valueUpdate: 'afterkeydown', readOnly: scheinOrder.readOnly")
+    div.col-xs-6
+      div.form-group(data-bind="hasFeedback: { field: scheinFinding, toggle: scheinFinding.hasError, messages: scheinFinding.validationMessages }")
+        label.control-label(data-bind="text: scheinFinding.i18n")
+        textarea.form-control(name="scheinFinding", data-bind="value: scheinFinding, valueUpdate: 'afterkeydown', readOnly: scheinFinding.readOnly")
+  hr.row
+  h4
+    span(data-bind="text: bewilligteLeistungenI18n")
+    a( href="#", data-bind="visible: !isNew() && fk4235Set().length,readOnly: fk4235Set.readOnly, click: _recalculate, text: ' (' + buttonRecalculateI18n + ')'")
+  div.row
+    div.col-xs-6
+      div.checkbox
+        label.control-label
+          strong(data-bind="text: AccPsyPrivateI18n")
+          input(type="checkbox", name="fk4234", data-bind="checked: fk4234, readOnly: fk4234.readOnly")
+        | &nbsp;
+        a(name="_arrayAdd-fk4235Set", href="#", data-bind="visible: fk4234, click: addFk4235Set, readOnly: fk4235Set.readOnly")
+          i.icon.fa.fa-plus
+  // /ko
+  include FK4235Set
+  // ko if: isGermany
+  h4(data-bind="text: groupOperationI18n")
+  div.row
+    div.col-xs-6
+      div.form-group(data-bind="hasFeedback: { field: scheinClinicalTreatmentFrom, toggle: scheinClinicalTreatmentFrom.hasError, messages: scheinClinicalTreatmentFrom.validationMessages }")
+        label.control-label(data-bind="text: scheinClinicalTreatmentFrom.i18n")
+        div.date-picker.input-group
+          input.form-control(name="scheinClinicalTreatmentFrom", data-bind="datetimepicker: { value: scheinClinicalTreatmentFrom }, readOnly: scheinClinicalTreatmentFrom.readOnly")
+    div.col-xs-6
+      div.form-group(data-bind="hasFeedback: { field: scheinClinicalTreatmentTo, toggle: scheinClinicalTreatmentTo.hasError, messages: scheinClinicalTreatmentTo.validationMessages }")
+        label.control-label(data-bind="text: scheinClinicalTreatmentTo.i18n")
+        div.date-picker.input-group
+          input.form-control(name="scheinClinicalTreatmentTo", data-bind="datetimepicker: { value: scheinClinicalTreatmentTo }, readOnly: scheinClinicalTreatmentTo.readOnly")
+  // /ko

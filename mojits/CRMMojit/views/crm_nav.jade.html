@@ -1,0 +1,12 @@
+div(id=mojit_view_id)
+  .container.container-fullscreen
+    #crmNav(data-bind="template: template", style="margin-bottom: 10px;")
+  .container.container-fullscreen
+    #upperDiv
+      block content
+script(type="text/html", id="template-address_item-default")
+  include template-address_item-default
+script(type="text/html", id="template-address_item-POSTBOX")
+  include template-address_item-POSTBOX
+
+include ../../../autoload/KoUI/KoSchemaValue/view/KoSchemaTemplates

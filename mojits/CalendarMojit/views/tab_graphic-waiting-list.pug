@@ -1,0 +1,245 @@
+.row
+  .col-xs-12(style="padding: 0;")
+    .col-xs-2
+      h4
+        span(data-bind="text: filterI18n")
+        | &nbsp;
+        a(href="#", data-bind="click: saveConfiguration", style="text-decoration: none;")
+          i.icon.fa.fa-plus
+          | &nbsp;
+        a(href="#", data-bind="click: editConfiguration", style="text-decoration: none;")
+          i.fa.fa-pencil
+          | &nbsp;
+        a(href="#", data-bind="click: filterViewHandler", style="text-decoration: none;")
+          i.fa.fa-exchange
+    h4.pull-right(style="padding-right: 5px;")
+      a(href="#", data-bind="click: configure.bind( $data, 'filter' )")
+        span.fa.fa-gear
+// ko if: filterView
+.row
+  .col-xs-12(style="padding: 0;")
+    .form-group.clearfix.filters-list(style="margin-bottom: 0;")
+      .col-sm-2
+        i.fa.fa-search
+        input.form-control(data-bind="value: patientTitleFilterValue, valueUpdate: 'afterkeydown', attr: { placeholder: patientTitleI18n }" type="text" name="patientName")
+      // ko if: calendarNameFilter
+      .col-sm-2
+        input.form-control(name="calendarsSelector", type="hidden", data-bind="select2: select2Calendars")
+      // /ko
+      // ko if: detailsFilter
+      .col-sm-2
+        i.fa.fa-search
+        input.form-control(data-bind="value: detailsFilterValue, valueUpdate: 'afterkeydown', attr: { placeholder: detailsI18n }" type="text" name="details")
+      // /ko
+      // ko if: patientSeverityFilter
+      .col-sm-2
+        input.form-control(name="patientSeverity", type="hidden", data-bind="select2: select2Severity")
+      // /ko
+      // ko if: patientInsuranceFilter
+      .col-sm-2
+        input.form-control(name="insuranceSelector", type="hidden", data-bind="select2: select2Insurance")
+      // /ko
+      .col-sm-2
+        input.form-control(name="roomsSelector", type="hidden", data-bind="select2: select2Rooms")
+      // ko if: etaFilter
+      .col-sm-2
+        i.fa.fa-search
+        input.form-control(data-bind="value: etaFilterValue, valueUpdate: 'afterkeydown', attr: { placeholder: etaI18n }" type="text" name="patientetaFilter")
+      // /ko
+      // ko if: patientArrivalTimeFilter
+      .col-sm-2
+        i.fa.fa-search
+        input.form-control(data-bind="value: patientArrivalTimeFilterValue, valueUpdate: 'afterkeydown', attr: { placeholder: arrivalTimeI18n }" type="text" name="patientArrivalTime")
+      // /ko
+      // ko if: durationFilter
+      .col-sm-2
+        i.fa.fa-search
+        input.form-control(data-bind="value: durationFilterValue, valueUpdate: 'afterkeydown', attr: { placeholder: durationsI18n }" type="number" name="duration")
+      // /ko
+      // ko if: adhocFilter
+      .col-sm-2
+        i.fa.fa-search
+        input.form-control(data-bind="value: adhocFilterValue, valueUpdate: 'afterkeydown', attr: { placeholder: waitI18n }" type="text" name="patientAdHoc")
+      // /ko
+      // ko if: timeinadvanceFilter
+      .col-sm-2
+        i.fa.fa-search
+        input.form-control(data-bind="value: timeinadvanceFilterValue, valueUpdate: 'afterkeydown', attr: { placeholder: timeInAdvanceI18n }" type="text" name="timeinadvance")
+      // /ko
+      // ko if: statusFilter
+      .col-sm-2
+        input.form-control(name="statusSelector", type="hidden", data-bind="select2: select2Status")
+      // /ko
+      // ko if: patientNoFilter
+      .col-sm-2
+        i.fa.fa-search
+        input.form-control(data-bind="value: patientNoFilterValue, valueUpdate: 'afterkeydown', attr: { placeholder: patientNoI18n }" type="text" name="patientnoFilter")
+      // /ko
+      // ko if: patientDobFilter
+      .col-sm-2
+        i.fa.fa-search
+        input.form-control(data-bind="value: patientDobFilterValue, valueUpdate: 'afterkeydown', attr: { placeholder: patientDobI18n }" type="text" name="patientdobFilter")
+      // /ko
+// /ko
+// ko ifnot: filterView
+.row.permanent-filter
+  .col-xs-12.dc-action-buttons.dc-action-buttons-left(data-bind="foreach: localStorageConfigs")
+    // ko if: visible
+    span.btn.btn-default.btn-xs.filter-button(data-bind="text: name, click: $parent.applyConfiguration.bind( $parent, $data )")
+    // /ko
+  .col-sm-2
+    i.fa.fa-search
+    input.form-control(data-bind="value: patientTitleFilterValue, valueUpdate: 'afterkeydown', attr: { placeholder: patientTitleI18n }" type="text" name="patientName")
+  .col-sm-2
+    input.form-control(name="roomsSelector", type="hidden", data-bind="select2: select2Rooms")
+// /ko
+.row#waitingListGraphic
+  .col-sm-12(style="padding: 0;")
+    .col-sm-4(style="padding-left: 5px;")
+      .form-group
+        div.checkbox(style="margin: 0;")
+          label.control-label
+            input(name="showClosedAppointments", type="checkbox", data-bind="checked: showClosedAppointmentsFilter, click: updateClosedAppointmentsFilter")
+            span(data-bind="text: showClosedAppointmentsI18n")
+    // ko if: isAdmin
+    .col-sm-4(style="padding: 0;")
+      .col-sm-4
+        h4(style="margin-top: 0;")
+          span(data-bind="text: addNewRoomI18n")
+          | &nbsp;
+          a(href="#", data-bind="click: add")
+            i.icon.fa.fa-plus
+            | &nbsp;
+    // /ko
+  .col-sm-4(style="padding: 0 5px 0 5px;")
+    div.panel.panel-default
+      div.panel-heading
+        span(data-bind="text: waitingListI18n")
+        span.pull-right
+          a(href="#", data-bind="click: configure")
+            span.fa.fa-gear
+      div.panel-body
+        // ko if: isFilteredDataNotEmpty
+        ol.patients-list.patients-list-drop(data-bind="foreach: filteredData")
+          // ko ifnot: $data.roomId
+          li.patient(style="padding: 0 0 5px 5px;", data-bind="style: {'background-color': scheduled === 2 ? '#d3d3d3' : ''}")
+            <!-- ko if: $parent.patientSeverity -->
+            div(style="position: relative; padding-top: 5px;", data-bind="attr: { class: 'dc-triangle dc-severity-' + $data.severity }")
+            <!-- /ko -->
+            <!-- ko ifnot: $parent.patientSeverity -->
+            div(style="position: relative; padding-top: 5px;")
+            <!-- /ko -->
+              div.appointment-inner(style="padding-right: 15px;")
+                span.fa.fa-eye(style="cursor: pointer;", data-bind="click: $parent.showAppointment.bind( $parent, $data )")
+                // ko if: $parent.patientTitle
+                | ,&nbsp;
+                span(data-bind="html: $parent.patientTitleData( $data )" )
+                // /ko
+                // ko if: $parent.patientDob
+                // ko if: $data.patientDob
+                | ,&nbsp;
+                span(data-bind="text: patientDob")
+                // /ko
+                // /ko
+                // ko if: $parent.patientNo
+                // ko if: $data.patientNo
+                | ,&nbsp;
+                span(data-bind="text: $parent.patientNoLabelI18n + ':'")
+                span(data-bind="text: patientNo")
+                // /ko
+                // /ko
+                // ko if: $parent.calendarName
+                | ,&nbsp;
+                span(data-bind="text: $parent.patientCalendars( $data )")
+                // /ko
+                // ko if: $parent.patientInsurance
+                | ,&nbsp;
+                span(data-bind="html: $parent.patientInsuranceData( $data )")
+                // /ko
+                // ko if: $parent.details
+                // ko if: $data.details
+                | ,&nbsp;
+                span(style="overflow-wrap: break-word;", data-bind="text: details")
+                // /ko
+                // /ko
+                // ko if: $parent.eta
+                // ko if: $data.eta
+                | ,&nbsp;
+                i.fa.fa-clock-o
+                | &nbsp;
+                span(data-bind="text: $parent.etaData( $data )")
+                // /ko
+                // /ko
+                // ko if: $parent.patientArrivalTime
+                | ,&nbsp;
+                span(data-bind="text: $parent.arrivalTimeLabelI18n + ': '")
+                // ko ifnot: 2 === scheduled
+                span(data-bind="text: $parent.patientArrivalTimeData( $data )")
+                // /ko
+                // ko if: 2 === scheduled
+                // ko if: $data.actualWaitingTimeMinutes
+                // ko if: $data.actualWaitingTimeMinutes > 0
+                span(data-bind="text: actualWaitingTimeMinutes")
+                // /ko
+                // ko ifnot: $data.actualWaitingTimeMinutes > 0
+                span(data-bind="text: 0")
+                // /ko
+                // /ko
+                // /ko
+                // /ko
+                // ko if: $parent.duration
+                | ,&nbsp;
+                span(data-bind="text: $parent.durationsLabelI18n + ':'")
+                span(data-bind="text: duration")
+                // /ko
+                // ko if: $parent.adhoc
+                // ko if: $data.adhoc
+                | ,&nbsp;
+                span(data-bind="text: $parent.waitLabelI18n + ':'")
+                // ko if: $data.wait < 0
+                span(data-bind="text: '0'")
+                // /ko
+                // ko ifnot: $data.wait < 0
+                span(data-bind="text: wait")
+                // /ko
+                // /ko
+                // /ko
+                // ko if: $parent.timeinadvance
+                // ko if: $data.timeinadvance
+                | ,&nbsp;
+                span(data-bind="text: $parent.timeInAdvanceData( $data )")
+                // /ko
+                // /ko
+                // ko if: $parent.status
+                // ko if: $data.status
+                | ,&nbsp;
+                span(data-bind="text: status")
+                // /ko
+                // /ko
+          // /ko
+        // /ko
+  // ko if: '2' === columnsFilter()
+  ol.rooms-list.list-1.col-sm-4(data-bind="foreach: filteredRoomsArray")
+    // ko if: $index()%2===0
+    include template-rooms
+    // /ko
+  ol.rooms-list.list-2.col-sm-4(data-bind="foreach: filteredRoomsArray")
+    // ko if: $index()%2!==0
+    include template-rooms
+    // /ko
+  // /ko
+  // ko if: '3' === columnsFilter()
+  div.col-md-8
+    ol.rooms-list.list-1.col-sm-4(data-bind="foreach: filteredRoomsArray")
+      // ko if: $index()%3===0
+      include template-rooms
+      // /ko
+    ol.rooms-list.list-2.col-sm-4(data-bind="foreach: filteredRoomsArray")
+      // ko if: $index()%3===1
+      include template-rooms
+      // /ko
+    ol.rooms-list.list-3.col-sm-4(data-bind="foreach: filteredRoomsArray")
+      // ko if: $index()%3===2
+      include template-rooms
+      // /ko
+  // /ko

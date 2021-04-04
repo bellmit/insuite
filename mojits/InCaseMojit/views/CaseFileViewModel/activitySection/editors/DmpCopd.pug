@@ -1,0 +1,46 @@
+include DMP/Dmp-mixin
+
+- var dmpMedHint = 'Bitte machen Sie zu jeder Wirkstoffgruppe eine Angabe. Bitte machen Sie bei einem „keine“ – wo möglich - zusätzlich eine Angabe, wenn die Nicht-Verordnung auf eine Kontraindikation gegen die Gabe der jeweiligen Wirkstoffgruppe zurückzuführen ist. Diese Angabe ist für die Qualitätssicherung notwendig.<br>Die Angaben können - je nach Praxissoftware - direkt aus der Vordokumentation übernommen werden. Sie müssen dazu die Übernahme der vorherigen Angaben bestätigen.<br><br>Die Angaben „bei Bedarf“ und „Dauermedikation“ sind gemeinsam möglich.<br><br>Vorrangig sollen unter Berücksichtigung der Kontraindikationen und der Patientenpräferenzen Medikamente verwendet werden, deren positiver Effekt und Sicherheit im Hinblick auf die Therapieziele des DMP in prospektiven, randomisierten kontrollierten Studien nachgewiesen wurde. Dabei sollen diejenigen Wirkstoffe/Wirkstoffgruppen oder Kombinationen bevorzugt werden, die diesbezüglich den größten Nutzen erbringen.<br><br>Zu den einzelnen Wirkstoffgruppen, die vorrangig zu verordnen sind, zählen Für die <strong>Bedarfstherapie</strong><ul><li>Kurzwirksame Anticholinergika (Ipratropiumbromid,)</li><li>Kurzwirksame Beta-2-Sympathomimetika (Fenoterol, Salbutamol, Terbutalin)</li><li>Kombination von kurzwirksamen Beta-2-Sympathomimetika und Anticholinergika</li></ul>Falls erforderlich zur <strong>Dauertherapie</strong><ul><li>Langwirksames Anticholinergikum (Tiotropiumbromid)</li><li>Langwirksame Beta-2-Sympatomimetika (Formoterol, Salmeterol)</li></ul><ins>In begründeten Einzelfällen können auch nachstehende Wirkstoffgruppen zur Anwendung kommen:</ins><ul><li>Theophyllin (Darreichungsform mit <strong>verzögerter</strong> Wirkstofffreisetzung zur <strong>Dauer</strong>therapie),<br>Theophyllin (Darreichungsform mit <strong>rascher</strong> Wirkstofffreisetzung, als <strong>Bedarfs</strong>therapie)</li><li>Inhalative Glukokortikosteroide (bei mittelschwerer und schwerer COPD, insbesondere wenn außerdem Zeichen eines Asthma bronchiale bestehen).</li><li>Systemische Glukokortikosteroide</li><li>Bei gehäuft auftretenden Exazerbationen bzw. bei Schleimretention können mukoaktive Substanzen (Acetylcystein, Ambroxol, Carbocystein) erwogen werden.</li></ul>';
+
+include DMP/DmpGeneral
++DmpFieldset('anamnesisAndFindingLabelI18n')
+  include DMP/anamnesisAndFinding/DmpAnamnesisAndFinding
+  hr
+  div.row
+    div.col-xs-3
+      include DMP/anamnesisAndFinding/dmpBloodPressureSystolic
+    div.col-xs-3
+      include DMP/anamnesisAndFinding/dmpBloodPressureDiastolic
+  include DMP/anamnesisAndFinding/dmpCurrentFev1
+  include DMP/anamnesisAndFinding/dmpClinicalAssessmentOfOsteoporosisRisk
+// ko if: isFollowing
++DmpFieldset('relevantEventsLabelI18n')
+  include DMP/relevantEvents/dmpFrequencyExacerbationsSinceLast
+  include DMP/relevantEvents/dmpHadStationaryCopdTreatment
+// /ko
++DmpFieldset('medicationLabelI18n', dmpMedHint)
+  include DMP/medication/dmpShortActingBeta2AdrenergicAgonistAnticholinergics
+  include DMP/medication/dmpLongActingBeta2AdrenergicAgonist
+  include DMP/medication/dmpLongActingAnticholinergics
+  include DMP/medication/dmpOtherDiseaseSpecificMedication
+  include DMP/medication/dmpCheckedInhalationTechnique
++DmpFieldset('trainingLabelI18n')
+  include DMP/training/dmpRecommendedCopdTrainings
+  // ko if: isFollowing
+  include DMP/training/dmpPerceivedCopdTraining
+  // /ko
++DmpFieldset('treatmentPlanningLabelI18n')
+  div.row
+    div.col-xs-6
+      // ko if: isAfterQ42017
+      include DMP/treatmentPlanning/dmpRecommendedTobaccoAbstinence
+      include DMP/treatmentPlanning/dmpRecommendedTobaccoRehabProgram
+      // ko if: isFollowing
+      include DMP/treatmentPlanning/dmpAttendedTobaccoRehabProgramSinceLastRecommendation
+      // /ko
+      include DMP/treatmentPlanning/dmpRecommendedPhysicalTraining
+      // /ko
+    div.col-xs-6
+      include DMP/treatmentPlanning/dmpCopdRelatedTransferOrConfinementArranged
+      include DMP/treatmentPlanning/dmpPatientWantsInfos
+      include DMP/treatmentPlanning/dmpDocumentationInterval

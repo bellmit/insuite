@@ -1,0 +1,8 @@
+div(data-bind='visible: dmpShowOptionalFields() || dmpType() !== "FIRST" || dmpCurrentTreatmentStatus() === "POSTOPERATIVE"')
+    div.form-group
+        strong(data-bind="text: dmpPerformedSurgicalTherapy.i18n")
+        span(data-bind="dmpField: { field: dmpPerformedSurgicalTherapy }")
+        div(data-bind="foreach: dmpPerformedSurgicalTherapy.list, hasFeedback: { field: dmpPerformedSurgicalTherapy, toggle: dmpPerformedSurgicalTherapy.hasError, messages: dmpPerformedSurgicalTherapy.validationMessages }")
+            label.checkbox-inline
+                span(data-bind="text: i18n")
+                input(type="checkbox", name="dmpPerformedSurgicalTherapy", data-bind="value: val, checked: $parent.dmpPerformedSurgicalTherapy, readOnly: $parent.dmpPerformedSurgicalTherapy.readOnly, attr: { name: $element.name + '-' + val }")

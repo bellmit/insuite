@@ -1,0 +1,8 @@
+.row#jawboneDataModel
+  .col-xs-12
+    p(data-bind="text: textMainI18n")
+    div.form-group(data-bind="foreach: scopes", style="margin-left: 5%")
+      div.checkbox()
+        label.control-label
+          strong(data-bind="text: i18n")
+          input(type="checkbox", data-bind="checked: value")

@@ -1,0 +1,21 @@
+div#activities-modal
+  div
+    span(data-bind="text: pseudonymI18n")
+    |&nbsp;
+    select(name="pseudonym", data-bind="options: pseudonymsOptions, optionsValue: 'pseudonymIdentifier', optionsText: 'pseudonymIdentifier', value: selectedPseudonym, disable: readOnly")
+
+  br
+  div
+    span(data-bind="text: fieldsTextI18n")
+    //ko ifnot: readOnly
+    div.checkbox
+      label
+        span(data-bind="text: selectAllI18n")
+        input(type="checkbox", data-bind="checked: checkedAll, event: {change: selectAllHandler}")
+      hr
+    // /ko
+    div(data-bind="foreach: anonymizeConfiguration")
+      div.checkbox
+        label
+          span(data-bind="text: fieldNameTranslated")
+          input(type="checkbox", data-bind="checked: selectedField, readOnly: $root.readOnly")

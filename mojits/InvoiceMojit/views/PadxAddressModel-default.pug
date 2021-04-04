@@ -1,0 +1,95 @@
+div.panel.panel-default
+  //- kind
+  div.panel-heading(data-bind="css: { 'has-error': kind.hasError }")
+    select.form-control.input-sm(
+    name="kind",
+    style="width: auto",
+    data-bind="options: _kindList, optionsValue: 'val', optionsText: 'i18n', textInput: kind,\
+    optionsCaption: pleaseSelectI18n"
+    )
+  div.panel-body
+    //- street & houseno
+    div.row
+      div.col-xs-12
+        label.control-label(data-bind="text: street.i18n + ',' + houseno.i18n")
+    div.row
+      //- street
+      div.col-xs-8
+        div.form-group(data-bind="hasFeedback: { field: street, toggle: street.hasError, messages: street.validationMessages }")
+          input.form-control(
+          name="street",
+          type="text",
+          data-bind="textInput: street",
+          placeholder=""
+          )
+      //- houseno
+      div.col-xs-4
+        div.form-group(data-bind="hasFeedback: { field: houseno, toggle: houseno.hasError, messages: houseno.validationMessages }")
+          input.form-control(
+          name="houseno",
+          type="text",
+          data-bind="textInput: houseno",
+          placeholder=""
+          )
+    //- zip & city
+    div.row
+      div.col-xs-12
+        label.control-label(data-bind="text: zip.i18n + ',' + city.i18n")
+    div.row
+      //- zip
+
+      // ko if: _zipAutoCompleteDisabled
+      div.col-xs-4
+        div.form-group(data-bind="hasFeedback: { field: zip, toggle: zip.hasError, messages: zip.validationMessages }")
+          input.form-control(
+          name="zip",
+          type="text",
+          maxlength="10",
+          data-bind="textInput: zip",
+          placeholder=""
+          )
+      //- city
+      div.col-xs-8
+        div.form-group(data-bind="hasFeedback: { field: city, toggle: city.hasError, messages: city.validationMessages }")
+          input.form-control(
+          name="city",
+          type="text",
+          data-bind="textInput: city",
+          placeholder=""
+          )
+      // /ko
+      // ko ifnot: _zipAutoCompleteDisabled
+      div.col-xs-4
+        div.form-group(data-bind="hasFeedback: { field: zip, toggle: zip.hasError, messages: zip.validationMessages }")
+          input.form-control(
+          name="zip",
+          maxlength="10",
+          data-bind="select2: _zipCfgAutoComplete"
+          )
+      //- city
+      div.col-xs-8
+        div.form-group(data-bind="hasFeedback: { field: city, toggle: city.hasError, messages: city.validationMessages }")
+          input.form-control(
+          name="city",
+          type="text",
+          data-bind="select2: _cityCfgAutoComplete",
+          placeholder=""
+          )
+      // /ko
+    //- addon
+    div.form-group(data-bind="hasFeedback: { field: addon, toggle: addon.hasError, messages: addon.validationMessages }")
+      label.control-label(data-bind="text: addon.i18n")
+      input.form-control(
+      name="addon",
+      type="text",
+      maxlength="40",
+      data-bind="textInput: addon",
+      placeholder=""
+      )
+    //- country
+    div.form-group(data-bind="hasFeedback: { field: country, toggle: country.hasError, messages: country.validationMessages }")
+      label.control-label(data-bind="text: country.i18n")
+      input.form-control(
+      name="country",
+      data-bind="select2: _countryCfgAutoComplete"
+      )

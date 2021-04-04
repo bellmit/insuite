@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- automatische Dokumentation, generiert durch Visual Source Safe 
+	$Workfile: telecom_typelib.xsd $  
+	$Modtime: 18.03.04 13:51 $  
+	$Revision: 1 $  
+-->
+<xs:schema targetNamespace="urn::hl7-org/cda" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="urn::hl7-org/cda" elementFormDefault="qualified">
+	<xs:complexType name="dmp_telecom_typ">
+			<xs:annotation>
+			<xs:appinfo>Telefon/Fax/Email</xs:appinfo>
+		</xs:annotation>
+		<xs:attribute name="V" type="telecom-string-typ" use="required"/>
+		<xs:attribute name="USE" type="xs:string" use="required" fixed="WP"/>
+	</xs:complexType>
+	<xs:simpleType name="telecom-string-typ">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="150"/>
+			<xs:minLength value="1"/>
+			<xs:pattern value="(tel|fax|mailto|http|ftp):.*"/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

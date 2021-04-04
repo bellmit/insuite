@@ -1,0 +1,95 @@
+div.row
+  div.col-xs-12
+    span(data-bind="html: message")
+div.row
+  div(style="padding-left: 2em;")
+    div.form-group(data-bind="visible: baseDataVisible")
+      div.checkbox
+        label.control-label
+          // ko ifnot: baseDataDiff.rows.length
+          strong(data-bind="text: baseDataI18n")
+          // /ko
+          // ko if: baseDataDiff.rows.length
+          strong
+            a(data-toggle="collapse", href="#collapseBaseData", data-bind="text: baseDataI18n")
+          // /ko
+          input(data-bind="checked: baseData", type="checkbox" )
+          div#collapseBaseData.collapse.in.showAuditDiffDialog(data-bind="with: baseDataDiff")
+            // ko if: rows.length
+            include ../../DocCirrus/views/auditDiffDialogTable
+            // /ko
+    div.form-group(data-bind="visible: insuranceDataVisible")
+      div.checkbox
+        label.control-label
+          // ko ifnot: insuranceDataDiff.rows.length
+          strong(data-bind="text: insuranceDataI18n")
+          // /ko
+          // ko if: insuranceDataDiff.rows.length
+          strong
+            a(data-toggle="collapse", href="#collapseInsuranceData", data-bind="text: insuranceDataI18n")
+          // /ko
+          input(data-bind="checked: insuranceData", type="checkbox" )
+          div#collapseInsuranceData.collapse.in.showAuditDiffDialog(data-bind="with: insuranceDataDiff")
+            // ko if: rows.length
+            include ../../DocCirrus/views/auditDiffDialogTable
+            // /ko
+    div.form-group(data-bind="visible: egkDataVisible")
+      div.checkbox
+        label.control-label
+          // ko ifnot: egkDataDiff.rows.length
+          strong(data-bind="text: egkDataI18n")
+          // /ko
+          // ko if: egkDataDiff.rows.length
+          strong
+            a(data-toggle="collapse", href="#collapseEgkData", data-bind="text: egkDataI18n")
+          // /ko
+          input(data-bind="checked: egkData", type="checkbox" )
+          div#collapseEgkData.collapse.in.showAuditDiffDialog(data-bind="with: egkDataDiff")
+            // ko if: rows.length
+            include ../../DocCirrus/views/auditDiffDialogTable
+            // /ko
+    div.form-group(data-bind="visible: accountDataVisible")
+      div.checkbox
+        label.control-label
+          // ko ifnot: accountDataDiff.rows.length
+          strong(data-bind="text: accountDataI18n")
+          // /ko
+          // ko if: accountDataDiff.rows.length
+          strong
+            a(data-toggle="collapse", href="#collapseAccountData", data-bind="text: accountDataI18n")
+          // /ko
+          input(data-bind="checked: accountData", type="checkbox" )
+          div#collapseAccountData.collapse.in.showAuditDiffDialog(data-bind="with: accountDataDiff")
+            // ko if: rows.length
+            include ../../DocCirrus/views/auditDiffDialogTable
+            // /ko
+    div.form-group(data-bind="visible: additionalDataVisible")
+      div.checkbox
+        label.control-label
+          // ko ifnot: additionalDataDiff.rows.length
+          strong(data-bind="text: additionalDataI18n")
+          // /ko
+          // ko if: additionalDataDiff.rows.length
+          strong
+            a(data-toggle="collapse", href="#collapseAdditionalData", data-bind="text: additionalDataI18n")
+          // /ko
+          input(data-bind="checked: additionalData", type="checkbox")
+          div#collapseAdditionalData.collapse.in.showAuditDiffDialog(data-bind="with: additionalDataDiff")
+            // ko if: rows.length
+            include ../../DocCirrus/views/auditDiffDialogTable
+            // /ko
+    div.form-group(data-bind="visible: careDataVisible")
+      div.checkbox
+        label.control-label
+          // ko ifnot: careDataDiff.rows.length
+          strong(data-bind="text: careDataI18n")
+          // /ko
+          // ko if: careDataDiff.rows.length
+          strong
+            a(data-toggle="collapse", href="#collapseCareData", data-bind="text: careDataI18n")
+          // /ko
+          input(data-bind="checked: careData", type="checkbox")
+          div#collapseCareData.collapse.in.showAuditDiffDialog(data-bind="with: careDataDiff")
+            // ko if: rows.length
+            include ../../DocCirrus/views/auditDiffDialogTable
+            // /ko

@@ -1,0 +1,4 @@
+div.form-group(data-bind="hasFeedback: { field: dmpBloodPressureSystolic, toggle: dmpBloodPressureSystolic.hasError, messages: dmpBloodPressureSystolic.validationMessages }")
+  label.control-label(data-bind="text: dmpBloodPressureSystolic.i18n")
+  span(data-bind="dmpField: { field: dmpBloodPressureSystolic }")
+  input.form-control(name="dmpBloodPressureSystolic", type="text", data-bind="value: dmpBloodPressureSystolicString, readOnly: dmpBloodPressureSystolic.readOnly")

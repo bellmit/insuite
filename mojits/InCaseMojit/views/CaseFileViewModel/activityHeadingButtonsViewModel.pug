@@ -1,0 +1,107 @@
+span(style="float: right;",data-bind="notifyBind: { method: 'templateReady', namespace: $data }")#spanActivityHeadingButtons
+
+  span &nbsp;
+  //span(data-bind="text: pdfDebugStatus")
+  //span &nbsp;
+  //span(data-bind="text: pdfDebug")
+  //span &nbsp;
+
+  //ko if: showKbvPrescriptionFormPanel
+  //ko with: currentActivity
+  div.form-group(style="padding-right: 8px; display: inline-block", data-bind="hasFeedback: { field: substitutePrescription, toggle: substitutePrescription.hasError, messages: substitutePrescription.validationMessages }")
+    div.checkbox-inline
+      label.control-label
+        span(data-bind="text: substitutePrescription.i18n")
+        input(name="substitutePrescription", type="checkbox", data-bind="readOnly: substitutePrescription.readOnly, checked: substitutePrescription")
+  // /ko
+  // /ko
+  //ko if: canModifyView
+  .btn-group(data-bind="css: { dropup: dropMenu.dropup }", style="display: inline-block;")
+    button.btn.btn-xs.btn-default(data-bind="click: btnViewClick, disable: btnViewDisabled()")
+      i(data-bind="attr: {'class': mapBtnView(btnViewAction()).icon }")
+      | &nbsp;
+      span(data-bind="text: mapBtnView(btnViewAction()).textB")
+    .btn-group
+      button.btn.btn-default.dropdown-toggle.btn-xs(type="button", data-toggle="dropdown")
+        | &nbsp;
+        span.caret
+      // ko template: viewMenu.template
+      // /ko
+  // /ko
+  // ko if: isMedicationplan
+  button#btnMedicationplan.btn.btn-xs.btn-default(data-bind="click: btnMedicationplanPrintClick, enable: mmiPrintEnabled, visible: !isFrameView()")
+    i.fa.fa-print
+    | &nbsp;
+    span(data-bind="text: medicatioplanPDFI18n")
+  //  /ko
+
+  // ko if: isKBVMedicationPlan
+  button#btnKBVMedicationPlan.btn.btn-xs.btn-default(data-bind="click: btnKBVMedicationPlanPrintClick, enable: mmiPrintEnabled")
+    i.fa.fa-print
+    | &nbsp;
+    span(data-bind="text: medicatioplanPDFI18n")
+  //  /ko
+
+  // ko if: isActivePregnancy
+  button#btnGravidogrammClose.btn.btn-xs.btn-default(data-bind="click: btnEndPregnancyCaseClick, enable: pdfNotInProgress")
+    i.fa.fa-lock
+    | &nbsp;
+    span(data-bind="text: endPregnancyCaseI18n")
+  //  /ko
+
+  // ko if: isInactivePregnancy
+  button#btnGravidogrammReopen.btn.btn-xs.btn-default(data-bind="click: btnReopenPregnancyCaseClick, enable: pdfNotInProgress")
+    i.fa.fa-unlock
+    | &nbsp;
+    span(data-bind="text: reopenPregnancyCaseI18n")
+  //  /ko
+
+  // ko if: canPrefill
+  button#btnPrefillForm.btn.btn-xs.btn-default(type="button", name="btnPrefillForm", data-bind="click: btnPrefillClick, enable: pdfNotInProgress, visible: canPrefill()")
+    i.fa.fa-file-pdf-o
+    | &nbsp;
+    span(data-bind="text: prefillI18n")
+  //  /ko
+
+  // ko if: canQuickPrint
+  .btn-group(data-bind="css: { dropup: dropMenu.dropup }", style="display: inline-block;")
+    button#btnQuickPrint.btn.btn-xs.btn-default(data-bind="click: btnQuickPrintClick, enable: canPrintAndRelease")
+      i.fa.fa-lock
+      | &nbsp;
+      span(data-bind="text: btnQuickPrintTextI18n")
+    .btn-group
+      button.btn.btn-default.dropdown-toggle.btn-xs(type="button", data-bind="enable: canPrintAndRelease, attr: { title: btnQuickPrintTextI18n, name: 'quickPrint' }", data-toggle="dropdown")
+        | &nbsp;
+        span.caret
+      // ko template: dropMenu.template
+      // /ko
+  //  /ko
+
+  button#btnGenerateFormPDF.btn.btn-xs.btn-default(type="button", name="btnGenerateFormPDF", data-bind="click: btnGeneratePDFClick, enable: pdfNotInProgress && allowPDFCreation, visible: canHavePdf()")
+    i.fa.fa-file-pdf-o
+    | &nbsp;
+    span(data-bind="text: buttonTextPDFI18n")
+
+  button#btnPrintScheduled.btn.btn-xs.btn-default(type="button", name="btnPrintScheduled", data-bind="click: btnCreatePrintTaskClick, enable: pdfNotInProgress && allowScheduledPDFCreation, visible: ( canHavePdf() && !isISD() && !isFrameView() )")
+    i.fa.fa-print
+    | &nbsp;
+    span(data-bind="text: buttonTextPrintTaskI18n")
+
+  //button#btnTranscribeScheduled.btn.btn-xs.btn-default(type="button", name="btnTranscribeScheduled", data-bind="click: btnCreateTranscriptionTaskClick, enable: pdfNotInProgress, visible: ( canHavePdf() && !isISD() )")
+  //  i.fa.fa-print
+  //  | &nbsp;
+  //  span Transcribe
+
+  a(href="#",data-toggle="tooltip",data-bind="attr: { title: printToolTip }")#aWrapPrintButton
+
+  span#kopbForm(data-bind="template: kopbForm.template, enable: pdfNotInProgress, visible: canHavePdf() && !isFrameView() ")
+
+  a(href="#",data-toggle="tooltip",data-bind="attr: { title: printToolTip }")#aWrapPrintActivityTextButton
+    button#btnPrintActivityText.btn.btn-xs.btn-default(type="button", name="btnPrintActivityText", data-bind="click: btnPrintActivityTextClick, visible: isEDMP() || isHGV(), enable: isPrintEnabled")
+      i.fa.fa-print
+      | &nbsp;
+      span(data-bind="text: buttonTextPrintI18n")
+  //ko if: isFormToolboxAvailable
+  button#btnOpenToolbox.btn.btn-xs.btn-default(type="button", name="btnOpenToolbox", data-bind="click: btnOpenToolboxClick")
+    i.fa.fa-arrows-alt
+  // /ko

@@ -1,0 +1,7 @@
+---
+proxy:
+  enable: true
+  authentication: basic
+server:
+  io:
+    url: http://localhost:3000

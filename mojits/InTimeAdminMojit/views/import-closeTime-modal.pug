@@ -1,0 +1,8 @@
+div
+  div.form-group
+    label(data-bind="text: federalStateTextI18n")
+    input.form-control(name="federalStates", data-bind="select2: select2federalState", type="hidden")
+  div.form-group(data-bind="highlightError: year")
+    label(data-bind="text: yearTitleI18n")
+    .date-picker.input-group
+      input.form-control(name="year", data-bind="datetimepicker: { value: year, valueReset: null, options: yearDatepickerOptions,  valueUpdate: '' }")

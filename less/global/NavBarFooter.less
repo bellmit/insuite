@@ -1,0 +1,65 @@
+& {
+  @import "../variables/bootstrap.less";
+
+  /** NavBarFooter */
+  @NavBarFooter-gap: 20px;
+
+  .body-NavBarFooter-fixed {
+    padding-bottom: (@navbar-height + 4px);
+  }
+
+  #NavBarFooter-container {
+    margin-top: @NavBarFooter-gap;
+  }
+
+  .body-NavBarFooter-fixed .navbar-fixed-bottom {
+    border-width: 1px 0;
+  }
+
+  .body-NavBarFooter-fixed #NavBarFooter-container {
+    margin-top: 0;
+  }
+
+  .NavBarFooter-fixed {
+    @shadow-NavBarFooter-fixed: 0 0 10px 10px rgba(255, 255, 255, 0.8);
+    .box-shadow(@shadow-NavBarFooter-fixed);
+  }
+
+  .NavBarFooter-pin-toggle {
+    padding: 8px 14px 4px;
+  }
+
+  .NavBarFooter-pin-icon {
+    color: red;
+    cursor: pointer;
+  }
+
+  .NavBarFooter-fixed .NavBarFooter-pin-icon {
+    color: green;
+  }
+
+  .NavBarFooter-brand {
+    font-size: 14px;
+    color: #333 !important;
+  }
+
+  .NavBarFooter-brand-img {
+    width: 28px;
+    height: 28px;
+    margin-top: -4px;
+    vertical-align: top;
+  }
+
+  .NavBarFooter-brand-accent {
+    color: red;
+  }
+
+  .NavBarFooter-btnGroup {
+    margin-top: 2px;
+  }
+
+  .NavBarFooter-fixed.navbar-fixed-bottom .navbar-collapse {
+    padding-right: (@grid-gutter-width / 2); /*fix jump right on toggle*/
+  }
+
+}

@@ -1,0 +1,13 @@
+div.container.container-fullscreen
+  div.row
+    div.col-xs-2
+      label(for="omimchain_chainName", data-bind="text: chainName.i18n")
+    div.col-xs-10
+      div.form-group(data-bind="hasFeedback: { field: chainName, toggle: chainName.hasError, messages: chainName.validationMessages }")
+        input#omimchain_chainName.form-control(name="chainName", type="text", data-bind="textInput: chainName, readOnly: chainName.readOnly, hasFocus: true")
+    div.col-xs-2
+      label(for="omimchain_description", data-bind="text: description.i18n")
+    div.col-xs-10
+      div.form-group(data-bind="hasFeedback: { field: description, toggle: description.hasError, messages: description.validationMessages }")
+        textarea#omimchain_description.form-control(name="description", placeholder="", data-bind="textInput: description, readOnly: description.readOnly", rows="4")
+    div.col-xs-12(data-bind="template: chainTable.template")

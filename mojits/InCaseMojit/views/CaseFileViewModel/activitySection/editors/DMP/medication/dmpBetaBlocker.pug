@@ -1,0 +1,9 @@
+div.form-group
+  div.row
+    div.col-xs-5
+      strong(data-bind="text: dmpBetaBlocker.i18n")
+      span(data-bind="dmpField: { field: dmpBetaBlocker }")
+    div.col-xs-7(data-bind="foreach: dmpBetaBlocker.list, hasFeedback: { field: dmpBetaBlocker, toggle: dmpBetaBlocker.hasError, messages: dmpBetaBlocker.validationMessages }")
+      label.checkbox-inline
+        span(data-bind="text: i18n")
+        input(type="checkbox", name="dmpBetaBlocker", data-bind="value: val, checked: $parent.dmpBetaBlocker, readOnly: $parent.dmpBetaBlocker.readOnly, attr: { name: $element.name + '-' + val }")

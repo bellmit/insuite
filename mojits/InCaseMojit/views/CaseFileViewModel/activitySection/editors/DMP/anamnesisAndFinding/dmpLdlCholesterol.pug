@@ -1,0 +1,18 @@
+div.form-group
+  div.row
+    div.col-xs-4
+      div(data-bind="hasFeedback: { field: dmpLdlCholesterolValue, toggle: dmpLdlCholesterolValue.hasError, messages: dmpLdlCholesterolValue.validationMessages }")
+        label.control-label(data-bind="text: dmpLdlCholesterolValue.i18n")
+        span(data-bind="dmpField: { field: dmpLdlCholesterolValue }")
+        input.form-control(name="dmpLdlCholesterolValue", type="text", data-bind="value: dmpLdlCholesterolValueString, readOnly: dmpLdlCholesterolValue.readOnly")
+    div.col-xs-4
+      strong(data-bind="text: dmpLdlCholesterolUnitLabelI18n")
+      div(data-bind="foreach: dmpLdlCholesterolUnit.list, hasFeedback: { field: dmpLdlCholesterolUnit, toggle: dmpLdlCholesterolUnit.hasError, messages: dmpLdlCholesterolUnit.validationMessages }")
+        label.radio-inline
+          span(data-bind="text: i18n")
+          input(type="radio", name="dmpLdlCholesterolUnit", data-bind="value: val, checked: $parent.dmpLdlCholesterolUnit, readOnly: $parent.dmpLdlCholesterolUnit.readOnly")
+    div.col-xs-4
+      span &nbsp;<br>
+      label.checkbox-inline
+        span(data-bind="text: dmpLdlCholesterolNotDeterminedLabelI18n")
+        input(type="checkbox", name="dmpLdlCholesterolNotDetermined", data-bind="checked: dmpLdlCholesterolNotDetermined, readOnly: dmpLdlCholesterolNotDetermined.readOnly")

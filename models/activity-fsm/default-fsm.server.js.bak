@@ -1,0 +1,295 @@
+/**
+ * User: strix
+ * Date: 11/02/2014  15:45
+ * (c) 2012, Doc Cirrus GmbH, Berlin
+ */
+/*global YUI */
+'use strict';
+
+/**
+ * NB: the states and transitions are defined in activity-schema, this is an interchangeable unit of business
+ * logic which is used to validate state changes.  Member names correspond to transitions, and all have a
+ * common form called on the server by a REST action on CaseFileMojit.
+ *
+ * JSDoc omitted due to redundancy, transitions accept:
+ *
+ * -    user        {Object}    Auth object
+ * -    activity    {Object}    May or may not satisfy the rules for this transition
+ * -    isTest      {Boolean}   Do not write changes to the state, just check if the activity is ready to run
+ *      the transition. callback will get failure or success.
+ * -    callback    {Function}  Callback fn(err, toState) - toState the new state depending on rules,
+ *      err if could not change state.
+ *
+ * When calling back an error, the error message should refer to the CaseFileMojit il8n dictionary, so
+ * that the client can inform the user about what needs to be done to before the transition will complete.
+ *
+ * Multiple error messages / informational strings can be comma separated (you need to do x,y,z first).
+ *
+ * @module activity-fsm
+ * @main activity-fsm
+ */
+YUI.add( 'dc-fsm-default', function( Y, NAME ) {
+
+        /**
+         * @module activity-fsm
+         * @submodule dc-fsm-default
+         * @requires activity-schema
+         */
+
+        var transitions = Y.doccirrus.schemas.activity.getFSM( NAME );
+
+        /**
+         * The default state machine for generic activity types which do not have any special business logic
+         *
+         * @class dc-fsm-default
+         * @namespace doccirrus.fsm
+         * @static
+         */
+        Y.namespace( 'doccirrus.fsm' )[NAME] = {
+
+            /**
+             * @property transitions
+             * @type {Object}
+             */
+            transitions: transitions,
+            /**
+             * @property name
+             * @type {String}
+             * @protected
+             */
+            name: NAME,
+
+            /**
+             * The primary state change. Only here will you see a POST
+             * i.e. doc without an _id. In other transitions, the record will always
+             * be handled by PUT.
+             *
+             * @method validate
+             * @param {Object} user
+             * @param {Object} activity
+             * @param {Boolean} isTest
+             * @param {Function} callback
+             */
+            validate: function( user, activity, isTest, callback ) {
+                var
+                    options = {ignoreReadOnly: ['actType']},
+                    action = 'post';
+
+                Y.log('Entering validate transition on default FSM ' + activity._id + ' ' + (isTest ? 'TEST' : 'REAL'), 'debug', NAME);
+
+                // 3. return state
+                function finalCb( err, data ) {
+
+                    Y.log('Valid activity saved to database:' + activity._id, 'debug', NAME);
+
+                    if( err ) {
+                        callback( err );
+                        return;
+                    }
+
+                    //  set activity _id on first POST, will be returned to client
+                    if ('post' === action && data && data.length !== 0) {
+                        if (!activity._id) {
+                            activity._id = data[0];
+                        }
+                    }
+                    callback( null, 'VALID' );
+                }
+
+                // 2. save state if !istTest
+                function validCb( err ) {
+                    if( err ) {
+                        Y.log( 'Suppressing error while testing validity: ' + JSON.stringify( err ) );
+                        callback( null, 'INVALID' );
+                        return;
+                    }
+                    finalCb( null, [] );
+                }
+
+                // 1. has an _id and we are actually writing!
+                if( activity._id ) {
+                    action = 'put';
+                }
+
+                if( !isTest ) {
+                    // we need to set the status here, in case it affects the validation function!
+                    // not clean because it complicates step 2.
+                    activity.status = 'VALID';
+                    // switch off writing in this case, because already written
+
+                    if (!activity.skipcheck_) {
+                        activity = Y.doccirrus.filters.cleanDbObject( activity );
+                    }
+
+                    Y.doccirrus.mongodb.runDb( {
+                        user: user,
+                        action: action,
+                        model: 'activity',
+                        query: {_id: activity._id}, // will be ignored for post
+                        data: activity,
+                        options: options,
+                        fields: Object.keys( activity ) // will be ignored for post
+                    }, finalCb );
+
+                } else {
+                    // 1. just check validation of activity
+                    action = 'validate';
+                    Y.doccirrus.mongodb.runDb( {
+                        user: user,
+                        action: action,
+                        model: 'activity',
+                        args: [ activity, validCb ]
+                    } );
+                }
+            },
+
+            /**
+             * @method approve
+             * @param {Object} user
+             * @param {Object} activity
+             * @param {Boolean} isTest
+             * @param {Function} callback
+             */
+            approve: function( user, activity, isTest, callback ) {
+                this._changeState( user, activity, isTest, 'APPROVED', callback);
+
+                /*
+                 function doneCb( err ) {
+                 if( err ) {
+                 callback( err );
+                 } else {
+                 callback( null, 'APPROVED' );
+                 }
+                 }
+
+                 if( activity._id && !isTest ) {
+                 activity.editor.push( {name: user && user.U } );
+
+                 Y.doccirrus.mongodb.runDb( {
+                 user: user,
+                 action: 'put',
+                 model: 'activity',
+                 query: { _id: activity._id },
+                 data: {status: 'APPROVED', editor: activity.editor, skipcheck_: true},
+                 fields: ['status', 'editor']
+                 }, doneCb );
+                 } else {
+                 doneCb( null );
+                 }
+                 */
+            },
+
+            /**
+             * @method delete
+             * @param {Object} user
+             * @param {Object} activity
+             * @param {Boolean} isTest
+             * @param {Function} callback
+             */
+            delete: function( user, activity, isTest, callback ) {
+                function doneCb( err ) {
+                    if( err ) {
+                        callback( err );
+                    } else {
+                        callback( null, 'DELETED' );
+                    }
+                }
+
+                function deleteActivity( err ) {
+                    if( err ) {
+                        doneCb( err );
+                        return;
+                    }
+
+                    Y.doccirrus.mongodb.runDb( {
+                        user: user,
+                        action: 'delete',
+                        model: 'activity',
+                        query: { _id: activity._id }
+                    }, doneCb );
+
+                }
+
+                // 1. has an _id and we are actually writing!
+                if( activity._id && !isTest ) {
+                    Y.doccirrus.mongodb.getModel( user, 'activity', function( err, model ) {
+                        Y.doccirrus.schemaprocess.activity.deleteAttachments.call( model, user, activity, deleteActivity ); // until MOJ-805 is done
+                    } );
+                } else {
+                    doneCb( null );
+                }
+            },
+
+            /**
+             * @method cancel
+             * @param {Object} user
+             * @param {Object} activity
+             * @param {Boolean} isTest
+             * @param {Function} callback
+             */
+            cancel: function( user, activity, isTest, callback ) {
+                this._changeState( user, activity, isTest, 'CANCELLED', callback);
+            },
+
+            /**
+             * @method archive
+             * @param {Object} user
+             * @param {Object} activity
+             * @param {Boolean} isTest
+             * @param {Function} callback
+             */
+            archive: function( user, activity, isTest, callback ) {
+                //  No rules as yet
+
+                this._changeState( user, activity, isTest, 'ARCHIVED', callback);
+
+                //callback( null, 'ARCHIVED' );
+            },
+
+            /**
+             *  Boilerplate to update he status field of an activity
+             *
+             *  Prevents a lot of duplication on simple transitions
+             *
+             * @method _changeState
+             * @param {Object} user AC REST user or equivalent
+             * @param {Object} activity Activity to transition
+             * @param {Boolean} isTest If true then changes will not be saved
+             * @param {String} toState Name of target state
+             * @param {Function} callback Of the form fn(err, newStateName)
+             * @protected
+             */
+            _changeState: function(user, activity, isTest, toState, callback) {
+                function doneCb( err ) {
+                    if( err ) {
+                        Y.log('Could not change activity state ' + activity.status + ' --> ' + toState + ': ' + Y.doccirrus.errorTable.getMessage(err), 'warn', NAME);
+                        callback( err );
+                    } else {
+                        callback( null, toState );
+                    }
+                }
+
+                if( activity._id && !isTest ) {
+                    activity.editor.push( {name: user && user.U } );
+
+                    Y.doccirrus.mongodb.runDb( {
+                        user: user,
+                        action: 'put',
+                        model: 'activity',
+                        query: { _id: activity._id },
+                        data: {status: toState, editor: activity.editor, skipcheck_: true},
+                        fields: ['status', 'editor'],
+                        // because the readonly setting returns '*' for the readonly states,
+                        // we need to override here.
+                        options: { ignoreReadOnly: ['status', 'editor'] }
+                    }, doneCb );
+                } else {
+                    doneCb( null );
+                }
+            }
+
+        };
+
+    },
+    '0.0.1', { requires: ['activity-schema'] }
+);

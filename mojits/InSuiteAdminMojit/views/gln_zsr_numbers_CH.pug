@@ -1,0 +1,12 @@
+div.form-group(data-bind="hasFeedback: { field: glnNumber, toggle: glnNumber.hasError, messages: glnNumber.validationMessages }")
+    label.col-xs-4.control-label(for="tab_locations-editing-field-glnNumber", data-bind="text: glnNumberI18n + ':'")
+    .col-xs-8
+        input#tab_locations-editing-field-glnNumber.form-control(name="glnNumber", type="text", data-bind="value: glnNumber, readOnly: glnNumber.readOnly, valueUpdate: '', attr: { title: glnNumber, placeholder: glnNumberI18n }")
+div.form-group(data-bind="hasFeedback: { field: zsrNumber, toggle: zsrNumber.hasError, messages: zsrNumber.validationMessages }")
+    label.col-xs-4.control-label(for="tab_locations-editing-field-zsrNumber", data-bind="text: zsrNumberI18n + ':'")
+    .col-xs-8
+        input#tab_locations-editing-field-zsrNumber.form-control(name="zsrNumber", type="text", data-bind="value: zsrNumber, readOnly: zsrNumber.readOnly, valueUpdate: '', attr: { title: zsrNumber, placeholder: zsrNumberI18n }")
+div.form-group(data-bind="hasFeedback: { field: vatNumber, toggle: vatNumber.hasError, messages: vatNumber.validationMessages }")
+    label.col-xs-4.control-label(for="tab_locations-editing-field-vatNumber", data-bind="text: vatNumberI18n + ':'")
+    .col-xs-8
+      input#tab_locations-editing-field-vatNumber.form-control(name="vatNumber", type="text", data-bind="value: vatNumber, readOnly: vatNumber.readOnly, valueUpdate: '', attr: { title: vatNumber, placeholder: vatNumberI18n }")

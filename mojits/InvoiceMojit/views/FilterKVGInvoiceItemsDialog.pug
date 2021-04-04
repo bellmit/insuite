@@ -1,0 +1,66 @@
+div.FilterInvoiceItemsDialog
+    p(data-bind="html: kvgSettingsLink")
+    div.form-group
+        select.form-control(name="kvgSettingsOptions", data-bind="options: kvgSettingsOptions, optionsValue: '_id', optionsText: 'value' , value: kvgSettingId")
+    p(data-bind="text: FIDatepickerTextI18n")
+    div.container.container-fullscreen-fluid(style="padding: 0")
+        div.row
+            div.col-xs-6
+                div.form-group.dc-form-flex
+                    div.dc-form-flex-label
+                        label.control-label(data-bind="text: FIFromLabelTextI18n")
+                    div.dc-form-flex-stretch
+                        div.date-picker.input-group
+                            input.form-control(name="from", data-bind="datetimepicker: fromDatepicker")
+            div.col-xs-6
+                div.form-group.dc-form-flex
+                    div.dc-form-flex-label
+                        label.control-label(data-bind="text: FIToLabelTextI18n")
+                    div.dc-form-flex-stretch
+                        div.date-picker.input-group
+                            input.form-control(name="to", data-bind="datetimepicker: toDatepicker")
+        p(data-bind="text: FICheckBoxTextI18n")
+        div.col-xs-12
+          div.col-xs-12
+              div
+                label.radio-inline.row
+                  span(data-bind="text: isTiersGarantI18n")
+                  input(type="radio",  name='isTiers'  data-bind="checked: isTierSelected, value: 'isTiersGarant'" )
+              div
+                label.radio-inline.row
+                  span(data-bind="text: isTiersPayantI18n")
+                  input(type="radio",  name='isTiers'  data-bind="checked: isTierSelected, value: 'isTiersPayant'")
+          div.row
+            div.col-sm-4
+              div.checkbox
+                label
+                  span(data-bind="text: collectMedidataRejectedI18n")
+                  input(name="collectMedidataRejected", type="checkbox", data-bind="checked: collectMedidataRejected")
+          div.row
+            div.col-xs-2(style="max-width: 115px")
+              div.checkbox
+                label
+                  span(data-bind="text: KVGCheckboxi18n")
+                  input(name="kvg", type="checkbox", data-bind="checked: _fields.kvg")
+              div.checkbox
+                label
+                  span(data-bind="text: IVGCheckboxi18n")
+                  input(name="ivg", type="checkbox", data-bind="checked: _fields.ivg")
+              div.checkbox
+                label
+                  span(data-bind="text: MVGCheckboxi18n")
+                  input(name="mvg", type="checkbox", data-bind="checked: _fields.mvg")
+            div.col-xs-3
+              div.checkbox
+                label
+                  span(data-bind="text: UVGCheckboxi18n")
+                  input(name="uvg", type="checkbox", data-bind="checked: _fields.uvg")
+              div.checkbox
+                label
+                  span(data-bind="text: VVGCheckboxi18n")
+                  input(name="vvg", type="checkbox", data-bind="checked: _fields.vvg")
+        div.row.form-group
+          div.col-xs-1(style="width: 80px; padding: 0;")
+            input.form-control(data-bind="value: displayMinTotal")
+          div.col-xs-6.dc-form-flex-label
+            span.control-label(data-bind="text: minTotal.i18n")

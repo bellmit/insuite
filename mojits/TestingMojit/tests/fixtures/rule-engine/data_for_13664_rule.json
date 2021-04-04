@@ -1,0 +1,1755 @@
+{
+  "rule": {
+    "isDirectory" : false,
+    "isLocked" : true,
+    "isActive" : true,
+    "caseFolderType" : [
+      "PUBLIC"
+    ],
+    "metaActTypes" : [
+      "TREATMENT"
+    ],
+    "metaActCodes" : [
+      "13664",
+      "03040",
+      "03220",
+      "03221",
+      "04040",
+      "04220",
+      "04221",
+      "05220",
+      "05222",
+      "06220",
+      "06222",
+      "07220",
+      "07222",
+      "08220",
+      "08222",
+      "09220",
+      "09222",
+      "10220",
+      "10222",
+      "13210",
+      "13211",
+      "13212",
+      "13220",
+      "13222",
+      "13250",
+      "13251",
+      "13252",
+      "13253",
+      "13254",
+      "13255",
+      "13256",
+      "13257",
+      "13258",
+      "13260",
+      "13290",
+      "13291",
+      "13292",
+      "13294",
+      "13296",
+      "13300",
+      "13301",
+      "13310",
+      "13311",
+      "13340",
+      "13341",
+      "13342",
+      "13344",
+      "13346",
+      "13350",
+      "13390",
+      "13391",
+      "13392",
+      "13394",
+      "13396",
+      "13400",
+      "13401",
+      "13402",
+      "13410",
+      "13411",
+      "13412",
+      "13420",
+      "13421",
+      "13422",
+      "13423",
+      "13424",
+      "13425",
+      "13426",
+      "13430",
+      "13431",
+      "13435",
+      "13437",
+      "13438",
+      "13439",
+      "13490",
+      "13491",
+      "13492",
+      "13494",
+      "13496",
+      "13500",
+      "13501",
+      "13502",
+      "13540",
+      "13541",
+      "13542",
+      "13543",
+      "13544",
+      "13545",
+      "13550",
+      "13551",
+      "13552",
+      "13554",
+      "13560",
+      "13561",
+      "13571",
+      "13573",
+      "13574",
+      "13575",
+      "13576",
+      "13590",
+      "13591",
+      "13592",
+      "13594",
+      "13596",
+      "13600",
+      "13601",
+      "13602",
+      "13610",
+      "13611",
+      "13612",
+      "13620",
+      "13621",
+      "13622",
+      "13644",
+      "13646",
+      "13690",
+      "13691",
+      "13692",
+      "13694",
+      "13696",
+      "13700",
+      "13701",
+      "14214",
+      "14216",
+      "16215",
+      "16217",
+      "18220",
+      "18222",
+      "20220",
+      "20222",
+      "21218",
+      "21219",
+      "21225",
+      "21226",
+      "22216",
+      "22218",
+      "23216",
+      "23218",
+      "26220",
+      "26222",
+      "27220",
+      "27222",
+      "36882",
+      "36883"
+    ],
+    "rules" : [
+      {
+        "isActive" : true,
+        "description" : "Ausschlussliste für 13664 (EBM) im Behandlungsfall",
+        "validations" : {
+          "\\\\$and" : [
+            {
+              "context" : "ACTIVITY",
+              "criteria" : {
+                "actType" : "TREATMENT",
+                "code" : "13664",
+                "areTreatmentDiagnosesBillable" : "1"
+              }
+            },
+            {
+              "\\\\$or" : [
+                {
+                  "context" : "ACTIVITY",
+                  "criteria" : {
+                    "actType" : "TREATMENT",
+                    "code" : "03040",
+                    "areTreatmentDiagnosesBillable" : "1"
+                  }
+                },
+                {
+                  "context" : "ACTIVITY",
+                  "criteria" : {
+                    "actType" : "TREATMENT",
+                    "code" : "03220",
+                    "areTreatmentDiagnosesBillable" : "1"
+                  }
+                },
+                {
+                  "context" : "ACTIVITY",
+                  "criteria" : {
+                    "actType" : "TREATMENT",
+                    "code" : "03221",
+                    "areTreatmentDiagnosesBillable" : "1"
+                  }
+                },
+                {
+                  "context" : "ACTIVITY",
+                  "criteria" : {
+                    "actType" : "TREATMENT",
+                    "code" : "04040",
+                    "areTreatmentDiagnosesBillable" : "1"
+                  }
+                },
+                {
+                  "context" : "ACTIVITY",
+                  "criteria" : {
+                    "actType" : "TREATMENT",
+                    "code" : "04220",
+                    "areTreatmentDiagnosesBillable" : "1"
+                  }
+                },
+                {
+                  "context" : "ACTIVITY",
+                  "criteria" : {
+                    "actType" : "TREATMENT",
+                    "code" : "04221",
+                    "areTreatmentDiagnosesBillable" : "1"
+                  }
+                },
+                {
+                  "context" : "ACTIVITY",
+                  "criteria" : {
+                    "actType" : "TREATMENT",
+                    "code" : "05220",
+                    "areTreatmentDiagnosesBillable" : "1"
+                  }
+                },
+                {
+                  "context" : "ACTIVITY",
+                  "criteria" : {
+                    "actType" : "TREATMENT",
+                    "code" : "05222",
+                    "areTreatmentDiagnosesBillable" : "1"
+                  }
+                },
+                {
+                  "context" : "ACTIVITY",
+                  "criteria" : {
+                    "actType" : "TREATMENT",
+                    "code" : "06220",
+                    "areTreatmentDiagnosesBillable" : "1"
+                  }
+                },
+                {
+                  "context" : "ACTIVITY",
+                  "criteria" : {
+                    "actType" : "TREATMENT",
+                    "code" : "06222",
+                    "areTreatmentDiagnosesBillable" : "1"
+                  }
+                },
+                {
+                  "context" : "ACTIVITY",
+                  "criteria" : {
+                    "actType" : "TREATMENT",
+                    "code" : "07220",
+                    "areTreatmentDiagnosesBillable" : "1"
+                  }
+                },
+                {
+                  "context" : "ACTIVITY",
+                  "criteria" : {
+                    "actType" : "TREATMENT",
+                    "code" : "07222",
+                    "areTreatmentDiagnosesBillable" : "1"
+                  }
+                },
+                {
+                  "context" : "ACTIVITY",
+                  "criteria" : {
+                    "actType" : "TREATMENT",
+                    "code" : "08220",
+                    "areTreatmentDiagnosesBillable" : "1"
+                  }
+                },
+                {
+                  "context" : "ACTIVITY",
+                  "criteria" : {
+                    "actType" : "TREATMENT",
+                    "code" : "08222",
+                    "areTreatmentDiagnosesBillable" : "1"
+                  }
+                },
+                {
+                  "context" : "ACTIVITY",
+                  "criteria" : {
+                    "actType" : "TREATMENT",
+                    "code" : "09220",
+                    "areTreatmentDiagnosesBillable" : "1"
+                  }
+                },
+                {
+                  "context" : "ACTIVITY",
+                  "criteria" : {
+                    "actType" : "TREATMENT",
+                    "code" : "09222",
+                    "areTreatmentDiagnosesBillable" : "1"
+                  }
+                },
+                {
+                  "context" : "ACTIVITY",
+                  "criteria" : {
+                    "actType" : "TREATMENT",
+                    "code" : "10220",
+                    "areTreatmentDiagnosesBillable" : "1"
+                  }
+                },
+                {
+                  "context" : "ACTIVITY",
+                  "criteria" : {
+                    "actType" : "TREATMENT",
+                    "code" : "10222",
+                    "areTreatmentDiagnosesBillable" : "1"
+                  }
+                },
+                {
+                  "context" : "ACTIVITY",
+                  "criteria" : {
+                    "actType" : "TREATMENT",
+                    "code" : "13210",
+                    "areTreatmentDiagnosesBillable" : "1"
+                  }
+                },
+                {
+                  "context" : "ACTIVITY",
+                  "criteria" : {
+                    "actType" : "TREATMENT",
+                    "code" : "13211",
+                    "areTreatmentDiagnosesBillable" : "1"
+                  }
+                },
+                {
+                  "context" : "ACTIVITY",
+                  "criteria" : {
+                    "actType" : "TREATMENT",
+                    "code" : "13212",
+                    "areTreatmentDiagnosesBillable" : "1"
+                  }
+                },
+                {
+                  "context" : "ACTIVITY",
+                  "criteria" : {
+                    "actType" : "TREATMENT",
+                    "code" : "13220",
+                    "areTreatmentDiagnosesBillable" : "1"
+                  }
+                },
+                {
+                  "context" : "ACTIVITY",
+                  "criteria" : {
+                    "actType" : "TREATMENT",
+                    "code" : "13222",
+                    "areTreatmentDiagnosesBillable" : "1"
+                  }
+                },
+                {
+                  "context" : "ACTIVITY",
+                  "criteria" : {
+                    "actType" : "TREATMENT",
+                    "code" : "13250",
+                    "areTreatmentDiagnosesBillable" : "1"
+                  }
+                },
+                {
+                  "context" : "ACTIVITY",
+                  "criteria" : {
+                    "actType" : "TREATMENT",
+                    "code" : "13251",
+                    "areTreatmentDiagnosesBillable" : "1"
+                  }
+                },
+                {
+                  "context" : "ACTIVITY",
+                  "criteria" : {
+                    "actType" : "TREATMENT",
+                    "code" : "13252",
+                    "areTreatmentDiagnosesBillable" : "1"
+                  }
+                },
+                {
+                  "context" : "ACTIVITY",
+                  "criteria" : {
+                    "actType" : "TREATMENT",
+                    "code" : "13253",
+                    "areTreatmentDiagnosesBillable" : "1"
+                  }
+                },
+                {
+                  "context" : "ACTIVITY",
+                  "criteria" : {
+                    "actType" : "TREATMENT",
+                    "code" : "13254",
+                    "areTreatmentDiagnosesBillable" : "1"
+                  }
+                },
+                {
+                  "context" : "ACTIVITY",
+                  "criteria" : {
+                    "actType" : "TREATMENT",
+                    "code" : "13255",
+                    "areTreatmentDiagnosesBillable" : "1"
+                  }
+                },
+                {
+                  "context" : "ACTIVITY",
+                  "criteria" : {
+                    "actType" : "TREATMENT",
+                    "code" : "13256",
+                    "areTreatmentDiagnosesBillable" : "1"
+                  }
+                },
+                {
+                  "context" : "ACTIVITY",
+                  "criteria" : {
+                    "actType" : "TREATMENT",
+                    "code" : "13257",
+                    "areTreatmentDiagnosesBillable" : "1"
+                  }
+                },
+                {
+                  "context" : "ACTIVITY",
+                  "criteria" : {
+                    "actType" : "TREATMENT",
+                    "code" : "13258",
+                    "areTreatmentDiagnosesBillable" : "1"
+                  }
+                },
+                {
+                  "context" : "ACTIVITY",
+                  "criteria" : {
+                    "actType" : "TREATMENT",
+                    "code" : "13260",
+                    "areTreatmentDiagnosesBillable" : "1"
+                  }
+                },
+                {
+                  "context" : "ACTIVITY",
+                  "criteria" : {
+                    "actType" : "TREATMENT",
+                    "code" : "13290",
+                    "areTreatmentDiagnosesBillable" : "1"
+                  }
+                },
+                {
+                  "context" : "ACTIVITY",
+                  "criteria" : {
+                    "actType" : "TREATMENT",
+                    "code" : "13291",
+                    "areTreatmentDiagnosesBillable" : "1"
+                  }
+                },
+                {
+                  "context" : "ACTIVITY",
+                  "criteria" : {
+                    "actType" : "TREATMENT",
+                    "code" : "13292",
+                    "areTreatmentDiagnosesBillable" : "1"
+                  }
+                },
+                {
+                  "context" : "ACTIVITY",
+                  "criteria" : {
+                    "actType" : "TREATMENT",
+                    "code" : "13294",
+                    "areTreatmentDiagnosesBillable" : "1"
+                  }
+                },
+                {
+                  "context" : "ACTIVITY",
+                  "criteria" : {
+                    "actType" : "TREATMENT",
+                    "code" : "13296",
+                    "areTreatmentDiagnosesBillable" : "1"
+                  }
+                },
+                {
+                  "context" : "ACTIVITY",
+                  "criteria" : {
+                    "actType" : "TREATMENT",
+                    "code" : "13300",
+                    "areTreatmentDiagnosesBillable" : "1"
+                  }
+                },
+                {
+                  "context" : "ACTIVITY",
+                  "criteria" : {
+                    "actType" : "TREATMENT",
+                    "code" : "13301",
+                    "areTreatmentDiagnosesBillable" : "1"
+                  }
+                },
+                {
+                  "context" : "ACTIVITY",
+                  "criteria" : {
+                    "actType" : "TREATMENT",
+                    "code" : "13310",
+                    "areTreatmentDiagnosesBillable" : "1"
+                  }
+                },
+                {
+                  "context" : "ACTIVITY",
+                  "criteria" : {
+                    "actType" : "TREATMENT",
+                    "code" : "13311",
+                    "areTreatmentDiagnosesBillable" : "1"
+                  }
+                },
+                {
+                  "context" : "ACTIVITY",
+                  "criteria" : {
+                    "actType" : "TREATMENT",
+                    "code" : "13340",
+                    "areTreatmentDiagnosesBillable" : "1"
+                  }
+                },
+                {
+                  "context" : "ACTIVITY",
+                  "criteria" : {
+                    "actType" : "TREATMENT",
+                    "code" : "13341",
+                    "areTreatmentDiagnosesBillable" : "1"
+                  }
+                },
+                {
+                  "context" : "ACTIVITY",
+                  "criteria" : {
+                    "actType" : "TREATMENT",
+                    "code" : "13342",
+                    "areTreatmentDiagnosesBillable" : "1"
+                  }
+                },
+                {
+                  "context" : "ACTIVITY",
+                  "criteria" : {
+                    "actType" : "TREATMENT",
+                    "code" : "13344",
+                    "areTreatmentDiagnosesBillable" : "1"
+                  }
+                },
+                {
+                  "context" : "ACTIVITY",
+                  "criteria" : {
+                    "actType" : "TREATMENT",
+                    "code" : "13346",
+                    "areTreatmentDiagnosesBillable" : "1"
+                  }
+                },
+                {
+                  "context" : "ACTIVITY",
+                  "criteria" : {
+                    "actType" : "TREATMENT",
+                    "code" : "13350",
+                    "areTreatmentDiagnosesBillable" : "1"
+                  }
+                },
+                {
+                  "context" : "ACTIVITY",
+                  "criteria" : {
+                    "actType" : "TREATMENT",
+                    "code" : "13390",
+                    "areTreatmentDiagnosesBillable" : "1"
+                  }
+                },
+                {
+                  "context" : "ACTIVITY",
+                  "criteria" : {
+                    "actType" : "TREATMENT",
+                    "code" : "13391",
+                    "areTreatmentDiagnosesBillable" : "1"
+                  }
+                },
+                {
+                  "context" : "ACTIVITY",
+                  "criteria" : {
+                    "actType" : "TREATMENT",
+                    "code" : "13392",
+                    "areTreatmentDiagnosesBillable" : "1"
+                  }
+                },
+                {
+                  "context" : "ACTIVITY",
+                  "criteria" : {
+                    "actType" : "TREATMENT",
+                    "code" : "13394",
+                    "areTreatmentDiagnosesBillable" : "1"
+                  }
+                },
+                {
+                  "context" : "ACTIVITY",
+                  "criteria" : {
+                    "actType" : "TREATMENT",
+                    "code" : "13396",
+                    "areTreatmentDiagnosesBillable" : "1"
+                  }
+                },
+                {
+                  "context" : "ACTIVITY",
+                  "criteria" : {
+                    "actType" : "TREATMENT",
+                    "code" : "13400",
+                    "areTreatmentDiagnosesBillable" : "1"
+                  }
+                },
+                {
+                  "context" : "ACTIVITY",
+                  "criteria" : {
+                    "actType" : "TREATMENT",
+                    "code" : "13401",
+                    "areTreatmentDiagnosesBillable" : "1"
+                  }
+                },
+                {
+                  "context" : "ACTIVITY",
+                  "criteria" : {
+                    "actType" : "TREATMENT",
+                    "code" : "13402",
+                    "areTreatmentDiagnosesBillable" : "1"
+                  }
+                },
+                {
+                  "context" : "ACTIVITY",
+                  "criteria" : {
+                    "actType" : "TREATMENT",
+                    "code" : "13410",
+                    "areTreatmentDiagnosesBillable" : "1"
+                  }
+                },
+                {
+                  "context" : "ACTIVITY",
+                  "criteria" : {
+                    "actType" : "TREATMENT",
+                    "code" : "13411",
+                    "areTreatmentDiagnosesBillable" : "1"
+                  }
+                },
+                {
+                  "context" : "ACTIVITY",
+                  "criteria" : {
+                    "actType" : "TREATMENT",
+                    "code" : "13412",
+                    "areTreatmentDiagnosesBillable" : "1"
+                  }
+                },
+                {
+                  "context" : "ACTIVITY",
+                  "criteria" : {
+                    "actType" : "TREATMENT",
+                    "code" : "13420",
+                    "areTreatmentDiagnosesBillable" : "1"
+                  }
+                },
+                {
+                  "context" : "ACTIVITY",
+                  "criteria" : {
+                    "actType" : "TREATMENT",
+                    "code" : "13421",
+                    "areTreatmentDiagnosesBillable" : "1"
+                  }
+                },
+                {
+                  "context" : "ACTIVITY",
+                  "criteria" : {
+                    "actType" : "TREATMENT",
+                    "code" : "13422",
+                    "areTreatmentDiagnosesBillable" : "1"
+                  }
+                },
+                {
+                  "context" : "ACTIVITY",
+                  "criteria" : {
+                    "actType" : "TREATMENT",
+                    "code" : "13423",
+                    "areTreatmentDiagnosesBillable" : "1"
+                  }
+                },
+                {
+                  "context" : "ACTIVITY",
+                  "criteria" : {
+                    "actType" : "TREATMENT",
+                    "code" : "13424",
+                    "areTreatmentDiagnosesBillable" : "1"
+                  }
+                },
+                {
+                  "context" : "ACTIVITY",
+                  "criteria" : {
+                    "actType" : "TREATMENT",
+                    "code" : "13425",
+                    "areTreatmentDiagnosesBillable" : "1"
+                  }
+                },
+                {
+                  "context" : "ACTIVITY",
+                  "criteria" : {
+                    "actType" : "TREATMENT",
+                    "code" : "13426",
+                    "areTreatmentDiagnosesBillable" : "1"
+                  }
+                },
+                {
+                  "context" : "ACTIVITY",
+                  "criteria" : {
+                    "actType" : "TREATMENT",
+                    "code" : "13430",
+                    "areTreatmentDiagnosesBillable" : "1"
+                  }
+                },
+                {
+                  "context" : "ACTIVITY",
+                  "criteria" : {
+                    "actType" : "TREATMENT",
+                    "code" : "13431",
+                    "areTreatmentDiagnosesBillable" : "1"
+                  }
+                },
+                {
+                  "context" : "ACTIVITY",
+                  "criteria" : {
+                    "actType" : "TREATMENT",
+                    "code" : "13435",
+                    "areTreatmentDiagnosesBillable" : "1"
+                  }
+                },
+                {
+                  "context" : "ACTIVITY",
+                  "criteria" : {
+                    "actType" : "TREATMENT",
+                    "code" : "13437",
+                    "areTreatmentDiagnosesBillable" : "1"
+                  }
+                },
+                {
+                  "context" : "ACTIVITY",
+                  "criteria" : {
+                    "actType" : "TREATMENT",
+                    "code" : "13438",
+                    "areTreatmentDiagnosesBillable" : "1"
+                  }
+                },
+                {
+                  "context" : "ACTIVITY",
+                  "criteria" : {
+                    "actType" : "TREATMENT",
+                    "code" : "13439",
+                    "areTreatmentDiagnosesBillable" : "1"
+                  }
+                },
+                {
+                  "context" : "ACTIVITY",
+                  "criteria" : {
+                    "actType" : "TREATMENT",
+                    "code" : "13490",
+                    "areTreatmentDiagnosesBillable" : "1"
+                  }
+                },
+                {
+                  "context" : "ACTIVITY",
+                  "criteria" : {
+                    "actType" : "TREATMENT",
+                    "code" : "13491",
+                    "areTreatmentDiagnosesBillable" : "1"
+                  }
+                },
+                {
+                  "context" : "ACTIVITY",
+                  "criteria" : {
+                    "actType" : "TREATMENT",
+                    "code" : "13492",
+                    "areTreatmentDiagnosesBillable" : "1"
+                  }
+                },
+                {
+                  "context" : "ACTIVITY",
+                  "criteria" : {
+                    "actType" : "TREATMENT",
+                    "code" : "13494",
+                    "areTreatmentDiagnosesBillable" : "1"
+                  }
+                },
+                {
+                  "context" : "ACTIVITY",
+                  "criteria" : {
+                    "actType" : "TREATMENT",
+                    "code" : "13496",
+                    "areTreatmentDiagnosesBillable" : "1"
+                  }
+                },
+                {
+                  "context" : "ACTIVITY",
+                  "criteria" : {
+                    "actType" : "TREATMENT",
+                    "code" : "13500",
+                    "areTreatmentDiagnosesBillable" : "1"
+                  }
+                },
+                {
+                  "context" : "ACTIVITY",
+                  "criteria" : {
+                    "actType" : "TREATMENT",
+                    "code" : "13501",
+                    "areTreatmentDiagnosesBillable" : "1"
+                  }
+                },
+                {
+                  "context" : "ACTIVITY",
+                  "criteria" : {
+                    "actType" : "TREATMENT",
+                    "code" : "13502",
+                    "areTreatmentDiagnosesBillable" : "1"
+                  }
+                },
+                {
+                  "context" : "ACTIVITY",
+                  "criteria" : {
+                    "actType" : "TREATMENT",
+                    "code" : "13540",
+                    "areTreatmentDiagnosesBillable" : "1"
+                  }
+                },
+                {
+                  "context" : "ACTIVITY",
+                  "criteria" : {
+                    "actType" : "TREATMENT",
+                    "code" : "13541",
+                    "areTreatmentDiagnosesBillable" : "1"
+                  }
+                },
+                {
+                  "context" : "ACTIVITY",
+                  "criteria" : {
+                    "actType" : "TREATMENT",
+                    "code" : "13542",
+                    "areTreatmentDiagnosesBillable" : "1"
+                  }
+                },
+                {
+                  "context" : "ACTIVITY",
+                  "criteria" : {
+                    "actType" : "TREATMENT",
+                    "code" : "13543",
+                    "areTreatmentDiagnosesBillable" : "1"
+                  }
+                },
+                {
+                  "context" : "ACTIVITY",
+                  "criteria" : {
+                    "actType" : "TREATMENT",
+                    "code" : "13544",
+                    "areTreatmentDiagnosesBillable" : "1"
+                  }
+                },
+                {
+                  "context" : "ACTIVITY",
+                  "criteria" : {
+                    "actType" : "TREATMENT",
+                    "code" : "13545",
+                    "areTreatmentDiagnosesBillable" : "1"
+                  }
+                },
+                {
+                  "context" : "ACTIVITY",
+                  "criteria" : {
+                    "actType" : "TREATMENT",
+                    "code" : "13550",
+                    "areTreatmentDiagnosesBillable" : "1"
+                  }
+                },
+                {
+                  "context" : "ACTIVITY",
+                  "criteria" : {
+                    "actType" : "TREATMENT",
+                    "code" : "13551",
+                    "areTreatmentDiagnosesBillable" : "1"
+                  }
+                },
+                {
+                  "context" : "ACTIVITY",
+                  "criteria" : {
+                    "actType" : "TREATMENT",
+                    "code" : "13552",
+                    "areTreatmentDiagnosesBillable" : "1"
+                  }
+                },
+                {
+                  "context" : "ACTIVITY",
+                  "criteria" : {
+                    "actType" : "TREATMENT",
+                    "code" : "13554",
+                    "areTreatmentDiagnosesBillable" : "1"
+                  }
+                },
+                {
+                  "context" : "ACTIVITY",
+                  "criteria" : {
+                    "actType" : "TREATMENT",
+                    "code" : "13560",
+                    "areTreatmentDiagnosesBillable" : "1"
+                  }
+                },
+                {
+                  "context" : "ACTIVITY",
+                  "criteria" : {
+                    "actType" : "TREATMENT",
+                    "code" : "13561",
+                    "areTreatmentDiagnosesBillable" : "1"
+                  }
+                },
+                {
+                  "context" : "ACTIVITY",
+                  "criteria" : {
+                    "actType" : "TREATMENT",
+                    "code" : "13571",
+                    "areTreatmentDiagnosesBillable" : "1"
+                  }
+                },
+                {
+                  "context" : "ACTIVITY",
+                  "criteria" : {
+                    "actType" : "TREATMENT",
+                    "code" : "13573",
+                    "areTreatmentDiagnosesBillable" : "1"
+                  }
+                },
+                {
+                  "context" : "ACTIVITY",
+                  "criteria" : {
+                    "actType" : "TREATMENT",
+                    "code" : "13574",
+                    "areTreatmentDiagnosesBillable" : "1"
+                  }
+                },
+                {
+                  "context" : "ACTIVITY",
+                  "criteria" : {
+                    "actType" : "TREATMENT",
+                    "code" : "13575",
+                    "areTreatmentDiagnosesBillable" : "1"
+                  }
+                },
+                {
+                  "context" : "ACTIVITY",
+                  "criteria" : {
+                    "actType" : "TREATMENT",
+                    "code" : "13576",
+                    "areTreatmentDiagnosesBillable" : "1"
+                  }
+                },
+                {
+                  "context" : "ACTIVITY",
+                  "criteria" : {
+                    "actType" : "TREATMENT",
+                    "code" : "13590",
+                    "areTreatmentDiagnosesBillable" : "1"
+                  }
+                },
+                {
+                  "context" : "ACTIVITY",
+                  "criteria" : {
+                    "actType" : "TREATMENT",
+                    "code" : "13591",
+                    "areTreatmentDiagnosesBillable" : "1"
+                  }
+                },
+                {
+                  "context" : "ACTIVITY",
+                  "criteria" : {
+                    "actType" : "TREATMENT",
+                    "code" : "13592",
+                    "areTreatmentDiagnosesBillable" : "1"
+                  }
+                },
+                {
+                  "context" : "ACTIVITY",
+                  "criteria" : {
+                    "actType" : "TREATMENT",
+                    "code" : "13594",
+                    "areTreatmentDiagnosesBillable" : "1"
+                  }
+                },
+                {
+                  "context" : "ACTIVITY",
+                  "criteria" : {
+                    "actType" : "TREATMENT",
+                    "code" : "13596",
+                    "areTreatmentDiagnosesBillable" : "1"
+                  }
+                },
+                {
+                  "context" : "ACTIVITY",
+                  "criteria" : {
+                    "actType" : "TREATMENT",
+                    "code" : "13600",
+                    "areTreatmentDiagnosesBillable" : "1"
+                  }
+                },
+                {
+                  "context" : "ACTIVITY",
+                  "criteria" : {
+                    "actType" : "TREATMENT",
+                    "code" : "13601",
+                    "areTreatmentDiagnosesBillable" : "1"
+                  }
+                },
+                {
+                  "context" : "ACTIVITY",
+                  "criteria" : {
+                    "actType" : "TREATMENT",
+                    "code" : "13602",
+                    "areTreatmentDiagnosesBillable" : "1"
+                  }
+                },
+                {
+                  "context" : "ACTIVITY",
+                  "criteria" : {
+                    "actType" : "TREATMENT",
+                    "code" : "13610",
+                    "areTreatmentDiagnosesBillable" : "1"
+                  }
+                },
+                {
+                  "context" : "ACTIVITY",
+                  "criteria" : {
+                    "actType" : "TREATMENT",
+                    "code" : "13611",
+                    "areTreatmentDiagnosesBillable" : "1"
+                  }
+                },
+                {
+                  "context" : "ACTIVITY",
+                  "criteria" : {
+                    "actType" : "TREATMENT",
+                    "code" : "13612",
+                    "areTreatmentDiagnosesBillable" : "1"
+                  }
+                },
+                {
+                  "context" : "ACTIVITY",
+                  "criteria" : {
+                    "actType" : "TREATMENT",
+                    "code" : "13620",
+                    "areTreatmentDiagnosesBillable" : "1"
+                  }
+                },
+                {
+                  "context" : "ACTIVITY",
+                  "criteria" : {
+                    "actType" : "TREATMENT",
+                    "code" : "13621",
+                    "areTreatmentDiagnosesBillable" : "1"
+                  }
+                },
+                {
+                  "context" : "ACTIVITY",
+                  "criteria" : {
+                    "actType" : "TREATMENT",
+                    "code" : "13622",
+                    "areTreatmentDiagnosesBillable" : "1"
+                  }
+                },
+                {
+                  "context" : "ACTIVITY",
+                  "criteria" : {
+                    "actType" : "TREATMENT",
+                    "code" : "13644",
+                    "areTreatmentDiagnosesBillable" : "1"
+                  }
+                },
+                {
+                  "context" : "ACTIVITY",
+                  "criteria" : {
+                    "actType" : "TREATMENT",
+                    "code" : "13646",
+                    "areTreatmentDiagnosesBillable" : "1"
+                  }
+                },
+                {
+                  "context" : "ACTIVITY",
+                  "criteria" : {
+                    "actType" : "TREATMENT",
+                    "code" : "13690",
+                    "areTreatmentDiagnosesBillable" : "1"
+                  }
+                },
+                {
+                  "context" : "ACTIVITY",
+                  "criteria" : {
+                    "actType" : "TREATMENT",
+                    "code" : "13691",
+                    "areTreatmentDiagnosesBillable" : "1"
+                  }
+                },
+                {
+                  "context" : "ACTIVITY",
+                  "criteria" : {
+                    "actType" : "TREATMENT",
+                    "code" : "13692",
+                    "areTreatmentDiagnosesBillable" : "1"
+                  }
+                },
+                {
+                  "context" : "ACTIVITY",
+                  "criteria" : {
+                    "actType" : "TREATMENT",
+                    "code" : "13694",
+                    "areTreatmentDiagnosesBillable" : "1"
+                  }
+                },
+                {
+                  "context" : "ACTIVITY",
+                  "criteria" : {
+                    "actType" : "TREATMENT",
+                    "code" : "13696",
+                    "areTreatmentDiagnosesBillable" : "1"
+                  }
+                },
+                {
+                  "context" : "ACTIVITY",
+                  "criteria" : {
+                    "actType" : "TREATMENT",
+                    "code" : "13700",
+                    "areTreatmentDiagnosesBillable" : "1"
+                  }
+                },
+                {
+                  "context" : "ACTIVITY",
+                  "criteria" : {
+                    "actType" : "TREATMENT",
+                    "code" : "13701",
+                    "areTreatmentDiagnosesBillable" : "1"
+                  }
+                },
+                {
+                  "context" : "ACTIVITY",
+                  "criteria" : {
+                    "actType" : "TREATMENT",
+                    "code" : "14214",
+                    "areTreatmentDiagnosesBillable" : "1"
+                  }
+                },
+                {
+                  "context" : "ACTIVITY",
+                  "criteria" : {
+                    "actType" : "TREATMENT",
+                    "code" : "14216",
+                    "areTreatmentDiagnosesBillable" : "1"
+                  }
+                },
+                {
+                  "context" : "ACTIVITY",
+                  "criteria" : {
+                    "actType" : "TREATMENT",
+                    "code" : "16215",
+                    "areTreatmentDiagnosesBillable" : "1"
+                  }
+                },
+                {
+                  "context" : "ACTIVITY",
+                  "criteria" : {
+                    "actType" : "TREATMENT",
+                    "code" : "16217",
+                    "areTreatmentDiagnosesBillable" : "1"
+                  }
+                },
+                {
+                  "context" : "ACTIVITY",
+                  "criteria" : {
+                    "actType" : "TREATMENT",
+                    "code" : "18220",
+                    "areTreatmentDiagnosesBillable" : "1"
+                  }
+                },
+                {
+                  "context" : "ACTIVITY",
+                  "criteria" : {
+                    "actType" : "TREATMENT",
+                    "code" : "18222",
+                    "areTreatmentDiagnosesBillable" : "1"
+                  }
+                },
+                {
+                  "context" : "ACTIVITY",
+                  "criteria" : {
+                    "actType" : "TREATMENT",
+                    "code" : "20220",
+                    "areTreatmentDiagnosesBillable" : "1"
+                  }
+                },
+                {
+                  "context" : "ACTIVITY",
+                  "criteria" : {
+                    "actType" : "TREATMENT",
+                    "code" : "20222",
+                    "areTreatmentDiagnosesBillable" : "1"
+                  }
+                },
+                {
+                  "context" : "ACTIVITY",
+                  "criteria" : {
+                    "actType" : "TREATMENT",
+                    "code" : "21218",
+                    "areTreatmentDiagnosesBillable" : "1"
+                  }
+                },
+                {
+                  "context" : "ACTIVITY",
+                  "criteria" : {
+                    "actType" : "TREATMENT",
+                    "code" : "21219",
+                    "areTreatmentDiagnosesBillable" : "1"
+                  }
+                },
+                {
+                  "context" : "ACTIVITY",
+                  "criteria" : {
+                    "actType" : "TREATMENT",
+                    "code" : "21225",
+                    "areTreatmentDiagnosesBillable" : "1"
+                  }
+                },
+                {
+                  "context" : "ACTIVITY",
+                  "criteria" : {
+                    "actType" : "TREATMENT",
+                    "code" : "21226",
+                    "areTreatmentDiagnosesBillable" : "1"
+                  }
+                },
+                {
+                  "context" : "ACTIVITY",
+                  "criteria" : {
+                    "actType" : "TREATMENT",
+                    "code" : "22216",
+                    "areTreatmentDiagnosesBillable" : "1"
+                  }
+                },
+                {
+                  "context" : "ACTIVITY",
+                  "criteria" : {
+                    "actType" : "TREATMENT",
+                    "code" : "22218",
+                    "areTreatmentDiagnosesBillable" : "1"
+                  }
+                },
+                {
+                  "context" : "ACTIVITY",
+                  "criteria" : {
+                    "actType" : "TREATMENT",
+                    "code" : "23216",
+                    "areTreatmentDiagnosesBillable" : "1"
+                  }
+                },
+                {
+                  "context" : "ACTIVITY",
+                  "criteria" : {
+                    "actType" : "TREATMENT",
+                    "code" : "23218",
+                    "areTreatmentDiagnosesBillable" : "1"
+                  }
+                },
+                {
+                  "context" : "ACTIVITY",
+                  "criteria" : {
+                    "actType" : "TREATMENT",
+                    "code" : "26220",
+                    "areTreatmentDiagnosesBillable" : "1"
+                  }
+                },
+                {
+                  "context" : "ACTIVITY",
+                  "criteria" : {
+                    "actType" : "TREATMENT",
+                    "code" : "26222",
+                    "areTreatmentDiagnosesBillable" : "1"
+                  }
+                },
+                {
+                  "context" : "ACTIVITY",
+                  "criteria" : {
+                    "actType" : "TREATMENT",
+                    "code" : "27220",
+                    "areTreatmentDiagnosesBillable" : "1"
+                  }
+                },
+                {
+                  "context" : "ACTIVITY",
+                  "criteria" : {
+                    "actType" : "TREATMENT",
+                    "code" : "27222",
+                    "areTreatmentDiagnosesBillable" : "1"
+                  }
+                },
+                {
+                  "context" : "ACTIVITY",
+                  "criteria" : {
+                    "actType" : "TREATMENT",
+                    "code" : "36882",
+                    "areTreatmentDiagnosesBillable" : "1"
+                  }
+                },
+                {
+                  "context" : "ACTIVITY",
+                  "criteria" : {
+                    "actType" : "TREATMENT",
+                    "code" : "36883",
+                    "areTreatmentDiagnosesBillable" : "1"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "actions" : [
+          {
+            "type" : "ERROR"
+          }
+        ],
+        "ruleId" : "5baa5b4fabbb442b8c2a7c2d",
+        "metaCodes" : [
+          "13664",
+          "03040",
+          "03220",
+          "03221",
+          "04040",
+          "04220",
+          "04221",
+          "05220",
+          "05222",
+          "06220",
+          "06222",
+          "07220",
+          "07222",
+          "08220",
+          "08222",
+          "09220",
+          "09222",
+          "10220",
+          "10222",
+          "13210",
+          "13211",
+          "13212",
+          "13220",
+          "13222",
+          "13250",
+          "13251",
+          "13252",
+          "13253",
+          "13254",
+          "13255",
+          "13256",
+          "13257",
+          "13258",
+          "13260",
+          "13290",
+          "13291",
+          "13292",
+          "13294",
+          "13296",
+          "13300",
+          "13301",
+          "13310",
+          "13311",
+          "13340",
+          "13341",
+          "13342",
+          "13344",
+          "13346",
+          "13350",
+          "13390",
+          "13391",
+          "13392",
+          "13394",
+          "13396",
+          "13400",
+          "13401",
+          "13402",
+          "13410",
+          "13411",
+          "13412",
+          "13420",
+          "13421",
+          "13422",
+          "13423",
+          "13424",
+          "13425",
+          "13426",
+          "13430",
+          "13431",
+          "13435",
+          "13437",
+          "13438",
+          "13439",
+          "13490",
+          "13491",
+          "13492",
+          "13494",
+          "13496",
+          "13500",
+          "13501",
+          "13502",
+          "13540",
+          "13541",
+          "13542",
+          "13543",
+          "13544",
+          "13545",
+          "13550",
+          "13551",
+          "13552",
+          "13554",
+          "13560",
+          "13561",
+          "13571",
+          "13573",
+          "13574",
+          "13575",
+          "13576",
+          "13590",
+          "13591",
+          "13592",
+          "13594",
+          "13596",
+          "13600",
+          "13601",
+          "13602",
+          "13610",
+          "13611",
+          "13612",
+          "13620",
+          "13621",
+          "13622",
+          "13644",
+          "13646",
+          "13690",
+          "13691",
+          "13692",
+          "13694",
+          "13696",
+          "13700",
+          "13701",
+          "14214",
+          "14216",
+          "16215",
+          "16217",
+          "18220",
+          "18222",
+          "20220",
+          "20222",
+          "21218",
+          "21219",
+          "21225",
+          "21226",
+          "22216",
+          "22218",
+          "23216",
+          "23218",
+          "26220",
+          "26222",
+          "27220",
+          "27222",
+          "36882",
+          "36883"
+        ],
+        "metaActTypes" : [
+          "TREATMENT"
+        ]
+      }
+    ],
+    "description" : "EBM 13664 im Behandlungsfall",
+    "fromCatalog" : "DC-EBM-D-1537801466952.json",
+    "fromCatalogShort" : "EBM",
+    "referenceArea" : "PERIOD",
+    "periodType" : "QUARTER",
+    "periodCount" : 1,
+    "periodReference" : "raum",
+    "metaFuzzy" : false
+  },
+  "schein": {
+    "actType" : "SCHEIN",
+    "attachments" : [],
+    "subType" : "",
+    "time" : "",
+    "userContent" : "ambulante Behandlung (ambulante Behandlung)",
+    "partnerInfo" : "",
+    "explanations" : "",
+    "status" : "VALID",
+    "activities" : [],
+    "referencedBy" : [],
+    "formId" : "",
+    "formVersion" : "",
+    "formPdf" : "",
+    "formLang" : "de",
+    "formGender" : "m",
+    "apkState" : "IN_PROGRESS",
+    "forInsuranceType" : "",
+    "locationFeatures" : "",
+    "scheinRemittor" : "",
+    "scheinEstablishment" : "",
+    "scheinSpecialisation" : "",
+    "scheinOrder" : "",
+    "scheinDiagnosis" : "",
+    "scheinFinding" : "",
+    "scheinNotes" : "",
+    "scheinClinicalTreatmentFrom" : null,
+    "scheinClinicalTreatmentTo" : null,
+    "scheinNextTherapist" : "",
+    "fk4234" : false,
+    "fk4219" : "",
+    "continuousIcds" : [],
+    "icds" : [],
+    "icdsExtra" : [],
+    "scheinQuarter" : "1",
+    "scheinYear" : "2019",
+    "scheinBillingArea" : "00",
+    "scheinType" : "0101",
+    "scheinSubgroup" : "00",
+    "scheinTransferTypeInfo" : "",
+    "fk4124" : "",
+    "fk4126" : "",
+    "fk4125from" : null,
+    "fk4125to" : null,
+    "fk4123" : "",
+    "fk4206" : null,
+    "fk4236" : false,
+    "fk4241" : "",
+    "fk4217" : "",
+    "scheinSlipMedicalTreatment" : "",
+    "__t" : "SCHEIN",
+    "attachedMedia" : [],
+    "content" : "ambulante Behandlung (ambulante Behandlung)",
+    "editor" : [
+      {
+        "name" : "A B",
+        "initials" : "AB"
+      }
+    ],
+    "debtCollection" : "",
+    "fk4235Set" : [],
+    "invoiceData" : [],
+    "scheinTransferType" : "",
+    "employeeName" : "B, A",
+    "employeeInitials" : "AB",
+    "patientLastName" : "a",
+    "patientFirstName" : "a"
+  },
+  "treatments": [
+    {
+      "actType" : "TREATMENT",
+      "status" : "VALID",
+      "attachments" : [],
+      "subType" : "",
+      "userContent" : "Zuschlag zur GOP 03220 für die intensive Behandlung und Betreuung eines  Patienten mit mindestens einer lebensverändernden chronischen Erkrankung",
+      "areTreatmentDiagnosesBillable" : "1",
+      "catalog" : true,
+      "catalogRef" : "DC-EBM-D-1541506572227.json",
+      "catalogShort" : "EBM",
+      "code" : "03221"
+    },
+    {
+      "actType" : "TREATMENT",
+      "status" : "VALID",
+      "attachments" : [],
+      "subType" : "",
+      "userContent" : "Zuschlag zur GOP 03000 für die Behandlung und Betreuung eines Patienten mit mindestens einer lebensverändernden chronischen Erkrankung",
+      "areTreatmentDiagnosesBillable" : "1",
+      "catalog" : true,
+      "catalogRef" : "DC-EBM-D-1541506572227.json",
+      "catalogShort" : "EBM",
+      "code" : "03220"
+    },
+    {
+      "actType" : "TREATMENT",
+      "status" : "VALID",
+      "attachments" : [],
+      "subType" : "",
+      "userContent" : "Zusatzpauschale zu den Gebührenordnungspositionen 03000 und 03030 für die Wahrnehmung des hausärztlichen Versorgungsauftrags gemäß § 73 Abs. 1 SGB V",
+      "areTreatmentDiagnosesBillable" : "1",
+      "catalog" : true,
+      "catalogRef" : "DC-EBM-D-1541506572227.json",
+      "catalogShort" : "EBM",
+      "code" : "03040"
+    },
+    {
+      "actType" : "TREATMENT",
+      "status" : "VALID",
+      "attachments" : [],
+      "subType" : "",
+      "userContent" : "Zuschlag Laservaporisation",
+      "areTreatmentDiagnosesBillable" : "1",
+      "catalog" : true,
+      "catalogRef" : "DC-EBM-D-1541506572227.json",
+      "catalogShort" : "EBM",
+      "code" : "13664"
+    }
+  ],
+  "rulelog": {
+    "message" : "Ausschlussliste für 13664 (EBM) im Behandlungsfall",
+    "referenceArea" : "PERIOD",
+    "ruleLogType" : "ERROR",
+    "actTypes" : [
+      "TREATMENT"
+    ],
+    "activitiesToCreate" : [],
+    "allCodes" : [
+      "13664",
+      "03040",
+      "03220",
+      "03221",
+      "04040",
+      "04220",
+      "04221",
+      "05220",
+      "05222",
+      "06220",
+      "06222",
+      "07220",
+      "07222",
+      "08220",
+      "08222",
+      "09220",
+      "09222",
+      "10220",
+      "10222",
+      "13210",
+      "13211",
+      "13212",
+      "13220",
+      "13222",
+      "13250",
+      "13251",
+      "13252",
+      "13253",
+      "13254",
+      "13255",
+      "13256",
+      "13257",
+      "13258",
+      "13260",
+      "13290",
+      "13291",
+      "13292",
+      "13294",
+      "13296",
+      "13300",
+      "13301",
+      "13310",
+      "13311",
+      "13340",
+      "13341",
+      "13342",
+      "13344",
+      "13346",
+      "13350",
+      "13390",
+      "13391",
+      "13392",
+      "13394",
+      "13396",
+      "13400",
+      "13401",
+      "13402",
+      "13410",
+      "13411",
+      "13412",
+      "13420",
+      "13421",
+      "13422",
+      "13423",
+      "13424",
+      "13425",
+      "13426",
+      "13430",
+      "13431",
+      "13435",
+      "13437",
+      "13438",
+      "13439",
+      "13490",
+      "13491",
+      "13492",
+      "13494",
+      "13496",
+      "13500",
+      "13501",
+      "13502",
+      "13540",
+      "13541",
+      "13542",
+      "13543",
+      "13544",
+      "13545",
+      "13550",
+      "13551",
+      "13552",
+      "13554",
+      "13560",
+      "13561",
+      "13571",
+      "13573",
+      "13574",
+      "13575",
+      "13576",
+      "13590",
+      "13591",
+      "13592",
+      "13594",
+      "13596",
+      "13600",
+      "13601",
+      "13602",
+      "13610",
+      "13611",
+      "13612",
+      "13620",
+      "13621",
+      "13622",
+      "13644",
+      "13646",
+      "13690",
+      "13691",
+      "13692",
+      "13694",
+      "13696",
+      "13700",
+      "13701",
+      "14214",
+      "14216",
+      "16215",
+      "16217",
+      "18220",
+      "18222",
+      "20220",
+      "20222",
+      "21218",
+      "21219",
+      "21225",
+      "21226",
+      "22216",
+      "22218",
+      "23216",
+      "23218",
+      "26220",
+      "26222",
+      "27220",
+      "27222",
+      "36882",
+      "36883"
+    ],
+    "caseFolderType" : [
+      "PUBLIC"
+    ],
+    "requiredCodes" : [],
+    "ruleId" : "5baa5b4fabbb442b8c2a7c2d"
+  }
+}

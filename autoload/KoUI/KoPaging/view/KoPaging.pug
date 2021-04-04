@@ -1,0 +1,11 @@
+span.KoPaging(data-bind="attr: { title: title }")
+  span.KoPaging-icon(data-bind="template: $data.icon.template")
+  span.KoPaging-items
+    span.input-group.input-group-sm
+      input.KoPaging-input-page.form-control(name="KoPaging-page", data-bind="value: page")
+      span.input-group-btn
+        // ko template: $data.buttonPrev.template
+        // /ko
+        // ko template: $data.buttonNext.template
+        // /ko
+  span(data-bind="text: ' / ' + pages()")

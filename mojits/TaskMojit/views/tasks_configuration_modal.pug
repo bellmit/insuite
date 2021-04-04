@@ -1,0 +1,147 @@
+div.row#tasksConfiguration
+  // ko ifnot: isFilter
+  h4(data-bind="text: tasksDataI18n")
+  .form-group
+    div.checkbox
+      label.control-label
+        input(name="details", type="checkbox", data-bind="checked: details")
+        span(data-bind="text: detailsI18n")
+  .form-group
+    div.checkbox
+      label.control-label
+        input(name="title", type="checkbox", data-bind="checked: title")
+        span(data-bind="text: titleI18n")
+  .form-group
+    div.checkbox
+      label.control-label
+        input(name="candidates", type="checkbox", data-bind="checked: candidates")
+        span(data-bind="text: candidatesNamesI18n")
+  .form-group
+    div.checkbox
+      label.control-label
+        input(name="patientName", type="checkbox", data-bind="checked: patientName")
+        span(data-bind="text: patientNameI18n")
+  .form-group
+    div.checkbox
+      label.control-label
+        input(name="creatorName", type="checkbox", data-bind="checked: creatorName")
+        span(data-bind="text: creatorNameI18n")
+  .form-group
+    div.checkbox
+      label.control-label
+        input(name="employeeName", type="checkbox", data-bind="checked: employeeName")
+        span(data-bind="text: employeeNameI18n")
+  .form-group
+    div.checkbox
+      label.control-label
+        input(name="roles", type="checkbox", data-bind="checked: roles")
+        span(data-bind="text: rolesI18n")
+  .form-group
+    div.checkbox
+      label.control-label
+        input(name="tasks", type="checkbox", data-bind="checked: tasks")
+        span(data-bind="text: taskTypesI18n")
+  .form-group
+    div.checkbox
+      label.control-label
+        input(name="urgency", type="checkbox", data-bind="checked: urgency")
+        span(data-bind="text: urgencyI18n")
+  .form-group
+    div.checkbox
+      label.control-label
+        input(name="dateCreated", type="checkbox", data-bind="checked: dateCreated")
+        span(data-bind="text: dateCreatedI18n")
+  .form-group
+    div.checkbox
+      label.control-label
+        input(name="alertTime", type="checkbox", data-bind="checked: alertTime")
+        span(data-bind="text: alertTimeI18n")
+  .form-group
+    div.checkbox
+      label.control-label
+        input(name="schedule", type="checkbox", data-bind="checked: schedule")
+        span(data-bind="text: scheduleI18n")
+  .form-group
+    div.checkbox
+      label.control-label
+        input(name="linkedSchedule", type="checkbox", data-bind="checked: linkedSchedule")
+        span(data-bind="text: linkedScheduleI18n")
+  .form-group
+    div.checkbox
+      label.control-label
+        input(name="lastSchedule", type="checkbox", data-bind="checked: lastSchedule")
+        span(data-bind="text: lastScheduleI18n")
+  // /ko
+  // ko if: isFilter
+  h4(data-bind="text: filterI18n")
+  .form-group
+    div.checkbox
+      label.control-label
+        input(name="details", type="checkbox", data-bind="checked: detailsFilter")
+        span(data-bind="text: detailsI18n")
+  .form-group
+    div.checkbox
+      label.control-label
+        input(name="title", type="checkbox", data-bind="checked: titleFilter")
+        span(data-bind="text: titleI18n")
+  .form-group
+    div.checkbox
+      label.control-label
+        input(name="candidates", type="checkbox", data-bind="checked: candidatesFilter")
+        span(data-bind="text: candidatesNamesI18n")
+  .form-group
+    div.checkbox
+      label.control-label
+        input(name="patientName", type="checkbox", data-bind="checked: patientNameFilter")
+        span(data-bind="text: patientNameI18n")
+  .form-group
+    div.checkbox
+      label.control-label
+        input(name="creatorName", type="checkbox", data-bind="checked: creatorNameFilter")
+        span(data-bind="text: creatorNameI18n")
+  .form-group
+    div.checkbox
+      label.control-label
+        input(name="employeeName", type="checkbox", data-bind="checked: employeeNameFilter")
+        span(data-bind="text: employeeNameI18n")
+  .form-group
+    div.checkbox
+      label.control-label
+        input(name="roles", type="checkbox", data-bind="checked: rolesFilter")
+        span(data-bind="text: rolesI18n")
+  .form-group
+    div.checkbox
+      label.control-label
+        input(name="lists", type="checkbox", data-bind="checked: listsFilter")
+        span(data-bind="text: listsI18n")
+  .form-group
+    div.checkbox
+      label.control-label
+        input(name="tasks", type="checkbox", data-bind="checked: tasksFilter")
+        span(data-bind="text: taskTypesI18n")
+  .form-group
+    div.checkbox
+      label.control-label
+        input(name="urgency", type="checkbox", data-bind="checked: urgencyFilter")
+        span(data-bind="text: urgencyI18n")
+  .form-group
+    div.checkbox
+      label.control-label
+        input(name="dateCreated", type="checkbox", data-bind="checked: dateCreatedFilter")
+        span(data-bind="text: dateCreatedI18n")
+  .form-group
+    div.checkbox
+      label.control-label
+        input(name="schedule", type="checkbox", data-bind="checked: scheduleFilter")
+        span(data-bind="text: scheduleI18n")
+  .form-group
+    div.checkbox
+      label.control-label
+        input(name="linkedSchedule", type="checkbox", data-bind="checked: linkedScheduleFilter")
+        span(data-bind="text: linkedScheduleI18n")
+  .form-group
+    div.checkbox
+      label.control-label
+        input(name="lastSchedule", type="checkbox", data-bind="checked: lastScheduleFilter")
+        span(data-bind="text: lastScheduleI18n")
+  // /ko

@@ -1,0 +1,7 @@
+.nav li.hasImg > a{
+    padding: 0;
+    margin: 2px 0 0 0;
+}
+.nav img{
+    height: 30px;
+}

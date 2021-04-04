@@ -1,0 +1,7 @@
+div#transformerModel
+  div.form-group
+    h4(data-bind="text: patientNoI18n + ':'")
+    span.checkbox
+      label.control-label
+        strong(data-bind="text: showOriginalId.i18n")
+        input(type="checkbox", name="transformerShowOriginalId", data-bind="checked: showOriginalId")

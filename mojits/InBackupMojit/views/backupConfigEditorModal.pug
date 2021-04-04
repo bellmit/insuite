@@ -1,0 +1,7 @@
+#backupConfigEditorModal
+    div(style="border-radius: 10px; background-color: #f8efc0; color: #8a6d3b; padding: 10px; margin-bottom: 10px;", data-bind="text: bacupTimeSectionI18n")
+    div(data-bind="foreach: data.availableBackupTimes, style: { 'grid-template-columns': availableBackupTimesCss }", style="display: grid; padding: 10px;")
+        div(data-bind="foreach: $data", style="overflow: hidden;")
+            div
+                input(type="checkbox" data-bind="value: timeValue(), checked: $root.data.selectedBackupTimes")
+                span(data-bind="text: ' '+timeText()")

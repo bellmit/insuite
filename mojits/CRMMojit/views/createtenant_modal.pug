@@ -1,0 +1,167 @@
+div#createTenantModal
+  div.row(data-bind="with: companyModel")
+    div.col-md-12
+      h5(style="font-size: 17px")
+        b(data-bind="text: $parent.conameI18n")
+      div.panel.panel-default
+        div.panel-body
+          div.row
+            div.col-md-4
+              div.form-group(data-bind="hasFeedback: { toggle: coname.hasError, messages: coname.validationMessages }")
+                label.control-label(data-bind="text: coname.i18n")
+                input.form-control(name="coname", type="text", data-bind="textInput: coname")
+              //ko if: $parent.isPRC || $parent.isAPPLIANCE
+              div.form-group
+                div.checkbox
+                  input(type='checkbox', name='updateNew', data-bind='checked: $parent.updateNew')
+                  label(data-bind="text: $parent.updateNewI18n")
+              div.form-group(data-bind="hasFeedback: { toggle: systemId.hasError, messages: systemId.validationMessages }")
+                label.control-label(data-bind="text: systemId.i18n")
+                input.form-control(name="systemId", type="text", data-bind="textInput: systemId")
+              // /ko
+              // ko ifnot: $parent.isPRC
+              div.form-group(data-bind="hasFeedback: { toggle: customerNo.hasError, messages: customerNo.validationMessages }")
+                label.control-label(data-bind="text: customerNo.i18n")
+                input.form-control(name="customerNo", type="text", data-bind="enable: $parent.customerNoEnable, textInput: customerNo")
+              div.form-group
+                div.checkbox
+                  input(type='checkbox', name='automaticCustomerNo', data-bind='checked: $parent.automaticCustomerNo')
+                  label(data-bind="text:'Autom.'")
+              // /ko
+              //ko if: $parent.isDCPRC_MTS
+              div.form-group(data-bind="hasFeedback: { toggle: vprcFQHostName.hasError, messages: vprcFQHostName.validationMessages }")
+                label.control-label(data-bind="text: $parent.vprcHostnameI18n")
+                input.form-control(name="vprcFQHostName", type="text", data-bind="textInput: vprcFQHostName, valueUpdate: 'afterkeydown'")
+              // /ko
+              // ko if: $parent.isISD
+              div.form-group(data-bind="hasFeedback: { toggle: systemType.hasError }")
+                label(data-bind="text: systemType.i18n")
+                input.form-control(name="systemType", type="hidden", data-bind="select2: select2SystemType")
+              // /ko
+              div.form-group
+                strong(data-bind="text: countryMode.i18n")
+                div(data-bind="foreach: countryMode.list, hasFeedback: { field: countryMode, toggle: countryMode.hasError, messages: countryMode.validationMessages }")
+                  label.checkbox-inline
+                    span(data-bind="text: i18n")
+                    input(type="checkbox", name="countryMode", data-bind="value: val, checked: $parent.countryMode, readOnly: $parent.countryMode.readOnly")
+              div.form-group(data-bind="hasFeedback: { toggle: cotype.hasError }")
+                label(data-bind="text: cotype.i18n")
+                input.form-control(name="cotype", type="hidden", data-bind="select2: select2CoType")
+
+              h4
+                span(data-bind="text: $parent.titleComI18n")
+                | &nbsp;
+                small
+                  a(href='#', data-bind='click: communications.push')
+                    i.icon.fa.fa-plus
+              div.col-md-12
+                div.row#companyCommunications(data-bind="foreach: communications")
+                  include template-communication
+            div.col-md-8
+              div
+                h4.form-inline
+                  span(data-bind="text: addresses.i18n")
+                  | &nbsp;
+                  small
+                    a(href="#", data-bind="click: addresses.push")
+                      i.icon.fa.fa-plus
+                div(data-bind="template: {foreach: addresses}")
+                  include template-address
+  div.row
+    div.col-md-6.form-group
+      input.form-control(name="type", type="hidden", data-bind="select2: select2CentralContact")
+  div.row(data-bind="with: contactModel")
+    div.col-md-12
+      h5(style="font-size: 17px")
+        b(data-bind="text: $parent.centralContactI18n")
+      div.panel.panel-default
+        div.panel-body
+          div.row
+            div.col-md-4
+              div.form-group(data-bind="hasFeedback: { toggle: lastname.hasError, messages: lastname.validationMessages }")
+                label.control-label(data-bind="text: lastname.i18n")
+                input.form-control(name="lastname", type="text", data-bind="readOnly: lastname.readOnly, textInput: lastname")
+              div.form-group(data-bind="hasFeedback: { toggle: talk.hasError, messages: talk.validationMessages }")
+                label.control-label(data-bind="text: $parent.talkI18n")
+                input.form-control(name="talk", type="text", data-bind="select2: select2Talk, readOnly: talk.readOnly")
+              div.form-group(data-bind="hasFeedback: { toggle: middlename.hasError, messages: middlename.validationMessages }")
+                label.control-label(data-bind="text: middlename.i18n")
+                input.form-control(name="middlename", type="text", data-bind="readOnly: middlename.readOnly, textInput: middlename")
+              div.form-group(data-bind="hasFeedback: { toggle: firstname.hasError, messages: firstname.validationMessages }")
+                label.control-label(data-bind="text: firstname.i18n")
+                input.form-control(name="firstname", type="text", data-bind="readOnly: firstname.readOnly,readOnly: firstname.readOnly, textInput: firstname")
+              div.form-group(data-bind="hasFeedback: { toggle: title.hasError, messages: title.validationMessages }")
+                label.control-label(data-bind="text: title.i18n")
+                input.form-control(name="title", type="text", data-bind="readOnly: title.readOnly, textInput: title")
+              div.form-group(data-bind="hasFeedback: { toggle: dob.hasError, messages: dob.validationMessages }")
+                label.control-label(data-bind="text: $parent.kbvDobI18n")
+                div.date-picker.input-group
+                  input.form-control(name="dob", data-bind="readOnly: dob.readOnly, datetimepicker: { value: dob }")
+            div.col-md-8
+              div
+                h4.form-inline
+                  span(data-bind="text: addresses.i18n")
+                  | &nbsp;
+                  small(data-bind="visible: !lastname.readOnly()")
+                    a(href="#", data-bind="click: addresses.push")
+                      i.icon.fa.fa-plus
+                div(data-bind="template: {foreach: addresses}")
+                  include template-address
+                div.row
+                  div.col-md-12
+                    h4
+                      span(data-bind="text: $parent.titleComI18n")
+                      | &nbsp;
+                      small(data-bind="visible: !lastname.readOnly()")
+                        a(href='#', data-bind='click: communications.push')
+                          i.icon.fa.fa-plus
+                    div.col-xs-12
+                      div.row#contactCommunications(data-bind="foreach: communications")
+                        include template-communication
+  h5(style="font-size: 17px")
+    b(data-bind="text: companyModel.supportContact.i18n")
+  div.row
+    div.col-md-6.form-group
+      input.form-control(name="type", type="hidden", data-bind="select2: select2SupportContact")
+  div.row(data-bind="with: supportContactModel")
+    div.col-md-12
+      div.panel.panel-default
+        div.panel-body
+          div.row
+            div.col-md-4
+              div.form-group(data-bind="hasFeedback: { toggle: companyName.hasError, messages: companyName.validationMessages }")
+                label.control-label(data-bind="text: companyName.i18n")
+                input.form-control(name="companyName", type="text", data-bind="readOnly: companyName.readOnly, textInput: companyName")
+              div.form-group(data-bind="hasFeedback: { toggle: lastname.hasError, messages: lastname.validationMessages }")
+                label.control-label(data-bind="text: lastname.i18n")
+                input.form-control(name="lastname", type="text", data-bind="readOnly: lastname.readOnly, textInput: lastname")
+              div.form-group(data-bind="hasFeedback: { toggle: firstname.hasError, messages: firstname.validationMessages }")
+                label.control-label(data-bind="text: firstname.i18n")
+                input.form-control(name="firstname", type="text", data-bind="readOnly: firstname.readOnly,readOnly: firstname.readOnly, textInput: firstname")
+              div.form-group(data-bind="hasFeedback: { toggle: talk.hasError, messages: talk.validationMessages }")
+                label.control-label(data-bind="text: $parent.talkI18n")
+                input.form-control(name="talk", type="text", data-bind="select2: select2Talk, readOnly: talk.readOnly")
+              div.form-group(data-bind="hasFeedback: { toggle: title.hasError, messages: title.validationMessages }")
+                label.control-label(data-bind="text: title.i18n")
+                input.form-control(name="title", type="text", data-bind="readOnly: title.readOnly, textInput: title")
+            div.col-md-8
+              div
+                h4.form-inline
+                  span(data-bind="text: addresses.i18n")
+                  | &nbsp;
+                  small(data-bind="visible: !lastname.readOnly()")
+                    a(href="#", data-bind="click: addresses.push")
+                      i.icon.fa.fa-plus
+                div(data-bind="template: {foreach: addresses}")
+                  include template-address
+                div.row
+                  div.col-md-12
+                    h4
+                      span(data-bind="text: $parent.titleComI18n")
+                      | &nbsp;
+                      small(data-bind="visible: !lastname.readOnly()")
+                        a(href='#', data-bind='click: communications.push')
+                          i.icon.fa.fa-plus
+                    div.col-xs-12
+                      div.row#supportCommunications(data-bind="foreach: communications")
+                        include template-communication

@@ -1,0 +1,9 @@
+div.form-group
+  div.row
+    div.col-xs-5
+      strong(data-bind="text: dmpShortActingBeta2AdrenergicAgonistAnticholinergics.i18n")
+      span(data-bind="dmpField: { field: dmpShortActingBeta2AdrenergicAgonistAnticholinergics }")
+    div.col-xs-7(data-bind="foreach: dmpShortActingBeta2AdrenergicAgonistAnticholinergics.list, hasFeedback: { field: dmpShortActingBeta2AdrenergicAgonistAnticholinergics, toggle: dmpShortActingBeta2AdrenergicAgonistAnticholinergics.hasError, messages: dmpShortActingBeta2AdrenergicAgonistAnticholinergics.validationMessages }")
+      label.checkbox-inline
+        span(data-bind="text: i18n")
+        input(type="checkbox", name="dmpShortActingBeta2AdrenergicAgonistAnticholinergics", data-bind="value: val, checked: $parent.dmpShortActingBeta2AdrenergicAgonistAnticholinergics, readOnly: $parent.dmpShortActingBeta2AdrenergicAgonistAnticholinergics.readOnly, attr: { name: $element.name + '-' + val }")

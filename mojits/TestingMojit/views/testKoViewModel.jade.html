@@ -1,0 +1,13 @@
+div(id=mojit_view_id)
+  .container.container-fullscreen(style="padding-top: 30px")
+    h1 KoViewModel
+    hr
+    .row.form-inline
+      div.col-xs-3.text-right
+        button.btn.btn-default.btn-block.btn-primary(type="button", data-bind="click: testCreateAsync") testCreateAsync
+      div.col-xs-9
+        pre(data-bind="text: testCreateAsync.toString()", style="max-height: 200px; overflow-y: auto;")
+    h1 Tests
+    hr
+    include runTests
+

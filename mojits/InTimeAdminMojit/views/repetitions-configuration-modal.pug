@@ -1,0 +1,61 @@
+div
+  div.row(style="display: flex; align-items: center;")
+    div.col-md-4
+      div.form-group
+        span.control-label(data-bind="text: repeatEachI18n")
+    div.col-md-4
+      div.form-group
+        input.form-control(type="number", min="1", max="999", data-bind="value: repeating")
+    div.col-md-4
+      div.form-group
+        select.form-control(name="period", data-bind="options: periodList, optionsValue: 'val', optionsText: 'i18n', value: period")
+  // ko if: period() === 'YEARLY'
+  div.row(style="display: flex; align-items: center;")
+    div.col-md-4
+      div.form-group
+        span.control-label(data-bind="text: inI18n")
+    div.col-md-4
+      div.form-group
+        select.form-control(name="monthInYear", data-bind="options: monthList, optionsValue: 'val', optionsText: 'i18n', value: monthInYear, valueAllowUnset: true")
+  // /ko
+  // ko if: period() === 'YEARLY' || period() === 'MONTHLY'
+  div.row(style="display: flex; align-items: center;")
+    div.col-md-4
+      div.form-group
+        span.control-label(data-bind="text: onDayI18n")
+    div.col-md-4
+      div.form-group
+        select.form-control(name="dayNumber", data-bind="options: dayNumberList, optionsValue: 'val', optionsText: 'text', value: dayInMonth, valueAllowUnset: true")
+  // /ko
+  div.row(style="display: flex; align-items: center;")
+    div.col-md-4
+      div.form-group
+        span.control-label(data-bind="text: fromI18n")
+    div.col-md-4
+      div.form-group(data-bind="highlightError: startDate")
+        .date-picker.input-group
+          input.form-control(name="startDate", data-bind="datetimepicker: { value: startDate, valueReset: null, valueUpdate: '' }")
+  div.row
+    div.col-md-4
+      div.form-group(data-bind="highlightError: endCondition")
+        div.radio(style="margin-bottom: 0;")
+          label
+            input(type="radio", name="till", value="BY_ENDDATE", data-bind="checked: endCondition")
+            strong(data-bind="text: tillI18n")
+    div.col-md-4
+      div.form-group(data-bind="highlightError: endDate")
+        .date-picker.input-group
+          input.form-control(name="endDate", data-bind="datetimepicker: { value: endDate, valueReset: null, options: endDateTimepickerOptions, valueUpdate: '' }, readOnly: !endCondition() || endDateDisabled")
+  div.row(style="display: flex; align-items: center;")
+    div.col-md-4
+      div.form-group(data-bind="highlightError: endCondition")
+        div.radio(style="margin-bottom: 0;")
+          label
+            input(type="radio", name="after", value="BY_COUNT", data-bind="checked: endCondition")
+            strong(data-bind="text: afterI18n")
+    div.col-md-4
+      div.form-group
+        input.form-control(type="number", min="1", max="999", data-bind="value: endEventsCount, readOnly: !endCondition() || !endDateDisabled()")
+    div.col-md-4
+      div.form-group
+        span.control-label(data-bind="text: appointmentI18n")

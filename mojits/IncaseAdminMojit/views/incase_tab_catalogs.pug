@@ -1,0 +1,40 @@
+div.container.container-fullscreen
+  div.row
+    div.col-md-2
+      ul.nav.nav-pills.nav-stacked(data-bind="foreach: sideBarNavItems")
+        li(data-bind="click: $parent.selectedItem, css: {active: $parent.selectedItem().id === id}")
+          a(href="#" data-bind="text: title")
+    div.col-md-10
+      div(data-bind="if: selectedItem().id === 'EDIT_CATALOG'")
+        div.row
+          div.col-md-12
+            span(data-bind="template: _add.template", style="margin-right: 10px; margin-bottom:10px; display:inline-block;")
+            span(data-bind="template: _importExport.template", style="margin-right: 10px; margin-bottom:10px; display:inline-block;")
+        div.row(style="margin-top: 5px;")
+          div.col-xs-12(data-bind="template: catalogTable.template")
+        div.row
+          div.col-sm-12
+            span(data-bind="template: _deleteSelected.template", style="margin-right: 10px; margin-bottom:10px; display:inline-block;")
+            span(data-bind="template: _changeSelected.template", style="margin-right: 10px; margin-bottom:10px; display:inline-block;")
+            span(data-bind="template: _copySelected.template", style="margin-right: 10px; margin-bottom:10px; display:inline-block;")
+      div(data-bind="if: selectedItem().id === 'CATALOG_VERSIONS'")
+        div.row
+          div.col-md-12
+          div.col-xs-12(data-bind="template: catalogDescriptorsTable.template")
+      div(data-bind="if: selectedItem().id === 'OMIM_G_CHAINS'")
+        div.row
+          div.col-md-12
+            span(data-bind="template: addOmimChainBtn.template", style="margin-right: 10px; margin-bottom:10px; display:inline-block;")
+            span(data-bind="template: editOmimChainBtn.template", style="margin-right: 10px; margin-bottom:10px; display:inline-block;")
+            span(data-bind="template: removeOmimChainBtn.template", style="margin-right: 10px; margin-bottom:10px; display:inline-block;")
+          div.col-xs-12(data-bind="template: omimChainTable.template")
+      div(data-bind="if: selectedItem().id === 'KBVUTILITY_PRICES'")
+        div.row
+          div.col-md-12
+            span(data-bind="template: addKbvUtilityPriceBtn.template", style="margin-right: 10px; margin-bottom:10px; display:inline-block;")
+            span(data-bind="template: editKbvUtilityPriceBtn.template", style="margin-right: 10px; margin-bottom:10px; display:inline-block;")
+            span(data-bind="template: removeKbvUtilityPriceBtn.template", style="margin-right: 10px; margin-bottom:10px; display:inline-block;")
+            span(data-bind="template: showInsuranceGroupsBtn.template", style="margin-right: 10px; margin-bottom:10px; display:inline-block;")
+            span(data-bind="template: confirmPriceChangesBtn.template", style="margin-right: 10px; margin-bottom:10px; display:inline-block;")
+          div.col-xs-12(data-bind="template: kbvUtilityPriceTable.template")
+      include tarmed-dignities

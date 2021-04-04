@@ -1,0 +1,42 @@
+& {
+  @import "../variables/bootstrap.less";
+
+  /** NavBarHeader */
+  .body-NavBarHeader-fixed {
+    padding-top: (@navbar-height + 2px);
+  }
+
+  .body-NavBarHeader-fixed .navbar-fixed-top {
+    border-width: 1px 0;
+  }
+
+  .NavBarHeader-pin-toggle {
+    padding: 8px 14px 4px;
+  }
+
+  .NavBarHeader-pin-toggle {
+    padding: 8px 14px 4px;
+  }
+
+  .NavBarHeader-pin-icon {
+    cursor: pointer;
+  }
+
+  .NavBarHeader-fixedNot .NavBarHeader-pin-icon {
+    color: red;
+  }
+
+  .NavBarHeader-fixed .NavBarHeader-pin-icon {
+    color: green;
+  }
+
+  .NavBarHeader-fixed.navbar-fixed-top .navbar-collapse {
+    padding-right: (@grid-gutter-width / 2); /*fix jump right on toggle*/
+  }
+
+  #logoutBtn {
+    padding: 5px 10px 6px;
+    margin: 0 5px;
+  }
+
+}

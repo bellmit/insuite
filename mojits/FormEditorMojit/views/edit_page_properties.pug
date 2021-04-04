@@ -1,0 +1,128 @@
+div#divPagePropertyControlsContainer
+  div(data-bind="visible: hasCurrentPage")#divPagePropertyControls
+    fieldset
+      div(style="display:none")
+        input(type="text")#hdnPageName
+
+      br
+      br
+      table(noborder="noborder",style="width: 100%;")
+        tr
+          td(data-bind="text: lblForegroundColorI18n")
+          td
+            input.minicolors-inline.form-control.dcEditFormElement(value="")#txtPageFgColor
+
+        tr
+          td(data-bind="text: lblBackgroundColorI18n")
+          td
+            input.minicolors-inline.form-control.dcEditFormElement(value="")#txtPageBgColor
+
+        tr
+          td(data-bind="text: lblPageHeaderI18n")
+          td
+            select.form-control#selPageHeader
+              option(value="")
+
+        tr
+          td(data-bind="text: lblPageFooterI18n")
+          td
+            select.form-control#selPageFooter
+              option(value="")
+
+        tr
+          td
+          td(style="padding-top: 10px;")
+            div.checkbox
+              input(type="checkbox", data-bind="checked: firstPageDifferent")#chkFirstPageDifferent
+              label.checkbox-inline(for="chkFirstPageDifferent")
+                span(style="margin-left: 15px;", data-bind="text: lblFirstPageDifferent")
+
+        tr(data-bind="visible: firstPageDifferent")
+          td(data-bind="text: lblPageHeaderOverflowI18n")
+          td
+            select.form-control#selPageHeaderOverflow
+              option(value="")
+
+        tr(data-bind="visible: firstPageDifferent")
+          td(data-bind="text: lblPageFooterOverflowI18n")
+          td
+            select.form-control#selPageFooterOverflow
+              option(value="")
+
+        tr
+          td
+          td(style="padding-top: 10px;")
+            div.checkbox
+              input(type="checkbox", data-bind="checked: isCarbonCopy")#chkIsCarbonCopy
+              label.checkbox-inline(for="chkIsCarbonCopy")
+                span(style="margin-left: 15px;", data-bind="text: lblIsCarbonCopyI18n")
+
+      br
+      b(data-bind="text: lblBackgroundImageI18n")
+      br
+      br
+      span#spanPageBgImg
+      br
+      button.btn#btnSetPageBgImg(data-bind="text: lblBtnChooseImageI18n")
+      span &nbsp;
+      br
+
+      hr
+
+      b(data-bind="text: lblGroupedElementsI18n")
+
+      p(data-bind="text: lblGroupedExplanationI18n")
+
+      table(width="100%")
+        tr
+          td(data-bind="text: lblGroupSelectI18n")
+          td(data-bind="text: lblGroupSelectShortcutI18n")
+        tr
+          td(data-bind="text: lblGroupCopyI18n")
+          td(data-bind="text: lblGroupCopyShortcutI18n")
+        tr
+          td(data-bind="text: lblGroupPasteI18n")
+          td(data-bind="text: lblGroupPasteShortcutI18n")
+        tr
+          td(data-bind="text: lblGroupCutI18n")
+          td(data-bind="text: lblGroupCutShortcutI18n")
+        tr
+          td(data-bind="text: lblGroupDeleteI18n")
+          td(data-bind="text: lblGroupDeleteShortcutI18n")
+        tr
+          td(data-bind="text: lblGroupMoveI18n")
+          td(data-bind="text: lblGroupMoveShortcutI18n")
+
+      br
+      span( data-bind="visible: canCopyGroup" )
+        button.btn.btn-primary#btnCopySelected(data-bind="click: onCopySelectedClick")
+          i.fa.fa-copy
+          span &nbsp;
+          span(data-bind="text: btnCopyGroupI18n")
+        span &nbsp;
+
+      span( data-bind="visible: canPasteGroup" )
+        button.btn.btn-primary#btnPasteSelected(data-bind="click: onPasteSelectedClick")
+          i.fa.fa-paste
+          span &nbsp;
+          span(data-bind="text: btnPasteGroupI18n")
+        span &nbsp;
+
+      span( data-bind="visible: canCopyGroup" )
+        button.btn.btn-primary#btnDeleteSelected(data-bind="click: onDeleteSelectedClick")
+          i.fa.fa-trash
+          span &nbsp;
+          span(data-bind="text: btnDeleteGroupI18n")
+        span &nbsp;
+
+      br
+      hr
+
+      button.btn#btnReorderElements(style="display:none;", data-bind="text: btnEPReorderElementsI18n")
+      span &nbsp;
+      button.btn.btn-primary#btnRemovePage(data-bind="text: btnRemovePageI18n, click: onRemoveCurrentPage")
+      span &nbsp;
+      button.btn.btn-primary#btnCopyPage(data-bind="text: btnCopyPageI18n, click: onCopyBtnClick")
+
+  div(data-bind="visible: noPageSelected")#divNoPageSelected
+    i No page selected

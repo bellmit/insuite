@@ -1,0 +1,9 @@
+div.form-group
+    div.row
+        div.col-xs-2
+            strong(data-bind="text: dmpGrading.i18n")
+            span(data-bind="dmpField: { field: dmpGrading }")
+        div.col-xs-10(data-bind="foreach: dmpGrading.list, hasFeedback: { field: dmpGrading, toggle: dmpGrading.hasError, messages: dmpGrading.validationMessages }")
+            label.radio-inline
+                span(data-bind="text: i18n")
+                input(type="radio", name="dmpGrading", data-bind="value: val, checked: $parent.dmpGrading, readOnly: $parent.dmpGrading.readOnly, attr: { name: $element.name + '-' + val }")

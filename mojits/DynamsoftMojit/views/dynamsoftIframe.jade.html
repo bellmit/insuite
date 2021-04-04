@@ -1,0 +1,32 @@
+div.container.container-fullscreen(id=mojit_view_id)
+  div.row(style="display: none", data-bind="visible: uiState() === 'twainReady'")
+    div.col-xs-6
+      div.form-group
+        label.control-label(data-bind="text: sourcesTemplateI18n + ':'")
+        select.form-control(name="sources", data-bind="options: sourceList, optionsValue: 'index', optionsText: 'text', value: sourceIndex")
+      div.form-group
+        label.control-label(data-bind="text: resolutionLabelI18n + ':'")
+        select.form-control(name="Resolution", data-bind="options: ResolutionList, value: Resolution")
+      div.form-group
+        div.checkbox
+          label.control-label
+            strong(data-bind="text: duplexLabelI18n")
+            input(name="duplex", type="checkbox", data-bind="checked: duplex")
+      div.form-group
+        label.control-label(data-bind="text: pixelTypeLabelI18n + ':'")
+        select.form-control(name="PixelType", data-bind="options: PixelTypeList, value: PixelType")
+      div.form-group
+        label.control-label(data-bind="text: doctypeLabelI18n + ':'")
+        select.form-control(name="doctype", data-bind="options: docTypes, optionsValue: 'val', optionsText: 'text'")#selDocType
+      div.form-group
+        label.control-label(data-bind="text: titleLabelI18n + ':'")
+        input.form-control(name="doctype",type="text", data-bind="value: docTitle")#txtDocTitle
+
+    div.col-xs-6
+      div#dwtcontrolContainer
+      div
+        a(href="javascript:;", data-bind="click: selectAll, visible: selectAllVisible, text: selectAllLabelI18n")
+  div.alert.alert-warning.text-center(style="display: none", data-bind="visible: uiState() === 'osNotSupported'")
+    b(data-bind="text: osNotSupportedI18n")
+  div(style="display: none", data-bind="visible: Boolean(dynamsoftMessage())")
+    div(data-bind="html: dynamsoftMessage")

@@ -1,0 +1,14 @@
+div#sendOrderProgressDialog
+  div.progress.text-in-center
+    div.progress-bar(data-bind="style: {width: progressBarStatus() + '%'}", role="progressbar", aria-valuemin="0", aria-valuemax="100")
+      span(data-bind="text: progressBarStatus() + '%'")
+  div
+    span(data-bind="text: infoLabelI18n")
+  br
+  div
+    span(data-bind="text: notaLabelI18n")
+    span(data-bind="text: notaCount")
+    ul(data-bind="foreach: notaMessages")
+      li(data-bind='text: medication')
+      p
+        i(data-bind='text: nota')

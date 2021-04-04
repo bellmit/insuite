@@ -1,0 +1,13 @@
+div.row#catalogUsageCopy
+    div.col-xs-12
+        div.row
+            div.col-xs-12
+                p(data-bind="text: copyTextI18n")
+        div.row.form-group
+            div.col-xs-12
+                label.control-label(data-bind="text: labelCodesI18n")
+                input.form-control(name="codes", type="hidden", data-bind="select2: _select2Code, valueUpdate:'afterkeydown', enable: codeEnabled",)
+        div.row.form-group
+            div.col-xs-12
+                label.control-label(data-bind="text: labelLocationI18n")
+                input.form-control(name="select2Location", data-bind="select2: select2Location", type="hidden")

@@ -1,0 +1,10 @@
+div.PatientGadgetLatestVaccinationStatus(style= "height:100%; text-align: center;" )
+  h4.PatientGadget-headline
+    // ko ifnot: vaccinationMedDataURL
+    span(data-bind="text: vaccinationStatusI18n, attr: { title: additionalInfo }" )
+    // /ko
+    // ko if: vaccinationMedDataURL
+    a(data-bind="text: vaccinationStatusI18n, attr: { href: vaccinationMedDataURL, title: additionalInfo}")
+    // /ko
+  div
+    span.custom-icon.icon-syringe-vaccine-svgrepo-com(data-bind="style: {color: vaccinationStatus}", style="font-size: 35px;")

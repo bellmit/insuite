@@ -1,0 +1,166 @@
+{
+  "rule": {
+    "parent" : "000000000000000000000002",
+    "isDirectory" : false,
+    "isLocked" : false,
+    "isActive" : true,
+    "caseFolderType" : [
+      "PUBLIC"
+    ],
+    "metaActTypes" : [
+      "TREATMENT"
+    ],
+    "metaActCodes" : [
+      "30110"
+    ],
+    "metaCriterias" : [
+      "actType",
+      "code"
+    ],
+    "description" : "L30110 Punkt",
+    "referenceArea" : "PERIOD",
+    "periodType" : "DAY",
+    "periodCount" : 1,
+    "periodReference" : "punkt",
+    "rules" : [
+      {
+        "ruleId" : "5f2bc5e8d473114386000018",
+        "description" : "L30110 Punkt",
+        "isActive" : true,
+        "validations" : {
+          "\\\\$and" : [
+            {
+              "context" : "ACTIVITY",
+              "criteria" : {
+                "actType" : {
+                  "\\\\$eq" : "TREATMENT"
+                },
+                "code" : {
+                  "\\\\$eq" : "30110",
+                  "\\\\$catalogShort" : "EBM"
+                },
+                "\\\\$count" : {
+                  "\\\\$gt" : 1
+                }
+              }
+            }
+          ]
+        },
+        "actions" : [
+          {
+            "type" : "ERROR"
+          }
+        ],
+        "metaCodes" : [
+          "30110"
+        ],
+        "metaActTypes" : [
+          "TREATMENT"
+        ]
+      }
+    ],
+    "metaFuzzy" : false,
+    "metaCaseOpen" : false
+  },
+  "schein": {
+    "actType" : "SCHEIN",
+    "attachments" : [],
+    "subType" : "",
+    "time" : "",
+    "userContent" : "ambulante Behandlung (ambulante Behandlung)",
+    "partnerInfo" : "",
+    "explanations" : "",
+    "status" : "VALID",
+    "activities" : [],
+    "referencedBy" : [],
+    "formId" : "",
+    "formVersion" : "",
+    "formPdf" : "",
+    "formLang" : "de",
+    "formGender" : "m",
+    "apkState" : "IN_PROGRESS",
+    "forInsuranceType" : "",
+    "locationFeatures" : "",
+    "scheinRemittor" : "",
+    "scheinEstablishment" : "",
+    "scheinSpecialisation" : "",
+    "scheinOrder" : "",
+    "scheinDiagnosis" : "",
+    "scheinFinding" : "",
+    "scheinNotes" : "",
+    "scheinClinicalTreatmentFrom" : null,
+    "scheinClinicalTreatmentTo" : null,
+    "scheinNextTherapist" : "",
+    "fk4234" : false,
+    "fk4219" : "",
+    "continuousIcds" : [],
+    "icds" : [],
+    "icdsExtra" : [],
+    "scheinQuarter" : "1",
+    "scheinYear" : "2019",
+    "scheinBillingArea" : "00",
+    "scheinType" : "0101",
+    "scheinSubgroup" : "00",
+    "scheinTransferTypeInfo" : "",
+    "fk4124" : "",
+    "fk4126" : "",
+    "fk4125from" : null,
+    "fk4125to" : null,
+    "fk4123" : "",
+    "fk4206" : null,
+    "fk4236" : false,
+    "fk4241" : "",
+    "fk4217" : "",
+    "scheinSlipMedicalTreatment" : "",
+    "__t" : "SCHEIN",
+    "attachedMedia" : [],
+    "content" : "ambulante Behandlung (ambulante Behandlung)",
+    "debtCollection" : "",
+    "fk4235Set" : [],
+    "invoiceData" : [],
+    "scheinTransferType" : ""
+  },
+  "treatment": {
+    "actType" : "TREATMENT",
+    "status" : "VALID",
+    "attachments" : [],
+    "subType" : "",
+    "userContent" : "Allergologiediagnostik I",
+    "areTreatmentDiagnosesBillable" : "1",
+    "catalog" : true,
+    "catalogRef" : "DC-EBM-D-1541506572227.json",
+    "catalogShort" : "EBM",
+    "code" : "30110"
+  },
+  "rulelogExprected": [ {
+    "message" : "L30110 Punkt",
+    "referenceArea" : "PERIOD",
+    "ruleLogType" : "ERROR",
+    "actCodes" : [
+      "30110"
+    ],
+    "actTypes" : [
+      "TREATMENT"
+    ],
+    "activitiesToCreate" : [],
+    "affectedActivities" : [
+      {
+        "code" : "30110",
+        "actType" : "TREATMENT",
+        "locationId" : "000000000000000000000001"
+      },
+      {
+        "code" : "30110",
+        "actType" : "TREATMENT",
+        "locationId" : "000000000000000000000001"
+      }
+    ],
+    "allCodes" : [],
+    "caseFolderType" : [
+      "PUBLIC"
+    ],
+    "locationId" : "000000000000000000000001",
+    "requiredCodes" : [],
+    "ruleId": "5f2bc5e8d473114386000018"
+  } ]
+}

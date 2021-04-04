@@ -1,0 +1,482 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="../stylesheets/cda.xsl"?>
+<?xml-model href="../schematron/abde-ab2015.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<ClinicalDocument xmlns="urn:hl7-org:v3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:hl7-org:v3 ../schemas/CDA.xsd">
+	<realmCode code="DE"/>
+	<typeId root="2.16.840.1.113883.1.3" extension="POCD_HD000040"/>
+	<templateId root="1.2.276.0.76.10.1013"/>
+    <id root="1.2.276.0.76.3645.239" extension="di-c02e97c1-3cea-4ed4-80cd-5d8a7386cee7" />
+    <code code="11490-0" codeSystem="2.16.840.1.113883.6.1"/>
+	<title>Arztbrief Hausarzt (patientenbegleitend)</title>
+	<effectiveTime value="20150416124533"/>
+	<confidentialityCode code="N" codeSystem="2.16.840.1.113883.5.25"/>
+	<languageCode code="de" />
+    <setId root="1.2.276.0.76.3645.239" extension="si-b8a7b265-4e20-4177-8cfb-149491b8003b"/>
+    <versionNumber value="1"/>
+	<recordTarget>
+		<patientRole>
+			<id extension="A123456789" root="1.2.276.0.76.4.8"/>  <!-- Versichertennummer (eGK) -->
+			<addr>
+				<streetName>Am Geldspeicher</streetName>
+				<houseNumber>2</houseNumber>
+				<postalCode>65432</postalCode>
+				<city>Entenhausen</city>
+			</addr>
+			<patient>
+				<name>
+					<given>Daisy</given>
+					<family>Duck</family>
+				</name>
+				<administrativeGenderCode code="F" codeSystem="2.16.840.1.113883.5.1"/>
+				<birthTime value="19370109"/>
+			</patient>
+		</patientRole>
+	</recordTarget>
+
+	<author>
+		<time value="20130416112233+0100"/>
+		<assignedAuthor>
+			<id extension="123456701" root="1.2.276.0.76.4.16"/>	<!-- LANR -->
+			<assignedPerson>
+				<name>
+					<prefix>Prof. Dr. med.</prefix>
+					<given>Primus</given>
+					<family>von Quack</family>
+				</name>
+			</assignedPerson>
+			<representedOrganization>
+				<id extension="765432100" root="1.2.276.0.76.4.17"/>	<!-- BSNR -->
+				<name>Arztpraxis Quack und Konsorten</name>
+				<telecom value="tel:+49.1234.5678"/>
+				<addr>
+					<streetName>Am Geldspeicher</streetName>
+					<houseNumber>7</houseNumber>
+					<postalCode>65432</postalCode>
+					<city>Entenhausen</city>
+				</addr>
+			</representedOrganization>
+		</assignedAuthor>
+	</author>
+
+	<custodian>
+		<assignedCustodian>
+			<representedCustodianOrganization>
+				<id extension="765432100" root="1.2.276.0.76.4.17"/>	<!-- BSNR -->
+				<name>Arztpraxis Quack und Konsorten</name>
+				<telecom value="tel:+49.1234.5678"/>
+				<addr>
+					<streetName>Am Geldspeicher</streetName>
+					<houseNumber>7</houseNumber>
+					<postalCode>65432</postalCode>
+					<city>Entenhausen</city>
+				</addr>
+			</representedCustodianOrganization>
+		</assignedCustodian>
+	</custodian>
+
+	<participant typeCode="HLD" contextControlCode="OP">
+        <time>
+            <low value="20050101"/>
+            <high value="20051231" inclusive="true"/>
+        </time>
+        <associatedEntity classCode="POLHOLD">
+			<id extension="A123456789" root="1.2.276.0.76.4.8"/>  <!-- Versichertennummer (eGK) -->
+			<associatedPerson>
+				<name>
+					<given>Daisy</given>
+					<family>Duck</family>
+				</name>
+			</associatedPerson>
+			<scopingOrganization>
+				<id extension="107415518" root="1.2.276.0.76.4.5"/>		<!-- Institutionskennzeichen -->
+				<id extension="61125" root="1.2.276.0.76.4.7"/>			<!-- Vertragskassen-Nummer -->
+				<name>AOK Entenhausen</name>
+			</scopingOrganization>
+		</associatedEntity>
+	</participant>
+
+	<component>
+		<structuredBody>
+			<component>
+				<section>
+					<templateId root="1.2.276.0.76.10.3028"/>
+					<code code="48765-2" codeSystem="2.16.840.1.113883.6.1"/>
+					<title>Allergien, Unverträglichkeiten, Risiken</title>
+					<text>Ulcuskrankheit, Allergie auf DoloPosterine und Amoxicillin</text>
+				</section>
+			</component>
+		    <component>
+		        <section>
+		            <templateId root="1.2.276.0.76.10.3023"/>
+		            <code code="11348-0" codeSystem="2.16.840.1.113883.6.1"/>
+		            <title>Frühere Erkrankungen</title>
+		            <text>
+		                <list>
+		                    <item>Übliche Kinderkrankheiten, in der Kindheit Nierenerkrankung (?), sonst in früheren Jahren keine wesentlichen Vorerkrankungen</item>
+		                    <item>1955 Appendektomie</item>
+		                    <item>1956 TE</item>
+		                    <item>1968 OP einer Pericardcyste</item>
+		                    <item>Seit 1989 Hypertonie und latente Hypothyreose</item>
+		                    <item>1989 Ulcus duodeni</item>
+		                    <item>1977 und 1993 Polypektomie im Colon deszendens, Kontroll-Coloskopie 03/1999 o.B.</item>
+		                    <item>11/2001 kleiner Mediateilinfarkt re. unklarer Atiologie</item>
+		                    <item>Seit Jahren Descensus uteri et vaginae, Hallux valgus li., Patelladysplasie Typ Wiberg II. li.</item>
+		                    <item>08/2002 Arthoroskopie re. Knie</item>
+		                    <item>08/2003 Kolospkopie mit Resektion eines Polypen im Colon ascendens</item>
+		                    <item>01/2005 ED eines Bandscheibenprolaps L3/4 und einer Spinalkanalstenose L4/5</item>
+		                    <item>05/2005 distale Radiusfraktur li. mit distaler Ulnafraktur, Versorgung mittels Platte und K-Draht</item>
+		                    <item>Seit 11/2005 manifester Diabetes mellitus Typ II</item>
+		                    <item>09/2006 Polypektomie Colon descendens, sonst. Koloskopie o.B.</item>
+		                    <item>12/2008 Kontrollcoronarangiographie ohne akut interventionsbedürftigen Befund</item>
+		                    <item>01/2010 Kontrollkoloskopie, Abtragung von zwei Polypenknospen</item>
+		                    <item>04/2011 OP bei hochgradiger Spinalkanalstenose abgelehnt</item>
+		                    <item>05/2011 therapeutische LA lumbal erfolgreich</item>
+		                    <item>08/2011 mikrochirurgische Erweiterung WK LWK 1/2 bis 4/5</item>
+		                    <item>11/2011 NPP L4/5: konservativ</item>
+		                    <item>12/2011 Distorsion OSG re.</item>
+		                    <item>01/2012 vaginale Hysterektomie bei Uterus myomatosus</item>
+		                    <item>03/2012 ED einer mittelschweren Coxarthrose re.</item>
+		                    <item>06/2012 bei initialem V.a. dementielle Entwicklung, Ausschluss NPH oder cerebrale Raumforderung(CT)</item>
+		                    <item>09/2012 erneute Nukleotomie mit Spondylodese L4/5</item>
+		                </list>
+		            </text>
+		        </section>
+		    </component>
+		    <component>
+		        <section>
+		            <templateId root="1.2.276.0.76.10.3027"/>
+		            <code code="11535-2" codeSystem="2.16.840.1.113883.6.1"/>
+		            <title>Entlassungsdiagnosen</title>
+		            <text>
+		                <list>
+		                    <item ID="diagnose1">Nicht primär insulinabhängiger Diabetes mellitus [Typ-2-Diabetes]: Ohne Komplikationen: Nicht als entgleist bezeichnet</item>
+		                    <item ID="diagnose2">Mittelgradige depressive Episode</item>
+		                    <item ID="diagnose3">Essentielle (primäre) Hypertonie</item>
+		                    <item ID="diagnose4">Nicht näher bezeichnete Hämaturie</item>
+		                    <item ID="diagnose5">Lumboischialgie</item>
+		                    <item ID="diagnose6">Hirninfarkt, nicht näher bezeichnet - Zustand nach - Rechts</item>
+		                    <item ID="diagnose7">Hypothyreose nicht näher bezeichnet</item>
+		                    <item ID="diagnose8">Koronararterienaneurysma</item>
+		                    <item ID="diagnose9">Jodmangelbedingte mehrknotige Struma (endemisch)</item>
+		                    <item ID="diagnose10">Sonstiger chronischer Schmerz</item>
+		                    <item ID="diagnose11">Spinal(kanal)stenose: Lumbalbereich</item>
+		                    <item ID="diagnose12">Varizen der unteren Extremitäten ohne Ulzeration oder Entzündung - Beidseitig</item>
+		                    <item ID="diagnose13">Sonstige sekundäre Koxarthrose - Rechts</item>
+		                    <item ID="diagnose14">Sturzneigung, anderenorts nicht klassifiziert</item>
+		                </list>
+		            </text>
+		        </section>
+		    </component>
+		    <component>
+		        <section>
+		            <templateId root="1.2.276.0.76.10.3031"/>
+		            <code code="10183-2" codeSystem="2.16.840.1.113883.6.1"/>
+		            <title>Medikation bei Entlassung</title>
+					<text>
+						<list>
+							<item ID="medikation1">BISOPROLOL 10/25 (1-0-0)</item>
+							<item ID="medikation2">ASS 100 (0-1-0)</item>
+							<item ID="medikation3">ALLOPURINOL 300 (0-1-0)</item>
+							<item ID="medikation4">AMITRIPTYLIN 75 (0-0-1)</item>
+							<item ID="medikation5">JODID 200 (1-0-0)</item>
+							<item ID="medikation6">SIMVASTATIN 40 (0-0-1/2)</item>
+						</list>
+					</text>
+		            <!--
+					<entry>
+						<substanceAdministration>
+							<code code="DRUG" codeSystem="2.16.840.1.113883.5.4"/>
+							<text>
+								<reference value="#medikation1"/>
+							</text>
+							<statusCode code="active"/>
+							<priorityCode code="R" codeSystem="2.16.840.1.113883.5.7"/>
+							<consumable>
+								<manufacturedProduct>
+									<manufacturedLabeledDrug>
+										<code code="02859353" codeSystem="1.2.276.0.76.4.6" displayName="BISOPROLOL ratiopharm com.10mg/25mg Filmtabletten"/>
+									</manufacturedLabeledDrug>
+								</manufacturedProduct>
+							</consumable>
+							<doseQuantity>
+								<center value="1" unit="1"/>
+							</doseQuantity>
+							<effectiveTime xsi:type="PIVL_TS" institutionSpecified="true">
+								<phase value="190001010800"/>
+								<period value="1" unit="d"/>
+							</effectiveTime>
+						</substanceAdministration>
+					</entry>
+					<entry>
+						<substanceAdministration>
+							<code code="DRUG" codeSystem="2.16.840.1.113883.5.4"/>
+							<text>
+								<reference value="#medikation2"/>
+							</text>
+							<statusCode code="active"/>
+							<priorityCode code="R" codeSystem="2.16.840.1.113883.5.7"/>
+							<consumable>
+								<manufacturedProduct>
+									<manufacturedLabeledDrug>
+										<code code="06312060" codeSystem="1.2.276.0.76.4.6" displayName="ASS 100 1A Pharma TAH Tabletten"/>
+									</manufacturedLabeledDrug>
+								</manufacturedProduct>
+							</consumable>
+							<doseQuantity>
+								<center value="1" unit="1"/>
+							</doseQuantity>
+							<effectiveTime xsi:type="PIVL_TS" institutionSpecified="true">
+								<phase value="190001011200"/>
+								<period value="1" unit="d"/>
+							</effectiveTime>
+						</substanceAdministration>
+					</entry>
+					<entry>
+						<substanceAdministration>
+							<code code="DRUG" codeSystem="2.16.840.1.113883.5.4"/>
+							<text>
+								<reference value="#medikation3"/>
+							</text>
+							<statusCode code="active"/>
+							<priorityCode code="R" codeSystem="2.16.840.1.113883.5.7"/>
+							<consumable>
+								<manufacturedProduct>
+									<manufacturedLabeledDrug>
+										<code code="06935631" codeSystem="1.2.276.0.76.4.6" displayName="ALLOPURINOL 100 Heumann Tabletten"/>
+									</manufacturedLabeledDrug>
+								</manufacturedProduct>
+							</consumable>
+							<doseQuantity>
+								<center value="1" unit="1"/>
+							</doseQuantity>
+							<effectiveTime xsi:type="PIVL_TS" institutionSpecified="true">
+								<phase value="190001011200"/>
+								<period value="1" unit="d"/>
+							</effectiveTime>
+						</substanceAdministration>
+					</entry>
+					<entry>
+						<substanceAdministration>
+							<code code="DRUG" codeSystem="2.16.840.1.113883.5.4"/>
+							<text>
+								<reference value="#medikation4"/>
+							</text>
+							<statusCode code="active"/>
+							<priorityCode code="R" codeSystem="2.16.840.1.113883.5.7"/>
+							<consumable>
+								<manufacturedProduct>
+									<manufacturedLabeledDrug>
+										<code code="00715928" codeSystem="1.2.276.0.76.4.6" displayName="AMITRIPTYLIN neuraxpharm 75 mg retard Kaps."/>
+									</manufacturedLabeledDrug>
+								</manufacturedProduct>
+							</consumable>
+							<doseQuantity>
+								<center value="1" unit="1"/>
+							</doseQuantity>
+							<effectiveTime xsi:type="PIVL_TS" institutionSpecified="true">
+								<phase value="190001011600"/>
+								<period value="1" unit="d"/>
+							</effectiveTime>
+						</substanceAdministration>
+					</entry>
+					<entry>
+						<substanceAdministration>
+							<code code="DRUG" codeSystem="2.16.840.1.113883.5.4"/>
+							<text>
+								<reference value="#medikation5"/>
+							</text>
+							<statusCode code="active"/>
+							<priorityCode code="R" codeSystem="2.16.840.1.113883.5.7"/>
+							<consumable>
+								<manufacturedProduct>
+									<manufacturedLabeledDrug>
+										<code code="03105998" codeSystem="1.2.276.0.76.4.6" displayName="JODID 200 HEXAL Tabletten"/>
+									</manufacturedLabeledDrug>
+								</manufacturedProduct>
+							</consumable>
+							<doseQuantity>
+								<center value="1" unit="1"/>
+							</doseQuantity>
+							<effectiveTime xsi:type="PIVL_TS" institutionSpecified="true">
+								<phase value="190001010800"/>
+								<period value="1" unit="d"/>
+							</effectiveTime>
+						</substanceAdministration>
+					</entry>
+					<entry>
+						<substanceAdministration>
+							<code code="DRUG" codeSystem="2.16.840.1.113883.5.4"/>
+							<text>
+								<reference value="#medikation6"/>
+							</text>
+							<statusCode code="active"/>
+							<priorityCode code="R" codeSystem="2.16.840.1.113883.5.7"/>
+							<consumable>
+								<manufacturedProduct>
+									<manufacturedLabeledDrug>
+										<code code="05980836" codeSystem="1.2.276.0.76.4.6" displayName="SIMVASTATIN 40 mg Key Pharm Filmtabletten"/>
+									</manufacturedLabeledDrug>
+								</manufacturedProduct>
+							</consumable>
+							<doseQuantity>
+								<center value="0.5" unit="1"/>
+							</doseQuantity>
+							<effectiveTime xsi:type="PIVL_TS" institutionSpecified="true">
+								<phase value="190001011600"/>
+								<period value="1" unit="d"/>
+							</effectiveTime>
+						</substanceAdministration>
+					</entry>
+					 -->
+				</section>
+		    </component>
+		    <component>
+				<section>
+					<templateId root="1.2.276.0.76.10.3012"/>
+					<code code="11369-6" codeSystem="2.16.840.1.113883.6.1"/>
+					<title>Angaben zu Impfungen</title>
+					<text>
+						<list>
+							<item ID="impfung1">19.02.2013 Td-pur, Ch-Nr. 063311A</item>
+							<item ID="impfung2">08.11.2002 Pneumopur, Ch-Nr. HP27610</item>
+							<item ID="impfung3">24.01.2000 Havrix 1440, Ch-Nr. VHA604C6</item>
+							<item ID="impfung4">23.11.1999 Havrix 1440, Ch-Nr. VHA55186</item>
+							<item ID="impfung5">08.02.1999 Td-Impfung, Ch-Nr. 004071</item>
+							<item ID="impfung6">04.05.1992 Beriglobin S 5 ml</item>
+							<item ID="impfung7">01.10.1990 Beriglobin 5 ml</item>
+							<item ID="impfung8">21.08.1990 2. Polio Sabin S</item>
+						</list>
+					</text>
+				    <!--
+					<entry>
+						<substanceAdministration>
+							<code code="IMMUNIZ" codeSystem="2.16.840.1.113883.5.4"/>
+							<text>
+								<reference value="#impfung1"/>
+							</text>
+							<statusCode code="completed"/>
+							<consumable>
+								<material>
+									<name>Td-pur</name>
+									<lotNumberText>063311A</lotNumberText>
+								</material>
+							</consumable>
+							<effectiveTime value="20130219"/>
+						</substanceAdministration>
+					</entry>
+					<entry>
+						<substanceAdministration>
+							<code code="IMMUNIZ" codeSystem="2.16.840.1.113883.5.4"/>
+							<text>
+								<reference value="#impfung2"/>
+							</text>
+							<statusCode code="completed"/>
+							<consumable>
+								<material>
+									<name>Pneumopur</name>
+									<lotNumberText>HP27610</lotNumberText>
+								</material>
+							</consumable>
+							<effectiveTime value="20021108"/>
+						</substanceAdministration>
+					</entry>
+					<entry>
+						<substanceAdministration>
+							<code code="IMMUNIZ" codeSystem="2.16.840.1.113883.5.4"/>
+							<text>
+								<reference value="#impfung3"/>
+							</text>
+							<statusCode code="completed"/>
+							<consumable>
+								<material>
+									<name>Havrix 1440</name>
+									<lotNumberText>VHA604C6</lotNumberText>
+								</material>
+							</consumable>
+							<effectiveTime value="20000124"/>
+						</substanceAdministration>
+					</entry>
+					<entry>
+						<substanceAdministration>
+							<code code="IMMUNIZ" codeSystem="2.16.840.1.113883.5.4"/>
+							<text>
+								<reference value="#impfung4"/>
+							</text>
+							<statusCode code="completed"/>
+							<consumable>
+								<material>
+									<name>Havrix 1440</name>
+									<lotNumberText>VHA55186</lotNumberText>
+								</material>
+							</consumable>
+							<effectiveTime value="19991123"/>
+						</substanceAdministration>
+					</entry>
+					<entry>
+						<substanceAdministration>
+							<code code="IMMUNIZ" codeSystem="2.16.840.1.113883.5.4"/>
+							<text>
+								<reference value="#impfung5"/>
+							</text>
+							<statusCode code="completed"/>
+							<consumable>
+								<material>
+									<name>Td-Impfung</name>
+									<lotNumberText>004071</lotNumberText>
+								</material>
+							</consumable>
+							<effectiveTime value="19990208"/>
+						</substanceAdministration>
+					</entry>
+					<entry>
+						<substanceAdministration>
+							<code code="IMMUNIZ" codeSystem="2.16.840.1.113883.5.4"/>
+							<text>
+								<reference value="#impfung6"/>
+							</text>
+							<statusCode code="completed"/>
+							<consumable>
+								<material>
+									<name>Beriglobin S 5 ml</name>
+								</material>
+							</consumable>
+							<effectiveTime value="19920504"/>
+						</substanceAdministration>
+					</entry>
+					<entry>
+						<substanceAdministration>
+							<code code="IMMUNIZ" codeSystem="2.16.840.1.113883.5.4"/>
+							<text>
+								<reference value="#impfung7"/>
+							</text>
+							<statusCode code="completed"/>
+							<consumable>
+								<material>
+									<name>Beriglobin 5 ml</name>
+								</material>
+							</consumable>
+							<effectiveTime value="19901001"/>
+						</substanceAdministration>
+					</entry>
+					<entry>
+						<substanceAdministration>
+							<code code="IMMUNIZ" codeSystem="2.16.840.1.113883.5.4"/>
+							<text>
+								<reference value="#impfung8"/>
+							</text>
+							<statusCode code="completed"/>
+							<consumable>
+								<material>
+									<name>Polio Sabin S</name>
+								</material>
+							</consumable>
+							<effectiveTime value="19900821"/>
+						</substanceAdministration>
+					</entry>
+					-->
+				</section>
+			</component>
+		</structuredBody>
+	</component>
+
+</ClinicalDocument>

@@ -1,0 +1,347 @@
+div.panel.panel-default
+  div.panel-body
+    div.row
+      div.col-md-6
+        div.form-group(data-bind="hasFeedback: { field: padxSettingTitle, toggle: padxSettingTitle.hasError, messages: padxSettingTitle.validationMessages }")
+          label.control-label(data-bind="text: padxSettingTitle.i18n")
+          input.form-control(name="padxSettingTitle", type="text", data-bind="value: padxSettingTitle")
+    div.row
+      div.col-md-6
+        div.form-group(data-bind="hasFeedback: { field: employees, toggle: employees.hasError, messages: employees.validationMessages }")
+          label.control-label(data-bind="text: physiciansI18n")
+          input.form-control(name="physicians", type="text", data-bind="select2: select2Physicians")
+        //- grouped-by
+        div#padxSetting-grouped.panel-group
+          //- grouped-by-recipient
+          div.panel.panel-default(data-bind="attr: {'dc-panel': 'padxSetting-grouped-by-recipient-'+cid}", dc-panel-actions="minimize")
+            div.panel-heading
+              a(
+              data-bind="attr: {'href': '#padxSetting-grouped-by-recipient-'+cid}",
+              data-parent="#padxSetting-grouped",
+              data-toggle="collapse"
+              )
+                strong(data-bind="style: { color: hasErrorGrouped(['recipientName','recipientCustomerNo','recipientIKNR','recipientRZID']) ? '#a94442' : 'inherit' }, text: groupedByReceipientI18n")
+            div(data-bind="attr: {'id': 'padxSetting-grouped-by-recipient-'+cid}").panel-collapse.collapse.in
+              div.panel-body
+                //- recipientName
+                div.form-group(data-bind="hasFeedback: { field: recipientName, toggle: recipientName.hasError, messages: recipientName.validationMessages }")
+                  label.control-label(data-bind="text: recipientName.i18n")
+                  input.form-control(
+                  name="recipientName",
+                  type="text",
+                  data-bind="textInput: recipientName",
+                  placeholder=""
+                  )
+                //- recipientCustomerNo
+                div.form-group(data-bind="hasFeedback: { field: recipientCustomerNo, toggle: recipientCustomerNo.hasError, messages: recipientCustomerNo.validationMessages }")
+                  label.control-label(data-bind="text: recipientCustomerNo.i18n")
+                  input.form-control(
+                  name="recipientCustomerNo",
+                  type="text",
+                  data-bind="textInput: recipientCustomerNo",
+                  placeholder=""
+                  )
+                //- recipientIKNR
+                div.form-group(data-bind="hasFeedback: { field: recipientIKNR, toggle: recipientIKNR.hasError, messages: recipientIKNR.validationMessages }")
+                  label.control-label(data-bind="text: recipientIKNR.i18n")
+                  input.form-control(
+                  name="recipientIKNR",
+                  type="text",
+                  data-bind="textInput: recipientIKNR",
+                  placeholder=""
+                  )
+                //- recipientRZID
+                div.form-group(data-bind="hasFeedback: { field: recipientRZID, toggle: recipientRZID.hasError, messages: recipientRZID.validationMessages }")
+                  label.control-label(data-bind="text: recipientRZID.i18n")
+                  input.form-control(
+                  name="recipientRZID",
+                  type="text",
+                  data-bind="textInput: recipientRZID",
+                  placeholder=""
+                  )
+          //- grouped-by-proxy
+          div.panel.panel-default(data-bind="attr: {'dc-panel': 'padxSetting-grouped-by-proxy-'+cid}", dc-panel-actions="minimize")
+            div.panel-heading
+              a(
+              data-bind="attr: {'href': '#padxSetting-grouped-by-proxy-'+cid}",
+              data-parent="#padxSetting-grouped",
+              data-toggle="collapse"
+              )
+                strong(data-bind="style: { color: hasErrorGrouped(['proxyRecipientName','proxyRecipientCustomerNo','proxyRecipientIKNR','proxyRecipientRZID']) ? '#a94442' : 'inherit' }, text: groupedByProxyI18n")
+            div(data-bind="attr: {'id': 'padxSetting-grouped-by-proxy-'+cid}").panel-collapse.collapse
+              div.panel-body
+                //- proxyRecipientName
+                div.form-group(data-bind="hasFeedback: { field: proxyRecipientName, toggle: proxyRecipientName.hasError, messages: proxyRecipientName.validationMessages }")
+                  label.control-label(data-bind="text: proxyRecipientName.i18n")
+                  input.form-control(
+                  name="proxyRecipientName",
+                  type="text",
+                  data-bind="textInput: proxyRecipientName",
+                  placeholder=""
+                  )
+                //- proxyRecipientCustomerNo
+                div.form-group(data-bind="hasFeedback: { field: proxyRecipientCustomerNo, toggle: proxyRecipientCustomerNo.hasError, messages: proxyRecipientCustomerNo.validationMessages }")
+                  label.control-label(data-bind="text: proxyRecipientCustomerNo.i18n")
+                  input.form-control(
+                  name="proxyRecipientCustomerNo",
+                  type="text",
+                  data-bind="textInput: proxyRecipientCustomerNo",
+                  placeholder=""
+                  )
+                //- proxyRecipientIKNR
+                div.form-group(data-bind="hasFeedback: { field: proxyRecipientIKNR, toggle: proxyRecipientIKNR.hasError, messages: proxyRecipientIKNR.validationMessages }")
+                  label.control-label(data-bind="text: proxyRecipientIKNR.i18n")
+                  input.form-control(
+                  name="proxyRecipientIKNR",
+                  type="text",
+                  data-bind="textInput: proxyRecipientIKNR",
+                  placeholder=""
+                  )
+                //- proxyRecipientRZID
+                div.form-group(data-bind="hasFeedback: { field: proxyRecipientRZID, toggle: proxyRecipientRZID.hasError, messages: proxyRecipientRZID.validationMessages }")
+                  label.control-label(data-bind="text: proxyRecipientRZID.i18n")
+                  input.form-control(
+                  name="proxyRecipientRZID",
+                  type="text",
+                  data-bind="textInput: proxyRecipientRZID",
+                  placeholder=""
+                  )
+          //- grouped-by-participant
+          div.panel.panel-default(data-bind="attr: {'dc-panel': 'padxSetting-grouped-by-participant-'+cid}", dc-panel-actions="minimize")
+            div.panel-heading
+              a(
+              data-bind="attr: {'href': '#padxSetting-grouped-by-participant-'+cid}",
+              data-parent="#padxSetting-grouped",
+              data-toggle="collapse"
+              )
+                strong(data-bind="style: { color: hasErrorGrouped([ 'participantName', 'participantCustomerNumber', 'participantValue' ]) ? '#a94442' : 'inherit' }, text: groupedByParticipantI18n")
+            div(data-bind="attr: {'id': 'padxSetting-grouped-by-participant-'+cid}").panel-collapse.collapse
+              div.panel-body
+                //- participantName
+                div.form-group(data-bind="hasFeedback: { field: participantName, toggle: participantName.hasError, messages: participantName.validationMessages }")
+                  label.control-label(data-bind="text: participantName.i18n")
+                  input.form-control(
+                    name="participantName",
+                    type="text",
+                    data-bind="textInput: participantName",
+                    placeholder=""
+                  )
+                //- participantCustomerNumber
+                div.form-group(data-bind="hasFeedback: { field: participantCustomerNumber, toggle: participantCustomerNumber.hasError, messages: participantCustomerNumber.validationMessages }")
+                  label.control-label(data-bind="text: participantCustomerNumber.i18n")
+                  input.form-control(
+                    name="participantCustomerNumber",
+                    type="text",
+                    data-bind="textInput: participantCustomerNumber",
+                    placeholder=""
+                  )
+                //- participantValue
+                div.form-group(data-bind="hasFeedback: { field: participantValue, toggle: participantValue.hasError, messages: participantValue.validationMessages }")
+                  div.form-group
+                    label.control-label(data-bind="text: participantValue.i18n" style="padding-right: 50px")
+                    label.radio-inline
+                      span(data-bind="text: participantTypePercentI18n")
+                      input(type="radio", value="percent", data-bind="checked: participantValueType, attr: {name: 'prb_' + $index()}")
+                    label.radio-inline
+                      span(data-bind="text: participantTypeTotalI18n")
+                      input(type="radio", value="total", data-bind="checked: participantValueType, attr: {name: 'prb_' + $index()}")
+                  input.form-control(
+                    name="participantValue",
+                    type="text",
+                    data-bind="value: _displayParticipantValue",
+                    placeholder=""
+                  )
+          //- grouped-by-sender
+          div.panel.panel-default(data-bind="attr: {'dc-panel': 'padxSetting-grouped-by-sender-'+cid}", dc-panel-actions="minimize")
+            div.panel-heading
+              a(
+              data-bind="attr: {'href': '#padxSetting-grouped-by-sender-'+cid}",
+              data-parent="#padxSetting-grouped",
+              data-toggle="collapse"
+              )
+                strong(data-bind="style: { color: hasErrorGrouped(['senderName','senderCustomerNo','senderIKNR','senderRZID','senderUstidnr','senderCreditorId']) ? '#a94442' : 'inherit' }, text: groupedBySenderI18n")
+            div(data-bind="attr: {'id': 'padxSetting-grouped-by-sender-'+cid}").panel-collapse.collapse
+              div.panel-body
+                //- senderName
+                div.form-group(data-bind="hasFeedback: { field: senderName, toggle: senderName.hasError, messages: senderName.validationMessages }")
+                  label.control-label(data-bind="text: senderName.i18n")
+                  input.form-control(
+                  name="senderName",
+                  type="text",
+                  data-bind="textInput: senderName",
+                  placeholder=""
+                  )
+                //- senderCustomerNo
+                div.form-group(data-bind="hasFeedback: { field: senderCustomerNo, toggle: senderCustomerNo.hasError, messages: senderCustomerNo.validationMessages }")
+                  label.control-label(data-bind="text: senderCustomerNo.i18n")
+                  input.form-control(
+                  name="senderCustomerNo",
+                  type="text",
+                  data-bind="textInput: senderCustomerNo",
+                  placeholder=""
+                  )
+                //- senderIKNR
+                div.form-group(data-bind="hasFeedback: { field: senderIKNR, toggle: senderIKNR.hasError, messages: senderIKNR.validationMessages }")
+                  label.control-label(data-bind="text: senderIKNR.i18n")
+                  input.form-control(
+                  name="senderIKNR",
+                  type="text",
+                  data-bind="textInput: senderIKNR",
+                  placeholder=""
+                  )
+                //- senderRZID
+                div.form-group(data-bind="hasFeedback: { field: senderRZID, toggle: senderRZID.hasError, messages: senderRZID.validationMessages }")
+                  label.control-label(data-bind="text: senderRZID.i18n")
+                  input.form-control(
+                  name="senderRZID",
+                  type="text",
+                  data-bind="textInput: senderRZID",
+                  placeholder=""
+                  )
+                //- senderUstidnr
+                div.form-group(data-bind="hasFeedback: { field: senderUstidnr, toggle: senderUstidnr.hasError, messages: senderUstidnr.validationMessages }")
+                  label.control-label(data-bind="text: senderUstidnr.i18n")
+                  input.form-control(
+                  name="senderUstidnr",
+                  type="text",
+                  data-bind="textInput: senderUstidnr",
+                  placeholder=""
+                  )
+                //- senderCreditorId
+                div.form-group(data-bind="hasFeedback: { field: senderCreditorId, toggle: senderCreditorId.hasError, messages: senderCreditorId.validationMessages }")
+                  label.control-label(data-bind="text: senderCreditorId.i18n")
+                  input.form-control(
+                  name="senderCreditorId",
+                  type="text",
+                  data-bind="textInput: senderCreditorId",
+                  placeholder=""
+                  )
+                //- senderNameAdd
+                div.form-group
+                  strong
+                    span(data-bind="text: senderNameAdd.i18n + ' '")
+                    a(name="senderNameAdd", href="#", data-bind="click: addSenderName")
+                      i.icon.fa.fa-plus
+                  div(data-bind="foreach: senderNameAdd, beforeRemove: _animateRemove, afterAdd: _animateAdd")
+                    div.input-group(
+                    style="margin: 5px 0",
+                    data-bind="hasFeedback: { field: name, toggle: name.hasError, messages: name.validationMessages }"
+                    )
+                      input.form-control(
+                      name="senderNameAdd",
+                      type="text",
+                      data-bind="textInput: name",
+                      placeholder=""
+                      )
+                      span.input-group-addon(
+                      style="cursor: pointer",
+                      data-bind="click: $parent.deleteSenderName.bind($context, $parent), focusOnRemove: { parent: '.form-group', find: 'a[name=senderNameAdd]' }"
+                      )
+                        span.glyphicon.glyphicon-trash
+        //- encryption
+        div.form-group
+          div.checkbox
+            label.control-label
+              strong(data-bind="text: encryption.i18n")
+              input(
+              name="encryption",
+              type="checkbox",
+              data-bind="checked: encryption"
+              )
+        //- receiptAddress
+        div.form-group(data-bind="hasFeedback: { field: receiptAddress, toggle: receiptAddress.hasError, messages: receiptAddress.validationMessages }")
+          label.control-label(data-bind="text: receiptAddress.i18n")
+          input.form-control(
+          name="receiptAddress",
+          type="text",
+          data-bind="textInput: receiptAddress",
+          placeholder=""
+          )
+        //- invoiceNotice
+        div.form-group(data-bind="hasFeedback: { field: invoiceNotice, toggle: invoiceNotice.hasError, messages: invoiceNotice.validationMessages }")
+          label.control-label(data-bind="text: invoiceNotice.i18n")
+          textarea.form-control(
+          name="invoiceNotice",
+          type="text",
+          data-bind="textInput: invoiceNotice",
+          placeholder=""
+          )
+        //- 1click
+        div.panel.panel-default(data-bind="attr: {'dc-panel': 'padxSetting-1click-'+cid}", dc-panel-actions="minimize")
+          div.panel-heading
+            a(
+            data-bind="attr: {'href': '#padxSetting-1click-'+cid}",
+            data-toggle="collapse"
+            )
+              strong(data-bind="style: { color: oneClickPass.hasError() ? '#a94442' : 'inherit' }, text: oneClickHeadingI18n")
+          div(data-bind="attr: {'id': 'padxSetting-1click-'+cid}").panel-collapse.collapse
+            div.panel-body
+              div.form-group
+                label.control-label(data-bind="text: oneClickServer.i18n")
+                input.form-control(
+                name="oneClickServer",
+                type="text",
+                data-bind="textInput: oneClickServer",
+                placeholder=""
+                )
+              div.form-group
+                label.control-label(data-bind="text: oneClickName.i18n")
+                input.form-control(
+                name="oneClickName",
+                type="text",
+                data-bind="textInput: oneClickName",
+                placeholder=""
+                )
+              div.form-group(data-bind="hasFeedback: { field: oneClickPass, toggle: oneClickPass.hasError, messages: oneClickPass.validationMessages }")
+                label.control-label(data-bind="text: oneClickPass.i18n")
+                input.form-control(
+                name="oneClickPass",
+                type="password",
+                data-bind="textInput: oneClickPass",
+                placeholder=""
+                )
+
+      div.col-md-6
+        div.form-group(data-bind="hasFeedback: { field: locations, toggle: locations.hasError, messages: locations.validationMessages }")
+          label.control-label(data-bind="text: locationsI18n")
+          input.form-control(name="locations", type="text", data-bind="select2: select2Locations")
+        //- senderAddress
+        div.form-group
+          strong(data-bind="text: senderAddressTextI18n")
+        div(data-bind="template: { name: _templatePadxAddressModel }")
+        //- _arrayAdd-contacts
+        div.form-group
+          strong(data-bind="text: contacts.i18n")
+          | &nbsp;
+          a(name="addContacts", href="#", data-bind="click: addContact")
+            i.icon.fa.fa-plus
+        div(data-bind="template: { name: 'template-PadxContactsModel', foreach: contacts, beforeRemove: _animateRemove, afterAdd: _animateAdd }")
+
+        div(style="padding-top: 30px")
+          div.form-group
+            strong(data-bind="text: optionalFieldsTextI18n")
+        div.panel.panel-default
+          div.panel-body
+            div.checkbox
+              label.control-label
+                strong(data-bind="text: AISInvoiceNumber.i18n")
+                input(
+                  name="AISInvoiceNumber",
+                  type="checkbox",
+                  data-bind="checked: AISInvoiceNumber"
+                )
+            div.form-group
+              div.checkbox
+                label.control-label
+                  strong(data-bind="text: AISAmount.i18n")
+                  input(
+                    name="AISAmount",
+                    type="checkbox",
+                    data-bind="checked: AISAmount"
+                  )
+    div.row
+      div.col-md-12.text-right
+        button.btn.btn-default(name="deletePadxSetting", type="button", data-bind="click: deletePadxSetting.bind($context, $parent)")
+          span.glyphicon.glyphicon-trash
+          | &nbsp;
+          span(data-bind="text: buttonDeleteTextI18n")

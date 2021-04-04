@@ -1,0 +1,24 @@
+//TRANSLATION INCOMPLETE!! MOJ-3201
+div.container.container-fullscreen#intimeRegistration
+  div.col-xs-12.col-sm-offset-2.col-sm-8.col-md-6.col-md-offset-3
+    div.panel.panel-info
+      div.panel-heading
+        h4 Mein Konto
+      div.panel-body
+        div.form-group(data-bind="hasFeedback: { field: password, toggle: password.hasError, messages: password.validationMessages }")
+          label(for="password").control-label Passwort wählen
+          input.form-control(type='password', name='password', data-bind="textInput: password")#password
+        div.form-group(data-bind="hasFeedback: { field: password2, toggle: password2.hasError, messages: password2.validationMessages }")
+          label(for="password2").control-label Passwort bestätigen
+          input.form-control(type='password', name='password2', data-bind="textInput: password2")#password2
+        div.form-group(data-bind="highlightError: privacy")
+          label.checkbox.control-label
+            input(type='checkbox', value='', name='privacy', data-bind="checked: privacy")#privacy
+            n Ich akzeptiere die&nbsp;
+            a(href='/static/DocCirrus/assets/docs/Datenschutz.pdf', target='_blank', title='Datenschutz der Doc Cirrus GmbH') Datenschutzerklärung
+        div.form-group(data-bind="highlightError: intimesla")
+          label.checkbox.control-label
+            input(type='checkbox', value='', name='intimesla', data-bind="checked: intimesla")#intimesla
+            n und die&nbsp;
+            a(href='/static/DocCirrus/assets/docs/Nutzungsbedingungen_gp.pdf', target='_blank', title='Nutzungsbedingungen der Doc Cirrus GmbH') Nutzungsbedingungen
+        button.btn.btn-primary(data-bind=" enable: _isValid, click: register", name="register") Registrieren

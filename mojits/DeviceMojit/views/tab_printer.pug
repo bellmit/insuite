@@ -1,0 +1,5 @@
+#tab_printer
+    div.checkbox.pull-right
+        input(type="checkbox", name="allPrintersShared", data-bind="checked: allPrintersShared")
+        label.control-label(data-bind="text: allPrintersSharedI18n")
+    iframe#cups_iframe(style="width:100%; height: calc(100vh - 200px); border: 0px;", sandbox="allow-same-origin allow-scripts allow-top-navigation allow-popups allow-forms", data-bind="attr: { src: ip }")

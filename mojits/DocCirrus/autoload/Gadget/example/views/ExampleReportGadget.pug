@@ -1,0 +1,24 @@
+script(type="text/html", id="PredefinedTableViewModel")
+  include ../../../../../InSight2Mojit/views/PredefinedTableViewModel
+script(type="text/html", id="InSightTableDisplayViewModel")
+  include ../../../../../InSight2Mojit/views/InSightTableDisplayViewModel
+
+include ../../../../../../autoload/KoUI/include
+include ../../../../../../autoload/KoUI/KoSchemaValue/view/KoSchemaTemplates
+
+style.
+  .example-report-wrapper .panel-body {
+    overflow: scroll;
+  }
+  .example-report-wrapper .KoTable {
+    min-width: 615px;
+  }
+
+div.panel.panel-warning
+  div.panel-heading.Gadget-dragHandle(data-bind="text: exmapleReportI18n")
+    span.pull-right
+      include ../../base/views/GadgetHeaderControls
+  div.panel-body.example-report-wrapper
+    // ko if: tableInstanceReady
+    div(data-bind="template: tableInstance().template")
+    // /ko

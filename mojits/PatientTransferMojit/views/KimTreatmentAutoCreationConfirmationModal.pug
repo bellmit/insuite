@@ -1,0 +1,13 @@
+div.row
+  div.col-xs-12
+    p(data-bind="html: disclaimer")
+    div.form-group
+      div.checkbox
+        label
+          input(type="checkbox", data-bind="checked: kimTreatmentAutoCreationOnEDocLetterSent")
+          span(data-bind="text: kimTreatmentAutoCreationOnEDocLetterSent.i18n")
+    div.form-group
+      div.checkbox
+        label
+          input(type="checkbox", data-bind="checked: kimTreatmentAutoCreationOnEDocLetterReceived")
+          span(data-bind="text: kimTreatmentAutoCreationOnEDocLetterReceived.i18n")

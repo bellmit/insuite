@@ -1,0 +1,24 @@
+div.panel.panel-default
+  div.panel-body
+    div.row
+      div.col-md-6
+        div.form-group(data-bind="hasFeedback: { field: cashSettingTitle, toggle: cashSettingTitle.hasError, messages: cashSettingTitle.validationMessages }")
+          label.control-label(data-bind="text: cashSettingTitle.i18n")
+          input.form-control(name="cashSettingTitle", type="text", data-bind="value: cashSettingTitle")
+    div.row
+      div.col-md-6
+        div.form-group(data-bind="hasFeedback: { field: employees, toggle: employees.hasError, messages: employees.validationMessages }")
+          label.control-label(data-bind="text: physiciansI18n")
+          input.form-control(name="physicians", type="text", data-bind="select2: select2Physicians")
+
+      div.col-md-6
+        div.form-group(data-bind="hasFeedback: { field: locations, toggle: locations.hasError, messages: locations.validationMessages }")
+          label.control-label(data-bind="text: locationsI18n")
+          input.form-control(name="locations", type="text", data-bind="select2: select2Locations")
+
+    div.row
+      div.col-md-12.text-right
+        button.btn.btn-default(name="deleteCashSetting", type="button", data-bind="click: deleteCashSetting.bind($context, $parent)")
+          span.glyphicon.glyphicon-trash
+          | &nbsp;
+          span(data-bind="text: buttonDeleteTextI18n")

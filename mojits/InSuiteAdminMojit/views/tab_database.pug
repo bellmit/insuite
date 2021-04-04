@@ -1,0 +1,50 @@
+#tab_employees
+  .row
+    .col-md-6.col-xs-12.pull-left
+  .row
+    .col-md-12
+      div.alert.alert-warning(role="alert")
+        i.fa.fa-exclamation-triangle.fa-lg
+        span(data-bind="text: ' ' + replHeaderWarningI18n")
+      h4(data-bind="text: replHeaderI18n + ':'")
+      // ko if: replOn
+      div
+        b(data-bind="text: setDataSetDateI18n + ':'")
+        span(data-bind="text: replData.date")
+      br
+      table.table
+        thead
+          tr
+            th
+              span(data-bind="text: setDataHealthI18n")
+              i.dc-info-icon(data-toggle="popover", data-bind="attr: { 'data-original-title': mouseOverHealthTitleI18n, 'data-content': mouseOverHealthI18n }", data-html="true", rel="popover", data-placement="right", data-trigger="hover")
+            th(data-bind="text: setDataNameI18n")
+            th(data-bind="text: setDataStateI18n")
+            th(data-bind="text: setDataOptimeDateI18n")
+            th
+              span(data-bind="text: setDataLagI18n")
+              i.dc-info-icon(data-toggle="popover", data-bind="attr: { 'data-content': mouseOverLagI18n }", data-html="true", rel="popover", data-placement="auto top", data-trigger="hover")
+            th(data-bind="text: setDataPingI18n")
+        tbody
+          // ko foreach: { data: replData.members, as: 'member' }
+          tr
+            td
+              // ko if: member.self
+              i.fa.fa-chevron-circle-right(data-bind="style: {color: {green:'#0D0',yellow:'#FD0',red:'#F00',blue:'#07F'}[member.healthColor]}")
+              // /ko
+              // ko if: !member.self
+              i.fa.fa-circle(data-bind="style: {color: {green:'#0D0',yellow:'#FD0',red:'#F00',blue:'#07F'}[member.healthColor]}")
+              // /ko
+              span 
+              span(data-bind="text: member.healthReason")
+            td(data-bind="text: member.name")
+            td(data-bind="text: member.stateStr")
+            td(data-bind="text: member.optimeDate")
+            td(data-bind="text: member.lag")
+            td(data-bind="text: member.pingMs")
+          // /ko
+      // /ko
+      // ko if: !replOn
+      h3(data-bind="text: norepI18n")
+      // /ko
+

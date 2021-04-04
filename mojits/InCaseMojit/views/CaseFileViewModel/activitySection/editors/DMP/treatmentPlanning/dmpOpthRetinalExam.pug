@@ -1,0 +1,7 @@
+div.form-group
+  strong(data-bind="text: dmpOpthRetinalExam.i18n")
+  span(data-bind="dmpField: { field: dmpOpthRetinalExam }")
+  div(data-bind="foreach: dmpOpthRetinalExam.list, hasFeedback: { field: dmpOpthRetinalExam, toggle: dmpOpthRetinalExam.hasError, messages: dmpOpthRetinalExam.validationMessages }")
+    label.checkbox-inline
+      span(data-bind="text: i18n")
+      input(type="checkbox", name="dmpOpthRetinalExam", data-bind="value: val, checked: $parent.dmpOpthRetinalExam, readOnly: $parent.dmpOpthRetinalExam.readOnly, attr: { name: $element.name + '-' + val }")

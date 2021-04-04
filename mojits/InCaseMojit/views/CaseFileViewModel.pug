@@ -1,0 +1,45 @@
+div.CaseFileViewModel
+  div.row
+    // ko ifnot: isFrameView
+    // ko with: activityCreateButtonsViewModel
+    div(data-bind="sideBar: sideBarConfig, visible: sideBarConfig.visible", style="display: none;")
+      div#activityCreateButtonsView(data-bind="template: template")
+    // /ko
+    // /ko
+    div.fullPageHeight(data-bind="css: columnClassName, event: { scroll: onMainColumnScroll}")
+      div(data-bind="with: patientErrorAlert")
+        div.alert.alert-danger(style="cursor: pointer;", data-bind="html: i18n, click: onClick")
+      // ko template: { name:'activityPatientInfoViewModel', data: activityPatientInfoViewModel, if: !!activityPatientInfoViewModel && !isFrameView }
+      // /ko
+      // ko ifnot: isFrameView
+      // ko with: activityCaseFoldersViewModel
+      div.activityCaseFoldersViewModeldiv(data-bind="notifyBind: { method: 'templateReady' }, css: manageContainerClasses")
+        div.row
+          div(data-bind="template: caseFolderNav.template, css: {'col-xs-8': doctorSelect2Config, 'col-xs-11': !doctorSelect2Config}")
+          div.col-xs-4
+            // ko if: doctorSelect2Config
+            div.col-xs-8(data-bind="css: {'col-xs-8': showDoctorSelectFilter, 'col-xs-11': !showDoctorSelectFilter()}")
+              input.form-control.input-sm(name="doctorSelect2", data-bind="select2: doctorSelect2Config")
+            // ko if: showDoctorSelectFilter
+            div.col-xs-3
+              select.form-control.input-sm(style="min-width: 65px;", data-bind="options: doctorSelectFilterList, optionsCaption: documentingForFilterI18n, optionsText: 'i18n', optionsValue: 'val', value: doctorSelectFilterValue")
+            // /ko
+            // /ko
+            div.col-xs-1
+              a#tabMenuPin(name="pin" href="javascript:;" tabindex="-1" data-bind="css: getPinClasses, click: onPinClick")
+                span.fa.fa-thumb-tack
+      // /ko
+      // /ko
+      // ko template: { name:'activityCaseFileButtonsViewModel', data: activityCaseFileButtonsViewModel, if: activityCaseFileButtonsViewModel }
+      // /ko
+      // ko template: { name:'activityConfigurableActionButtonsViewModel', data: activityConfigurableActionButtonsViewModel, if: activityConfigurableActionButtonsViewModel }
+      // /ko
+      // ko template: { name:'activityDetailsViewModel', data: activityDetailsViewModel, if: activityDetailsViewModel }
+      // /ko
+      div#activitiesTable.activitiesTable(data-bind="css: {'frameViewHidden': isFrameView }, template: activitiesTable.template")
+    // ko ifnot: isFrameView
+    // ko with: activitySequenceViewModel
+    div(data-bind="sideBar: sideBarConfig, visible: sideBarConfig.visible", style="display: none;")
+      div#activitySequenceView(data-bind="template: template")
+    // /ko
+    // /ko

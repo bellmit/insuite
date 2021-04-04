@@ -1,0 +1,13 @@
+div
+  p(data-bind="text: info")
+  div.form-group
+    label.control-label(data-bind="text: title.i18n")
+    input.form-control(name="title", data-bind="textInput: title, enable: false")
+  p
+   b(data-bind="text: shortDescriptionLable + ':'")
+  span(data-bind="text: shortDescription")
+  div.form-group(style="margin-top: 10px")
+    label.control-label(data-bind="text: emailContent.i18n")
+    textarea.form-control(name="emailContent", data-bind="textInput: emailContent", rows="6")
+
+

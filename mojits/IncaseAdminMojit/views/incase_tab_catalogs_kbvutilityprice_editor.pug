@@ -1,0 +1,34 @@
+div.row
+  div.col-xs-12
+    div.form-group(data-bind="hasFeedback: { field: utilityName, toggle: utilityName.hasError, messages: utilityName.validationMessages }")
+      label(for="kbvutilityprice_utilityName", data-bind="text: utilityName.i18n")
+      input#kbvutilityprice_utilityName.form-control(name="utilityNameSelect2", type="hidden", data-bind="select2: utilityNameSelect2, hasFocus: true")
+      // ko if: utilityPositionNo() && utilityPositionNo().length
+      p.help-block(data-bind="text: utilityPositionNo.i18n + ': ' + utilityPositionNo()")
+      // /ko
+    div.form-group(data-bind="hasFeedback: { field: active, toggle: active.hasError, messages: active.validationMessages }")
+      div.checkbox
+        label(for="kbvutilityprice_active")
+          span(data-bind="text: active.i18n")
+          input#kbvutilityprice_active(name="active", type="checkbox", data-bind="checked: active", disabled)
+    div.form-group(data-bind="hasFeedback: { field: kv, toggle: kv.hasError, messages: kv.validationMessages }")
+      label(for="kbvutilityprice_kv", data-bind="text: kv.i18n")
+      input#kbvutilityprice_kv.form-control(name="kv", type="hidden", data-bind="select2: kvSelect2")
+    div.form-group(data-bind="hasFeedback: { field: insuranceType, toggle: insuranceType.hasError, messages: insuranceType.validationMessages }")
+      label(for="kbvutilityprice_insuranceType", data-bind="text: insuranceType.i18n")
+      input#kbvutilityprice_insuranceType.form-control(name="insuranceType", type="hidden", data-bind="select2: insuranceTypeSelect2")
+    div.form-group(data-bind="hasFeedback: { field: careProvider, toggle: careProvider.hasError, messages: careProvider.validationMessages }")
+      label(for="kbvutilityprice_careProvider", data-bind="text: careProvider.i18n")
+      input#kbvutilityprice_careProvider.form-control(name="careProvider", type="hidden", data-bind="select2: careProviderSelect2")
+    // ko if: insuranceType() && insuranceType() !== 'PUBLIC'
+    div.form-group(data-bind="hasFeedback: { field: price, toggle: price.hasError, messages: price.validationMessages }")
+      label(for="kbvutilityprice_price", data-bind="text: price.i18n")
+      input#kbvutilityprice_price.form-control(name="price", type="text", data-bind="value: displayPrice")
+    // /ko
+    // ko if: insuranceType() === 'PUBLIC'
+    label(data-bind="text: prices.i18n")
+    div(data-bind="template: priceTable.template")
+    // ko if: prices.hasError
+    div.alert.alert-danger(data-bind="text: prices.validationMessages().join(', ')")
+    // /ko
+    // /ko

@@ -1,0 +1,66 @@
+div.panel.panel-default
+  div.panel-heading
+    div.row
+      div.col-md-5(data-bind="highlightError: kind")
+        input.form-control.input-sm(type="hidden", data-bind="select2: select2Kind, readOnly: kind.readOnly")
+  div.panel-body
+    div.row
+      div.col-xs-12
+        label(for="street", data-bind="text: street.i18n + ', ' + houseno.i18n")
+      div.col-xs-8
+        div.form-group(data-bind="hasFeedback: { field: street, toggle: street.hasError, messages: street.validationMessages }")
+          input.form-control(type="text", name="street", data-bind="value: street, readOnly: street.readOnly, valueUpdate: 'afterkeydown'")
+      div.col-xs-8(data-bind="visible: showPostBox")
+        div.form-group(data-bind="hasFeedback: { field: postbox, toggle: postbox.hasError, messages: postbox.validationMessages }")
+          input.form-control(type="text", name="postbox", data-bind="value: postbox, readOnly: postbox.readOnly, valueUpdate: 'afterkeydown', attr: { placeholder: addressPostboxI18n }")
+      div.col-xs-4
+        div.form-group(data-bind="hasFeedback: { field: houseno, toggle: houseno.hasError, messages: houseno.validationMessages }")
+          input.form-control(type="text", name="houseno", data-bind="value: houseno, readOnly: houseno.readOnly, valueUpdate: 'afterkeydown'")
+      div.col-xs-12
+        label(for="zip", data-bind="text: zip.i18n + ', ' + city.i18n")
+      // ko if: select2ZipDisabled
+      div.col-xs-4
+        div.form-group(data-bind="hasFeedback: { field: zip, toggle: zip.hasError, messages: zip.validationMessages }")
+          input.form-control(name="zip", maxlength="10", data-bind="textInput: zip, readOnly: zip.readOnly")
+      div.col-xs-8
+        div.form-group(data-bind="hasFeedback: { field: city, toggle: city.hasError, messages: city.validationMessages }")
+          input.form-control(type="text", name="city", data-bind="textInput: city, readOnly: city.readOnly")
+      // /ko
+      // ko ifnot: select2ZipDisabled
+      div.col-xs-4
+        div.form-group(data-bind="hasFeedback: { field: zip, toggle: zip.hasError, messages: zip.validationMessages }")
+          input.form-control(name="zip", maxlength="10", data-bind="select2: select2Zip, readOnly: zip.readOnly")
+      div.col-xs-8
+        div.form-group(data-bind="hasFeedback: { field: city, toggle: city.hasError, messages: city.validationMessages }")
+          input.form-control(type="text", name="city", data-bind="select2: select2City, readOnly: city.readOnly")
+      // /ko
+      div.col-xs-12
+        div.form-group(data-bind="hasFeedback: { field: addon, toggle: addon.hasError, messages: addon.validationMessages }")
+          label(for="addon", data-bind="text: addon.i18n")
+          input.form-control(name="addon", maxlength="40", data-bind="value: addon, readOnly: addon.readOnly, valueUpdate: 'afterkeydown'")
+      // ko ifnot: isDCPRC
+      div.col-xs-12
+        div.form-group(data-bind="hasFeedback: { field: country, toggle: country.hasError, messages: country.validationMessages }")
+          label(for="country", data-bind="text: country.i18n")
+          input.form-control(name="country", data-bind="select2: select2CountryCode, readOnly: country.readOnly")
+      // ko if: $parent.countryModeIncludesSwitzerland() && 'CH' === countryCode()
+      div.col-xs-12
+        div.form-group(data-bind="hasFeedback: { field: cantonCode, toggle: cantonCode.hasError, messages: cantonCode.validationMessages }")
+          label.control-label(for="field-cantonCode", data-bind="text: cantonI18n")
+          input#field-cantonCode.form-control(name="cantonCode", data-bind="select2: select2CantonCode")
+      // /ko
+      // /ko
+      // ko if: isDCPRC
+      div.col-xs-12
+        div.form-group(data-bind="hasFeedback: { field: country, toggle: country.hasError, messages: country.validationMessages }")
+          label(for="country", data-bind="text: country.i18n")
+          input.form-control#country(name="country", data-bind="select2: select2Country, readOnly: country.readOnly")
+      // ko if: 'CH' === countryCode()
+      div.col-xs-12
+        div.form-group(data-bind="hasFeedback: { field: cantonCode, toggle: cantonCode.hasError, messages: cantonCode.validationMessages }")
+          label.control-label(for="field-cantonCode", data-bind="text: cantonI18n")
+          input#field-cantonCode.form-control(name="cantonCode", data-bind="value: cantonCode, readOnly: cantonCode.readOnly")
+      // /ko
+      // /ko
+      div.col-xs-12
+        button.btn.btn-default.pull-right(type="button", data-bind="visible: showDeleteButton, enable: !street.readOnly(), click: $parent.addresses.remove, text: buttonDeleteI18n")

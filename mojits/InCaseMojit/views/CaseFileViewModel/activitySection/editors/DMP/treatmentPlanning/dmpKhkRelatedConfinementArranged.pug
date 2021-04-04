@@ -1,0 +1,7 @@
+div.form-group
+  strong(data-bind="text: dmpKhkRelatedConfinementArranged.i18n")
+  span(data-bind="dmpField: { field: dmpKhkRelatedConfinementArranged }")
+  div(data-bind="foreach: dmpKhkRelatedConfinementArranged.list, hasFeedback: { field: dmpKhkRelatedConfinementArranged, toggle: dmpKhkRelatedConfinementArranged.hasError, messages: dmpKhkRelatedConfinementArranged.validationMessages }")
+    label.radio-inline
+      span(data-bind="text: i18n")
+      input(type="radio", name="dmpKhkRelatedConfinementArranged", data-bind="value: val, checked: $parent.dmpKhkRelatedConfinementArranged, readOnly: $parent.dmpKhkRelatedConfinementArranged.readOnly")

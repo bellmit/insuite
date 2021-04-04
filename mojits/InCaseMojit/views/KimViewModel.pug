@@ -1,0 +1,22 @@
+div.KimViewModel
+  h3(data-bind="text: qesHeadLineI18n")
+  div.row
+    div.col-xs-12
+      div.form-group.clearfix
+        // ko if: hasSendFunction
+        .pull-right
+          div(data-bind="template: sendBtn.template")
+        // /ko
+        // ko if: hasQesLicence
+        .pull-right
+          div(data-bind="template: signBtn.template", style="padding-right: 4px;")
+        // /ko
+  div.row
+    div.col-md-12
+      div(data-bind="template: qesTable.template")
+  // ko if: hasQesLicence
+  div.row
+    div.col-md-12
+      div.form-group
+        div(data-bind="template: verifySignatureBtn.template")
+  // /ko

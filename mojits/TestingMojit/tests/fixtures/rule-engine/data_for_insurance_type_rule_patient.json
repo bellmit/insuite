@@ -1,0 +1,256 @@
+{
+  "rule": {
+    "isDirectory": false,
+    "isLocked": false,
+    "isActive": true,
+    "caseFolderType": [
+      "PATIENT"
+    ],
+    "metaActTypes": [],
+    "metaActCodes": [],
+    "description": "Patient Insurance1",
+    "referenceArea": "ENTRY",
+    "periodType": "MONTH",
+    "periodCount": 1,
+    "periodReference": "raum",
+    "rules": [
+      {
+        "ruleId": "5d11eae2a453e459cf000015",
+        "description": "Patient IKNR 104940005",
+        "isActive": true,
+        "validations": {
+          "\\\\$and": [
+            {
+              "context": "PATIENT",
+              "criteria": {
+                "\\\\$or": [
+                  {
+                    "patientId\\\\-insuranceStatus\\\\-PRIVATE\\\\-insuranceId": {
+                      "\\\\$eq": "104940005"
+                    }
+                  },
+                  {
+                    "patientId\\\\-insuranceStatus\\\\-PUBLIC\\\\-insuranceId": {
+                      "\\\\$eq": "104940005"
+                    }
+                  },
+                  {
+                    "patientId\\\\-insuranceStatus\\\\-SELFPAYER\\\\-insuranceId": {
+                      "\\\\$eq": "104940005"
+                    }
+                  },
+                  {
+                    "patientId\\\\-insuranceStatus\\\\-BG\\\\-insuranceId": {
+                      "\\\\$eq": "104940005"
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "actions": [
+          {
+            "type": "ERROR",
+            "template": {
+              "urgency": 2,
+              "details": "",
+              "roles": [],
+              "candidates": [],
+              "caseFolder": "",
+              "diagnosisCert": "NONE",
+              "toCreate": 1,
+              "linkActivities": false,
+              "autoCreate": false,
+              "tempateID": "5d11eb0ea453e459cf000016",
+              "markers": [],
+              "type": ""
+            }
+          }
+        ]
+      }
+    ],
+    "metaCriterias" : [
+      "patientId.insuranceStatus"
+    ],
+    "metaFuzzy": false
+  },
+  "rulelog":{
+    "message" : "Patient IKNR 104940005",
+    "referenceArea" : "ENTRY",
+    "ruleLogType" : "ERROR",
+    "actCodes" : [],
+    "actTypes" : [],
+    "activitiesToCreate" : [],
+    "affectedActivities" : [],
+    "allCodes" : [],
+    "caseFolderType" : [
+      "PATIENT"
+    ],
+    "requiredCodes" : [],
+    "ruleId" : "5d11eae2a453e459cf000015"
+  },
+  "schein": {
+    "actType" : "SCHEIN",
+    "attachments" : [],
+    "subType" : "",
+    "time" : "",
+    "backupEmployeeIds" : [],
+    "userContent" : "ambulante Behandlung (ambulante Behandlung)",
+    "mediaImportError" : "",
+    "partnerInfo" : "",
+    "explanations" : "",
+    "status" : "VALID",
+    "activities" : [],
+    "referencedBy" : [],
+    "formId" : "",
+    "formVersion" : "",
+    "formPdf" : "",
+    "formLang" : "de",
+    "formGender" : "m",
+    "apkState" : "IN_PROGRESS",
+    "unlinkedMirrorIds" : [],
+    "forInsuranceType" : "",
+    "locationFeatures" : "",
+    "scheinRemittor" : "",
+    "scheinEstablishment" : "",
+    "scheinSpecialisation" : "",
+    "scheinOrder" : "",
+    "scheinDiagnosis" : "",
+    "scheinFinding" : "",
+    "scheinNotes" : "asfffffff",
+    "scheinClinicalTreatmentFrom" : null,
+    "scheinClinicalTreatmentTo" : null,
+    "scheinNextTherapist" : "",
+    "fk4234" : false,
+    "fk4219" : "",
+    "continuousIcds" : [],
+    "createContinuousDiagnosisOnSave" : false,
+    "icds" : [],
+    "icdsExtra" : [],
+    "scheinQuarter" : "2",
+    "scheinYear" : "2019",
+    "scheinBillingArea" : "00",
+    "scheinType" : "0101",
+    "scheinSubgroup" : "00",
+    "scheinTransferTypeInfo" : "",
+    "fk4124" : "",
+    "fk4126" : "",
+    "fk4125from" : null,
+    "fk4125to" : null,
+    "fk4123" : "",
+    "fk4206" : null,
+    "fk4236" : false,
+    "fk4241" : "",
+    "fk4217" : "",
+    "scheinSlipMedicalTreatment" : "",
+    "__t" : "SCHEIN",
+    "attachedMedia" : [],
+    "patientId" : "5cdaa20dff4b5d244d151f43",
+    "employeeId" : "100000000000000000000003",
+    "content" : "asfffffff",
+    "editor" : [
+      {
+        "name" : "Jhony Dredn04",
+        "employeeNo" : "01234",
+        "initials" : "JD"
+      }
+    ],
+    "caseFolderId" : "5cde6456d4d57f19f5fbe445",
+    "debtCollection" : "",
+    "fk4235Set" : [],
+    "invoiceData" : [],
+    "scheinTransferType" : "",
+    "employeeName" : "Dredn04, Jhony",
+    "employeeInitials" : "JD",
+    "patientLastName" : "Nachnamme",
+    "patientFirstName" : "Mann",
+    "code" : null
+  },
+  "patient": {
+    "additionalMirrorPatientIds" : [],
+    "title" : "Alte",
+    "firstname" : "Mann",
+    "nameaffix" : "",
+    "middlename" : "",
+    "fk3120" : "",
+    "lastname" : "Nachnamme",
+    "physicians" : [],
+    "employees" : [
+    ],
+    "markers" : [
+      "000000000000000000000011",
+      "000000000000000000000012"
+    ],
+    "createPlanned" : false,
+    "accessPRC" : false,
+    "talk" : "MR",
+    "gender" : "MALE",
+    "sendPatientReceipt" : false,
+    "patientNumber" : 147,
+    "attachedSeverity" : "NONE",
+    "crmTags" : [],
+    "edmpTypes" : [],
+    "edmpNotifiedAboutStatementOfParticipationTypes" : [],
+    "ehksDocType" : "EHKSND",
+    "scheinEmployeeIds" : [],
+    "confirmedViewFromOtherLocations" : false,
+    "additionalContacts" : [],
+    "countryMode" : [
+      "D"
+    ],
+    "jobTitle" : "Rentner",
+    "isPensioner" : true,
+    "accounts" : [],
+    "communications" : [],
+    "addresses" : [],
+    "kbvDob" : "12.04.1941",
+    "insuranceStatus" : [
+      {
+        "fk4133" : null,
+        "fk4110" : null,
+        "insuranceKind" : "3",
+        "costCarrierBillingSection" : "00",
+        "costCarrierBillingGroup" : "11",
+        "feeSchedule" : "2",
+        "fused" : false,
+        "unzkv" : [],
+        "bgNumber" : "",
+        "address1" : "",
+        "address2" : "10837 Berlin",
+        "zipcode" : "",
+        "city" : "",
+        "phone" : "",
+        "insuranceLink" : "",
+        "email" : "",
+        "insuranceGLN" : "",
+        "recipientGLN" : "",
+        "department" : "",
+        "insuranceId" : "104940005",
+        "insuranceName" : "BARMER",
+        "insurancePrintName" : "BARMER",
+        "insuranceGrpId" : "72601",
+        "type" : "PUBLIC",
+        "persGroup" : "",
+        "dmp" : "",
+        "kv" : "72",
+        "locationId" : "000000000000000000000001",
+        "fusedFrom" : null,
+        "fusedToInsuranceId" : null
+      }
+    ],
+    "dataTransmissionToPVSApproved" : true,
+    "affiliates" : [],
+    "images" : [],
+    "devices" : [],
+    "partnerIds" : [],
+    "careDegree" : "NO",
+    "dob_MM" : "04",
+    "dob_DD" : "12",
+    "crmTreatments" : [],
+    "crmCatalogShort" : "GOÄ",
+    "locationId" : "",
+    "patientNo" : "147",
+    "latestMedData" : []
+  }
+}

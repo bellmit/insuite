@@ -1,0 +1,13 @@
+div(id=mojit_view_id)
+  div#appNavRoot
+    .container.container-fullscreen
+      div(style="position: relative")
+        #mainPageNavigation(data-bind="template: template", style="margin-bottom: 10px;")
+        #fullScreenToggleInMainPage(style="position: absolute; right: 0; top: 0;")
+          button.btn.btn-sm.btn-default(name="toggleFullScreen", type="button", data-bind="click: toggleFullScreenHandler, attr: { title: viewPortBtnI18n }", style="margin-top: 6px;")
+            span.fa.fa-arrows-alt
+
+    .container.container-fullscreen#viewModel
+      // ko if: appIFrameUrl
+      iframe#iframe(style="width: 100%; display: none; border: none;", data-bind="notifyBind: { method: setContainerHeight }, attr: { src: appIFrameUrl }, style: {display: appIFrameUrl()?'inline':'none'}")
+      // /ko

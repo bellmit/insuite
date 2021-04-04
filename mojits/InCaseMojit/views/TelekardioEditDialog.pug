@@ -1,0 +1,15 @@
+.col-md-12
+  .col-md-6
+    button.btn.btn-block.btn-default(style="height: 200px; outline: none;", data-bind="click: $data.optionAClick, css: {'active': optionSelected() === 'optionA'}")
+      span(style="display: block; white-space: normal; color: #b92c28;")
+        h4(style="margin-bottom: 0;", data-bind="text: optionATitleI18n")
+        em(data-bind="text: optionAShortDescriptionI18n")
+        br
+        span(data-bind="text: optionADescriptionI18n")
+  .col-md-6
+    button.btn.btn-block.btn-default(style="height: 200px; outline: none;", data-bind="click: $data.optionBClick, css: {'active': optionSelected() === 'optionB'}")
+      span(style="display: block; white-space: normal; ")
+        h4(style="margin-bottom: 0;", data-bind="text: optionBTitleI18n")
+        em(data-bind="text: optionBShortDescriptionI18n")
+        br
+        span(data-bind="text: optionBDescriptionI18n")

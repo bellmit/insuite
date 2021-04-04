@@ -1,0 +1,68 @@
+div#newOrderModal(data-bind="style: {'pointer-events': pointerEvents}")
+    //ko if: showStockTable
+    div.row
+        h4(data-bind="text: itemsTableTitleI18n")
+        .col-md-12
+            .col-sm-6.col-md-6.col-lg-6
+                div(data-bind="template: advancedFilter.template")
+        .col-md-12
+             div.dc-action-buttons.dc-action-buttons-top.dc-action-buttons-left.clearfix
+                button#btn_q_order.btn.btn-primary(type="button",  data-bind="click: orderALL, text: orderAllI18n")
+        div.col-md-6.col-sm-6.col-xs-6
+            h4(data-bind="text: stockLabelI18n")
+        div.col-md-6.col-sm-6.col-xs-6
+            h4(data-bind="text: medCatalogI18n")
+        div.col-md-6.col-sm-6.col-xs-6(data-bind="template: stockTable.template")
+        div.col-md-6.col-sm-6.col-xs-6(data-bind="template: catalogTable.template")
+    // /ko
+    h4(data-bind="text: orderTableTitleI18n")
+    //ko if: showWaresTable
+    div.row
+        div.form-group
+            div.col-md-3.col-xs-3.col-sm-3(data-bind="with: supplierSelect")
+                div(data-bind="template: template")
+            div.col-md-3.col-xs-3.col-sm-3(data-bind="with: locationSelect")
+                div(data-bind="template: template")
+            label.col-sm-1.col-xs-2.control-label(style="text-align: right; padding-top: 7px", data-bind="text: orderFormI18n")
+            div.col-sm-2.col-md-2.col-xs-2(style="display: flex")
+                input.form-control(data-bind="value: formTitle, readOnly: true")
+                // ko if: showChooseFormButton
+                button#btn_form_selectorr.btn.btn-primary(type="button", style="margin-left: 4px", data-bind="click: selectPdfTemplate, text: orderFormI18n")
+                // /ko
+            label.col-sm-1.col-xs-2.control-label(style="text-align: right; padding-top: 7px", data-bind="text: totalOrderSumI18n")
+            div.col-sm-2.col-md-2.col-xs-2
+                input.form-control(data-bind="value: totalOrderSum, readOnly: true")
+            // ko if: showApproveSelectedButton
+            div.row.col-md-12(style="margin-top: 10px")
+                div.dc-action-buttons.dc-action-buttons-top.dc-action-buttons-left.clearfix
+                    div.col-md-2(data-bind="with: stockLocationSelect")
+                        div(data-bind="template: template")
+                    div.col-md-3.col-sm-4(style={'max-width': '350px'})
+                        button#btn_q_applyChanges.approve-button.btn.btn-primary(type="button",  data-bind="click: applyStockLocation, enable: enableApplyButton, text: applyStockLocationButtonI18n")
+                        button#btn_q_approveItems.approve-button.btn.btn-primary(type="button",  data-bind="click: approveSelected, text: approveSelectedButtonI18n, enable: enableApproveButton")
+
+            // /ko
+            // ko if: !divideDispensedAndBookedWares()
+            div.wares-table.col-md-12.col-sm-12.col-xs-12(data-bind="with: selectedWaresTable")
+                div(data-bind="template: template")
+            // /ko
+            // ko if: divideDispensedAndBookedWares()
+            div.row.col-md-12(style="margin-top: 10px")
+                h4(data-bind="text: dispensedTableTitleI18n")
+                div.col-md-12.col-sm-12.col-xs-12(data-bind="with: dispensedWaresTable")
+                    div(data-bind="template: template")
+
+            div.row.col-md-12(style="margin-top: 10px")
+                h4(data-bind="text: bookedTableTitleI18n")
+                div.col-md-12.col-sm-12.col-xs-12(data-bind="with: bookedWaresTable")
+                    div(data-bind="template: template")
+            // /ko
+    // /ko
+    script(type="text/html", id="WareHouseAdvancedFilterViewModel")
+        include WareHouseAdvancedFilterViewModel
+    script(type="text/html", id="SupplierSelectViewModel")
+        include SupplierSelectViewModel
+    script(type="text/html", id="LocationSelectViewModel")
+        include LocationSelectViewModel
+    script(type="text/html", id="StockLocationSelectViewModel")
+        include StockLocationSelectViewModel

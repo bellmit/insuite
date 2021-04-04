@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- automatische Dokumentation, generiert durch Visual Source Safe 
+	$Workfile: string_typelib.xsd $  
+	$Modtime: 15.04.04 11:43 $  
+	$Revision: 3 $  
+-->
+<xs:schema targetNamespace="urn::hl7-org/kbv" xmlns="urn::hl7-org/kbv" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<!-- ****************************** string_max_60_typ ****************************** -->
+	<xs:simpleType name="string_max_60_typ">
+		<xs:annotation>
+			<xs:documentation>String mit maximal 60 Zeichen (darf nicht leer sein)</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="60"/>
+			<xs:minLength value="1"/>
+			<xs:whiteSpace value="collapse"/>			
+		</xs:restriction>
+	</xs:simpleType>
+	<!-- ****************************** string_max_28_typ ****************************** -->
+	<xs:simpleType name="string_max_28_typ">
+		<xs:annotation>
+			<xs:documentation>String mit maximal 28 Zeichen (darf nicht leer sein)</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="28"/>
+			<xs:minLength value="1"/>
+			<xs:whiteSpace value="collapse"/>			
+		</xs:restriction>
+	</xs:simpleType>
+	<!-- ****************************** string_max_15_typ ****************************** -->
+	<xs:simpleType name="string_max_15_typ">
+		<xs:annotation>
+			<xs:documentation>String mit maximal 15 Zeichen (darf nicht leer sein)</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="15"/>
+			<xs:minLength value="1"/>
+			<xs:whiteSpace value="collapse"/>			
+		</xs:restriction>
+	</xs:simpleType>
+	<!-- ******************** versichertenstatus-typ ******************** -->
+	<xs:simpleType name="versichertenstatus_typ">
+		<xs:annotation>
+			<xs:documentation>VersichertenstatusKVK</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[1,3,5][0-8]\d{2}"/>
+		</xs:restriction>
+	</xs:simpleType>	
+	
+</xs:schema>

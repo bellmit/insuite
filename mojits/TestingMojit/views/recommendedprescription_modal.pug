@@ -1,0 +1,20 @@
+if advices.length
+  h4 Hinweise
+  p Eine Abweichung von Muster 16 kann notwendig sein:
+  ul.list-unstyled
+    each medication in advices
+      li= medication.name
+        ul
+          each advice in medication.list
+            li= advice
+if warnings.length
+  h4 Warnungen
+  ul.list-unstyled
+    each medication in warnings
+      li= medication.name
+        ul
+          each advice in medication.list
+            li= advice
+if !sysMsg
+p
+  strong Bitte bestätigen Sie die Verwendung oder teilen Sie auf mehrere Rezepte auf!

@@ -1,0 +1,37 @@
+div#transformerModel
+  div.form-group
+    label(for="hours", data-bind="text: hours.i18n + ':'")
+    input.form-control.input-md#hours(type="number", value="4", data-bind="value: hours, valueUpdate:'afterkeydown'")
+    label(for="transformersubType", data-bind="text: subType.i18n + ':'")
+    input.form-control.input-md#transformersubType(data-bind="value: subType, valueUpdate:'afterkeydown'")
+    label(for="transformerFileNameMap", data-bind="text: fileNameMap.i18n + ':'")
+    textarea.form-control#transformerFileNameMap(rows="3", data-bind="value: fileNameMap, valueUpdate:'afterkeydown'")
+    label.small
+      br
+      span(data-bind="text: mediaImportTagsHeadI18n")
+      br
+      span(data-bind="text: mediaImportTagsExampleI18n")
+      br
+      br
+      span Erlaubte Felder: 
+        ul
+          li Muss: 
+            i(data-bind="attr: { title: mediaImportTagsPatientNumberI18n }") patientNumber
+            b  ODER  
+            i(data-bind="attr: { title: mediaImportTagsLastnameI18n }") lastname,
+            i(data-bind="attr: { title: mediaImportTagsFirstnameI18n }") firstname,
+            i(data-bind="attr: { title: mediaImportTagsDobDDI18n }") dobDD,
+            i(data-bind="attr: { title: mediaImportTagsDobMMI18n }") dobMM,
+            i(data-bind="attr: { title: mediaImportTagsDobYYYYI18n }") dobYYYY
+          li Kann: 
+            i(data-bind="attr: { title: mediaImportTagsDocYYYYI18n }") docYYYY,
+            i(data-bind="attr: { title: mediaImportTagsDocMMI18n }") docMM,
+            i(data-bind="attr: { title: mediaImportTagsDocDDI18n }") docDD,
+            i(data-bind="attr: { title: mediaImportTagsDocHHI18n }") docHH,
+            i(data-bind="attr: { title: mediaImportTagsDocmmI18n }") docmm,
+            i(data-bind="attr: { title: mediaImportTagsDocssI18n }") docss,
+            i(data-bind="attr: { title: mediaImportTagsCounterI18n }") counter,
+            i(data-bind="attr: { title: mediaImportTagsExtensionI18n }") extension,
+            i(data-bind="attr: { title: mediaImportTagsIgnore123I18n }") ignore123,
+            i(data-bind="attr: { title: mediaImportTagsIgnoreABCI18n }") ignoreABC,
+            i(data-bind="attr: { title: mediaImportTagsIgnoreAnyI18n }") ignoreAny

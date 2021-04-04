@@ -1,0 +1,16 @@
+div
+  div.form-group(data-bind="highlightError: dayOfLastMenorrhoea")
+    label(data-bind="text: dayOfLastMenoreaI18n")
+    .date-picker.input-group
+      input.form-control(name="dayOfLastMenorrhoea", data-bind="datetimepicker: { value: dayOfLastMenorrhoea, valueReset: null, options: timestampDatepickerOptions,  valueUpdate: '' }")
+  div.form-group
+    label(data-bind="text: dueDateI18n")
+    date-picker.input-group
+      input.form-control(name="dueDate", data-bind="datetimepicker: { value: dueDate, valueReset: null, options: timestampDatepickerOptions, valueUpdate: '' }")
+  div.form-group
+    label(data-bind="text: weekandayOfPregnancyI18n")
+    div.row
+      div.col-md-6(data-bind="hasFeedback: { field: weekOfPregnancy, toggle: weekOfPregnancy.hasError, messages: weekOfPregnancy.validationMessages }")
+        input.form-control(name="weekOfPregnancy", type="text", data-bind="value: weekOfPregnancy, attr: { placeholder: periodWeekI18n }")
+      div.col-md-6(data-bind="hasFeedback: { field: dayOfPregnancy, toggle: dayOfPregnancy.hasError, messages: dayOfPregnancy.validationMessages }")
+        input.form-control(name="dayOfPregnancy", type="text", data-bind="value: dayOfPregnancy, attr: { placeholder: periodDayI18n }")

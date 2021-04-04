@@ -1,0 +1,19 @@
+#gkv_settings
+  div.row
+    div.col-md-6(data-bind="with: invoiceconfiguration")
+      include invoicefactor_item
+  div.row
+    div.col-md-12
+      span.checkbox(data-bind="with: invoiceconfiguration", style="display: inline-block;")
+        input(type="checkbox", data-bind="checked: gkvCombineCaseFolders, valueUpdate: 'afterkeydown'")
+        span(data-bind="text: gkvCombineCaseFoldersI18n")
+      span.checkbox(data-bind="with: invoiceconfiguration", style="display: inline-block; margin-left: 15px;" )
+        input(type="checkbox", data-bind="checked: gkvCombineScheins, valueUpdate: 'afterkeydown'")
+        span(data-bind="text: gkvCombineScheinsI18n")
+  div.row
+    div.col-md-12(data-bind="with: invoiceconfiguration")
+      include exclusion_list
+  div.row
+    div.col-sm-12
+      div.dc-action-buttons.dc-action-buttons-right(data-bind="with: actions")
+        button.btn.btn-primary(name="saveBtn", type="button", data-bind="enable: saveInvoiceconfigurationEnable, click: saveInvoiceconfiguration, text: buttonSaveI18n")

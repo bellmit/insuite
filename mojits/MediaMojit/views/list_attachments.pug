@@ -1,0 +1,59 @@
+div#divMediaAttachmentsContainer
+
+  div#divAttachmentsList
+    p(data-bind="text: lblLoadingI18n")
+  div(style="display: none;")#divNoAttachments
+    small(data-bind="text: lblNoAttachmentsI18n")
+
+  br
+  div(style="display: none;")#divAttachmentsAdd
+    div.well(style="background-color: rgba(100, 255, 100, 0.3);")#divDragDrop
+
+      table(style="width: 100%",noborder="noborder")
+        tr
+          td
+            span#spanDropLabel
+              small(data-bind="text: lblDropFilesHereI18n")
+            div#divUploadList
+          td(align="right")
+
+            button.btn(style="float: right; display: none;")#btnScan
+              i.fa.fa-file-picture-o
+              | &nbsp;
+              span(data-bind="text: buttonScanI18n")
+            span(style="float: right;") &nbsp;
+
+            button.btn(style="float: right; display: none;")#btnWebcam
+              i.fa.fa-camera
+              | &nbsp;
+              span(data-bind="text: buttonWebcamI18n")
+            span(style="float: right;") &nbsp;
+
+            button.btn(style="float: right;")#btnUploadIndirect
+              i.fa.fa-cloud-upload
+              | &nbsp;
+              span(data-bind="text: buttonUploadI18n")
+
+    div#divMultiUpload(style="display: none;")
+      input.btn(type="file",name="multiFile",multiple="multiple")#fileMulti
+      button.btn#btnMulti(data-bind="text: buttonMultiUploadI18n")
+
+  div(style="display: none;")#divAttachmentsLegacy
+      form(method="POST",action="/1/media/:upload",enctype="multipart/form-data",target="ifCatcher")
+        input(type="hidden",name="ownerCollection",value="test")#hdnOwnerCollection
+        input(type="hidden",name="ownerId",value="test")#hdnOwnerId
+        label(for="fileUploadBox", data-bind="text: lblFileNameI18n")
+        input.btn(type="file",name="myFile")#fileUploadBox
+        input.btn(type="submit",value="Upload Image")#btnSubmit
+
+      button.btn#btnReloadManual
+        i.icon-refresh
+
+      iframe(name="ifCatcher",width="10px",height="10px",frameborder="no")
+
+  div#divAttachmentsNote
+
+  div(style="display:none;")#divTranslations
+      span#trans_LBL_LA_UPLOADING(data-bind="text: lblUploadingI18n")
+      span#trans_LBL_LA_DELETING(data-bind="text: lblDeletingI18n")
+      span#trans_LBL_LA_COMPLETE(data-bind="text: lblCompleteI18n")

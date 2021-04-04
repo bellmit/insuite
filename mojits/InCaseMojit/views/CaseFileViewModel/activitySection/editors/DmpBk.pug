@@ -1,0 +1,226 @@
+include DMP/Dmp-mixin
+include DMP/DmpGeneral
+include DMP/showOptionalFields/dmpShowOptionalFields
+
+//ko if: registrationVisible()
++DmpFieldset('registrationLabelI18n')
+    div.row
+        div.col-xs-6
+            include DMP/registration/dmpInitialManifestationOfPrimaryTumor
+        div.col-xs-6
+            include DMP/registration/dmpLocoregionalRecurrence
+    div.row
+        div.col-xs-6
+            include DMP/registration/dmpManifestationOfContralateralBreastCancer
+        div.col-xs-6
+            include DMP/registration/dmpFirstConfirmationOfRemoteMetastases
+// /ko
+
+//ko if: registrationForVisible()
++DmpFieldset('registrationForLabelI18n')
+    include DMP/registration/dmpRegistrationFor
+// /ko
+
+//ko if: anamnesisAndTreatmentStatusVisible() && isAfterQ32018()
++DmpFieldset('anamnesisAndTreatmentStatusLabelI18n')
+    div.row
+        div.col-xs-12
+            include DMP/anamnesisAndTreatmentStatus/dmpPerformedSurgicalTherapy_4_23
+// /ko
+
+// TO BE DELETED: 4.21 - START -----------------------------------------------------------------------------------------
+//ko if: !isAfterQ32018()
+div(data-bind='visible: dmpType() === "PNP" || (dmpType() === "FIRST" && (dmpShowOptionalFields() || dmpRegistrationForPrimaryOrContralateral()))')
+    +DmpFieldset('anamnesisAndTreatmentStatusLabelI18n')
+        div.row
+            div.col-xs-4
+                include DMP/anamnesisAndTreatmentStatus/dmpAffectedBreast
+            div.col-xs-6
+                include DMP/anamnesisAndTreatmentStatus/dmpCurrentTreatmentStatus
+        div.row
+            div.col-xs-12
+                include DMP/anamnesisAndTreatmentStatus/dmpPerformedSurgicalTherapy
+// /ko
+// TO BE DELETED: 4.21 - END -------------------------------------------------------------------------------------------
+
+// ko if: currentFindingsVisible() && isAfterQ32018()
++DmpFieldset('currentFindingsLabelI18n')
+    div.row(data-bind='visible: true')
+        div.col-xs-6
+            include DMP/currentFindings/dmpTnmClassification_4_23
+            include DMP/currentFindings/dmpImmunohistochemicalHormoneReceptor_4_23
+        div.col-xs-6
+            include DMP/currentFindings/dmpPT_4_23
+            include DMP/currentFindings/dmpPN_4_23
+            include DMP/currentFindings/dmpM_4_23
+// /ko
+
+// TO BE DELETED: 4.21 - START -----------------------------------------------------------------------------------------
+//ko if: !isAfterQ32018()
+div(data-bind='visible: dmpType() === "PNP" || (dmpType() === "FIRST" && (dmpShowOptionalFields() || (dmpRegistrationForPrimaryOrContralateral() && (dmpCurrentTreatmentStatus() === "OPERATION_PLANNED" || dmpCurrentTreatmentStatus() === "POSTOPERATIVE"))))')
+    +DmpFieldset('currentFindingsLabelI18n')
+        div(data-bind='visible: dmpCurrentTreatmentStatus() !== "OPERATION_NOT_PLANNED"')
+            include DMP/currentFindings/dmpPreoperativeNeoadjuvantTherapy
+        div.row(data-bind='visible: dmpShowOptionalFields() || dmpType() !== "FIRST" || dmpCurrentTreatmentStatus() === "POSTOPERATIVE"')
+            div.col-xs-6
+                include DMP/currentFindings/dmpPT
+                include DMP/currentFindings/dmpPN
+                include DMP/currentFindings/dmpM
+                include DMP/currentFindings/dmpGrading
+            div.col-xs-6
+                include DMP/currentFindings/dmpResection
+                include DMP/currentFindings/dmpImmunohistochemicalHormoneReceptor
+                include DMP/currentFindings/dmpHER2Neu
+// /ko
+// TO BE DELETED: 4.21 - END -------------------------------------------------------------------------------------------
+
+//ko if: treatmentOfPrimaryAndContralateralVisible() && isAfterQ32018()
++DmpFieldset('treatmentOfPrimaryAndContralateralLabelI18n')
+    include DMP/treatmentOfPrimaryAndContralateral/dmpCurrentAdjuvantEndocrinetherapy_4_23
+    include DMP/treatmentOfPrimaryAndContralateral/dmpSideEffectsOfCurrentAdjuvantEndocrineTherapy_4_23
+    include DMP/treatmentOfPrimaryAndContralateral/dmpContinuationOfCurrentEndocrineTherapy_4_23
+    include DMP/treatmentOfPrimaryAndContralateral/dmpDxaFindings_4_23
+// /ko
+
+// TO BE DELETED: 4.21 - START -----------------------------------------------------------------------------------------
+//ko if: !isAfterQ32018() && !isFollowing()
+div(data-bind='visible: dmpType() === "PNP" || (dmpType() === "FIRST" && (dmpShowOptionalFields() || dmpRegistrationForPrimaryOrContralateral()))')
+    +DmpFieldset('treatmentOfPrimaryAndContralateralLabelI18n')
+        include DMP/treatmentOfPrimaryAndContralateral/dmpRadiotherapy
+        include DMP/treatmentOfPrimaryAndContralateral/dmpChemotherapy
+        include DMP/treatmentOfPrimaryAndContralateral/dmpEndocrineTherapy
+        include DMP/treatmentOfPrimaryAndContralateral/dmpAntibodyTherapy
+
+div(data-bind='visible: (dmpType() === "PNP" && dmpShowOptionalFields()) || (dmpType() === "FIRST" && (dmpShowOptionalFields() || dmpRegistrationForLocoregional()))')
+    +DmpFieldset('findingsAndTherapyOfLocoregionalRecurrenceLabelI18n')
+        include DMP/findingsAndTherapyOfLocoregionalRecurrence/dmpOngoingOrCompletedTherapy_locoregionalRecurrence
+// /ko
+// TO BE DELETED: 4.21 - END -------------------------------------------------------------------------------------------
+
+//ko if: findingsAndTherapyOfRemoteMetastasesVisible() && isAfterQ32018()
++DmpFieldset('findingsAndTherapyOfRemoteMetastasesLabelI18n')
+    div.row
+        include DMP/findingsAndTherapyOfRemoteMetastases/dmpLocalisation_4_23
+        include DMP/findingsAndTherapyOfRemoteMetastases/dmpBisphosphonateTherapy
+        include DMP/findingsAndTherapyOfRemoteMetastases/dmpDenosumab_4_23
+// /ko
+
+// TO BE DELETED: 4.21 - START -----------------------------------------------------------------------------------------
+//ko if: !isAfterQ32018()
+div(data-bind='visible: (dmpType() === "PNP" && dmpShowOptionalFields()) || (dmpType() === "FIRST" && (dmpShowOptionalFields() || dmpFirstConfirmationOfRemoteMetastases()))')
+    +DmpFieldset('findingsAndTherapyOfRemoteMetastasesLabelI18n')
+        div.row
+            div.col-xs-4
+                include DMP/findingsAndTherapyOfRemoteMetastases/dmpLocalisation
+            include DMP/findingsAndTherapyOfRemoteMetastases/dmpBisphosphonateTherapy
+        div.row
+            div.col-xs-8
+                include DMP/findingsAndTherapyOfRemoteMetastases/dmpOngoingOrCompletedTherapy_remoteMetastases
+// /ko
+// TO BE DELETED: 4.21 - END -------------------------------------------------------------------------------------------
+
+//ko if: treatmentStatusOfPrimaryAndContralateralVisible() && isAfterQ32018()
++DmpFieldset('treatmentStatusOfPrimaryAndContralateralLabelI18n')
+    include DMP/treatmentOfPrimaryAndContralateral/dmpCurrentAdjuvantEndocrinetherapy_4_23
+    include DMP/treatmentOfPrimaryAndContralateral/dmpSideEffectsOfCurrentAdjuvantEndocrineTherapy_4_23
+    include DMP/treatmentOfPrimaryAndContralateral/dmpContinuationOfCurrentEndocrineTherapy_4_23
+    include DMP/treatmentOfPrimaryAndContralateral/dmpDxaFindings_4_23
+// /ko
+
+// TO BE DELETED: 4.21 - START -----------------------------------------------------------------------------------------
+//ko if: !isAfterQ32018() && isFollowing()
+div(data-bind='visible: dmpShowOptionalFields() || dmpRegistrationFor() === "PRIMARY_TUMOR" || dmpRegistrationFor() === "CONTRALATERAL_BREAST_CANCER"')
+    +DmpFieldset('treatmentStatusOfPrimaryAndContralateralLabelI18n')
+        include DMP/treatmentOfPrimaryAndContralateral/dmpRadiotherapy
+        include DMP/treatmentOfPrimaryAndContralateral/dmpChemotherapy
+        include DMP/treatmentOfPrimaryAndContralateral/dmpEndocrineTherapy
+        include DMP/treatmentOfPrimaryAndContralateral/dmpAntibodyTherapy
+// /ko
+// TO BE DELETED: 4.21 - END -------------------------------------------------------------------------------------------
+
+//ko if: eventsSinceLastDocumentationVisible() && isAfterQ32018()
++DmpFieldset('eventsSinceLastDocumentationLabelI18n')
+    div.row
+        div.col-xs-6
+            include DMP/eventsSinceLastDocumentation/dmpManifestationOfLocoregionalRecurrence_following
+            include DMP/eventsSinceLastDocumentation/dmpManifestationOfContralateralBreastCancer_following
+        div.col-xs-6
+            //include DMP/eventsSinceLastDocumentation/dmpManifestationOfRemoteMetastases_following
+            include DMP/eventsSinceLastDocumentation/dmpManifestationOfRemoteMetastases_following_4_23
+            include DMP/eventsSinceLastDocumentation/dmpBiopticConfirmationOfVisceralMetastases_4_23
+
+            //include DMP/eventsSinceLastDocumentation/dmpLymphedema_following
+    div.row
+        include DMP/otherFindings/dmpSymptomaticLymphedema_4_23
+// /ko
+
+// TO BE DELETED: 4.21 - START -----------------------------------------------------------------------------------------
+//ko if: !isAfterQ32018()
+div(data-bind='visible: dmpType() === "FOLLOWING"')
+    +DmpFieldset('eventsSinceLastDocumentationLabelI18n')
+        div.row
+            div.col-xs-6
+                include DMP/eventsSinceLastDocumentation/dmpManifestationOfLocoregionalRecurrence_following
+                include DMP/eventsSinceLastDocumentation/dmpManifestationOfContralateralBreastCancer_following
+            div.col-xs-6
+                include DMP/eventsSinceLastDocumentation/dmpManifestationOfRemoteMetastases_following
+                include DMP/eventsSinceLastDocumentation/dmpLymphedema_following
+// /ko
+// TO BE DELETED: 4.21 - END -------------------------------------------------------------------------------------------
+
+// ko if: otherFindingsVisible() && isAfterQ32018()
++DmpFieldset('otherFindingsLabelI18n')
+    //ko if: !isFollowing()
+    // Special case, as this field also appears in eventsSincelastDocumentation
+    div.row
+        include DMP/otherFindings/dmpSymptomaticLymphedema_4_23
+    // /ko
+    div.row
+        include DMP/otherFindings/dmpRegularPhysicalTrainingRecommended_4_23
+    div.row
+        include DMP/otherFindings/dmpConditionAfterParticularlyCardiotoxicTumorTherapy_4_23
+    div.row
+        include DMP/otherFindings/dmpHeight
+        include DMP/otherFindings/dmpWeight
+// /ko
+
+//ko if: otherSectionVisible()
++DmpFieldset('otherLabelI18n')
+    include DMP/otherFindings/dmpPlannedDateForNextDocumentation
+// /ko
+
+//ko if: treatmentOfAdvancedDiseaseVisible() && isAfterQ32018()
++DmpFieldset('treatmentOfAdvancedDiseaseLabelI18n')
+    div.row
+        include DMP/findingsAndTherapyOfRemoteMetastases/dmpBisphosphonateTherapy
+        include DMP/findingsAndTherapyOfRemoteMetastases/dmpDenosumab_4_23
+// /ko
+
+// TO BE DELETED: 4.21 - START -----------------------------------------------------------------------------------------
+//ko if: !isAfterQ32018()
+div(data-bind='visible: dmpType() === "FOLLOWING" && (dmpShowOptionalFields() || dmpLocoregional_FLW() || dmpRemote_FLW())')
+    +DmpFieldset('treatmentOfAdvancedDiseaseLabelI18n')
+        include DMP/treatmentOfAdvancedDisease/dmpCurrentTreatmentStatus_following
+        div(data-bind='visible: dmpShowOptionalFields() || dmpLocoregional_FLW()')
+            include DMP/treatmentOfAdvancedDisease/dmpTherapyOfLocoregionalRecurrence
+        div(data-bind='visible: dmpShowOptionalFields() || dmpRemote_FLW()')
+            include DMP/treatmentOfAdvancedDisease/dmpTherapyOfRemoteMetastases
+        div(data-bind='visible: dmpShowOptionalFields() || (dmpRemote_FLW() && dmpRemoteInBone_FLW())')
+            include DMP/treatmentOfAdvancedDisease/dmpBisphosphonateTherapy_following
+// /ko
+
+//ko if: !isAfterQ32018() && dmpType() !== "FOLLOWING"
++DmpFieldset('otherFindingsLabelI18n')
+    include DMP/otherFindings/dmpLymphedemaPresent
+    include DMP/otherFindings/dmpPlannedDateForNextDocumentation
+// /ko
+//ko if: !isAfterQ32018() && dmpType() === "FOLLOWING"
++DmpFieldset('otherLabelI18n')
+    include DMP/otherFindings/dmpPlannedDateForNextDocumentation
+// /ko
+// TO BE DELETED: 4.21 - END -------------------------------------------------------------------------------------------
+
+
+
+
+

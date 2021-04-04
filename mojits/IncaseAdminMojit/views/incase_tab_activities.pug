@@ -1,0 +1,64 @@
+//.row
+//  .col-xs-8
+//    div.pull-right(data-bind="template: saveBtn.template", style="margin-bottom: 20px;")
+script(type="text/html", id="KoFieldSelect2")
+  include ../../../autoload/KoUI/KoField/view/KoFieldSelect2
+
+.row
+  div.col-md-12
+    div.panel.panel-default(dc-panel="activity_config_panel", dc-panel-actions="minimize")
+      div#activity_config_panel.panel-body.in
+        table.table.table-bordered
+          colgroup
+            col(width="32")
+            col(width="40%")
+            col(width="20")
+            col(width="5%")
+            col(width="5%")
+            col(width="40%")
+
+          thead
+            tr
+              th(data-bind="text: labelVisibleI18n")
+              th(data-bind="text: labelEntryTypeI18n")
+              th(data-bind="text: labelColorI18n")
+              th(data-bind="text: labelTextBlocksI18n")
+              th(data-bind="text: labelBackMappingI18n")
+              th(data-bind="text: labelSubtypesI18n")
+              th(data-bind="text: labelAdditionalParamsI18n")
+              th(data-bind="text: labelScheinMandatoryI18n")
+              th(data-bind="text: labelShowPrintCountI18n")
+              th(data-bind="text: labelUseWYSWYGI18n")
+          tbody(data-bind='foreach: activitySettings.settings')
+            tr
+              td
+                div.checkbox
+                  input(name="isVisible", type="checkbox", data-bind="checked: isVisible, disable: $root.isVisibleDisabled(actType)", style="margin: 0;")
+              td
+                div(name="actType", data-bind="text: de", style="margin-top: 6px;")
+              td
+                input.form-control.input-color(name="color", type="hidden", data-bind="value: color")
+              td
+                button.btn.btn-default.btn-block(data-bind='click: $root.configureDocumentationTree, visible: showTreeConfig, style: { "background-color": $parent.btnColorDocTree($data) }')
+                  span.glyphicon.glyphicon-edit
+              td
+                button.btn.btn-default.btn-block(data-bind='click: $parent.configureUserContent, visible: $parent.hasUserContent($data), style: { "background-color": $parent.btnColorUserContent($data) }')
+                  span.glyphicon.glyphicon-edit
+              td
+                input.form-control(type="hidden", data-bind="select2: $parent.getSubtypeSelect2( $index )")
+              td
+                button.btn.btn-default.btn-block(data-bind='click: $parent.showAdditionalParams, style: { "background-color": $parent.btnColorAdditionalParams($data) }')
+                  span.glyphicon.glyphicon-edit
+              td
+                div.checkbox
+                  input(name="schein", type="checkbox", data-bind="checked: schein, disable: $parent.isScheinDisabled(actType)", style="margin: 0;")
+              td
+                div.checkbox
+                  input(name="showPrintCount", type="checkbox", data-bind="checked: showPrintCount, disable: $parent.isShowPrintCountDisabled(actType)", style="margin: 0;")
+              td
+                div.checkbox
+                  input(name="useWYSWYG", type="checkbox", data-bind="checked: useWYSWYG, disable: $parent.isWYSWYGDisabled(actType)", style="margin: 0;")
+.row
+
+.col-xs-12
+    div.pull-right(data-bind="template: saveBtn.template")

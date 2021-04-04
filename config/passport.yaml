@@ -1,0 +1,8 @@
+---
+# Passport Middleware
+context: [ component:server ]
+strategies:
+  basic:
+    # defines the paths for which
+    # basic authentication is enabled
+    path: [ /2/, /fhir/ ]

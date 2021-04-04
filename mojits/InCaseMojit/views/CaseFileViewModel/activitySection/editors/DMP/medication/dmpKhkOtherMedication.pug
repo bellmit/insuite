@@ -1,0 +1,9 @@
+div.form-group
+  div.row
+    div.col-xs-5
+      strong(data-bind="text: dmpKhkOtherMedication.i18n")
+      span(data-bind="dmpField: { field: dmpKhkOtherMedication }")
+    div.col-xs-7(data-bind="foreach: dmpKhkOtherMedication.list, hasFeedback: { field: dmpKhkOtherMedication, toggle: dmpKhkOtherMedication.hasError, messages: dmpKhkOtherMedication.validationMessages }")
+      label.radio-inline
+        span(data-bind="text: i18n")
+        input(type="radio", name="dmpKhkOtherMedication", data-bind="value: val, checked: $parent.dmpKhkOtherMedication, readOnly: $parent.dmpKhkOtherMedication.readOnly")

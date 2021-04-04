@@ -1,0 +1,7 @@
+div.form-group
+    strong(data-bind="text: dmpOngoingOrCompletedTherapy_locoregionalRecurrence.i18n")
+    span(data-bind="dmpField: { field: dmpOngoingOrCompletedTherapy_locoregionalRecurrence }")
+    div(data-bind="foreach: dmpOngoingOrCompletedTherapy_locoregionalRecurrence.list, hasFeedback: { field: dmpOngoingOrCompletedTherapy_locoregionalRecurrence, toggle: dmpOngoingOrCompletedTherapy_locoregionalRecurrence.hasError, messages: dmpOngoingOrCompletedTherapy_locoregionalRecurrence.validationMessages }")
+        label.checkbox-inline
+            span(data-bind="text: i18n")
+            input(type="checkbox", name="dmpOngoingOrCompletedTherapy_locoregionalRecurrence", data-bind="value: val, checked: $parent.dmpOngoingOrCompletedTherapy_locoregionalRecurrence, readOnly: $parent.dmpOngoingOrCompletedTherapy_locoregionalRecurrence.readOnly, attr: { name: $element.name + '-' + val }")

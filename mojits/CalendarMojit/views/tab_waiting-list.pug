@@ -1,0 +1,12 @@
+.row
+  div#waitingListTable
+    div(data-bind="template: waitingListTable.template")
+    div
+      span(data-bind="template: waitingListTableBtnArrived.template", style="margin-right: 10px")
+      span(data-bind="template: waitingListTableBtnNoShow.template", style="margin-right: 10px")
+      span(data-bind="template: waitingListTableBtnCall.template", style="margin-right: 10px")
+      span(data-bind="template: waitingListTableBtnPush.template", style="margin-right: 10px")
+      span(data-bind="template: waitingListTableBtnGet.template", style="margin-right: 10px")
+      //span(data-bind="template: waitingListTableBtnDelete.template", style="margin-right: 10px")
+    div(data-bind="with: getBinderViewModel()")
+      include snippets/CalendarSelector/horizontal

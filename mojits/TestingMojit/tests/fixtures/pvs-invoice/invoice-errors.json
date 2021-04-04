@@ -1,0 +1,291 @@
+{
+  "practice": {
+    "commercialNo" : "13424253",
+    "coname" : "TestPraxisTest3",
+    "cotype" : "ARZTPRAXIS",
+    "activeState" : true,
+    "customerNo" : "test",
+    "dcCustomerNo" : "test",
+    "serverType" : "MTS",
+    "systemType" : "TRIAL",
+    "tenants" : [],
+    "countryMode" : [
+      "D"
+    ],
+    "addresses" : [
+      {
+        "street" : "str.",
+        "houseno" : "",
+        "zip" : "11111",
+        "city" : "str.",
+        "country" : "Deutschland",
+        "countryCode" : "D",
+        "addon" : "",
+        "title" : "",
+        "firstname" : "",
+        "nameaffix" : "",
+        "middlename" : "",
+        "lastname" : "",
+        "kind" : "OFFICIAL"
+      }
+    ]
+  },
+  "insuranceStatusPrivate": {
+    "fk4133" : null,
+    "fk4110" : null,
+    "insuranceKind" : "",
+    "costCarrierBillingSection" : "00",
+    "costCarrierBillingGroup" : "",
+    "feeSchedule" : "3",
+    "fused" : false,
+    "unzkv" : [],
+    "bgNumber" : "",
+    "address1" : "Berlin-Kölnische Allee 2 - 4",
+    "address2" : "50969 Köln",
+    "zipcode" : "",
+    "city" : "",
+    "phone" : "",
+    "insuranceLink" : "",
+    "email" : "",
+    "insuranceGLN" : "",
+    "recipientGLN" : "",
+    "department" : "",
+    "isTiersGarant" : false,
+    "isTiersPayant" : true,
+    "insuranceId" : "168141381",
+    "insuranceName" : "ASSTEL",
+    "insurancePrintName" : "ASSTEL",
+    "type" : "PRIVATE",
+    "billingFactor" : "privatversicherte",
+    "locationId" : "to be set"
+  },
+  "activities": [
+    {
+      "actType" : "PKVSCHEIN",
+      "attachments" : [],
+      "attachedMediaTags" : [],
+      "subType" : "",
+      "time" : "",
+      "userContent" : "",
+      "status" : "VALID",
+      "activities" : [],
+      "referencedBy" : [],
+      "apkState" : "IN_PROGRESS",
+      "continuousIcds" : [],
+      "icds" : [],
+      "icdsExtra" : [],
+      "isTiersGarant" : false,
+      "isTiersPayant" : true,
+      "__t" : "PKVSCHEIN",
+      "attachedMedia" : [],
+      "timestamp" : "to be set",
+      "patientId" : "to be set",
+      "employeeId" : "to be set",
+      "locationId" : "to be set",
+      "caseFolderId" : "to be set",
+      "content" : "Privat Schein"
+    },
+    {
+      "actType" : "TREATMENT",
+      "status" : "VALID",
+      "attachments" : [],
+      "attachedMediaTags" : [],
+      "subType" : "",
+      "time" : "",
+      "backupEmployeeIds" : [],
+      "userContent" : "Hohe Koloskopie bis zum Coecum - gegebenenfalls einschließlich Probeexzision und/oder Probepunktion -",
+      "activities" : [],
+      "referencedBy" : [],
+      "apkState" : "IN_PROGRESS",
+      "countryMode" : [
+        "D"
+      ],
+      "price" : 201.09,
+      "catalog" : true,
+      "catalogRef" : "DC-GOÄ-D-1603091318048.json",
+      "__t" : "TREATMENT",
+      "catalogShort" : "GOÄ",
+      "vat" : 0,
+      "attachedMedia" : [],
+      "timestamp" : "to be set",
+      "patientId" : "to be set",
+      "employeeId" : "to be set",
+      "locationId" : "to be set",
+      "content" : "Hohe Koloskopie bis zum Coecum - gegebenenfalls einschließlich Probeexzision und/oder Probepunktion -",
+      "comment" : "Hohe Koloskopie bis zum Coecum",
+      "caseFolderId" : "to be set",
+      "generalCosts" : 38.12,
+      "specialCosts" : 0,
+      "billingFactorType" : "privatversicherte",
+      "code" : "687",
+      "actualPrice" : 1500,
+      "unit" : "Euro",
+      "actualUnit" : "Punkte",
+      "areTreatmentDiagnosesBillable": "1"
+    },
+    {
+      "actType" : "TREATMENT",
+      "status" : "VALID",
+      "attachments" : [],
+      "attachedMediaTags" : [],
+      "subType" : "",
+      "time" : "",
+      "backupEmployeeIds" : [],
+      "userContent" : "Zuschlag zu den sonographischen Leistungen bei transösophagealer Untersuchung",
+      "activities" : [],
+      "referencedBy" : [],
+      "apkState" : "IN_PROGRESS",
+      "countryMode" : [
+        "D"
+      ],
+      "price" : 26.23,
+      "catalog" : true,
+      "catalogRef" : "DC-GOÄ-D-1603091318048.json",
+      "__t" : "TREATMENT",
+      "catalogShort" : "GOÄ",
+      "vat" : 0,
+      "attachedMedia" : [],
+      "timestamp" : "to be set",
+      "patientId" : "to be set",
+      "employeeId" : "to be set",
+      "locationId" : "to be set",
+      "content" : "Zuschlag zu den sonographischen Leistungen bei transösophagealer Untersuchung",
+      "comment" : "Sonographie, Ösophaguszuschlag",
+      "caseFolderId" : "to be set",
+      "generalCosts" : 13.57,
+      "specialCosts" : 0,
+      "billingFactorType" : "privatversicherte",
+      "omimCodes" : [],
+      "code" : "402",
+      "actualPrice" : 250,
+      "unit" : "Euro",
+      "actualUnit" : "Punkte",
+      "areTreatmentDiagnosesBillable": "1"
+    }
+  ],
+  "invoiceConfiguration": {
+    "padxSettings" : [
+      {
+        "_id" : "000000000000000000000001",
+        "padxSettingTitle" : "test",
+        "recipientName" : "test",
+        "senderName": "test",
+        "street" : "test",
+        "zip" : "10115",
+        "city" : "Berlin",
+        "senderCustomerNo" : "111",
+        "kind" : "OFFICIAL",
+        "locations" : [
+          {
+            "_id" : "to be set",
+            "locname": "test"
+          }
+        ],
+        "employees" : [
+          {
+            "_id" : "to be set"
+          }
+        ]
+      }
+    ],
+    "receiptNumberSchemes" : [],
+    "cashSettings" : [],
+    "tarmedTaxPointValues" : [],
+    "dunningSchemes" : [],
+    "kvgSettings" : [],
+    "isMocking" : false,
+    "receiptsSchemes" : []
+  },
+  "pvsLog": {
+    "isPreValidated" : false,
+    "notApproved" : [
+      ""
+    ],
+    "replacement" : false,
+    "excludedPatientIds" : [],
+    "mediportNotAllowedPatientIds" : [
+      ""
+    ],
+    "excludedScheinIds" : [],
+    "unknownInsuranceScheinIds" : [],
+    "insuranceTypes" : [
+      "PRIVATE",
+      "SELFPAYER"
+    ],
+    "doNotcheckCatalog" : true,
+    "employeeFilterEnabled" : false,
+    "countryCode" : "",
+    "totalItems" : "",
+    "user" : [
+    ],
+    "status" : "CREATED",
+    "_log_version" : "",
+    "pid" : "",
+    "priceTotal" : null,
+    "pointsTotal" : null,
+    "pricePerPatient" : null,
+    "pointsPerPatient" : null,
+    "replacedLogId" : "",
+    "version" : null,
+    "padnextFileName" : "",
+    "padnextFileId" : "",
+    "padnextSettingId" : "000000000000000000000001",
+    "padnextSettingTitle" : "Location",
+    "padnextSettingCustomerNo" : "2",
+    "encryptedPadnextFileName" : "",
+    "encryptedPadnextFileId" : "",
+    "startDate" : "to be set",
+    "useStartDate" : true,
+    "endDate" : "to be set",
+    "useEndDate" : true,
+    "useInsuranceStatus" : false,
+    "insuranceStatus" : [],
+    "withEmptyInsurance" : true,
+    "minTotal" : 0,
+    "employees" : [
+    ]
+  },
+  "ruleLogs": [
+    {
+      "caseFolderId" : "to be set",
+      "message" : "Ausschlussliste für 687 (GOÄ) in derselben Sitzung",
+      "patientId" : "to be set",
+      "referenceArea" : "APK",
+      "ruleLogType" : "ERROR",
+      "actCodes" : [
+        "687",
+        "402",
+        "403"
+      ],
+      "actTypes" : [
+        "TREATMENT"
+      ],
+      "activitiesToCreate" : [],
+      "affectedActivities" : [
+        {
+          "id" : "to be set",
+          "code" : "402",
+          "actType" : "TREATMENT",
+          "locationId" : "000000000000000000000001"
+        },
+        {
+          "id" : "to be set",
+          "code" : "687",
+          "actType" : "TREATMENT",
+          "locationId" : "000000000000000000000001"
+        }
+      ],
+      "allCodes" : [],
+      "caseFolderType" : [
+        "PRIVATE",
+        "PRIVATE_A"
+      ],
+      "locationId" : "to be set",
+      "onCaseOpen" : false,
+      "requiredCodes" : [],
+      "ruleId" : "5f6e048cd7c59337ea8cc6ca",
+      "ruleSetId" : "5f6e048cd7c59337ea8cc6cb",
+      "timestamp" : "to be set "
+    }
+  ]
+}

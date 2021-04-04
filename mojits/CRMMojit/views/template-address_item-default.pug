@@ -1,0 +1,42 @@
+// cannot find usage of this file
+div.panel.panel-default
+  div.panel-heading
+    select.form-control.input-sm(style="width: auto", data-bind="options: _availableKindList, optionsValue: 'val', optionsText: '-de', value: kind, readOnly: kind.readOnly, optionsCaption: 'Bitte Typ wählen …'")
+  div.panel-body
+    div.row
+      div.col-xs-12
+        label(for="street", data-bind="text: street.i18n + ', ' + houseno.i18n")
+      div.col-xs-8
+        div.form-group(data-bind="hasFeedback: { field: street, toggle: street.hasError, messages: street.validationMessages }")
+          input.form-control#street(type="text", name="street", data-bind="value: street, readOnly: street.readOnly, valueUpdate: 'afterkeydown', attr: { title: _escape(street()) }")
+      div.col-xs-4
+        div.form-group(data-bind="hasFeedback: { field: houseno, toggle: houseno.hasError, messages: houseno.validationMessages }")
+          input.form-control(type="text", name="houseno", data-bind="value: houseno, readOnly: houseno.readOnly, valueUpdate: 'afterkeydown', attr: { title: _escape(houseno()) }")
+      div.col-xs-12
+        label(for="zip", data-bind="text: zip.i18n + ', ' + city.i18n")
+      // ko if: _zipAutoCompleteDisabled
+      div.col-xs-4
+        div.form-group(data-bind="hasFeedback: { field: zip, toggle: zip.hasError, messages: zip.validationMessages }")
+          input.form-control#zip(name="zip", maxlength="10", data-bind="value: zip, readOnly: zip.readOnly, valueUpdate: 'afterkeydown', event: { blur: _onZipBlur }, attr: { title: _escape(zip()) }")
+      div.col-xs-8
+        div.form-group(data-bind="hasFeedback: { field: city, toggle: city.hasError, messages: city.validationMessages }")
+          input.form-control(type="text", name="city", data-bind="value: city, readOnly: city.readOnly, valueUpdate: 'afterkeydown', attr: { title: _escape(city()) }")
+      // /ko
+      // ko ifnot: _zipAutoCompleteDisabled
+      div.col-xs-4
+        div.form-group(data-bind="hasFeedback: { field: zip, toggle: zip.hasError, messages: zip.validationMessages }")
+          input.form-control(name="zip", maxlength="10", data-bind="select2: _zipCfgAutoComplete, readOnly: zip.readOnly")
+      div.col-xs-8
+        div.form-group(data-bind="hasFeedback: { field: city, toggle: city.hasError, messages: city.validationMessages }")
+          input.form-control#cityCfgAutoComplete(type="text", name="city", data-bind="select2: _cityCfgAutoComplete, readOnly: city.readOnly, valueUpdate: 'afterkeydown', attr: { title: _escape(city()) }")
+      // /ko
+      div.col-xs-12
+        div.form-group(data-bind="hasFeedback: { field: addon, toggle: addon.hasError, messages: addon.validationMessages }")
+          label(for="addon", data-bind="text: addon.i18n")
+          input.form-control#addon(name="addon", maxlength="40", data-bind="value: addon, readOnly: addon.readOnly, valueUpdate: 'afterkeydown', attr: { title: _escape(addon()) }")
+      div.col-xs-12
+        div.form-group(data-bind="hasFeedback: { field: country, toggle: country.hasError, messages: country.validationMessages }")
+          label(for="country", data-bind="text: country.i18n")
+          input.form-control#country(name="country", data-bind="select2: _countryCfgAutoComplete, readOnly: country.readOnly")
+      div.col-xs-12
+        button.btn.btn-default.pull-right(type="button", data-bind="click: _arrayDel, readOnly: _isModelReadOnly") \#{__i18n('general.button.DELETE')}

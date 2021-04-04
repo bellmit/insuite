@@ -1,0 +1,9 @@
+#manual-send-step-1(data-bind="visible: isActive('manual-send-step-1')")
+  p(data-bind="text: localBillingFileI18n")
+#manual-send-step-2(data-bind="visible: isActive('manual-send-step-2')")
+  p(data-bind="text: KVBillingFileI18n")
+#manual-send-step-3(data-bind="visible: isActive('manual-send-step-3')")
+  p(data-bind="text: messageSuccessI18n")
+  .alert.alert-info
+    p(data-bind="text: messageSureI18n")
+    p.text-danger(data-bind="text: messageSure2I18n")

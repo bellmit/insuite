@@ -1,0 +1,17 @@
+div#receiptsBook.row(data-bind="visible: isVisible", style={display: 'none'})
+  div.dc-action-buttons.dc-action-buttons-top.dc-action-buttons-left.clearfix
+    div.col-xs-12
+      div.col-lg-7.col-md-8.col-xs-12(data-bind="template: dateSelector.template")
+      div.col-lg-3.col-md-2.col-xs-6
+        label(data-bind="text: cashbbokI18n", style="margin-bottom: 5px; min-height: 22px; display: block; margin-top: 5px;")
+        input.form-control(data-bind="select2: select2Cashbook")
+      div.col-lg-2.col-md-2.col-xs-6
+        label(data-bind="text: balanceI18n", style="margin-bottom: 5px; min-height: 22px; display: block; margin-top: 5px;")
+        input.form-control(type="text", readonly, data-bind="value: balanceValue")
+  div(data-bind="template: receipsKoTable.template")
+  div.dc-action-buttons.dc-action-buttons-top.dc-action-buttons-left.clearfix
+    span(data-bind="template: createButton.template")
+    span(data-bind="template: approveButton.template")
+    span(data-bind="template: deleteButton.template")
+    span(data-bind="template: cancelReceiptButton.template")
+    span(data-bind="template: cancelButton.template")

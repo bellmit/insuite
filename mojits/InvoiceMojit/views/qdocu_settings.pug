@@ -1,0 +1,50 @@
+#qdocu_settings.row
+  div.col-md-12.col-sm-12
+    div.panel.panel-default
+      div.panel-body(style="padding: 0;")
+        fieldset
+          legend(style="margin: 0; padding: 2px 10px 0;")
+            span(data-bind="text: qDocuI18n")
+          div.clearfix(style="padding: 20px 10px 10px;")
+            .col-xs-12.col-xs-8
+              .row.mb-3
+                div.col-xs-12
+                  span(data-bind="text: transportEncryptionI18n")
+                  i.dc-info-icon(data-bind="click: showInfoDialog")
+              .row.mb-2
+                .col-xs-12
+                  div.form-group
+                    .col-xs-4.col-md-2
+                      label.control-label(data-bind="text: 'Registriernummer'")
+                    .col-xs-8.col-md-6
+                      input.form-control(name='username', type="text", data-bind="value: tPackerUsername")
+              .row
+                .col-xs-12
+                  div.form-group
+                    .col-xs-4.col-md-2
+                      label.control-label(data-bind="text: 'Passwort'")
+                    .col-xs-8.col-md-6
+                      input.form-control(name='password', type="password", data-bind="value: tPackerPassword")
+          div.clearfix(style="padding: 10px 10px 10px;")
+            .col-xs-10
+              .row.mb-3
+                .col-xs-12(data-bind="text: publicKeysI18n")
+              .row.mb-2
+                .col-xs-12
+                  .form-group
+                    .col-md-4
+                      label.control-label(data-bind="text: basI18n")
+                      i.dc-info-icon(data-bind="tooltip: {title: 'qs_data'}")
+                    .col-md-8
+                      select.form-control(name="keys", data-bind="options: qsDataKeysList, optionsValue: 'val', optionsText: '-de', value: qsDataKey")
+              .row.mb-2
+                .col-xs-12
+                  .form-group
+                    .col-md-4
+                      label.control-label(data-bind="text: vstI18n")
+                      i.dc-info-icon(data-bind="tooltip: {title: 'patient'}")
+                    .col-md-8
+                      select.form-control(name="keys", data-bind="options: patientKeysList, optionsValue: 'val', optionsText: '-de', value: patientKey")
+            div.clearfix(style="padding: 20px 10px 10px;")
+              div.col-sm-12.text-right
+                button.btn.btn-primary(type="button", data-bind="text: saveButtonI18n, click: saveInvoiceconfiguration")

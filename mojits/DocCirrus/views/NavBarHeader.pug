@@ -1,0 +1,45 @@
+nav#NavBarHeader.navbar.navbar-inverse(role="navigation", data-bind="css: { 'frameViewHidden': isFrameView, 'NavBarHeader-fixed': fixed() && !isFrameView(), 'navbar-fixed-top':  fixed() && !isFrameView(), 'NavBarHeader-fixedNot': !fixed() && !isFrameView() }")
+  .container.container-fullscreen#container
+    .navbar-header
+      button.NavBarHeader-pin-toggle.navbar-toggle(type="button", data-bind="click: togglePinnedCTA")
+        span.NavBarHeader-pin-icon.fa.fa-thumb-tack
+      button(type="button", data-toggle="collapse", data-target="#bs3TopMenu").navbar-toggle
+        span.sr-only Toggle Navigation
+        span.icon-bar
+        span.icon-bar
+        span.icon-bar
+      a.navbar-brand(data-bind="attr: {href: i18nURLmain }")#home Doc Cirrus
+    .navbar-collapse.collapse#bs3TopMenu
+      // ko if: !isInSpectorApoEnabled()
+      // ko template: mainMenu.template
+      // /ko
+      // /ko
+      .navbar-text.navbar-right.hidden-xs.hidden-sm.hidden-md
+        span.NavBarHeader-pin-icon.fa.fa-thumb-tack(data-bind="click: togglePinnedCTA")
+      div.navbar-text.navbar-right
+        ul.nav.navbar-nav(style="display: inline-block; margin-right: 0;")
+          li(data-bind="with: presettings")
+            a.navbar-link(name="profile", data-bind="attr: {href: $root.i18nURLprofile }", style="text-decoration: underline; padding: 0; display: inline-block;")
+              span(data-bind="text: $parent.loggedInUser")
+            ul.nav.navbar-nav.profiles-list(style="float: right; margin: 0;")
+              li.dropdown
+                a(href="#", style="padding: 0; display: inline-block;", data-toggle="dropdown")
+                  b.caret(style="margin-right: 4px;")
+                ul.dropdown-menu(data-bind="foreach: storedProfiles, visible: hasStoredData")
+                  li.dropdown-item(data-bind="click: function() { $parent.reStoreProfile( $parent, this ) }")
+                    a(href="#", style="position: relative;")
+                      span(data-bind="text: profileLabel + ' ' + workStationName")
+                      i.glyphicon.glyphicon-ok(style="position: absolute; top: 5px; right: 5px; color: green;", data-bind="visible: _id == $parent.activeProfileId()")
+        // ko loggedInUser === "Support"
+        span &nbsp;
+        span(data-bind="text: supportTimer")
+        span &nbsp;
+        // /ko
+        if user.coname && ( systemType !== "TRIAL" && serverType == "VPRC" || loggedInUser == "Support" )
+          span.badge(style="margin-right: 5px; max-width: 150px; overflow: hidden !important; text-overflow: ellipsis; vertical-align: middle;" data-bind="text: user.coname")
+        a.navbar-link(name="changeOnlineStatus", data-bind="attr: {href: i18nURLprofile }", style="margin-right: 10px;")
+          span [
+          span(style="color: #85E085;", data-bind="html: onlineStatus, attr: {title: lblMenuAvailableForI18n + ':'}")
+          span ]
+        span
+          img(name="logOutButton", src="/static/dcbaseapp/assets/img/doccirrus/exit.png", style="height:25px; margin: -3.5px 0; cursor: pointer;", data-bind="click: logOutButtonHandler")

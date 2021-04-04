@@ -1,0 +1,19 @@
+.container.container-fullscreen.content(id=mojit_view_id)
+  h3 Medikamtenn DB TEST
+  .panel.panel-default#medstest
+    div.panel-body.container.container-fullscreen
+      div.row
+        div.col-md-6
+          .form-group
+            label(for="mehtods").control-label Method
+            select.form-control(name="mehtods", data-bind="options: _methodList, value: method, disable: _disabled")      div.row
+      div.row
+        div.col-md-6
+          .form-group
+            label(for="params").control-label JSON Params
+            textarea(name="params", data-bind="value: params, disable: _disabled", rows=10).form-control
+          button#sendBtn.btn.btn-default(data-bind="click: _send, disable: _disabled") send
+        div.col-md-6
+          .form-group
+            label(for="result").control-label Result
+            textarea(name="result", data-bind="value: _showResult, disable: _disabled", rows=50).form-control

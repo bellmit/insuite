@@ -1,0 +1,164 @@
+style(type="text/css").
+  .smcbs:hover {
+    cursor: pointer;
+  }
+
+div.PatientBrowserViewModel
+  div.PatientBrowserViewModel-menuBar
+    // ko if: hasTiLicense && hasVsdmLicense
+    span(data-bind="text: cardReadI18n")
+    span &nbsp;&nbsp;
+    // ko if: organisationalUnits() && organisationalUnits().length && organisationalUnits().length > 1
+    div.dropdown.btn-group
+      button#organisationalunit-dropdown.btn.btn-primary.dropdown-toggle(type="button", data-toggle="dropdown")
+        span(data-bind="text: organisationalUnitText(), style: { color: selectedOrganisationalUnit().MandantName ? '' : '#ccc' } ")
+        | &nbsp;
+        | &nbsp;
+        span.caret
+
+      // ko ifnot: organisationalUnits() && organisationalUnits().length
+      ul.dropdown-menu(aria-labelledby="dropdownMenu1")
+        li.smcbs
+          a(data-bind="text: noSMCBI18n")
+      // /ko
+      // ko if: organisationalUnits() && organisationalUnits().length
+      ul.dropdown-menu(aria-labelledby="dropdownMenu1", data-bind="foreach: organisationalUnits")
+        li.smcbs
+          a(data-bind="text: MandantName, click: function() { $parent.selectOrganisationalUnit.call($parent, $data) }")
+      // /ko
+    // /ko
+    span &nbsp;
+    div.btn-group
+      // ko if: buttonDropdownTi
+      .btn.btn-primary(data-bind="text: messageTi, click: newPatientFromTiCard, style: { color: styleMessageTi() ? '#ccc' : '' }", data-toggle="dropdown")
+      // /ko
+      // ko ifnot: buttonDropdownTi
+      .btn.btn-primary(data-bind="text: messageTi, click: newPatientFromTiCard, style: { color: styleMessageTi() ? '#ccc' : '' }")
+      // /ko
+      .btn.btn-primary.dropdown-toggle(data-toggle="dropdown")
+        // ko if: loadingCR
+        i(class="fa fa-spinner fa-pulse")
+        // /ko
+        | &nbsp;
+        span.caret
+
+      ul.dropdown-menu(role="menu")
+        table.table(style="white-space: nowrap;")
+          thead
+            tr
+              th(data-bind="text: labelPluggedDevicesI18n")
+          tbody(data-bind="foreach: tiCardTerminalsList")
+            tr
+              td
+                a(href="", data-bind="click: $parent.newPatientFromTiCard.bind($parent), text: text")
+              td(style="text-align: right")
+          tfoot
+          tr(data-bind="visible: showEnforceOnlineCheck")
+            td
+              label.checkbox-inline
+                input#enforceOnlineCheck(type="checkbox", data-bind="checked: enforceOnlineCheck, click: stopPropagation")
+                label(for="enforceOnlineCheck", data-bind="text: enforeOnlineCheckI18n, click: stopPropagation")
+        a(name="crLogHistory", type="button", style="padding-left: 4px;", data-bind="click: showCardReadHistory")
+          span.fa.fa-clock-o
+          | &nbsp;
+          span(data-bind="text: modalTitleI18n")
+    // ko if: tiErrorList().length > 0
+    span &nbsp;
+    button.btn.btn-danger(name="showTiErrors", type="button", data-bind="click: showTiErrors")
+      i.icon.fa.fa-exclamation-triangle
+    // /ko
+    // ko if: tiErrorList().length == 0 && tiWarningList().length > 0
+    span &nbsp;
+    button.btn.btn-warning(name="showTiErrors", type="button", data-bind="click: showTiErrors")
+      i.icon.fa.fa-exclamation-triangle
+    // /ko
+    // /ko
+
+    // ko if: CH_countryMode
+    span &nbsp;&nbsp;
+    span(data-bind="text: cardReadCHI18n")
+    span &nbsp;&nbsp;
+    .btn-group
+      // ko if: buttonDropdown
+      .btn.btn-primary(data-bind="text: emptySwissMsg, enable: cardReadEnabled, click: function(data) { newPatientFromSmartCard(data.lastDeviceList()[0]) }, style: { color: swissStyleMessage() ? '#ccc' : '' }", data-toggle="dropdown")
+      // /ko
+      // ko ifnot: buttonDropdown
+      .btn.btn-primary(data-bind="text: emptySwissMsg, enable: cardReadEnabled, click: function(data) { newPatientFromSmartCard(data.lastDeviceList()[0]) }, style: { color: swissStyleMessage() ? '#ccc' : '' }, attr: { 'data-source': lastDeviceList().length >0 ? lastDeviceList()[0].source : '' }")
+      // /ko
+      .btn.btn-primary.dropdown-toggle(data-toggle="dropdown")
+        // ko if: loadingCR
+        i(class="fa fa-spinner fa-pulse")
+        // /ko
+        | &nbsp;
+        span.caret
+
+      ul.dropdown-menu(role="menu")
+        table.table(style="white-space: nowrap;")
+          thead
+            tr
+              th(data-bind="text: labelPluggedDevicesI18n")
+              th(data-bind="text: labelReadAllI18n")
+          tbody(data-bind="foreach: swissCardReaderList")
+            tr
+              td
+                a(href="", data-bind="click: $parent.newPatientFromSmartCard.bind($parent), attr: { 'data-source': source }, text: text")
+                i(data-bind="attr: { 'data-source': source }, text: host")
+        a(name="crLogHistory", type="button", style="padding-left: 4px;", data-bind="click: showCardReadHistory")
+          span.fa.fa-clock-o
+          | &nbsp;
+          span(data-bind="text: modalTitleI18n")
+    // /ko
+
+    span &nbsp;
+      //span
+        button.btn.btn-primary(name="crLogHistory", type="button", data-bind="click: showCardReadHistory")
+          span.fa.fa-clock-o
+        span &nbsp;
+    button.btn.btn-primary(name="createPatientManual", type="button", data-bind="click: createPatientManualHandler, text: buttonNewI18n")
+
+    // ko ifnot: CH_countryMode
+    // ko if: cardreaderList() && cardreaderList().length > 0
+    span &nbsp;&nbsp;
+    span(data-bind="text: oldCardReaderI18n")
+    span &nbsp;&nbsp;
+    .btn-group
+      // ko if: buttonDropdown
+      .btn.btn-primary(data-bind="text: emptyMessage, click: function(data) { newPatientFromCard(data.lastDeviceList()[0]) }, style: { color: styleMessage() ? '#ccc' : '' }", data-toggle="dropdown")
+      // /ko
+      // ko ifnot: buttonDropdown
+      .btn.btn-primary(data-bind="text: emptyMessage, click: function(data) { newPatientFromCard(data.lastDeviceList()[0]) }, style: { color: styleMessage() ? '#ccc' : '' }, attr: { 'data-source': lastDeviceList().length >0 ? lastDeviceList()[0].source : '' }")
+      // /ko
+      .btn.btn-primary.dropdown-toggle(data-toggle="dropdown")
+        // ko if: loadingCR
+        i(class="fa fa-spinner fa-pulse")
+        // /ko
+        | &nbsp;
+        span.caret
+
+      ul.dropdown-menu(role="menu")
+        table.table(style="white-space: nowrap;")
+          thead
+            tr
+              th(data-bind="text: labelPluggedDevicesI18n")
+              th(data-bind="text: labelReadAllI18n")
+          tbody(data-bind="foreach: cardreaderList")
+            tr
+              td
+                a(href="", data-bind="click: $parent.newPatientFromCard.bind($parent), attr: { 'data-source': source }, text: text")
+                i(data-bind="attr: { 'data-source': source }, text: host")
+              td(style="text-align: right")
+                | <!-- ko if: mobile -->
+                a.fa.fa-list(href="", data-bind="click: $parent.newBatchPatientFromCard.bind($parent), attr: { 'data-source': source }")
+                | <!-- /ko -->
+                | <!-- ko ifnot: mobile -->
+                a.fa.fa-list(style="color: lightgrey")
+                | <!-- /ko -->
+        a(name="crLogHistory", type="button", style="padding-left: 4px;", data-bind="click: showCardReadHistory")
+          span.fa.fa-clock-o
+          | &nbsp;
+          span(data-bind="text: modalTitleI18n")
+    // /ko
+    // /ko
+
+  div.row
+    div#patientTable.col-xs-12.patientTable(data-bind="template: patientTable.template")

@@ -1,0 +1,7 @@
+div.form-group
+    strong(data-bind="text: dmpImmunohistochemicalHormoneReceptor.i18n")
+    span(data-bind="dmpField: { field: dmpImmunohistochemicalHormoneReceptor }")
+    div(data-bind="foreach: dmpImmunohistochemicalHormoneReceptor.list, hasFeedback: { field: dmpImmunohistochemicalHormoneReceptor, toggle: dmpImmunohistochemicalHormoneReceptor.hasError, messages: dmpImmunohistochemicalHormoneReceptor.validationMessages }")
+        label.radio-inline
+            span(data-bind="text: i18n")
+            input(type="radio", name="dmpImmunohistochemicalHormoneReceptor", data-bind="value: val, checked: $parent.dmpImmunohistochemicalHormoneReceptor, readOnly: $parent.dmpImmunohistochemicalHormoneReceptor.readOnly, attr: { name: $element.name + '-' + val }")

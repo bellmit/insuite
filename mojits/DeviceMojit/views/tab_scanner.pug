@@ -1,0 +1,17 @@
+#tab_scanner
+  div.row
+    div.col-sm-12.col-md-8.col-md-offset-2.col-lg-6.col-lg-offset-0
+      div(data-bind="with: dynamsoft()[0]")
+        h4(data-bind="text: $parent.dynamsoftI18n")
+        div.panel.panel-default
+          div.panel-body
+            div.form-group
+              label.control-label(for="tab_scanner-productKey", data-bind="text: productKey.i18n + ':'")
+              input#tab_scanner-productKey.form-control(name="productKey", type="text", data-bind="value: productKey, valueUpdate: 'afterkeydown'")
+            div.form-group
+              div.checkbox
+                label.control-label
+                  input(name="useWebTwain", type="checkbox", data-bind="checked: useWebTwain")
+                  strong(data-bind="text: useWebTwain.i18n")
+      div.text-right
+        button#tab_scanner-save.btn.btn-primary(name="tab_scanner-save", type="button", data-bind="click: save, disable: saveDisabled, text: buttonSaveI18n")

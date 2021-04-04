@@ -1,0 +1,89 @@
+{
+  "all": {
+    "settings": [
+      "environment:production"
+    ],
+    "description": "Email settings for DC Base App. Rename this file to email-dev.json and update server settings below, see: <<SET...>>",
+    "config": {
+      "host": "smtp.intra.doc-cirrus.com",
+      "port": 25,
+      "ssl": false,
+      "metaServices": "The Service entries contain settings per service, that are used in building a class of messages that come from a specific service.",
+      "registrationService": {
+        "description": "This entry is used for any emails sent from the registration module of the Doc Cirrus inSuite.",
+        "from": "Doc Cirrus RegService <dev-trial@doc-cirrus.com>",
+        "cc": "",
+        "bcc": ""
+      },
+      "prcService": {
+        "description": "This entry is used for any emails sent by the Doc Cirrus inSuite data safe or ISD to alert an admin or other user.",
+        "from": "Doc Cirrus Datensafe <dev-noreply@doc-cirrus.com>",
+        "cc": "",
+        "bcc": ""
+      },
+      "patientPortalService": {
+        "description": "This entry is used for any emails sent by the Doc Cirrus Patient Portal to send an admin registration info to patient.",
+        "from": "Doc Cirrus RegService <dev-noreply@doc-cirrus.com>",
+        "replyTo": "<DCUSER>+trial@doc-cirrus.com",
+        "cc": "",
+        "bcc": ""
+      },
+      "conferenceService": {
+        "description": "This entry is used for any emails sent by Doc Cirrus inTouch.",
+        "from": "$locationName <dev-noreply@doc-cirrus.com>",
+        "replyTo": "$locationName <$locationMail>",
+        "cc": "",
+        "bcc": ""
+      },
+      "patientService": {
+        "description": "This entry is used for any emails sent by Doc Cirrus inTime and Patient Portal.",
+        "from": "$locationName <dev-noreply@doc-cirrus.com>",
+        "replyTo": "$locationName <$locationMail>",
+        "cc": "",
+        "bcc": ""
+      },
+      "dcInfoService_trial": {
+        "description": "This entry is used for Trial Registrations.",
+        "from": "Doc Cirrus RegService <dev-noreply@doc-cirrus.com>",
+        "to": "<DCUSER>+trial@doc-cirrus.com",
+        "cc": "",
+        "bcc": ""
+      },
+      "dcInfoService_sales": {
+        "description": "This entry is used to send usage statistics from VPRC to Sales.",
+        "from": "Doc Cirrus RegService <dev-noreply@doc-cirrus.com>",
+        "to": "<DCUSER>+sales@doc-cirrus.com",
+        "cc": "",
+        "bcc": ""
+      },
+      "dcInfoService_support": {
+        "description": "This entry is used for automated email feedback to DC Support.",
+        "from": "Doc Cirrus Datensafe <dev-noreply@doc-cirrus.com>",
+        "to": "Doc Cirrus Support <<DCUSER>+support@doc-cirrus.com>",
+        "cc": "",
+        "bcc": ""
+      },
+      "infoService": {
+        "description": "This entry is used to advertise an info link in the front end for users to email for general help.",
+        "from": "",
+        "to": "<DCUSER>+info@doc-cirrus.com",
+        "cc": "",
+        "bcc": ""
+      },
+      "billingService": {
+        "description": "This entry is used in the MVPRC to send usage information of the MVPRC to Doc Cirrus as governed by the usage contract.",
+        "from": "Doc Cirrus Billing Service <dev-noreply@doc-cirrus.com>",
+        "to": [
+          "<DCUSER>+billing@doc-cirrus.com"
+        ]
+      },
+      "supportService": {
+        "description": "Sends in PROD to JIRA, or support contact.",
+        "from": "",
+        "to": [
+          "<DCUSER>+supportService@doc-cirrus.com"
+        ]
+      }
+    }
+  }
+}

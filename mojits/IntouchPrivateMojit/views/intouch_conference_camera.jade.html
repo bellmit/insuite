@@ -1,0 +1,13 @@
+div(id=mojit_view_id)
+  #conferenceOne.container.container-fullscreen.container.container-fullscreen-fullscreen
+    div(data-bind="style:{height: window.innerHeight+'px'}", style="background: url('/static/DocCirrus/assets/images/dc_logo_300x103_trans.png') no-repeat center center transparent;")
+      div.col-xs-12.text-center(style="height: 100%")
+        div.panel.panel-default(style="border: none; box-shadow: none; height: 100%; display: inline-block")
+          div.panel-heading
+            span.pull-right
+              a(href="#", tabindex="-1", data-bind="click: hangUp", style="color: #F66A76")
+                i.fa.fa-phone
+            .clearfix
+          div.panel-body.form-group(style="margin: 0; padding: 0; height: 100%")
+            video(height="100%", data-bind="attr:{id: videoId}", autoplay="autoplay")
+

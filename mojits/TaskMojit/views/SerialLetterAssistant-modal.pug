@@ -1,0 +1,78 @@
+div.serial-letter-modal
+
+  div#divFloatEditor
+
+  //ko if: currentStepIndex() === 0
+  section.serial-letter-modal__section
+    header
+      h4(data-bind="text: step1TitleI18n")
+    div.serial-letter-modal__patient-table#patient-list(data-bind="{template: patientsTable.template}")
+  // /ko
+
+  //ko if: currentStepIndex() === 1 || currentStepIndex() === 2
+  section.serial-letter-modal__section
+    //ko if: currentStepIndex() === 1
+    header
+      h4(data-bind="text: step2TitleI18n")
+    section.col-md-4.serial-letter-modal__form-select-section
+      label Formular
+      div.form-group
+        input.form-control(type="hidden", data-bind="select2: select2FormDC", name="formId")
+      div.form-group
+        input.form-control(type="hidden", data-bind="select2: select2FormPRAC", name="formId")
+
+      div.serial-letter-hint
+        div.serial-letter-hint__container
+          p(data-bind="text: step2HintI18n")
+          p(data-bind="text: selectedPatientsIds().length + ' Empfänger' ")
+          p(data-bind="text: step2TextI18n")
+    // /ko
+
+    //ko if: currentStepIndex() === 2
+    header
+      h4(data-bind="text: step3TitleI18n")
+    section.col-md-4.serial-letter-modal__form-select-section
+      div.form-group
+        label.checkbox-inline
+          span(data-bind="text: step3ForEachPatientI18n")
+          input(data-bind="checked: generateActivities", type="checkbox", name="generateActivities")
+
+      div.form-group
+        label(data-bind="text: step3caseFolderI18n")
+        input.form-control(type="hidden", data-bind="select2: select2Casefolder", name="caseFolder")
+
+      div.serial-letter-hint
+        div.serial-letter-hint__container
+          p(data-bind="text: step3HintI18n")
+          p(data-bind="text: selectedPatientsIds().length + ' Empfänger' ")
+          p(data-bind="text: step3Text1I18n")
+          p(data-bind="text: step3Text2I18n")
+
+      //ko if: generateActivities
+      div.form-group
+        label(data-bind="text: documentForI18n")
+        input.form-control(type="hidden", data-bind="select2: select2Doctor", name="doctor")
+      div
+        p(data-bind="text: step3Text3I18n")
+      // /ko
+    // /ko
+
+    //ko if: currentStepIndex() === 1 || currentStepIndex() === 2
+    section.col-md-8.serial-letter-modal__form-section
+      div#divFormRender.serial-letter-modal__form-container
+    // /ko
+  // /ko
+
+  //Loading Step
+  //ko if: currentStepIndex() === 3
+  section.serial-letter-modal__section
+    div.serial-letter-modal__loading-mask
+  // /ko
+
+  //Step with results
+  //ko if: currentStepIndex() === 4
+  section.serial-letter-modal__section
+    div.progress(data-bind="visible: showProgressBar")#mailMergeProgress
+      div.progress-bar(role="progressbar",aria-valuemin="0",aria-valuemax="100",data-bind="attr: { 'aria-valuenow': progressBarValue }, style: { width: progressBarWidth }, html: progressBarValue() + '%'")
+    div(data-bind="html: resultDisplay")#divMailMergeResult
+  // /ko

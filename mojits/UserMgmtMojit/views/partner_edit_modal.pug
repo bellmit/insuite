@@ -1,0 +1,143 @@
+div#partner-edit
+  form.form-horizontal
+
+    div.form-group(data-bind="hasFeedback: { field: pin, toggle: pin.hasError, messages: pin.validationMessages, popover: { container: '#partner_edit_modal' } }, visible: pinVisible")
+      label.col-sm-2.control-label(data-bind="text: pinI18n")
+      .col-sm-5
+        input.form-control(data-bind="value: pin, valueUpdate: 'input', disable: verified")
+      a.btn.btn-primary(data-bind="click: verifyPin, disable: pin.hasError, text: verifyPinI18n")
+
+    //ko ifnot: invite
+    div.form-group
+      label.col-sm-2.control-label(data-bind="text: nameI18n")
+      div.col-sm-10
+        input.form-control(data-bind="value: name, valueUpdate: 'afterkeydown', enable: false")
+    // /ko
+
+    //ko ifnot: licensedType
+    //ko ifnot: invite
+    div.form-group
+      label.col-sm-2.control-label(data-bind="text: dcidI18n")
+      div.col-sm-10
+        input.form-control(data-bind="value: dcId, valueUpdate: 'afterkeydown', enable: false")
+
+    div.form-group(data-bind="hasFeedback: { field: partnerType, toggle: partnerType.hasError, messages: partnerType.validationMessages, popover: { container: '#partner_edit_modal' } }")
+      label.col-sm-2.control-label(data-bind="text: partnerTypeI18n")
+      div.col-sm-10
+        select.form-control(data-bind="value: partnerType, options: _partnerTypeList, optionsValue: 'val', optionsText: 'i18n', enable: verified")
+    // /ko
+
+    //ko if: invite
+    div.form-group(data-bind="hasFeedback: { field: partnerType, toggle: partnerType.hasError, messages: partnerType.validationMessages, popover: { container: '#partner_edit_modal' } }")
+      label.col-sm-2.control-label(data-bind="text: partnerTypeI18n")
+      div.col-sm-10
+        select.form-control(data-bind="value: partnerType, options: _partnerTypeList, optionsValue: 'val', optionsText: 'i18n'")
+    // /ko
+
+    div.form-group
+      label.col-sm-2.control-label(data-bind="text: commentI18n")
+      div.col-sm-10
+        input.form-control(data-bind="value: comment, valueUpdate: 'afterkeydown', enable: verified")
+
+    //ko ifnot: invite
+    div.form-group
+      label.col-sm-2.control-label(data-bind="text: telI18n")
+      div.col-sm-10
+        input.form-control(data-bind="value: phone, valueUpdate: 'afterkeydown', enable: false")
+
+    div.form-group
+      label.col-sm-2.control-label(data-bind="text: emailI18n")
+      div.col-sm-10
+        input.form-control(data-bind="value: email, valueUpdate: 'afterkeydown', enable: false")
+    // /ko
+
+    //ko if: invite
+    div.form-group(data-bind="hasFeedback: { field: email, toggle: email.hasError, messages: email.validationMessages, popover: { container: '#partner_edit_modal' } }")
+      label.col-sm-2.control-label(data-bind="text: emailI18nIvite")
+      div.col-sm-10
+        input.form-control(data-bind="value: email, valueUpdate: 'afterkeydown', attr: { placeholder: emailPHI18n }")
+
+    div.form-group(data-bind="hasFeedback: { field: content, toggle: content.hasError, messages: content.validationMessages, popover: { container: '#partner_edit_modal' } }")
+      label.col-sm-2.control-label(data-bind="text: textI18n")
+      div.col-sm-10
+        textarea.form-control(data-bind="value: content, valueUpdate: 'afterkeydown'", rows = "6")#emailText
+    // /ko
+
+    //ko ifnot: invite
+    div.form-group
+      label.col-sm-2.control-label(data-bind="text: keyI18n")
+      div.col-sm-10
+        input.form-control(data-bind="value: fingerprint, valueUpdate: 'afterkeydown', enable: false")
+
+    div.checkbox(data-bind="if: signatureVisible")
+      input(type="checkbox", data-bind="checked: signature, valueUpdate: 'afterkeydown', enable: verified")
+      span(data-bind="text: noticeI18n")
+    // /ko
+    // /ko
+
+
+    // ko if: systemType
+    div.form-group
+      label.col-sm-2.control-label(data-bind="text: systemTypeI18n")
+      div.col-sm-10
+        input.form-control(data-bind="value: systemType, valueUpdate: 'afterkeydown', enable: false")
+    // /ko
+
+    //ko ifnot: invite
+    div.form-group
+      label.col-sm-2.control-label(data-bind="text: statusI18n")
+      div.col-sm-10
+        input.form-control(data-bind="value: statusTranslated, valueUpdate: 'afterkeydown', enable: false")
+    // /ko
+
+    div.form-group
+      label.col-sm-2.control-label(data-bind="text: bidirectional.i18n")
+      div.col-sm-10
+        input(type="checkbox", data-bind="checked: bidirectional, valueUpdate: 'afterkeydown', enable: enableBidirectional" style="margin-top: 10px")
+
+    // ko if: bidirectional
+    div.form-group
+      label.col-sm-2.control-label(data-bind="text: activeActive.i18n")
+      div.col-sm-10
+        input(type="checkbox", data-bind="checked: activeActive, valueUpdate: 'afterkeydown', enable: false" style="margin-top: 10px")
+    // /ko
+
+    // ko if: bidirectional() && !activeActive()
+    div.form-group
+    div.form-group
+      label.col-sm-2.control-label(data-bind="text: anonymizing.i18n")
+      div.col-sm-10
+        input(type="checkbox", data-bind="checked: anonymizing, valueUpdate: 'afterkeydown', disable: licensed" style="margin-top: 10px")
+        // ko if: anonymizing
+        |&nbsp;
+        a(href="#" data-bind="text: configurationI18n, click: $root.showAnonymizeSettings.bind(null, $data._id)")
+        // /ko
+
+
+    div.form-group
+      label.col-sm-2.control-label(data-bind="text: preserveCaseFolder.i18n")
+      div.col-sm-10
+        input(type="checkbox", data-bind="checked: preserveCaseFolder, valueUpdate: 'afterkeydown', disable: licensed" style="margin-top: 10px")
+
+    // ko if: preserveCaseFolder
+    div.form-group
+      label.col-sm-2.control-label(data-bind="text: unlock.i18n")
+      div.col-sm-10
+        input(type="checkbox", data-bind="checked: unlock, valueUpdate: 'afterkeydown', disable: licensed" style="margin-top: 10px")
+    // /ko
+
+    // ko if: $root.showChooseButtons
+    div.form-group
+        label.col-sm-2.control-label(data-bind="text: $root.chooseConfigurationsI18n")
+        a.btn.btn-default(data-bind="click: useDefault, text: useDefaultI18n" style="margin-left: 10px")
+        a.btn.btn-default(data-bind="click: usePartners, text: usePartnersI18n" style="margin-left: 10px")
+    // /ko
+    // /ko
+
+div#partner-config-edit
+  // ko if: aEditableTable.bidirectional() && !aEditableTable.activeActive()
+  form.form-horizontal
+    div.form-group
+      label.col-sm-2.control-label(data-bind="text: $root.configurationI18n")
+      div.col-sm-10(data-bind="template: aEditableTable.template")
+  // /ko

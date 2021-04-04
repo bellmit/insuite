@@ -1,0 +1,15 @@
+li.KoMenuItem(data-bind="visible: visible, css: css")
+  a.KoMenuItem-link(data-bind="click: bindClick( $context ), attr: { title: title, name: name, href: _attrHref, target: target }")
+    // ko if: (icon && icon.iconName)
+    span.KoMenuItem-icon(data-bind="template: $data.icon.template")
+    // /ko
+    // ko if: text
+    span.KoMenuItem-text(data-bind="text: text")
+    // /ko
+    // ko if: html
+    span.KoMenuItem-html(data-bind="html: html")
+    // /ko
+  // ko if: menu && menu.items().length
+  // ko template: menu.template
+  // /ko
+  // /ko

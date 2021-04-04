@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- automatische Dokumentation, generiert durch Visual Source Safe 
+	$Workfile: all_kbvtypelib001_typelib.xsd $  
+	$Modtime: 20.10.06 8:28 $  
+	$Revision: 3 $  
+-->
+<!-- 
+	20.10.2006	TeveGe	
+	include-Anweisungen für die Schemata 'softwarename_typelib.xsd' und 
+	'documenttyp_typelib.xsd' entfernt
+-->
+<xs:schema xmlns="urn:kbv/kbv/typelib/001" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="urn:kbv/kbv/typelib/001" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:include schemaLocation="ktab_typelib.xsd"/>
+	<xs:include schemaLocation="kv_bereich_typelib.xsd"/>
+	<xs:include schemaLocation="kontakttyp_typelib.xsd"/>
+	<xs:include schemaLocation="personfunction_typelib.xsd"/>
+	<xs:include schemaLocation="versichertenart_typelib.xsd"/>
+	<xs:include schemaLocation="statusergaenzung_typelib.xsd"/>
+	<xs:include schemaLocation="administrative_gender_typelib.xsd"/>
+</xs:schema>

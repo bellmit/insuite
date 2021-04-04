@@ -1,0 +1,27 @@
+.row
+  .col-xs-12
+    p(data-bind="text: ASSIGN_AS")
+
+    div.form-group
+      .checkbox
+        label
+          span(data-bind="text: PHYSICIAN")
+          input(type="checkbox", data-bind="enable: isPhysicianType, checked: isPhysician")
+
+    div.form-group
+      .checkbox
+        label
+          span(data-bind="text: FAMILYDOCTOR")
+          input(type="checkbox", data-bind="enable: isPhysicianType, checked: isFamilyDoctor")
+
+    div.form-group
+      .checkbox
+        label
+          span(data-bind="text: INSTITUTION")
+          input(type="checkbox", data-bind="enable: isInstitutionType, checked: isInstitution")
+
+    div.form-group
+      .checkbox
+        label
+          span(data-bind="text: ADDITIONALCONTACTS")
+          input(type="checkbox", data-bind="checked: isAdditionalContact")

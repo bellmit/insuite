@@ -1,0 +1,10 @@
+.controls-row.control-domain
+    .control-group
+      label(for="value").control-label
+          a(href='#inccommunication_' + type, tabindex='-1').btn.btn-mini.pull-left &nbsp;-
+          strong
+            != label
+      input(type='hidden', name='type', value=type).hidden-field
+      div.controls
+        input(type='text', placeholder=placeholder, name='value', value=value, dcschema='_simple', dctype=validation, tabindex='5').dcvalidate
+        span.help-inline

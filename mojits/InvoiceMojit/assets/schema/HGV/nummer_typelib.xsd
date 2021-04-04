@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- automatische Dokumentation, generiert durch Visual Source Safe 
+	$Workfile: nummer_typelib.xsd $  
+	$Modtime: 31.10.06 11:00 $  
+	$Revision: 9 $  
+-->
+<xs:schema xmlns="urn::hl7-org/kbv" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="urn::hl7-org/kbv" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<!-- ****************************** bsnr_lanr_typ ****************************** -->
+	<xs:simpleType name="bsnr_lanr_typ">
+		<xs:annotation>
+			<xs:documentation>BSNR und LANR muessen genau aus 9 Ziffern bestehen</xs:documentation>
+			<xs:appinfo>BSNR/LANR</xs:appinfo>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:pattern value="\d{9}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!-- ****************************** arztnummer_typ ****************************** -->
+	<xs:simpleType name="arztabrechnungsnummer_typ">
+		<xs:annotation>
+			<xs:documentation>Arztnummer muss aus genau 7 Ziffern oder genau 9 Ziffern bestehen</xs:documentation>
+			<xs:appinfo>Arztabrechnungnummer</xs:appinfo>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:pattern value="((\d{7})|(\d{9}))"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!-- ****************************** dmp-fallnummer-typ ****************************** -->
+	<xs:simpleType name="dmp_fallnummer_typ">
+		<xs:annotation>
+			<xs:documentation>DMP-Fallnummer ist alphanummerisch, 7 Stellen</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="7"/>
+			<xs:minLength value="1"/>
+			<xs:whiteSpace value="collapse"/>
+			<xs:pattern value="[\p{L}|\d]*"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!-- ****************************** iknummer_typ ****************************** -->
+	<xs:simpleType name="iknummer_typ">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[0-9]{7}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!-- ****************************** vknr_typ ****************************** -->
+	<xs:simpleType name="vknr_typ">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[0-9]{5}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!-- ******************** versichertennummer-typ ******************** -->
+	<xs:simpleType name="versichertennummer_typ">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="([A-Za-z0-9]{1,12})"/>
+			<!--<xs:pattern value="(\d{1,12})"/>-->
+		</xs:restriction>
+	</xs:simpleType>
+	<!-- ****************************** krankenhaus_ik_typ ****************************** -->
+	<xs:simpleType name="krankenhaus_ik_typ">
+		<xs:restriction base="xs:positiveInteger"/>
+	</xs:simpleType>
+	<!-- ****************************** version_nbr_typ ****************************** -->
+	<xs:complexType name="version_nbr_typ">
+		<xs:attribute name="V" type="xs:positiveInteger"/>
+	</xs:complexType>
+	<!-- ****************************** koloskopie-fallnummer-typ ****************************** -->
+	<xs:simpleType name="koloskopie_fallnummer_typ">
+		<xs:annotation>
+			<xs:documentation>Koloskopie-Patientennummer ist alphanummerisch, 1-8 Stellen</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="8"/>
+			<xs:minLength value="1"/>
+		</xs:restriction>
+	</xs:simpleType>
+		<!-- ****************************** ehks-fallnummer-typ ****************************** -->
+	<xs:simpleType name="ehks_fallnummer_typ">
+		<xs:annotation>
+			<xs:documentation>eHKS-Patientennummer ist alphanummerisch, 1-8 Stellen</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="8"/>
+			<xs:minLength value="1"/>
+			<xs:whiteSpace value="collapse"/>
+			<xs:pattern value="[\p{L}|\d]*"/>
+		</xs:restriction>
+	</xs:simpleType>
+			<!-- ****************************** qshgv-fallnummer-typ ****************************** -->
+	<xs:simpleType name="qshgv_patientennummer_typ">
+		<xs:annotation>
+			<xs:documentation>qshgv-Patientennummer ist alphanummerisch, 1-10 Stellen</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="10"/>
+			<xs:minLength value="1"/>
+			<xs:whiteSpace value="collapse"/>
+			<xs:pattern value="[\p{L}|\d]*"/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

@@ -1,0 +1,3 @@
+div.locationSelect
+    div(data-bind="hasFeedback: { field: locationId, toggle: locationId.hasError, message: locationId.validationMessages }")
+        input.form-control(name="locationId", type="hidden", data-bind="select2: select2Location, enable: enableSelect2")

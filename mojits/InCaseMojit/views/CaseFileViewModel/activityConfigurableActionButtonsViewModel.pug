@@ -1,0 +1,6 @@
+// ko if: buttons().length > 0
+div.form-group.activityConfigurableActionButtonsViewModel(data-bind="notifyBind: { method: 'templateReady', namespace: $data }", style="margin-bottom: 2px;")
+  div.btn-group(data-bind="foreach: buttons")
+    div.btn-group
+      button.btn.btn-default(type="button", data-bind="click: $parent.buttonClickHandler.bind($context, $parent), text: name, attr: { name: name }", style="font-size: 14px;")
+// /ko

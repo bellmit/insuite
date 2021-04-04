@@ -1,0 +1,777 @@
+{
+  "meta": {
+    "errors": [],
+    "warnings": [],
+    "query": {},
+    "itemsPerPage": null,
+    "totalItems": 1,
+    "page": null,
+    "replyCode": 200
+  },
+  "data": [
+    {
+      "icd10CodeList": [
+        {
+          "name": "Nicht näher bezeichneter Diabetes mellitus: Ohne Komplikationen: Nicht als entgleist bezeichnet",
+          "icd10Code": "E14.90",
+          "upperCode": "E14.9",
+          "level": "LOC"
+        },
+        {
+          "name": "Nicht näher bezeichneter Diabetes mellitus: Ohne Komplikationen",
+          "icd10Code": "E14.9",
+          "upperCode": "E14",
+          "level": "SUB"
+        },
+        {
+          "name": "Nicht näher bezeichneter Diabetes mellitus",
+          "icd10Code": "E14",
+          "upperCode": "E10-E14",
+          "level": "CAT"
+        },
+        {
+          "name": "Diabetes mellitus",
+          "icd10Code": "E10-E14",
+          "upperCode": "E00-E90",
+          "level": "GRP"
+        },
+        {
+          "name": "Endokrine, Ernährungs- und Stoffwechselkrankheiten",
+          "icd10Code": "E00-E90",
+          "upperCode": "",
+          "level": "CHP"
+        },
+        {
+          "name": "Reine Hypercholesterinämie",
+          "icd10Code": "E78.0",
+          "upperCode": "E78",
+          "level": "SUB"
+        },
+        {
+          "name": "Störungen des Lipoproteinstoffwechsels und sonstige Lipidämien",
+          "icd10Code": "E78",
+          "upperCode": "E70-E90",
+          "level": "CAT"
+        },
+        {
+          "name": "Stoffwechselstörungen",
+          "icd10Code": "E70-E90",
+          "upperCode": "E00-E90",
+          "level": "GRP"
+        },
+        {
+          "name": "Endokrine, Ernährungs- und Stoffwechselkrankheiten",
+          "icd10Code": "E00-E90",
+          "upperCode": "",
+          "level": "CHP"
+        },
+        {
+          "name": "Gemischte Hyperlipidämie",
+          "icd10Code": "E78.2",
+          "upperCode": "E78",
+          "level": "SUB"
+        },
+        {
+          "name": "Störungen des Lipoproteinstoffwechsels und sonstige Lipidämien",
+          "icd10Code": "E78",
+          "upperCode": "E70-E90",
+          "level": "CAT"
+        },
+        {
+          "name": "Stoffwechselstörungen",
+          "icd10Code": "E70-E90",
+          "upperCode": "E00-E90",
+          "level": "GRP"
+        },
+        {
+          "name": "Endokrine, Ernährungs- und Stoffwechselkrankheiten",
+          "icd10Code": "E00-E90",
+          "upperCode": "",
+          "level": "CHP"
+        },
+        {
+          "name": "Atherosklerotische Herzkrankheit: Nicht näher bezeichnet",
+          "icd10Code": "I25.19",
+          "upperCode": "I25.1",
+          "level": "LOC"
+        },
+        {
+          "name": "Atherosklerotische Herzkrankheit",
+          "icd10Code": "I25.1",
+          "upperCode": "I25",
+          "level": "SUB"
+        },
+        {
+          "name": "Chronische ischämische Herzkrankheit",
+          "icd10Code": "I25",
+          "upperCode": "I20-I25",
+          "level": "CAT"
+        },
+        {
+          "name": "Ischämische Herzkrankheiten",
+          "icd10Code": "I20-I25",
+          "upperCode": "I00-I99",
+          "level": "GRP"
+        },
+        {
+          "name": "Krankheiten des Kreislaufsystems",
+          "icd10Code": "I00-I99",
+          "upperCode": "",
+          "level": "CHP"
+        }
+      ],
+      "company": "1 A Pharma GmbH",
+      "divisibility": "DIVISIBLE2",
+      "atcCodeList": [
+        {
+          "name": "Simvastatin",
+          "atcCode": "C10AA01",
+          "upperCode": "C10AA",
+          "level": "CS"
+        },
+        {
+          "name": "HMG-CoA-Reduktasehemmer",
+          "atcCode": "C10AA",
+          "upperCode": "C10A",
+          "level": "CTPU"
+        },
+        {
+          "name": "Mittel, die den Lipidstoffwechsel beeinflussen, rein",
+          "atcCode": "C10A",
+          "upperCode": "C10",
+          "level": "TPU"
+        },
+        {
+          "name": "Mittel, die den Lipidstoffwechsel beeinflussen",
+          "atcCode": "C10",
+          "upperCode": "C",
+          "level": "TH"
+        },
+        {
+          "name": "Kardiovaskuläres System",
+          "atcCode": "C",
+          "upperCode": "",
+          "level": "AG"
+        }
+      ],
+      "packageList": [
+        {
+          "pzn": "01332945",
+          "name": "Simvastatin - 1 A Pharma® 5mg 50 Filmtabl. N2",
+          "quantity": 50,
+          "prices": {
+            "priceFixed": 11.94,
+            "pricePatientPayment": 5,
+            "pricePharmacyBuy": 1.48,
+            "pricePharmacySale": 11.94
+          },
+          "priceHistory": [
+            {
+              "date": "01.10.2007",
+              "price": 15.86
+            },
+            {
+              "date": "15.10.2007",
+              "price": 15.84
+            },
+            {
+              "date": "15.11.2007",
+              "price": 15.82
+            },
+            {
+              "date": "01.12.2007",
+              "price": 15.8
+            },
+            {
+              "date": "15.12.2007",
+              "price": 15.79
+            },
+            {
+              "date": "15.01.2008",
+              "price": 15.71
+            },
+            {
+              "date": "01.02.2008",
+              "price": 15.7
+            },
+            {
+              "date": "15.02.2008",
+              "price": 15.68
+            },
+            {
+              "date": "01.03.2008",
+              "price": 15.67
+            },
+            {
+              "date": "15.03.2008",
+              "price": 15.62
+            },
+            {
+              "date": "01.04.2008",
+              "price": 15.55
+            },
+            {
+              "date": "15.04.2008",
+              "price": 15.49
+            },
+            {
+              "date": "01.05.2008",
+              "price": 15.43
+            },
+            {
+              "date": "01.06.2008",
+              "price": 14.52
+            },
+            {
+              "date": "01.07.2008",
+              "price": 12.9
+            },
+            {
+              "date": "01.10.2008",
+              "price": 12.86
+            },
+            {
+              "date": "01.02.2009",
+              "price": 12.85
+            },
+            {
+              "date": "15.03.2009",
+              "price": 12.84
+            },
+            {
+              "date": "01.05.2009",
+              "price": 12.83
+            },
+            {
+              "date": "01.07.2009",
+              "price": 12.82
+            },
+            {
+              "date": "01.09.2009",
+              "price": 12.5
+            },
+            {
+              "date": "01.09.2010",
+              "price": 11.97
+            },
+            {
+              "date": "01.01.2011",
+              "price": 11.96
+            },
+            {
+              "date": "01.01.2012",
+              "price": 12.58
+            },
+            {
+              "date": "01.07.2012",
+              "price": 11.72
+            },
+            {
+              "date": "01.01.2013",
+              "price": 12.02
+            },
+            {
+              "date": "01.08.2013",
+              "price": 12.21
+            },
+            {
+              "date": "01.07.2014",
+              "price": 11.94
+            }
+          ]
+        },
+        {
+          "pzn": "01332939",
+          "name": "Simvastatin - 1 A Pharma® 5mg 100 Filmtabl. N3",
+          "quantity": 100,
+          "prices": {
+            "priceFixed": 13.02,
+            "pricePatientPayment": 5,
+            "pricePharmacyBuy": 2.36,
+            "pricePharmacySale": 13.02
+          },
+          "priceHistory": [
+            {
+              "date": "01.10.2007",
+              "price": 22.48
+            },
+            {
+              "date": "15.10.2007",
+              "price": 22.44
+            },
+            {
+              "date": "15.11.2007",
+              "price": 22.41
+            },
+            {
+              "date": "01.12.2007",
+              "price": 22.4
+            },
+            {
+              "date": "15.12.2007",
+              "price": 22.38
+            },
+            {
+              "date": "15.01.2008",
+              "price": 22.29
+            },
+            {
+              "date": "01.02.2008",
+              "price": 22.28
+            },
+            {
+              "date": "15.02.2008",
+              "price": 22.26
+            },
+            {
+              "date": "01.03.2008",
+              "price": 22.25
+            },
+            {
+              "date": "15.03.2008",
+              "price": 22.21
+            },
+            {
+              "date": "01.04.2008",
+              "price": 22.16
+            },
+            {
+              "date": "15.04.2008",
+              "price": 22.09
+            },
+            {
+              "date": "01.05.2008",
+              "price": 22.03
+            },
+            {
+              "date": "01.06.2008",
+              "price": 19.97
+            },
+            {
+              "date": "01.07.2008",
+              "price": 16.78
+            },
+            {
+              "date": "15.07.2008",
+              "price": 16.72
+            },
+            {
+              "date": "01.10.2008",
+              "price": 16.68
+            },
+            {
+              "date": "01.02.2009",
+              "price": 16.67
+            },
+            {
+              "date": "15.03.2009",
+              "price": 16.66
+            },
+            {
+              "date": "01.05.2009",
+              "price": 16.65
+            },
+            {
+              "date": "01.07.2009",
+              "price": 16.64
+            },
+            {
+              "date": "01.09.2010",
+              "price": 14.66
+            },
+            {
+              "date": "01.01.2011",
+              "price": 14.63
+            },
+            {
+              "date": "01.01.2012",
+              "price": 15.1
+            },
+            {
+              "date": "01.07.2012",
+              "price": 13.17
+            },
+            {
+              "date": "01.01.2013",
+              "price": 13.47
+            },
+            {
+              "date": "01.08.2013",
+              "price": 13.66
+            },
+            {
+              "date": "01.07.2014",
+              "price": 13.02
+            }
+          ]
+        }
+      ],
+      "moleculeList": [
+        {
+          "name": "Simvastatin",
+          "moleculeTypeCode": "A",
+          "ingredientCode": [
+            {
+              "type": "MOLECULEID",
+              "value": 10002
+            }
+          ],
+          "strengthValue": "5",
+          "strengthUnitCode": "MG"
+        },
+        {
+          "name": "Maisstärke, vorverkleistert",
+          "moleculeTypeCode": "I",
+          "ingredientCode": [
+            {
+              "type": "MOLECULEID",
+              "value": 41475
+            }
+          ],
+          "strengthValue": "",
+          "strengthUnitCode": ""
+        },
+        {
+          "name": "Lactose-1-Wasser",
+          "moleculeTypeCode": "I",
+          "ingredientCode": [
+            {
+              "type": "MOLECULEID",
+              "value": 24220
+            }
+          ],
+          "strengthValue": "",
+          "strengthUnitCode": ""
+        },
+        {
+          "name": "Lactose",
+          "moleculeTypeCode": "R",
+          "ingredientCode": [
+            {
+              "type": "MOLECULEID",
+              "value": 1108
+            }
+          ],
+          "strengthValue": "45,20",
+          "strengthUnitCode": "MG"
+        },
+        {
+          "name": "Cellulose, mikrokristalline",
+          "moleculeTypeCode": "I",
+          "ingredientCode": [
+            {
+              "type": "MOLECULEID",
+              "value": 22662
+            }
+          ],
+          "strengthValue": "",
+          "strengthUnitCode": ""
+        },
+        {
+          "name": "Butylhydroxyanisol",
+          "moleculeTypeCode": "I",
+          "ingredientCode": [
+            {
+              "type": "MOLECULEID",
+              "value": 15238
+            }
+          ],
+          "strengthValue": "",
+          "strengthUnitCode": ""
+        },
+        {
+          "name": "Ascorbinsäure",
+          "moleculeTypeCode": "I",
+          "ingredientCode": [
+            {
+              "type": "MOLECULEID",
+              "value": 15163
+            }
+          ],
+          "strengthValue": "",
+          "strengthUnitCode": ""
+        },
+        {
+          "name": "Citronensäure monohydrat",
+          "moleculeTypeCode": "I",
+          "ingredientCode": [
+            {
+              "type": "MOLECULEID",
+              "value": 22902
+            }
+          ],
+          "strengthValue": "",
+          "strengthUnitCode": ""
+        },
+        {
+          "name": "Magnesium stearat (pflanzlich)",
+          "moleculeTypeCode": "I",
+          "ingredientCode": [
+            {
+              "type": "MOLECULEID",
+              "value": 42001
+            }
+          ],
+          "strengthValue": "",
+          "strengthUnitCode": ""
+        },
+        {
+          "name": "Hypromellose",
+          "moleculeTypeCode": "I",
+          "ingredientCode": [
+            {
+              "type": "MOLECULEID",
+              "value": 10122
+            }
+          ],
+          "strengthValue": "",
+          "strengthUnitCode": ""
+        },
+        {
+          "name": "Talkum",
+          "moleculeTypeCode": "I",
+          "ingredientCode": [
+            {
+              "type": "MOLECULEID",
+              "value": 16511
+            }
+          ],
+          "strengthValue": "",
+          "strengthUnitCode": ""
+        },
+        {
+          "name": "Titandioxid",
+          "moleculeTypeCode": "I",
+          "ingredientCode": [
+            {
+              "type": "MOLECULEID",
+              "value": 16564
+            }
+          ],
+          "strengthValue": "",
+          "strengthUnitCode": ""
+        },
+        {
+          "name": "Eisen(III)-hydroxid-oxid-x-Wasser",
+          "moleculeTypeCode": "I",
+          "ingredientCode": [
+            {
+              "type": "MOLECULEID",
+              "value": 51725
+            }
+          ],
+          "strengthValue": "",
+          "strengthUnitCode": ""
+        }
+      ],
+      "documents": {
+        "BI": [
+          {
+            "title": "Zusammensetzung",
+            "content": "Jede Filmtabl. enth. 5-/10-/20-/30-/40-/60-/80 mg Simvastatin. Sonstige Bestandteile: <span style=\"font-style: italic;\">Tablettenkern:</span> Butylhydroxyanisol (Ph.Eur.), mikrokrist. Cellulose, Citronensäure x H<sub>2</sub>O, vorverkleist. Stärke (Mais), Lactose x H<sub>2</sub>O, Mg-stearat (Ph.Eur.) [pflanzl.]. <span style=\"font-style: italic;\">Zusätzl. f. 5 -/10-/30-/60-/80 mg Ftbl.:</span> Ascorbinsäure. <span style=\"font-style: italic;\">Filmüberzug:</span> Hypromellose, Talkum, Titandioxid. <span style=\"font-style: italic;\">Zusätzl. f. 5 mg Ftbl.:</span> Eisen(III)-hydroxid-oxid x H<sub>2</sub>O. <span style=\"font-style: italic;\">Zusätzl. f. 10-/20 mg Ftbl.:</span> Eisen(III)-oxid, Eisen(III)-hydroxid-oxid x H<sub>2</sub>O. <span style=\"font-style: italic;\">Zusätzl. f. 40 mg Ftbl.:</span> Eisen(III)-oxid. <span style=\"font-style: italic;\">Zusätzl. f. 60 mg Ftbl.:</span> Indigocarmin-Aluminiumsalz. <span style=\"font-style: italic;\">Zusätzl. f. 80 mg Ftbl.:</span> Indigocarmin-Aluminiumsalz, Chinolingelb-Aluminiumsalz."
+          },
+          {
+            "title": "Anwendung",
+            "content": "<span style=\"font-style: italic;\">Hypercholesterinämie:</span> Behandl. d. primären Hypercholesterinämie od. gemischten Hyperlipidämie begl. zu Diät, wenn Diät u. and. nicht-pharmakolog. Maßnahmen allein nicht ausreichen. Behandl. d. homozygoten familiären Hypercholesterinämie (HoFH), begl. zu Diät u. and. lipidsenk. Maßnahmen od. wenn solche Maßnahmen nicht geeignet sind. <span style=\"font-style: italic;\">Kardiovask. Prävent.:</span> Senkung kardiovask. Mortalität u. Morbidität b. Pat. m. manif. atherosklerot. Herzerkr. od. Diabetes mell., deren Cholesterinwerte normal od. erhöht sind, begl. z. Korrektur and. Risikofakt. u. kardioprotektiver Therapie."
+          },
+          {
+            "title": "Gegenanzeigen",
+            "content": "Aktive Lebererkr. od. unklare andauernde Erhöh. d. Serum-Transaminasen, Schwangersch. u. Stillz., gleichz. Anw. v. potenten CYP3A4-Inhibitoren (Subst., die AUC um ≥ 5-Fache erhöh.) (z. B. Itra-, Keto-, Posa-, Voriconazol, HIV-Protease-Inhibitoren [z. B. Nelfinavir], Boceprevir, Telaprevir, Erythro-, Clarithro-, Telithromycin, Nefazodon u. Arzneim., die Cobicistat enthalt.), Gemfibrozil, Ciclosporin od. Danazol, gleichz. Anw. v. Lomitapid. u. Simvastatin in Dosen &gt; 40 mg b. Pat. m. HoFH."
+          },
+          {
+            "title": "Schwangerschaft",
+            "content": "Kontraind."
+          },
+          {
+            "title": "Stillzeit",
+            "content": "Kontraind."
+          },
+          {
+            "title": "Nebenwirkungen",
+            "content": "Schlafstör. einschl. Albträume, Stör. d. Sexualfunkt., Diabetes mell., Anämie, Schlaflosigk., Depression, Anaphylaxie, Kopfschm., Parästhesien, Schwindel, periph. Neuropathie, Beeinträcht. d. Erinnerungsvermögens, kognitive Beeintr. (z. B. Gedächtnisverl., Vergesslichk., Amnesie, Gedächtnisstör., Verwirr.), interst. Lungenkrankheit, Obstipat., Bauchschm., Flatulenz, Dyspepsie, Diarrhö, Übelk., Erbrechen, Pankreatitis, Hepatitis/Ikterus, Leberversagen (teilw. m. tötl. Ausgang), Hautausschlag, Pruritus, Alopezie, Myopathie (einschl. Myositis), Rhabdomyolyse m. od. ohne akutem Nierenversagen, Myalgie, Muskelkrämpfe, Tendinopathie (gelegentl. bis z. Sehnenruptur), immunvermittelte nekrotisierende Myopathie, erektile Dysfunkt., Asthenie, Hypersensitivitätssyndrom, Erhöh. d. Serum-Transaminasen (ALT, AST, Gamma-GT), Erh. d. alk. Phosphatase u. d. CK-Werte, Erh. v. HbA1c u. Nüchternglucosespiegel."
+          },
+          {
+            "title": "Warnhinweise und Vorsichtsmaßnahmen für die Anwendung",
+            "content": "Enthält Lactose. Weit. Einzelh. u. Hinw. s. Fach- u. Gebrauchsinfo."
+          }
+        ],
+        "SPC": [
+          {
+            "title": "Fachinformation",
+            "content": "<p><br /> <br /> <b> 1 A Pharma GmbH<br /> </b><br /> <b> Simvastatin - 1 A Pharma<b>&reg;</b> Filmtabletten </b><br /><br /></p> "
+          },
+          {
+            "title": "1. BEZEICHNUNG DER ARZNEIMITTEL",
+            "content": "<p><br /> Simvastatin - 1 A Pharma<b>&reg;</b> 5 mg Filmtabletten<br /> Simvastatin - 1 A Pharma<b>&reg;</b> 10 mg Filmtabletten<br /> Simvastatin - 1 A Pharma<b>&reg;</b> 20 mg Filmtabletten<br /> Simvastatin - 1 A Pharma<b>&reg;</b> 30 mg Filmtabletten<br /> Simvastatin - 1 A Pharma<b>&reg;</b> 40 mg Filmtabletten<br /> Simvastatin - 1 A Pharma<b>&reg;</b> 60 mg Filmtabletten<br /> Simvastatin - 1 A Pharma<b>&reg;</b> 80 mg Filmtabletten <br /> <br /></p> "
+          },
+          {
+            "title": "2. QUALITATIVE UND QUANTITATIVE ZUSAMMENSETZUNG",
+            "content": "<p><br /> <i>Simvastatin - 1 A Pharma 5 mg Filmtabletten</i> <br /> Jede Filmtablette enth&auml;lt 5 mg Simvastatin.<br /> Sonstiger Bestandteil mit bekannter Wirkung: Jede Filmtablette enth&auml;lt 45,2 mg Lactose (als Monohydrat).<br /> <i>Simvastatin - 1 A Pharma 10 mg Filmtabletten</i> <br /> Jede Filmtablette enth&auml;lt 10 mg Simvastatin.<br /> Sonstiger Bestandteil mit bekannter Wirkung: Jede Filmtablette enth&auml;lt 90,4 mg Lactose (als Monohydrat).<br /> <i>Simvastatin - 1 A Pharma 20 mg Filmtabletten</i> <br /> Jede Filmtablette enth&auml;lt 20 mg Simvastatin.<br /> Sonstiger Bestandteil mit bekannter Wirkung: Jede Filmtablette enth&auml;lt 58,2 mg Lactose (als Monohydrat).<br /> <i>Simvastatin - 1 A Pharma 30 mg Filmtabletten</i> <br /> Jede Filmtablette enth&auml;lt 30 mg Simvastatin.<br /> Sonstiger Bestandteil mit bekannter Wirkung: Jede Filmtablette enth&auml;lt 271,7 mg Lactose (als Monohydrat).<br /> <i>Simvastatin - 1 A Pharma 40 mg Filmtabletten</i> <br /> Jede Filmtablette enth&auml;lt 40 mg Simvastatin.<br /> Sonstiger Bestandteil mit bekannter Wirkung: Jede Filmtablette enth&auml;lt 116,4 mg Lactose (als Monohydrat).<br /> <i>Simvastatin - 1 A Pharma 60 mg Filmtabletten</i> <br /> Jede Filmtablette enth&auml;lt 60 mg Simvastatin. <br /> Sonstiger Bestandteil mit bekannter Wirkung: Jede Filmtablette enth&auml;lt 400,3 mg Lactose (als Monohydrat).<br /> <i>Simvastatin - 1 A Pharma 80 mg Filmtabletten</i> <br /> Jede Filmtablette enth&auml;lt 80 mg Simvastatin. <br />Sonstiger Bestandteil mit bekannter Wirkung: Jede Filmtablette enth&auml;lt 533,7 mg Lactose (als Monohydrat).<br /> Vollst&auml;ndige Auflistung der sonstigen Bestandteile siehe Abschnitt 6.1. <br /> <br /></p> "
+          },
+          {
+            "title": "3. DARREICHUNGSFORM",
+            "content": "<p><br /> Filmtablette<br /> <i>Simvastatin - 1 A Pharma 5 mg Filmtabletten</i><br /> hellgelb &uuml;berzogene, ovale, gew&ouml;lbte Filmtablette mit Bruchkerbe, Pr&auml;gung &bdquo;SIM 5&ldquo; auf einer Seite<br /> <i>Simvastatin - 1 A Pharma 10 mg <br />Filmtabletten</i> blassrosa &uuml;berzogene, ovale, gew&ouml;lbte Filmtablette mit Bruchkerbe, Pr&auml;gung &bdquo;SIM 10&ldquo; auf einer Seite<br /> <i>Simvastatin - 1 A Pharma 20 mg<br /> Filmtabletten</i> orange &uuml;berzogene, ovale, beidseitig gew&ouml;lbte Filmtablette mit beidseitiger Bruchkerbe, Pr&auml;gung &bdquo;20&ldquo; auf einer Seite<i> <br />Simvastatin - 1 A Pharma 30 mg Filmtabletten</i> <br />wei&szlig; &uuml;berzogene, ovale, gew&ouml;lbte Filmtablette mit Bruchkerbe, Pr&auml;gung &bdquo;SIM 30&ldquo; auf einer Seite<br /> <i>Simvastatin - 1 A Pharma 40 mg <br />Filmtabletten</i> rotbraun &uuml;berzogene, ovale, beidseitig gew&ouml;lbte Filmtablette mit beidseitiger Bruchkerbe, Pr&auml;gung &bdquo;40&ldquo; auf einer Seite<i> <br />Simvastatin - 1 A Pharma 60 mg Filmtabletten</i> <br />hellblau &uuml;berzogene, ovale, gew&ouml;lbte Filmtablette mit Bruchkerbe, Pr&auml;gung &bdquo;SIM 60&ldquo; auf einer Seite<br /> <i>Simvastatin - 1 A Pharma 80 mg <br />Filmtabletten</i> hellgr&uuml;n &uuml;berzogene, ovale, gew&ouml;lbte Filmtablette mit Bruchkerbe, Pr&auml;gung &bdquo;SIM 80&ldquo; auf einer Seite<br /> <br />Die Filmtabletten k&ouml;nnen in gleiche Dosen geteilt werden. <br /> <br /></p> "
+          },
+          {
+            "title": "4. KLINISCHE ANGABEN",
+            "content": "<p><br /><br /></p> "
+          },
+          {
+            "title": "4.1 Anwendungsgebiete",
+            "content": "<p><br /> <b>Hypercholesterin&auml;mie</b><br />Zur Behandlung der prim&auml;ren Hypercholesterin&auml;mie oder gemischten Hyperlipid&auml;mie begleitend zur Di&auml;t, wenn eine Di&auml;t und andere nicht pharmakologische Ma&szlig;nahmen (z. B. k&ouml;rperliches Training, Gewichtsabnahme) allein nicht ausreichen. <br /> Zur Behandlung der homozygoten famili&auml;ren Hypercholesterin&auml;mie (HoFH) begleitend zu Di&auml;t und anderen lipidsenkenden Ma&szlig;nahmen (z. B. LDL-Apherese) oder wenn solche Ma&szlig;nahmen nicht geeignet sind.<br /> <b>Kardiovaskul&auml;re Pr&auml;vention</b> <br /> Zur Senkung kardiovaskul&auml;rer Mortalit&auml;t und Morbidit&auml;t bei Patienten mit manifester atherosklerotischer Herzerkrankung oder Diabetes mellitus, deren Cholesterinwerte normal oder erh&ouml;ht sind, begleitend zur Korrektur anderer Risikofaktoren und kardioprotektiver Therapie (siehe Abschnitt 5.1).</p> "
+          },
+          {
+            "title": "4.2 Dosierung und Art der Anwendung",
+            "content": "<p><br /> <b>Dosierung</b><br />Der Dosierungsbereich ist 5-80 mg Simvastatin pro Tag, oral als Einzeldosis am Abend. Dosisanpassungen - falls erforderlich - sollten in Abst&auml;nden von mindestens 4 Wochen durchgef&uuml;hrt werden, bis zu einem Maximum von 80 mg pro Tag als Einzeldosis am Abend. Die 80-mg-Dosis wird nur f&uuml;r Patienten mit schwerer Hypercholesterin&auml;mie und hohem Risiko f&uuml;r kardiovaskul&auml;re Komplikationen empfohlen, die ihr Behandlungsziel mit einer niedrigeren Dosis nicht erreicht haben und wenn zu erwarten ist, dass der Nutzen der Behandlung ihre potenziellen Risiken &uuml;berwiegt (siehe Abschnitte 4.4 und 5.1).<br /> <u>Hypercholesterin&auml;mie</u> <br /> Der Patient sollte eine geeignete lipidsenkende Di&auml;t einhalten, die er auch w&auml;hrend der Therapie mit Simvastatin fortsetzen sollte. Die &uuml;bliche Anfangsdosis betr&auml;gt 10-20 mg pro Tag als Einzeldosis am Abend. Patienten, deren LDL-Cholesterin stark gesenkt werden soll (mehr als 45 %), k&ouml;nnen mit einer Dosis von 20-40 mg pro Tag als Einzeldosis am Abend beginnen. Dosisanpassungen - falls erforderlich sollten wie oben beschrieben durchgef&uuml;hrt werden.<br /> <u>Homozygote famili&auml;re Hypercholesterin&auml;mie</u> <br /> Basierend auf den Ergebnissen einer kontrollierten klinischen Studie betr&auml;gt die empfohlene Anfangsdosis von Simvastatin 40 mg 1-mal t&auml;glich am Abend eingenommen. Simvastatin sollte bei diesen Patienten begleitend zu anderen lipidsenkenden Ma&szlig;nahmen (z. B. LDL-Apherese), oder wenn solche Ma&szlig;nahmen nicht zur Verf&uuml;gung stehen, angewendet werden.<br /> Bei Patienten, die gleichzeitig Lomitapid und Simvastatin - 1 A Pharma einnehmen, darf eine Dosis von 40 mg Simvastatin pro Tag nicht &uuml;berschritten werden (siehe Abschnitte 4.3, 4.4 und 4.5). <br /> <u>Kardiovaskul&auml;re Pr&auml;vention</u> <br /> Die &uuml;bliche Dosis von Simvastatin f&uuml;r Patienten mit hohem Risiko f&uuml;r eine koronare Herzerkrankung (KHK, mit oder ohne Hyperlipid&auml;mie) betr&auml;gt 20 bis 40 mg pro Tag als Einzeldosis am Abend. Die medikament&ouml;se Therapie kann gleichzeitig mit Di&auml;t und k&ouml;rperlichem Training begonnen werden. Dosisanpassungen - falls erforderlich - sollten wie oben beschrieben durchgef&uuml;hrt werden. <br /> <u>Begleittherapie</u> <br /> Simvastatin ist allein oder zusammen mit Anionenaustauschern wirksam. Die Einnahme sollte mindestens 2 Stunden vor oder mindestens 4 Stunden nach der Gabe eines Anionenaustauschers erfolgen. <br /> Bei Patienten, die Fibrate (au&szlig;er Gemfibrozil [siehe Abschnitt 4.3] oder Fenofibrat) gleichzeitig mit Simvastatin einnehmen, sollte eine Dosis von 10 mg Simvastatin pro Tag nicht &uuml;berschritten werden. Bei Patienten, die Amiodaron, Amlodipin, Verapamil, Diltiazem oder Arzneimittel, die Elbasvir oder Grazoprevir enthalten, gleichzeitig mit Simvastatin einnehmen, sollte eine Dosis von 20 mg Simvastatin pro Tag nicht &uuml;berschritten werden (siehe Abschnitte 4.4 und 4.5). <br /> <u>Nierenfunktionsst&ouml;rung</u> <br /> F&uuml;r Patienten mit m&auml;&szlig;iger Einschr&auml;nkung der Nierenfunktion ist in der Regel keine Dosisanpassung erforderlich. <br /> Bei Patienten mit schwerer Einschr&auml;nkung der Nierenfunktion (Kreatinin-Clearance &lt; 30 ml/min) sollten Dosen &uuml;ber 10 mg pro Tag sorgf&auml;ltig erwogen und, falls erforderlich, mit Vorsicht verordnet werden. <br /> <u>&Auml;ltere Patienten</u> <br /> Eine Dosisanpassung ist nicht erforderlich. <br /> <u>Kinder und Jugendliche</u> <br /> Die &uuml;bliche empfohlene Dosis bei Kindern und Jugendlichen (Jungen; Tanner-Stadium II und dar&uuml;ber, M&auml;dchen: mindestens 1 Jahr nach der Menarche, im Alter zwischen 10 und 17 Jahren) mit heterozygoter famili&auml;rer Hypercholesterin&auml;mie betr&auml;gt zu Beginn der Behandlung 10 mg pro Tag als Einzeldosis am Abend. Kinder und Jugendliche sollten vor Beginn der Therapie mit Simvastatin eine cholesterinsenkende Di&auml;t einhalten, die auch w&auml;hrend der Therapie mit Simvastatin fortgesetzt werden sollte. <br /> Der empfohlene Dosierungsbereich liegt bei 10-40 mg Simvastatin pro Tag; die empfohlene H&ouml;chstdosis betr&auml;gt 40 mg pro Tag. Die jeweilige Dosis ist individuell gem&auml;&szlig; den Empfehlungen zur Behandlung von Kindern dem jeweiligen empfohlenen Therapieziel anzupassen (siehe Abschnitte 4.4 und 5.1). Dosisanpassungen sollten in Abst&auml;nden von mindestens 4 Wochen durchgef&uuml;hrt werden. <br /> Die Erfahrung mit Simvastatin bei Kindern im vorpubert&auml;ren Alter ist begrenzt. <br /> <b>Art der Anwendung</b> <br /> Simvastatin - 1 A Pharma wird oral eingenommen. Simvastatin - 1 A Pharma kann als Einzeldosis am Abend eingenommen werden. <br /> <br /></p> "
+          },
+          {
+            "title": "4.3 Gegenanzeigen",
+            "content": "<p><br /> &bull; &Uuml;berempfindlichkeit gegen den Wirkstoff oder einen der in Abschnitt 6.1 genannten sonstigen Bestandteile<br /> &bull; aktive Lebererkrankung oder unklare andauernde Erh&ouml;hung der Serum-Transaminasen<br /> &bull; Schwangerschaft und Stillzeit (siehe Abschnitt 4.6)<br /> &bull; gleichzeitige Anwendung von potenten CYP3A4-Inhibitoren (Substanzen, welche die AUC mindestens um ca. das 5-Fache erh&ouml;hen) (z. B. Itraconazol, Ketoconazol, Posaconazol, Voriconazol, HIV-Protease-Inhibitoren [z. B. Nelfinavir], Boceprevir, Telaprevir, Erythromycin, Clarithromycin, Telithromycin, Nefazodon und Arzneimittel, die Cobicistat enthalten) (siehe Abschnitte 4.4 und 4.5)<br /> &bull; gleichzeitige Anwendung von Gemfibrozil, Ciclosporin oder Danazol (siehe Abschnitte 4.4 und 4.5)<br /> &bull; gleichzeitige Anwendung von Lomitapid und Simvastatin - 1 A Pharma in Dosen von mehr als 40 mg bei Patienten mit homozygoter famili&auml;rer Hypercholesterin&auml;mie (siehe Abschnitte 4.2, 4.4 und 4.5)<br /><br /></p> "
+          },
+          {
+            "title": "4.4 Besondere Warnhinweise und Vorsichtsma&szlig;nahmen f&uuml;r die Anwendung",
+            "content": "<p><br /> <b>Myopathie/Rhabdomyolyse</b><br />Wie andere HMG-CoA-Reduktase-Inhibitoren ruft Simvastatin gelegentlich eine Myopathie hervor, die sich in Muskelschmerzen, -empfindlichkeit oder -schw&auml;che verbunden mit Erh&ouml;hungen der Kreatinkinase (CK) &uuml;ber das 10-Fache des oberen Normwertes &auml;u&szlig;ert. Bisweilen manifestiert sich die Myopathie als Rhabdomyolyse mit oder ohne akutem Nierenversagen aufgrund von Myoglobinurie, sehr selten mit t&ouml;dlichem Ausgang. Das Risiko einer Myopathie ist bei hoher HMG-CoA-Reduktase-Inhibitoraktivit&auml;t im Plasma erh&ouml;ht (d. h. erh&ouml;hte Simvastatin- und Simvastatins&auml;ure-Plasmaspiegel), die zum Teil auf m&ouml;gliche Wechselwirkungen mit Arzneimitteln zur&uuml;ckzuf&uuml;hren ist, die den Metabolismus von Simvastatin und/oder Stoffwechselwege &uuml;ber Transporterproteine beeintr&auml;chtigen (siehe Abschnitt 4.5). <br /> Wie bei anderen HMG-CoA-Reduktase-Inhibitoren ist das Risiko einer Myopathie/ Rhabdomyolyse dosisabh&auml;ngig. In einer Datenbank f&uuml;r klinische Studien wurden 41.413 Patienten erfasst, die mit Simvastatin behandelt wurden, darunter 24.747 (ca. 60 %) in Studien mit einer medianen Beobachtungsdauer von mindestens 4 Jahren. Die Myopathieh&auml;ufigkeit lag ann&auml;hernd bei 0,03 % unter 20 mg, bei 0,08 % unter 40 mg und bei 0,61 % unter 80 mg Simvastatin pro Tag. In diesen Studien wurden die Patienten sorgf&auml;ltig &uuml;berwacht und einige interagierende Arzneimittel wurden ausgeschlossen. <br /> In einer klinischen Studie erhielten Patienten mit einem Myokardinfarkt in der Vorgeschichte 80 mg Simvastatin pro Tag (mittlere Beobachtungsdauer 6,7 Jahre). Die Myopathieh&auml;ufigkeit lag bei ca. 1,0 % im Vergleich zu 0,02 % bei Patienten unter 20 mg pro Tag. Etwa die H&auml;lfte dieser Myopathief&auml;lle ereignete sich im ersten Jahr der Behandlung. Die Myopathieh&auml;ufigkeit in den folgenden Jahren lag jeweils bei ca. 0,1 % (siehe Abschnitte 4.8 und 5.1). <br /> Das Myopathierisiko ist f&uuml;r Patienten unter 80 mg Simvastatin Tagesdosierung im Vergleich zu anderen Statin-basierten Therapien mit &auml;hnlicher LDL-senkender Wirksamkeit gr&ouml;&szlig;er. Demzufolge sollte die 80 mg Simvastatin Tagesdosierung nur Patienten mit schwerer Hypercholesterin&auml;mie und mit hohem Risiko f&uuml;r kardiovaskul&auml;re Komplikationen gegeben werden, die ihr Behandlungsziel mit niedrigeren Dosierungen nicht erreicht haben, und wenn der zu erwartende Nutzen die potenziellen Risiken &uuml;bersteigt. Patienten, die 80 mg Simvastatin als Tagesdosis einnehmen und zus&auml;tzlich ein anderes, damit wechselwirkendes Arzneimittel ben&ouml;tigen, sollten auf eine niedrigere Simvastatin-Dosis oder auf eine alternative Statintherapie eingestellt werden, welche ein geringeres Potenzial f&uuml;r Arzneimittelwechselwirkungen hat (siehe nachfolgend unter &bdquo;Ma&szlig;nahmen zur Verringerung des Myopathierisikos aufgrund von Arzneimittelwechselwirkungen&ldquo; sowie die Abschnitte 4.2, 4.3 und 4.5). <br /> Im Rahmen einer klinischen Studie (mediane Nachbeobachtung 3,9 Jahre), bei der Patienten mit hohem kardiovaskul&auml;ren Risiko mit Simvastatin 40 mg/Tag behandelt wurden, lag die Inzidenz f&uuml;r Myopathien bei nicht-chinesischen Patienten (n = 7.367) bei ca. 0,05 % im Vergleich zu 0,24 % bei chinesischen Patienten (n = 5.468). Obwohl im Rahmen dieser klinischen Studie ausschlie&szlig;lich chinesische Patienten als einzige asiatische Population untersucht und ausgewertet wurden, sollte Simvastatin generell nur mit Vorsicht bei asiatischen Patienten und in der niedrigsten erforderlichen Dosis verordnet werden. <br /> <b>Reduzierte Funktion von Transportproteinen</b> <br /> Die verminderte Funktion des hepatischen OATP-Transportproteins kann die systemische Exposition von Simvastatins&auml;ure sowie das Risiko f&uuml;r Myopathie und Rhabdomyolyse erh&ouml;hen. Die verminderte Funktion kann als Ergebnis einer Hemmung durch interagierende Arzneimittel (z. B. Ciclosporin) entstehen oder bei Patienten auftreten, die Tr&auml;ger des SLC01B1-c.521T&gt;C-Genotyps sind. <br /> Patienten, die das Allel c.521T&gt;C des SLC01B1-Gens tragen, das ein weniger aktives OATP1B1-Protein kodiert, haben eine erh&ouml;hte systemische Exposition von Simvastatins&auml;ure sowie ein erh&ouml;htes Myopathierisiko. Das Risiko einer durch hochdosiertes Simvastatin (80 mg) bedingten Myopathie liegt ohne Gentest im Allgemeinen bei 1 %. Basierend auf den Ergebnissen der SEARCH-Studie haben mit 80 mg behandelte Tr&auml;ger des homozygoten C-Allels (auch CC genannt) ein 15 %iges Risiko f&uuml;r eine Myopathie innerhalb eines Jahres, w&auml;hrend das Risiko bei Tr&auml;gern des heterozygoten C-Allels (CT) bei 1,5 % liegt. Patienten mit dem h&auml;ufigsten Genotyp (TT) haben diesbez&uuml;glich ein Risiko von 0,3 % (siehe Abschnitt 5.2). Sofern verf&uuml;gbar, sollten eine Genotypisierung bez&uuml;glich des Vorliegens des C-Allels als Teil der Nutzen-Risiko-Bewertung bei einzelnen Patienten vor einer Verordnung von Simvastatin 80 mg in Betracht gezogen sowie hohe Dosen bei identifizierten Tr&auml;gern des CC-Genotyps vermieden werden. Die Abwesenheit dieses Gens bei der Genotypisierung schlie&szlig;t allerdings nicht aus, dass eine Myopathie auftreten kann. <br /> <b>Messungen der Kreatinkinase</b> <br /> Die Kreatinkinase (CK) sollte nicht nach k&ouml;rperlicher Anstrengung oder bei Vorliegen anderer plausibler Ursachen f&uuml;r eine CK-Erh&ouml;hung gemessen werden, da dies eine Interpretation der Werte erschwert. Wenn die Ausgangswerte der CK signifikant erh&ouml;ht sind (&gt; das 5-Fache des oberen Normwertes), sollte die Messung nach 5-7 Tagen wiederholt werden, um die Ergebnisse zu best&auml;tigen. <br /> <u>Vor Beginn der Therapie</u> <br /> Alle Patienten, die auf Simvastatin eingestellt werden oder deren Simvastatin-Dosis erh&ouml;ht wird, sollten &uuml;ber das Risiko einer Myopathie aufgekl&auml;rt und aufgefordert werden, unklare Muskelschmerzen, -empfindlichkeit oder -schw&auml;che umgehend mitzuteilen. <br /> Bei Patienten mit Risikofaktoren f&uuml;r eine Rhabdomyolyse ist Vorsicht angebracht. Um einen Ausgangswert als Referenz festzustellen, sollten in folgenden Situationen vor Behandlungsbeginn Bestimmungen der CK durchgef&uuml;hrt werden:<br /> &bull; &auml;ltere Patienten (&ge; 65 Jahre alt)<br /> &bull; weibliche Patienten<br /> &bull; Nierenfunktionsst&ouml;rung<br /> &bull; unbehandelte Hypothyreose<br /> &bull; heredit&auml;re Muskelerkrankungen in der eigenen oder in der Familienanamnese<br /> &bull; muskul&auml;re Symptomatik unter Behandlung mit Statinen oder Fibraten in der Anamnese<br /> &bull; Alkoholmissbrauch<br /> <br /> In solchen F&auml;llen sollte das Risiko einer Behandlung gegen einen m&ouml;glichen Nutzen abgewogen werden; eine klinische &Uuml;berwachung wird empfohlen. Bei Patienten, bei denen bereits eine Myopathie unter Behandlung mit einem Fibrat oder Statin aufgetreten ist, sollte die Behandlung mit einer anderen Substanz dieser Klasse nur mit Vorsicht begonnen werden. Wenn die CK-Ausgangswerte signifikant erh&ouml;ht sind (&gt; das 5-Fache des oberen Normwertes), sollte nicht mit der Therapie begonnen werden. <br /> <u>Im Behandlungsverlauf</u> <br /> Wenn w&auml;hrend der Behandlung mit einem Statin Muskelschmerzen, -schw&auml;-che oder -kr&auml;mpfe auftreten, sollten die CK-Werte bestimmt werden. Wenn die CK-Werte ohne k&ouml;rperliche Anstrengung signifikant erh&ouml;ht sind (&gt; das 5-Fache des oberen Normwertes), ist die Therapie abzusetzen. Sollte die muskul&auml;re Symptomatik schwerwiegend sein und Beeintr&auml;chtigungen verursachen, sollte ein Absetzen der Behandlung in Erw&auml;gung gezogen werden, auch wenn die CK-Werte weniger als auf das 5-Fache des oberen Normwertes erh&ouml;ht sind. Bei Verdachtsdiagnose einer Myopathie anderer Ursache sollte die Therapie abgesetzt werden. <br /> Es wurde in sehr seltenen F&auml;llen w&auml;hrend oder nach der Behandlung mit einigen Statinen &uuml;ber eine immunvermittelte nekrotisierende Myopathie (immune-mediated necrotizing myopathy; IMNM) berichtet. Die klinischen Charakteristika einer IMNM sind persistierende proximale Muskelschw&auml;che und erh&ouml;hte Serum-Kreatinkinase-Werte, die trotz Absetzen der Behandlung mit Statinen fortbestehen (siehe Abschnitt 4.8). <br /> Wenn die Symptome verschwinden und die CK-Werte auf den Ausgangswert zur&uuml;ckgehen, kann die erneute Behandlung mit diesem Statin oder mit einem alternativen Statin in der jeweils niedrigsten Dosis und bei engmaschiger &Uuml;berwachung in Erw&auml;gung gezogen werden. <br /> Eine erh&ouml;hte Myopathierate wurde bei Patienten beobachtet, die auf die 80-mg-Dosis eingestellt wurden (siehe Abschnitt 5.1). Es wird empfohlen, die CK-Werte regelm&auml;&szlig;ig zu &uuml;berwachen, was bei der Identifizierung von Myopathien ohne klinische Symptome von Nutzen sein k&ouml;nnte. Eine derartige &Uuml;berwachung kann jedoch eine Myopathie nicht mit Gewissheit verhindern. <br /> Die Therapie mit Simvastatin sollte einige Tage vor geplanten chirurgischen Eingriffen sowie bei Eintritt eines akuten ernsten Krankheitsbildes bzw. Notwendigkeit von chirurgischen Ma&szlig;nahmen vor&uuml;bergehend unterbrochen werden. <br /> <b>Ma&szlig;nahmen zur Verringerung des Myopathierisikos aufgrund von Arzneimittelwechselwirkungen (siehe auch Abschnitt 4.5)</b> <br /> Das Risiko einer Myopathie und Rhabdomyolyse ist signifikant erh&ouml;ht bei gleichzeitiger Anwendung von Simvastatin mit potenten Inhibitoren von CYP3A4 (wie z. B. Itraconazol, Ketoconazol, Posaconazol, Voriconazol, Erythromycin, Clarithromycin, Telithromycin, HIV-Protease-Inhibitoren [z. B. Nelfinavir], Boceprevir, Telaprevir, Nefazodon und Arzneimittel, die Cobicistat enthalten), sowie mit Gemfibrozil, Ciclosporin und Danazol. Die gleichzeitige Anwendung von Arzneimitteln mit diesen Wirkstoffen ist kontraindiziert (siehe Abschnitt 4.3). <br /> Das Risiko einer Myopathie und Rhabdomyolyse ist ebenfalls erh&ouml;ht bei gleichzeitiger Anwendung von Amiodaron, Amlodipin, Verapamil oder Diltiazem mit bestimmten Simvastatin-Dosen (siehe Abschnitte 4.2 und 4.5). Das Risiko einer Myopathie, einschlie&szlig;lich einer Rhabdomyolyse, kann durch die gleichzeitige Anwendung von Fusidins&auml;ure und Statinen erh&ouml;ht werden (siehe Abschnitt 4.5). Bei Patienten mit homozygoter famili&auml;rer Hypercholesterin&auml;mie (HoFH) kann dieses Risiko durch die gemeinsame Anwendung von Simvastatin mit Lomitapid erh&ouml;ht sein. <br /> Folglich ist hinsichtlich der CYP3A4-Inhibitoren eine gleichzeitige Anwendung von Simvastatin mit Itraconazol, Ketoconazol, Posaconazol, Voriconazol, HIV-Protease-Inhibitoren (z. B. Nelfinavir), Boceprevir, Telaprevir, Erythromycin, Clarithromycin, Telithromycin, Nefazodon und Arzneimitteln, die Cobicistat enthalten, kontraindiziert (siehe Abschnitte 4.3 und 4.5). Falls eine Behandlung mit potenten CY-P3A4-Inhibitoren (Substanzen, welche die AUC mindestens um ca. das 5-Fache erh&ouml;hen) unabdingbar ist, muss die Therapie mit Simvastatin w&auml;hrend der Behandlungsdauer unterbrochen werden (und die Anwendung eines alternativen Statins in Erw&auml;gung gezogen werden). Au&szlig;erdem ist Vorsicht angebracht, wenn Simvastatin mit bestimmten anderen weniger potenten CYP3A4-Inhibitoren kombiniert wird: Fluconazol, Verapamil, Diltiazem (siehe Abschnitte 4.2 und 4.5). Gleichzeitiger Genuss von Grapefruitsaft sollte w&auml;hrend der Behandlung mit Simvastatin vermieden werden. <br /> Die gleichzeitige Anwendung von Simvastatin mit Gemfibrozil ist kontraindiziert (siehe Abschnitt 4.3). Aufgrund eines erh&ouml;hten Risikos einer Myopathie und Rhabdomyolyse sollte eine Dosis von 10 mg Simvastatin pro Tag bei gleichzeitiger Behandlung mit anderen Fibraten mit Ausnahme von Fenofibrat nicht &uuml;berschritten werden (siehe Abschnitte 4.2 und 4.5). <br /> Bei der Verordnung von Fenofibrat mit Simvastatin ist Vorsicht angebracht, da jedes dieser Arzneimittel bei Monotherapie eine Myopathie verursachen kann. <br /> Simvastatin - 1 A Pharma darf nicht zusammen mit systemischer Fusidins&auml;ure oder innerhalb der ersten 7 Tage nach Abschluss der Behandlung mit Fusidins&auml;ure gegeben werden. Sofern die systemische Gabe von Fusidins&auml;ure bei Patienten als essenziell erachtet wird, ist die Statintherapie w&auml;hrend der gesamten Behandlungsdauer mit Fusidins&auml;ure abzusetzen. Es wurde &uuml;ber das Auftreten von Rhabdomyolyse (einschlie&szlig;lich einiger F&auml;lle mit Todesfolge) bei Patienten berichtet, welche diese Kombination erhielten (siehe Abschnitt 4.5). Die Patienten sollten dar&uuml;ber informiert werden, sich umgehend an einen Arzt zu wenden, wenn sie jedwede Anzeichen von Muskelschw&auml;che, -schmerzen oder -empfindlichkeit bemerken. <br /> Die Statintherapie kann 7 Tage nach der letzten Dosis Fusidins&auml;ure fortgesetzt werden. <br /> Sofern in Ausnahmef&auml;llen eine l&auml;ngere systemische Gabe von Fusidins&auml;ure notwendig ist, wie z. B. zur Behandlung von schweren Infektionen, sollte eine gemeinsame Gabe von Simvastatin - 1 A Pharma mit Fusidins&auml;ure nur im Einzelfall unter engmaschiger medizinischer &Uuml;berwachung in Betracht gezogen werden. <br /> Die Kombination von Simvastatin in h&ouml;heren Dosen als 20 mg pro Tag mit Amiodaron, Amlodipin, Verapamil oder Diltiazem sollte vermieden werden. Bei Patienten mit homozygoter famili&auml;rer Hypercholesterin&auml;mie (HoFH) ist die gemeinsame Anwendung von Simvastatin in Dosen von mehr als 40 mg mit Lomitapid zu vermeiden (siehe Abschnitte 4.2, 4.3 und 4.5). Patienten, die Simvastatin vor allem in hohen Dosierungen gleichzeitig mit anderen Arzneimitteln einnehmen, die bei therapeutischer Dosierung moderate CYP3A4-Inhibitoren sind, k&ouml;nnten ein erh&ouml;htes Myopathierisiko haben. Sofern Simvastatin gleichzeitig mit einem moderaten CYP3A4-Inhibitor (Substanzen, welche die AUC um ca. das 2-5-Fache erh&ouml;hen) gegeben wird, kann eine Dosisanpassung erforderlich sein. Bei bestimmten moderaten CYP3A4-Inhibitoren wie z. B. Diltiazem wird empfohlen eine Tagesh&ouml;chstdosis von 20 mg Simvastatin nicht zu &uuml;berschreiten (siehe Abschnitt 4.2). <br /> Simvastatin ist ein Substrat des Brustkrebs-Resistenz-Protein (BCRP &ndash; &bdquo;Breast Cancer Resistant Protein&ldquo;)-Efflux-Transporters. Die gemeinsame Anwendung mit Arzneimitteln aus der Klasse der BCRP-Inhibitoren (z. B. Elbasvir und Grazoprevir) kann zu erh&ouml;hten Plasmakonzentrationen von Simvastatin und somit zu einem erh&ouml;hten Myopathierisiko f&uuml;hren. Demzufolge sollte in Abh&auml;ngigkeit von der verordneten Dosis eine Dosisanpassung von Simvastatin erwogen werden. Die gemeinsame Anwendung von Elbasvir und Grazoprevir mit Simvastatin wurde nicht untersucht. <b>Jedoch sollte eine Tagesh&ouml;chstdosis von 20 mg Simvastatin bei Patienten, die gleichzeitig Arzneimittel mit den Wirkstoffen Elbasvir oder Grazoprevir erhalten, nicht &uuml;berschritten werden</b> (siehe Abschnitt 4.5). <br /> Die Kombination von HMG-CoA-Reduktase-Hemmern und Niacin (Nicotins&auml;ure) in lipidsenkenden Dosen (&ge; 1 g/Tag) wurde mit selten auftretenden F&auml;llen von Myopathie/Rhabdomyolyse in Verbindung gebracht; die alleinige Gabe jeder dieser Einzelsubstanzen kann bereits eine Myopathie ausl&ouml;sen. <br /> Im Rahmen einer klinischen Studie (mediane Nachbeobachtung 3,9 Jahre) bei Patienten mit hohem kardiovaskul&auml;ren Risiko und gut eingestellten LDL-C-Spiegeln, die Simvastatin 40 mg/Tag mit oder ohne Ezetimib 10 mg erhielten, wurde durch Zugabe von Niacin (Nicotins&auml;ure) in lipidsenkenden Dosen (&ge; 1 g/Tag) kein zus&auml;tzlicher Nutzen im Hinblick auf das kardiovaskul&auml;re Outcome beobachtet. &Auml;rzte, die eine Kombinationstherapie mit Simvastatin und Niacin (Nicotins&auml;ure) in lipidsenkenden Dosen (&ge; 1 g/Tag) in Erw&auml;gung ziehen, sollten demzufolge eine sorgf&auml;ltige Nutzen-Risiko-Analyse durchf&uuml;hren und die Patienten sorgf&auml;ltig auf jegliche Anzeichen und Symptome von Schmerzen, Empfindlichkeit oder Schw&auml;che der Muskulatur &uuml;berwachen, insbesondere in den ersten Monaten der Behandlung sowie bei Dosiserh&ouml;hung einer oder beider Einzelsubstanzen. <br /> Au&szlig;erdem lag bei dieser Studie die Inzidenz f&uuml;r Myopathien bei chinesischen Patienten unter Simvastatin 40 mg oder Ezetimib/Simvastatin 10 mg/40 mg bei ca. 0,24 % im Vergleich zu 1,24 % bei chinesischen Patienten unter Simvastatin 40 mg oder Ezetimib/Simvastatin 10 mg/40 mg, die zus&auml;tzlich mit Nicotins&auml;ure/Laropiprant 2.000 mg/40 mg mit ver&auml;nderter Wirkstofffreisetzung behandelt wurden. Obwohl im Rahmen dieser klinischen Studie ausschlie&szlig;lich chinesische Patienten als einzige asiatische Population untersucht und ausgewertet wurden, und die Inzidenz f&uuml;r Myopathien bei chinesischen im Vergleich zu nicht-chinesischen Patienten h&ouml;her ist, wird die gemeinsame Anwendung von Simvastatin mit lipidsenkenden Dosen (&ge; 1 g/Tag) von Niacin (Nicotins&auml;ure) generell bei asiatischen Patienten nicht empfohlen. <br /> Der Wirkstoff Acipimox ist strukturell mit Niacin verwandt. Obwohl Acipimox nicht untersucht wurde, k&ouml;nnten die Risiken f&uuml;r myotoxische Effekte &auml;hnlich wie bei Niacin sein. <br /> <b>Wirkungen auf die Leber</b> <br /> Bei einigen erwachsenen Patienten, die Simvastatin erhielten, sind in klinischen Studien persistierende Erh&ouml;hungen (auf mehr als den 3-fachen oberen Normwert) der Serum-Transaminasen aufgetreten. Nach Unterbrechung oder Absetzen der Therapie fielen die Transaminasenwerte bei diesen Patienten gew&ouml;hnlich wieder langsam auf die Ausgangswerte ab. <br /> Leberfunktionstests werden vor Beginn der Behandlung empfohlen und danach, wenn klinisch angezeigt. Bei Patienten, die auf eine Dosis von 80 mg eingestellt wurden, sollte eine zus&auml;tzliche Bestimmung vor der Dosiserh&ouml;hung, 3 Monate nach Dosiserh&ouml;hung auf 80 mg und danach regelm&auml;&szlig;ig (z. B. halbj&auml;hrlich) im ersten Behandlungsjahr erfolgen. Besondere Aufmerksamkeit sollte denjenigen Patienten gelten, die erh&ouml;hte Transaminasen entwickeln; bei diesen Patienten sollten die Bestimmungen umgehend wiederholt und dann h&auml;ufiger durchgef&uuml;hrt werden. Wenn die Transaminasenerh&ouml;hungen weiter fortschreiten, insbesondere wenn sie bis zum 3-Fachen der oberen Normgrenze ansteigen und persistieren, sollte Simvastatin abgesetzt werden. Es sollte beachtet werden, dass ALT aus dem Muskelgewebe freigesetzt werden kann. Daher kann ein Anstieg von ALT mit CK ein Hinweis auf eine Myopathie sein (siehe vorher unter <i>Myopathie/Rhabdomyolyse</i>). <br /> Nach Markteinf&uuml;hrung wurde bei Patienten, die Statine einschlie&szlig;lich Simvastatin einnahmen, selten &uuml;ber Leberversagen mit teils t&ouml;dlichem Ausgang berichtet. Sofern w&auml;hrend der Behandlung mit Simvastatin schwerwiegende Beeintr&auml;chtigungen der Leber mit entsprechender klinischer Symptomatik und/ oder Hyperbilirubin&auml;mie oder Ikterus auftreten, muss die Behandlung unverz&uuml;glich abgebrochen werden. Wenn keine andere Ursache feststellbar ist, darf die Behandlung mit Simvastatin nicht fortgesetzt werden. <br /> Das Arzneimittel sollte mit Vorsicht bei Patienten eingesetzt werden, die in erheblichem Ma&szlig;e Alkohol zu sich nehmen. <br /> Wie bei anderen Lipidsenkern wurden unter der Therapie mit Simvastatin m&auml;&szlig;ige Erh&ouml;hungen der Serum-Transaminasen beobachtet (auf weniger als den 3-fachen oberen Normwert). Diese Abweichungen traten bald nach Beginn der Therapie mit Simvastatin auf, waren h&auml;ufig vor&uuml;bergehend und nicht von irgendwelchen Symptomen begleitet; ein Abbruch der Therapie war nicht erforderlich.<br /><b>Diabetes mellitus</b><br />Es gibt Hinweise darauf, dass Statine als Substanzklasse den Blutzuckerspiegel erh&ouml;hen und bei manchen Patienten, die ein hohes Risiko f&uuml;r die Entwicklung eines zuk&uuml;nftigen Diabetes mellitus haben, eine Hyperglyk&auml;mie hervorrufen k&ouml;nnen, die eine ad&auml;quate Diabetesbehandlung erfordert.<br />Dieses Risiko wird jedoch von der Reduktion des vaskul&auml;ren Risikos durch Statine aufgewogen und sollte daher nicht zu einem Abbruch der Statinbehandlung f&uuml;hren. In &Uuml;bereinstimmung mit nationalen Richtlinien sollten Risikopatienten (N&uuml;chternblutzucker von 5,6 bis 6,9 mmol/l, BMI &gt; 30 kg/m<sup>2</sup>, erh&ouml;hte Triglyzeridwerte, Hypertonie) sowohl klinisch als auch in Bezug auf die relevanten Laborwerte &uuml;berwacht werden <br /><b>Interstitielle Lungenkrankheit</b><br />Bei einigen Statinen, einschlie&szlig;lich Simvastatin, wurde, besonders bei Langzeittherapie, in Ausnahmef&auml;llen eine interstitielle Lungenkrankheit berichtet (siehe Abschnitt 4.8). Die auftretenden Beschwerden k&ouml;nnen dabei Dyspnoe, unproduktiven Husten und allgemeine Gesundheitsst&ouml;rungen (Ersch&ouml;pfung, Gewichtsverlust und Fieber) einschlie&szlig;en. Wenn vermutet wird, dass ein Patient eine interstitielle Lungenkrankheit entwickelt hat, sollte die Statintherapie abgebrochen werden.<br /><b>Kinder und Jugendliche</b><br />Sicherheit und Wirksamkeit von Simvastatin bei Patienten mit heterozygoter famili&auml;rer Hypercholesterin&auml;mie im Alter zwischen 10 und 17 Jahren wurden in einer kontrollierten klinischen Studie bei heranwachsenden Jungen, Tanner-Stadium II und dar&uuml;ber, sowie bei M&auml;dchen, mindestens 1 Jahr nach der Menarche, untersucht. Die mit Simvastatin behandelten Patienten wiesen ein Nebenwirkungsprofi l auf, das im Allgemeinen dem Profil der mit Placebo behandelten Patienten entsprach. Dosierungen &uuml;ber 40 mg wurden an dieser Population nicht untersucht. In dieser limitierten kontrollierten Studie gab es keine Anzeichen f&uuml;r Auswirkungen auf das Gr&ouml;&szlig;enwachstum oder die sexuelle Entwicklung bei heranwachsenden Jungen und M&auml;dchen, ebenso wenig wurden Ver&auml;nderungen an der Dauer des Menstruationszyklus bei M&auml;dchen beobachtet (siehe Abschnitte 4.2, 4.8 und 5.1). Heranwachsende M&auml;dchen sollten f&uuml;r die Dauer der Therapie mit Simvastatin auf geeignete Verh&uuml;tungsmethoden hingewiesen werden (siehe Abschnitte 4.3 und 4.6). Wirksamkeit und Sicherheit bei Patienten unter 18 Jahren wurden nicht &uuml;ber eine Behandlungsdauer &uuml;ber 48 Wochen untersucht. Langzeitauswirkungen auf die physische, intellektuelle und sexuelle Entwicklung sind derzeit nicht bekannt. Simvastatin wurde weder bei Patienten unter 10 Jahren noch bei pr&auml;pubert&auml;ren Kindern und M&auml;dchen vor der Menarche untersucht.<br /><b>Sonstiger Bestandteil</b> <br /> Simvastatin - 1 A Pharma enth&auml;lt Lactose. Patienten mit der seltenen heredit&auml;ren Galactose-Intoleranz, v&ouml;lligem Lactase-Mangel oder Glucose-Galactose-Malabsorption sollten dieses Arzneimittel nicht anwenden. <br /> <br /></p> "
+          },
+          {
+            "title": "4.5 Wechselwirkungen mit anderen Arzneimitteln und sonstige Wechselwirkungen",
+            "content": "<p><br /> Mehrere Mechanismen k&ouml;nnen zu potenziellen Wechselwirkungen mit HMG-CoA-Reduktase-Inhibitoren beitragen. Arzneimittel oder pflanzliche Pr&auml;parate, die bestimmte Enzyme (z. B. CYP 3A4) und/oder Transporterproteine (z. B. OATP1B) hemmen, k&ouml;nnen die Plasmaspiegel von Simvastatin und Simvastatins&auml;ure erh&ouml;hen und dadurch zu einem erh&ouml;hten Myopathie-/Rhabdomyolyserisiko f&uuml;hren. <br /><b>Weitere Informationen hinsichtlich potenzieller Wechselwirkungen mit Simvastatin und/oder m&ouml;gliche Auswirkungen auf Enzyme oder Transporterproteine sowie m&ouml;glicher Dosisoder Therapieanpassungen sind den jeweiligen Fachinformationen von allen gemeinsam angewendeten Arzneimitteln zu entnehmen.</b><br /> Wechselwirkungsstudien wurden nur bei Erwachsenen durchgef&uuml;hrt. <br /><b>Pharmakodynamische Wechselwirkungen</b><br /><u>Wechselwirkungen mit lipidsenkenden Arzneimitteln, die bei Monotherapie eine Myopathie verursachen k&ouml;nnen</u><br /> Das Risiko einer Myopathie einschlie&szlig;lich Rhabdomyolyse ist w&auml;hrend gemeinsamer Gabe mit Fibraten erh&ouml;ht. Mit Gemfibrozil besteht au&szlig;erdem eine pharmakokinetische Interaktion, die zu erh&ouml;hten Plasmakonzentrationen von Simvastatin f&uuml;hrt (siehe unten &bdquo;<i>Pharmakokinetische Wechselwirkungen&ldquo;</i> sowie Abschnitte 4.3 und 4.4). Bei gleichzeitiger Gabe von Simvastatin und Fenofibrat gibt es keine Anzeichen daf&uuml;r, dass das Myopathierisiko &uuml;ber die Summe der Risiken der jeweiligen Einzelsubstanzen hinausgeht. F&uuml;r andere Fibrate stehen keine ad&auml;quaten Daten zur Pharmakovigilanz und Pharmakokinetik zur Verf&uuml;gung. Die Kombination von Simvastatin und Niacin (Nicotins&auml;ure) in lipidsenkenden Dosen (&ge; 1 g/Tag) wurde mit selten auftretenden F&auml;llen von Myopathie/Rhabdomyolyse in Verbindung gebracht (siehe Abschnitt 4.4). <br /><b>Pharmakokinetische Wechselwirkungen</b><br /> Verordnungsempfehlungen zu interagierenden Arzneimitteln sind in der <b>Tabelle </b>zusammengefasst (weitere Einzelheiten sind im Text enthalten; siehe auch Abschnitte 4.2, 4.3 und 4.4). <br /><br /><table border=\"1\" rules=\"all\"><tr><td><b>Interagierende Stoffe</b></td><td><b>Verordnungsempfehlungen</b></td></tr><tr><td>Potente CYP3A4-Inhibitoren, wie z. B.: <br /> Itraconazol <br /> Ketoconazol <br /> Posaconazol <br /> Voriconazol <br /> Erythromycin <br /> Clarithromycin <br /> Telithromycin <br /> HIV-Protease-Inhibitoren (z. B. Nelfinavir) <br /> Boceprevir <br /> Telaprevir <br /> Nefazodon <br /> Cobicistat <br /> Ciclosporin <br /> Danazol <br /> Gemfibrozil</td><td>Kontraindiziert mit Simvastatin</td></tr><tr><td>Andere Fibrate (au&szlig;er Fenofibrat)</td><td>10 mg Simvastatin pro Tag nicht &uuml;berschreiten</td></tr><tr><td>Fusidins&auml;ure</td><td>Anwendung mit Simvastatin nicht empfohlen</td></tr><tr><td>Niacin (Nicotins&auml;ure) (&ge; 1 g/Tag)</td><td>Anwendung mit Simvastatin bei asiatischen Patienten nicht empfohlen</td></tr><tr><td>Amiodaron <br /> Amlodipin <br /> Verapamil <br /> Diltiazem <br /> Elbasvir <br /> Grazoprevir</td><td>20 mg Simvastatin pro Tag nicht &uuml;berschreiten</td></tr><tr><td>Lomitapid</td><td>Bei Patienten mit homozygoter famili&auml;rer Hypercholesterin&auml;mie (HoFH) eine Dosis <br /> von 40 mg Simvastatin pro Tag nicht &uuml;berschreiten</td></tr><tr><td>Grapefruitsaft</td><td>W&auml;hrend der Einnahme von Simvastatin Grapefruitsaft vermeiden</td></tr></table> <br /><br /><b>Wirkungen anderer Arzneimittel auf Simvastatin</b><br /><u>Wechselwirkungen mit CYP3A4-Inhibitoren</u><br /> Simvastatin ist ein Substrat von Cytochrom P450 3A4. Potente Inhibitoren von Cytochrom P450 3A4 erh&ouml;hen das Risiko f&uuml;r eine Myopathie und Rhabdomyolyse durch die Erh&ouml;hung der Konzentration der inhibitorischen Aktivit&auml;t der HMG-CoA-Reduktase im Plasma w&auml;hrend der Therapie mit Simvastatin. Zu diesen Inhibitoren z&auml;hlen Itraconazol, Ketoconazol, Posaconazol, Voriconazol, Erythromycin, Clarithromycin, Telithromycin, HIV-Protease-Inhibitoren (z. B. Nelfinavir), Boceprevir, Telaprevir, Nefazodon und Arzneimittel, die Cobicistat enthalten. Die gleichzeitige Gabe von Itraconazol f&uuml;hrte zu einer mehr als 10-fachen Erh&ouml;hung der Exposition mit Simvastatins&auml;ure (aktiver Betahydroxys&auml;ure-Metabolit). Telithromycin f&uuml;hrte zu einer 11-fachen Erh&ouml;hung der Exposition mit der Simvastatins&auml;ure. <br /> Eine gleichzeitige Anwendung mit Itraconazol, Ketoconazol, Posaconazol, Voriconazol, HIV-Protease-Inhibitoren (z. B. Nelfinavir), Boceprevir, Telaprevir, Erythromycin, Clarithromycin, Telithromycin, Nefazodon und Arzneimitteln, die Cobicistat enthalten, sowie Gemfibrozil, Ciclosporin und Danazol ist kontraindiziert (siehe Abschnitt 4.3). <br /> Falls eine Behandlung mit potenten CYP-3A4-Inhibitoren (Substanzen, welche die AUC mindestens um ca. das 5-Fache erh&ouml;hen) unabdingbar ist, muss die Therapie mit Simvastatin w&auml;hrend der Behandlungsdauer unterbrochen werden (und die Anwendung eines alternativen Statins in Erw&auml;gung gezogen werden). Vorsicht ist angebracht, wenn Simvastatin mit bestimmten anderen weniger potenten CYP-3A4-Inhibitoren kombiniert wird: Fluconazol, Verapamil oder Diltiazem (siehe Abschnitte 4.2 und 4.4). <br /><u>Fluconazol</u><br /> Bei der kombinierten Anwendung von Simvastatin und Fluconazol wurden selten F&auml;lle von Rhabdomyolyse berichtet (siehe Abschnitt 4.4). <br /><u>Ciclosporin</u><br /> Das Risiko f&uuml;r eine Myopathie/Rhabdomyolyse wird durch die gleichzeitige Anwendung von Ciclosporin mit Simvastatin erh&ouml;ht. Daher ist die gleichzeitige Gabe von Ciclosporin kontraindiziert (siehe Abschnitte 4.3 und 4.4). Obwohl der Mechanismus noch nicht vollst&auml;ndig gekl&auml;rt ist, wurde gezeigt, dass Ciclosporin die AUC von HMG-CoA Reduktase-Inhibitoren vergr&ouml;&szlig;ert. Die Vergr&ouml;&szlig;erung der AUC der Simvastatins&auml;ure ist vermutlich teilweise auf eine Hemmung von CYP3A4 und/oder OATP1B1 zur&uuml;ckzuf&uuml;hren. <br /><u>Danazol</u><br /> Das Risiko f&uuml;r eine Myopathie/Rhabdomyolyse ist durch die gleichzeitige Anwendung von Danazol mit Simvastatin erh&ouml;ht. Daher ist die gleichzeitige Gabe von Danazol kontraindiziert (siehe Abschnitte 4.3 und 4.4). <br /><u>Gemfibrozil</u><br /> Gemfibrozil erh&ouml;ht die AUC der Simvastatins&auml;ure um das 1,9-Fache, m&ouml;glicherweise aufgrund einer Hemmung des Glukuronidierungsweges und/oder von OATP1B1 (siehe Abschnitte 4.3 und 4.4). Die gleichzeitige Gabe von Gemfibrozil ist kontraindiziert. <br /><u>Fusidins&auml;ure</u><br /> Das Risiko einer Myopathie einschlie&szlig;lich Rhabdomyolyse kann bei gleichzeitiger systemischer Gabe von Fusidins&auml;ure und Statinen erh&ouml;ht sein. Der dieser Wechselwirkung zugrunde liegende Mechanismus (ob pharmakodynamisch oder pharmakokinetisch oder beides) ist derzeit noch nicht gekl&auml;rt. Es wurde &uuml;ber das Auftreten von Rhabdomyolyse (einschlie&szlig;lich einiger F&auml;lle mit Todesfolge) bei Patienten berichtet, welche diese Kombination erhielten.<br /> Die gleichzeitige Gabe dieser Kombination kann zu erh&ouml;hten Plasmaspiegeln beider Substanzen f&uuml;hren. Sofern eine systemische Behandlung mit Fusidins&auml;ure notwendig ist, ist Simvastatin w&auml;hrend der gesamten Behandlungsdauer mit Fusidins&auml;ure abzusetzen. <b>Siehe auch Abschnitt 4.4.</b><br /><u>Amiodaron</u><br /> Das Risiko einer Myopathie/Rhabdomyolyse ist bei gleichzeitiger Gabe von Amiodaron und Simvastatin erh&ouml;ht (siehe Abschnitt 4.4). In einer klinischen Studie wurde bei 6 % der Patienten, die 80 mg Simvastatin und Amiodaron erhielten, &uuml;ber eine Myopathie berichtet. Die Dosis von Simvastatin sollte daher 20 mg pro Tag bei Kombination mit Amiodaron nicht &uuml;berschreiten. <br /><u>Kalziumkanalblocker</u><br /> &bull; Verapamil Das Risiko einer Myopathie und Rhabdomyolyse ist bei gleichzeitiger Anwendung von Verapamil und 40 mg oder 80 mg Simvastatin erh&ouml;ht (siehe Abschnitt 4.4). In einer pharmakokinetischen Studie f&uuml;hrte eine gleichzeitige Anwendung mit Verapamil zu einer 2,3-fachen Erh&ouml;hung der Exposition mit der Simvastatins&auml;ure, was vermutlich teilweise auf eine CYP-3A4-Hemmung zur&uuml;ckzuf&uuml;hren ist. Die Dosis von Simvastatin sollte daher 20 mg pro Tag bei Kombination mit Verapamil nicht &uuml;berschreiten.<br /> &bull; Diltiazem Das Risiko einer Myopathie und Rhabdomyolyse ist bei gleichzeitiger Anwendung von Diltiazem und 80 mg Simvastatin erh&ouml;ht (siehe Abschnitt 4.4). In einer pharmakokinetischen Studie f&uuml;hrte die gleichzeitige Gabe von Diltiazem zu einer 2,7-fachen Erh&ouml;hung der Exposition mit Simvastatins&auml;ure, was vermutlich teilweise auf eine CYP3A4-Hemmung zur&uuml;ckzuf&uuml;hren ist. Die Dosis von Simvastatin sollte daher 20 mg pro Tag bei Kombination mit Diltiazem nicht &uuml;berschreiten.<br /> &bull; <i>Amlodipin</i><br /> F&uuml;r Patienten unter Amlodipin, die gleichzeitig Simvastatin erhalten, besteht ein erh&ouml;htes Myopathierisiko. In einer pharmakokinetischen Studie f&uuml;hrte eine gleichzeitige Anwendung mit Amlodipin zu einer ca. 1,6-fachen Erh&ouml;hung der Exposition mit Simvastatins&auml;ure. Die Dosis von Simvastatin sollte daher 20 mg pro Tag bei Kombination mit Amlodipin nicht &uuml;berschreiten. <br /><u>Lomitapid</u><br /> Das Risiko f&uuml;r Myopathie und Rhabdomyolyse kann durch die gemeinsame Anwendung von Lomitapid und Simvastatin erh&ouml;ht sein (siehe Abschnitte 4.3 und 4.4). <br /> Deshalb darf bei Patienten mit homozygoter famili&auml;rer Hypercholesterin&auml;mie (HoFH) unter Lomitapid eine Dosis von 40 mg Simvastatin nicht &uuml;berschritten werden. <br /><u>Moderate CYP3A4-Inhibitoren</u><br /> Patienten, die Simvastatin vor allem in hohen Dosierungen gleichzeitig mit anderen Arzneimitteln einnehmen, die bei therapeutischer Dosierung moderate CYP3A4-Inhibitoren sind, k&ouml;nnten ein erh&ouml;htes Myopathierisiko haben (siehe Abschnitt 4.4). <br /><u>Inhibitoren des OATP1B1-Transporterproteins</u><br /> Simvastatins&auml;ure ist ein Substrat f&uuml;r das OATP1B1-Transporterprotein. Die gemeinsame Anwendung von Arzneimitteln, die Inhibitoren des OATP1B1-Transporterproteins sind, kann zu erh&ouml;hten Plasmaspiegeln von Simvastatins&auml;ure f&uuml;hren, und damit zu einer Erh&ouml;hung des Myopathierisikos (siehe Abschnitte 4.3 und 4.4). <br /><u>BCRP (Brustkrebs-Resistenz Protein -&bdquo;Breast Cancer Resistent Protein&ldquo;)-Inhibitoren</u><br /> Die gemeinsame Anwendung mit Arzneimitteln aus der Klasse der BCRP-Inhibitoren, einschlie&szlig;lich Arzneimittel, die Elbasvir oder Grazoprevir enthalten, kann zu erh&ouml;hten Plasmakonzentrationen von Simvastatin und somit zu einem erh&ouml;hten Myopathierisiko f&uuml;hren (siehe Abschnitte 4.2 und 4.4). <br /><u>Niacin (Nicotins&auml;ure)</u><br /> Die Kombination von Simvastatin und Niacin (Nicotins&auml;ure) in lipidsenkenden Dosen (&ge; 1 g/Tag) wurde mit selten auftretenden F&auml;llen von Myopathie/Rhabdomyolyse in Verbindung gebracht. In einer pharmakokinetischen Studie f&uuml;hrte die gemeinsame Anwendung einer Einzeldosis von 2 g Nicotins&auml;ure als Retardpr&auml;parat mit 20 mg Simvastatin zu einer m&auml;&szlig;igen Erh&ouml;hung der AUC von Simvastatin und der Simvastatins&auml;ure sowie der C<sub>max</sub> der Simvastatins&auml;ure-Plasmakonzentration. <br /><u>Grapefruitsaft</u><br /> Grapefruitsaft hemmt Cytochrom P450 3A4. Genuss gro&szlig;er Mengen von Grapefruitsaft (&uuml;ber 1 Liter pro Tag) bei gleichzeitiger Anwendung von Simvastatin f&uuml;hrte zu einer 7-fachen Erh&ouml;hung der Exposition mit Simvastatins&auml;ure. Der Genuss von 240 ml Grapefruitsaft am Morgen und die Einnahme von Simvastatin am Abend f&uuml;hrten ebenso zu einer 1,9-fachen Erh&ouml;hung. Der Genuss von Grapefruitsaft sollte deshalb w&auml;hrend der Therapie mit Simvastatin vermieden werden. <br /><u>Colchicin</u><br /> Bei Patienten mit Nierenfunktionsst&ouml;rungen wurde &uuml;ber Myopathie und Rhabdomyolyse unter gleichzeitiger Anwendung von Colchicin und Simvastatin berichtet. Eine engmaschige klinische &Uuml;berwachung betroffener Patienten, die diese Kombination einnehmen, wird angeraten. <br /><u>Rifampicin</u><br /> Da Rifampicin ein starker CYP3A4-Induktor ist, kann es bei Patienten unter Dauertherapie mit Rifampicin (z. B. bei Behandlung einer Tuberkulose) zu einer Verringerung der Wirksamkeit von Simvastatin kommen. In einer Pharmakokinetik-Studie an gesunden Freiwilligen war bei gleichzeitiger Einnahme von Rifampicin die Fl&auml;che unter der Plasma-Konzentrations-Kurve (AUC) f&uuml;r Simvastatins&auml;ure um 93 % reduziert. <br /><b>Wirkungen von Simvastatin auf die Pharmakokinetik anderer Arzneimittel</b><br /> Simvastatin &uuml;bt keine inhibitorische Wirkung auf Cytochrom P450 3A4 aus. Daher wird auch keine Wirkung von Simvastatin auf die Plasmakonzentrationen von &uuml;ber CYP3A4 metabolisierten Substanzen erwartet. <br /><u>Orale Antikoagulanzien</u><br /> In 2 klinischen Studien, von denen die eine mit gesunden Probanden, die andere mit Patienten mit Hypercholesterin&auml;mie durchgef&uuml;hrt wurde, f&uuml;hrte Simvastatin 20-40 mg/Tag zu einer moderaten Wirkungsverst&auml;rkung von Antikoagulanzien vom Typ der Cumarin-Derivate: Die Prothrombinzeit, angegeben in der International Normalized Ratio (INR), erh&ouml;hte sich bei den Probanden von 1,7 auf 1,8 und bei den Patienten von 2,6 auf 3,4. Es wurden sehr seltene F&auml;lle von Erh&ouml;hungen der INR berichtet. Daher sollte bei Patienten, die Cumarin-Derivate einnehmen, die Prothrombinzeit zu Beginn einer Therapie mit Simvastatin und danach in h&auml;ufigen Abst&auml;nden bestimmt werden, um signifikante Ver&auml;nderungen der Prothrombinzeit zu verhindern. Nach Stabilisierung der Werte wird die Bestimmung der Prothrombinzeit anschlie&szlig;end in den Zeitabst&auml;nden empfohlen, wie sie f&uuml;r Patienten unter Therapie mit Cumarin-Derivaten &uuml;blich sind. Wird die Dosis von Simvastatin ge&auml;ndert oder Simvastatin abgesetzt, sollte dieselbe Vorgehensweise eingehalten werden. Die Therapie mit Simvastatin wurde nicht mit Blutungen oder Ver&auml;nderungen der Prothrombinzeit bei Patienten, die keine Antikoagulanzien einnahmen, in Zusammenhang gebracht. <br /><br /></p> "
+          },
+          {
+            "title": "4.6 Fertilit&auml;t, Schwangerschaft und Stillzeit",
+            "content": "<p><br /> <b>Schwangerschaft</b><br />Simvastatin ist w&auml;hrend der Schwangerschaft kontraindiziert (siehe Abschnitt 4.3). <br /> Die Sicherheit bei schwangeren Frauen wurde nicht untersucht. Mit Simvastatin wurden keine kontrollierten klinischen Studien mit schwangeren Frauen durchgef&uuml;hrt. Es liegen seltene Berichte &uuml;ber kongenitale Anomalien nach intrauteriner Exposition mit HMG-CoA-Reduktase-Inhibitoren vor. Eine Analyse bisheriger Erfahrungen mit ca. 200 Frauen, die versehentlich Simvastatin oder einen strukturverwandten HMG-CoA-Reduktase-Inhibitor im ersten Trimenon der Schwangerschaft eingenommen hatten, zeigte kein erh&ouml;htes Risiko f&uuml;r kongenitale Anomalien gegen&uuml;ber der Gesamtpopulation. Diese Fallzahl war statistisch ausreichend, um eine Risikoerh&ouml;hung um das 2,5-Fache oder mehr im Vergleich zu der f&uuml;r eine Gesamtpopulation erwarteten H&auml;ufigkeit ausschlie&szlig;en zu k&ouml;nnen. <br /> Obwohl es keine Anzeichen daf&uuml;r gibt, dass die Inzidenz kongenitaler Anomalien bei Kindern, deren M&uuml;tter Simvastatin oder einen anderen eng verwandten HMG-CoA-Reduktase-Inhibitor eingenommen hatten, von der in der Gesamtpopulation beobachteten abweicht, kann eine Behandlung der Mutter mit Simvastatin beim Fetus die Spiegel von Mevalonat senken, welches als Vorstufe der Cholesterinsynthese eine Rolle spielt. Da Atherosklerose eine chronische Erkrankung ist, sollte eine Unterbrechung lipidsenkender Therapien w&auml;hrend einer Schwangerschaft im Allgemeinen kaum Auswirkungen auf das mit der prim&auml;ren Hypercholesterin&auml;mie verbundene Langzeitrisiko haben. Simvastatin darf daher nicht von Frauen angewendet werden, die schwanger sind, eine Schwangerschaft planen oder vermuten schwanger zu sein. Die Behandlung mit Simvastatin muss unterbrochen werden, bis die Schwangerschaft beendet oder definitiv ausgeschlossen ist (siehe Abschnitte 4.3 und 5.3). <br /> <b>Stillzeit</b> <br /> Es ist nicht bekannt, ob Simvastatin oder seine Metaboliten in die menschliche Muttermilch &uuml;bergehen. Da viele Arzneimittel in die Muttermilch &uuml;bergehen und aufgrund des Potenzials f&uuml;r schwerwiegende unerw&uuml;nschte Wirkungen bei S&auml;uglingen darf Simvastatin von stillenden Frauen nicht eingenommen werden (siehe Abschnitt 4.3). <br /> <b>Fertilit&auml;t</b> <br /> Es liegen keine Daten aus klinischen Studien zu den Auswirkungen von Simvastatin auf die menschliche Fertilit&auml;t vor. Simvastatin zeigte in Studien keine Auswirkungen auf die Fertilit&auml;t von Ratten (siehe Abschnitt 5.3). <br /> <br /></p> "
+          },
+          {
+            "title": "4.7 Auswirkungen auf die Verkehrst&uuml;chtigkeit und die F&auml;higkeit zum Bedienen von Maschinen",
+            "content": "<p><br /> Simvastatin hat keinen oder einen zu vernachl&auml;ssigbaren Einfluss auf die Verkehrst&uuml;chtigkeit und die F&auml;higkeit zum Bedienen von Maschinen. Bei der Teilnahme am Stra&szlig;enverkehr oder dem Bedienen von Maschinen ist jedoch zu ber&uuml;cksichtigen, dass nach Markteinf&uuml;hrung selten &uuml;ber Schwindel berichtet wurde. <br /> <br /></p> "
+          },
+          {
+            "title": "4.8 Nebenwirkungen",
+            "content": "<p><br /> Die H&auml;ufigkeiten der nachfolgend aufgef&uuml;hrten unerw&uuml;nschten Ereignisse, die im Rahmen klinischer Studien und/oder nach der Markteinf&uuml;hrung berichtet wurden, wurden anhand einer Bewertung der Inzidenzraten in gro&szlig; angelegten, placebokontrollierten, klinischen Langzeitstudien wie HPS und 4S mit 20.536 bzw. 4.444 Patienten zugeordnet (siehe Abschnitt 5.1). In HPS wurden nur Myalgie und Anstiege der Serum-Transaminasen und des CK-Wertes sowie schwerwiegende Nebenwirkungen dokumentiert. In 4S wurden alle unten aufgelisteten Ereignisse berichtet. Inzidenzraten, die f&uuml;r Simvastatin in diesen Studien denen von Placebo entsprachen oder darunter lagen, und &auml;hnliche Spontanberichte &uuml;ber Ereignisse mit m&ouml;glichem Kausalzusammenhang zur Therapie wurden unter &bdquo;selten&ldquo; eingeordnet. <br /> In HPS (siehe Abschnitt 5.1) erhielten 20.536 Patienten entweder 40 mg Simvastatin/Tag (n = 10.269) oder Placebo (n = 10.267). Das Sicherheitsprofil der mit 40 mg Simvastatin behandelten Patienten war &uuml;ber die mittlere Studiendauer von 5 Jahren mit dem der Placebo-Gruppe vergleichbar. Die Abbruchraten aufgrund von Nebenwirkungen waren in beiden Gruppen vergleichbar (Simvastatin-Gruppe 4,8 % vs. Placebo-Gruppe 5,1 %). Myopathie trat bei weniger als 0,1 % der mit 40 mg Simvastatin behandelten Patienten auf. Die H&auml;ufigkeit der Transaminasenerh&ouml;hungen (auf mehr als den 3-fachen oberen Normwert; best&auml;tigt durch eine Wiederholung des Tests) betrug 0,21 % (n = 21) bei den mit 40 mg Simvastatin behandelten Patienten und 0,09 % (n = 9) bei den mit Placebo behandelten Patienten. <br /> Bei den H&auml;ufigkeitsangaben zu Nebenwirkungen werden folgende Kategorien zugrunde gelegt:<br /> Sehr h&auml;ufig (&ge; 1/10)<br /> H&auml;ufig (&ge; 1/100 bis &lt; 1/10) <br />Gelegentlich (&ge; 1/1.000 bis &lt; 1/100) <br />Selten (&ge; 1/10.000 bis &lt; 1/1.000)<br /> Sehr selten (&lt; 1/10.000)<br /> Nicht bekannt (H&auml;ufigkeit auf Grundlage der verf&uuml;gbaren Daten nicht absch&auml;tzbar) <br /> <b>siehe Tabelle <br /><br /><img src=\"data:image/png;base64,\" /><br /></b> <br /> Die folgenden Nebenwirkungen wurden bei einigen Statinen berichtet:<br /> &bull; Schlafst&ouml;rungen einschlie&szlig;lich Albtr&auml;ume<br /> &bull; St&ouml;rung der Sexualfunktion<br /> &bull; Diabetes mellitus: Die H&auml;ufigkeit ist abh&auml;ngig von dem Vorhandensein oder dem Fehlen von Risikofaktoren (N&uuml;chternblutzucker &ge; 5,6 mmol/l, BMI &gt; 30 kg/m2, erh&ouml;hte Triglyzeridwerte, bestehende Hypertonie).<br /> <br /> <b>Kinder und Jugendliche</b> <br /> In einer 48-w&ouml;chigen Studie bei Kindern und Jugendlichen (Jungen: Tanner-Stadium II und dar&uuml;ber, M&auml;dchen: mindestens 1 Jahr nach der Menarche) im Alter zwischen 10 und 17 Jahren mit heterozygoter famili&auml;rer Hypercholesterin&auml;mie (n = 175) war das Sicherheits- und Vertr&auml;glichkeitsprofil der mit Simvastatin behandelten Gruppe im Allgemeinen dem Profil der Placebo-Gruppe &auml;hnlich. Langzeitauswirkungen auf die physische, intellektuelle und sexuelle Entwicklung sind nicht bekannt. Nach einj&auml;hriger Behandlungsdauer liegen derzeit noch keine ausreichenden Daten vor (siehe Abschnitte 4.2, 4.4 und 5.1). <br /> <b>Meldung des Verdachts auf Nebenwirkungen</b> <br /> Die Meldung des Verdachts auf Nebenwirkungen nach der Zulassung ist von gro&szlig;er Wichtigkeit. Sie erm&ouml;glicht eine kontinuierliche &Uuml;berwachung des Nutzen-Risiko-Verh&auml;ltnisses des Arzneimittels. Angeh&ouml;rige von Gesundheitsberufen sind aufgefordert, jeden Verdachtsfall einer Nebenwirkung dem <br /> Bundesinstitut f&uuml;r Arzneimittel und Medizinprodukte<br /> Abt. Pharmakovigilanz<br /> Kurt-Georg-Kiesinger-Allee 3<br /> D-53175 Bonn<br /> Website: www.bfarm.de <br /> anzuzeigen. <br /> <br /></p> "
+          },
+          {
+            "title": "4.9 &Uuml;berdosierung",
+            "content": "<p><br /> Einige F&auml;lle von &Uuml;berdosierung wurden bisher berichtet. Die h&ouml;chste eingenommene Dosis betrug 3,6 g. Bei keinem der Patienten kam es zu Folgeerscheinungen. Spezifische Erfahrungen zur Behandlung einer &Uuml;berdosierung liegen nicht vor. In diesem Fall sollten symptomatische und unterst&uuml;tzende Ma&szlig;nahmen ergriffen werden. <br /> <br /></p> "
+          },
+          {
+            "title": "5. PHARMAKOLOGISCHE EIGENSCHAFTEN",
+            "content": "<p><br /><br /></p> "
+          },
+          {
+            "title": "5.1 Pharmakodynamische Eigenschaften",
+            "content": "<p><br /> Pharmakotherapeutische Gruppe: HMG-CoA-Reduktase-Hemmer <br /> ATC-Code: C10A A01 <br /> <b>Wirkungsmechanismus</b> <br /> Nach oraler Aufnahme wird Simvastatin, ein inaktives Lacton, in der Leber zur entsprechenden Betahydroxys&auml;ure hydrolysiert. Diese ist ein potenter Inhibitor der HMG-CoA-Reduktase (3-Hydroxy-3-methylglutaryl-CoA-Reduktase). Hierbei handelt es sich um ein Enzym, das die Umwandlung von HMG-CoA zu Mevalonat, einen fr&uuml;hen und geschwindigkeitsbestimmenden Schritt in der Biosynthese des Cholesterins katalysiert. <br /> Sowohl bei normalen als auch bei erh&ouml;hten Ausgangswerten f&uuml;hrt Simvastatin zu einer Senkung des LDL-Cholesterinspiegels. LDL entsteht aus very-low-density lipoprotein (VLDL) und wird &uuml;berwiegend &uuml;ber spezifische LDL-Rezeptoren abgebaut. Der LDL-senkende Wirkmechanismus von Simvastatin beruht wahrscheinlich sowohl auf der Abnahme der Konzentration von VLDL-Cholesterin als auch auf einer Induktion von LDL-Rezeptoren, also sowohl auf einer verminderten Produktion als auch auf einem verst&auml;rkten Abbau von LDL-Cholesterin. Die Konzentration von Apolipoprotein B nimmt bei der Behandlung mit Simvastatin ebenfalls deutlich ab. Simvastatin bewirkt zudem einen m&auml;&szlig;igen Anstieg des HDL-Cholesterins sowie eine Abnahme der Triglyzeride im Plasma. Insgesamt resultiert aus diesen Ver&auml;nderungen eine Abnahme des Verh&auml;ltnisses von Gesamt- zu HDL-Cholesterin und LDL- zu HDL-Cholesterin. <br /> <b>Klinische Wirksamkeit und Sicherheit</b> <br /> <u>Hohes Risiko f&uuml;r eine koronare Herzkrankheit (KHK) oder bestehende koronare Herzkrankheit</u> <br /> In der Heart Protection Study (HPS) wurden die Effekte einer Therapie mit Simvastatin an 20.536 Patienten (40-80 Jahre) mit oder ohne Hyperlipid&auml;mie, mit koronarer Herzkrankheit, anderen Gef&auml;&szlig;verschlusskrankheiten oder Diabetes mellitus beurteilt. In dieser Studie wurden &uuml;ber eine mittlere Studiendauer von 5 Jahren 10.269 Patienten mit 40 mg Simvastatin pro Tag und 10.267 mit Placebo behandelt. Bei Studienbeginn hatten 6.793 (33 %) Patienten LDL-Cholesterinwerte unter 116 mg/dl; 5.063 (25 %) hatten Werte zwischen 116 mg/dl und 135 mg/dl; und 8.680 (42 %) hatten Werte &uuml;ber 135 mg/dl. <br /> Die Behandlung mit 40 mg Simvastatin/ Tag reduzierte im Vergleich zu Placebo das Gesamtmortalit&auml;tsrisiko signifikant (1.328 [12,9 %] mit Simvastatin behandelte Patienten vs. 1.507 [14,7 %] Patienten unter Placebo; p = 0,0003), was auf einer Reduktion der KHK-Mortalit&auml;t um 18 % beruht (587 [5,7 %] vs. 707 [6,9 %]; p = 0,0005; absolute Risikoreduktion 1,2 %). Die Senkung der Mortalit&auml;tsrate nicht kardiovaskul&auml;rer Ursache war nicht statistisch signifikant. <br /> Simvastatin senkte ebenfalls das Risiko f&uuml;r schwere koronare Ereignisse (kombinierter Endpunkt aus nicht letalem Myokardinfarkt oder Tod durch KHK) um 27 % (p &lt; 0,0001). Simvastatin reduzierte erforderliche gef&auml;&szlig;chirurgische Eingriffe am Herzen (einschlie&szlig;lich Bypass-OP oder perkutaner transluminaler koronarer Angioplastie) um 30 % (p &lt; 0,0001) sowie erforderliche periphere und andere nicht koronare revaskulisierende Eingriffe um 16 % (p = 0,006). Simvastatin senkte das Risiko f&uuml;r Schlaganf&auml;lle um 25 % (p &lt; 0,0001), was auf einer Senkung des Risikos f&uuml;r isch&auml;mische Schlaganf&auml;lle um 30 % (p &lt; 0,0001) beruht. Zus&auml;tzlich senkte Simvastatin in der Subgruppe der Diabetiker das Risiko f&uuml;r die Entwicklung makrovaskul&auml;rer Komplikationen einschlie&szlig;lich peripherer revaskulisierender Eingriffe (chirurgischer Eingriff oder Angioplastie), Amputation der unteren Extremit&auml;ten oder Geschw&uuml;re an den Beinen um 21 % (p = 0,0293). Die proportionale Risikoreduktion war f&uuml;r alle Subgruppen von Patienten vergleichbar, einschlie&szlig;lich Patienten ohne KHK, aber mit zerebrovaskul&auml;rer Erkrankung oder peripherer Gef&auml;&szlig;erkrankung, M&auml;nnern und Frauen, Patienten, die j&uuml;nger oder &auml;lter als 70 Jahre bei Studienbeginn waren, mit und ohne Hypertonie, und auch besonders jene mit Ausgangswerten von LDL-Cholesterin unter 3,0 mmol/l bei Studieneinschluss. <br /> In der Scandinavian Simvastatin Survival Study (4S) wurde der Effekt einer Therapie mit Simvastatin auf die Gesamtmortalit&auml;t bei 4.444 Patienten mit KHK sowie Gesamtcholesterinausgangswerten von 212-309 mg/dl (5,5-8,0 mmol/l) untersucht. In dieser multizentrischen, randomisierten, doppelblinden, placebokontrollierten Studie wurden Patienten mit Angina pectoris oder vorangegangenem Myokardinfarkt (MI) &uuml;ber eine mittlere Behandlungsdauer von 5,4 Jahren mit Di&auml;t und Standardtherapie sowie entweder Simvastatin 20-40 mg/Tag (n = 2.221) oder Placebo (n = 2.223) therapiert. Simvastatin senkte das Mortalit&auml;tsrisiko um 30 % (absolute Risikoreduktion 3,3 %). Das Risiko der KHK-Mortalit&auml;t wurde um 42 % (absolute Risikoreduktion 3,5 %) reduziert. Ebenfalls verminderte Simvastatin das Risiko, ein schwerwiegendes koronares Ereignis (KHK-Mortalit&auml;t oder im Krankenhaus best&auml;tigter und stummer nicht t&ouml;dlicher MI) zu erleiden um 34 %. Des Weiteren reduzierte Simvastatin das Risiko f&uuml;r t&ouml;dliche oder nicht t&ouml;dliche zerebrovaskul&auml;re Ereignisse (Schlaganf&auml;lle und transitorische isch&auml;mische Attacken) signifikant um 28 %. Hinsichtlich der nicht kardiovaskul&auml;ren Mortalit&auml;t gab es zwischen den beiden Gruppen keinen statistisch signifikanten Unterschied. <br /> Die Studie Study of the Effectiveness of Additional Reductions in Cholesterol and Homocysteine (SEARCH) verglich die Wirkung der Behandlung von 80 mg Simvastatin mit der von 20 mg Simvastatin (mediane Nachbeobachtung von 6,7 Jahren) auf schwere vaskul&auml;re Ereignisse (MVE, major vascular events, definiert als KHK mit Todesfolge, nicht t&ouml;dlicher Myokardinfarkt, koronare Revaskularisierungseingriffe, nicht t&ouml;dlicher Schlaganfall oder Schlaganfall mit Todesfolge, periphere Revaskularisierungseingriffe) bei 12.064 Patienten mit einem Myokardinfarkt in der Krankengeschichte. Es zeigte sich kein signifikanter Unterschied zwischen beiden Gruppen hinsichtlich dieser Ereignisse: 20 mg Simvastatin (n = 1.553; 25,7 %) vs. 80 mg Simvastatin (n = 1.477; 24,5 %); RR 0,94, 95 % KI: 0,88 - 1,01. Der absolute Unterschied der LDL-Cholesterinwerte zwischen beiden Gruppen betrug im Verlauf der Studie 0,35 &plusmn; 0,01 mmol/l. Das Sicherheitsprofil war ebenfalls bei beiden Behandlungsgruppen &auml;hnlich, mit der Ausnahme der Myopathieh&auml;ufigkeit, die bei Patienten unter 80 mg Simvastatin ca. 1,0 % und im Vergleich dazu bei Patienten unter 20 mg Simvastatin 0,02 % betrug. Etwa die H&auml;lfte dieser Myopathief&auml;lle ereignete sich im ersten Jahr der Behandlung. Die Myopathieh&auml;ufigkeit in den folgenden Jahren lag bei jeweils ca. 0,1 %. <br /> <u>Prim&auml;re Hypercholesterin&auml;mie und gemischte Hypercholesterin&auml;mie</u> <br /> In Vergleichsstudien zur Wirksamkeit und Unbedenklichkeit von Simvastatin an Patienten mit Hypercholesterin&auml;mie f&uuml;hrte eine Behandlung mit 10, 20, 40 und 80 mg pro Tag zu mittleren Senkungen von LDL-Cholesterin um 30 %, 38 %, 41 % und 47 %. In Studien zur kombinierten (gemischten) Hyperlipid&auml;mie f&uuml;hrte die Behandlung mit 40 mg und 80 mg Simvastatin zu mittleren Senkungen der Triglyzeride um 28 % bzw. 33 % (Placebo: 2 %) und zu mittleren Anstiegen von HDL-Cholesterin um 13 % bzw. 16 % (Placebo: 3 %). <br /> <u>Kinder und Jugendliche</u> <br /> In einer doppelblinden, placebokontrollierten Studie erhielten 175 Patienten (99 Jungen: Tanner-Stadium II und dar&uuml;ber, 76 M&auml;dchen: mindestens 1 Jahr nach der Menarche) im Alter zwischen 10 und 17 Jahren (Durchschnittsalter 14,1 Jahre) mit heterozygoter famili&auml;rer Hypercholesterin&auml;mie (HeFH) &uuml;ber einen Zeitraum von 24 Wochen (Basisstudie) randomisiert Simvastatin oder Placebo. Voraussetzung f&uuml;r die Aufnahme in die Studie waren ein LDL-Cholesterin-Ausgangswert zwischen 160 und 400 mg/dl sowie mindestens ein Elternteil mit einem LDL-Cholesterinwert &gt;189 mg/l. Die Dosierung von Simvastatin (t&auml;glich als Einzeldosis am Abend) betrug in den ersten 8 Wochen 10 mg, in den n&auml;chsten 8 Wochen 20 mg und danach 40 mg. In einer 24-w&ouml;chigen Studienerweiterung wurden 144 Patienten zur Fortsetzung der Therapie ausgew&auml;hlt. Diese erhielten 40 mg Simvastatin oder Placebo. <br /> Simvastatin verringerte die Plasmakonzentrationen von LDL-Cholesterin, Triglyzeriden und Apo B signifikant. Die Ergebnisse der Studienerweiterung nach der 48. Woche waren vergleichbar mit den Ergebnissen der Basisstudie. Nach 24-w&ouml;chiger Behandlung lag der mittlere LDL-Cholesterinwert in der Gruppe, die Simvastatin in einer Dosis von 40 mg erhielt, bei 124,9 mg/ dl (Schwankungsbereich: 64,0-289,0 mg/ dl), im Vergleich dazu in der Placebo-Gruppe bei 207,8 mg/dl (Schwankungsbereich: 128,0-334,0 mg/dl). <br /> Nach 24-w&ouml;chiger Behandlung mit Simvastatin (mit im 8-w&ouml;chigen Abstand ansteigenden Dosierungen von 10, 20 und 40 mg pro Tag) f&uuml;hrte die Einnahme von Simvastatin zu einer Senkung des mittleren LDL-Cholesterinwertes um 36,8 % (Placebo: 1,1 % Anstieg im Vergleich zum Ausgangswert), des Apo B um 32,4 % (Placebo: 0,5 %) und der mittleren Triglyzeridwerte um 7,9 % (Placebo: 3,2 %) sowie zu einer Erh&ouml;hung der HDL-Cholesterinwerte um 8,3 % (Placebo: 3,6 %). Die positiven Langzeitauswirkungen von Simvastatin auf kardiovaskul&auml;re Ereignisse bei Kindern mit HeFH sind nicht bekannt. <br /> Sicherheit und Wirksamkeit von Dosierungen &uuml;ber 40 mg pro Tag bei Kindern mit heterozygoter famili&auml;rer Hypercholesterin&auml;mie wurden nicht untersucht. Es liegen auch keine Daten zur Langzeitwirkung der Simvastatin-Therapie im Kindesalter auf die Reduzierung von Morbidit&auml;t und Mortalit&auml;t im Erwachsenenalter vor. <br /> <br /></p> "
+          },
+          {
+            "title": "5.2 Pharmakokinetische Eigenschaften",
+            "content": "<p><br /> Simvastatin, ein inaktives Lacton, wird <i>in vivo</i> schnell zur entsprechenden Betahydroxys&auml;ure, einem potenten Inhibitor der HMG-CoA-Reduktase, hydrolysiert. Die Hydrolyse findet vor allem in der Leber statt; im menschlichen Plasma verl&auml;uft sie sehr langsam. <br /> Die Untersuchung der pharmakokinetischen Eigenschaften wurde an Erwachsenen durchgef&uuml;hrt. F&uuml;r Kinder und Jugendliche liegen keine pharmakokinetischen Daten vor. <br /> <b>Resorption</b> <br /> Beim Menschen wird Simvastatin gut resorbiert und unterliegt einem ausgepr&auml;gten First-Pass-Effekt in der Leber - abh&auml;ngig vom Blutfluss in der Leber. Die Leber ist der prim&auml;re Wirkort der aktiven Form. Die Verf&uuml;gbarkeit der Betahydroxys&auml;ure nach einer oralen Simvastatin-Dosis betrug im systemischen Kreislauf weniger als 5 % der Dosis. Die maximale Plasmakonzentration der aktiven Inhibitoren tritt ca. 1-2 Stunden nach der Gabe von Simvastatin auf. Eine gleichzeitige Nahrungsaufnahme hat keinen Einfluss auf die Resorption. <br /> Die Pharmakokinetik bei einmaliger und mehrfacher Gabe von Simvastatin zeigte, dass die wiederholte Verabreichung des Arzneimittels nicht zu einer Akkumulation f&uuml;hrt. <br /> <b>Verteilung</b> <br /> Simvastatin und sein aktiver Metabolit sind beim Menschen zu mehr als 95 % an Plasmaproteine gebunden. <br /> <b>Elimination</b> <br /> Simvastatin ist ein Substrat von CYP3A4 (siehe Abschnitte 4.3 und 4.5). Die im menschlichen Plasma vorhandenen Hauptmetaboliten von Simvastatin umfassen die Betahydroxys&auml;ure sowie 4 weitere wirksame Metaboliten. Nach oraler Gabe radioaktiv markierten Simvastatins an Probanden wurden innerhalb von 96 Stunden 13 % der Radioaktivit&auml;t im Urin und 60 % in den F&auml;zes wiedergefunden. Letztere Menge steht sowohl f&uuml;r resorbierte Anteile, die &uuml;ber die Galle ausgeschieden werden, als auch f&uuml;r nicht resorbierte Substanz. Nach intraven&ouml;ser Injektion des Betahydroxys&auml;ure-Metaboliten betrug seine Halbwertszeit ca. 1,9 Stunden; nur durchschnittlich 0,3 % der i.v.-Dosis wurden im Urin als Inhibitoren ausgeschieden. Simvastatins&auml;ure wird durch den Transporter OATP1B1 aktiv in die Hepatozyten aufgenommen. Simvastatin ist ein Substrat des BCRP-Efflux-Transporters.<br /> <b>Besondere Patientengruppen</b> <br /> <u>SLCO1B1-Polymorphismus</u> <br /> Tr&auml;ger des c.521T &gt; C-Allels des SLC01B1-Gens haben eine niedrigere OAT1B1-Aktivit&auml;t. Die durchschnittliche Bioverf&uuml;gbarkeit (AUC) des wichtigsten aktiven Metaboliten, Simvastatins&auml;ure, betr&auml;gt 120 % bei heterozygoten Tr&auml;gern (CT) des C-Allels und 221 % bei homozygoten Tr&auml;gern (CC), bezogen auf die von Patienten mit dem h&auml;ufigsten Genotyp (TT). Das C-Allel hat eine H&auml;ufigkeit von 18 % in der europ&auml;ischen Bev&ouml;lkerung. Bei Patienten mit SLCO1B1-Polymorphismus besteht ein Risiko f&uuml;r eine verst&auml;rkte Exposition von Simvastatins&auml;ure, welche zu einem erh&ouml;hten Rhabdomyolyserisiko f&uuml;hren kann (siehe Abschnitt 4.4).</p> "
+          },
+          {
+            "title": "5.3 Pr&auml;klinische Daten zur Sicherheit",
+            "content": "<p><br /> Basierend auf konventionellen Tierstudien zu Pharmakodynamik, Toxizit&auml;t bei wiederholt verabreichten Dosen, Genotoxizit&auml;t und Kanzerogenit&auml;t lassen sich keine Risiken f&uuml;r den Patienten ableiten, die nicht aufgrund des pharmakologischen Mechanismus zu erwarten w&auml;ren. In den h&ouml;chsten von Ratten und Kaninchen vertragenen Dosen rief Simvastatin keine fetalen Missbildungen hervor und hatte keine Auswirkungen auf Fertilit&auml;t, Fortpflanzung oder neonatale Entwicklung. <br /> <br /></p> "
+          },
+          {
+            "title": "6. PHARMAZEUTISCHE ANGABEN",
+            "content": "<p><br /><br /></p> "
+          },
+          {
+            "title": "6.1 Liste der sonstigen Bestandteile",
+            "content": "<p><br /> <u>Tablettenkern</u> <br /> <i>Simvastatin - 1 A Pharma 5 mg/- 10 mg/-30 mg/- 60 mg/- 80 mg Filmtabletten</i> <br /> &bull; Ascorbins&auml;ure<br /> &bull; Butylhydroxyanisol (Ph.Eur.)<br /> &bull; mikrokristalline Cellulose<br /> &bull; Citronens&auml;ure-Monohydrat<br /> &bull; vorverkleisterte St&auml;rke (Mais)<br /> &bull; Lactose-Monohydrat<br /> &bull; Magnesiumstearat (Ph.Eur.) [pflanzlich]<br /> <br /> <i>Simvastatin - 1 A Pharma 20 mg/- 40 mg Filmtabletten</i> <br /> &bull; Butylhydroxyanisol (Ph.Eur.)<br /> &bull; mikrokristalline Cellulose<br /> &bull; Citronens&auml;ure-Monohydrat<br /> &bull; vorverkleisterte St&auml;rke (Mais)<br /> &bull; Lactose-Monohydrat<br /> &bull; Magnesiumstearat (Ph.Eur.) [pflanzlich]<br /> <br /> <u>Film&uuml;berzug</u> <br /> &bull; Hypromellose<br /> &bull; Talkum<br /> &bull; Titandioxid (E 171)<br /> <br /> <i>zus&auml;tzlich f&uuml;r Simvastatin - 1 A Pharma 5 mg Filmtabletten</i> <br /> &bull; Eisen(III)-hydroxid-oxid x H<sub>2</sub>O (E 172)<br /> <br /> <i>zus&auml;tzlich f&uuml;r Simvastatin - 1 A Pharma 10 mg/- 20 mg Filmtabletten</i> <br /> &bull; Eisen(III)-oxid (E 172)<br /> &bull; Eisen(III)-hydroxid-oxid x H<sub>2</sub>O (E 172)<br /> <br /> <i>zus&auml;tzlich f&uuml;r Simvastatin - 1 A Pharma 40 mg Filmtabletten</i> <br /> &bull; Eisen(III)-oxid (E 172)<br /> <br /> <i>zus&auml;tzlich f&uuml;r Simvastatin - 1 A Pharma </i><i>60 mg Filmtabletten</i> <br /> &bull; Indigocarmin-Aluminiumsalz (E 132)<br /> <br /> <i>zus&auml;tzlich f&uuml;r Simvastatin - 1 A Pharma 80 mg Filmtabletten</i> <br /> &bull; Indigocarmin-Aluminiumsalz (E 132)<br /> &bull; Chinolingelb-Aluminiumsalz (E 104)<br /><br /></p> "
+          },
+          {
+            "title": "6.2 Inkompatibilit&auml;ten",
+            "content": "<p><br /> Nicht zutreffend.</p> "
+          },
+          {
+            "title": "6.3 Dauer der Haltbarkeit",
+            "content": "<p><br /> <i>Simvastatin - 1 A Pharma 5 mg/- 10 mg/-20 mg/- 30 mg/- 40 mg Filmtabletten</i><br /> 3 Jahre<br /> <i>Simvastatin - 1 A Pharma 60 mg/- 80 mg Filmtabletten<br /> </i>2 Jahre <br /> <br /></p> "
+          },
+          {
+            "title": "6.4 Besondere Vorsichtsma&szlig;nahmen f&uuml;r die Aufbewahrung",
+            "content": "<p><br /> Nicht &uuml;ber 30 &deg;C lagern.<br /> Die Blister im Umkarton aufbewahren, um den Inhalt vor Licht zu sch&uuml;tzen. <br /> <br /></p> "
+          },
+          {
+            "title": "6.5 Art und Inhalt der Beh&auml;ltnisse",
+            "content": "<p><br /> <i>Blister (Alu/PVC)</i> <br /> Packungsgr&ouml;&szlig;en: 30, 50, 60, 70, 80, 90, 100 Filmtabletten<br /> Es werden m&ouml;glicherweise nicht alle Packungsgr&ouml;&szlig;en in den Verkehr gebracht. <br /> <br /></p> "
+          },
+          {
+            "title": "6.6 Besondere Vorsichtsma&szlig;nahmen f&uuml;r die Beseitigung und sonstige Hinweise zur Handhabung",
+            "content": "<p><br /> Keine besonderen Anforderungen f&uuml;r die Beseitigung. <br /> <br /></p> "
+          },
+          {
+            "title": "7. INHABER DER ZULASSUNGEN",
+            "content": "<p><br /> 1 A Pharma GmbH<br /> Keltenring 1 + 3<br /> 82041 Oberhaching<br /> Telefon: 089/6138825-0<br /> Telefax: 089/6138825-65<br /> E-Mail: medwiss@1apharma.com <br /> <br /></p> "
+          },
+          {
+            "title": "8. ZULASSUNGSNUMMERN",
+            "content": "<p><br /> <i>Simvastatin - 1 A Pharma 5 mg Filmtabletten:</i> <br /> 52556.00.00 <br /> <i>Simvastatin - 1 A Pharma 10 mg Filmtabletten:</i> <br /> 52556.01.00 <br /> <i>Simvastatin - 1 A Pharma 20 mg Filmtabletten:</i> <br /> 52556.02.00 <br /> <i>Simvastatin - 1 A Pharma 30 mg Filmtabletten:</i> <br /> 52556.03.00<br /> <i>Simvastatin - 1 A Pharma 40 mg Filmtabletten:</i> <br /> 52556.04.00<br /> <i>Simvastatin - 1 A Pharma 60 mg Filmtabletten:</i> <br /> 62540.00.00<br /> <i>Simvastatin - 1 A Pharma 80 mg Filmtabletten:</i> <br /> 60893.00.00 <br /> <br /></p> "
+          },
+          {
+            "title": "9. DATUM DER ERTEILUNG DER ZULASSUNGEN/VERL&Auml;NGERUNG DER ZULASSUNGEN",
+            "content": "<p><br /> <b>Datum der Erteilung der Zulassungen</b> <br /> <i>Simvastatin - 1 A Pharma 5 mg/- 10 mg/-20 mg/- 30 mg/- 40 mg Filmtabletten:</i> <br /> 24. Mai 2002<br /> Simvastatin - 1 A Pharma 60 mg Filmtabletten:<br /> 08. Juli 2005<br /> <i>Simvastatin - 1 A Pharma 80 mg Filmtabletten:</i> <br /> 01. Dezember 2004<br /> <b>Datum der letzten Verl&auml;ngerung der Zulassungen</b> <br /> 08. Juli 2008 <br /> <br /></p> "
+          },
+          {
+            "title": "10. STAND DER INFORMATION",
+            "content": "<p><br /> Mai 2018 <br /> <br /></p> "
+          },
+          {
+            "title": "11. VERKAUFSABGRENZUNG",
+            "content": "<p><br /> Verschreibungspflichtig</p>"
+          }
+        ]
+      },
+      "isTeratogen": false,
+      "isTransfusion": false,
+      "isReImport": false,
+      "isInNegative": false,
+      "isLifestyleDrug": false,
+      "isConditionalLifeStyleDrug": false,
+      "isGBATherapyAdvice": false,
+      "isDiscountAgreement": false,
+      "isAltDiscountAgreement": false,
+      "isMedProduct": false,
+      "isPrescMed": false,
+      "isOTC": false,
+      "isPharmacyOnly": false,
+      "isRecipeOnly": true,
+      "isBTM": false,
+      "signetIcons": [
+        {
+          "title": "Arzneimittel",
+          "src": "/static/dcbaseapp/assets/img/MMI/signets/AM.png"
+        },
+        {
+          "title": "Verschreibungspflichtig",
+          "src": "/static/dcbaseapp/assets/img/MMI/signets/RP.png"
+        },
+        {
+          "title": "Hinweise zu Schwangerschaft beachten",
+          "src": "/static/dcbaseapp/assets/img/MMI/signets/SCHW.png"
+        },
+        {
+          "title": "Hinweise zu Stillzeit beachten",
+          "src": "/static/dcbaseapp/assets/img/MMI/signets/STILL.png"
+        },
+        {
+          "title": "Reaktionsvermögen kann beeinträchtigt werden",
+          "src": "/static/dcbaseapp/assets/img/MMI/signets/REA.png"
+        },
+        {
+          "title": "In 2 Teile teilbar",
+          "src": "/static/dcbaseapp/assets/img/MMI/signets/TL2.png"
+        },
+        {
+          "title": "In gleiche Teile teilbar",
+          "src": "/static/dcbaseapp/assets/img/MMI/signets/TLGD.png"
+        },
+        {
+          "title": "Zul. als Generikum im Sinne §24a AMG",
+          "src": "/static/dcbaseapp/assets/img/MMI/signets/GENER.png"
+        }
+      ],
+      "identaImages": [
+        {
+          "src": "/mmi-download/IDENTA/155619.bmp"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+div.table-responsive.cardreader_datapatientFromCard
+  table.table
+    colgroup
+      col(style="width:30%")
+      col(style="width:70%; border-left: 1px solid #ddd;")
+    tbody(data-bind="foreach: tables")
+      tr.cardreader_datapatientFromCard-headline
+        th(colspan="2")
+          h4(data-bind="text: label")
+      tr.cardreader_datapatientFromCard-header
+        th
+        th(data-bind="text: $parent.cardDataI18n")
+      // ko foreach: data
+      tr.cardreader_datapatientFromCard-data
+        th(data-bind="text: property")
+        td(data-bind="text: $root.format(valueCard)")
+      // /ko

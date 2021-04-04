@@ -1,0 +1,28 @@
+div(id=mojit_view_id)
+  .container.container-fullscreen
+    div(style="position: relative")
+      #fullScreenToggle(style="position: absolute; right: 0; top: 0;")
+        button.btn.btn-sm.btn-default(
+        name="toggleFullScreen", type="button", data-bind="click: toggleFullScreenHandler, attr: { title: viewPortBtnI18n }",
+        style="margin-top: 5px; font-size:14px")
+          span.fa.fa-arrows-alt
+  .container.container-fullscreen
+      h2 Mögliche Zugriffe auf das System
+      br
+      ol
+        li Zugriff innerhalb ihrer Praxis:
+          | &nbsp;
+          a(href=local)
+            !=local
+          p Schnell und unkompliziert aber unverschlüsselt.
+        li Abhörsicherer Zugriff innerhalb Ihrer Praxis:
+          | &nbsp;
+          a(href=local_secure)
+            !=local_secure
+          p Schnell und verschlüsselt. Meldung über angeblich unsicheren Zugang kann ignoriert werden (Zertifikate sind sicher).
+        li Abhörsicherer Zugriff von außerhalb Ihrer Praxis:
+          | &nbsp;
+          a(href=remote)
+            !=remote
+          p Muss verwendet werden, wenn Sie von außerhalb der Praxis auf Ihr System zugreifen wollen.
+      br

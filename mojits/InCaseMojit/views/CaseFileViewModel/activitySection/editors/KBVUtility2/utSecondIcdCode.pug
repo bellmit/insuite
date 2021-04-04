@@ -1,0 +1,14 @@
+.row
+  .col-xs-2
+    label(style="padding-top: 8px;")
+      span(data-bind="text: utSecondIcdCode.i18n")
+      span &nbsp;
+      i.dc-info-icon(data-bind="visible: utSecondIcdCodeIsNew, tooltip: {title: 'Wird beim Speichern erstellt!', placement: 'top', trigger:'click'}")
+      span &nbsp;
+      span.glyphicon.glyphicon-certificate(style="color: #5cb85c", data-bind="visible: hasIcd2Need, tooltip: {title: agreementCandidatesDisplay}")
+  .col-xs-2
+    .form-group
+      input#icd2_2_Select2.form-control(name="icdCode2CatalogSelect2", type="hidden", data-bind="attr: { placeholder: placeholderDiagnosisI18n }, select2: icdCode2CatalogSelect2, readOnly: utSecondIcdCode.readOnly")
+  .col-xs-8
+    div.form-group
+      input.form-control(name="utSecondIcdText", placeholder="", data-bind="textInput: utSecondIcdText, readOnly: utSecondIcdText.readOnly")

@@ -1,0 +1,282 @@
+div#crmCompanyBrowserModel
+  div.row#companyModel(data-bind="with: companyModel")
+    div.col-md-5
+      h5(style="font-size: 17px")
+        b(data-bind="text: $parent.tabCompanyI18n")
+      div.panel.panel-default
+        div.panel-body
+          div.form-group(data-bind="hasFeedback: { toggle: coname.hasError, messages: coname.validationMessages }")
+            label.control-label(data-bind="text: coname.i18n", for="coname")
+            input.form-control#coname(name="coname", type="text", data-bind="value: coname, valueUpdate: 'afterkeydown'")
+          div.form-group(data-bind="hasFeedback: { field: releaseGroup, toggle: releaseGroup.hasError, messages: releaseGroup.validationMessages }")
+            label.control-label(data-bind="text: $parent.selectGroupI18n")
+            input.form-control(name="select2Groups", type="hidden", data-bind="select2: select2Groups")
+          div.form-group(data-bind="hasFeedback: { toggle: customerNo.hasError, messages: customerNo.validationMessages }")
+            label.control-label(data-bind="text: customerNo.i18n")
+            input.form-control(name="customerNo", type="text", data-bind="value: customerNo, valueUpdate: 'afterkeydown'")
+          div.form-group(data-bind="hasFeedback: { toggle: dcCustomerNo.hasError, messages: dcCustomerNo.validationMessages }")
+            label.control-label(data-bind="text: dcCustomerNo.i18n")
+            input.form-control(name="dcCustomerNo", type="text", data-bind="value: dcCustomerNo", disabled="disabled")
+          //ko if: $parent.isDCPRC_MTS && $parent.isAPPLIANCE
+          div.form-group(data-bind="hasFeedback: { toggle: vprcFQHostName.hasError, messages: vprcFQHostName.validationMessages }")
+            label.control-label(data-bind="text: vprcFQHostName.i18n")
+            input.form-control(name="vprcFQHostName", type="text", data-bind="value: vprcFQHostName, readOnly: vprcFQHostnameOverrideFlag, valueUpdate: 'afterkeydown'")
+          // /ko
+          //ko if: $parent.isPRC || $parent.isAPPLIANCE || $parent.isVPRC
+          div.form-group(data-bind="hasFeedback: { toggle: systemId.hasError, messages: systemId.validationMessages }")
+            label.control-label(data-bind="text: systemId.i18n")
+            input.form-control(name="systemId", type="text", data-bind="value: systemId", placeholder="15142000CZ")
+          div.form-group(data-bind="hasFeedback: { toggle: ticketLabel.hasError, messages: ticketLabel.validationMessages }")
+            label.control-label(data-bind="text: ticketLabel.i18n")
+            input.form-control(name="ticketLabel", type="text", data-bind="value: ticketLabel")
+          // /ko
+          div.form-group(data-bind="hasFeedback: { toggle: commissionKey.hasError, messages: commissionKey.validationMessages }")
+            label.control-label(data-bind="text: commissionKey.i18n")
+            div.input-group
+              div.input-group-btn
+                button.btn.btn-default(data-bind="click: createCommissionKey, disable: createCommissionKeyBtnDisabled") Erzeugen
+              input.form-control(name="commissionKey", type="texto", data-bind="textInput: commissionKey" readonly)
+              div.input-group-btn
+                button.btn.btn-default(data-bind="click: removeCommissionKey, disable: removeCommissionKeyBtnDisabled")
+                  span.glyphicon.glyphicon-trash
+            div(data-bind="if: commissionKey() && commissionKeyCreatedAtDisplay()")
+              p.help-block(data-bind="text: commissionKeyCreatedAtDisplay")
+          // ko if: $parent.isISD
+          div.form-group(data-bind="hasFeedback: { toggle: systemType.hasError }")
+            label(data-bind="text: systemType.i18n")
+            input.form-control(name="systemType", type="hidden", data-bind="select2: select2SystemType")
+          // /ko
+          div.form-group(data-bind="hasFeedback: { toggle: cotype.hasError, messages: cotype.validationMessages }")
+            label.control-label(data-bind="text: cotype.i18n", for="select2CoType")
+            input.form-control#select2CoType(name="select2CoType", type="hidden", data-bind="select2: select2CoType, readOnly: cotype.readOnly")
+          div.form-group
+            div.checkbox
+              input#isTemplate(name="isTemplate", type="checkbox", data-bind="checked: isTemplate")
+              label(for="isTemplate", data-bind="text: $parent.useAsTemplateI18n")
+          div.form-group
+            strong(data-bind="text: countryMode.i18n")
+            div(data-bind="foreach: countryMode.list, hasFeedback: { field: countryMode, toggle: countryMode.hasError, messages: countryMode.validationMessages }")
+              label.checkbox-inline
+                span(data-bind="text: i18n")
+                input(type="checkbox", name="countryMode", data-bind="value: val, checked: $parent.countryMode, readOnly: $parent.countryMode.readOnly")
+          br
+          div
+            h5
+              b INTIMECONNECT
+            div.row
+              div.col-md-6.col-xs-12
+                div.form-group
+                  label.control-label(data-bind="text: $parent.titleFromI18n", for="intimeFrom")
+                  div.date-picker.input-group
+                    input#intimeFrom.form-control(name="intimeConnectFrom", type="text", data-bind="datetimepicker: { value: trialBegin }")
+              div.col-md-6.col-xs-12
+                div.form-group
+                  label.control-label(data-bind="text: $parent.titleToI18n", for="intimeTo")
+                  .date-picker.input-group
+                    input#intimeTo.form-control(name="intimeConnectTo", type="text", data-bind="datetimepicker: { value: trialExpire }")
+          div
+            h5
+              b NEWSLETTER
+            div.row
+              div.col-md-6.col-xs-12
+                div.form-group
+                  label.control-label(data-bind="text: $parent.titleFromI18n", for="newsLetterFrom")
+                  div.date-picker.input-group
+                    input#newsLetterFrom.form-control(name="newsLetterFrom", type="text", data-bind="datetimepicker: { value: newsLetter.from }")
+              div.col-md-6.col-xs-12
+                div.form-group
+                  label.control-label(data-bind="text: $parent.titleToI18n", for="newsLetterTo")
+                  div.date-picker.input-group
+                    input#newsLetterTo.form-control(name="newsLetterFrom", type="text", data-bind="datetimepicker: { value: newsLetter.to }")
+          div(data-bind="visible: vprcHost && !vprcFQHostName()")
+            h5
+              b VPRC
+            p
+              b hostname:
+              | &nbsp;
+              span(data-bind="text: vprcHost")
+          div
+            p
+              b tenant:
+              | &nbsp;
+              span(data-bind="text: tenantId")
+            p
+              b Kundennummer
+              | &nbsp;
+              span(data-bind="text: customerNo ")
+            //ko if: $parent.isPRC
+            p
+              b URL:
+              | &nbsp;
+              a(data-bind="attr: { href: $parent.systemIdUrl }, text: systemId.i18n, attr: { title: systemId.i18n }", target='_blank')
+            // /ko
+    div.col-md-7
+      h4.form-inline
+        span(data-bind="text: addresses.i18n")
+        | &nbsp;
+        small
+          a(href="#", data-bind="click: addresses.push")
+            i.icon.fa.fa-plus
+      div(data-bind="template: {foreach: addresses}")
+        include template-address
+      h4
+        span(data-bind="text: $parent.titleComI18n")
+        | &nbsp;
+        small
+          a(href='#', data-bind='click: communications.push')
+            i.icon.fa.fa-plus
+      div.col-md-12
+        div.row#patientCommunications(data-bind="foreach: communications")
+          include template-communication
+  div#centralContact(data-bind="with: centralContactModel")
+    h5(style="font-size: 17px")
+      b(data-bind="text: $parent.centralContactI18n")
+    div.panel.panel-default
+      div.panel-body
+        div.row
+          div.col-md-6
+            p
+              b(data-bind="text: firstname.i18n + ':'")
+              | &nbsp;
+              span(data-bind="text: firstname")
+            p
+              b(data-bind="text: lastname.i18n + ':'")
+              | &nbsp;
+              span(data-bind="text: lastname")
+            p
+              b(data-bind="text: title.i18n + ':'")
+              | &nbsp;
+              span(data-bind="text: title")
+          div.col-md-6
+            p
+              b(data-bind="text: workingAt.i18n + ':'")
+              | &nbsp;
+              span(data-bind="text: workingAt")
+            p
+              b(data-bind="text: communications.i18n + ':'")
+            ul.list-unstyled(data-bind="foreach: communications")
+              li
+                span(data-bind="text: value")
+  div#supportContactModel(data-bind="with: supportContactModel")
+    h5(style="font-size: 17px")
+      b(data-bind="text: $parent.supportContactI18n")
+    div.row
+      div.col-md-6.form-group
+        input.form-control(name="type", type="hidden", data-bind="select2: $parent.select2SupportContact")
+    div.panel.panel-default
+      div.panel-body
+        div.row
+          div.col-md-6
+            p
+              b(data-bind="text: firstname.i18n + ':'")
+              | &nbsp;
+              span(data-bind="text: firstname")
+            p
+              b(data-bind="text: lastname.i18n + ':'")
+              | &nbsp;
+              span(data-bind="text: lastname")
+            p
+              b(data-bind="text: title.i18n + ':'")
+              | &nbsp;
+              span(data-bind="text: title")
+          div.col-md-6
+            p
+              b(data-bind="text: $parent.workingAtI18n + ':'")
+              | &nbsp;
+              span(data-bind="text: companyName")
+            p
+              b(data-bind="text: communications.i18n + ':'")
+            ul.list-unstyled(data-bind="foreach: communications")
+              li
+                span(data-bind="text: value")
+  div#licenseScope(data-bind="with: companyModel")
+    h5(style="font-size: 17px")
+      b(data-bind="text: $parent.licenseScopeI18n")
+    div(data-bind="with:licenseScope()[0]")
+      div.row
+        div.col-xs-12.col-sm-6.col-md-3
+          div.panel.panel-default
+            div.panel-heading
+              span.panel-title(data-bind="text: specialModules.i18n")
+            div.panel-body(style="padding-top: 0; padding-bottom: 0;", data-bind="foreach: specialModules.list")
+              label.checkbox
+                input(type="checkbox", data-bind="checkedValue: val, checked: $parent.specialModules")
+                span(data-bind="text: i18n")
+
+        div.col-xs-12.col-sm-6.col-md-3
+          div.panel.panel-default
+            div.panel-heading
+              span.panel-title(data-bind="text: baseSystemLevel.i18n")
+            div.panel-body
+              div.row( style="display: flex; align-items: center;" )
+                div.col-xs-12.col-sm-8.col-md-9
+                  span(data-bind="text: $parents[1].baseSystemLevelI18n")
+                  i.dc-info-icon(data-toggle="popover", data-bind="attr: {'data-content': $parents[1].baseSystemLevelNoteI18n}", data-html="true", rel="popover", data-placement="auto top", data-trigger="hover", data-container= "#licenseScope")
+                div.col-xs-12.col-sm-4.col-md-3(style="padding-left: 0; padding-right: 5px;", data-bind="hasFeedback: { toggle: doctorsAmount.hasError, messages: doctorsAmount.validationMessages }")
+                  input.form-control(name="doctorsAmount", style="padding-left: 5px; padding-right: 5px;", type="text", data-bind="value: displayDoctorsAmount, valueUpdate: 'afterkeydown'")
+
+        div.col-xs-12.col-sm-6.col-md-3
+          div.panel.panel-default
+            div.panel-heading
+              span.panel-title(data-bind="text: baseServices.i18n")
+            div.panel-body(style="padding-top: 0; padding-bottom: 0;", data-bind="foreach: baseServices.list")
+              label.checkbox
+                input(type="checkbox", name="baseServices", data-bind="checkedValue: val, checked: $parent.baseServices")
+                span(data-bind="text: i18n")
+
+        div.col-xs-12.col-sm-6.col-md-3
+          div.panel.panel-default
+            div.panel-heading
+              span.panel-title(data-bind="text: additionalServices.i18n")
+            div.panel-body(style="padding-top: 0; padding-bottom: 0;", data-bind="foreach: additionalServices.list")
+              label.checkbox
+                input(type="checkbox", data-bind="checkedValue: val, checked: $parent.additionalServices")
+                span(data-bind="text: i18n")
+      div.row
+        div.col-xs-12.col-sm-6.col-md-3
+          div.panel.panel-default
+            div.panel-heading
+              span.panel-title(data-bind="text: supportLevel.i18n")
+            div.panel-body(style="padding-top: 0; padding-bottom: 0;", data-bind="foreach: supportLevel.list")
+              label.radio
+                input(type="radio", name="supportLevel", data-bind="checkedValue: val, checked: $parent.supportLevel")
+                span(data-bind="text: i18n")
+        div.col-xs-12.col-sm-6.col-md-3
+          div.panel.panel-default
+            div.panel-heading
+              span.panel-title(data-bind="text: solutions.i18n")
+            div.panel-body
+              div.form-group
+                input.form-control(name="select2Solutions", type="hidden", data-bind="select2: select2Solutions")
+        div.col-xs-12.col-sm-6.col-md-6
+          div.panel.panel-default
+            div.panel-heading
+              span.panel-title(data-bind="text: telematikServices.i18n")
+            div.row
+              div.col-xs-12.col-sm-6.col-md-6.panel-body(style="padding-right: 20px; padding-left: 20px; padding-top: 0; padding-bottom: 0;", data-bind="foreach: telematikServices.list.slice(0,telematikServices.list().length / 2+1)")
+                label.checkbox
+                  // ko if: val === 'eDocletter'
+                  input(type="checkbox", data-bind="checkedValue: val, checked: $parent.telematikServices, readOnly: $parent.eDocletterReadOnly ")
+                  // /ko
+                  // ko ifnot: val === 'eDocletter'
+                  input(type="checkbox", data-bind="checkedValue: val, checked: $parent.telematikServices, readOnly: $parent.hasNotInTiLicence")
+                  // /ko
+
+                  span(data-bind="text: i18n")
+              div.col-xs-12.col-sm-6.col-md-6.panel-body(style="padding-right: 20px; padding-left: 20px; padding-top: 0; padding-bottom: 0;", data-bind="foreach: telematikServices.list.slice(telematikServices.list().length / 2+1)")
+                label.checkbox
+                  input(type="checkbox", data-bind="checkedValue: val, checked: $parent.telematikServices, readOnly: $parent.hasNotInTiLicence")
+                  span(data-bind="text: i18n")
+  // ko if: isDCPRC_MTS
+  div#tenantsTable
+    h5(style="font-size: 17px")
+      b(data-bind="text: titleTenantsI18n")
+    div(data-bind="template: tenantsTable.template")
+  // /ko
+  div#actionButtons
+    // ko if: isPRC || isISD || isDCPRC_MTS
+    div.pull-left(data-bind="template: initScript.template", style="margin-right: 10px; margin-bottom:10px; display:inline-block;")
+    // /ko
+    div.pull-right(data-bind="template: saveCompany.template", style="margin-right: 10px; margin-bottom:10px; display:inline-block;")
+    div.pull-right(data-bind="template: goBackBtn.template", style="margin-right: 10px; margin-bottom:10px; display:inline-block;")
+    div.clearfix

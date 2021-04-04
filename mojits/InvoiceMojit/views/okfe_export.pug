@@ -1,0 +1,26 @@
+div#okfe_export
+  div.row
+    div.col-lg-7.col-md-8.col-xs-12(data-bind="template: dateSelector.template")
+  div.row
+    div.col-md-4
+      h3 OKFE Export
+      button.btn.btn-default(data-bind="click: exportData") Export
+      div.list-group
+        // ko foreach: okfeExports
+        li.list-group-item
+          a(data-bind="attr: { href: link }, text: content")
+          ul
+            // ko foreach: htmlFiles
+            li
+              a(href="#", data-bind="text: fileName, click: $root.showHTML.bind($root)")
+            // /ko
+        // /ko
+    // ko with: selectedHtml
+    div.col-md-8
+      h3
+        span Ergebnis:&nbsp;
+        span(data-bind="text: name")
+      iframe(style="width: 100%; height: 1200px", data-bind="attr: {src: src}")
+    // /ko
+
+

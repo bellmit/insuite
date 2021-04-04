@@ -1,0 +1,11 @@
+div.KoExample(style="width: 320px")
+  div
+    = 'KoExample is up since '
+    span(data-bind="text: lifeTimeDisplay()")
+  div
+    strong(style="margin-right: .5em; vertical-align: middle;") something stateful
+    input(name="somethingStateful", type="checkbox", data-bind="checked: somethingStateful", style="margin: 0; vertical-align: middle;")
+  div
+    = 'template is: '
+    span(data-bind="text: templateName")
+    span.fa.fa-refresh(data-bind="click: refreshClickHandler", style="margin-left: .5em; cursor: pointer;", title="change")

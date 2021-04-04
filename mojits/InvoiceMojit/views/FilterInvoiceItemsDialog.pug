@@ -1,0 +1,70 @@
+div.FilterInvoiceItemsDialog
+  //ko if: ( isPVS || isCASH )
+  p(data-bind="html: padxSettingsLink")
+  div.form-group
+   select.form-control(name="padxSettingsOptions", data-bind="options: padxSettingsOptions, optionsValue: '_id', optionsText: 'value' , value: padnextSettingId")
+  // /ko
+  p(data-bind="text: FIDatepickerTextI18n")
+  div.container.container-fullscreen-fluid(style="padding: 0")
+    div.row
+      div.col-xs-6
+        div.form-group.dc-form-flex
+          div.dc-form-flex-label
+            label.control-label(data-bind="text: FIFromLabelTextI18n")
+          div.dc-form-flex-stretch
+            div.date-picker.input-group
+              input.form-control(name="from", data-bind="datetimepicker: fromDatepicker")
+        p(data-bind="text: FICheckBoxTextI18n")
+        //ko if: hasGermanLocation || hasGermanSettings
+        div.checkbox
+          labelresult
+            span(data-bind="text: FIPrivateLabelTextI18n")
+            input(name="private", type="checkbox", data-bind="checked: private")
+        div.checkbox
+          label
+            span(data-bind="text: FIBgLabelTextI18n")
+            input(name="bg", type="checkbox", data-bind="checked: bg")
+        // /ko
+        //ko if: hasSwissLocation || hasSwissSettings
+        div.checkbox
+          label
+            span(data-bind="text: KVGCheckboxi18n")
+            input(name="kvg", type="checkbox", data-bind="checked: kvg")
+        div.checkbox
+          label
+            span(data-bind="text: IVGCheckboxi18n")
+            input(name="ivg", type="checkbox", data-bind="checked: ivg")
+        div.checkbox
+          label
+            span(data-bind="text: MVGCheckboxi18n")
+            input(name="mvg", type="checkbox", data-bind="checked: mvg")
+        div.checkbox
+          label
+            span(data-bind="text: UVGCheckboxi18n")
+            input(name="uvg", type="checkbox", data-bind="checked: uvg")
+        div.checkbox
+          label
+            span(data-bind="text: VVGCheckboxi18n")
+            input(name="vvg", type="checkbox", data-bind="checked: vvg")
+        // /ko
+        div.checkbox
+          label
+            span(data-bind="text: FISelfPlayerLabelTextI18n")
+            input(name="selfpayer", type="checkbox", data-bind="checked: selfpayer")
+        div.form-group.dc-form-flex
+          div(style="width: 80px")
+            input.form-control(data-bind="value: displayMinTotal")
+          div.dc-form-flex-label(style="margin-left: 10px")
+            span.control-label(data-bind="text: minTotal.i18n")
+        div.checkbox
+          label
+            span(data-bind="text: FIDoNotCheckCatalogLabelTextI18n")
+            input(name="bg", type="checkbox", data-bind="checked: doNotcheckCatalog")
+      div.col-xs-6
+        div.form-group.dc-form-flex
+          div.dc-form-flex-label
+            label.control-label(data-bind="text: FIToLabelTextI18n")
+          div.dc-form-flex-stretch
+            div.date-picker.input-group
+              input.form-control(name="to", data-bind="datetimepicker: toDatepicker")
+  p(data-bind="text: footer")

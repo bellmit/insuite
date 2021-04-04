@@ -1,0 +1,5 @@
+div.DashboardBaseAddDialog
+  .form-group(data-bind="css: { 'has-error': hasError() }")
+    input.form-control(name="name", data-bind="value: name", placeholder="NAME")
+  .form-group
+    select.form-control(data-bind="options: layoutList, optionsValue: 'val', optionsText: 'i18n', value: layout", name="layout")

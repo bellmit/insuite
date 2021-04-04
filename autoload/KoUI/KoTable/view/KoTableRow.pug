@@ -1,0 +1,16 @@
+// ko if: $parent._showRowDependentCollapseRows( $context )
+tr.KoTable-row(data-bind="foreach: $parent.columns,\
+    notifyBind: { method: $parent.rowRendered, namespace: $parent },\
+    css: $parent._getCssRow( $context ),\
+    attr: { style: $parent._getStyleRow( $context ) }\
+  ")
+  td(data-bind="template: { name: getTemplateNameCell( $context ), data: getTemplateDataCell( $context ) },\
+    visible: visible, css: getCss( $context ), style: computedStyles\
+  ")
+// /ko
+// ko if: $parent._showAdditionalDependentCollapseRows( $context )
+tr.KoTable-row-collapse(data-bind="css: $parent._getCssRowAdditionalDependentCollapseRows( $context ), attr: { style: $parent._getStyleRowAdditionalDependentCollapseRows( $context ) }")
+  td &nbsp;
+  td &nbsp;
+  td(data-bind="attr: { colspan: $parent.columns().length }, html: $parent.renderAdditionalDependentCollapseRows( $context ), css: $parent._getCssRowAdditionalDependentCollapseRows( $context )")
+// /ko

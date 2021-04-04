@@ -1,0 +1,32 @@
+{
+  "server": {
+    "url": "ldap://localhost:10389",
+    "bindDN": "uid=admin,ou=system",
+    "bindCredentials": "secret",
+    "searchBase": "ou=doc-cirrus.com",
+    "groupsBase": "ou=ADGroups,dc=test,dc=com",
+    "groupsQuery": "(&(cn=dc_*)(member=*))",
+    "groupsLookIn": "member",
+    "groupsRegexp": "cn *?= *?['\"]{0,1}{{cn}}['\"]{0,1}",
+    "defaultDCGroup": "USER",
+    "searchFilter": "(uid={{username}})",
+    "usernameField": "username",
+    "passwordField": "password",
+    "profileFields" : {
+      "username": "uid",
+      "lastname": "sn",
+      "firstname": "givenName",
+      "mail": "mail",
+      "groups": [{
+        "ldapMemberOf": "dc_administrators",
+        "group": "ADMIN"
+      },
+      {
+        "ldapMemberOf": "dc_helpdesk",
+        "group": "CONTROLLER"
+      }]
+    }
+  },
+  "passReqToCallback": true,
+  "handleErrorsAsFailures": true
+}

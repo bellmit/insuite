@@ -1,0 +1,14 @@
+div
+  div.row
+    div.col-md-12
+      div.form-group
+        div.checkbox
+          label.control-label
+            span(data-bind="text: priceComparisonKindI18n")
+            input(type="checkbox", name="priceComparisonKind", data-bind="checked: priceComparisonKind")
+        div.checkbox
+          label.control-label
+            span(data-bind="text: priceComparisonDiscountI18n")
+            input(type="checkbox", name="priceComparisonDiscount", data-bind="checked: priceComparisonDiscount")
+  div.row
+    div.col-md-12(data-bind="template: table.template")

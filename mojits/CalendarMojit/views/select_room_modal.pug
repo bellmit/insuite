@@ -1,0 +1,11 @@
+div#selectRoomModel(style="margin-top: -15px;")
+  div.row
+    div.col-xs-8
+      div.form-group
+        p(data-bind="text: noDataI18n, visible: !showRooms()")
+        div(data-bind="visible: showRooms")
+          div(data-bind="foreach: rooms")
+            .radio
+              label
+                input(type="radio", name="roomRadioBoxes", value="", data-bind="checked: $parent.selectedRoom, attr: {value: _id}")
+                span(data-bind="text: name")

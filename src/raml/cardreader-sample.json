@@ -1,0 +1,88 @@
+{
+  "meta": {
+    "errors": [],
+    "warnings": [],
+    "query": {},
+    "itemsPerPage": null,
+    "totalItems": 1,
+    "page": null,
+    "replyCode": 200
+  },
+  "data": [
+  {
+    "name": "qu-wNNyuq16ldBa0AAA7/OMNIKEY 8751 e-Health LAN::1::Station 1",
+    "data": [
+      {
+        "_id": "5570322435f7f7cb30ede47a",
+        "patientNo": "1",
+        "kbvDob": "29.11.1945",
+        "dob": "1945-11-28T23:00:00.000Z",
+        "careDegree": "NO",
+        "primaryDoc": "5568695fd19aaf0dd6eabd39",
+        "crmTreatments": [],
+        "crmTags": [],
+        "patientNumber": 1,
+        "sendPatientReceipt": false,
+        "gender": "UNKNOWN",
+        "talk": "MR",
+        "markers": [],
+        "physicians": [],
+        "images": [],
+        "affiliates": [],
+        "insuranceStatus": [
+          {
+            "type": "PUBLIC",
+            "cardType": "KVK",
+            "cardTypeGeneration": "0",
+            "insuranceNo": "222333444555",
+            "insuranceName": "AOK Baden-Württemberg",
+            "insurancePrintName": "AOK Baden-Württemberg",
+            "kv": "52",
+            "insuranceId": "108018121",
+            "insuranceGrpId": "61125",
+            "locationFeatures": null,
+            "kvkHistoricalNo": "222333444555",
+            "_id": "5570322435f7f7cb30ede47b",
+            "address2": "70191 Stuttgart",
+            "address1": "Heilbronner Str. 184",
+            "bgNumber": "",
+            "unzkv": [],
+            "fused": false,
+            "feeSchedule": "1",
+            "costCarrierBillingGroup": "01",
+            "costCarrierBillingSection": "00",
+            "dmp": "",
+            "persGroup": "",
+            "insuranceKind": "3",
+            "fk4110": "2020-12-31T22:59:59.999Z",
+            "fk4133": null
+          }
+        ],
+        "addresses": [
+          {
+            "kind": "OFFICIAL",
+            "_id": "5570322435f7f7cb30ede47c",
+            "addon": "",
+            "countryCode": "D",
+            "country": "Deutschland",
+            "city": "Böblingen",
+            "zip": "71032",
+            "houseno": "88",
+            "street": "Wiesengrund"
+          }
+        ],
+        "communications": [],
+        "prodServices": [],
+        "accounts": [],
+        "lastname": "Tanner",
+        "fk3120": "",
+        "middlename": "",
+        "nameaffix": "",
+        "firstname": "Mia-Sophie",
+        "title": "",
+        "__v": 0
+      }
+    ]
+  }
+]
+ }

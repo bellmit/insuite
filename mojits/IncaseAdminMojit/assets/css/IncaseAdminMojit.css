@@ -1,0 +1,90 @@
+#mainIncaseAdminNavigation {
+    margin-top: 0.6em;
+}
+
+#markers_config_panel .table,
+#marker_colors_panel .table,
+#activity_config_panel .table,
+.DCWindow-editDocumentationTree .table {
+    margin-bottom: 0;
+}
+
+.marker_colors_table .minicolors-swatch {
+    width: 34px;
+    height: 34px;
+    border-radius: 5px;
+}
+
+.marker_colors_table .minicolors-swatch > span {
+    border-radius: 4px;
+}
+
+.shortcuts-table {
+    border: 2px solid #eee;
+}
+
+.shortcuts-table .shortcuts-table__th {
+    padding: 0.8em;
+}
+
+.shortcuts-table .shortcuts-table__td {
+    vertical-align: middle;
+    padding: 0.8em;
+}
+
+.shortcuts-table__td_text-center {
+    text-align: center;
+}
+
+.forMarkers .select2-results-dept-0 { /* do the columns */
+    float: left;
+    width: 10%;
+}
+.forMarkers .select2-with-searchbox {
+    width: 300px;
+}
+
+.forMarkers .select2-container .select2-choice > .select2-chosen {
+    margin-right: 8px;
+}
+
+.forMarkers .ko-select2-container.select2-container .select2-chosen,
+.forMarkers .ko-select2-container.select2-container-multi .select2-search-field {
+    padding-left: 11px!important;
+    background-image: none;
+}
+
+.formula-printout {
+    min-height: 100px;
+}
+
+.test-value-col {
+    width: 50px;
+}
+
+.row-scope-formula p {
+    margin: 0;
+    font-size: 12px;
+}
+
+.row-scope-formula p span:nth-child(2) {
+    font-size: 10px;
+    color: #6c757d;
+}
+
+.patient-list {
+    max-height: 400px;
+    overflow-y: auto;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.patient-list ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.patient-list ul li {
+    border: 1px solid #dddddd;
+    padding: 5px;
+}

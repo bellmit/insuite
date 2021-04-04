@@ -1,0 +1,8 @@
+div.PatientBrowserViewModel
+  div.row
+    div#patientTable.col-xs-12.patientTable(data-bind="template: patientTable.template")
+  //ko if: !isDoquvide()
+  div.row
+    div.col-md-12
+      span(data-bind="template: createPatientId.template")
+  // /ko

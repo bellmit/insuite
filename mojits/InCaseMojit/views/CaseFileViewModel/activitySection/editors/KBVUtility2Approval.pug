@@ -1,0 +1,57 @@
+div
+  .row
+    .col-xs-4
+      div.form-group(data-bind="hasFeedback: { field: approvalValidTo, toggle: approvalValidTo.hasError, messages: approvalValidTo.validationMessages }")
+        label(data-bind="text: approvalValidTo.i18n")
+        .date-picker.input-group
+          input.form-control(name="approvalValidTo", data-bind="datetimepicker: { value: approvalValidTo }, readOnly: approvalValidToReadOnly")
+    .col-xs-4
+      div.form-group(data-bind="hasFeedback: { field: unlimitedApproval, toggle: unlimitedApproval.hasError, messages: unlimitedApproval.validationMessages }")
+        div.checkbox(style="margin-top: 28px;")
+          label.control-label
+            strong(data-bind="text: unlimitedApproval.i18n")
+            input(type="checkbox", name="unlimitedApproval", data-bind="checked: unlimitedApproval, readOnly: unlimitedApproval.readOnly")
+    .col-xs-4
+      div.form-group(data-bind="hasFeedback: { field: insuranceId, toggle: insuranceId.hasError, messages: insuranceId.validationMessages }")
+        label(data-bind="text: insuranceId.i18n")
+        input.form-control(name="insuranceId", data-bind="textInput: insuranceId, readOnly: insuranceId.readOnly")
+  .row
+    .col-xs-12
+      div.form-group
+        textarea#textform-sd3-content.form-control(name="userContent", data-bind="textInput: userContent, readOnly: userContent.readOnly", placeholder="Freitext", rows="3")
+  include KBVUtility2/utIcdCode
+  include KBVUtility2/utSecondIcdCode
+  include KBVUtility2/utDiagnosisGroup
+  include KBVUtility2/utRemedySelection
+
+  // ko ifnot: remedySelect.editMode
+
+  // ko if: ut2Remedy1List().length
+  .row
+    .col-xs-12
+      strong Heilmittel
+  // /ko
+
+  //ko with: standardizedCombination
+  include KBVUtility2/utRemedyApprovalRow
+  // /ko
+
+  //ko ifnot: standardizedCombination
+
+  // ko foreach: ut2Remedy1List
+  include KBVUtility2/utRemedyApprovalRow
+  // /ko
+
+  // ko if: ut2Remedy2List().length
+  .row
+    .col-xs-12
+      strong Ergänzendes Heilmittel
+  // /ko
+
+  // ko foreach: ut2Remedy2List
+  include KBVUtility2/utRemedyApprovalRow
+  // /ko
+
+  // /ko
+
+  // /ko

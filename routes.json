@@ -1,0 +1,828 @@
+[
+  {
+    "settings": [ "master", "environment:production", "environment:development" ],
+    "main": {
+      "call": "KOHTMLFrameMojit.main",
+      "path": "/",
+      "verbs": ["get", "post"],
+      "params": { "public": true }
+    },
+    "iscd": {
+      "call": "KOHTMLFrameMojit.main",
+      "path": "/iscd",
+      "verbs": ["get"],
+      "params": { "public": true }
+    },
+    "noscript": {
+      "call": "NoscriptMojit.noscript",
+      "path": "/noscript"
+    },
+    "version": {
+      "call": "KOHTMLFrameMojit.version",
+      "path": "/version",
+      "verbs": ["get"],
+      "params": { "public": true }
+    },
+    "tools": {
+      "call": "KOHTMLFrameMojit.tools",
+      "path": "/tools",
+      "verbs": ["get"],
+      "params": { "public": true }
+    },
+    "faq": {
+      "call": "KOHTMLFrameMojit.faq",
+      "path": "/faq",
+      "verbs": ["get"],
+      "params": { "public": true }
+    },
+    "handbuch": {
+      "call": "KOHTMLFrameMojit.handbuch",
+      "path": "/handbuch",
+      "verbs": ["get"],
+      "params": { "public": true }
+    },
+    "shop": {
+      "call": "KOHTMLFrameMojit.shop",
+      "path": "/shop",
+      "verbs": ["get"],
+      "params": { "public": true }
+    },
+    "terms": {
+      "call": "KOHTMLFrameMojit.terms",
+      "path": "/terms",
+      "verbs": ["get"],
+      "params": { "public": true }
+    },
+    "directives": {
+      "call": "KOHTMLFrameMojit.directives",
+      "path": "/directives",
+      "verbs": ["get"],
+      "params": { "public": true }
+    },
+    "patient_declarations": {
+      "call": "KOHTMLFrameMojit.patient_declarations",
+      "path": "/patient_declarations",
+      "verbs": ["get"],
+      "params": { "public": true }
+    },
+    "tutorial": {
+      "call": "KOHTMLFrameMojit.tutorial",
+      "path": "/tutorial",
+      "verbs": ["get"],
+      "params": { "public": true }
+    },
+    "addresses": {
+      "call": "KOHTMLFrameMojit.addresses",
+      "path": "/addresses",
+      "verbs": ["get"],
+      "params": { "public": true }
+    },
+    "reg_firstlogin": {
+      "call": "Login.regfirstlogin",
+      "path": "/register/firstlogin",
+      "verbs": ["post", "get"]
+    },
+    "mt2it_to": {
+      "call": "DCHTMLFrameMojit.oauthauth",
+      "path": "/mt2it/oauthtest",
+      "verbs": ["get", "post"]
+    },
+    "mt2it_to1": {
+      "call": "DCHTMLFrameMojit.oauthcallback",
+      "path": "/mt2it/callback",
+      "verbs": ["get", "post"]
+    },
+    "incare": {
+      "call": "KOHTMLFrameMojit.incare_nav",
+      "path": "/incare",
+      "verbs": ["get"],
+      "params": { "public": true }
+    },
+    "forms": {
+      "call": "KOHTMLFrameMojit.forms",
+      "path": "/forms",
+      "verbs": ["get", "post"],
+      "params": { "public": true }
+    },
+    "formprinters": {
+      "call": "KOHTMLFrameMojit.formprinters",
+      "path": "/formprinters",
+      "verbs": ["get", "post"],
+      "params": { "public": true }
+    },
+    "formsdiagnostic": {
+      "call": "KOHTMLFrameMojit.formsdiagnostic",
+      "path": "/formsdiagnostic",
+      "verbs": ["get", "post"]
+    },
+    "testing": {
+      "call": "KOHTMLFrameMojit.testing",
+      "path": "/testing",
+      "verbs": ["get", "post"]
+    },
+    "formstest": {
+      "call": "KOHTMLFrameMojit.formstest",
+      "path": "/formstest",
+      "verbs": ["get", "post"]
+    },
+    "formsbindingtest": {
+      "call": "KOHTMLFrameMojit.formsbindingtest",
+      "path": "/formsbindingtest",
+      "verbs": ["get", "post"]
+    },
+    "formstablebindingtest": {
+      "call": "KOHTMLFrameMojit.formstablebindingtest",
+      "path": "/formstablebindingtest",
+      "verbs": ["get", "post"]
+    },
+    "subformsbindingtest": {
+      "call": "KOHTMLFrameMojit.subformsbindingtest",
+      "path": "/subformsbindingtest",
+      "verbs": ["get", "post"]
+    },
+    "batchregeneratepdfs": {
+      "call": "KOHTMLFrameMojit.batchregeneratepdfs",
+      "path": "/batchregeneratepdfs",
+      "verbs": ["get", "post"]
+    },
+    "batchreplaceforms": {
+      "call": "KOHTMLFrameMojit.batchreplaceforms",
+      "path": "/batchreplaceforms",
+      "verbs": ["get", "post"]
+    },
+    "batchpdftest": {
+      "call": "KOHTMLFrameMojit.batchpdftest",
+      "path": "/batchpdftest",
+      "verbs": ["get", "post"]
+    },
+    "bulkpdftest": {
+      "call": "KOHTMLFrameMojit.bulkpdftest",
+      "path": "/bulkpdftest",
+      "verbs": ["get", "post"]
+    },
+    "mappingdescription": {
+      "call": "KOHTMLFrameMojit.mappingdescription",
+      "path": "/mappingdescription",
+      "verbs": ["get", "post"]
+    },
+    "formisolationtest": {
+      "call": "KOHTMLFrameMojit.formisolationtest",
+      "path": "/formisolationtest",
+      "verbs": ["get", "post"]
+    },
+    "fontmetrics": {
+      "call": "KOHTMLFrameMojit.fontmetrics",
+      "path": "/fontmetrics",
+      "verbs": ["get", "post"]
+    },
+    "labdatatest": {
+      "call": "KOHTMLFrameMojit.labdatatest",
+      "path": "/labdatatest",
+      "verbs": ["get", "post"]
+    },
+    "labdataparse": {
+      "call": "KOHTMLFrameMojit.labdataparse",
+      "path": "/labdataparse",
+      "verbs": ["get", "post"]
+    },
+    "reportinghelper": {
+      "call": "KOHTMLFrameMojit.reportinghelper",
+      "path": "/reportinghelper",
+      "verbs": ["get", "post"]
+    },
+    "gridfstest": {
+      "call": "KOHTMLFrameMojit.gridfstest",
+      "path": "/gridfstest",
+      "verbs": ["get", "post"]
+    },
+    "mergepdftest": {
+      "call": "KOHTMLFrameMojit.mergepdftest",
+      "path": "/mergepdftest",
+      "verbs": ["get", "post"]
+    },
+    "medsdbtest": {
+      "call": "KOHTMLFrameMojit.medsdbtest",
+      "path": "/medsdbtest",
+      "verbs": ["get", "post"]
+    },
+    "dotestplayground": {
+      "call": "KOHTMLFrameMojit.dotestplayground",
+      "path": "/dotestplayground",
+      "verbs": ["get", "post"]
+    },
+    "sdkttest": {
+      "call": "KOHTMLFrameMojit.sdkttest",
+      "path": "/sdkttest",
+      "verbs": ["get", "post"]
+    },
+    "xsstest": {
+      "call": "KOHTMLFrameMojit.xsstest",
+      "path": "/xsstest",
+      "verbs": ["get", "post"]
+    },
+    "jsonrpctest": {
+      "call": "KOHTMLFrameMojit.jsonrpctest",
+      "path": "/jsonrpctest",
+      "verbs": ["get", "post"]
+    },
+    "testDCWindow": {
+      "call": "KOHTMLFrameMojit.testDCWindow",
+      "path": "/testDCWindow",
+      "verbs": ["get", "post"]
+    },
+    "testKoViewModel": {
+      "call": "KOHTMLFrameMojit.testKoViewModel",
+      "path": "/testKoViewModel",
+      "verbs": ["get", "post"]
+    },
+    "testKoUI": {
+      "call": "KOHTMLFrameMojit.testKoUI",
+      "path": "/testKoUI",
+      "verbs": ["get", "post"]
+    },
+    "testKoTableLinked": {
+      "call": "KOHTMLFrameMojit.testKoTableLinked",
+      "path": "/testKoTableLinked",
+      "verbs": ["get", "post"]
+    },
+    "testHasFeedback": {
+      "call": "KOHTMLFrameMojit.testHasFeedback",
+      "path": "/testHasFeedback",
+      "verbs": ["get", "post"]
+    },
+    "moj2687": {
+      "call": "KOHTMLFrameMojit.moj2687",
+      "path": "/moj2687",
+      "verbs": ["get", "post"]
+    },
+    "dynamsoftIframe": {
+      "call": "DynamsoftFrameMojit.dynamsoftIframe",
+      "path": "/dynamsoftIframe",
+      "verbs": ["get", "post"]
+    },
+    "testDynamsoftTwain": {
+      "call": "KOHTMLFrameMojit.testDynamsoftTwain",
+      "path": "/testDynamsoftTwain",
+      "verbs": ["get", "post"]
+    },
+    "moj5958": {
+      "call": "KOHTMLFrameMojit.moj5958",
+      "path": "/moj5958",
+      "verbs": ["get", "post"],
+      "params": { "public": true }
+    },
+
+    "oauth": {
+      "call": "DCHTMLFrameMojit.doauthorise",
+      "path": "/dcauth",
+      "verbs": ["get", "post"]
+    },
+    "rest_1": {
+      "call": "REST.dcrest_1",
+      "path": "/1/*",
+      "verbs": ["get", "put", "delete", "post"]
+    },
+    "rest_2": {
+      "call": "REST.dcrest_2",
+      "path": "/2/*",
+      "verbs": ["get", "put", "delete", "post"]
+    },
+    "rest_3": {
+      "call": "REST.dcrest_3",
+      "path": "/3/*",
+      "verbs": ["get", "put", "delete", "post"]
+    },
+    "rest_old": {
+      "call": "DCHTMLFrameMojit.dcrest",
+      "path": "/r/*",
+      "verbs": ["get", "put", "delete", "post"],
+      "params": {
+        "_rest": {
+
+          "media": "MediaMojit",
+          "importdefaultmedia": "MediaMojit",
+
+          "testbinutils": "TestingMojit",
+          "xsstestrunner": "TestingMojit",
+          "getpatientstest": "TestingMojit",
+
+          "loadform": "FormEditorMojit",
+          "saveform": "FormEditorMojit",
+          "createform": "FormEditorMojit",
+          "deleteform": "FormEditorMojit",
+
+          "getformdependancies": "FormEditorMojit",
+          "exportform": "FormEditorMojit",
+          "importform": "FormEditorMojit",
+          "listformexports": "FormEditorMojit",
+          "clearformexports": "FormEditorMojit",
+          "uploadformbackup": "FormEditorMojit",
+
+          "listreducedschema": "FormEditorMojit",
+          "getreducedschema": "FormEditorMojit",
+
+          "savetodisk": "FormEditorMojit",
+          "submitquestionnaire": "FormEditorMojit",
+
+          "getimage": "FormEditorMojit",
+          "setimage": "FormEditorMojit",
+          "resetimage": "FormEditorMojit",
+
+          "migrateformstest": "FormEditorMojit",
+
+          "backup": "UserMgmtMojit",
+
+          "message": "MISMojit",
+
+
+          "mt2it": "MT2ITMojit",
+
+          "marker": "MISMojit",
+          "severity": "MISMojit",
+
+          "intime": "MISMojit",
+          "intimeimage": "MISMojit",
+          "callpatient": "MISMojit",
+          "document": "MISMojit",
+          "initpatienttransfer": "MISMojit",
+          "exportpatientdata": "MISMojit",
+          "importpatientdata": "MISMojit",
+
+          "auth": "DCAuthMojit",
+
+          "jade": "JadeLoaderMojit",
+          "getdict": "JadeLoaderMojit",
+
+          "calendar": "CalendarMojit",
+          "calculateschedule": "CalendarMojit",
+          "scheduletype": "CalendarMojit",
+          "getScheduletypes": "CalendarMojit",
+          "getPatients": "CalendarMojit",
+          "getMixedCalData": "CalendarMojit",
+          "alertpatients": "CalendarMojit",
+          "gettime": "CalendarMojit",
+
+          "activation": "CRMMojit",
+
+          "addpractice": "PUCMojit",
+          "deletemetadata": "PUCMojit",
+          "messagepatient": "PUCMojit",
+          "messagepractice": "PUCMojit",
+          "checkmessagereceipt": "PUCMojit",
+          "changePWPatient": "PUCMojit",
+
+          "invoicefactors": "InvoiceMojit",
+          "invoicefactor": "InvoiceMojit",
+          "getDeliverySettings": "InvoiceMojit",
+
+
+          "p_receivewaitingtime": "PatPortalMojit",
+          "blindproxy": "PatPortalMojit",
+          "listpatientreg": "PatPortalMojit",
+          "p_getPracticeInfo": "PatPortalMojit",
+          "p_requesttransfer": "PatPortalMojit",
+          "p_confirmtransfer": "PatPortalMojit",
+          "p_patientactivities": "PatPortalMojit",
+
+          "activity": "CaseFileMojit",
+          "copyactivity": "CaseFileMojit",
+          "fullactivity": "CaseFileMojit",
+          "testExternalData": "CaseFileMojit",
+          "patientdetail": "CaseFileMojit",
+          "patientdocument": "CaseFileMojit",
+          "transition": "CaseFileMojit",
+          "scheinForCurrentQuarter": "CaseFileMojit",
+          "diagnosesForCurrentQuarter": "CaseFileMojit",
+          "scheinByTimestamp": "CaseFileMojit",
+          "hasCardSwiped": "CaseFileMojit",
+          "kbvapi": "CaseFileMojit",
+          "updateFromCard": "CaseFileMojit",
+
+          "catapi": "CatalogMojit",
+          "cataloginsert": "CatalogMojit",
+          "catsearch": "CatalogMojit",
+          "getTables": "CatalogMojit",
+          "countries": "CatalogMojit",
+          "verifyKT": "CatalogMojit",
+
+          "GetWoundPatientData": "MT2ITMojit",
+          "AddWoundPatient": "MT2ITMojit",
+          "AddWoundPatientData": "MT2ITMojit",
+          "GetWoundPatients": "MT2ITMojit"
+        }
+      }
+    },
+    "rest_legacy": {
+      "call": "DCHTMLFrameMojit.dcrest",
+      "path": "/dcrest",
+      "verbs": ["get", "post"],
+      "params": {
+        "_rest": {
+          "GetFormsTreeData": "FormsLoaderMojit",
+          "GetFormsPanel": "FormsLoaderMojit"
+        }
+      }
+    },
+    "profile": {
+      "call": "KOHTMLFrameMojit.profile",
+      "path": "/profile",
+      "verbs": ["get", "put"],
+      "params": { "public": true }
+    },
+    "printer": {
+      "call": "KOHTMLFrameMojit.printerMojit",
+      "path": "/printer",
+      "verbs": ["get", "put"],
+      "params": { "public": true }
+    },
+    "patregoptin": {
+      "call": "PPHTMLFrameMojit.patientOptin",
+      "path": "/prgn",
+      "verbs": ["get", "post"]
+    },
+    "regoptin": {
+      "call": "DCHTMLFrameMojit.regoptin",
+      "path": "/rgnx",
+      "verbs": ["get", "post"]
+    },
+    "waitingroom": {
+      "call": "KOHTMLFrameMojit.waitingroom",
+      "path": "/waitingroom",
+      "verbs": ["get", "post"],
+      "params": { "public": true }
+    },
+    "video_conference": {
+      "verbs": ["get", "post"],
+      "path": "/inconference",
+      "call": "PPHTMLFrameMojit.video_conference"
+    },
+    "confirm_vc": {
+      "call": "PPHTMLFrameMojit.confirm_vc",
+      "path": "/inconference/confirmVC",
+      "verbs": ["get", "post"]
+    },
+    "intime_nav": {
+      "call": "PPHTMLFrameMojit.intime_nav",
+      "path": "/intime",
+      "verbs": ["get", "post"]
+    },
+    "jawbone_code": {
+      "call": "PPHTMLFrameMojit.jawbone_code",
+      "path": "/jawbone",
+      "verbs": ["get", "post"]
+    },
+    "confirm_pp": {
+      "call": "PPHTMLFrameMojit.confirm_email",
+      "path": "/intime/confirm",
+      "verbs": ["get", "post"]
+    },
+    "intimepatient": {
+      "call": "PPHTMLFrameMojit.redirectToIntime",
+      "path": "/intime/patient",
+      "verbs": ["get", "post"]
+    },
+    "patient": {
+      "call": "PPHTMLFrameMojit.patient",
+      "path": "/patient",
+      "verbs": ["get", "post"]
+    },
+    "patportaladmin": {
+      "call": "KOHTMLFrameMojit.remotepatportaladmin",
+      "path": "/patientportaladmin",
+      "verbs": ["get", "post"],
+      "params": { "public": true }
+    },
+    "inport": {
+      "call": "KOHTMLFrameMojit.device_nav",
+      "path": "/inport",
+      "verbs": ["get"],
+      "params": { "public": true }
+    },
+    "labLog": {
+      "call": "KOHTMLFrameMojit.labLog",
+      "path": "/lablog",
+      "verbs": ["get"],
+      "params": { "public": true }
+    },
+    "transferLog": {
+      "call": "KOHTMLFrameMojit.patientTransfer",
+      "path": "/transferLog",
+      "verbs": ["get"],
+      "params": { "public": true }
+    },
+    "contacts": {
+      "call": "KOHTMLFrameMojit.contactsNav",
+      "path": "/contacts",
+      "verbs": ["get"],
+      "params": { "public": true }
+    },
+    "appTokens": {
+      "call": "KOHTMLFrameMojit.appToken",
+      "path": "/appTokens",
+      "verbs": ["get"],
+      "params": { "public": true }
+    },
+    "appAccessManager": {
+      "call": "KOHTMLFrameMojit.appAccessManager",
+      "path": "/accessManager",
+      "verbs": ["get"],
+      "params": { "public": true }
+    },
+    "appNav": {
+      "call": "KOHTMLFrameMojit.appNav",
+      "path": "/solutions",
+      "verbs": ["get"],
+      "params": { "public": true }
+    },
+    "deviceLog": {
+      "call": "KOHTMLFrameMojit.deviceLog",
+      "path": "/deviceLog",
+      "verbs": ["get"],
+      "params": { "public": true }
+    },
+    "banklog": {
+      "call": "KOHTMLFrameMojit.banklog",
+      "path": "/banklog",
+      "verbs": ["get"],
+      "params": { "public": true }
+    },
+    "importUtility": {
+      "call": "KOHTMLFrameMojit.importUtility",
+      "path": "/importUtility",
+      "verbs": ["get"],
+      "params": { "public": true }
+    },
+    "inPacsLog": {
+      "call": "KOHTMLFrameMojit.inPacsLog",
+      "path": "/inPacsLog",
+      "verbs": ["get"],
+      "params": { "public": true }
+    },
+    "gdtLog": {
+      "call": "KOHTMLFrameMojit.gdtLog",
+      "path": "/gdtLog",
+      "verbs": ["get"],
+      "params": { "public": true }
+    },
+    "inPacs": {
+      "call": "KOHTMLFrameMojit.inPacs",
+      "path": "/inpacs",
+      "verbs": ["get"],
+      "params": { "public": true }
+    },
+    "telecardio": {
+      "call": "KOHTMLFrameMojit.telekardio",
+      "path": "/telecardio",
+      "verbs": ["get"],
+      "params": { "public": true }
+    },
+    "cardioConfig": {
+      "call": "KOHTMLFrameMojit.cardioConfig",
+      "path": "/admin/telekardio",
+      "verbs": ["get"],
+      "params": { "public": true }
+    },
+    "patientdcregister": {
+      "call": "PPHTMLFrameMojit.patientdcregister",
+      "path": "/intime/register",
+      "verbs": ["get", "post"]
+    },
+    "patientprcregister": {
+      "call": "PPHTMLFrameMojit.patientprcregister",
+      "path": "/intime/registertoprc",
+      "verbs": ["get", "post"]
+    },
+    "passreset": {
+      "call": "PPHTMLFrameMojit.passreset",
+      "path": "/passreset",
+      "verbs": ["get", "post"]
+    },
+    "practicenew": {
+      "call": "PPHTMLFrameMojit.practicenew",
+      "path": "/intime/practice/new",
+      "verbs": ["get", "post"]
+    },
+    "InSuiteAdmin": {
+      "call": "KOHTMLFrameMojit.insuiteadmin",
+      "path": "/admin/insuite",
+      "verbs": ["get"],
+      "params": { "public": true }
+    },
+    "InTimeAdmin": {
+      "call": "KOHTMLFrameMojit.intimeadmin",
+      "path": "/admin/intime",
+      "verbs": ["get"],
+      "params": { "public": true }
+    },
+    "calendar": {
+      "call": "KOHTMLFrameMojit.calendar",
+      "path": "/calendar",
+      "verbs": ["get"],
+      "params": { "public": true }
+    },
+    "wrongbrowser": {
+      "call": "Login.wrongbrowser",
+      "path": "/wrongbrowser",
+      "verbs": ["get", "post"]
+    },
+    "login": {
+      "call": "Login.login",
+      "path": "/login",
+      "verbs": ["get", "post"]
+    },
+    "firstLogin": {
+      "call": "Login.firstLogin",
+      "path": "/login/first",
+      "verbs": ["get"]
+    },
+    "readContact": {
+      "call": "Login.readContact",
+      "path": "/readText",
+      "verbs": ["get"]
+    },
+    "crm": {
+      "verbs": ["get"],
+      "path": "/crm",
+      "call": "KOHTMLFrameMojit.crm_nav",
+      "params": { "public": true }
+    },
+    "impress_route": {
+      "verbs": ["get"],
+      "path": "/impress",
+      "call": "KOHTMLFrameMojit.impress"
+    },
+    "inCaseMojit": {
+      "verbs": ["get"],
+      "path": "/incase",
+      "call": "KOHTMLFrameMojit.inCaseMojit",
+      "params": { "public": true }
+    },
+    "patienthistory": {
+      "verbs": ["get", "post"],
+      "path": "/patienthistory",
+      "call": "KOHTMLFrameMojit.patienthistory"
+    },
+    "invoice": {
+      "verbs": ["get"],
+      "path": "/invoice",
+      "call": "KOHTMLFrameMojit.invoice_nav",
+      "params": { "public": true }
+    },
+    "invoiceadmin": {
+      "verbs": ["get"],
+      "path": "/invoiceadmin",
+      "call": "KOHTMLFrameMojit.invoiceAdmin_nav",
+      "params": { "public": true }
+    },
+    "kvconnect": {
+      "verbs": ["get"],
+      "path": "/kvconnect",
+      "call": "KOHTMLFrameMojit.kvconnect",
+      "params": { "public": true }
+    },
+    "catalogs": {
+      "verbs": ["get"],
+      "path": "/catalogs",
+      "call": "KOHTMLFrameMojit.catalogs",
+      "params": { "public": true }
+    },
+    "intouch": {
+      "verbs": ["get"],
+      "path": "/intouch",
+      "call": "KOHTMLFrameMojit.intouch_nav",
+      "params": { "public": true }
+    },
+    "conference": {
+      "verbs": ["get"],
+      "path": "/intouch/conference/*",
+      "call": "IntouchFrameMojit.intouch_conference"
+    },
+    "conference_one": {
+      "verbs": ["get"],
+      "path": "/intouch/conference_one/*",
+      "call": "IntouchFrameMojit.intouch_conference_one"
+    },
+    "conference_camera": {
+      "verbs": ["get"],
+      "path": "/intouch/conference_camera/*",
+      "call": "IntouchFrameMojit.intouch_conference_camera"
+    },
+    "conference_screen_share": {
+      "verbs": ["get"],
+      "path": "/intouch/conference_screen_share/*",
+      "call": "IntouchFrameMojit.intouch_conference_screen_share"
+    },
+    "wrongwebrtcbrowser": {
+      "call": "IntouchFrameMojit.wrongbrowser",
+      "path": "/intouch/conference_wrongbrowser",
+      "verbs": ["get"]
+    },
+    "masterTab": {
+      "verbs": ["get"],
+      "path": "/system",
+      "call": "KOHTMLFrameMojit.masterTab",
+      "params": { "public": true }
+    },
+    "incase": {
+      "verbs": ["get"],
+      "path": "/admin/incase",
+      "call": "KOHTMLFrameMojit.incase_nav",
+      "params": { "public": true }
+    },
+    "insight": {
+      "call": "KOHTMLFrameMojit.insight2",
+      "path": "/insight",
+      "verbs": ["get"],
+      "params": { "public": true }
+    },
+    "insetup": {
+      "call": "KOHTMLFrameMojit.insetup",
+      "path": "/insetup",
+      "verbs": ["get"],
+      "params": { "public": true }
+    },
+    "inpacsAdmin": {
+      "call": "KOHTMLFrameMojit.inPacsAdminMojit",
+      "path": "/admin/inpacs",
+      "verbs": ["get"],
+      "params": { "public": true }
+    },
+    "inbackup": {
+      "call": "KOHTMLFrameMojit.inBackupMojit",
+      "path": "/inbackup",
+      "verbs": ["get"],
+      "params": { "public": true }
+    },
+    "intouchAdmin": {
+      "verbs": ["get"],
+      "path": "/admin/intouch",
+      "call": "KOHTMLFrameMojit.intouchAdmin",
+      "params": { "public": true }
+    },
+    "dispatcher": {
+      "verbs": ["get"],
+      "path": "/iscd/dispatcher",
+      "call": "KOHTMLFrameMojit.isdispatcher_nav",
+      "params": { "public": true }
+    },
+    "tasks": {
+      "verbs": ["get"],
+      "path": "/tasks",
+      "call": "KOHTMLFrameMojit.tasks_nav",
+      "params": { "public": true }
+    },
+    "manage": {
+      "verbs": ["get"],
+      "path": "/iscd/manage",
+      "call": "KOHTMLFrameMojit.insuiteadmin",
+      "params": { "public": true }
+    },
+    "mirror_patients": {
+      "verbs": ["get"],
+      "path": "/iscd/patients",
+      "call": "KOHTMLFrameMojit.mirrorpatient_nav",
+      "params": { "public": true }
+    },
+    "license": {
+      "verbs": ["get"],
+      "path": "/license",
+      "call": "KOHTMLFrameMojit.license",
+      "params": { "public": true }
+    },
+    "formPortal": {
+      "verbs": ["get"],
+      "path": "/formportal/*",
+      "call": "KOHTMLFrameMojit.formPortal",
+      "params": { "public": true }
+    },
+    "socketIO": {
+      "verbs": ["get"],
+      "path": "/socket-io",
+      "call": "KOHTMLFrameMojit.socketIO",
+      "params": { "public": true }
+    },
+    "support_nav": {
+      "verbs": ["get"],
+      "path": "/supportrequest",
+      "call": "KOHTMLFrameMojit.support_nav",
+      "params": { "public": true }
+    },
+    "supportlogin": {
+      "call": "Login.supportlogin",
+      "path": "/login/token",
+      "verbs": ["get", "post"]
+    },
+    "inStockMojit": {
+      "verbs": ["get"],
+      "call": "KOHTMLFrameMojit.inStockMojit",
+      "path": "/admin/instock",
+      "params": { "public": true }
+    },
+    "medidataLog": {
+      "call": "KOHTMLFrameMojit.medidataLog",
+      "path": "/medidataLog",
+      "verbs": ["get"],
+      "params": { "public": true }
+    }
+  }
+]

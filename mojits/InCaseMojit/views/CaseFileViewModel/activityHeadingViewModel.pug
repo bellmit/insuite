@@ -1,0 +1,11 @@
+div.panel.panel-default.activityHeadingViewModel
+  div.panel-heading
+    span(data-bind="html: headingText")
+    // ko if: showReadCheckbox
+    label.checkbox-inline.ml-4
+      input(type="checkbox", data-bind="checked: readCheckbox, readOnly: kimState.readOnly")
+      span(data-bind="text: readCheckbox.i18n")
+    // /ko
+    // ko template: { name:'activityHeadingButtonsViewModel', data: activityHeadingButtonsViewModel }
+    // /ko
+

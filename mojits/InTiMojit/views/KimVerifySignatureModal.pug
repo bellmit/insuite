@@ -1,0 +1,29 @@
+div
+  div.col-md-12
+
+    // ko if: hasNoContext
+    div.alert.alert-warning(data-bind="text: noTiContextsConfiguredI18n")
+    // /ko
+
+    // ko ifnot: hasNoContext
+
+    div.form-group
+      label
+        span Aufrufkontext&nbsp;
+        // ko if: tiContexts.length > 1
+        span.badge(data-bind="text: tiContexts.length ")
+        // /ko
+      select.form-control(name="tiContexts", data-bind="options: tiContexts, optionsText: 'display', value: selectedTiContext, disable: isVerifying")
+    div.clearfix(style="padding-bottom: 8px;")
+      div(data-bind="template: startVerifySignatureBtn.template").pull-right
+    // ko if: isVerifying
+    p(data-bind="text: verifyI18n")
+    div.progress
+      div(role="progressbar", aria-valuenow="20", aria-valuemin="0", aria-valuemax="100", data-bind="style: {width: progressPercentage}").progress-bar.progress-bar-info
+    // /ko
+
+    // ko if: hasVerifiedAtLeastOne
+    div(data-bind="template: verifyDocumentResultTable.template")
+    // /ko
+
+    // /ko

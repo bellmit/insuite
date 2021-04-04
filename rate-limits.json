@@ -1,0 +1,22 @@
+{
+  "/3/webhook/:appName": {
+    "expirySeconds": 10,
+    "requestsPerExpiry": 1000
+  },
+  "/1/errors/:log": {
+    "expirySeconds": 2,
+    "requestsPerExpiry": 10
+  },
+  "/1/patientportal/:resetPassword": {
+    "expirySeconds": 2,
+    "requestsPerExpiry": 1
+  },
+  "/dologin*": {
+    "expirySeconds": 2,
+    "requestsPerExpiry": 1
+  },
+  "/employee/:doResetEmployeePw": {
+    "expirySeconds": 2,
+    "requestsPerExpiry": 1
+  }
+}

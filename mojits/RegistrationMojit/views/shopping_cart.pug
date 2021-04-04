@@ -1,0 +1,12 @@
+//TRANSLATION INCOMPLETE!! MOJ-3201
+.shopping-cart#priceOverview
+  i.icon-shopping-cart
+  h4#shoppingCartHeadline  Ihr Warenkorb
+  dl.dl-horizontal
+    each service in services
+      - if(service.group >= 0)
+        dt!= service.price
+        dd!= service.name
+    hr
+    dt.double-underline!= total
+    dd pro Monat

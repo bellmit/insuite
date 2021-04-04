@@ -1,0 +1,11 @@
+div.wareHouseAdvancedFilterModel
+        div.col-md-6
+            div.checkbox
+              input(type="checkbox", data-bind="checked: allArticles, click: unCheckOthers")
+              span(data-bind="text: allI18n")
+            div.checkbox
+                input(type="checkbox", data-bind="checked: moreThanZero, click: unCheckAll")
+                span(data-bind="text: gtZeroI18n")
+            div.checkbox
+                input(type="checkbox", data-bind="checked: lessThanMinQ, click: unCheckAll")
+                span(data-bind="text: ltMinQI18n")

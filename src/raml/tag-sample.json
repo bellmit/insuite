@@ -1,0 +1,22 @@
+{
+  "meta": {
+    "errors": [],
+    "warnings": [],
+    "query": {},
+    "itemsPerPage": null,
+    "totalItems": 1,
+    "page": null,
+    "replyCode": 200
+  },
+  "data": [
+  {
+    "title": "ERYTESTO",
+    "type": "LABDATA",
+    "sampleNormalValueText": [
+      "4.63 - 6.08"
+    ],
+    "testLabel": "ERYTHROZYTEN",
+    "unit": "T/l"
+  }
+]
+ }

@@ -1,0 +1,11 @@
+// ko ifnot: editMode
+span(data-bind="text: medicationRecipeText")
+// /ko
+// ko if: editMode
+.row
+  .col-sm-9
+    div.form-group(data-bind="hasFeedback: { field: medicationRecipeText, toggle: medicationRecipeText.hasError, messages: medicationRecipeText.validationMessages }")
+      input.form-control(data-bind="textInput: medicationRecipeText, readOnly: medicationRecipeText.readOnly")
+  .col-sm-3.text-right
+    include KBVMedicationPlan-EditingButtons
+// /ko

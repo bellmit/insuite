@@ -1,0 +1,15 @@
+div.DCMiniCalendarView
+  table.DCMiniCalendarView-table.table.table-bordered.table-condensed(data-bind="click: _onClick")
+    caption
+      button.btn.btn-default.btn-block.DCMiniCalendarView-button-month(name="button-month", type="button", data-bind="attr: { 'data-isodate': header.isodate }")
+        b(data-bind="text: header.label")
+    colgroup(data-bind="foreach: header.cols")
+      col
+    thead
+      tr(data-bind="foreach: header.cols")
+        th.DCMiniCalendarView-cell-header(data-bind="text: text, css: colCss")
+    tbody(data-bind="foreach: rows.items")
+      tr(data-bind="foreach: $data")
+        td(data-bind="css: colCss")
+          button.btn.btn-sm.btn-block(type="button", data-bind="css: buttonCss, attr: { name: name, 'data-isodate': isodate }")
+            span(data-bind="text: text, css: textCss")

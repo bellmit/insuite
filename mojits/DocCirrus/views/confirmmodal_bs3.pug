@@ -1,0 +1,12 @@
+.modal.fade#confirmModal
+  .modal-dialog
+    .modal-content
+      .modal-header
+        button.close(type="button", data-dismiss="modal", aria-hidden="true")
+          | &times;
+        h4!= title
+      .modal-body
+        p!= message
+      .modal-footer
+        a.btn.btn-default#cancelModal(tabindex="0", data-dismiss="modal")!= cancel
+        a.btn.btn-primary#acceptModal(tabindex="0")!= confirm

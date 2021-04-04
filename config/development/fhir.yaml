@@ -1,0 +1,7 @@
+---
+context: [ component:server ]
+proxy:
+  authentication: none
+server:
+  io:
+    url: http://localhost:3000

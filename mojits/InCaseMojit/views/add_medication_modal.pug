@@ -1,0 +1,22 @@
+div#addMedicationModal(style="margin-top: -10px")
+  div.row
+    div.col-sm-12.col-md-6
+      h4(data-bind="text: patientMedicationTableTitle")
+      div(data-bind="template: patientMedicationKoTable.template")
+    div.col-sm-12.col-md-6
+      div.row
+        div.col-sm-6
+          h4(data-bind="text: catalogUsageTableTitle")
+        div.col-sm-6.dc-form-flex(style="align-items: center; justify-content: flex-end;")
+          div
+            h4(data-bind="text: searchTitle")
+          div(style="margin-left: 6px;")
+            span(type="button", name="searchButton", data-bind="template: searchButton.template")
+      div(data-bind="template: catalogUsageKoTable.template")
+  p.text-right(data-bind="text: selectedItemsTitle")
+  div(data-bind="foreach: selectedItems")
+    div.dc-form-flex(style="justify-content: flex-end; align-items: center;")
+      div
+        span(data-bind="text: phNLabel")
+      div(style="margin-left: 10px")
+        span(type="button", name="unSelectButton", data-bind="template: $parent.unSelectItemButton.template")

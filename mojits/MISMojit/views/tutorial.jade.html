@@ -1,0 +1,785 @@
+-//TRANSLATION INCOMPLETE!! MOJ-3201
+input(type="hidden", value=data.streamerURL)#streamerURL
+
+div(id=mojit_view_id)
+  .container.container-fullscreen
+    div(style="position: relative")
+      #fullScreenToggle(style="position: absolute; right: 0; top: 0;")
+        button.btn.btn-sm.btn-default(
+        name="toggleFullScreen", type="button", data-bind="click: toggleFullScreenHandler, attr: { title: viewPortBtnI18n }",
+        style="margin-top: 5px; font-size:14px")
+          span.fa.fa-arrows-alt
+  .container.container-fullscreen
+    ul.nav.nav-tabs(role="tablist")
+      li.active
+        a(href="#insuite", role="tab", data-toggle="tab") inSuite
+      li
+        a(href="#intime", role="tab", data-toggle="tab") inTime
+      li
+        a(href="#inform", role="tab", data-toggle="tab") inForm
+      li
+        a(href="#incase", role="tab", data-toggle="tab") inCase
+      li
+        a(href="#invoice", role="tab", data-toggle="tab") inVoice
+      li
+        a(href="#insight", role="tab", data-toggle="tab") inSight
+      li
+        a(href="#datensafe", role="tab", data-toggle="tab") Datensafe
+      li
+        a(href="#insuite_care", role="tab", data-toggle="tab") inSuite Care
+
+  .container.container-fullscreen
+    .tab-content
+
+      .tab-pane.fade.in.active#insuite
+        h3.text-muted inSuite - Praxissoftware neu gedacht
+        table
+          colgroup
+            col(width="100")
+            col(width="460")
+            col(width="80")
+          //tr
+            td
+              button.btn.btn-default.vbtn(name="insuite.5", type="button", disabled="disabled") PLAY <i class="glyphicon glyphicon-play"></i>
+            td
+              h4.text-muted Funktionsüberblick
+            td
+              h4.text-muted (00:00)
+          tr
+            td
+              button.btn.btn-default.vbtn(name="insuite.10", type="button") PLAY <i class="glyphicon glyphicon-play"></i>
+            td
+              h4 Einrichtung, Grunddaten
+            td
+              h4 (01:07)
+          tr
+            td
+              button.btn.btn-default.vbtn(name="insuite.15", type="button") PLAY <i class="glyphicon glyphicon-play"></i>
+            td
+              h4 Betriebsstätten anlegen
+            td
+              h4 (02:40)
+          tr
+            td
+              button.btn.btn-default.vbtn(name="insuite.20", type="button") PLAY <i class="glyphicon glyphicon-play"></i>
+            td
+              h4 Mitarbeiter verwalten
+            td
+              h4 (05:56)
+          tr
+            td
+              button.btn.btn-default.vbtn(name="insuite.25", type="button") PLAY <i class="glyphicon glyphicon-play"></i>
+            td
+              h4 Passwort ändern
+            td
+              h4 (02:29)
+          tr
+            td
+              button.btn.btn-default.vbtn(name="insuite.30", type="button") PLAY <i class="glyphicon glyphicon-play"></i>
+            td
+              h4 Passwort vergessen
+            td
+              h4 (00:57)
+          tr
+            td
+              button.btn.btn-default.vbtn(name="insuite.35", type="button") PLAY <i class="glyphicon glyphicon-play"></i>
+            td
+              h4 Gesundheitsportal einbinden
+            td
+              h4 (03:59)
+          tr
+            td
+              button.btn.btn-default.vbtn(name="insuite.40", type="button") PLAY <i class="glyphicon glyphicon-play"></i>
+            td
+              h4 Audit Log einsehen
+            td
+              h4 (02:03)
+          tr
+            td
+              button.btn.btn-default.vbtn(name="incase.115", type="button") PLAY <i class="glyphicon glyphicon-play"></i>
+            td
+              h4 Filter in Tabellen
+            td
+              h4 (01:29)
+          tr
+            td
+              button.btn.btn-default.vbtn(name="incase.110", type="button") PLAY <i class="glyphicon glyphicon-play"></i>
+            td
+              h4 Aktenansicht flexibler Patientenkopf
+            td
+              h4 (01:28)
+          tr
+            td
+              button.btn.btn-default.vbtn(name="incase.120", type="button") PLAY <i class="glyphicon glyphicon-play"></i>
+            td
+              h4 Datenübernahme aus/in Formulare
+            td
+              h4 (01:14)
+          //tr
+            td
+              button.btn.btn-default.vbtn(name="insuite.40", type="button") PLAY <i class="glyphicon glyphicon-play"></i>
+            td
+              h4 Kartenleser installieren
+            td
+              h4 (00:00)
+
+
+      .tab-pane.fade#intime
+        h3.text-muted inTime - Kalender, Planung, Termine
+        table
+          colgroup
+            col(width="100")
+            col(width="460")
+            col(width="80")
+          //tr
+            td
+              button.btn.btn-default.vbtn(name="intime.5", type="button", disabled="disabled") PLAY <i class="glyphicon glyphicon-play"></i>
+            td
+              h4.text-muted Funktionsüberblick
+            td
+              h4.text-muted (00:00)
+          tr
+            td
+              button.btn.btn-default.vbtn(name="intime.10", type="button") PLAY <i class="glyphicon glyphicon-play"></i>
+            td
+              h4 Kalender anlegen
+            td
+              h4 (02:16)
+          tr
+            td
+              button.btn.btn-default.vbtn(name="intime.15", type="button") PLAY <i class="glyphicon glyphicon-play"></i>
+            td
+              h4 Sprechzeiten anlegen
+            td
+              h4 (01:17)
+          tr
+            td
+              button.btn.btn-default.vbtn(name="intime.20", type="button") PLAY <i class="glyphicon glyphicon-play"></i>
+            td
+              h4 Sperrzeiten anlegen
+            td
+              h4 (02:03)
+          tr
+            td
+              button.btn.btn-default.vbtn(name="intime.25", type="button") PLAY <i class="glyphicon glyphicon-play"></i>
+            td
+              h4 Terminarten anlegen
+            td
+              h4 (03:28)
+          tr
+            td
+              button.btn.btn-default.vbtn(name="intime.30", type="button") PLAY <i class="glyphicon glyphicon-play"></i>
+            td
+              h4 Wartezimmer Info anpassen
+            td
+              h4 (04:28)
+          tr
+            td
+              button.btn.btn-default.vbtn(name="intime.35", type="button") PLAY <i class="glyphicon glyphicon-play"></i>
+            td
+              h4 Betriebsstättenfilter setzen
+            td
+              h4 (02:37)
+          tr
+            td
+              button.btn.btn-default.vbtn(name="intime.40", type="button") PLAY <i class="glyphicon glyphicon-play"></i>
+            td
+              h4 Ansichten und Auflösung
+            td
+              h4 (02:47)
+          tr
+            td
+              button.btn.btn-default.vbtn(name="intime.45", type="button") PLAY <i class="glyphicon glyphicon-play"></i>
+            td
+              h4 Plantermin und Spontantermin
+            td
+              h4 (04:14)
+          tr
+            td
+              button.btn.btn-default.vbtn(name="intime.50", type="button") PLAY <i class="glyphicon glyphicon-play"></i>
+            td
+              h4 Zuordnung Termin zu Patient
+            td
+              h4 (03:16)
+          tr
+            td
+              button.btn.btn-default.vbtn(name="intime.55", type="button") PLAY <i class="glyphicon glyphicon-play"></i>
+            td
+              h4 Termine außerhalb der Sprechzeiten
+            td
+              h4 (02:21)
+          tr
+            td
+              button.btn.btn-default.vbtn(name="intime.60", type="button") PLAY <i class="glyphicon glyphicon-play"></i>
+            td
+              h4 Umgang mit Planterminen
+            td
+              h4 (03:54)
+          tr
+            td
+              button.btn.btn-default.vbtn(name="intime.65", type="button") PLAY <i class="glyphicon glyphicon-play"></i>
+            td
+              h4 Umgang mit Spontanterminen
+            td
+              h4 (03:03)
+          tr
+            td
+              button.btn.btn-default.vbtn(name="intime.70", type="button") PLAY <i class="glyphicon glyphicon-play"></i>
+            td
+              h4 Warteliste nutzen
+            td
+              h4 (06:34)
+          tr
+            td
+              button.btn.btn-default.vbtn(name="intime.75", type="button") PLAY <i class="glyphicon glyphicon-play"></i>
+            td
+              h4 Aufrufliste nutzen
+            td
+              h4 (05:13)
+          tr
+            td
+              button.btn.btn-default.vbtn(name="intime.80", type="button") PLAY <i class="glyphicon glyphicon-play"></i>
+            td
+              h4 Intelligenter Kalender
+            td
+              h4 (05:13)
+          tr
+            td
+              button.btn.btn-default.vbtn(name="intime.85", type="button") PLAY <i class="glyphicon glyphicon-play"></i>
+            td
+              h4 Termine im Gesundheitsportal
+            td
+              h4 (08:45)
+          tr
+            td
+              button.btn.btn-default.vbtn(name="intime.90", type="button") PLAY <i class="glyphicon glyphicon-play"></i>
+            td
+              h4 Terminliste drucken
+            td
+              h4 (03:27)
+          tr
+            td
+              button.btn.btn-default.vbtn(name="intime.95", type="button") PLAY <i class="glyphicon glyphicon-play"></i>
+            td
+              h4 Terminbenachrichtigungen Praxis und Patient
+            td
+              h4 (04:17)
+
+      .tab-pane.fade#inform
+        h3.text-muted inForm - Formulare und Dokumente
+        table
+          colgroup
+            col(width="100")
+            col(width="460")
+            col(width="80")
+          //tr
+            td
+              button.btn.btn-default.vbtn(name="inform.5", type="button", disabled="disabled") PLAY <i class="glyphicon glyphicon-play"></i>
+            td
+              h4.text-muted Funktionsüberblick
+            td
+              h4.text-muted (00:00)
+          tr
+            td
+              button.btn.btn-default.vbtn(name="inform.10", type="button") PLAY <i class="glyphicon glyphicon-play"></i>
+            td
+              h4 Formular anlegen
+            td
+              h4 (02:09)
+          tr
+            td
+              button.btn.btn-default.vbtn(name="inform.15", type="button") PLAY <i class="glyphicon glyphicon-play"></i>
+            td
+              h4 Formular konfigurieren
+            td
+              h4 (12:36)
+          tr
+            td
+              button.btn.btn-default.vbtn(name="inform.20", type="button") PLAY <i class="glyphicon glyphicon-play"></i>
+            td
+              h4 Formularversion erstellen
+            td
+              h4 (06:17)
+          //tr
+            td
+              button.btn.btn-default.vbtn(name="inform.25", type="button", disabled="disabled") PLAY <i class="glyphicon glyphicon-play"></i>
+            td
+              h4.text-muted Standardrolle zuweisen
+            td
+              h4.text-muted (00:00)
+          tr
+            td
+              button.btn.btn-default.vbtn(name="inform.30", type="button") PLAY <i class="glyphicon glyphicon-play"></i>
+            td
+              h4 Formulare mit mehreren Seiten
+            td
+              h4 (04:09)
+          tr
+            td
+              button.btn.btn-default.vbtn(name="inform.35", type="button") PLAY <i class="glyphicon glyphicon-play"></i>
+            td
+              h4 Bilder in Formularen
+            td
+              h4 (03:01)
+          tr
+            td
+              button.btn.btn-default.vbtn(name="inform.40", type="button") PLAY <i class="glyphicon glyphicon-play"></i>
+            td
+              h4 Mehrsprachige Formulare
+            td
+              h4 (02:42)
+          tr
+            td
+              button.btn.btn-default.vbtn(name="inform.45", type="button") PLAY <i class="glyphicon glyphicon-play"></i>
+            td
+              h4 Mapping von DB-Inhalten
+            td
+              h4 (04:58)
+          tr
+            td
+              button.btn.btn-default.vbtn(name="inform.50", type="button") PLAY <i class="glyphicon glyphicon-play"></i>
+            td
+              h4 Formulare drucken
+            td
+              h4 (04:01)
+          tr
+            td
+              button.btn.btn-default.vbtn(name="inform.55", type="button") PLAY <i class="glyphicon glyphicon-play"></i>
+            td
+              h4 Formulare exportieren
+            td
+              h4 (01:57)
+          tr
+            td
+              button.btn.btn-default.vbtn(name="inform.60", type="button") PLAY <i class="glyphicon glyphicon-play"></i>
+            td
+              h4 Formulare importieren
+            td
+              h4 (01:22)
+
+      .tab-pane.fade#incase
+        h3.text-muted inCase - Patienten, Fallakte, Dokumentation
+        table
+          colgroup
+            col(width="100")
+            col(width="460")
+            col(width="80")
+          //tr
+            td
+              button.btn.btn-default.vbtn(name="incase.5", type="button", disabled="disabled") PLAY <i class="glyphicon glyphicon-play"></i>
+            td
+              h4.text-muted Funktionsüberblick
+            td
+              h4.text-muted (00:00)
+          tr
+            td
+              button.btn.btn-default.vbtn(name="incase.10", type="button") PLAY <i class="glyphicon glyphicon-play"></i>
+            td
+              h4 Marker konfigurieren
+            td
+              h4 (03:12)
+          tr
+            td
+              button.btn.btn-default.vbtn(name="incase.15", type="button") PLAY <i class="glyphicon glyphicon-play"></i>
+            td
+              h4 Tastaturkürzel (Shortcuts)
+            td
+              h4 (02:57)
+          tr
+            td
+              button.btn.btn-default.vbtn(name="incase.20", type="button") PLAY <i class="glyphicon glyphicon-play"></i>
+            td
+              h4 Patient anlegen
+            td
+              h4 (06:44)
+          tr
+            td
+              button.btn.btn-default.vbtn(name="incase.25", type="button") PLAY <i class="glyphicon glyphicon-play"></i>
+            td
+              h4 Patient suchen
+            td
+              h4 (02:13)
+          //tr
+            td
+              button.btn.btn-default.vbtn(name="incase.30", type="button", disabled="disabled") PLAY <i class="glyphicon glyphicon-play"></i>
+            td
+              h4.text-muted Karte einlesen
+            td
+              h4.text-muted (00:00)
+          tr
+            td
+              button.btn.btn-default.vbtn(name="incase.35", type="button") PLAY <i class="glyphicon glyphicon-play"></i>
+            td
+              h4 Kostenträger anlegen
+            td
+              h4 (04:11)
+          //tr
+            td
+              button.btn.btn-default.vbtn(name="incase.40", type="button", disabled="disabled") PLAY <i class="glyphicon glyphicon-play"></i>
+            td
+              h4.text-muted Kostenträger PKV
+            td
+              h4.text-muted (00:00)
+          //tr
+            td
+              button.btn.btn-default.vbtn(name="incase.45", type="button", disabled="disabled") PLAY <i class="glyphicon glyphicon-play"></i>
+            td
+              h4.text-muted Kostenträger Selbstzahler
+            td
+              h4.text-muted (00:00)
+          //tr
+            td
+              button.btn.btn-default.vbtn(name="incase.47", type="button", disabled="disabled") PLAY <i class="glyphicon glyphicon-play"></i>
+            td
+              h4.text-muted Kostenträger BG
+            td
+              h4.text-muted (00:00)
+          tr
+            td
+              button.btn.btn-default.vbtn(name="incase.50", type="button") PLAY <i class="glyphicon glyphicon-play"></i>
+            td
+              h4 Zuordnung Patient-Termin
+            td
+              h4 (03:31)
+          tr
+            td
+              button.btn.btn-default.vbtn(name="incase.55", type="button") PLAY <i class="glyphicon glyphicon-play"></i>
+            td
+              h4 GKV Schein anlegen
+            td
+              h4 (04:48)
+          tr
+            td
+              button.btn.btn-default.vbtn(name="incase.60", type="button") PLAY <i class="glyphicon glyphicon-play"></i>
+            td
+              h4 Auskunft und Befund erfassen
+            td
+              h4 (04:24)
+          tr
+            td
+              button.btn.btn-default.vbtn(name="incase.65", type="button") PLAY <i class="glyphicon glyphicon-play"></i>
+            td
+              h4 Diagnose erfassen
+            td
+              h4 (03:38)
+          tr
+            td
+              button.btn.btn-default.vbtn(name="incase.70", type="button") PLAY <i class="glyphicon glyphicon-play"></i>
+            td
+              h4 Leistung erfassen
+            td
+              h4 (03:23)
+
+          tr
+            td
+              button.btn.btn-default.vbtn(name="incase.75", type="button") PLAY <i class="glyphicon glyphicon-play"></i>
+            td
+              h4 Medikament in Hauskatalog aufnehmen
+            td
+              h4 (07:43)
+          tr
+            td
+              button.btn.btn-default.vbtn(name="incase.80", type="button") PLAY <i class="glyphicon glyphicon-play"></i>
+            td
+              h4 Verordnung von Medikamenten
+            td
+              h4 (02:30)
+          tr
+            td
+              button.btn.btn-default.vbtn(name="incase.85", type="button") PLAY <i class="glyphicon glyphicon-play"></i>
+            td
+              h4 Suche nach Medikamenten (MMI)
+            td
+              h4 (11:05)
+          tr
+            td
+              button.btn.btn-default.vbtn(name="incase.90", type="button") PLAY <i class="glyphicon glyphicon-play"></i>
+            td
+              h4 Rezept erstellen
+            td
+              h4 (10:36)
+          tr
+            td
+              button.btn.btn-default.vbtn(name="incase.95", type="button") PLAY <i class="glyphicon glyphicon-play"></i>
+            td
+              h4 Folgeverordnung erstellen
+            td
+              h4 (03:58)
+
+          tr
+            td
+              button.btn.btn-default.vbtn(name="incase.100", type="button") PLAY <i class="glyphicon glyphicon-play"></i>
+            td
+              h4 Formular in Akte anlegen
+            td
+              h4 (02:47)
+          tr
+            td
+              button.btn.btn-default.vbtn(name="incase.105", type="button") PLAY <i class="glyphicon glyphicon-play"></i>
+            td
+              h4 Dokumente/Bilder an Akteneintrag hängen
+            td
+              h4 (03:32)
+          //tr
+            td
+              button.btn.btn-default.vbtn(name="incase.110", type="button", disabled="disabled") PLAY <i class="glyphicon glyphicon-play"></i>
+            td
+              h4.text-muted Dokumente im Gesundheitsportal
+            td
+              h4.text-muted (00:00)
+
+      .tab-pane.fade#invoice
+        h3.text-muted inVoice - Abrechnung PKV, GKV, BG, Selbstzahler
+        table
+          colgroup
+            col(width="100")
+            col(width="460")
+            col(width="80")
+          tr
+            td
+              button.btn.btn-default.vbtn(name="invoice.5", type="button", disabled="disabled") PLAY <i class="glyphicon glyphicon-play"></i>
+            td
+              h4.text-muted Konfiguration
+            td
+              h4.text-muted (00:00)
+          tr
+            td
+              button.btn.btn-default.vbtn(name="invoice.10", type="button", disabled="disabled") PLAY <i class="glyphicon glyphicon-play"></i>
+            td
+              h4.text-muted Privatrechnung erstellen
+            td
+              h4.text-muted (00:00)
+          tr
+            td
+              button.btn.btn-default.vbtn(name="invoice.15", type="button", disabled="disabled") PLAY <i class="glyphicon glyphicon-play"></i>
+            td
+              h4.text-muted Abrechnungsdateien erstellen
+            td
+              h4.text-muted (00:00)
+          tr
+            td
+              button.btn.btn-default.vbtn(name="invoice.20", type="button", disabled="disabled") PLAY <i class="glyphicon glyphicon-play"></i>
+            td
+              h4.text-muted Abrechnungsdateien prüfen
+            td
+              h4.text-muted (00:00)
+          tr
+            td
+              button.btn.btn-default.vbtn(name="invoice.25", type="button", disabled="disabled") PLAY <i class="glyphicon glyphicon-play"></i>
+            td
+              h4.text-muted Abrechnungsdateien verschlüsseln
+            td
+              h4.text-muted (00:00)
+          tr
+            td
+              button.btn.btn-default.vbtn(name="invoice.30", type="button", disabled="disabled") PLAY <i class="glyphicon glyphicon-play"></i>
+            td
+              h4.text-muted Teilabrechnung, Abrechnung
+            td
+              h4.text-muted (00:00)
+          tr
+            td
+              button.btn.btn-default.vbtn(name="invoice.35", type="button", disabled="disabled") PLAY <i class="glyphicon glyphicon-play"></i>
+            td
+              h4.text-muted Manueller Versand
+            td
+              h4.text-muted (00:00)
+          tr
+            td
+              button.btn.btn-default.vbtn(name="invoice.40", type="button", disabled="disabled") PLAY <i class="glyphicon glyphicon-play"></i>
+            td
+              h4.text-muted 1-Click Versand (KV-Connect)
+            td
+              h4.text-muted (00:00)
+          tr
+            td
+              button.btn.btn-default.vbtn(name="invoice.45", type="button", disabled="disabled") PLAY <i class="glyphicon glyphicon-play"></i>
+            td
+              h4.text-muted Korrektur und Ersatzlieferung
+            td
+              h4.text-muted (00:00)
+          tr
+            td
+              button.btn.btn-default.vbtn(name="invoice.200", type="button") PLAY <i class="glyphicon glyphicon-play"></i>
+            td
+              h4 Umgang mit Regeln
+            td
+              h4 (07:54)
+          tr
+            td
+              button.btn.btn-default.vbtn(name="invoice.210", type="button") PLAY <i class="glyphicon glyphicon-play"></i>
+            td
+              h4 Eigene Regeln erstellen
+            td
+              h4 (05:12)
+
+
+      .tab-pane.fade#insight
+        h3.text-muted inSight - Transparenz für mehr Effizienz
+        table
+          colgroup
+            col(width="100")
+            col(width="460")
+            col(width="80")
+          tr
+            td
+              button.btn.btn-default.vbtn(name="insight.5", type="button", disabled="disabled") PLAY <i class="glyphicon glyphicon-play"></i>
+            td
+              h4.text-muted Reports und Listen
+            td
+              h4.text-muted (00:00)
+          tr
+            td
+              button.btn.btn-default.vbtn(name="insight.10", type="button", disabled="disabled") PLAY <i class="glyphicon glyphicon-play"></i>
+            td
+              h4.text-muted Charts und Kennzahlen
+            td
+              h4.text-muted (00:00)
+          tr
+            td
+              button.btn.btn-default.vbtn(name="insight.15", type="button", disabled="disabled") PLAY <i class="glyphicon glyphicon-play"></i>
+            td
+              h4.text-muted Analyse von Behandlungspfaden
+            td
+              h4.text-muted (00:00)
+
+
+      .tab-pane.fade#datensafe
+        h3.text-muted Datensafe - sichere Daten und Geräteintegration
+        table
+          colgroup
+            col(width="100")
+            col(width="460")
+            col(width="80")
+          tr
+            td
+              button.btn.btn-default.vbtn(name="datensafe.5", type="button", disabled="disabled") PLAY <i class="glyphicon glyphicon-play"></i>
+            td
+              h4.text-muted Erste Inbetriebnahme
+            td
+              h4.text-muted (00:00)
+          tr
+            td
+              button.btn.btn-default.vbtn(name="datensafe.10", type="button", disabled="disabled") PLAY <i class="glyphicon glyphicon-play"></i>
+            td
+              h4.text-muted Backup erstellen
+            td
+              h4.text-muted (00:00)
+          tr
+            td
+              button.btn.btn-default.vbtn(name="datensafe.15", type="button", disabled="disabled") PLAY <i class="glyphicon glyphicon-play"></i>
+            td
+              h4.text-muted Fixe IP-Adresse statt DHCP
+            td
+              h4.text-muted (00:00)
+          tr
+            td
+              button.btn.btn-default.vbtn(name="datensafe.20", type="button", disabled="disabled") PLAY <i class="glyphicon glyphicon-play"></i>
+            td
+              h4.text-muted Festplatte wechseln
+            td
+              h4.text-muted (00:00)
+          tr
+            td
+              button.btn.btn-default.vbtn(name="datensafe.25", type="button", disabled="disabled") PLAY <i class="glyphicon glyphicon-play"></i>
+            td
+              h4.text-muted Betrieb mit zwei Datensafes
+            td
+              h4.text-muted (00:00)
+          tr
+            td
+              button.btn.btn-default.vbtn(name="datensafe.30", type="button", disabled="disabled") PLAY <i class="glyphicon glyphicon-play"></i>
+            td
+              h4.text-muted Integration mit Medtech-Geräten
+            td
+              h4.text-muted (00:00)
+          tr
+            td
+              button.btn.btn-default.vbtn(name="datensafe.35", type="button", disabled="disabled") PLAY <i class="glyphicon glyphicon-play"></i>
+            td
+              h4.text-muted Datenmigration
+            td
+              h4.text-muted (00:00)
+      .tab-pane.fade#insuite_care
+        h3.text-muted inSuite Care
+        table
+          colgroup
+            col(width="100")
+            col(width="460")
+            col(width="80")
+          tr
+            td
+              button.btn.btn-default.vbtn(name="incare.5", type="button") PLAY <i class="glyphicon glyphicon-play"></i>
+            td
+              h4 Aufgaben und Rollen konfigurieren
+            td
+              h4 (02:27)
+          tr
+            td
+              button.btn.btn-default.vbtn(name="incare.10", type="button") PLAY <i class="glyphicon glyphicon-play"></i>
+            td
+              h4 Aufgaben und Rollen nutzen
+            td
+              h4 (04:35)
+          tr
+            td
+              button.btn.btn-default.vbtn(name="incare.15", type="button") PLAY <i class="glyphicon glyphicon-play"></i>
+            td
+              h4 Patientenversorgung aktivieren/deaktivieren # inkl. Patientenerklärung
+            td
+              h4 (04:51)
+          tr
+            td
+              button.btn.btn-default.vbtn(name="incare.20", type="button") PLAY <i class="glyphicon glyphicon-play"></i>
+            td
+              h4 Eingehende Verordnungsempfehlung bearbeiten
+            td
+              h4 (02:52)
+          tr
+            td
+              button.btn.btn-default.vbtn(name="incare.21", type="button") PLAY <i class="glyphicon glyphicon-play"></i>
+            td
+              h4 Eingehende Pflegedokumente einsehen
+            td
+              h4 (00:57)
+          tr
+            td
+              button.btn.btn-default.vbtn(name="incare.22", type="button") PLAY <i class="glyphicon glyphicon-play"></i>
+            td
+              h4 Eingehende Verordnungsempfehlung bearbeiten und ändern
+            td
+              h4 (02:09)
+          tr
+            td
+              button.btn.btn-default.vbtn(name="incare.25", type="button") PLAY <i class="glyphicon glyphicon-play"></i>
+            td
+              h4 Pro aktive Verordnung
+            td
+              h4 (01:06)
+
+
+
+.modal.fade(tabindex="-1", role="dialog", aria-labelledby="myModalLabel", aria-hidden="true")#videoModal
+  .modal-dialog(style="width: 840px; margin-top: 90px;")
+    .modal-content(style="background-color: rgba(0,0,0,1);")
+      .modal-header
+        button.btn(type="button", class="close", data-dismiss="modal", aria-hidden="true", style="color: #fff; opacity: 0.77;") ×
+        h4#myModalLabel.modal-title.text-muted
+      .modal-body
+        video( width="800", controls, autoplay)#video
+          source(src='', type='')#mp4
+          source(src='', type='')#webm
+          Your Ihr Browser unterstützt das HTML5 video tag nicht.
+
+script(type="text/javascript")
+  | $('.container.container-fullscreen').on('click', '.vbtn', function (e) {
+  |  var urlp = $('#streamerURL').val(),
+  |      src1 = urlp + "?video=" + $(this).attr("name") + "&format=mp4",
+  |      src2 = urlp + "?video=" + $(this).attr("name") + "&format=webm";
+  |  $('#mp4').attr({src: src1, type: "video/mp4"});
+  |  $('#webm').attr({src: src2, type: "video/webm"});
+  |  $('#myModalLabel').text(jQuery(this).parent('td').next('td').text());
+  |  $('#video').load();
+  |  $('#videoModal').modal('show');
+  | });
+

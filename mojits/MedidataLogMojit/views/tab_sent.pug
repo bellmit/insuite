@@ -1,0 +1,5 @@
+div#tab_overview
+  div.dc-action-buttons.dc-action-buttons-top
+    button.btn.btn-primary(data-bind="text: requestStatusBtnI18n, enable: requestStatusEnabled, click: getStatus")
+  div#overviewTable(data-bind="template: sentTable.template")
+include ../../../autoload/KoUI/KoSchemaValue/view/KoSchemaTemplates

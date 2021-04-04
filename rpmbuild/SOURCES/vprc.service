@@ -1,0 +1,25 @@
+[Unit]
+Description=Doc Cirrus inSuite
+After=syslog.target mongod.service redis.service
+
+[Service]
+Type=simple
+User=vprc
+Group=vprc
+WorkingDirectory=/var/lib/vprc
+Environment="JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk"
+EnvironmentFile=-/etc/environment
+EnvironmentFile=-/etc/sysconfig/vprc
+ExecStart=/var/lib/vprc/runtime/bin/node --experimental-modules --experimental-specifier-resolution=node $NODEJS_OPTIONS /var/lib/vprc/server.js start 8000 --context environment:production
+Restart=always
+RestartSec=5
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=vprc
+UMask=0027
+PIDFile=/var/run/vprc/vprc.pid
+LimitNOFILE=16000
+LimitNPROC=16000
+
+[Install]
+WantedBy=multi-user.target

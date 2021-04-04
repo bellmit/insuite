@@ -1,0 +1,7 @@
+p(data-bind="text: subtitle")
+div(data-bind="foreach: fields")
+  div.form-group(data-bind="")
+    label.control-label(data-bind="text: label")
+    input.form-control(name="kvUrl", data-bind="attr: {type: type}, value: data, valueUpdate: 'afterkeydown', disable: $root.disabledFields")
+div.alert.alert-danger(data-bind="visible: messages().length, foreach: messages")
+  p(data-bind="text: $data")

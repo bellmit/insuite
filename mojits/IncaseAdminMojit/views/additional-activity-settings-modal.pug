@@ -1,0 +1,35 @@
+div#additionalActivitySettings(style="margin-top: -10px")
+  div.row
+    // ko if: showMedicalAmount()
+    div.col-xs-2
+      div.form-group
+        input.form-control.text-right(name="displayMaxMedicationAmount", data-bind="value: displayMaxMedicationAmount")
+    div.col-xs-10
+        div
+          span(data-bind="text: displayMaxMedicationAmount.i18n")
+        div
+          span(data-bind="text: displayMaxMedicationAmount.notice", style="font-size: 11px")
+    // /ko
+    div.col-xs-12
+      div.panel-body
+        div.form-group
+          div.checkbox
+            label.control-label
+              input(type="checkbox", data-bind="checked: quickPrintInvoice")
+              span(style="white-space: pre-wrap;", data-bind="text: generalSettingsGroupPrintAndCreatePDFI18n")
+            div.checkbox
+              label.control-label
+                input(type="checkbox", data-bind="checked: hideLinksOfPrintedPDF, enable: quickPrintInvoice")
+                span(style="white-space: pre-wrap;", data-bind="text: generalSettingsGroupHidePDFLinksI18n")
+          div.checkbox
+            label.control-label
+              input(type="checkbox", data-bind="checked: quickPrintPrescription")
+              span(style="white-space: pre-wrap;", data-bind="text: generalSettingsGroupQuickPrintReleaseI18n")
+              i.dc-info-icon(data-bind="click: () => onTipLinkClick('GENERAL')")
+          // ko if: isInvoice
+          div.checkbox
+            label.control-label
+              input(type="checkbox", data-bind="checked: quickPrintInvoiceBill, enable: quickPrintPrescription")
+              span(style="white-space: pre-wrap;", data-bind="text: generalSettingsGroupQuickPrintBillI18n")
+              //i.dc-info-icon(data-bind="click: () => onTipLinkClick('RELEASE_AND_PRINT')")
+          // /ko

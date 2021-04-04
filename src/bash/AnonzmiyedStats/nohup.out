@@ -1,0 +1,725 @@
+Older example of script output....
+
+
+script to copy mm_analysis.js to a remote host and run it.
+Files will be stored into: /mnt/dc-storage/incoming
+"Popig-Ackermann", 3244, 0, 2, 3
+ssh: Could not resolve hostname cz1541023r.hub: Name or service not known
+Prepare of incoming directory /mnt/dc-storage/incoming failed.
+ssh: Could not resolve hostname cz1541023r.hub: Name or service not known
+Files will be stored into: /mnt/dc-storage/incoming
+"Praxis Christiane Adam", 1416, 0, 1, 1
+Files will be stored into: /mnt/dc-storage/incoming
+"Ahrtal Chiropraxis", 2070, 0, 2, 3
+Files will be stored into: /mnt/dc-storage/incoming
+"alanta_Demosystem", 2711, 0, 3, 1
+Files will be stored into: /mnt/dc-storage/incoming
+"Medizinisches Versorgungszentrum für Immunologie Lokstedt GmbH", 3170, 0, 2, 2
+Files will be stored into: /mnt/dc-storage/incoming
+"alanta health service GmbH", 2860, 0, 1, 1
+Files will be stored into: /mnt/dc-storage/incoming
+"Alanta Dev+Test", 2632, 0, 3, 1
+Files will be stored into: /mnt/dc-storage/incoming
+"Praxis Dr. med. Karin Almasan", 1438, 0, 2, 1
+ssh: Could not resolve hostname cz164900r9.hub: Name or service not known
+Prepare of incoming directory /mnt/dc-storage/incoming failed.
+ssh: Could not resolve hostname cz164900r9.hub: Name or service not known
+Files will be stored into: /mnt/dc-storage/incoming
+"Praxis Ardame", 1875, 0, 1, 1
+Files will be stored into: /mnt/dc-storage/incoming
+"Praxis Dr. Bach", 2608, 0, 2, 1
+Files will be stored into: /mnt/dc-storage/incoming
+"Augustinus Bader Personalised Healthcare GmbH", 2947, 0, 3, 2
+ssh: Could not resolve hostname cz143701lb.hub: Name or service not known
+Prepare of incoming directory /mnt/dc-storage/incoming failed.
+ssh: Could not resolve hostname cz143701lb.hub: Name or service not known
+Files will be stored into: /mnt/dc-storage/incoming
+"Dr. Balczun", 2716, 0, 1, 2
+ssh: Could not resolve hostname 7ce728p0pk.hub: Name or service not known
+Prepare of incoming directory /mnt/dc-storage/incoming failed.
+ssh: Could not resolve hostname 7ce728p0pk.hub: Name or service not known
+Files will be stored into: /mnt/dc-storage/incoming
+"Gemeinschaftspraxis Dres. W. Westenberger und A. Beck", 1675, 0, 3, 2
+Files will be stored into: /mnt/dc-storage/incoming
+"BELSTETICA", 1710, 0, 1, 1
+Files will be stored into: /mnt/dc-storage/incoming
+"Dr. Benotmane", 1663, 0, 1, 1
+Files will be stored into: /mnt/dc-storage/incoming
+"Dr. von Bergh", 3216, 0, 2, 1
+Files will be stored into: /mnt/dc-storage/incoming
+2019-11-05T16:56:39.257+0100 E QUERY    [thread1] Error: error: {
+	"operationTime" : Timestamp(1572969396, 3),
+	"ok" : 0,
+	"errmsg" : "not master and slaveOk=false",
+	"code" : 13435,
+	"codeName" : "NotMasterNoSlaveOk",
+	"$clusterTime" : {
+		"clusterTime" : Timestamp(1572969396, 3),
+		"signature" : {
+			"hash" : BinData(0,"qLdTZuWGAVY1nOj4YkLuhV5o+HA="),
+			"keyId" : NumberLong("6730309595027210241")
+		}
+	}
+} :
+_getErrorWithCode@src/mongo/shell/utils.js:25:13
+DBCommandCursor@src/mongo/shell/query.js:725:1
+DBQuery.prototype._exec@src/mongo/shell/query.js:117:28
+DBQuery.prototype.next@src/mongo/shell/query.js:307:5
+@/mnt/dc-storage/incoming/mm_analysis.js:1:9
+failed to load: /mnt/dc-storage/incoming/mm_analysis.js
+Files will be stored into: /mnt/dc-storage/incoming
+"ASV gastrointestinale Tumore Inn-Salzach", 1887, 0, 13, 23
+Files will be stored into: /mnt/dc-storage/incoming
+"BIOTRONIK Testsystem", 1803, 0, 5, 3
+ssh: Could not resolve hostname 7ce819u072.hub: Name or service not known
+Prepare of incoming directory /mnt/dc-storage/incoming failed.
+ssh: Could not resolve hostname 7ce819u072.hub: Name or service not known
+ssh: Could not resolve hostname 7ce728p0ns.hub: Name or service not known
+Prepare of incoming directory /mnt/dc-storage/incoming failed.
+ssh: Could not resolve hostname 7ce728p0ns.hub: Name or service not known
+Files will be stored into: /mnt/dc-storage/incoming
+"Praxis Dr. Blumstengel", 2482, 0, 1, 1
+Files will be stored into: /mnt/dc-storage/incoming
+"Boy Knappe", 2944, 0, 3, 6
+Files will be stored into: /mnt/dc-storage/incoming
+"Praxis Dr. Breinl", 2586, 0, 2, 1
+Files will be stored into: /mnt/dc-storage/incoming
+"Brendel Hildesheim", 2609, 0, 1, 1
+Files will be stored into: /mnt/dc-storage/incoming
+"Schmerztherapiezentrum-Burmeister", 2146, 0, 4, 7
+Files will be stored into: /mnt/dc-storage/incoming
+"Gyn-Laborda_Burmeister", 2040, 0, 2, 2
+Files will be stored into: /mnt/dc-storage/incoming
+"Praxis f. ganzheitl. Med.", 2095, 0, 1, 1
+Files will be stored into: /mnt/dc-storage/incoming
+"Caritas Ambulanz für Wohnungslose", 2170, eb5ebb57222, 1, 1
+Files will be stored into: /mnt/dc-storage/incoming
+"Centric Health", 2897, 0, 1, 1
+Files will be stored into: /mnt/dc-storage/incoming
+"Centrum für Gesundheit AOK", 2821, 0, 23, 41
+Files will be stored into: /mnt/dc-storage/incoming
+"Centrum für Gesundheit AOK Praxen", 3237, 0, 6, 68
+Files will be stored into: /mnt/dc-storage/incoming
+"Centrum für Gesundheit AOK Praxen", 3237, 0, 6, 68
+ssh: Could not resolve hostname fwlvxk2.hub: Name or service not known
+Prepare of incoming directory /mnt/dc-storage/incoming failed.
+ssh: Could not resolve hostname fwlvxk2.hub: Name or service not known
+Files will be stored into: /mnt/dc-storage/incoming
+"CIC Rhein-Main Friedberg-Hessen", 2449, 0, 1, 5
+Files will be stored into: /mnt/dc-storage/incoming
+"Sabena MVZ Allgemeinmedizin Königs Wusterhausen", 2639, 0, 3, 1
+ssh: Could not resolve hostname hj7c2j2.hub: Name or service not known
+Prepare of incoming directory /mnt/dc-storage/incoming failed.
+ssh: Could not resolve hostname hj7c2j2.hub: Name or service not known
+Files will be stored into: /mnt/dc-storage/incoming
+"Praxis Fabricius", 2166, 0, 1, 1
+Files will be stored into: /mnt/dc-storage/incoming
+"Praxis Dr. Hamisch", 2455, 0, 1, 1
+Files will be stored into: /mnt/dc-storage/incoming
+"Praxis Dr. Klengel", 2456, 0, 2, 1
+Files will be stored into: /mnt/dc-storage/incoming
+"Praxis Dr. Knüpfer", 2496, 0, 2, 2
+Files will be stored into: /mnt/dc-storage/incoming
+"Praxis Dr. Larissa Bayer", 2529, 0, 1, 1
+Files will be stored into: /mnt/dc-storage/incoming
+"Irina Rublev", 2528, 0, 1, 2
+Files will be stored into: /mnt/dc-storage/incoming
+"Drechsler II", 2203, 0, 2, 2
+Files will be stored into: /mnt/dc-storage/incoming
+"Praxis Veikko Stahn", 2983, 0, 1, 1
+Files will be stored into: /mnt/dc-storage/incoming
+"Praxis Dr. Claudia Windschüttel", 2883, 0, 1, 1
+Files will be stored into: /mnt/dc-storage/incoming
+"Intern CC Team", 2904, 0, 4, 1
+ssh: Could not resolve hostname cz154101hy.hub: Name or service not known
+Prepare of incoming directory /mnt/dc-storage/incoming failed.
+ssh: Could not resolve hostname cz154101hy.hub: Name or service not known
+ssh: Could not resolve hostname 5c7351p4vd.hub: Name or service not known
+Prepare of incoming directory /mnt/dc-storage/incoming failed.
+ssh: Could not resolve hostname 5c7351p4vd.hub: Name or service not known
+Files will be stored into: /mnt/dc-storage/incoming
+"Rheumazentrum Bad Aibling ASV", 2606, 0, 9, 1
+Files will be stored into: /mnt/dc-storage/incoming
+"Hausärzte Wilmersdorf", 2555, 0, 3, 2
+Files will be stored into: /mnt/dc-storage/incoming
+"Praxis und Tagesklinik für Internistische Onkologie Till-Oliver Emde", 3003, 0, 4, 3
+Files will be stored into: /mnt/dc-storage/incoming
+"Gemeinschaftspraxis Orthopädie am Tempelhofer Hafen", 2656, 0, 4, 2
+ssh: Could not resolve hostname cz164801uw.hub: Name or service not known
+Prepare of incoming directory /mnt/dc-storage/incoming failed.
+ssh: Could not resolve hostname cz164801uw.hub: Name or service not known
+Files will be stored into: /mnt/dc-storage/incoming
+"Dr. Faber Kreuznach", 3010, 0, 3, 1
+ssh: Could not resolve hostname dc1df2z8.hub: Name or service not known
+Prepare of incoming directory /mnt/dc-storage/incoming failed.
+ssh: Could not resolve hostname dc1df2z8.hub: Name or service not known
+Files will be stored into: /mnt/dc-storage/incoming
+"Praxis für Rheumatologie", 2180, 0, 2, 2
+ssh: Could not resolve hostname cz152000mw.hub: Name or service not known
+Prepare of incoming directory /mnt/dc-storage/incoming failed.
+ssh: Could not resolve hostname cz152000mw.hub: Name or service not known
+Files will be stored into: /mnt/dc-storage/incoming
+"Dr. Gastmeier", 3063, 0, 2, 6
+Files will be stored into: /mnt/dc-storage/incoming
+"Gelenkzentrum Rhein Main - Pilot VM", 3192, 0, 9, 13
+Files will be stored into: /mnt/dc-storage/incoming
+"Praxis Dr. Georgi-Rubner", 3193, 0, 1, 1
+Files will be stored into: /mnt/dc-storage/incoming
+"Gesundheitskiosk Billstedt", 2468, 0, 1, 3
+Files will be stored into: /mnt/dc-storage/incoming
+"Ärztenetz Billstedt/Horn", 3184, 0, 0, 1
+Files will be stored into: /mnt/dc-storage/incoming
+"GETEMED AG Development", 3121, 0, 1, 1
+Files will be stored into: /mnt/dc-storage/incoming
+"Praxis Dr. Gueffroy", 3117, 0, 2, 1
+Files will be stored into: /mnt/dc-storage/incoming
+"Praxis Dr. Akan Gül", 2405, 0, 1, 1
+ssh: Could not resolve hostname cz171202cm.hub: Name or service not known
+Prepare of incoming directory /mnt/dc-storage/incoming failed.
+ssh: Could not resolve hostname cz171202cm.hub: Name or service not known
+Files will be stored into: /mnt/dc-storage/incoming
+"Chiropractic West", 1364, 0, 2, 1
+Files will be stored into: /mnt/dc-storage/incoming
+"Privatpraxis Dr. Hadamitzky", 2691, 0, 1, 1
+Files will be stored into: /mnt/dc-storage/incoming
+"live2give Dr. Schwarz, Dura & Gaudek", 2093, 0, 5, 5
+ssh: Could not resolve hostname cz171202mk.hub: Name or service not known
+Prepare of incoming directory /mnt/dc-storage/incoming failed.
+ssh: Could not resolve hostname cz171202mk.hub: Name or service not known
+Files will be stored into: /mnt/dc-storage/incoming
+"MVZ Onkologie Klinik Dr. Hancken", 2778, 0, 17, 4
+Files will be stored into: /mnt/dc-storage/incoming
+"Test-Restore-System Klinik Dr. Hancken", 2682, 0, 7, 1
+Files will be stored into: /mnt/dc-storage/incoming
+2019-11-05T17:03:59.627+0100 E QUERY    [thread1] Error: error: {
+	"operationTime" : Timestamp(1572969836, 5),
+	"ok" : 0,
+	"errmsg" : "not master and slaveOk=false",
+	"code" : 13435,
+	"codeName" : "NotMasterNoSlaveOk",
+	"$clusterTime" : {
+		"clusterTime" : Timestamp(1572969836, 5),
+		"signature" : {
+			"hash" : BinData(0,"a2kNyyQRjZDPQrJ9RZe8T+Xmg14="),
+			"keyId" : NumberLong("6699189138173722625")
+		}
+	}
+} :
+_getErrorWithCode@src/mongo/shell/utils.js:25:13
+DBCommandCursor@src/mongo/shell/query.js:725:1
+DBQuery.prototype._exec@src/mongo/shell/query.js:117:28
+DBQuery.prototype.next@src/mongo/shell/query.js:307:5
+@/mnt/dc-storage/incoming/mm_analysis.js:1:9
+failed to load: /mnt/dc-storage/incoming/mm_analysis.js
+Files will be stored into: /mnt/dc-storage/incoming
+"Praxis V. Altin und M. A. Hanif", 3018, 0, 2, 4
+Files will be stored into: /mnt/dc-storage/incoming
+"Praxis Heil", 2804, 0, 1, 1
+Files will be stored into: /mnt/dc-storage/incoming
+"Orthopädie Berlin Kreuzberg", 3122, 0, 2, 2
+ssh: Could not resolve hostname dc1dj7jp.hub: Name or service not known
+Prepare of incoming directory /mnt/dc-storage/incoming failed.
+ssh: Could not resolve hostname dc1dj7jp.hub: Name or service not known
+Files will be stored into: /mnt/dc-storage/incoming
+"intera-KT", 3104, 0, 6, 1
+Files will be stored into: /mnt/dc-storage/incoming
+"Partner VM 1001 Solutions", 3149, 0, 1, 1
+Files will be stored into: /mnt/dc-storage/incoming
+"SZ Schmerzzentrum Berlin GmbH", 2615, 0, 18, 12
+Files will be stored into: /mnt/dc-storage/incoming
+2019-11-05T17:05:42.206+0100 E QUERY    [thread1] Error: error: {
+	"operationTime" : Timestamp(1572969941, 1348),
+	"ok" : 0,
+	"errmsg" : "not master and slaveOk=false",
+	"code" : 13435,
+	"codeName" : "NotMasterNoSlaveOk",
+	"$clusterTime" : {
+		"clusterTime" : Timestamp(1572969941, 1348),
+		"signature" : {
+			"hash" : BinData(0,"VpqcCbVI0CY2hW5rXno4QkQFv/4="),
+			"keyId" : NumberLong("6717716785275076609")
+		}
+	}
+} :
+_getErrorWithCode@src/mongo/shell/utils.js:25:13
+DBCommandCursor@src/mongo/shell/query.js:725:1
+DBQuery.prototype._exec@src/mongo/shell/query.js:117:28
+DBQuery.prototype.next@src/mongo/shell/query.js:307:5
+@/mnt/dc-storage/incoming/mm_analysis.js:1:9
+failed to load: /mnt/dc-storage/incoming/mm_analysis.js
+ssh: Could not resolve hostname cz1520010p.hub: Name or service not known
+Prepare of incoming directory /mnt/dc-storage/incoming failed.
+ssh: Could not resolve hostname cz1520010p.hub: Name or service not known
+Files will be stored into: /mnt/dc-storage/incoming
+"ChiroCare Osnabrück", 1708, 0, 1, 1
+ssh: Could not resolve hostname cz152000sm.hub: Name or service not known
+Prepare of incoming directory /mnt/dc-storage/incoming failed.
+ssh: Could not resolve hostname cz152000sm.hub: Name or service not known
+Files will be stored into: /mnt/dc-storage/incoming
+"Kardiologie im Tal und am Isarkanal", 3089, 0, 6, 5
+Files will be stored into: /mnt/dc-storage/incoming
+2019-11-05T17:07:06.844+0100 E QUERY    [thread1] Error: error: {
+	"operationTime" : Timestamp(1572970020, 1),
+	"ok" : 0,
+	"errmsg" : "not master and slaveOk=false",
+	"code" : 13435,
+	"codeName" : "NotMasterNoSlaveOk",
+	"$clusterTime" : {
+		"clusterTime" : Timestamp(1572970020, 1),
+		"signature" : {
+			"hash" : BinData(0,"LgcXQaH4kxKRapARKu8RjTSTPDE="),
+			"keyId" : NumberLong("6703944096467124226")
+		}
+	}
+} :
+_getErrorWithCode@src/mongo/shell/utils.js:25:13
+DBCommandCursor@src/mongo/shell/query.js:725:1
+DBQuery.prototype._exec@src/mongo/shell/query.js:117:28
+DBQuery.prototype.next@src/mongo/shell/query.js:307:5
+@/mnt/dc-storage/incoming/mm_analysis.js:1:9
+failed to load: /mnt/dc-storage/incoming/mm_analysis.js
+Files will be stored into: /mnt/dc-storage/incoming
+"Praxis Dr. Kaufmann", 2215, 0, 1, 1
+Files will be stored into: /mnt/dc-storage/incoming
+"Facharztpraxen Dr. Kaufmann - Rheumatologie und Allgemeinmedizin Ludwigsfelde", 2966, 0, 3, 1
+Files will be stored into: /mnt/dc-storage/incoming
+"Urologisch Lichtenberg", 2776, 0, 1, 1
+Files will be stored into: /mnt/dc-storage/incoming
+"Dr. Kielkowski", 3167, 0, 1, 1
+ssh: Could not resolve hostname cz143701kt.hub: Name or service not known
+Prepare of incoming directory /mnt/dc-storage/incoming failed.
+ssh: Could not resolve hostname cz143701kt.hub: Name or service not known
+ssh: Could not resolve hostname cz143701ln.hub: Name or service not known
+Prepare of incoming directory /mnt/dc-storage/incoming failed.
+ssh: Could not resolve hostname cz143701ln.hub: Name or service not known
+ssh: Could not resolve hostname cz143701lz.hub: Name or service not known
+Prepare of incoming directory /mnt/dc-storage/incoming failed.
+ssh: Could not resolve hostname cz143701lz.hub: Name or service not known
+Files will be stored into: /mnt/dc-storage/incoming
+"MVZ Labor Dr. Kirkamm GmbH", 3051, 0, 3, 2
+ssh: Could not resolve hostname dcmdaz3yek.hub: Name or service not known
+Prepare of incoming directory /mnt/dc-storage/incoming failed.
+ssh: Could not resolve hostname dcmdaz3yek.hub: Name or service not known
+Files will be stored into: /mnt/dc-storage/incoming
+"Praxis Internisten am Klosterstern", 2199, 0, 2, 1
+Files will be stored into: /mnt/dc-storage/incoming
+"Dr. Simone Koch", 2128, 0, 1, 1
+Files will be stored into: /mnt/dc-storage/incoming
+"Dr. Kohli", 1325, 0, 3, 1
+Files will be stored into: /mnt/dc-storage/incoming
+"Chiropraxis Landmann", 3248, 0, 1, 1
+ssh: Could not resolve hostname cz154101cr.hub: Name or service not known
+Prepare of incoming directory /mnt/dc-storage/incoming failed.
+ssh: Could not resolve hostname cz154101cr.hub: Name or service not known
+Files will be stored into: /mnt/dc-storage/incoming
+"Praxis Dr. med. Lindemann", 3231, 0, 1, 1
+Files will be stored into: /mnt/dc-storage/incoming
+"Südstadt Orthopäden", 2899, 0, 3, 1
+Files will be stored into: /mnt/dc-storage/incoming
+"Praxis Dr. Lydia Koch", 2211, 0, 1, 2
+Files will be stored into: /mnt/dc-storage/incoming
+"Marianowicz Medizin: Zentrum für Diagnose & Therapie", 1909, 0, 14, 17
+ssh: Could not resolve hostname jbysg62.hub: Name or service not known
+Prepare of incoming directory /mnt/dc-storage/incoming failed.
+ssh: Could not resolve hostname jbysg62.hub: Name or service not known
+Files will be stored into: /mnt/dc-storage/incoming
+"Urologische Praxisklinik Dr. W. Martell", 2894, 0, 1, 2
+Files will be stored into: /mnt/dc-storage/incoming
+"Dr. Martell Geseke", 2925, 0, 1, 2
+Files will be stored into: /mnt/dc-storage/incoming
+"Simon Martinello", 2177, 1038d2e2666, 1, 1
+ssh: Could not resolve hostname cz143701kw.hub: Name or service not known
+Prepare of incoming directory /mnt/dc-storage/incoming failed.
+ssh: Could not resolve hostname cz143701kw.hub: Name or service not known
+ssh: Could not resolve hostname cz171202b9.hub: Name or service not known
+Prepare of incoming directory /mnt/dc-storage/incoming failed.
+ssh: Could not resolve hostname cz171202b9.hub: Name or service not known
+ssh: Could not resolve hostname dcmuoyh0jy.hub: Name or service not known
+Prepare of incoming directory /mnt/dc-storage/incoming failed.
+ssh: Could not resolve hostname dcmuoyh0jy.hub: Name or service not known
+Files will be stored into: /mnt/dc-storage/incoming
+"medneo", 2539, 0, 0, 1
+ssh: Could not resolve hostname dc1m76b9.hub: Name or service not known
+Prepare of incoming directory /mnt/dc-storage/incoming failed.
+ssh: Could not resolve hostname dc1m76b9.hub: Name or service not known
+Files will be stored into: /mnt/dc-storage/incoming
+"Chiropraktik in Verden", 1363, 0, 1, 2
+Files will be stored into: /mnt/dc-storage/incoming
+"Dr. Monnerjahn-Brosch", 2543, 0, 1, 1
+Files will be stored into: /mnt/dc-storage/incoming
+"Gefässmedizin Leonberg", 2557, 0, 2, 1
+Files will be stored into: /mnt/dc-storage/incoming
+"MRT Schiffer", 2179, 0, 6, 2
+Files will be stored into: /mnt/dc-storage/incoming
+"Dr. Oei", 1832, 0, 2, 1
+Files will be stored into: /mnt/dc-storage/incoming
+"OSP München", 2747, 0, 2, 1
+Files will be stored into: /mnt/dc-storage/incoming
+2019-11-05T17:09:55.239+0100 E QUERY    [thread1] Error: error: {
+	"operationTime" : Timestamp(1572970189, 1),
+	"ok" : 0,
+	"errmsg" : "not master and slaveOk=false",
+	"code" : 13435,
+	"codeName" : "NotMasterNoSlaveOk",
+	"$clusterTime" : {
+		"clusterTime" : Timestamp(1572970189, 1),
+		"signature" : {
+			"hash" : BinData(0,"y/PQL8IO9Mpg8ypOcqtnjwgFPo0="),
+			"keyId" : NumberLong("6699076897793376257")
+		}
+	}
+} :
+_getErrorWithCode@src/mongo/shell/utils.js:25:13
+DBCommandCursor@src/mongo/shell/query.js:725:1
+DBQuery.prototype._exec@src/mongo/shell/query.js:117:28
+DBQuery.prototype.next@src/mongo/shell/query.js:307:5
+@/mnt/dc-storage/incoming/mm_analysis.js:1:9
+failed to load: /mnt/dc-storage/incoming/mm_analysis.js
+Files will be stored into: /mnt/dc-storage/incoming
+"Osteopro Berlin", 1648, 0, 5, 2
+Files will be stored into: /mnt/dc-storage/incoming
+"Osteopro Bonn", 2414, 0, 2, 1
+ssh: Could not resolve hostname cz171202ev.hub: Name or service not known
+Prepare of incoming directory /mnt/dc-storage/incoming failed.
+ssh: Could not resolve hostname cz171202ev.hub: Name or service not known
+Files will be stored into: /mnt/dc-storage/incoming
+"Dr. med. Sabine Ott", 1290, 0, 1, 1
+Files will be stored into: /mnt/dc-storage/incoming
+"Privatarztpraxis Panakeia", 1991, 0, 1, 1
+ssh: Could not resolve hostname cz15420068.hub: Name or service not known
+Prepare of incoming directory /mnt/dc-storage/incoming failed.
+ssh: Could not resolve hostname cz15420068.hub: Name or service not known
+Files will be stored into: /mnt/dc-storage/incoming
+"Praxis Gruppe Schweiz AG", 3004, 0, 0, 1
+ssh: Could not resolve hostname 7ce852p0m3.hub: Name or service not known
+Prepare of incoming directory /mnt/dc-storage/incoming failed.
+ssh: Could not resolve hostname 7ce852p0m3.hub: Name or service not known
+Files will be stored into: /mnt/dc-storage/incoming
+"Praxis Gruppe Schweiz Showroom (Hünenberg-Zentrale)", 3007, 0, 3, 1
+Files will be stored into: /mnt/dc-storage/incoming
+"Praxis Dr. Pohlmann", 1250, 0, 1, 2
+Files will be stored into: /mnt/dc-storage/incoming
+"Kardiologie mit Herz", 2737, 0, 1, 1
+Files will be stored into: /mnt/dc-storage/incoming
+"Professional Service NICHT LÖSCHEN", 2064, 0, 4, 4
+Files will be stored into: /mnt/dc-storage/incoming
+"Promedio Studie", 3023, 0, 1, 1
+Files will be stored into: /mnt/dc-storage/incoming
+"Osteopro Leipzig Messehof", 3203, 0, 3, 2
+Files will be stored into: /mnt/dc-storage/incoming
+"Osteopro MVZ Halle ", 3286, 0, 2, 1
+Files will be stored into: /mnt/dc-storage/incoming
+"Osteopro Berlin Lichtenberg", 3205, 0, 2, 1
+ssh: Could not resolve hostname dc1mqgfc.hub: Name or service not known
+Prepare of incoming directory /mnt/dc-storage/incoming failed.
+ssh: Could not resolve hostname dc1mqgfc.hub: Name or service not known
+Files will be stored into: /mnt/dc-storage/incoming
+"Praxis Dzhatova-Molla", 2413, 0, 1, 1
+ssh: Could not resolve hostname cz152000y1.hub: Name or service not known
+Prepare of incoming directory /mnt/dc-storage/incoming failed.
+ssh: Could not resolve hostname cz152000y1.hub: Name or service not known
+Files will be stored into: /mnt/dc-storage/incoming
+"PD Dr. med. habil. Christian Reyher", 1346, 0, 1, 2
+ssh: Could not resolve hostname dc1mpmfv.hub: Name or service not known
+Prepare of incoming directory /mnt/dc-storage/incoming failed.
+ssh: Could not resolve hostname dc1mpmfv.hub: Name or service not known
+Files will be stored into: /mnt/dc-storage/incoming
+"Gemeinschaftspraxis Kinderärzte am Postcarre", 2797, 0, 5, 1
+Files will be stored into: /mnt/dc-storage/incoming
+"Dr. Rose", 2008, 0, 1, 1
+Files will be stored into: /mnt/dc-storage/incoming
+"Praxis Dr. Rückert und Dr. Heuser", 3005, 0, 2, 2
+Files will be stored into: /mnt/dc-storage/incoming
+"Schmerzpraxis Zehlendorf", 1017, 0, 4, 3
+Files will be stored into: /mnt/dc-storage/incoming
+"Chiropractic Schmiddem", 2701, 0, 1, 1
+Files will be stored into: /mnt/dc-storage/incoming
+"Internistisches Zentrum München (Dr. Schnaack)", 3119, 0, 1, 2
+Files will be stored into: /mnt/dc-storage/incoming
+"Orthopädiezentrum Theresie, Dr. Schneider, Dr. Obersteiner", 2153, 0, 10, 8
+Files will be stored into: /mnt/dc-storage/incoming
+2019-11-05T17:16:12.588+0100 E QUERY    [thread1] Error: error: {
+	"operationTime" : Timestamp(1572970567, 1),
+	"ok" : 0,
+	"errmsg" : "not master and slaveOk=false",
+	"code" : 13435,
+	"codeName" : "NotMasterNoSlaveOk",
+	"$clusterTime" : {
+		"clusterTime" : Timestamp(1572970567, 1),
+		"signature" : {
+			"hash" : BinData(0,"XG9JWpwTqBGFXRMWxGNGttuCOeM="),
+			"keyId" : NumberLong("6717364301604061185")
+		}
+	}
+} :
+_getErrorWithCode@src/mongo/shell/utils.js:25:13
+DBCommandCursor@src/mongo/shell/query.js:725:1
+DBQuery.prototype._exec@src/mongo/shell/query.js:117:28
+DBQuery.prototype.next@src/mongo/shell/query.js:307:5
+@/mnt/dc-storage/incoming/mm_analysis.js:1:9
+failed to load: /mnt/dc-storage/incoming/mm_analysis.js
+Files will be stored into: /mnt/dc-storage/incoming
+"Praxis Dr. Ines Schönfelder", 1920, 0, 1, 1
+Files will be stored into: /mnt/dc-storage/incoming
+"Praxis Dr. Schramm", 2433, 0, 1, 2
+Files will be stored into: /mnt/dc-storage/incoming
+"Ambulantes Tumorzentrum", 2777, 0, 2, 1
+Files will be stored into: /mnt/dc-storage/incoming
+"Nuklearmedizinische Praxis Seeberger", 2485, 0, 1, 1
+Files will be stored into: /mnt/dc-storage/incoming
+"HNO Praxis PD Dr. Oxana Selivanova", 2717, 0, 1, 1
+Files will be stored into: /mnt/dc-storage/incoming
+"Hydrox.Y GmbH", 3173, 0, 5, 2
+ssh: Could not resolve hostname 7ce831p13l.hub: Name or service not known
+Prepare of incoming directory /mnt/dc-storage/incoming failed.
+ssh: Could not resolve hostname 7ce831p13l.hub: Name or service not known
+Files will be stored into: /mnt/dc-storage/incoming
+"ANregiomed gKU", 2849, 0, 1, 3
+Files will be stored into: /mnt/dc-storage/incoming
+"Kardiologische Arztpraxis", 2768, 0, 2, 2
+ssh: Could not resolve hostname cz172301x3.hub: Name or service not known
+Prepare of incoming directory /mnt/dc-storage/incoming failed.
+ssh: Could not resolve hostname cz172301x3.hub: Name or service not known
+ssh: Could not resolve hostname dcm6nnzdld.hub: Name or service not known
+Prepare of incoming directory /mnt/dc-storage/incoming failed.
+ssh: Could not resolve hostname dcm6nnzdld.hub: Name or service not known
+Files will be stored into: /mnt/dc-storage/incoming
+"BIOTRONIK Vertriebs GmbH & Co. KG", 2673, 0, 0, 4
+ssh: Could not resolve hostname cz1723004w.hub: Name or service not known
+Prepare of incoming directory /mnt/dc-storage/incoming failed.
+ssh: Could not resolve hostname cz1723004w.hub: Name or service not known
+Files will be stored into: /mnt/dc-storage/incoming
+"Dr. med. Johannes Bernhardt", 2959, 0, 1, 1
+Files will be stored into: /mnt/dc-storage/incoming
+"Semdatex Präsentation", 2865, 0, 11, 10
+Files will be stored into: /mnt/dc-storage/incoming
+"Kardiologische Gemeinschaftspraxis Hof", 2910, 0, 1, 1
+Files will be stored into: /mnt/dc-storage/incoming
+"Cardio Centrum Ludwigsburg", 2435, 0, 1, 1
+ssh: Could not resolve hostname cz17200027.hub: Name or service not known
+Prepare of incoming directory /mnt/dc-storage/incoming failed.
+ssh: Could not resolve hostname cz17200027.hub: Name or service not known
+Files will be stored into: /mnt/dc-storage/incoming
+"Deutsche Stiftung für chronisch Kranke", 2660, 0, 1, 1
+Files will be stored into: /mnt/dc-storage/incoming
+"Deutsche Stiftung für chronisch Kranke", 503, 0, 0, 1
+Files will be stored into: /mnt/dc-storage/incoming
+"Cardiologisches Centrum Limburg-Diez", 2792, 0, 2, 1
+Files will be stored into: /mnt/dc-storage/incoming
+"Gemeinschaftspraxis Dres. med. Schütz/Sicken/Erdmann", 3255, 0, 2, 1
+Files will be stored into: /mnt/dc-storage/incoming
+"Herz- und Gefäßmedizin ESPLANADE", 2546, 0, 1, 1
+Files will be stored into: /mnt/dc-storage/incoming
+"ExCard Research GmbH", 2991, 0, 3, 1
+Files will be stored into: /mnt/dc-storage/incoming
+"Zentralklinik Bad Berka", 2907, 0, 2, 2
+Files will be stored into: /mnt/dc-storage/incoming
+"Kardiologische Gemeinschaftspraxis Schwarzbach / Taufertshöfer Kaiserslautern", 2525, 0, 2, 1
+Files will be stored into: /mnt/dc-storage/incoming
+"Johanniter-Krankenhaus Genthin-Stendal gGmbH", 2671, 0, 3, 3
+Files will be stored into: /mnt/dc-storage/incoming
+"Praxis für Kardiologie Dr. med. Guder", 2933, 0, 1, 1
+Files will be stored into: /mnt/dc-storage/incoming
+"Praxis für Kardiologie Dr. med. Härtel", 2934, 0, 1, 1
+Files will be stored into: /mnt/dc-storage/incoming
+"Kardiologische Praxis im Spreebogen", 2799, 0, 3, 2
+Files will be stored into: /mnt/dc-storage/incoming
+"Kardiologische Praxis im Spreebogen", 2921, 0, 1, 1
+Files will be stored into: /mnt/dc-storage/incoming
+"Kardiologische Praxis im Spreebogen", 2827, 0, 1, 1
+Files will be stored into: /mnt/dc-storage/incoming
+"Praxis für Kardiologie Dr. med. Heinrich", 2935, 0, 1, 1
+Files will be stored into: /mnt/dc-storage/incoming
+"Herzschrittmacher- & ICD-Zentrum Berlin", 2448, 0, 2, 1
+Files will be stored into: /mnt/dc-storage/incoming
+"Bonifatius Hospital Lingen", 2672, 0, 6, 5
+Files will be stored into: /mnt/dc-storage/incoming
+"Dr. Hoh", 2169, 0, 1, 1
+Files will be stored into: /mnt/dc-storage/incoming
+"Kardiologische Gemeinschaftpraxis Dr. Hoh und Dr. Tamm", 2611, 0, 15, 13
+Files will be stored into: /mnt/dc-storage/incoming
+"Kardiologie & Pneumologie Dr. Hornig und Kollegen", 2971, 0, 1, 1
+Files will be stored into: /mnt/dc-storage/incoming
+"Praxis Hussein", 3102, 0, 3, 1
+Files will be stored into: /mnt/dc-storage/incoming
+"i-Atros Produktiv", 3073, 0, 2, 1
+Files will be stored into: /mnt/dc-storage/incoming
+"i-Atros Development", 3072, 0, 4, 2
+Files will be stored into: /mnt/dc-storage/incoming
+"Internistisches Praxiszentrum", 2523, 0, 1, 1
+Files will be stored into: /mnt/dc-storage/incoming
+"Kardiologisches Zentrum Braunschweig", 2736, 0, 2, 2
+Files will be stored into: /mnt/dc-storage/incoming
+"Kardiologische Gemeinschaftspraxis Dres. Schubert/ Gerner/ Jurowsky ", 2800, 0, 1, 1
+Files will be stored into: /mnt/dc-storage/incoming
+"Kardiologische Gemeinschaftspraxis am Kreiskrankenhaus Husum", 2549, 0, 1, 1
+Files will be stored into: /mnt/dc-storage/incoming
+"KARDIOPRAXIS-KIEL", 2550, 0, 1, 1
+Files will be stored into: /mnt/dc-storage/incoming
+"Kardiologische Praxis Gera", 2526, 0, 2, 2
+Files will be stored into: /mnt/dc-storage/incoming
+"Kardiologische Gemeinschaftspraxis Falk/Schomburg", 2548, 0, 2, 1
+Files will be stored into: /mnt/dc-storage/incoming
+"Kardiocentrum Frankfurt", 2524, 0, 3, 1
+Files will be stored into: /mnt/dc-storage/incoming
+"Kardiologie Praxis Papenburg", 3262, 0, 3, 1
+Files will be stored into: /mnt/dc-storage/incoming
+"Ev. Krankenhausgemeinschaft Herne", 3105, 0, 1, 1
+Files will be stored into: /mnt/dc-storage/incoming
+"Orthopädie Katrin Klostermann", 2096, 0, 1, 1
+Files will be stored into: /mnt/dc-storage/incoming
+"Facharztpraxis für Kardiologie und Innere Medizin", 3045, 0, 1, 1
+ssh: Could not resolve hostname 7ce827u01k.hub: Name or service not known
+Prepare of incoming directory /mnt/dc-storage/incoming failed.
+ssh: Could not resolve hostname 7ce827u01k.hub: Name or service not known
+Files will be stored into: /mnt/dc-storage/incoming
+"Charité, Universitätsmedizin Berlin, Campus Benjamin Franklin", 2568, 0, 3, 9
+Files will be stored into: /mnt/dc-storage/incoming
+"Charité – Universitätsmedizin Berlin", 2670, 0, 2, 1
+Files will be stored into: /mnt/dc-storage/incoming
+"SEMDATEX Development", 3261, 0, 0, 1
+Files will be stored into: /mnt/dc-storage/incoming
+"Zentralsystem Semdatex", 2758, 0, 1, 1
+Files will be stored into: /mnt/dc-storage/incoming
+"Charité – Universitätsmedizin Berlin", 2690, 0, 1, 1
+Files will be stored into: /mnt/dc-storage/incoming
+"medius Klinik Kirchheim", 3077, 0, 3, 1
+Files will be stored into: /mnt/dc-storage/incoming
+"CARDIOLOGICUM HAMBURG", 2536, 0, 2, 1
+Files will be stored into: /mnt/dc-storage/incoming
+"University Multiprofile Hospital for Active Treatment "Tsaritsa Joanna - ISUL"", 2992, 0, 3, 3
+Files will be stored into: /mnt/dc-storage/incoming
+"Debreceni Egyetem Klinikai Központ Kardiológiai és Szívsebészeti Klinika", 2993, 0, 6, 6
+Files will be stored into: /mnt/dc-storage/incoming
+"Kardiologicke oddeleni Fakultni nemocnice Plzen", 2994, 0, 3, 3
+Files will be stored into: /mnt/dc-storage/incoming
+"Municipal Institution "Central City Hospital No. 2"", 2995, 0, 13, 13
+Files will be stored into: /mnt/dc-storage/incoming
+"Kardiologische Gemeinschaftspraxis Dr. med. Yüksel Onay", 2908, 0, 1, 1
+Files will be stored into: /mnt/dc-storage/incoming
+"Kardiologische Partnerschaftsgesellschaft (PartGG)", 2793, 0, 1, 1
+Files will be stored into: /mnt/dc-storage/incoming
+"Praxis Kardiologie Rendsburg ", 2620, 0, 2, 3
+Files will be stored into: /mnt/dc-storage/incoming
+"Praxis Dr. med. Jens Placke", 2782, 0, 1, 1
+Files will be stored into: /mnt/dc-storage/incoming
+"Cardiologisches Centrum Nürnberg", 2558, 0, 2, 1
+Files will be stored into: /mnt/dc-storage/incoming
+"SANA Klinikum Lichtenberg Berlin", 2552, 0, 15, 7
+Files will be stored into: /mnt/dc-storage/incoming
+"Praxis für Kardiologie Dr. med. Seiffert", 2930, 0, 1, 1
+Files will be stored into: /mnt/dc-storage/incoming
+"Gemeinschaftspraxis für Kardiologie und Pneumologie", 2669, 0, 1, 1
+Files will be stored into: /mnt/dc-storage/incoming
+"Kardiologie am Tibarg", 2928, 0, 1, 1
+Files will be stored into: /mnt/dc-storage/incoming
+"Praxis für Kardiologie Dr. med. Trautvetter", 2931, 0, 1, 1
+Files will be stored into: /mnt/dc-storage/incoming
+"Universitätsmedizin Rostock", 2540, 0, 1, 1
+Files will be stored into: /mnt/dc-storage/incoming
+"Zentrum Innere Medizin (ZIM) Uniklinik Würzburg", 2985, 0, 4, 1
+Files will be stored into: /mnt/dc-storage/incoming
+"Kardiologie-Zentrum Dr. Michael Wegner", 3194, 0, 1, 1
+Files will be stored into: /mnt/dc-storage/incoming
+"Praxis Sennewald", 2697, 0, 1, 1
+Files will be stored into: /mnt/dc-storage/incoming
+"Shababi-Klein", 2137, 0, 1, 1
+Files will be stored into: /mnt/dc-storage/incoming
+"inSuite Showroom", 1983, 0, 4, 2
+Files will be stored into: /mnt/dc-storage/incoming
+"Showroom Schweiz", 3270, 0, 1, 1
+Files will be stored into: /mnt/dc-storage/incoming
+"Praxis Dr. Sinz", 2178, 0, 1, 1
+Files will be stored into: /mnt/dc-storage/incoming
+"Kinderarztpraxis St. Hedwig", 2623, 0, 2, 1
+Files will be stored into: /mnt/dc-storage/incoming
+"Chiropraxis Sperfeld", 1544, 0, 1, 1
+ssh: Could not resolve hostname cz143701kv.hub: Name or service not known
+Prepare of incoming directory /mnt/dc-storage/incoming failed.
+ssh: Could not resolve hostname cz143701kv.hub: Name or service not known
+Files will be stored into: /mnt/dc-storage/incoming
+"Sportklinik Frankfurt Innere", 2081, 0, 3, 4
+Files will be stored into: /mnt/dc-storage/incoming
+"Sportklinik Frankfurt Ortho", 1077, 0, 9, 1
+Files will be stored into: /mnt/dc-storage/incoming
+"Straßenburg", 1335, 0, 2, 1
+Files will be stored into: /mnt/dc-storage/incoming
+"Swiss Medical Center", 3028, 0, 1, 14
+Files will be stored into: /mnt/dc-storage/incoming
+"sysbyte", 2079, 0, 2, 1
+Files will be stored into: /mnt/dc-storage/incoming
+"Kinderärztliche Gemeinschaftsparxis Maneva/Ott", 3046, 0, 3, 1
+Files will be stored into: /mnt/dc-storage/incoming
+"Praxis Teckenburg", 2545, 0, 1, 1
+Files will be stored into: /mnt/dc-storage/incoming
+"TeleDoktor24 Produktiv", 3277, 0, 1, 1
+Files will be stored into: /mnt/dc-storage/incoming
+"TeleDoctor24 GmbH", 3249, 0, 2, 2
+Files will be stored into: /mnt/dc-storage/incoming
+"Thiel", 2088, 0, 1, 2
+Files will be stored into: /mnt/dc-storage/incoming
+"DCMTRAINING", 3098, 0, 17, 1
+ssh: Could not resolve hostname cz171202cr.hub: Name or service not known
+Prepare of incoming directory /mnt/dc-storage/incoming failed.
+ssh: Could not resolve hostname cz171202cr.hub: Name or service not known
+Files will be stored into: /mnt/dc-storage/incoming
+"Praxis Dr. Troschke", 1582, 0, 1, 1
+Files will be stored into: /mnt/dc-storage/incoming
+"Universität Witten/Herdecke", 2840, 0, 4, 1
+ssh: Could not resolve hostname dcm0xts3wh.hub: Name or service not known
+Prepare of incoming directory /mnt/dc-storage/incoming failed.
+ssh: Could not resolve hostname dcm0xts3wh.hub: Name or service not known
+Files will be stored into: /mnt/dc-storage/incoming
+"Katholisches Karl-Leisner-Klinikum gGmbH St. Antonius Hospital", 3289, 0, 1, 1
+Files will be stored into: /mnt/dc-storage/incoming
+"Arztpraxis Vogler", 2746, 0, 1, 1
+Files will be stored into: /mnt/dc-storage/incoming
+"Dr. von Gregory", 1598, 0, 2, 1
+Files will be stored into: /mnt/dc-storage/incoming
+"Praxis Dr. Grimmer", 3179, 0, 1, 1
+Files will be stored into: /mnt/dc-storage/incoming
+"Dr. Mahbub", 2855, 0, 1, 1
+Files will be stored into: /mnt/dc-storage/incoming
+"Dr. med. Matthias Noll", 2967, 0, 2, 1
+Files will be stored into: /mnt/dc-storage/incoming
+"Oberlinhaus", 2154, 0, 5, 1
+Files will be stored into: /mnt/dc-storage/incoming
+2019-11-05T17:56:24.856+0100 E QUERY    [thread1] Error: error: {
+	"operationTime" : Timestamp(1572972977, 2),
+	"ok" : 0,
+	"errmsg" : "not master and slaveOk=false",
+	"code" : 13435,
+	"codeName" : "NotMasterNoSlaveOk",
+	"$clusterTime" : {
+		"clusterTime" : Timestamp(1572972977, 2),
+		"signature" : {
+			"hash" : BinData(0,"ww19JxLlLotH1GHqKJbLKxOI3HQ="),
+			"keyId" : NumberLong("6717792149066219521")
+		}
+	}
+} :
+_getErrorWithCode@src/mongo/shell/utils.js:25:13
+DBCommandCursor@src/mongo/shell/query.js:725:1
+DBQuery.prototype._exec@src/mongo/shell/query.js:117:28
+DBQuery.prototype.next@src/mongo/shell/query.js:307:5
+@/mnt/dc-storage/incoming/mm_analysis.js:1:9
+failed to load: /mnt/dc-storage/incoming/mm_analysis.js
+Files will be stored into: /mnt/dc-storage/incoming
+"Derma Berlin - Hautarztpraxis Caroline Pristaff", 2579, 0, 1, 1
+Files will be stored into: /mnt/dc-storage/incoming
+"vireq software solutions GmbH & Co. KG", 2491, 0, 9, 5
+Files will be stored into: /mnt/dc-storage/incoming
+"Praxis Dr. Voss", 2082, 0, 1, 1
+Files will be stored into: /mnt/dc-storage/incoming
+"NEUROMED BERLIN", 2391, 0, 2, 1
+Files will be stored into: /mnt/dc-storage/incoming
+"Praxis Prof. Dr. med. Christine Winter", 2892, 0, 1, 1
+Files will be stored into: /mnt/dc-storage/incoming
+"Dr. Winter", 2009, 0, 1, 1
+Files will be stored into: /mnt/dc-storage/incoming
+"Hausarztpraxis Barmbek", 1530, 0, 1, 1
+Files will be stored into: /mnt/dc-storage/incoming
+"Praxis Dr. Marion Zillmann", 2898, 0, 1, 2
+ssh: Could not resolve hostname 7ce805p0nk#.hub: Name or service not known
+Prepare of incoming directory /mnt/dc-storage/incoming failed.
+ssh: Could not resolve hostname 7ce805p0nk#.hub: Name or service not known

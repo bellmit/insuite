@@ -1,0 +1,5 @@
+*.gdt text eol=crlf
+*.ldt text eol=crlf
+
+mojits/InvoiceMojit/kbvSchein.tpl text eol=crlf
+mojits/InvoiceMojit/kbvHeader.tpl text eol=crlf

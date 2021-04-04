@@ -1,0 +1,17 @@
+div.InBackupViewModel
+  h3(data-bind="text: headersHeadlineI18n")
+  h4(data-bind="text: headersBackupI18n")
+  div#backupStateKoTable
+    div(data-bind="template: backupStateKoTable.template")
+
+  h4(data-bind="text: headersDevicesI18n")
+  div#backupDevicesKotable
+    div(data-bind="template: backupDevicesKoTable.template")
+
+  div.pull-left: button#addSmbButton.btn.btn-primary(data-bind="click: createSmbConfigModal, text: buttonAddSMBI18n")
+
+  div#cloudDevicesKoTable(data-bind="if: isBackPlusLicenseActive, style: {'margin-top': isBackPlusLicenseActive() ? '75px' : '0px'}")
+    h4(data-bind="text: inbackupPlussI18n")
+    div(data-bind="template: cloudDevicesKoTable.template")
+
+  div.pull-right(data-bind="template: refreshTablesButton.template")

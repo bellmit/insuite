@@ -1,0 +1,9 @@
+// ko if: Boolean(col.renderer) && !$data.active()
+div.KoTableCell.text-left(data-bind="html: col.interceptRenderOutput(col.doRender($data), $data)")
+// /ko
+// ko ifnot: Boolean(col.renderer) || $data.active()
+div.KoTableCell.text-left(data-bind="text: col.interceptRenderOutput(value, $data)")
+// /ko
+// ko if: $data.active() && !$data.disabled()
+div.KoTableCell(data-bind="template: col.inputCell.template", style="overflow: visible")
+// /ko

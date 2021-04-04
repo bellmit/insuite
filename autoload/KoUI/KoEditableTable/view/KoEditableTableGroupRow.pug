@@ -1,0 +1,15 @@
+tr.KoTable-row.KoEditableTableGroupHeader(data-bind="css: getCss($context)")
+  td.KoTableCell-isData(data-bind="attr: {colspan: (defaultGroup || disabled() ) ? $parentContext.$parent.columns().length : $parentContext.$parent.columns().length - 1}, css: getCss($context)")
+    // ko ifnot: active()
+    div.KoTableCell(data-bind="text: displayName")
+    // /ko
+    // ko if: active()
+    div.form-group.KoTableCell(data-bind="hasFeedback: { field: displayName, toggle: displayName.hasError }")
+      input.KoEditableTableGroupHeaderName.form-control(data-bind="value: displayName, attr:{placeholder: displayName.i18n }")
+    // /ko
+  // ko if: !defaultGroup && !disabled()
+  td.KoTableCell-isUtility(data-bind="css: getCss($context)")
+    div.text-center
+      button.btn.btn-default(data-bind="click: remove", href="")
+        i.fa.fa-trash-o
+  // /ko

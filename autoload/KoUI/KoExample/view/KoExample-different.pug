@@ -1,0 +1,17 @@
+div.KoExample-different(style="width: 320px")
+  div
+    = 'KoExample is up since '
+    strong(data-bind="text: lifeTimeDisplay()")
+  div
+    // ko if: somethingStateful
+    div.text-success "somethingStateful"
+      span.fa.fa-check(style="margin-left: .5em;")
+    // /ko
+    // ko ifnot: somethingStateful
+    div.text-danger "somethingStateful"
+      span.fa.fa-ban(style="margin-left: .5em;")
+    // /ko
+  div
+    = 'template is: '
+    i(data-bind="text: templateName")
+    span.fa.fa-refresh(data-bind="click: refreshClickHandler", style="margin-left: .5em; cursor: pointer;", title="change")

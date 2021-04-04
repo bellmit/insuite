@@ -1,0 +1,9 @@
+div.form-group
+  div.row
+    div.col-xs-5
+      strong(data-bind="text: dmpOtherDiseaseSpecificMedication.i18n")
+      span(data-bind="dmpField: { field: dmpOtherDiseaseSpecificMedication }")
+    div.col-xs-7(data-bind="foreach: dmpOtherDiseaseSpecificMedication.list, hasFeedback: { field: dmpOtherDiseaseSpecificMedication, toggle: dmpOtherDiseaseSpecificMedication.hasError, messages: dmpOtherDiseaseSpecificMedication.validationMessages }")
+      label.checkbox-inline(style="margin-left:0; margin-right:10px;")
+        span(data-bind="text: i18n")
+        input(type="checkbox", name="dmpOtherDiseaseSpecificMedication", data-bind="value: val, checked: $parent.dmpOtherDiseaseSpecificMedication, readOnly: $parent.dmpOtherDiseaseSpecificMedication.readOnly, attr: { name: $element.name + '-' + val }")

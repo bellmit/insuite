@@ -1,0 +1,6 @@
+div.form-group(data-bind="hasFeedback: { field: esrNumber, toggle: esrNumber.hasError, messages: esrNumber.validationMessages }")
+  .col-xs-4.control-label.ppt-0
+    label.control-label(for="tab_locations-editing-field-esrNumber", data-bind="text: esrNumberLabelI18n + ':'")
+    i.dc-info-icon(data-bind="tooltip: {title: esrNumberI18n}")
+  .col-xs-8
+      input#tab_locations-editing-field-esrNumber.form-control(name="esrNumber", type="text", data-bind="value: esrNumber, readOnly: esrNumber.readOnly, valueUpdate: '', attr: { title: esrNumberLabelI18n, placeholder: esrNumberLabelI18n }")

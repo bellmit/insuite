@@ -1,0 +1,46 @@
+div
+  div.row.form-group
+    div.col-sm-4
+      span(data-bind="text: callingContextI18n")
+    div.col-sm-8
+      select.form-control(name="tiContexts", data-bind="options: tiContexts, optionsText: 'display', value: selectedTiContext, readOnly: isSigningDocuments")
+  div.row.form-group
+    div.col-sm-4
+      span(data-bind="text: cardI18n")
+    div.col-sm-8
+      select.form-control(name="availableCards", data-bind="options: availableCards, optionsText: 'display', value: selectedCard, readOnly: isSigningDocuments")
+      // ko if: selectedCardInfo
+      .help-block
+        span(data-bind="text: selectedCardInfo")
+      // /ko
+  div.row.form-group
+    div.col-sm-4
+      span(data-bind="text: documentsToSignI18n")
+    div.col-sm-8
+      // getbootstrap.com/docs/3.3/javascript/#collapse-example-accordion
+      div.panel-group(id="accordion" role="tablist" aria-multiselectable="true" data-bind="foreach:  listDocumentsToBeSigned")
+        div.panel.panel-default
+          div.panel-heading(role="tab" id="headingOne")
+            h4.panel-title
+              a(role="button" data-toggle="collapse" data-parent="#accordion" aria-expanded="true" aria-controls="collapseOne" data-bind="text: documentText, attr: {href: '#'+document}" )
+          div.panel-collapse.collapse(role="tabpanel" aria-labelledby="headingOne" data-bind="foreach: subDocuments, attr: { id: document}")
+            div.panel-body
+              p(data-bind= "text: data")
+      // ko if: selectedCardInfo
+      .help-block(style="margin-top: -14px;")
+        span(data-bind="text: documentsHelpText")
+      // /ko
+      // ko if: showNoQesWarning
+      .alert.alert-warning(data-bind="text: noHBAWarningI18n")
+      // /ko
+  div.row.form-group
+    div.col-sm-4
+      span(data-bind="text: infoSignatureProcessI18n")
+    div.col-sm-8
+      textarea.form-control(rows="3", data-bind="value: infoSignatureProcess", disabled)
+  // ko if: signingProcessFinishedMessage
+  div.row.form-group
+    div.col-sm-8.col-md-offset-4
+      .alert.alert-info(data-bind="text: signingProcessFinishedMessage")
+  // /ko
+

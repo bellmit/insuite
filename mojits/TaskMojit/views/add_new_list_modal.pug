@@ -1,0 +1,74 @@
+div.row#addNewList
+  .form-group(data-bind="hasFeedback: { field: name, toggle: name.hasError, messages: name.validationMessages }")
+    label(for="name", data-bind="text: 'Name'")
+    input#name.form-control(data-bind="value: name, valueUpdate: 'afterkeydown', attr: { placeholder: 'Name' }" type="text" name="name")
+  .form-group(data-bind="hasFeedback: { field: color, toggle: color.hasError, messages: color.validationMessages }")
+    label(for="color", data-bind="text: colorI18n")
+    input#color.input-color.form-control(data-bind="value: color" type="input" name="color")
+  .form-group(data-bind="hasFeedback: { field: numberOfTasks, toggle: numberOfTasks.hasError, messages: numberOfTasks.validationMessages }")
+    label(for="numberOfTasks", data-bind="text: maxNumberI18n")
+    input#numberOfTasks.form-control(data-bind="value: numberOfTasks, valueUpdate: 'afterkeydown', attr: { placeholder: maxNumberI18n }" type="number" name="numberOfTasks")
+  div#accordion.row
+    div.col-xs-12.panel.mb-0
+      button.btn.btn-basic.btn-block.group-button(style="text-align: left;", data-bind="attr:{ title: name, 'data-toggle': 'collapse', 'data-target': '#collapse', 'aria-controls': 'collapse' }", aria-expanded="false", data-parent="#accordion")
+        a.ml-3(href="#", style="text-decoration: none;", data-bind="text: 'Filter'")
+        a.mr-3(href="#", style="text-decoration: none;").pull-right
+          span.fa.fa-caret-down
+      div.collapse.row#collapse.mt-3
+        .col-xs-12
+          .row.mb-0
+            .col-xs-12
+              .form-group.mb-0
+                .col-xs-3
+                  label(for="alertTimeSelector", data-bind="text: alertTimeI18n + ':'")
+                .col-xs-9
+                  div.no-padding#alertTimeSelector(style="width: 100%", data-bind="template: alertTimeComponent.template")
+          .row.mb-3
+            .col-xs-12
+              .form-group
+                .col-xs-3
+                  label(for="tasksSelector", data-bind="text: taskTypesI18n + ':'")
+                .col-xs-9
+                  input#tasksSelector.form-control(name="tasksSelector", type="hidden", data-bind="select2: select2TaskTypes")
+          .row.mb-3
+            .col-xs-12
+              .form-group
+                .col-xs-3
+                  label(for="rolesSelector", data-bind="text: rolesI18n + ':'")
+                .col-xs-9
+                  input#rolesSelector.form-control(name="rolesSelector", type="hidden", data-bind="select2: select2Roles")
+          .row.mb-3
+            .col-xs-12
+              .form-group
+                .col-xs-3
+                  label(for="employeesSelector", data-bind="text: candidatesNamesI18n + ':'")
+                .col-xs-9
+                  input#employeesSelector.form-control(name="employeesSelector", type="hidden", data-bind="select2: select2Employees")
+          .row.mb-3
+            .col-xs-12
+              .form-group
+                .col-xs-3
+                  label(for="locationsSelector", data-bind="text: locationI18n + ':'")
+                .col-xs-9
+                  input#locationsSelector.form-control(name="locationsSelector", type="hidden", data-bind="select2: select2Locations")
+          .row.mb-3
+            .col-xs-12
+              .form-group
+                .col-xs-3
+                  label(for="employeeNameSelector", data-bind="text: employeeNameI18n + ':'")
+                .col-xs-9
+                  input#employeeNameSelector.form-control(name="employeeNameSelector", type="hidden", data-bind="select2: select2EmployeeName")
+          .row.mb-3
+            .col-xs-12
+              .form-group
+                .col-xs-3
+                  label(for="patientsSelector", data-bind="text: patientNameI18n + ':'")
+                .col-xs-9
+                  input#patientsSelector.form-control(name="patientsSelector", type="hidden", data-bind="select2: select2Patients")
+          .row.mb-3
+            .col-xs-12
+              .form-group
+                .col-xs-3
+                  label(for="urgencySelector", data-bind="text: urgencyI18n + ':'")
+                .col-xs-9
+                  input#urgencySelector.form-control(name="urgencySelector", type="hidden", data-bind="select2: select2Urgency")

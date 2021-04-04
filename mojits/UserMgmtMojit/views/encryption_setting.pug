@@ -1,0 +1,12 @@
+#keySettings
+  form.form-horizontal
+    .form-group
+      label.col-sm-2.control-label(for="fingerprint", data-bind="text: keyI18n")
+      .col-sm-5
+        input#fingerprint(type='text', name='fingerprint' data-bind="value: fingerprint, attr: { placeholder: keyPhI18n, title: keyPhI18n }", readonly=true).form-control
+    .row.form-group
+      label.col-sm-2.control-label(for="expireDate", data-bind="text: validUpToI18n")
+      .col-sm-2
+        input#expireDate(type='text', name='expireDate', data-bind="value: expireDate", readonly=true).form-control
+      .col-sm-3
+        button.btn.btn-primary.pull-right(data-bind="click: generateKeys, text: generateKeysI18n")

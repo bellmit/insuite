@@ -1,0 +1,10 @@
+div.inCaseMojit(id=mojit_view_id)
+  .container.container-fullscreen
+    .row(style="position: relative")
+      #mainNavigation(data-bind="template: template", style="margin-bottom: 10px; margin-top: 10px;")
+      #toggleFullScreenDiv(style="position: absolute; right: 0; top: 0;")
+        button.btn.btn-sm.btn-default(name="toggleFullScreen", type="button", data-bind="click: toggleFullScreenHandler, attr: { title: viewPortBtnI18n }", style="margin-top: 6px;")
+          span.fa.fa-arrows-alt
+    .row
+      #upperDiv
+        block content

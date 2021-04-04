@@ -1,0 +1,86 @@
+div
+  div.row(data-bind="if: conferenceId")
+    .col-md-12(class="text-right")
+      a(data-bind="attr: { href: getConferenceLink() }, text: conferenceLinkI18n", target="_blank", title="")
+  div.row
+    div.col-xs-6
+      .form-group(data-bind="highlightError: calendar")
+        label(data-bind="text: calendar.i18n")
+        select.form-control(name="calendar", data-bind="value: calendar, options: calendar.list, optionsValue: '_id', optionsText: 'name', optionsCaption: 'bitte wählen'")
+      .form-group(data-bind="highlightError: scheduletype")
+        label(data-bind="text: scheduletype.i18n")
+        select.form-control(name="scheduletype", data-bind="enable: scheduletypeEnabled, value: scheduletype, options: scheduletype.list, optionsValue: '_id', optionsText: 'name'")
+      .form-group(data-bind="highlightError: userDescr")
+        label(data-bind="text: userDescr.i18n")
+        input.form-control(name="userDescr", data-bind="value: userDescr, valueUpdate: 'afterkeydown'")
+      .form-group(data-bind="highlightError: employees")
+        label(data-bind="text: employees.i18n")
+        input.form-control(name="employees", type="hidden", data-bind="select2: employeeAutocomplete")
+      // ko if: multiplePatientSelector
+      .form-group
+        label(data-bind="text: participants.i18n")
+        input.form-control(name="participants", type="hidden", data-bind="select2: participantAutocomplete")
+      // /ko
+    div.col-xs-6
+      .form-group
+        label(data-bind="text: details.i18n")
+        textarea.form-control(name="details", data-bind="value: details, valueUpdate: 'afterkeydown', style:{ height: multiplePatientSelector ? 'auto' : '98px' }")
+      .form-group
+        label(data-bind="text: severity.i18n")
+        input.form-control(name="severity", type="hidden", data-bind="select2: select2Severity")
+      // ko if: multiplePatientSelector
+      .form-group(data-bind="highlightError: patients")
+        label(data-bind="text: patients.i18n")
+        input.form-control(name="patients", type="hidden", data-bind="select2: patientAutocomplete")
+      // /ko
+      // ko ifnot: multiplePatientSelector
+      .form-group(data-bind="hasFeedback: { field: selectedPatients, toggle: selectedPatients.hasError, messages: selectedPatients.validationMessages }")
+        label(data-bind="text: patients.i18n")
+        input.form-control(name="patients", type="hidden", data-bind="select2: patientAutocomplete")
+      // /ko
+      .form-group(data-bind="html: patientLink")
+      .form-group(data-bind="highlightError: duration")
+        label(data-bind="text: duration.i18n")
+        input.form-control(name="duration", data-bind="textInput: duration, event: { input: onDurationChangeByUser }")
+  //ko ifnot: isFindAppointment
+  div.row
+    div.col-xs-6
+      div.form-group(data-bind="highlightError: start")
+        label(data-bind="text: start.i18n")
+        .date-picker.input-group
+          input.form-control(name="start", data-bind="datetimepicker: { value: start, valueReset: null, options: startDatetimepickerOptions, valueUpdate: '' }")
+    div.col-xs-6
+      div.form-group(data-bind="highlightError: end")
+        label(data-bind="text: end.i18n")
+        .date-picker.input-group
+          input.form-control(name="end", data-bind="datetimepicker: { value: end, valueReset: null, options: endDatetimepickerOptions, valueUpdate: '' }")
+  // /ko
+
+  //ko if: isFindAppointment
+  div.row.find-appointment
+    div.col-xs-6
+      div.form-group(data-bind="highlightError: start")
+        label(data-bind="text: start.i18n")
+        input.form-control.find-appointment__selected-date-input(name="start", type="text", data-bind="enable: false, value: startFormatted")
+    div.col-xs-6.row.find-termine
+      div.col-xs-7
+        div.form-group
+          label(data-bind="text: labelFromDayI18n")
+          .date-picker.input-group
+            input.form-control(name="findStartDate", data-bind="datetimepicker: { value: findStartDate, valueReset: null, options: findScheduleDatepickerOptions, valueUpdate: '' }")
+      div.col-xs-5(style="padding-left: 0")
+        label &nbsp;
+        button.btn.btn-sm.btn-primary(data-bind="click: handleSearchAppointment, enable: isFindStartDateEnabled, text: labelSearchForAppointmentI18n")
+
+  div.row.suggested-dates(data-bind="if: findAppointmentAvailableDates().length")
+    div.col-xs-12
+      label(data-bind="text: labelSuggestedAppointmentI18n")
+    div.col-xs-6(data-bind="foreach: findAppointmentAvailableDates")
+      //ko ifnot: $index() % 2
+      button.btn.btn-default.suggested-dates__button(data-bind="text: $parent.formatDateWithDay($data), click: $parent.setFoundAppointment")
+      // /ko
+    div.col-xs-6(data-bind="foreach: findAppointmentAvailableDates")
+      //ko if: $index() % 2
+      button.btn.btn-default.suggested-dates__button(data-bind="text: $parent.formatDateWithDay($data), click: $parent.setFoundAppointment")
+      // /ko
+  // /ko

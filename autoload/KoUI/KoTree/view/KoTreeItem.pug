@@ -1,0 +1,45 @@
+li(data-bind="dragZone: { name: 'ko-tree-entries', dragStart: tree.onDragStart }")
+  div.ko-tree-text(data-bind="dropZone: { accepts: 'ko-tree-entries', drop: tree.onDrop }, dragEvents: {accepts: 'ko-tree-entries', dragEnter: tree.onDragEnter, dragLeave: tree.onDragLeave}, css: {selected: tree.selectedNode() === $data, 'ko-tree-drop-target': tree.currentDropTarget() === $data}, event: {click: tree.onClick, dblclick: tree.onClick, contextmenu: tree.onContextMenu}, style: { 'background-color': bgColor, 'border-radius': '3px', 'margin-bottom': '2px' }")
+    // ko if: icon
+    span.ko-tree-toggle
+      span.glyphicon(data-bind="css: icon")
+      span &nbsp;&nbsp;
+    // /ko
+    span(data-bind="html: textDisplay")
+    span(data-bind="if: totalCount")
+      span &nbsp;(
+      span(data-bind="text: totalCount")
+      span )
+
+    // ko if: tree.rowActionButton()
+    span.pull-right
+      span(data-bind="template: tree.rowActionButton().template, attr: {'data-id': id}")
+      span &nbsp;
+    // /ko
+
+    // ko if: !tree.rowActionButton() && tree.showActivatedIndicators()
+    span.pull-right.fa.fa-circle(data-bind="visible: !entry.isDirectory, css: activeClass, tooltip: {title: activeText}")
+    // /ko
+
+  // ko if: !isLeaf() && !loading() && children().length
+  ol(data-bind="visible: expanded")
+    // ko foreach: children
+    // ko template: template
+    // /ko
+    // /ko
+  // /ko
+
+  // ko if: !isLeaf() && !loading() && !children().length
+  ol(data-bind="visible: expanded")
+    // ko if: !noEntriesText
+    li Keine Einträge
+    // /ko
+    // ko if: noEntriesText
+    li(data-bind="text: noEntriesText")
+    // /ko
+  // /ko
+
+  // ko if: !isLeaf() && loading
+  ol(data-bind="visible: expanded")
+    li(data-bind="text: loadingItems")
+  // /ko

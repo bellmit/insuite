@@ -1,0 +1,279 @@
+div.PatientSectionCareViewModel
+  h4(data-bind="text: titleSubnavCareI18n")
+  // ko if: countryMode().includes( 'D' )
+  //ko if: isGHDAllowed
+  div.panel.panel-default
+    div.panel-body
+      h4(data-bind="text: labelCareI18n")
+      div.form-group
+        div.checkbox
+          label
+            span(data-bind="text: labelCareGHDI18n")
+            input(type="checkbox", data-bind="checked: isPatientGHD, click: toggleIsPatientGHD, readOnly: partnerIds.readOnly")
+      section(data-bind="if: isPatientGHD")
+        div.row
+          div.form-group.col-md-3
+            label.control-label(data-bind="text: insuranceType.i18n")
+            div(data-bind="hasFeedback: { field: insuranceType, toggle: insuranceType.hasError, messages: insuranceType.validationMessages }")
+              select.form-control(name="insuranceType", data-bind="options: _filteredTypeList, optionsValue: 'type', optionsText: 'text', optionsCaption: '', value: insuranceType, readOnly: partnerIds.readOnly")
+
+          div.form-group.col-md-4
+            label.control-label(data-bind="text: careType.i18n")
+            div(data-bind="hasFeedback: { field: careType, toggle: careType.hasError, messages: careType.validationMessages }")
+              select.form-control(name="careType", data-bind="options: _careTypeList, optionsCaption: '', value: careType, readOnly: careType.readOnly")
+  // /ko
+  //ko if: isAsvSectionVisible
+  div.panel.panel-default
+    div.panel-body
+      h4(data-bind="text: titleASVText.i18n")
+      div.form-group
+        div.checkbox
+          label
+            span(data-bind="text: labelASV.i18n")
+            input(type="checkbox", data-bind="checked: isPatientASV, click: toggleIsPatientASV")
+      section(data-bind="if: isPatientASV")
+        div.row
+          div.col-sm-5
+            div.form-group(data-bind="hasFeedback: { field: asvTeamNumbers, toggle: asvTeamNumbers.hasError, messages: asvTeamNumbers.validationMessages }")
+              label.control-label(for="patient_section_care_asvTeamNumbers", data-bind="text: asvTeamNumbers.i18n")
+              input#patient_section_care_asvTeamNumbers.form-control(name="asvTeamNumbers", type="text", data-bind="select2: select2AsvTeamNumbers")
+  // /ko
+  //ko if: isTelekardioSectionVisible
+  div.panel.panel-default
+    div.panel-body
+      h4(data-bind="text: labelCardioI18n")
+      section
+        div.form-group
+          div.checkbox
+            label
+              span(data-bind="text: labelCardioCheckI18n")
+              input(type="checkbox",  data-bind="checked: isTelekardioFieldsVisible, click: toggleTelekardio, readOnly: !(isUserCardio()) || partnerIds.readOnly()")
+        div(data-bind="if: isTelekardioFieldsVisible")
+          .col-md-12
+            .form-group.col-md-3
+
+              // Impossible to toggle validation with input group addon button
+              // so one button with input addon for admin other for simple user
+
+              //ko if: isUserCardio() && cardioSerialExists()
+              .input-group
+                input.form-control(name="cardioSerial", data-bind="textInput: cardioSerial, readOnly: true")
+                span.input-group-btn(data-bind="if: isUserCardio() && cardioSerialExists()")
+                  .btn.btn-default(data-bind="click: showTelekardioEditDialog")
+                    i.icon.fa.fa-edit
+              // /ko
+
+              //ko if: !isUserCardio() || !cardioSerialExists()
+              div(data-bind="hasFeedback: { field: cardioSerialValidation, toggle: cardioSerialValidation.hasError, messages: cardioSerialValidation.validationMessages }")
+                input.form-control(name="cardioSerial", data-bind="textInput: cardioSerial, readOnly: cardioSerialExists() || partnerIds.readOnly(), attr: {placeholder: labelCardioSerialPlaceI18n}")
+              // /ko
+
+            .form-group.col-md-2(data-bind="hasFeedback: { field: cardioImplantValidation, toggle: cardioImplantValidation.hasError, messages: cardioImplantValidation.validationMessages }")
+              select.form-control(name="cardioImplant", data-bind="readOnly: !(isUserCardio()) || partnerIds.readOnly(), value: cardioImplant")
+                option(val="")
+                option(val="BIOTRONIK") BIOTRONIK
+                option(val="Abbott") Abbott
+                option(val="Boston Scientific") Boston Scientific
+                option(val="Ela Sorin") Ela Sorin
+                option(val="Medtronic") Medtronic
+                option(val="St. Jude Medical") St. Jude Medical
+            .form-group.col-md-3
+              h5(data-bind="text: labelCardioImplantI18n")
+            // ko if: hasCardiolicense
+            .col-md-12
+              .form-group
+                div.checkbox
+                  label BIOTRONIK IN-TIME SOP
+                    input(type="checkbox", data-bind="checked: cardioRule, click: toggleCardioRule, readOnly: !(isUserCardio()) || partnerIds.readOnly()")
+            // /ko
+            // ko if: hasDoquvidelicense
+            .col-md-12
+              .form-group
+                div.checkbox
+                  label
+                    span(data-bind="text: labelCardioDoquvidePatientI18n")
+                    input(type="checkbox", data-bind="checked: isDoquvideFieldsVisible, click: toggleDoquvide, readOnly: !(isUserCardio()) || partnerIds.readOnly()")
+
+              div(data-bind="if: showDoquvide() && doquvideSerialExists()")
+                .col-md-12.form-group
+                  div.col-md-3
+                    div(data-bind="hasFeedback: { field: doquvideSerialValidation, toggle: doquvideSerialValidation.hasError, messages: doquvideSerialValidation.validationMessages }")
+                      input.form-control(name="doquvideSerial", data-bind="textInput: doquvideSerial, readOnly: doquvideSerialReadOnly() || partnerIds.readOnly(), attr: {placeholder: labelCardioDoquvideIDI18n}")
+                  div.col-md-9
+                    h5(data-bind="text: doquvideSerialValidation.i18n")
+
+              div(data-bind="if: showDoquvide() && !doquvideSerialExists()")
+                .col-md-12.form-group
+                  h5
+                    small(data-bind="text: doquvideNew()")
+            // /ko
+            // ko if: hasDQSlicense
+            .col-md-12
+              .form-group
+                div.checkbox
+                  label
+                    span(data-bind="text: dqsPatientI18n")
+                    input(type="checkbox", data-bind="checked: isDQSFieldsVisible, click: toggleDQS, readOnly: !(isUserCardio()) || partnerIds.readOnly()")
+
+              div(data-bind="if: !dqsFirst() && (isDQSFieldsVisible() || dqsSerialExists())")
+                .col-md-12.form-group
+                  div.col-md-3
+                    div(data-bind="hasFeedback: { field: dqsSerialValidation, toggle: dqsSerialValidation.hasError, messages: dqsSerialValidation.validationMessages }")
+                      input.form-control(name="dqsSerial", data-bind="textInput: dqsSerial, readOnly: dqsDisable() || partnerIds.readOnly(), attr: {placeholder: dqsIdPlaceholderI18n}")
+                  div.col-md-3
+                    h5(data-bind="text: dqsIdLabelI18n")
+                  div.col-md-6(style="padding: 6px;" data-bind="hasFeedback: { field: licenseModifier, toggle: licenseModifier.hasError, messages: licenseModifier.validationMessages }")
+                    div.radio-inline
+                      span DQS
+                      input(type="radio", name="dqsLicense", value="DQS", data-bind="checked: licenseModifier")
+                    div.radio-inline
+                      span DQS RS
+                      input(type="radio", name="utPrescriptionType", value="DQS RS", data-bind="checked: licenseModifier")
+              div(data-bind="if: dqsFirst() && isDQSFieldsVisible()").col-md-12.form-group
+                div.col-md-3
+                  h5
+                    small(data-bind="text: dqsNew()")
+                div.col-md-9(style="padding: 6px;" data-bind="hasFeedback: { field: licenseModifier, toggle: licenseModifier.hasError, messages: licenseModifier.validationMessages }")
+                  div.radio-inline
+                    span DQS
+                    input(type="radio", name="dqsLicense", value="DQS", data-bind="checked: licenseModifier")
+                  div.radio-inline
+                    span DQS RS
+                    input(type="radio", name="utPrescriptionType", value="DQS RS", data-bind="checked: licenseModifier")
+            // /ko
+        // ko if: hasCardiolicense
+        .form-group
+          div.checkbox
+            label
+              span(data-bind="text: cardioHeartFailure.i18n")
+              input(type="checkbox", data-bind="checked: cardioHeartFailure, event: { change: markAsChanged }, readOnly: !(isUserCardio()) || partnerIds.readOnly()")
+
+        .form-group
+          div.checkbox
+            label
+              span(data-bind="text: cardioCryptogenicStroke.i18n")
+              input(type="checkbox", data-bind="checked: cardioCryptogenicStroke, event: { change: markAsChanged }, readOnly: !(isUserCardio()) || partnerIds.readOnly()")
+
+        .form-group
+          div.checkbox
+            label
+              span(data-bind="text: cardioCHD.i18n")
+              input(type="checkbox", data-bind="checked: cardioCHD, event: { change: markAsChanged }, readOnly: !(isUserCardio()) || partnerIds.readOnly()")
+        // /ko
+  // /ko
+  //ko if: isEdmpSectionVisible || isEhksSectionVisible
+  div.panel.panel-default
+    div.panel-body
+      h3(data-bind="text: labelCareEDocumentationI18n")
+      //ko if: isEdmpSectionVisible
+      div
+        h4(data-bind="text: labelCareEDMPI18n")
+        div.row
+          div.col-xs-6
+            div.form-group(data-bind="hasFeedback: { field: edmpCaseNo, toggle: edmpCaseNo.hasError, messages: edmpCaseNo.validationMessages }")
+              label.control-label(data-bind="text: edmpCaseNo.i18n", for="edmpCaseNo")
+              span(data-bind="dmpField: { field: edmpCaseNo }")
+              input.form-control(id="edmpCaseNo", name="edmpCaseNo", maxlength="7", data-bind="value: edmpCaseNo, readOnly: edmpCaseNo.readOnly() || isEdmpCaseNoReadOnly(), valueUpdate: 'afterkeydown'")
+          div.col-xs-3
+            div.form-group(style="padding-top: 20px;")
+              button.btn.btn-default(type="button", data-bind="enable: hasPatientNo, click: setEdocCaseNo.bind($data, 'patientNo', 'edmpCaseNo'), readOnly: edmpCaseNo.readOnly() || isEdmpCaseNoReadOnly(), text: labelCareEDMPTakePAtientNoI18n")
+          div.col-xs-3
+            div.form-group(style="padding-top: 20px;")
+              button.btn.btn-default(type="button", data-bind="click: setEdocCaseNo.bind($data, 'auto', 'edmpCaseNo', 7), readOnly: edmpCaseNo.readOnly() || isEdmpCaseNoReadOnly(), text: labelCareEDMPAutoGenI18n")
+        label.control-label(data-bind="text: labelCareEDMPProgramsI18n")
+        span(data-bind="dmpField: { field: edmpTypes }")
+        div(data-bind="foreach: edmpTypesList, hasFeedback: { field: edmpTypes, toggle: edmpTypes.hasError, messages: edmpTypes.validationMessages }")
+          div.form-group
+            div.checkbox
+              label.control-label(data-bind="text: i18n, attr: {for: 'edmpTypes-'+val}")
+              input(type="checkbox", data-bind="attr: {id: 'edmpTypes-'+val}, checked: 0 <= $parent.edmpTypes().indexOf(val), click: $parent.selectEdmpType.bind($parent), readOnly: $parent.edmpCaseNo.readOnly() || !$parent.hasPublicInsurance()")
+      // /ko
+      //ko if: isEhksSectionVisible
+      div
+        h4(data-bind="text: labelCareEHKSI18n")
+        div.alert.alert-info(data-bind="text: labelHKSMustBe35I18n")
+        div.row
+          div.col-xs-6
+            div.form-group(data-bind="hasFeedback: { field: ehksPatientNo, toggle: ehksPatientNo.hasError, messages: ehksPatientNo.validationMessages }")
+              label.control-label(data-bind="text: ehksPatientNo.i18n", for="ehksPatientNo")
+              input.form-control(id="ehksPatientNo", name="ehksPatientNo", maxlength="7", data-bind="value: ehksPatientNo, readOnly: ehksPatientNo.readOnly() || isEhksPatientNoReadOnly(), valueUpdate: 'afterkeydown'")
+          div.col-xs-3
+            div.form-group(style="padding-top: 20px;")
+              button.btn.btn-default(type="button", data-bind="enable: hasPatientNo, click: setEdocCaseNo.bind($data, 'patientNo', 'ehksPatientNo'), readOnly: ehksPatientNo.readOnly() || isEhksPatientNoReadOnly(), text: labelCareEDMPTakePAtientNoI18n")
+          div.col-xs-3
+            div.form-group(style="padding-top: 20px;")
+              button.btn.btn-default(type="button", data-bind="click: setEdocCaseNo.bind($data, 'auto', 'ehksPatientNo', 8), readOnly: ehksPatientNo.readOnly() || isEhksPatientNoReadOnly(), text: labelCareEDMPAutoGenI18n")
+        div.row
+          div.col-xs-12
+            div.form-inline
+              div.checkbox-inline
+                label
+                  input(type="checkbox", data-bind="checked: ehksActivated, readOnly: ehksActivated.readOnly() || !hasPublicInsurance()")
+                  span(data-bind="text: ehksActivated.i18n")
+              div.radio-inline(data-bind="foreach: ehksDocType.list, hasFeedback: { field: ehksDocType, toggle: ehksDocType.hasError, messages: ehksDocType.validationMessages }")
+                label.radio-inline
+                  input(type="radio", name="ehksDocType", data-bind="value: val, checked: $parent.ehksDocType, readOnly: $parent.ehksDocType.readOnly() || !$parent.hasPublicInsurance(), attr: { name: $element.name + '-' + val }")
+                  span(data-bind="text: i18n")
+      // /ko
+      //ko if: isHgvSectionVisible
+      div
+        h4(data-bind="text: 'Hörgeräteversorgung'")
+        div.row
+          div.col-xs-6
+            div.form-group(data-bind="hasFeedback: { field: HGVPatientNo, toggle: HGVPatientNo.hasError, messages: HGVPatientNo.validationMessages }")
+              label.control-label(data-bind="text: HGVPatientNo.i18n", for="HGVPatientNo")
+              input.form-control(id="HGVPatientNo", name="HGVPatientNo", data-bind="value: HGVPatientNo, readOnly: HGVPatientNo.readOnly() || isHGVPatientNoReadOnly(), valueUpdate: 'afterkeydown'")
+          div.col-xs-3
+            div.form-group(style="padding-top: 20px;")
+              button.btn.btn-default(type="button", data-bind="enable: hasPatientNo, click: setEdocCaseNo.bind($data, 'patientNo', 'HGVPatientNo'), readOnly: HGVPatientNo.readOnly() || isHGVPatientNoReadOnly(), text: labelCareEDMPTakePAtientNoI18n")
+          div.col-xs-3
+            div.form-group(style="padding-top: 20px;")
+              button.btn.btn-default(type="button", data-bind="click: setEdocCaseNo.bind($data, 'auto', 'HGVPatientNo', 8), readOnly: HGVPatientNo.readOnly() || isHGVPatientNoReadOnly() , text: labelCareEDMPAutoGenI18n")
+          div.col-xs-12
+            div.form-inline
+              div.checkbox-inline
+                label
+                  input(type="checkbox", data-bind="checked: HGVActivated, readOnly: HGVActivated.readOnly() || !hasPublicInsurance()")
+                  span(data-bind="text: HGVActivated.i18n")
+      // /ko
+      //div // KAP-238 Deactivated till implementation is ready to use
+        h4(data-bind="text: 'Zervix-Zytologie'")
+        div.row
+          div.col-xs-12
+            div.form-inline
+              div.checkbox-inline
+                label
+                  input(type="checkbox", data-bind="checked: zervixZytologieActivated, readOnly: zervixZytologieActivated.readOnly()")
+                  span(data-bind="text: zervixZytologieActivated.i18n")
+  // /ko
+  //ko if: dynamicPartners().length
+  div.panel.panel-default(data-bind="foreach: dynamicPartners")
+    div.panel-body
+      h43
+        span(data-bind="text: code")
+        | &nbsp;
+        span(data-bind="text: $parent.titleDynamicI18n")
+
+      div
+        div.form-group
+          div.checkbox
+            label
+              span(data-bind="text: name")
+              input(type="checkbox", data-bind="checked: checked, click: $parent.toggleDynamicPartner.bind($parent, $data)")
+        section
+          div.row
+            div.form-group.col-md-3
+              label.control-label(data-bind="text: $parent.labelDynamicCodeI18n")
+              div(data-bind="hasFeedback: { field: patientCode, toggle: patientCode.hasError, messages: patientCode.validationMessages }")
+                input.form-control(data-bind="textInput: patientCode, readOnly: !checked()")
+            div.form-group.col-md-4
+              label.control-label(data-bind="text: $parent.labelDynamicNotesI18n")
+              div
+                input.form-control(data-bind="textInput: notes, readOnly: !checked()")
+  // /ko
+  //ko if: appIFrames().length
+  div.panel.panel-default(data-bind="foreach: appIFrames")
+    div.panel-body
+      iframe(style="width: 100%; border: none; min-height: 500px;", data-bind="notifyBind: { method: $parent.notifyAppIframeBind.bind($parent, $data) }, attr: { src: url, id: title }")
+  // /ko
+  // /ko

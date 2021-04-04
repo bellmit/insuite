@@ -1,0 +1,7 @@
+div.form-group
+  strong(data-bind="text: dmpAsthmaTrainingAlreadyDoneBeforeDMP_4_44.i18n")
+  span(data-bind="dmpField: { field: dmpAsthmaTrainingAlreadyDoneBeforeDMP_4_44 }")
+  div(data-bind="foreach: dmpAsthmaTrainingAlreadyDoneBeforeDMP_4_44.list, hasFeedback: { field: dmpAsthmaTrainingAlreadyDoneBeforeDMP_4_44, toggle: dmpAsthmaTrainingAlreadyDoneBeforeDMP_4_44.hasError, messages: dmpAsthmaTrainingAlreadyDoneBeforeDMP_4_44.validationMessages }")
+    label.checkbox-inline
+      span(data-bind="text: i18n")
+      input(type="checkbox", name="dmpAsthmaTrainingAlreadyDoneBeforeDMP_4_44", data-bind="value: val, checked: $parent.dmpAsthmaTrainingAlreadyDoneBeforeDMP_4_44, readOnly: $parent.dmpAsthmaTrainingAlreadyDoneBeforeDMP_4_44.readOnly, attr: { name: $element.name + '-' + val }")

@@ -1,0 +1,39 @@
+div
+  .row
+    div.col-xs-3
+      div.form-group
+        label.control-label(data-bind="text: labelLanrI18n")
+        input.form-control(name='employeeOfficialNo', type="text", data-bind="value: employeeOfficialNo, readOnly: true")
+    div.col-xs-3
+      div.form-group
+        label.control-label(data-bind="text: labelBSNRI18n")
+        input.form-control(name='locationCommercialNo', type="text", data-bind="value: locationCommercialNo, readOnly: true")
+    div.col-xs-3
+      div.form-group(data-bind="hasFeedback: { field: patientAge, toggle: patientAge.hasError, messages: patientAge.validationMessages, type: 'warning' }")
+        label.control-label(data-bind="text: kbvDobI18n")
+        input.form-control(name='patientDob', type="text", data-bind="value: renderPatientDob, readOnly: true")
+    div.col-xs-3
+      div.form-group
+        label.control-label(data-bind="text: genderI18n")
+        input.form-control(name='displayPatientGender', type="text", data-bind="value: displayPatientGender, readOnly: true")
+  .row
+    .col-xs-offset-6.col-xs-6
+      div.form-group
+        div.checkbox
+          label.control-label
+            input(type="checkbox", data-bind="checked: hasAdditionalContract")
+            span(data-bind="text: hasAdditionalContract.i18n")
+  .row
+    div.col-xs-6
+      div.form-group
+        label.control-label(data-bind="text: insuranceNameI18n")
+        input.form-control(name='patientInsuranceName', type="text", data-bind="value: patientInsuranceName, readOnly: true")
+    div.col-xs-3
+      div.form-group
+        label.control-label(data-bind="text: insuranceIdI18n")
+        input.form-control(name='patientInsuranceId', type="text", data-bind="value: patientInsuranceId, readOnly: true")
+    div.col-xs-3
+      div.form-group(data-bind="hasFeedback: { field: dmpSignatureDate, toggle: dmpSignatureDate.hasError, messages: dmpSignatureDate.validationMessages }")
+        label.control-label(data-bind="text: dmpSignatureDate.i18n")
+        .date-picker.input-group
+          input.form-control(name="dmpSignatureDate", data-bind="datetimepicker: { value: dmpSignatureDate }, readOnly: dmpSignatureDate.readOnly")

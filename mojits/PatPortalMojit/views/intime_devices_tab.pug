@@ -1,0 +1,54 @@
+.container.container-fullscreen.dc_shift_top.yui3-js-enabled.yui3-skin-sam#patientdataTabContainer
+  .row
+    .col-xs-12.col-md-8.col-md-offset-1.col-lg-6
+      #jawbonePanel.panel.panel-info
+        .panel-heading
+          h4 Jawbone
+        .panel-body
+          div(data-bind="visible: ready")
+            .row(data-bind="visible: !hasJawboneToken()")
+              .col-xs-6
+                .row
+                  .col-xs-6.col-xs-offset-2
+                    button.btn.btn-primary.btn-lg(style="margin-top:50%", data-bind="click: register, text: titleRegisterI18n")
+              .col-xs-6
+                p(data-bind="text: registrationTextIntroI18n")
+                p(data-bind="text: registrationTextEndI18n")
+            div(data-bind="visible: hasJawboneToken")
+              .row
+                .col-xs-12
+                  a.pull-right(href="#", data-bind="click: removeJawboneToken, text: titleLogoutI18n")
+              .row
+                .col-xs-6
+                  h4(data-bind="text: recipientsI18n")
+                  p(data-bind="text: recipientsTextI18n")
+                  div.list-group(data-bind="foreach: practiesInfo")
+                    div.list-group-item(data-bind="visible: show")
+                      div
+                        div
+                          span(data-bind="text: $parent.practiceI18n")
+                          | &nbsp;
+                          span(data-bind="text: name")
+                        div(style="font-size: 11px")
+                          span(data-bind="text: $parent.lastI18n + ':'")
+                          | &nbsp;
+                          span(data-bind="text: lastUpdate")
+                        div(style="font-size: 11px")
+                          span(data-bind="text: $parent.modeI18n + ':'")
+                          | &nbsp;
+                          span(data-bind="text: update")
+                .col-xs-6
+                  h4(data-bind="text: titleTransferI18n")
+                  p(data-bind="text: transferTextI18n")
+                  div.form-group
+                    label.control-label(for="select2Practice", data-bind="text: selectPracticeI18n")
+                    input.form-control#select2Practice(name="select2Practice", type="hidden", data-bind="select2: select2Practice")
+                  div.form-group
+                    label.control-label(for="select2Action", data-bind="text: selectModeI18n")
+                    input.form-control#select2Action(name="select2Action", type="hidden", data-bind="select2: select2Action")
+              .row
+                .col-xs-6
+
+                .col-xs-6
+                  button.btn.btn-primary.pull-right(style="margin-top:10%", data-bind="click: executeBtn, disable: executeBtn.disabled, text: titleExecuteI18n")
+                  button.btn.btn-default.pull-right(style="margin-top:10%", data-bind="click: preview, visible: preview.visible, disable: preview.busy, text: titlePreviewI18n")

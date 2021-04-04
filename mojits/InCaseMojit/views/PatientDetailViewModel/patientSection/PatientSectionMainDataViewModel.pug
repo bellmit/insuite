@@ -1,0 +1,292 @@
+div.PatientSectionMainDataViewModel
+  div.row
+    .col-sm-4
+      include ../../../../../views/countryMode
+      h4(data-bind="text: persDataTitleI18n")
+      .panel.panel-default
+        div.panel-body.container.container-fullscreen
+          div.row
+            div.col-md-6
+              div.form-group(data-bind="hasFeedback: { field: talk, toggle: talk.hasError, messages: talk.validationMessages }")
+                label.control-label(data-bind="text: talk.i18n")
+                select.form-control(name="talk", data-bind="options: talk.list, optionsValue: 'val', optionsText: 'i18n', value: talk, readOnly: talk.readOnly")
+            div.col-md-6
+              div.form-group(data-bind="hasFeedback: { field: title, toggle: title.hasError, messages: title.validationMessages }")
+                label.control-label(data-bind="text: title.i18n")
+                input.form-control(name="title", data-bind="value: title, readOnly: title.readOnly, valueUpdate: 'afterkeydown', attr: { title: title }")
+            div.col-md-12
+              div.form-group(data-bind="hasFeedback: { field: firstname, toggle: firstname.hasError, messages: firstname.validationMessages }")
+                label.control-label(data-bind="text: firstname.i18n")
+                input.form-control(name="firstname", data-bind="value: firstname, readOnly: firstname.readOnly, valueUpdate: 'afterkeydown', attr: { title: firstname }")
+            div.col-md-6
+              div.form-group(data-bind="hasFeedback: { field: nameaffix, toggle: nameaffix.hasError, messages: nameaffix.validationMessages }")
+                label.control-label(data-bind="text: nameaffix.i18n")
+                input.form-control(name="nameaffix", data-bind="value: nameaffix, readOnly: nameaffix.readOnly, valueUpdate: 'afterkeydown', attr: { title: nameaffix }")
+            div.col-md-6
+              div.form-group(data-bind="hasFeedback: { field: fk3120, toggle: fk3120.hasError, messages: fk3120.validationMessages }")
+                label.control-label(data-bind="text: fk3120.i18n")
+                input.form-control(name="fk3120", data-bind="value: fk3120, readOnly: fk3120.readOnly, valueUpdate: 'afterkeydown', attr: { title: fk3120 }")
+            div.col-md-12
+              div.form-group(data-bind="hasFeedback: { field: lastname, toggle: lastname.hasError, messages: lastname.validationMessages }")
+                label.control-label(data-bind="text: lastname.i18n")
+                input.form-control(name="lastname", data-bind="value: lastname, readOnly: lastname.readOnly, valueUpdate: 'afterkeydown', attr: { title: lastname }")
+              div.form-group(data-bind="hasFeedback: { field: gender, toggle: gender.hasError, messages: gender.validationMessages }")
+                label.control-label(data-bind="text: gender.i18n")
+                select.form-control(name="gender", data-bind="options: gender.list, optionsValue: 'val', optionsText: 'i18n', value: gender, readOnly: gender.readOnly")
+            div.col-md-12
+              div.form-group(data-bind="hasFeedback: { field: kbvDob, toggle: kbvDobOrDobhasError, messages: kbvDobAndDobvalidationMessages }")
+                label.control-label(data-bind="text: kbvDob.i18n")
+                .form-group
+                  input.form-control(name="kbvDob", data-bind="value: kbvDob, readOnly: kbvDob.readOnly, valueUpdate: '', attr: { title: kbvDob, placeholder: placeholderKVBDobI18n }")
+            div.col-md-12
+              div.form-group
+                label.radio-inline
+                  input(type="radio", name="patientStatus", value="isDeceased", data-bind="click: deselectRadioOption, checked: selectedPatientStatusValue")
+                  span(data-bind="text: dateOfDeath.i18n")
+                label.radio-inline
+                  input(type="radio", name="patientStatus",  value="inActive", data-bind="click: deselectRadioOption, checked: selectedPatientStatusValue")
+                  span(data-bind="text: inActive.i18n")
+            // ko if: isDeceased
+            div.col-md-12
+              div.form-group(data-bind="hasFeedback: { field: dateOfDeath, toggle: dateOfDeath.hasError, messages: dateOfDeath.validationMessages }")
+                .date-picker.input-group.date
+                  input.form-control(name="dateOfDeath", data-bind="datetimepicker: { value: dateOfDeath }, readOnly: dateOfDeath.readOnly, attr: {placeholder: placeholderKVBDobI18n}")
+            // /ko
+            // ko if: inActive
+            div.col-md-12
+              div.form-group(data-bind="hasFeedback: { field: dateOfInActive, toggle: dateOfInActive.hasError, messages: dateOfInActive.validationMessages }")
+                .date-picker.input-group.date
+                  input.form-control(name="dateOfInActive", data-bind="datetimepicker: { value: dateOfInActive }, readOnly: dateOfInActive.readOnly, attr: {placeholder: placeholderKVBDobI18n}")
+            // /ko
+            // ko if: selectedPatientStatusValue
+            div.col-md-12
+              div.form-group
+                input.form-control(name="reason", data-bind="value: reason, readOnly: reason.readOnly, valueUpdate: 'afterkeydown', attr: {placeholder: reasonPlaceholderI18n}")
+            // /ko
+            div.col-md-12
+              div.form-group(data-bind="hasFeedback: { field: patientNo, toggle: patientNo.hasError, messages: patientNo.validationMessages }")
+                label
+                  span(data-bind="text: labelPAtNRI18n")
+                  | &nbsp;
+                  a.fa.fa-plus(href="javascript:;", data-bind="click: openAdditionalNoEditDialog, readOnly: confirmedViewFromOtherLocations.readOnly")
+                div.dc-flex-input-button-with-info-icon
+                  div.dc-flex-input-of-info-icon
+                    input.form-control(name="patientNo", data-bind="value: patientNo, readOnly: patientNo.readOnly, valueUpdate: 'afterkeydown', attr: { title: patientNo }")
+                  div.dc-flex-button-with-info-icon(data-bind="visible: !isNewPatient()")
+                    button.dc-flex-button-of-info-icon.btn.btn-default(type="button", data-bind="enable: patientNoEditEnabled, click: openPatientNoEditDialog")
+                      span.fa.fa-pencil
+                    i.dc-info-icon(data-bind="click: showPatientNoEditInfoDialog")
+            div(data-bind="foreach: partnerIdList")
+              div.col-md-8
+                div.form-group
+                  label
+                    span(data-bind="text: extra")
+                  div.dc-flex-input-button-with-info-icon
+                    div.dc-flex-input-of-info-icon
+                      input.form-control(name="patientId", data-bind="value: patientId, readOnly: true, valueUpdate: 'afterkeydown', attr: { title: patientId }")
+              div.col-md-2.remove-wrapper
+                button.btn.btn-default(type="button", style="margin-top: 20px;", data-bind="click: $parent.openAdditionalNoEditDialog")
+                  span.fa.fa-pencil
+              div.col-md-2.remove-wrapper
+                div.text-right
+                  a(data-bind="click: $parent.removePartnerId, readOnly: patientId.readOnly").fa.fa-minus.btt-remove
+            div.col-md-12
+              div.form-group(data-bind="hasFeedback: { field: patientSince, toggle: patientSince.hasError, messages: patientSince.validationMessages }")
+                label.control-label(data-bind="text: patientSince.i18n")
+                .date-picker.input-group.date
+                  input.form-control(name="patientSince", type="text", data-bind="datetimepicker: { value: patientSince }, readOnly: patientSinceEditEnabled, attr: {placeholder: placeholderKVBDobI18n}")
+              // ko if: countryMode().includes( 'CH' )
+              div.form-group(data-bind="hasFeedback: { field: socialSecurityNo, toggle: socialSecurityNo.hasError, messages: socialSecurityNo.validationMessages }")
+                label.control-label(data-bind="text: socialSecurityNo.i18n")
+                input.form-control(name="socialSecurityNo", type="text", data-bind="value: socialSecurityNo, readOnly: socialSecurityNo.readOnly")
+              // /ko
+              div.form-group(data-bind="visible: showPatientLocationSelection, hasFeedback: { field: locationId, toggle: locationId.hasError, messages: locationId.validationMessages }")
+                label.control-label(data-bind="text: locationId.i18n")
+                select.form-control(name="locationId", data-bind="options: locationList, optionsValue: '_id', optionsText: 'locname', value: locationId, readOnly: locationId.readOnly")
+              // ko if: countryMode().includes( 'CH' )
+              div.form-group
+                label.control-label(data-bind="text: familyDoctorModel.i18n")
+                div.form-group
+                  label.radio-inline
+                    input(type="radio", name="familyDoctorModel", data-bind="checkedValue: true, checked: familyDoctorModel")
+                    span(data-bind="text: textYes")
+                  label.radio-inline
+                    input(type="radio", name="familyDoctorModel", data-bind="checkedValue: false, checked: familyDoctorModel")
+                    span(data-bind="text: textNo")
+              // /ko
+      h4(data-bind="text: familyDataTitleI18n")
+      .panel.panel-default
+        div.panel-body.container.container-fullscreen
+          div.row
+            div.col-md-12
+              div.form-group
+                label
+                  span(data-bind="text: labelFromPatientsI18n")
+                  | &nbsp;
+                  a.fa.fa-plus(href="javascript:;", data-bind="click: openAddPatientFamilyMember, readOnly: confirmedViewFromOtherLocations.readOnly")
+          div.row(data-bind="foreach: patientsFamilyMembers")
+            div.col-md-8
+              div.form-group
+                label
+                  span(data-bind="text: $parent.showAffiliate( relationStatus )")
+                div.dc-flex-input-button-with-info-icon
+                  div.dc-flex-input-of-info-icon(style="position: relative;")
+                    input.form-control(name="patientText", data-bind="value: '', readOnly: true, valueUpdate: 'afterkeydown', attr: { 'title': patientText }")
+                    a(target="_blank", data-bind="attr: { 'href': '/incase#/patient/' + patientId + '/tab/casefile_browser', 'title': patientText }, text: patientText", style="position: absolute; top: 8px; left: 12px; width: 80%; height: 70%; overflow: hidden;")
+            div.col-md-2.remove-wrapper
+              button.btn.btn-default(type="button", style="margin-top: 20px;", data-bind="click: $parent.openAddPatientFamilyMember.bind( $parent, this )")
+                span.fa.fa-pencil
+            div.col-md-2.remove-wrapper
+              div.text-right
+                a(data-bind="click: $parent.removePatientFamilyMember, readOnly: patientId.readOnly").fa.fa-minus.btt-remove
+          div.row
+            div.col-md-12
+              div.form-group
+                label
+                  span(data-bind="text: labelFromContactsI18n")
+                  | &nbsp;
+                  a.fa.fa-plus(href="javascript:;", data-bind="click: openAddAdditionalFamilyMember, readOnly: confirmedViewFromOtherLocations.readOnly")
+            div(data-bind="foreach: additionalFamilyMembers")
+              div.col-md-8
+                div.form-group
+                  label
+                    span(data-bind="text: $parent.showAffiliate( relationStatus )")
+                  div.dc-flex-input-button-with-info-icon
+                    div.dc-flex-input-of-info-icon
+                      input.form-control(name="contactText", data-bind="value: contactText, readOnly: true, valueUpdate: 'afterkeydown', attr: { title: '' }")
+              div.col-md-2.remove-wrapper
+                button.btn.btn-default(type="button", style="margin-top: 20px;", data-bind="click: $parent.openAddAdditionalFamilyMember.bind( $parent, this )")
+                  span.fa.fa-pencil
+              div.col-md-2.remove-wrapper
+                div.text-right
+                  a(data-bind="click: $parent.removeAdditionalFamilyMember").fa.fa-minus.btt-remove
+          div.row
+            div.col-md-12
+              div.form-group
+                label
+                  span(data-bind="text: invoiceRecipientI18n")
+            div.col-md-12
+              div.form-group
+                select.form-control(data-bind="value: invoiceRecipient, options: invoiceRecipientList, optionsValue: 'val', optionsText: 'text', valueAllowUnset: true")
+    .col-sm-4
+      .row
+        .col-md-12
+          h4(data-bind="hasFeedback: { field: addresses, toggle: addresses.hasError, messages: addresses.validationMessages }")
+            span(data-bind="text: jpAddressesI18n")
+            | &nbsp;
+            small
+              a.fa.fa-plus(href="javascript:;", data-bind="click: addNewAddress, readOnly: addresses.readOnly")
+          div.container.container-fullscreen.address-tabs(style="padding: 0;")
+            ul.nav.nav-tabs(data-bind="foreach: addresses")
+              li.component-tab(data-bind="css: { active: 0 === $index(), 'has-danger': $parent.hasDanger( $data ) }")
+                a(data-toggle="tab", data-bind="attr: {href: '#address' + $index()}")
+                  span(data-bind="text: $parent.titleForAddressesTab( $data )")
+            div.tab-content.clearfix(data-bind="foreach: addresses")
+              div.tab-pane.component-content(data-bind="attr: {id: 'address' + $index()}, css: { active: 0 === $index() }", style="margin-top: 5px;")
+                div(data-bind="template: { name: $parent.addressTemplate }")
+      .row
+        .col-md-12
+          h4(data-bind="hasFeedback: { field: communications, toggle: communications.hasError, messages: communications.validationMessages }")
+            span(data-bind="text: titleComI18n")
+            | &nbsp;
+            small
+              a.fa.fa-plus(href="javascript:;", data-bind="click: addNewCommunication, readOnly: communications.readOnly")
+          div.container.container-fullscreen.communication-tabs(style="padding: 0;")
+            ul.nav.nav-tabs(data-bind="foreach: communications")
+              li.component-tab(data-bind="css: { active: 0 === $index(), 'has-danger': $parent.hasDanger( $data ) }")
+                a(data-toggle="tab", data-bind="attr: {href: '#communication' + $index()}")
+                  span(data-bind="text: $parent.titleForCommunicationTab( $data )")
+            div.tab-content.clearfix(data-bind="foreach: communications")
+              div.tab-pane.component-content(data-bind="attr: {id: 'communication' + $index()}, css: { active: 0 === $index() }", style="margin-top: 5px;")
+                div(data-bind="template: { name: 'PatientCommunicationEditorModel' }")
+    .col-sm-4
+        h4(data-bind="text: optionsDataTitleI18n")
+        .panel.panel-default
+          div.panel-body.container.container-fullscreen
+            .col-md-12
+              div.form-group
+                label.control-label(data-bind="text: jobTitle.i18n")
+                input.form-control(name="jobTitle", data-bind="value: jobTitle, readOnly: jobTitle.readOnly, valueUpdate: 'afterkeydown', attr: { title: jobTitle }")
+              div.form-group(data-bind="hasFeedback: { field: jobStatus, toggle: jobStatus.hasError, messages: jobStatus.validationMessages }")
+                label.control-label(data-bind="text: jobStatus.i18n")
+                input.form-control(name="jobStatus", type="hidden", data-bind="select2: select2JobStatus, valueUpdate:'afterkeydown', readOnly: jobStatus.readOnly")
+              div.form-group
+                label.control-label(data-bind="text: workingAt.i18n")
+                input.form-control(name="workingAt", data-bind="value: workingAt, readOnly: workingAt.readOnly, valueUpdate: 'afterkeydown', attr: { title: workingAt }")
+              div.form-group
+                .checkbox
+                  label
+                    span(data-bind="text: isPensioner.i18n")
+                    input(name="isPensioner", type="checkbox", data-bind="checked: isPensioner, readOnly: isPensioner.readOnly")
+              div.form-group
+                label(data-bind="text: careDegree.i18n")
+                select.form-control(name="careDegree", data-bind="options: careDegree.list, optionsValue: 'val', optionsText: 'i18n', value: careDegree, readOnly: careDegree.readOnly")
+              // ko if: countryMode().includes( 'CH' )
+              div.form-group
+                .checkbox
+                  label
+                    span(data-bind="text: treatmentNeeds.i18n")
+                    input(name="treatmentNeeds", type="checkbox", data-bind="checked: treatmentNeeds, readOnly: treatmentNeeds.readOnly")
+              // /ko
+        h4(data-bind="text: agreementDataTitleI18n")
+        .panel.panel-default
+          div.panel-body.container.container-fullscreen
+            div.row
+              div.col-md-12
+                div.form-group(data-bind="visible: sendPatientReceiptVisible")
+                  .checkbox
+                    label
+                      span(data-bind="text: sendPatientReceipt.i18n")
+                      input(name="sendPatientReceipt", type="checkbox", data-bind="checked: sendPatientReceipt, readOnly: sendPatientReceipt.readOnly")
+                // ko if: countryMode().includes( 'D' )
+                div.form-group
+                  .checkbox
+                    label
+                      span(data-bind="text: dataTransmissionToPVSApproved.i18n")
+                      input(name="dataTransmissionToPVSApproved", type="checkbox", data-bind="checked: dataTransmissionToPVSApproved, readOnly: dataTransmissionToPVSApproved.readOnly")
+                // /ko
+                div.form-group(data-bind="visible: allowMailingVisible")
+                  .checkbox
+                    label
+                      span(data-bind="text: noMailing.i18n")
+                      input(name="allowMailing", type="checkbox", data-bind="checked: allowMailing")
+                // ko if: countryMode().includes( 'CH' )
+                div.form-group
+                  .checkbox
+                    label
+                      span(data-bind="text: dataTransmissionToMediportApproved.i18n")
+                      input(name="dataTransmissionToMediportApproved", type="checkbox", data-bind="checked: dataTransmissionToMediportApproved, readOnly: dataTransmissionToMediportApproved.readOnly")
+                // /ko
+                // ko if: noCrossLocationAccess
+                div.form-group
+                  .checkbox
+                    label
+                      span(data-bind="text: confirmedViewFromOtherLocations.i18n")
+                      input(name="confirmedViewFromOtherLocations", type="checkbox", data-bind="checked: confirmedViewFromOtherLocations, readOnly: confirmedViewFromOtherLocations.readOnly")
+                div.form-group(data-bind="hasFeedback: { field: confirmedViewFromLocationIds, toggle: confirmedViewFromLocationIds.hasError, messages: confirmedViewFromLocationIds.validationMessages }")
+                  input#select2ConfirmedViewFromLocationIds.form-control(name="confirmedViewFromLocationIds", type="text",
+                    data-bind="select2: select2ConfirmedViewFromLocationIds, disable: !confirmedViewFromOtherLocations()")
+
+                // /ko
+        h4(data-bind="text: contactsDataTitleI18n")
+        .panel.panel-default
+          div.panel-body.container.container-fullscreen
+            div.row
+              div.col-md-12
+                div(data-bind="template: { name: 'KoBaseContact', data: _physicianSelection }")
+                a(href="#", data-bind="click: takePhysician, readOnly: physicians.readOnly")
+                  i.fa.fa-arrow-down
+                  span(data-bind="text: takePhysician.i18n")
+                div(data-bind="template: { name: 'KoBaseContact', data: _familyDoctorSelection }")
+                div(data-bind="template: { name: 'KoBaseContact', data: _institutionSelection }")
+                div.form-group
+                  label
+                    span(data-bind="text: communicationsTitleI18n")
+                    | &nbsp;
+                    a.fa.fa-plus(href="javascript:;", data-bind="click: addAdditionalContact, readOnly: confirmedViewFromOtherLocations.readOnly")
+              div(data-bind="foreach: additionalContactsList")
+                div.col-md-10
+                  div(data-bind="template: { name: 'KoBaseContact', data: $parent.getContactVm( idx ) }")
+                div.col-md-2.remove-wrapper
+                  div.text-right
+                    a(data-bind="click: $parent.removeAdditionalContact").fa.fa-minus.btt-remove

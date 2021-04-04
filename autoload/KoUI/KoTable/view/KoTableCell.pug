@@ -1,0 +1,6 @@
+// ko if: Boolean(col.renderer)
+div.KoTableCell(data-bind="html: col.interceptRenderOutput(col.doRender($data), $data), attr: { title: col.interceptRenderOutput(value, $data, true) }", style="display: block;")
+// /ko
+// ko ifnot: Boolean(col.renderer)
+div.KoTableCell(data-bind="text: col.interceptRenderOutput(value, $data), attr: { title: col.interceptRenderOutput(value, $data, true) }", style="display: block;")
+// /ko

@@ -1,0 +1,9 @@
+div.form-group
+  div.row
+    div.col-xs-5
+      strong(data-bind="text: dmpLongActingBeta2AdrenergicAgonist.i18n")
+      span(data-bind="dmpField: { field: dmpLongActingBeta2AdrenergicAgonist }")
+    div.col-xs-7(data-bind="foreach: dmpLongActingBeta2AdrenergicAgonist.list, hasFeedback: { field: dmpLongActingBeta2AdrenergicAgonist, toggle: dmpLongActingBeta2AdrenergicAgonist.hasError, messages: dmpLongActingBeta2AdrenergicAgonist.validationMessages }")
+      label.checkbox-inline
+        span(data-bind="text: i18n")
+        input(type="checkbox", name="dmpLongActingBeta2AdrenergicAgonist", data-bind="value: val, checked: $parent.dmpLongActingBeta2AdrenergicAgonist, readOnly: $parent.dmpLongActingBeta2AdrenergicAgonist.readOnly, attr: { name: $element.name + '-' + val }")

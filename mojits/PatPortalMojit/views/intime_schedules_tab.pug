@@ -1,0 +1,37 @@
+//TRANSLATION INCOMPLETE!! MOJ-3201
+div.container.container-fullscreen#intimeSchedules
+  div(data-bind="foreach: practices")
+    div(data-bind="attr: { id: 'schedules-' + coname }, css: { 'col-xs-12': 1 === $parent.columnsNumber(), 'col-md-6': 2 === $parent.columnsNumber()}")
+      div.panel.panel-info(data-bind="attr: {id: customerIdPrac}")
+        div.panel-heading
+          h4
+            span(data-bind="text: 'Praxis ' + coname")
+            span.pull-right(data-bind="if: $data.prcOffline")
+              span.text-danger(data-bind="text: $parent.textOfflineI18n")
+        div.panel-body
+          div(data-bind="if: $data.prcOffline")
+            span(data-bind="text: $parent.practiceOfflineI18n")
+          div(data-bind="foreach: schedules")
+            a.accordion-toggle(data-bind="attr: { href: '#' + $parent.customerIdPrac + '-' + _id }", data-toggle="collapse")
+              span(data-bind="text: calendarName")
+              span(data-bind="text: formattedDate").pull-right
+            div.panel-collapse.collapse(data-bind="attr:{ id: $parent.customerIdPrac + '-' + _id }, css:{ 'in': 0 === $index() }")
+              div.panel-body
+                div.row
+                  div.col-lg-6
+                    p(data-bind="text: title")
+                    div(data-bind="if: $data.number")
+                      p(data-bind="text: 'Wartenummer: ' + number")
+                    p(data-bind="text: locationData")
+                // ko ifnot: $data.scheduled === -1 || $data.scheduled === 1 || isRunning
+                div.row
+                  div.col-xs-12.pull-right(data-bind="$parent.canCreateEvent")
+                    a.delete-link.btn.btn-default.pull-right(href="#", data-bind="click: $parent.cancelEvent")
+                      em Stornieren
+                // /ko
+            hr
+  div(data-bind=" if: isReady() && !practices().length")
+    p Sie haben noch keine Termine.
+    div(data-bind=" if: canCreateEvent ")
+      span Möchten Sie jetzt einen
+      a.tab-link(href="intime#/practices")  Termin vereinbaren?

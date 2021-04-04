@@ -1,0 +1,39 @@
+div.CalendarSelector.CalendarSelector-horizontal
+  div.CalendarSelector-heading
+    span(data-bind="text: calendarSelectorGroupI18n")
+    span.fa.fa-minus-square-o(style="cursor: pointer", data-bind="click: toggleGroupList")
+  // ko if: showGroupList
+  div.CalendarSelector-toggler
+    label.checkbox-inline
+      input(name="CalendarSelector-horizontal-toggler", type="checkbox", data-bind="click: allGroupSelectorTogglerClick, checked: groupSelectorTogglerChecked")
+      span(data-bind="text: calendarSelectorToggerI18n")
+  div.row
+    // ko foreach: calendarGroups
+    div.col-xs-3.col-lg-2
+      div.CalendarSelector-item
+        label.CalendarSelector-item-label.checkbox-inline
+          input(type="checkbox", data-bind="click: $parent.onGroupClick, checked: $data.checked,  attr: { name: 'calendar-' + $data.name + '-visible' }")
+          small(data-bind="text: name")
+    // /ko
+  // /ko
+  br
+  div.CalendarSelector-heading
+    span(data-bind="text: calendarSelectorCalendarI18n")
+    span.fa.fa-minus-square-o(style="cursor: pointer", data-bind="click: toggleCalendarList")
+  // ko if: showCalendarList
+  div.CalendarSelector-toggler
+    label.checkbox-inline
+      input(name="CalendarSelector-horizontal-toggler", type="checkbox", data-bind="click: allCalendarSelectorTogglerClick, checked: calendarSelectorTogglerChecked")
+      span(data-bind="text: calendarSelectorToggerI18n")
+  div.row
+    // ko foreach: calendarsLocation
+    div.col-xs-3.col-lg-2
+      div.CalendarSelector-item
+        // ko if: $parent.get('inTimeConfig').colorMode === 'CALENDAR'
+        span.CalendarSelector-item-color(data-bind="style: { backgroundColor: color }")
+        // /ko
+        label.CalendarSelector-item-label.checkbox-inline
+          input(type="checkbox", data-bind="click: $parent.onCalendarClick, checkedValue: $data, checked: $parent.calendarsVisible, attr: { name: 'calendar-' + $data._id + '-visible' }")
+          small(data-bind="text: name")
+    // /ko
+  // /ko

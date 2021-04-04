@@ -1,0 +1,7 @@
+div.form-group
+    span(data-bind="text: textDescriptionPreI18n + ' '")
+    select(name="duration", data-bind="options: durationList, optionsText: 'label',optionsValue: 'value', value: ''", style="display: inline-block; width: 120px;").form-control
+    span(data-bind="text: ' ' + textDescriptionPostI18n")
+div.form-group
+    label.control-label(data-bind="text: commentLabelI18n")
+    input.form-control(name="comment", type="text", data-bind="attr: { placeholder: commentPlaceholderI18n }")

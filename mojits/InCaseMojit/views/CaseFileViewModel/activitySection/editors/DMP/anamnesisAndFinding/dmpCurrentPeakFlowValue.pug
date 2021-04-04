@@ -1,0 +1,15 @@
+div.form-group
+  div.row
+    div.col-xs-4
+      div(data-bind="hasFeedback: { field: dmpCurrentPeakFlowValue, toggle: dmpCurrentPeakFlowValue.hasError, messages: dmpCurrentPeakFlowValue.validationMessages }")
+        label.control-label(data-bind="text: dmpCurrentPeakFlowValue.i18n")
+        span(data-bind="dmpField: { field: dmpCurrentPeakFlowValue }")
+        input.form-control(name="dmpCurrentPeakFlowValue", type="text", data-bind="value: dmpCurrentPeakFlowValueString, readOnly: dmpCurrentPeakFlowValue.readOnly")
+    div.col-xs-2.form-horizontal
+      span &nbsp;
+      p.form-control-static(data-bind="text: dmpCurrentPeakFlowUnitLabelI18n")
+    div.col-xs-6
+      span &nbsp;<br>
+      label.checkbox-inline
+        span(data-bind="text: dmpCurrentPeakFlowValueNotDoneLabelI18n")
+        input(type="checkbox", name="dmpCurrentPeakFlowValueNotDone", data-bind="checked: dmpCurrentPeakFlowValueNotDone, readOnly: dmpCurrentPeakFlowValueNotDone.readOnly")

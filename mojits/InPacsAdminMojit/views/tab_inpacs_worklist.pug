@@ -1,0 +1,45 @@
+tsection#tab_inpacs_worklist
+
+  header.row
+    h4.col-md-4(data-bind="text: title")
+    div.col-md-2
+      div.checkbox.pull-right
+        input(type="checkbox", data-bind="checked: isActive")#isWorkListActive
+        label.control-label(for="isWorkListActive")
+          span(data-bind="text: isActiveLabel")
+
+    div.col-md-4
+      div.row.pull-right
+        div.col-md-8.inpacs-allowedNoOfImages-div
+          label.control-label.inpacs-allowedNoOfImages-label(for="allowedNoOfImages")
+            span(data-bind="text: numberOfImagesLabelI18n")
+        div.col-md-3
+          div.form-group.inpacs-allowedNoOfImages-textBoxWidth(data-bind="hasFeedback: { field: numberOfImages, toggle: numberOfImages.hasError, messages: numberOfImages.validationMessages }")
+            input.form-control(type="text", data-bind="textInput: numberOfImages")#allowedNoOfImages
+
+
+  div.row
+    section.col-md-10#inPacsWorkListSection(data-bind="template: workListModel.template")
+
+  div.row
+    h4(style="float:left; margin: 2px 0px 0px 10px;" data-bind="text: dicomTagI18n")
+    input(style="float:left; margin: 0px 0px 5px 5px; border-radius: 4px; border: 1px solid #ccc; width:100px;" placeholder="0040,1001" data-bind="textInput: workListModel.dicomTagText")
+    input(style="float:left; margin: 0px 0px 5px 5px; border-radius: 4px; border: 1px solid #ccc; width:100px;" placeholder="0032,1060" data-bind="textInput: workListModel.dicomCommentTagText")
+    input(type="file" id="csvFilePicker" style="float:left; margin: 2px 5px 5px 5px; border-radius: 4px; border: 1px solid #ccc;" data-bind="event: { change: csvFileChange }")
+    button.btn.btn-primary(style="padding:2px 20px 2px 20px; margin-bottom: 3px;" data-bind="click: uploadCsvFile, enable: csvUploadButtonEnabled, text: uploadI18n")
+    i.dc-info-icon(data-bind="attr: {title: csvFileStructureI18n}" style="position: relative; top: -12px;")
+    button(style="margin: 0px 5px 5px 5px; border-radius: 4px; border: 1px solid #ccc; padding:3px 20px 2px 20px;" data-bind="click: downloadCsvFile, text: downloadI18n")
+    button(style="margin: 0px 5px 5px 5px; border-radius: 4px; border: 1px solid #ccc; padding:3px 20px 2px 20px;" data-bind="click: clearOptionalDicomTagValues, tooltip: {title: clearButtonI18n}")
+      span.glyphicon.glyphicon-trash
+  div.row
+    section.col-md-10(data-bind="template: workListModel.dicomTagValuesTable.template, visible: workListModel.dicomTagCsvValues().length")
+
+
+  footer.row
+    div.col-sm-8
+      div.dc-action-buttons
+        button.btn.btn-primary(data-bind="click: save, enable: isValid, text: buttonSaveI18n" name="saveBtn", type="button")
+
+
+script(type="text/html", id="InPacsWorkListTemplate")
+  include InPacsWorkList

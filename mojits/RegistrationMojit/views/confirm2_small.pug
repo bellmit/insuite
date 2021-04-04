@@ -1,0 +1,15 @@
+//TRANSLATION INCOMPLETE!! MOJ-3201
+.modal.hide.fade(tabindex="-1", role="dialog", aria-labelledby="myModalLabel", aria-hidden="true")#myModal
+  .modal-header
+    .btn(type="button", class="close", data-dismiss="modal", aria-hidden="true") ×
+    h3 Anmeldungsbestätigung
+  .modal-body
+    h4 Herzlich willkommen bei Doc Cirrus!
+    hr
+    p Sie erhalten nun eine E-Mail mit einem Link und Hinweisen zur abschließenden Bestätigung Ihrer Anmeldung (opt-in).
+    - if(community)
+      hr
+      p Außerdem erhalten Sie Ihre Zugangsdaten zu unserer Community in Kürze per E-Mail, sobald wir Sie freigeschaltet haben.
+  .modal-footer
+    a(href='/login').btn.btn-primary Ok
+

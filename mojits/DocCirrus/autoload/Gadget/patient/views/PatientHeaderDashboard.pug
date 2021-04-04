@@ -1,0 +1,37 @@
+mixin Gadget
+  div.Gadget(data-bind="component: { name: $component.getGadgetName( gadgetConst() ), params: { $context: $context } }, css: $component.getRowClassName( $data )")
+
+mixin PatientGadgetEditGadget
+  div.Gadget.Gadget-draggable.Gadget-dragHandle(data-bind="component: { name: 'PatientGadgetEditGadget', params: { $context: $context } }, css: $component.getRowClassName( $data )")
+
+mixin GadgetForeach(index)
+  | <!-- ko foreach: activeDashboardGadgets()[#{index}] -->
+  div.Gadget-slot(data-bind="css: $component.getColClassName( $data )")
+    +Gadget
+  // /ko
+
+mixin PatientGadgetEditGadgetForeach(index)
+  | <!-- ko foreach: activeDashboardGadgets()[#{index}] -->
+  div.Gadget-slot(data-bind="css: $component.getColClassName( $data )")
+    +PatientGadgetEditGadget
+  // /ko
+  | <!-- ko with: {isDrop:true, gadgetCollection: #{index}} -->
+  div.Gadget-slot.Gadget-height-1(data-bind="css: $component.getDropTargetClassName(), visible: $component.isColumnDropTargetVisible( "+index+" ), notifyBind: { method: $component.notifyBindDropTarget.bind($component) }, notifyDispose: { method: $component.notifyDisposeDropTarget.bind($component) }")
+    div.Gadget-dropTarget.well.text-center(style="margin-top: 10px; overflow: hidden; text-overflow: ellipsis; padding-left: 5px; padding-right: 5px;")
+      em
+        span.fa.fa-level-down
+        | &nbsp;
+        span(data-bind="visible: $component.isDropTargetTextVisible(), text: $component.dragLabelI18n")
+  // /ko
+
+// ko if: activeDashboard
+div.DashboardBase.PatientHeaderDashboard(data-bind="notifyBind: { method: notifyBindDdContainerElement }")
+  // ko ifnot: inEditMode
+  div.row
+    +GadgetForeach(0)
+  // /ko
+  // ko if: inEditMode
+  div.row(style="position: relative")
+    +PatientGadgetEditGadgetForeach(0)
+  // /ko
+// /ko

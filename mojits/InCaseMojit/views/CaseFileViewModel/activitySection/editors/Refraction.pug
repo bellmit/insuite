@@ -1,0 +1,240 @@
+div.row
+  div.col-xs-12
+    h3.text-center(style="margin: 0;", data-bind="text: refractionI18n")
+  div.col-xs-4
+    h5.text-center(style="margin: 0 0 10px;")
+      strong(data-bind="text: rightEyeI18n")
+  div.col-xs-4
+  div.col-xs-4
+    h5.text-center(style="margin: 0 0 10px;")
+      strong(data-bind="text: leftEyeI18n")
+div.row
+  div.col-xs-4
+    div.panel.panel-default
+      div.panel-body
+        table.textform-sd_ophthalmology_refraction-measurement-a.dc-tablefieldset-inline
+          colgroup
+            col
+            col
+            col
+          tbody
+            tr
+              td.text-right
+                label.control-label(data-bind="text: orSphR.i18n")
+              td
+                span(style="display:inline-block; position:relative")
+                  input.form-control.text-right(name="orSphR",data-bind="value: _orSphR, readOnly: orSphR.readOnly, event: { keydown: getOphthalmologyKeyBinder('orSphR') }, attr: { placeholder: orSphRPlaceholderI18n }")
+              td.dc-tablefieldset-unit(data-bind="text: orSphRUnitI18n")
+            tr
+              td.text-right
+                label.control-label(data-bind="text: orCylR.i18n")
+              td
+                span(style="display:inline-block; position:relative")
+                  input.form-control.text-right(name="orCylR", data-bind="value: _orCylR, readOnly: orCylR.readOnly, event: { keydown: getOphthalmologyKeyBinder('orCylR') }, attr: { placeholder: orCylRPlaceholderI18n }")
+              td.dc-tablefieldset-unit(data-bind="text: orCylRUnitI18n")
+            tr
+              td.text-right
+                label.control-label(data-bind="text: orAxsR.i18n")
+              td
+                span(style="display:inline-block; position:relative")
+                  input.form-control.text-right(name="orAxsR", data-bind="value: _orAxsR, readOnly: orAxsR.readOnly, event: { keydown: getOphthalmologyKeyBinder('orAxsR') }, attr: { placeholder: orAxsRPlaceholderI18n }")
+              td.dc-tablefieldset-unit(data-bind="text: orAxsRUnitI18n")
+            tr
+              td.text-right
+                label.control-label(data-bind="text: orAddR.i18n")
+              td
+                input.form-control.text-right(name="orAddR", data-bind="value: _orAddR, readOnly: orAddR.readOnly, event: { keydown: getOphthalmologyKeyBinder('orAddR') }, attr: { placeholder: orAddRPlaceholderI18n }")
+              td.dc-tablefieldset-unit(data-bind="text: orAddRUnitI18n")
+            tr
+              td.text-right
+                label.control-label(data-bind="text: orPsmR.i18n")
+              td
+                input.form-control.text-right(name="orPsmR", data-bind="value: _orPsmR, readOnly: orPsmR.readOnly, event: { keydown: getOphthalmologyKeyBinder('orPsmR') }, attr: { placeholder: orPsmRPlaceholderI18n }")
+              td.dc-tablefieldset-unit(data-bind="text: orPsmRUnitI18n")
+            tr
+              td.text-right
+                label.control-label(data-bind="text: orBasRLabelI18n")
+              td
+                select.form-control(name="orBasR", data-bind="options: orBasRList, optionsValue: 'val', optionsText: '-de', value: orBasR, readOnly: orBasR.readOnly")
+              td
+            tr
+              td.text-right
+                label.control-label(data-bind="text: orAdd2R.i18n")
+              td
+                input.form-control.text-right(name="orAdd2R", data-bind="value: _orAdd2R, readOnly: orAdd2R.readOnly, event: { keydown: getOphthalmologyKeyBinder('orAdd2R') }, attr: { placeholder: orAdd2RPlaceholderI18n }")
+              td.dc-tablefieldset-unit(data-bind="text: orAdd2RUnitI18n")
+  div.col-xs-4
+    div.center-block(style="max-width: 250px;")
+      div.form-group(style="margin-top: 20px")
+        label.control-label(data-bind="text: orTypeLabelI18n")
+        select.form-control(name="orType", data-bind="options: orTypeList, optionsValue: 'val', optionsText: '-de', value: orType, readOnly: orType.readOnly")
+      div.form-group(data-bind="visible: orType")
+        // ko ifnot: _orReadpickerIsAvailable
+        button.btn.btn-default.btn-block(name="_orReadDeviceRead", type="button", style="margin-bottom: 5px;", data-bind="click: _orReadDeviceRead, enable: _orReadDeviceEnabled, text: readFromI18n")
+        select.form-control(name="_orReadDevices", data-bind="value: _orReadDevice, options: _orReadDevices, optionsValue: 'val', optionsText: 'i18n', enable: _orReadDeviceEnabled", style="margin-bottom: 10px")
+        // /ko
+        // ko if: _orReadpickerIsAvailable
+        label.control-label(data-bind="text: readFromI18n")
+        div(style="margin-bottom: 10px", data-bind="hasFeedback: { field: orRead, toggle: orRead.hasError, messages: orRead.validationMessages }")
+          .date-picker.input-group
+            input.form-control(name="orRead", data-bind="datetimepicker: { value: orRead, valueReset: null, options: { format: 'DD.MM.YYYY HH:mm', sideBySide: true } }, event: { focus: handleOphthalmologyFocusDate }, readOnly: orRead.readOnly, attr: { placeholder: orReadDateI18n }")
+        // /ko
+        div(data-bind="visible: orRead")
+          strong(data-bind="text: lastReadOnI18n")
+          div(style="text-indent: 17px;", data-bind="text: _orRead")
+      hr
+      div.form-group(data-bind="visible: _orWritable", style="margin-top: 30px")
+        button.btn.btn-default.btn-block(name="_orWriteDeviceWrite", type="button", style="margin-bottom: 5px;", data-bind="click: _orWriteDeviceWrite, enable: _orWriteDeviceEnabled, text: writeToI18n")
+        select.form-control(name="_orWriteDevices", data-bind="value: _orWriteDevice, options: _orWriteDevices, optionsValue: 'val', optionsText: 'i18n', enable: _orWriteDeviceEnabled")
+  div.col-xs-4
+    div.panel.panel-default
+      div.panel-body
+        table.textform-sd_ophthalmology_refraction-measurement-a.dc-tablefieldset-inline
+          colgroup
+            col
+            col
+            col
+          tbody
+            tr
+              td.text-right
+                label.control-label(data-bind="text: orSphL.i18n")
+              td
+                span(style="display:inline-block; position:relative")
+                  input.form-control.text-right(name="orSphL", data-bind="value: _orSphL, readOnly: orSphL.readOnly, event: { keydown: getOphthalmologyKeyBinder('orSphL') }, attr: { placeholder: orSphLPlaceholderI18n }")
+              td.dc-tablefieldset-unit(data-bind="text: orSphLUnitI18n")
+            tr
+              td.text-right
+                label.control-label(data-bind="text: orCylL.i18n")
+              td
+                span(style="display:inline-block; position:relative")
+                  input.form-control.text-right(name="orCylL", data-bind="value: _orCylL, readOnly: orCylL.readOnly, event: { keydown: getOphthalmologyKeyBinder('orCylL') }, attr: { placeholder: orCylLPlaceholderI18n }")
+              td.dc-tablefieldset-unit(data-bind="text: orCylLUnitI18n")
+            tr
+              td.text-right
+                label.control-label(data-bind="text: orAxsL.i18n")
+              td
+                span(style="display:inline-block; position:relative")
+                  input.form-control.text-right(name="orAxsL", data-bind="value: _orAxsL, readOnly: orAxsL.readOnly, event: { keydown: getOphthalmologyKeyBinder('orAxsL') }, attr: { placeholder: orAxsLPlaceholderI18n }")
+              td.dc-tablefieldset-unit(data-bind="text: orAxsLUnitI18n")
+            tr
+              td.text-right
+                label.control-label(data-bind="text: orAxsL.i18n")
+              td
+                input.form-control.text-right(name="orAddL", data-bind="value: _orAddL, readOnly: orAddL.readOnly, event: { keydown: getOphthalmologyKeyBinder('orAddL') }, attr: { placeholder: orAddLPlaceholderI18n }")
+              td.dc-tablefieldset-unit(data-bind="text: orAddLUnitI18n")
+            tr
+              td.text-right
+                label.control-label(data-bind="text: orPsmL.i18n")
+              td
+                input.form-control.text-right(name="orPsmL", data-bind="value: _orPsmL, readOnly: orPsmL.readOnly, event: { keydown: getOphthalmologyKeyBinder('orPsmL') }, attr: { placeholder: orPsmLPlaceholderI18n }")
+              td.dc-tablefieldset-unit(data-bind="text: orPsmLUnitI18n")
+            tr
+              td.text-right
+                label.control-label(data-bind="text: orBasLLabelI18n")
+              td
+                select.form-control(name="orBasL", data-bind="options: orBasLList, optionsValue: 'val', optionsText: '-de', value: orBasL, readOnly: orBasL.readOnly")
+              td
+            tr
+              td.text-right
+                label.control-label(data-bind="text: orAdd2L.i18n")
+              td
+                input.form-control.text-right(name="orAdd2L", data-bind="value: _orAdd2L, readOnly: orAdd2L.readOnly, event: { keydown: getOphthalmologyKeyBinder('orAdd2L') }, attr: { placeholder: orAdd2LPlaceholderI18n }")
+              td.dc-tablefieldset-unit(data-bind="text: orAdd2LUnitI18n")
+div.row
+  div.col-xs-4
+  div.col-xs-4
+    h5.text-center(style="margin: 0 0 10px;")
+      strong(data-bind="text: orVisAcuTypLabelI18n")
+    div.center-block(style="max-width: 250px;")
+      div.form-group
+        select.form-control(name="orVisAcuTyp", data-bind="options: orVisAcuTypList, optionsValue: 'val', optionsText: '-de', value: orVisAcuTyp, readOnly: orVisAcuTyp.readOnly")
+  div.col-xs-4
+div.row
+  div.col-xs-4
+    div.panel.panel-default
+      div.panel-body
+        table.textform-sd_ophthalmology_refraction-measurement-b.dc-tablefieldset-inline
+          colgroup
+            col
+            col
+            col
+          tbody
+            tr
+              td.text-right
+                label.control-label(data-bind="text: orFarR.i18n")
+              td
+                input.form-control.text-right(name="orFarR", data-bind="value: _orFarR, readOnly: orFarR.readOnly, event: { keydown: getOphthalmologyKeyBinder('orFarR') }, attr: { placeholder: orFarRPlaceholderI18n }")
+              td.dc-tablefieldset-unit
+            tr
+              td.text-right
+                label.control-label(data-bind="text: orNearR.i18n")
+              td
+                input.form-control.text-right(name="orNearR", data-bind="value: _orNearR, readOnly: orNearR.readOnly, event: { keydown: getOphthalmologyKeyBinder('orNearR') }, attr: { placeholder: orNearRPlaceholderI18n }")
+              td.dc-tablefieldset-unit
+  div.col-xs-4
+    div.panel.panel-default
+      div.panel-body
+        table.textform-sd_ophthalmology_refraction-measurement-b.dc-tablefieldset-inline
+          colgroup
+            col
+            col
+            col
+          tbody
+            tr
+              td.text-right
+                label.control-label(data-bind="text: orFarB.i18n")
+              td
+                input.form-control.text-right(name="orFarB", data-bind="value: _orFarB, readOnly: orFarB.readOnly, event: { keydown: getOphthalmologyKeyBinder('orFarB') }, attr: { placeholder: orFarBPlaceholderI18n }")
+              td.dc-tablefieldset-unit
+            tr
+              td.text-right
+                label.control-label(data-bind="text: orNearB.i18n")
+              td
+                input.form-control.text-right(name="orNearB", data-bind="value: _orNearB, readOnly: orNearB.readOnly, event: { keydown: getOphthalmologyKeyBinder('orNearB') }, attr: { placeholder: orNearBPlaceholderI18n }")
+                td.dc-tablefieldset-unit
+  div.col-xs-4
+    div.panel.panel-default
+      div.panel-body
+        table.textform-sd_ophthalmology_refraction-measurement-b.dc-tablefieldset-inline
+          colgroup
+            col
+            col
+            col
+          tbody
+            tr
+              td.text-right
+                label.control-label(data-bind="text: orFarL.i18n")
+              td
+                input.form-control.text-right(name="orFarL", data-bind="value: _orFarL, readOnly: orFarL.readOnly, event: { keydown: getOphthalmologyKeyBinder('orFarL') }, attr: { placeholder: orFarLPlaceholderI18n }")
+              td.dc-tablefieldset-unit
+            tr
+              td.text-right
+                label.control-label(data-bind="text: orNearL.i18n")
+              td
+                input.form-control.text-right(name="orNearL", data-bind="value: _orNearL, readOnly: orNearL.readOnly, event: { keydown: getOphthalmologyKeyBinder('orNearL') }, attr: { placeholder: orNearLPlaceholderI18n }")
+              td.dc-tablefieldset-unit
+div.row
+  div.col-xs-12
+    div.panel.panel-default
+      div.panel-body.text-center
+        div.text-left(style="display: inline-block;")
+          div.form-inline(style="display: inline-block; margin-right: 15px;")
+            .form-group
+              label.control-label(data-bind="text: orPD.i18n")
+              input.form-control(name="orPD", data-bind="value: _orPD, readOnly: orPD.readOnly, event: { keydown: getOphthalmologyKeyBinder('orPD') }, attr: { placeholder: orPDPlaceholderI18n }", style="margin: 0 5px;")
+              span(data-bind="text: orPDUnitI18n")
+          div.form-inline(style="display: inline-block;margin-left: 15px;")
+            .form-group
+              label.control-label(data-bind="text: orHSA.i18n")
+              input.form-control(name="orHSA", data-bind="value: _orHSA, readOnly: orHSA.readOnly, event: { keydown: getOphthalmologyKeyBinder('orHSA') }, attr: { placeholder: orHSAPlaceholderI18n }", style="margin: 0 5px;")
+              span(data-bind="text: orHSAUnitI18n")
+div.row
+  div.col-xs-12
+    div.panel.panel-default(data-bind="panelCollapse: { name: 'textform-sd_ophthalmology_refraction-panel-body-comment' }")
+      div.panel-heading
+        a(href="#textform-sd_ophthalmology_refraction-panel-body-comment", data-toggle="collapse")
+          strong(data-bind="text: groupCommentI18n")
+      div#textform-sd_ophthalmology_refraction-panel-body-comment.panel-collapse.collapse(data-bind="notifyBind: { method: initCommentShouldBeOpen }")
+        div.panel-body
+          textarea.form-control(name="comment", data-bind="caretPosition: comment.caretPosition, value: comment, readOnly: comment.readOnly, valueUpdate: 'afterkeydown', attr: { placeholder: placeholderCommentI18n }", style="min-height: 115px;")
+

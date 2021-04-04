@@ -1,0 +1,254 @@
+div.row
+    div.col-xs-7
+        div.row
+            div(data-bind="css: {'col-xs-11': !userContent.readOnly(), 'col-xs-12': userContent.readOnly}")
+                h3(data-bind="text: treatmentCategory", style="margin-bottom: 0px;")
+                h5(data-bind="text: divisionText", style="margin-top: 0px;")
+                div.form-group
+                    textarea#textform-sd4-userContent.form-control(name="userContent", data-bind="textInput: userContent, readOnly: userContent.readOnly, event: { focus: onDocTreeFocus, blur: onDocTreeBlur }, caretPosition: userContent.caretPosition, attr: { placeholder: contentServiceI18n }", rows="7")
+                div.form-group
+                    textarea#textform-sd4-explanations.form-control(name="explanations", data-bind="textInput: explanations, readOnly: explanations.readOnly, event: { focus: onDocTreeFocus, blur: onDocTreeBlur }, caretPosition: explanations.caretPosition, attr: { placeholder: SD4ExplanationsI18n }", rows="7")
+                hr
+                div.form-group
+                    h5(data-bind="text: catalogTextI18n + ':'")
+                    textarea#textform-sd4-catalogContent.form-control(name="originalCatalogText", data-bind="textInput: originalCatalogText, readOnly: true, attr: { placeholder: catalogTextI18n }", rows="3")
+                div.form-group
+                    h5(data-bind="text: medicalTextI18n + ':'")
+                    textarea#textform-medicalText.form-control(name="medicalText", data-bind="textInput: medicalText, readOnly: true", rows="3")
+                div.form-group
+                    h5(data-bind="text: technicalTextI18n + ':'")
+                    textarea#textform-technicalText.form-control(name="technicalText", data-bind="textInput: technicalText, readOnly: true", rows="3")
+
+            // ko if: !userContent.readOnly()
+            div.col-xs-1(style="padding-left: 0", data-bind="foreach: catalogTexts")
+                button.btn-default.btn(data-bind="text: title, tooltip: {title: text()}, css: {'dc-grey-text': !text() && !active(), 'dc-grey': text() && !active(), 'btn-primary-disabled': usedInUserContent() && !active(), 'btn-primary': active }, click: $parent.activateCatalogTextItem", style="width: 40px; height: 40px; margin-bottom: 2px")
+            // /ko
+
+    div.col-xs-5
+        //ko if: isModified() && canModifyHomeCatalog()
+        div.form-group
+            div.checkbox
+                label.control-label
+                    strong(data-bind="text: modifyHomeCatI18n")
+                    input(type="checkbox", name="modifyHomeCat", data-bind="checked: modifyHomeCat, readOnly: modifyHomeCat.readOnly")
+        // /ko
+        //ko if: canOverrideCatalogFlag()
+        div.checkbox-inline
+          label.control-label
+            strong
+              span(data-bind="text: useCatalogPriceI18n")
+              i.dc-info-icon(data-bind="tooltip: {title: useCatalogInfoI18n}")
+            input(type="checkbox", name="catalog", data-bind="checked: catalog, readOnly: catalog.readOnly")
+        // /ko
+        div.row.form-group
+            div.col-xs-12
+                div.form-group
+                    input.form-control(name="tag", type="hidden", data-bind="select2: select2tags, valueUpdate: 'afterkeydown', readOnly: code.readOnly")
+
+        div.row
+            div.col-xs-3
+                div.form-group(data-bind="hasFeedback: { popover: { container: 'body' }, field: numberOfCopies, toggle: numberOfCopies.hasError, messages: numberOfCopies.validationMessages }")
+                    label.control-label
+                        strong(data-bind="text: numberOfCopiesI18n")
+                    input.form-control(name="numberOfCopies", type="text", size="4", data-bind="value: numberOfCopies, readOnly: code.readOnly")#txtNumberOfCopies
+            div.col-xs-9
+                div.form-group(data-bind="hasFeedback: { field: code, toggle: code.hasError, messages: code.validationMessages }")
+                    label.control-label
+                        strong(data-bind="text: labelCodeI18n")
+                    input.form-control(name="code", type="hidden", data-bind="select2: select2Code, readOnly: code.readOnly, hasFocus: true")
+                    span(data-bind="if: _catalogShortVisible(['EBM'])() && _codeValidationInfo()")
+                        span(data-bind="text: _codeValidationInfo().display, style: {'color': _codeValidationInfo().isValid ? '' : '#a94442'}")
+
+        div.row
+            div.col-xs-5
+                //ko if: !_PriceReadOnly()
+                div.form-group
+                    div.checkbox
+                        label.control-label
+                            strong(data-bind="text: vatI18n")
+                            input(type="checkbox", name="hasVat", data-bind="checked: hasVat, readOnly: hasVat.readOnly")
+                // /ko
+            div.col-xs-2
+                div.form-group.text-right(data-bind="if: hasVat", style="padding-top: 7px")
+                    label.control-label
+                        light(data-bind="text: labelNetI18n")
+            div.col-xs-5
+                div.form-group
+                    input.form-control.text-right(name="displayPrice", data-bind="value: displayPrice, readOnly: _PriceReadOnly, attr: { placeholder: displayPriceI18n }")
+
+        div.row
+            div.form-group(data-bind="if: hasVat")
+                div.col-xs-5
+                    div.form-group
+                        select.form-control(name="vat", data-bind="options: vatList, optionsValue: 'code', optionsText: 'description', value: vat, readOnly: vat.readOnly, visible: hasVat")
+                div.col-xs-2
+                    div.form-control-static.text-right(style="padding-top: 7px")
+                        label.control-label
+                            light(data-bind="text: labelGrossI18n")
+                div.col-xs-5
+                    div.form-group
+                        input.form-control.text-right(name="displayGross", data-bind="value: displayGross, readOnly: true")
+
+        div.row.form-group
+            div.col-xs-5
+                select.form-control(name="_catalog", data-bind="options: _catalogBase, optionsValue: 'short', optionsText: 'short', value: catalogShort, readOnly: code.readOnly")
+            div.col-xs-2
+                label.control-label
+            div.col-xs-5
+                input.form-control.text-right(name="unit", data-bind="value: 'CHF', readOnly: true")
+
+        //ko if: isEAL()
+        div.form-group
+            strong(data-bind="text: bilableI18n + ':'")
+            | &nbsp;
+            label.radio-inline
+                input(type="radio", name="areTreatmentDiagnosesBillable", value="1", data-bind="checked: areTreatmentDiagnosesBillable, readOnly: areTreatmentDiagnosesBillable.readOnly")
+                strong(data-bind="text: checkboxYesI18n")
+            label.radio-inline
+                input(type="radio", name="areTreatmentDiagnosesBillable", value="0", data-bind="checked: areTreatmentDiagnosesBillable, readOnly: areTreatmentDiagnosesBillable.readOnly")
+                strong(data-bind="text: checkboxNoI18n")
+        // /ko
+
+        div#textform-panel-group.panel-group
+
+            // ko if: treatmentCategory() && code() && ( 'TARMED' === catalogShort() || 'TARMED_UVG_IVG_MVG' === catalogShort() )
+            div.panel.panel-default(data-bind="panelCollapse: { name: 'textform-panel-body-linking-treatments' }")
+                div.panel-heading
+                  a(href="#textform-panel-body-linking-treatments", data-toggle="collapse", data-parent="#textform-panel-group")
+                    strong(data-bind="text: showSelectCategory")
+                div#textform-panel-body-linking-treatments.panel-collapse.collapse
+                  div.panel-body
+                    div.row
+                      div.markers_config_table(style="max-height:267px; overflow-y:auto;")
+                        table.table.table-bordered
+                          colgroup
+                            col(width="32")
+                            col(width="64")
+                            col(width="100%")
+                          thead
+                            tr
+                              th
+                                input(type="checkbox", data-bind="checked: checkedAll")
+                              th Code
+                              th Text
+                          tbody(data-bind='foreach: hierarchyRules, notifyBind: { method: showCodesCollapsed }')
+                            tr
+                              td(style="text-align:center;")
+                                input(type="checkbox", data-bind="checked: checked, readOnly: disabled")
+                              td
+                                span(data-bind="text: seq")
+                              td
+                                span(data-bind="text: title")
+            // /ko
+
+            div.panel.panel-default(data-bind="panelCollapse: { name: 'textform-panel-body-tax-points' }")
+                div.panel-heading
+                    a(href="#textform-panel-body-tax-points", data-toggle="collapse", data-parent="#textform-panel-group")
+                        strong(data-bind="text: taxPointsI18n")
+                div#textform-panel-body-tax-points.panel-collapse.collapse
+                    div.panel-body
+                        div.row
+                            div.form-group.col-xs-7
+                                label.control-label(data-bind="text: medicalTaxPointsI18n")
+                                input.form-control(name="medicalTaxPoints", data-bind="value: medicalTaxPoints, readOnly: true")
+                            div.form-group.col-xs-5
+                                label.control-label(data-bind="text: scalingFactorI18n")
+                                input.form-control(name="medicalScalingFactor", data-bind="value: medicalScalingFactor, readOnly: true")
+                        div.row
+                            div.form-group.col-xs-7
+                                label.control-label(data-bind="text: technicalTaxPointsI18n")
+                                input.form-control(name="technicalTaxPoints", data-bind="value: technicalTaxPoints, readOnly: true")
+                            div.form-group.col-xs-5
+                                label.control-label(data-bind="text: scalingFactorI18n")
+                                input.form-control(name="technicalScalingFactor", data-bind="value: technicalScalingFactor, readOnly: true")
+                        div.row(data-bind="visible: assistanceTaxPoints")
+                            div.form-group.col-xs-7
+                                label.control-label(data-bind="text: assistanceI18n")
+                                input.form-control(name="assistanceTaxPoints", data-bind="value: assistanceTaxPoints, readOnly: true")
+                        div.row(data-bind="visible: tarmedCatalog")
+                            div(style="padding-left: 15px")
+                                label(data-bind="text: priceExplainString")
+            div.panel.panel-default(data-bind="panelCollapse: { name: 'textform-panel-body-time' }")
+                div.panel-heading
+                    a(href="#textform-panel-body-time", data-toggle="collapse", data-parent="#textform-panel-group")
+                        strong(data-bind="text: timeI18n")
+                div#textform-panel-body-time.panel-collapse.collapse
+                    div.panel-body
+                        div.row
+                            div.form-group.col-xs-12
+                                label.control-label(data-bind="text: treatmentTimeI18n")
+                                input.form-control(name="treatmentTime", data-bind="value: treatmentTime, readOnly: true")
+                        div.row
+                            div.form-group.col-xs-12
+                                label.control-label(data-bind="text: preparationAndFollowUpTimeI18n")
+                                input.form-control(name="preparationAndFollowUpTime", data-bind="value: preparationAndFollowUpTime, readOnly: true")
+                        div.row
+                            div.form-group.col-xs-12
+                                label.control-label(data-bind="text: reportTimeI18n")
+                                input.form-control(name="reportTime", data-bind="value: reportTime, readOnly: true")
+                        div.row
+                            div.form-group.col-xs-6
+                                label.control-label(data-bind="text: roomOccupancyTimeI18n")
+                                input.form-control(name="roomOccupancyTime", data-bind="value: roomOccupancyTime, readOnly: true")
+                            div.form-group.col-xs-6
+                                label.control-label(data-bind="text: rotationTimeI18n")
+                                input.form-control(name="rotationTime", data-bind="value: rotationTime, readOnly: true")
+
+            div.panel.panel-default(data-bind="panelCollapse: { name: 'textform-panel-body-assistance' }, visible: assistanceQuantity")
+                div.panel-heading
+                    a(href="#textform-panel-body-assitance", data-toggle="collapse", data-parent="#textform-panel-group")
+                        strong(data-bind="text: assistanceI18n")
+                div#textform-panel-body-assistance.panel-collapse.collapse
+                    div.panel-body
+                        div.row
+                            div.form-group.col-xs-6
+                                label.control-label(data-bind="text: assistanceQuantityI18n")
+                                input.form-control(name="assistanceQuantity", data-bind="value: assistanceQuantity, readOnly: true")
+                            div.form-group.col-xs-6
+                                label.control-label(data-bind="text: assistanceTaxPointsI18n")
+                                input.form-control(name="assistanceTaxPoints", data-bind="value: assistanceTaxPoints, readOnly: true")
+
+            div.panel.panel-default(data-bind="panelCollapse: { name: 'textform-panel-body-anaesthesia' }, visible: anaesthesiaText")
+                div.panel-heading
+                    a(href="#textform-panel-body-anaesthesia", data-toggle="collapse", data-parent="#textform-panel-group")
+                        strong(data-bind="text: anaesthesiaI18n")
+                div#textform-panel-body-anaesthesia.panel-collapse.collapse
+                    div.panel-body
+                        strong(data-bind="text: anaesthesiaText")
+
+            div.panel.panel-default(data-bind="panelCollapse: { name: 'textform-panel-body-side' }, visible: sideMandatory")
+                div.panel-heading
+                    a(href="#textform-panel-body-side", data-toggle="collapse", data-parent="#textform-panel-group")
+                        strong(data-bind="text: sideI18n")
+                div#textform-panel-body-side.panel-collapse.collapse
+                    div.panel-body
+                        div(data-bind="hasFeedback: { field: side, toggle: side.hasError, messages: side.validationMessages }")
+                            select.form-control(name="side", data-bind="readOnly: side.readOnly, options: side.list, optionsValue: 'val', optionsText: 'i18n', optionsCaption: pleaseSelectI18n, value: side")
+
+            div.panel.panel-default(data-bind="panelCollapse: { name: 'textform-panel-body-benefits' }, visible: benefitsCode() && benefitsCode() !== '01'")
+                div.panel-heading
+                    a(href="#textform-panel-body-benefits", data-toggle="collapse", data-parent="#textform-panel-group")
+                        strong(data-bind="text: benefitsI18n")
+                div#textform-panel-body-benefits.panel-collapse.collapse
+                    div.panel-body
+                        strong(data-bind="text: benefitsText")
+
+            div.panel.panel-default(data-bind="panelCollapse: { name: 'textform-panel-body-billingRole' }")
+                div.panel-heading
+                    a(href="#textform-panel-body-billingRole", data-toggle="collapse", data-parent="#textform-panel-group")
+                        strong(data-bind="text: billingRoleI18n")
+                div#textform-panel-body-billingRole.panel-collapse.collapse
+                    div.panel-body
+                        div(data-bind="foreach: billingRole.list, hasFeedback: { field: billingRole, toggle: billingRole.hasError, messages: billingRole.validationMessages }")
+                            label.checkbox-inline
+                                span(data-bind="text: i18n")
+                                input(type="checkbox", name="billingRole", data-bind="value: val, checked: $parent.billingRole, readOnly: $parent.billingRole.readOnly, attr: { name: $element.name + '-' + val }")
+
+            div.panel.panel-default(data-bind="panelCollapse: { name: 'textform-panel-body-treatmentTypeCh' }")
+                div.panel-heading
+                    a(href="#textform-panel-body-treatmentTypeCh", data-toggle="collapse", data-parent="#textform-panel-group")
+                        strong(data-bind="text: treatmentTypeChI18n")
+                div#textform-panel-body-treatmentTypeCh.panel-collapse.collapse
+                    div.panel-body
+                        select.form-control(name="treatmentTypeCh", data-bind="readOnly: treatmentTypeCh.readOnly, options: treatmentTypeCh.list, optionsValue: 'val', optionsText: 'i18n', value: treatmentTypeCh")
+

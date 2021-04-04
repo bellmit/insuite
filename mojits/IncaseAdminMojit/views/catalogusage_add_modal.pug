@@ -1,0 +1,36 @@
+div.row#catalogUsageAdd
+  div.col-xs-12
+    div.row
+      div.col-xs-12
+        p(data-bind="text: mainTextI18n")
+    //ko if: isMMICatalog()
+    div.row.form-group
+      div.col-xs-9
+        label.control-label(data-bind="text: labelCatalogI18n")
+        input.form-control(name="catalog", type="hidden", data-bind="select2: _select2Catalog, valueUpdate:'afterkeydown'")
+      div.col-xs-3
+        br
+        button.pull-right.btn.btn-default(type="button", name="mmiSearchButton", data-bind="click: _openMedicationSearch, enable: _openMedicationSearchEnable, text: medicationSearchI18n")
+    div.row.form-group
+      div.col-xs-12
+        label.control-label(data-bind="text: labelCodesI18n")
+        input.form-control(name="codes", type="text", data-bind="value: mmiCode, readOnly: true ")
+    // /ko
+    //ko ifnot: isMMICatalog()
+    div.row.form-group
+      div.col-xs-12
+        label.control-label(data-bind="text: labelCatalogI18n")
+        input.form-control(name="catalog", type="hidden", data-bind="select2: _select2Catalog, valueUpdate:'afterkeydown'")
+    div.row.form-group
+      div.col-xs-12
+        label.control-label(data-bind="text: labelCodesI18n")
+        input.form-control(name="codes", type="hidden", data-bind="select2: _select2Code, valueUpdate:'afterkeydown'")
+    // /ko
+    div.row.form-group
+      div.col-xs-12
+        label.control-label(data-bind="text: labelTagsI18n")
+        input.form-control(name="tags", data-bind="select2: select2Tags, valueUpdate:'afterkeydown'")
+    div.row.form-group
+      div.col-xs-12
+        label.control-label(data-bind="text: labelLocationI18n")
+        input.form-control(name="select2Location", data-bind="select2: select2Location", type="hidden")

@@ -1,0 +1,38 @@
+.modal.fade(tabindex="-1", role="dialog", aria-labelledby="myModalLabel", aria-hidden="true")#myModal
+  .modal-dialog
+    .modal-content
+      .modal-header
+        .btn(type="button", class="close", data-dismiss="modal", aria-hidden="true") ×
+        h3#myModalLabel.modal-title Nächste Nummer
+      .modal-body
+        .row
+          .col-xs-3.col-xs-offset-1
+            p.wr-number 5
+          .col-xs-8
+            p Patienten warten
+        .row
+          .col-xs-3.col-xs-offset-1
+            .wr-number 50
+          .col-xs-8
+            p Minuten Wartezeit für spontanen Termin
+        .row
+          .col-xs-3.col-xs-offset-1
+            .wr-number 10
+          .col-xs-8
+            p Minuten durchschnittliche Wartezeit
+        hr
+        .row
+          .col-xs-3.col-xs-offset-1
+            div(style="width:40px;", contenteditable='true').showbox.wr-number.pull-right
+              span(style="margin-right:2px")#nextduration 10
+          .col-xs-8 Minuten Dauer des nächsten Termins&nbsp;
+            a(href="#", data-title="<strong>Hinweis</strong>", data-html='true', data-content="<small>durchschnittliche Wartezeit heute.<br>Kann je Termin in der Box geändert werden</small>", rel="popover", data-placement="top")#popover
+              span#info <i class="glyphicon glyphicon-info-sign"></i>
+        .row
+          .col-xs-3.col-xs-offset-1
+            .wr-number <b>44</b>
+          .col-xs-8
+            p Nummer des nächsten Termins
+      .modal-footer
+        .btn.btn-default(data-dismiss="modal", aria-hidden="true") Schließen
+        .btn.btn-primary Zuteilen

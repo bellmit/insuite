@@ -1,0 +1,9 @@
+div.form-group
+  div(data-bind="hasFeedback: { field: dmpHadStationaryKhkTreatment, toggle: dmpHadStationaryKhkTreatment.hasError, messages: dmpHadStationaryKhkTreatment.validationMessages }")
+    label.control-label(data-bind="text: dmpHadStationaryKhkTreatment.i18n")
+    span(data-bind="dmpField: { field: dmpHadStationaryKhkTreatment }")
+    div.row
+      div.col-xs-1
+        input.form-control(name="dmpHadStationaryKhkTreatment", type="text", data-bind="value: dmpHadStationaryKhkTreatmentString, readOnly: dmpHadStationaryKhkTreatment.readOnly")
+      div.col-xs-11.form-horizontal
+        p.form-control-static(data-bind="text: dmpHadStationaryKhkTreatmentUnitLabelI18n")

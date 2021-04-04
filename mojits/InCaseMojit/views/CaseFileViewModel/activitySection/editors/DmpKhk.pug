@@ -1,0 +1,51 @@
+include DMP/Dmp-mixin
+
+- var dmpMedHint = 'Bitte machen Sie zu jedem Medikament eine Angabe. Bitte machen Sie bei einem „nein“ – wo möglich - zusätzlich eine Angabe, wenn die Nicht-Verordnung auf eine Kontraindikation gegen die Gabe des jeweiligen Medikamentes zurückzuführen ist. Diese Angaben sind für die Qualitätssicherung notwendig.<br>Die Angaben können - je nach Praxissoftware - direkt aus der Vordokumentation übernommen werden. Sie müssen dazu die Übernahme der vorherigen Angaben bestätigen.';
+
+include DMP/DmpGeneral
++DmpFieldset('anamnesisAndFindingLabelI18n')
+  include DMP/anamnesisAndFinding/DmpAnamnesisAndFinding
+  hr
+  div.row
+    div.col-xs-3
+      include DMP/anamnesisAndFinding/dmpBloodPressureSystolic
+    div.col-xs-3
+      include DMP/anamnesisAndFinding/dmpBloodPressureDiastolic
+    div.col-xs-6
+      // ko ifnot: isAfterQ12018
+      include DMP/anamnesisAndFinding/dmpSerumElectrolytes
+      // /ko
+  div.row
+    div.col-xs-5
+      include DMP/anamnesisAndFinding/dmpAnginaPectoris
+    div.col-xs-7
+      include DMP/anamnesisAndFinding/dmpLdlCholesterol
++DmpFieldset('relevantEventsLabelI18n')
+  include DMP/relevantEvents/dmpKhkRelevantEvents
+  include DMP/relevantEvents/dmpDiagnosticCoronaryTherapeuticIntervention
+  // ko if: isFollowing
+  include DMP/relevantEvents/dmpHadStationaryKhkTreatment
+  // /ko
++DmpFieldset('medicationLabelI18n', dmpMedHint)
+  include DMP/medication/dmpAntiplatelet
+  include DMP/medication/dmpBetaBlocker
+  include DMP/medication/dmpACE
+  include DMP/medication/dmpHMG
+  include DMP/medication/dmpKhkOtherMedication
++DmpFieldset('trainingLabelI18n')
+  include DMP/training/dmpRecommendedKhkTrainings
+  // ko if: isFollowing
+  include DMP/training/dmpPerceivedDiabetesTraining
+  include DMP/training/dmpPerceivedHypertensionTraining
+  // /ko
++DmpFieldset('treatmentPlanningLabelI18n')
+  div.row
+    div.col-xs-6
+      include DMP/treatmentPlanning/dmpKhkRelatedTransferArranged
+      include DMP/treatmentPlanning/dmpKhkRelatedConfinementArranged
+      // ko ifnot: isAfterQ12018
+      include DMP/treatmentPlanning/dmpRegularWeightControlRecommended
+      // /ko
+    div.col-xs-6
+      include DMP/treatmentPlanning/dmpPatientWantsInfos
+      include DMP/treatmentPlanning/dmpDocumentationInterval

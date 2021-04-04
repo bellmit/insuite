@@ -1,0 +1,73 @@
+include DMP/Dmp-mixin
+
+- var dmpMedHint = 'Bitte machen Sie zu jeder Wirkstoffgruppe eine Angabe. Bitte machen Sie bei einem „keine“ – wo möglich - zusätzlich eine Angabe, wenn die Nicht-Verordnung auf eine Kontraindikation gegen die Gabe des jeweiligen Medikamentes zurückzuführen ist. Diese Angabe ist für die Qualitätssicherung notwendig.<br>Die Angaben können - je nach Praxissoftware - direkt aus der Vordokumentation übernommen werden. Sie müssen dazu die Übernahme der vorherigen Angaben bestätigen.<br><br>Die Angaben „bei Bedarf“ und „Dauermedikation“ sind gemeinsam möglich.<br><br>Vorrangig sollen unter Berücksichtigung der Kontraindikationen und der Patientenpräferenzen Medikamente verwendet werden, deren positiver Effekt und Sicherheit im Hinblick auf die Therapieziele des DMP in prospektiven, randomisierten kontrollierten Studien nachgewiesen wurde. Dabei sollen diejenigen Wirkstoffe/Wirkstoffgruppen oder Kombinationen bevorzugt werden, die diesbezüglich den größten Nutzen erbringen.<br><br>Zu den vorrangig zu verordnenden Wirkstoffgruppen zählen<br><br>Bei Erwachsenen<br><br>Für die Dauertherapie:<br><ul><li><ins>Inhalative Glukokortikosteroide (Basistherapie)</ins>: z. B.<ul><li>Beclomethason,</li><li>Budesonid,</li><li>Fluticason</li></ul></li></ul>Als Erweiterung der Basistherapie kommen in Betracht: <ul><li><ins>Inhalative lang wirksame Beta-2-Sympathomimetika:</ins> z.B.<ul><li>Salmeterol,</li><li>Formoterol</li></ul></li><li>In begründeten Fällen:<ul><li>Systemische Glukokortikosteroide</li><li>Sonstige: hierzu zählen<ul><li>Theophyllin (Darreichungsform mit verzögerter Wirkstofffreisetzung),</li><li>Leukotrien-Rezeptor-Antagonisten (Montelukast)</li><li>Anti-IgE Antikörper</li></ul></li></ul></li></ul>Für die Bedarfstherapie<ul><li><ins>kurz wirksame Beta-2 Sympatomimetika</ins> (bevorzugt inhalativ): z. B.<ul><li>Fenoterol,</li><li>Salbutamol,</li><li>Terbutalin</li></ul></li><li><ins>bei unzureichendem Ansprechen</ins><ul><li><ins>Kurz wirksame Anticholinergika</ins> (Ipratropiumbromid)</li><li><ins>Theophyllin</ins> (Darreichungsform mit rascher Wirkstofffreisetzung)</li><li><ins>Systemische Glukokortikosteroide</ins> (maximal 1 bis 2 Wochen)</li></ul></li></ul>Bei 5 – 17 Jährigen<br><br>Für die Dauertherapie:<ul><li><ins>Inhalative Glukokortikosteroide (Basistherapie):</ins> z. B.<ul><li>Beclomethason,</li><li>Budesonid,</li><li>Fluticason</li></ul></li><li>In begründeten Einzelfällen alternativ Leukotrien-Rezeptor-Antagonisten</li></ul>Als Erweiterung der Basistherapie kommen in Betracht:<ul><li><ins>Inhalative lang wirksame Beta-2-Sympathomimetika: </ins>z. B.<ul><li>Salmeterol,</li><li>Formoterol</li></ul></li><li>Steigerung der Dosierung des inhalativen Glukokortikosteroids auf mittlere Dosis</li><li>Kombination von inhalativen Glukortikosteroiden und Leukotrien-Rezeptor-Antagonisten</li><li>In Ausnahmefällen, bei sonst nicht kontrollierbaren Verläufen:<br>(Verordnung sollte durch die jeweils qualifizierte Fachärztin/den Facharzt/die Einrichtung erfolgen)<ul><li>Systemische Glukokortikosteroide</li><li>Theophyllin (Darreichungsform mit verzögerter Wirkstofffreisetzung),</li><li>Anti-IgE Antikörper</li></ul></li></ul>Für die Bedarfstherapie<ul><li><ins>kurz wirksame Beta-2 Sympatomimetika</ins> (bevorzugt inhalativ): z. B.<ul><li>Fenoterol,</li><li>Salbutamol,</li><li>Terbutalin</li></ul></li><li><ins>Kurz wirksame Anticholinergika</ins> (Ipratropiumbromid)</li><li><ins>bei unzureichendem Ansprechen</ins><ul><li><ins>Kurz wirksame Anticholinergika</ins> (Ipratropiumbromid)</li><li><ins>Theophyllin</ins> (Darreichungsform mit rascher Wirkstofffreisetzung)</li><li><ins>Systemische Glukokortikosteroide</ins> (maximal 1 bis 2 Wochen)</li></ul></li></ul>';
+
+include DMP/DmpGeneral
++DmpFieldset('anamnesisAndFindingLabelI18n')
+  include DMP/anamnesisAndFinding/DmpAnamnesisAndFinding
+  hr
+  div.row
+    div.col-xs-3
+      include DMP/anamnesisAndFinding/dmpBloodPressureSystolic
+    div.col-xs-3
+      include DMP/anamnesisAndFinding/dmpBloodPressureDiastolic
+    div.col-xs-6
+      // ko ifnot: isAfterQ12019
+      include DMP/anamnesisAndFinding/dmpFrequencyOfAsthmaSymptoms
+      // /ko
+      // ko if: isAfterQ12019
+      include DMP/anamnesisAndFinding/dmpFrequencyOfAsthmaSymptoms_4_44
+      // /ko
+  // ko if: isAfterQ12019
+  .row
+    .col-xs-4
+      include DMP/anamnesisAndFinding/dmpFrequencyOfUseOfNeedMedication_4_44
+    .col-xs-4
+      include DMP/anamnesisAndFinding/dmpLimitationOfEverydayActivitiesDueToBronchialAsthma_4_44
+    .col-xs-4
+      include DMP/anamnesisAndFinding/dmpAsthmaRelatedNightSleepDisorder_4_44
+  // /ko
+  // ko ifnot: isAfterQ12019
+  include DMP/anamnesisAndFinding/dmpCurrentPeakFlowValue
+  // /ko
+  // ko if: isAfterQ12019
+  include DMP/anamnesisAndFinding/dmpCurrentFEV1Value_4_44
+  // /ko
+// ko if: isFollowing
++DmpFieldset('relevantEventsLabelI18n')
+  // ko ifnot: isAfterQ12019
+  include DMP/relevantEvents/dmpHadStationaryAsthmaTreatment
+  // /ko
+  // ko if: isAfterQ12019
+  include DMP/relevantEvents/dmpHadUnplannedAsthmaTreatment_4_44
+  // /ko
+
+// /ko
++DmpFieldset('medicationLabelI18n', dmpMedHint)
+  include DMP/medication/dmpInhaledGlucocorticosteroids
+  include DMP/medication/dmpInhaledLongActingBeta2AdrenergicAgonist
+  include DMP/medication/dmpInhaledRapidActingBeta2AdrenergicAgonist
+  include DMP/medication/dmpSystemicGlucocorticosteroids
+  include DMP/medication/dmpOtherAsthmaSpecificMedication
+  include DMP/medication/dmpCheckedInhalationTechnique
++DmpFieldset('trainingLabelI18n')
+  include DMP/training/dmpRecommendedAsthmaTrainings
+  // ko if: isFirst() && isAfterQ12019()
+  include DMP/training/DmpAsthmaTrainingAlreadyDoneBeforeDMP_4_44
+  // /ko
+  // ko if: isFollowing
+  include DMP/training/dmpPerceivedAsthmaTraining
+  // /ko
++DmpFieldset('treatmentPlanningLabelI18n')
+  div.row
+    div.col-xs-6
+      include DMP/treatmentPlanning/dmpWrittenSelfManagementPlan
+      // ko if: isAfterQ12019
+      include DMP/treatmentPlanning/dmpTherapyAdjustment_4_44
+      // /ko
+      // ko ifnot: isAfterQ12019
+      include DMP/treatmentPlanning/dmpAsthmaRelatedTransferOrConfinementArranged
+      // /ko
+    div.col-xs-6
+      include DMP/treatmentPlanning/dmpPatientWantsInfos
+      include DMP/treatmentPlanning/dmpDocumentationInterval

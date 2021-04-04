@@ -1,0 +1,9 @@
+div#transformerModel
+  div.form-group
+    h4(data-bind="text: patientNoI18n + ':'")
+    span.checkbox
+      label.control-label
+        strong(data-bind="text: showOriginalIdI18n")
+        input(type="checkbox", name="transformerShowOriginalId", data-bind="checked: showOriginalId")
+    label(for="transformerSelect2GdtEncoding", data-bind="text: gdtEncodingI18n + ':'")
+    input.form-control.input-sm#transformerSelect2GdtEncoding(type="hidden", data-bind="select2: select2GdtExportEncoding")

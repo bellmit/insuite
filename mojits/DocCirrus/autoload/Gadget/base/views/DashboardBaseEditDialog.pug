@@ -1,0 +1,7 @@
+div.DashboardBaseEditDialog(data-bind="foreach: dashboards")
+  div.form-group
+    div.input-group(data-bind="css: { 'has-error': hasError() }")
+      input.form-control(name="name", data-bind="value: name", placeholder="NAME")
+      span.input-group-btn
+        button.btn.btn-default(type="button", data-bind="click: remove")
+          span.fa.fa-remove

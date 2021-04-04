@@ -1,0 +1,7 @@
+div#sourceModel
+  div.form-group(data-bind="hasFeedback: { field: collectionName, toggle: collectionName.hasError, messages: collectionName.validationMessages }")
+    label(for="sourceDatabaceCollectionName", data-bind="text: collectionName.i18n + ':'")
+    input.form-control.input-sm#sourceDatabaceCollectionName(type="hidden", data-bind="select2: select2Collection")
+  div.form-group(data-bind="hasFeedback: { field: apiMethod, toggle: apiMethod.hasError, messages: apiMethod.validationMessages }")
+    label(for="sourceDatabaceApiMethod", data-bind="text: apiMethod.i18n + ':'")
+    input.form-control.input-sm#sourceDatabaceApiMethod(type="hidden", data-bind="select2: select2ApiMethod")

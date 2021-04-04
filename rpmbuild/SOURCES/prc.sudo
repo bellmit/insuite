@@ -1,0 +1,13 @@
+Defaults:prc !requiretty
+Defaults:prc  visiblepw
+Defaults:prc env_keep += "B2_KEY"
+Defaults:prc env_keep += "S3_ACCESS_KEY"
+Defaults:prc env_keep += "S3_SECRET_KEY"
+prc ALL=NOPASSWD: /usr/bin/dc-cli
+prc ALL=NOPASSWD: /usr/bin/lp
+prc ALL=NOPASSWD: /usr/bin/lpstat
+prc ALL=NOPASSWD: /usr/sbin/cupsdisable
+prc ALL=NOPASSWD: /usr/bin/cancel
+prc ALL=NOPASSWD: /usr/sbin/cupsenable
+
+

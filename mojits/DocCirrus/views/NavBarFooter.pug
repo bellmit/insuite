@@ -1,0 +1,32 @@
+nav#NavBarFooter.navbar.navbar-default(data-bind="css: { 'frameViewHidden': isFrameView, 'NavBarFooter-fixed': fixed() && !isFrameView(), 'navbar-fixed-bottom': fixed() && !isFrameView() }")
+  .container.container-fullscreen
+    .navbar-header
+      button.NavBarFooter-pin-toggle.navbar-toggle(type="button", data-bind="click: togglePinnedCTA")
+        span.NavBarFooter-pin-icon.fa.fa-thumb-tack
+      span.pull-right.navbar-text.hidden-md.hidden-lg
+        a(name="support", href="#", data-bind="click: openSupportModal, text: footerLabelI18n")
+      // ko if: btnGroup.hasButtons
+      button.navbar-toggle(type="button", data-toggle="collapse", data-target="#NavBarFooter-collapse", aria-expanded="false")
+        span.sr-only Toggle footer navigation
+        span.icon-bar
+        span.icon-bar
+        span.icon-bar
+      // /ko
+      span.NavBarFooter-brand.navbar-brand
+        img.NavBarFooter-brand-img(src="/static/dcbaseapp/assets/img/doccirrus/insuite40x40.png")
+        | &nbsp;in
+        span.NavBarFooter-brand-accent Suite
+        span.NavBarFooter-copy !{'&nbsp;&nbsp;©&nbsp;Doc Cirrus GmbH ' + new Date().getFullYear()}
+    #NavBarFooter-collapse.collapse.navbar-collapse
+      .navbar-text.navbar-right.hidden-xs.hidden-sm
+        span.NavBarFooter-pin-icon.fa.fa-thumb-tack(data-bind="click: togglePinnedCTA")
+      span.pull-right.navbar-text
+        a(name="support", href="#", data-bind="click: openSupportModal, text: footerLabelI18n")
+      include ../../../mojits/DCSystemMessages/views/systemMessagesCounter
+      // ko if: btnGroup.hasButtons
+      div.NavBarFooter-btnGroup.navbar-form.navbar-right
+        .btn-group.btn-group-sm(role="group")
+          // ko foreach: btnGroup.buttons
+          button.btn.navbar-btn(type="button", data-bind="html: text, disable: disabled, visible: visible, css: css, attr: _attr, click: click")
+          // /ko
+      // /ko

@@ -1,0 +1,3 @@
+ul.nav.nav-pills.nav-stacked#edmpNav(data-bind="foreach: items")
+  li(data-bind="click: $parent.selectedItem, css: {active: $parent.selectedItem().id === id}")
+    a(href="#" data-bind="text: title")

@@ -1,0 +1,12 @@
+html(class="yui3-js-enabled")
+    div(id="yui3-css-stamp", style="position: absolute !important; visibility: hidden !important", class="")
+    head
+        //- Page title
+        title
+            | Error Page
+            != statusCode
+        // please hardwire the Error CSS here
+        link(rel="stylesheet", type="text/​css", href="/​static/​DocCirrus/​assets/​index.css")
+    body
+        .content
+            h2!= reasonPhrase

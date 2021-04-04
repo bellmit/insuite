@@ -1,0 +1,39 @@
+div#inport-settings
+  table
+    tr
+      th(style="width: 100px; padding:10px;") Parser:
+    tr
+      td(colspan="4")
+        select.form-control#baudrateSelector(style="width: 400px;", data-bind="options: _parserList, value: parser")
+    tr
+      th(style="width: 100px; padding:10px;") Baud Rate:
+      th(style="width: 100px; padding:10px;") Parity:
+      th(style="width: 100px; padding:10px;") Data Bits:
+      th(style="width: 100px; padding:10px;") Stop Bits:
+    tr
+      td
+        select.form-control#baudrateSelector(style="width: 90px;", data-bind="options: _baudrateList, value: baudrate")
+      td
+        select.form-control#parityField(style="width: 90px;", data-bind="options: _parityList, value: parity")
+      td
+        select.form-control#databitsField(style="width: 90px;", data-bind="options: _databitsList, value: databits")
+      td
+        select.form-control#stopbitsField(style="width: 90px;", data-bind="options: _stopbitsList, value: stopbits")
+    tr
+      td
+        br
+    tr
+      th Flow Control:
+    tr
+      td
+        label(style="width: 100px; padding:10px;") XON
+          input#xonField(type="checkbox", data-bind="checked: fc_xon")
+      td
+        label(style="width: 100px; padding:10px;") XOFF
+          input#xoffField(type="checkbox", data-bind="checked: fc_xoff")
+      td
+        label(style="width: 100px; padding:10px;") XANY
+          input#xanyField(type="checkbox", data-bind="checked: fc_xany")
+      td
+        label(style="width: 100px; padding:10px;") RTS/CTS
+          input#rtsctsField(type="checkbox", data-bind="checked: fc_rtscts")

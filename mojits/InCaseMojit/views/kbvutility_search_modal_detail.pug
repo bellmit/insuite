@@ -1,0 +1,109 @@
+.row
+  .col-xs-12
+    h3(data-bind="text: kapitel")
+    h4(data-bind="text: unterkapitel")
+    h5(data-bind="text: seq + ' ' + title")
+    h5(data-bind="text: leitsymptomatik_name")
+  .col-xs-12
+    // ko with: heilmittelverordnung
+    div.panel.panel-success(data-bind="css: {'panel-success': $root.isUtilityCombinationValid, 'panel-danger': !$root.isUtilityCombinationValid()}")
+      div.panel-heading
+        span(data-bind="text: $root.labelSelectUtilityI18n")
+        | &nbsp;
+        i.dc-info-icon(data-bind="tooltip: {title: $root.utilityTooltip, placement: 'top', trigger:'click'}")
+      div.panel-body
+        div(data-bind="if: vorrangiges_heilmittel_liste && vorrangiges_heilmittel_liste.length")
+          strong(data-bind="text: $root.labelPrimaryUtilityI18n")
+          div(data-bind="foreach: vorrangiges_heilmittel_liste")
+            div(style="padding-left: 8px", data-bind="style: {cursor: 'pointer', 'background-color': $root.isUtilitySelected(name, 'vorrangiges_heilmittel_liste') ? '#ccc' : '#fff'}, click: $root.selectUtility.bind($data, $data, 'vorrangiges_heilmittel_liste'), text: name + (gruppentherapiefaehig ? ' (gruppentherapiefähig)' : '')")
+
+        div(data-bind="if: optionales_heilmittel_liste && optionales_heilmittel_liste.length")
+          strong(data-bind="text: $root.optionalUtilityI18n")
+          div(data-bind="foreach: optionales_heilmittel_liste")
+            div(style="padding-left: 8px", data-bind="style: {cursor: 'pointer', 'background-color': $root.isUtilitySelected(name, 'optionales_heilmittel_liste') ? '#ccc' : '#fff'}, click: $root.selectUtility.bind($data, $data, 'optionales_heilmittel_liste'), text: name + (gruppentherapiefaehig ? ' (gruppentherapiefähig)' : '')")
+
+        div(data-bind="if: ergaenzendes_heilmittel_liste && ergaenzendes_heilmittel_liste.length")
+          strong(data-bind="text: $root.additionalUtilityI18n")
+          div(data-bind="foreach: ergaenzendes_heilmittel_liste")
+            div(style="padding-left: 8px", data-bind="style: {cursor: 'pointer', 'background-color': $root.isUtilitySelected(name, 'ergaenzendes_heilmittel_liste') ? '#ccc' : '#fff'}, click: $root.selectUtility.bind($data, $data, 'ergaenzendes_heilmittel_liste'), text: name")
+
+        div(data-bind="if: standardisierte_heilmittel_liste && standardisierte_heilmittel_liste.length")
+          strong(data-bind="text: $root.standartizedUtilityI18n")
+          div(data-bind="foreach: standardisierte_heilmittel_liste")
+            div(style="padding-left: 8px", data-bind="style: {cursor: 'pointer', 'background-color': $root.isUtilitySelected(name, 'standardisierte_heilmittel_liste') ? '#ccc' : '#fff'}, click: $root.selectUtility.bind($data, $data, 'standardisierte_heilmittel_liste'), text: name")
+    div.panel.panel-default
+      div.panel-heading
+        span(data-bind="text: $root.labelPrescriptionI18n")
+      div.panel-body
+        div(data-bind="if: frequenzempfehlung_liste && frequenzempfehlung_liste.length")
+          div(data-bind="text: $root.labelFrequencyRecomendationsI18n")
+          div(data-bind="foreach: frequenzempfehlung_liste")
+            div(style="padding-left: 8px", data-bind="text: $root.displayFrequence($data)")
+        div(data-bind="if: therapiedauer_liste && therapiedauer_liste.length")
+          div(data-bind="text: $root.labelTherapyDurationsI18n")
+          div(data-bind="foreach: therapiedauer_liste")
+            div(style="padding-left: 8px", data-bind="text: ('object' === typeof $data ? $data.duration : $data) + ' Minuten'")
+        div(data-bind="if: verordnungsmenge")
+          div(data-bind="text: $root.labelPrescriptionAmountsI18n")
+          div(data-bind="with: verordnungsmenge")
+            div(data-bind="if: erstverordnungsmenge")
+              span(style="padding-left: 8px", data-bind="text: $root.firstPrescriptionQtyI18n + erstverordnungsmenge")
+            div(data-bind="if: folgeverordnungsmenge")
+              span(style="padding-left: 8px", data-bind="text: $root.nextPrescriptionQtyII8n + folgeverordnungsmenge")
+            div(data-bind="if: gesamtmenge")
+              span(style="padding-left: 8px", data-bind="text: $root.labelTotalQtyI18n + gesamtmenge")
+            div(data-bind="if: gesamtmenge_standardisiert")
+              span(style="padding-left: 8px", data-bind="text: $root.totalQtyStdI18n + gesamtmenge_standardisiert")
+            div(data-bind="if: gesamtmenge_massage")
+              span(style="padding-left: 8px", data-bind="text: $root.totalQtyMassageI18n + gesamtmenge_massage")
+    // /ko
+    div(data-bind="if: erlaeuterung")
+      div.panel.panel-default
+        div.panel-heading
+          span(data-bind="text: $root.labelExplanationsI18n")
+        div.panel-body
+          div(data-bind="text: erlaeuterung || '-' ")
+    div.panel.panel-default(data-bind="css: {'panel-default': !$root.agreementPatientAgeWarning(), 'panel-warning': $root.agreementPatientAgeWarning}")
+      div.panel-heading
+          span(data-bind="text: $root.labelTherapyAgreementI18n")
+          span(data-bind="if: $root.agreementPatientAgeWarning")
+            i.dc-info-icon(data-bind="tooltip: {title: $root.displayAgreementPatientAgeWarning(), placement: 'top', trigger:'click'}")
+      div.panel-body
+        div(data-bind="text: $root.displayUtAgreement($root.agreement())")
+
+
+    div(data-bind="if: therapieziel_hinweis")
+      div.panel.panel-default
+        div.panel-heading
+            span(data-bind="text: $root.labelNoteTherapyGoalsI18n")
+        div.panel-body
+          div(data-bind="text: therapieziel_hinweis")
+
+    div(data-bind="if: hinweis_liste && hinweis_liste.length")
+      div.panel.panel-default
+        div.panel-heading
+          span(data-bind="text: $root.labelNoteI18n")
+        div.panel-body
+          div(data-bind="foreach: hinweis_liste")
+            div(data-bind="text: $data")
+
+    div(data-bind="if: erkrankung_liste && erkrankung_liste.length")
+      div.panel.panel-default
+        div.panel-heading
+          span(data-bind="text: $root.labelDiseasesListI18n")
+        div.panel-body
+          div(data-bind="text: erkrankung_liste_value || '' ")
+          div(data-bind="foreach: erkrankung_liste")
+            div(data-bind="text: $data")
+    div(data-bind="if: beeintraechtigung_liste && beeintraechtigung_liste.length")
+      div.panel.panel-default
+        div.panel-heading
+          span(data-bind="text: $root.labelImpairmentsI18n")
+        div.panel-body(data-bind="foreach: beeintraechtigung_liste")
+          div(data-bind="text: $data")
+    div(data-bind="if: therapieziel_liste && therapieziel_liste.length")
+      div.panel.panel-default
+        div.panel-heading
+          span(data-bind="text: $root.therapyGoalsI18n")
+        div.panel-body(data-bind="foreach: therapieziel_liste")
+          div(data-bind="text: $data")

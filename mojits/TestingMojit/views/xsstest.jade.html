@@ -1,0 +1,20 @@
+div.visible-xs.visible-sm(style="padding: 15px")
+div.visible-md.visible-lg(style="padding: 35px")
+div.container.container-fullscreen(id=mojit_view_id)
+  .jumbotron(style="border-radius: 30px;")
+
+      h3 XSS Filter Testing
+
+      div#divXssStatus
+      div#divXssReport
+
+      div#divSampleBox
+        p Please copy/paste XSS samples into the box below.  Strings should be newline separated and notify with alert().
+        div#divXssSamples
+          div.form-group
+            textarea.form-control(,rows="10")#taSamples
+          button.btn.btn-default(style="display: none;")#btnLoadSamples Load Samples
+          button.btn.btn-default(style="display: none;")#btnStartTest Start Test
+
+      div#divXssSamples
+

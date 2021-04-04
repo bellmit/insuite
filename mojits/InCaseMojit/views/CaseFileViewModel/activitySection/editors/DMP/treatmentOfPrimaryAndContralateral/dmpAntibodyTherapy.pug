@@ -1,0 +1,9 @@
+div.form-group
+    div.row
+        div.col-xs-3
+            strong(data-bind="text: dmpAntibodyTherapy.i18n")
+            span(data-bind="dmpField: { field: dmpAntibodyTherapy }")
+        div.col-xs-9(data-bind="foreach: dmpAntibodyTherapy.list, hasFeedback: { field: dmpAntibodyTherapy, toggle: dmpAntibodyTherapy.hasError, messages: dmpAntibodyTherapy.validationMessages }")
+            label.radio-inline
+                span(data-bind="text: i18n")
+                input(type="radio", name="dmpAntibodyTherapy", data-bind="value: val, checked: $parent.dmpAntibodyTherapy, readOnly: $parent.dmpAntibodyTherapy.readOnly, attr: { name: $element.name + '-' + val }")

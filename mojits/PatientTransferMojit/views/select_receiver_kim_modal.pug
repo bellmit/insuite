@@ -1,0 +1,18 @@
+div.KimReceiverVZDContactsModal
+  div.row
+    div.col-xs-12
+      span(data-bind="text: ''")
+      button.btn.btn-default(data-bind="click: updateTableData")
+        i.fa.fa-refresh(style="color: #0000FF")
+  div.row
+    div.col-xs-6
+      div.row
+        div.col(style="margin-right: 30px;")
+          h4(data-bind="text: kimModalAllContactsI18n")
+          div(data-bind="template: allAccountsTable.template")
+
+    div.col-xs-6
+      div.row
+        div.col
+          h4(data-bind="text: kimModalChoosenContactsI18n")
+          div(data-bind="template: selectedAccountsTable.template")

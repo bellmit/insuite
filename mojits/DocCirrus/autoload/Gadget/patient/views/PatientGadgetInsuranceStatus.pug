@@ -1,0 +1,6 @@
+div.PatientGadgetInsuranceStatus
+  h4.PatientGadget-headline
+    a(data-bind="attr: { href: _linkToInsurances }, text: insuranceStatusI18n")
+  div(style="display: none;", data-bind="visible: _isPatientShortInfoInsuranceStatusVisible")
+    ul.list-unstyled
+      li.dc-text-crop(data-bind="html: _insuranceNames")

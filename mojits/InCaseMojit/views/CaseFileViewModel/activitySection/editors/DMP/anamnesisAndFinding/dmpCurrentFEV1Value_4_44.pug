@@ -1,0 +1,16 @@
+div.form-group
+  div.row
+    div.col-xs-4
+      div(data-bind="hasFeedback: { field: dmpCurrentFEV1Value_4_44, toggle: dmpCurrentFEV1Value_4_44.hasError, messages: dmpCurrentFEV1Value_4_44.validationMessages }")
+        label.control-label(data-bind="text: dmpCurrentFEV1Value_4_44.i18n")
+        span(data-bind="dmpField: { field: dmpCurrentFEV1Value_4_44 }")
+        //input.form-control(name="dmpCurrentFEV1Value_4_44", type="text", data-bind="value: dmpCurrentFEV1Value_4_44, readOnly: dmpCurrentFEV1Value_4_44.readOnly")
+        input.form-control(name="dmpCurrentFEV1Value_4_44", type="text", data-bind="value: dmpCurrentFEV1Value_4_44String, readOnly: dmpCurrentFEV1Value_4_44.readOnly")
+    div.col-xs-2.form-horizontal
+      span &nbsp;
+      p.form-control-static(data-bind="text: dmpCurrentFEV1Value_4_44UnitLabelI18n")
+    div.col-xs-6
+      span &nbsp;<br>
+      label.checkbox-inline
+        span(data-bind="text: dmpCurrentPeakFlowValueNotDoneLabelI18n")
+        input(type="checkbox", name="dmpCurrentFEV1ValueNotDone_4_44", data-bind="checked: dmpCurrentFEV1ValueNotDone_4_44, readOnly: dmpCurrentFEV1ValueNotDone_4_44.readOnly")

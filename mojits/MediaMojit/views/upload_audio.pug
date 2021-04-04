@@ -1,0 +1,16 @@
+div#divUploadAudioContainer
+  ul#ulRecordings
+  span(style="display:none;", data-bind="text: audioNotSupportedI18n")#spanNotSupported
+  span(style="display:none;", data-bind="text: audioSupportedI18n")#spanAudioSupported
+  div#divRecordingStatus Bitte wählen Sie eine MP3-Datei bis zu 3,5 MB groß.
+  button.btn(data-bind="text: btnUploadAudioI18n")#btnUpload
+
+  div(style="display: none;")#divUserMediaDebugLog
+    h3 Log
+    pre#preRecorderLog
+
+  div(style="display:none;")#divUploadMp3File
+    input(type="file",name="mp3File")#fileUploadMp3
+
+    div(style="display: none;")#divUploadIframe
+      iframe(name="ifUploadTarget",width="10px", height="10px", frameborder="no")#iframeUploadTarget

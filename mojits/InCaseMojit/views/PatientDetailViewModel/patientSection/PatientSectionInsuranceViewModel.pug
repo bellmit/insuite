@@ -1,0 +1,8 @@
+div.PatientSectionInsuranceViewModel
+  h4
+    span(data-bind="text: insuranceStatusTitleI18n")
+    | &nbsp;
+    small
+      a.fa.fa-plus(href="javascript:;", data-bind="click: addNewInsuranceStatus, readOnly: insuranceStatus.readOnly")
+  div(data-bind="foreach: { data: insuranceStatus, afterAdd: _insuranceStatusAfterAdd }")
+    div(data-bind="template: { name: getTemplateName, data: $data }, notifyBind: { 'method': $parent.setNotesSize}")

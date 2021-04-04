@@ -1,0 +1,65 @@
+div#shiftPatients.row
+  div.row
+    div#shift-patients-search.col-md-12
+      h3(data-bind="text: i18n.REASSIGN_TREATMENTS")
+      p(data-bind="text: i18n.TAB_DESCRIPTION")
+      .alert.alert-warning
+        i.fa.fa-warning &nbsp;
+        span(data-bind="text: i18n.ALERT")
+      .panel.panel-default(style="margin-top: 8px;")
+        .row
+          .panel-body
+            .col-xs-4
+              label(data-bind="text: invoiceLogType.i18n")
+              input.form-control(name="invoiceLogType", type="text", data-bind="select2: select2InvoiceLogTypeConfig")
+            .col-xs-8(data-bind="hasFeedback: { field: invoiceLogId, toggle: invoiceLogId.hasError, messages: invoiceLogId.validationMessages }")
+              label(data-bind="text: invoiceLogId.i18n")
+              input.form-control(name="invoiceLogId", type="text", data-bind="select2: select2InvoiceLogConfig")
+            #shift-patients-daterange.col-md-12
+              div(data-bind="template: dateRange.template")
+      div#shift-patients-employee-location-select.col-md-12
+        .panel.panel-default(style="margin-top: 8px;")
+          .row
+            .panel-body
+              .col-xs-12
+                h4(data-bind="text: i18n.SELECT_LOCATION_EMPLOYEE")
+              .col-xs-4(data-bind="hasFeedback: { field: sourceLocationId, toggle: sourceLocationId.hasError, messages: sourceLocationId.validationMessages }")
+                label(data-bind="text: sourceLocationId.i18n")
+                input.form-control(name="select2LocationConfig", type="text", data-bind="select2: select2LocationConfig, enable: invoiceLogId")
+              .col-xs-4(data-bind="hasFeedback: { field: sourceEmployeeIds, toggle: sourceEmployeeIds.hasError, messages: sourceEmployeeIds.validationMessages }")
+                label(data-bind="text: sourceEmployeeIds.i18n")
+                input.form-control(name="employee", type="text", data-bind="select2: select2EmployeeConfig, enable: invoiceLogId")
+              .col-xs-4(data-bind="hasFeedback: { field: targetEmployeeId, toggle: targetEmployeeId.hasError, messages: targetEmployeeId.validationMessages }")
+                label(data-bind="text: targetEmployeeId.i18n")
+                input.form-control(name="targetEmployee", type="text", data-bind="select2: select2TargetEmployeeConfig, enable: sourceLocationId")
+      div#shift-patients-filter.col-md-12
+        .panel.panel-default(style="margin-top: 8px;")
+          .row
+            .panel-body
+              .col-xs-12
+                h4(data-bind="text: i18n.FILTER_BY_TREATMENTS_AND_DIAGNOSES")
+              .col-xs-6
+                label(data-bind="text: treatmentCodes.i18n")
+                input.form-control(name="select2TreatmentCodesConfig", type="text", data-bind="select2: select2TreatmentCodesConfig")
+                span(data-bind="foreach: treatmentCodesExcludeInclude.list")
+                  label.radio-inline
+                    span(data-bind="text: i18n")
+                    input(type="radio", name="treatmentExcludeInclude", data-bind="value: val, checked: $parent.treatmentCodesExcludeInclude")
+              .col-xs-6
+                label(data-bind="text: diagnosisCodes.i18n")
+                input.form-control(name="select2DiagnosisCodesConfig", type="text", data-bind="select2: select2DiagnosisCodesConfig")
+                span(data-bind="foreach: diagnosisCodesExcludeInclude.list")
+                  label.radio-inline
+                    span(data-bind="text: i18n")
+                    input(type="radio", name="diagnosisCodesExcludeInclude", data-bind="value: val, checked: $parent.diagnosisCodesExcludeInclude")
+      div#shift-patients-result-table.col-md-12
+        .panel.panel-default(style="margin-top: 8px;")
+          .row
+            .panel-body
+              div.col-xs-12
+                h4(data-bind="text: i18n.SELECT_SCHEINS_FOR_REASSIGNMENT")
+              div.col-xs-12
+                div(data-bind="template: shiftPatientTable.template")
+      div.col-md-12
+        div.pull-right(data-bind="template: shiftPatientBtn.template")
+    div#shift-patients-detail.col-md-12.hidden

@@ -1,0 +1,17 @@
+.row
+  // ko if: showUserContent
+  div(data-bind="html: gravidogrammDashboard()")
+  br
+  // /ko
+
+.row
+  .col-md-12
+    #medDataEditableTable(data-bind="template: medDataEditableTable.template")
+
+// ko if: showUserContent
+div.row
+  div.col-md-12
+    b(data-bind="text: notesI18n")
+    div.form-group
+      textarea.form-control(name="userContent", data-bind="caretPosition: userContent.caretPosition, attr:{rows: '10'}, value: userContent, valueUpdate: 'afterkeydown', readOnly: userContent.readOnly")
+//  /ko

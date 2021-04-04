@@ -1,0 +1,31 @@
+div.QuotationTreatmentsTableEditorModel
+  div.form-group.form-inline.text-right(data-bind="css: { 'has-warning': modifiedTotal }", style="padding-right: 5px;")
+    label.control-label(style="margin-right: 0.5em", data-bind="text: fieldTotalI18n")
+    input.form-control(name="total", data-bind="value: totalString, enable: enabledTotal, event: { change: changedTotal }", style="width: 170px;")
+  div
+    table.table
+      colgroup
+        col(style="width: 100%")
+        col
+        col
+        col
+        col
+      thead
+        tr
+          th(data-bind="text: userContentI18n")
+          th(data-bind="text: codeI18n")
+          th(data-bind="text: priceI18n")
+          th(data-bind="text: billingFactorValueI18n")
+          th(data-bind="text: priceLabelI18n")
+      tbody(data-bind="foreach: { data: rows, as: 'row' }")
+        tr
+          td
+            span(data-bind="text: treatment.userContent", style="display: inline-blocK; padding-top: 5px;")
+          td
+            span(data-bind="text: treatment.code", style="display: inline-blocK; padding-top: 5px;")
+          td
+            span(data-bind="text: $parent.toActualPriceText( editorModel.actualPrice )", style="display: inline-blocK; padding-top: 5px;")
+          td(data-bind="css: { 'has-warning': editorModel.userModified.billingFactorValue }")
+            input.form-control.input-sm(name="billingFactorValue", data-bind="value: $parent.toBillingFactorValue( editorModel.billingFactorValue ), disable: editorModel.readOnly, event: { change: $parent.changedBillingFactorValue }", style="width: 80px")
+          td(data-bind="css: { 'has-warning': editorModel.userModified.price }")
+            input.form-control.input-sm(name="price", data-bind="value: $parent.toPriceValue( editorModel.price ), disable: editorModel.readOnly, event: { change: $parent.changedPrice }", style="width: 80px")

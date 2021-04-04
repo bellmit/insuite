@@ -1,0 +1,13 @@
+div.row(style="margin-bottom: 20px")
+  div.col-lg-9.col-lg-offset-3.col-md-8.col-md-offset-4
+    div(data-bind="template: _saveBtn.template")
+div.row(style="margin-bottom: 10px")
+  div#HKButtons.col-xs-12(data-bind="css: { 'vertical-scroll': !isFrameView }, notifyBind: { method: setContainerHeight }")
+    div(data-bind="foreach: buttons")
+      div.row
+        div.col-lg-3.col-md-4.col-sm-1.col-xs-1
+          div.dc-checkbox
+            input(type="checkbox", name="test", data-bind="attr:{id: 'checkbox-' + seq}, click: $parent.checkboxClick, ")
+            label(data-bind="attr:{for: 'checkbox-' + seq}")
+        div.col-lg-9.col-md-8.col-sm-11.col-xs-11
+          button.btn.btn-default.btn-block(type="button", data-bind="text: seq, tooltip:{title: title, container:'body'}, click: $parent.askToChangeData")

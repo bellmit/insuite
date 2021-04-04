@@ -1,0 +1,23 @@
+.row(data-bind="ifnot: _isDiagnosis")
+  .col-xs-6
+    div.form-group
+      input#tagSelect.form-control(name="tag", type="hidden", data-bind="select2: _select2tags, hasFocus: true")
+  .col-xs-6
+    div.form-group
+      select#catalogSelect.form-control(name="_catalog", data-bind="options: _catalogBase, optionsValue: 'short', optionsText: 'short', value: catalogShort")
+.row(data-bind="if: _isDiagnosis")
+  .col-xs-4
+    div.form-group
+      input#tagSelect.form-control(name="tag", data-bind="select2: _select2tags, hasFocus: true")
+  .col-xs-2
+    div.form-group
+      select.form-control(name="_catalog", data-bind="options: _catalogBase, optionsValue: 'short', optionsText: 'short', value: catalogShort")
+  .col-xs-3(data-bind="ifnot: _isTessKat")
+    div.form-group(data-bind="hasFeedback: { field: diagnosisCert, toggle: diagnosisCert.hasError, messages: diagnosisCert.validationMessages }")
+      select.form-control(name="diagnosisCert" data-bind="value: diagnosisCert, readOnly: diagnosisCert.readOnly, foreach: _diagnosisCertList")
+        option(data-bind="attr: {disabled: disabled, value: val}, text: i18n")
+  .col-xs-3
+    div.form-group
+      select.form-control(name="diagnosisSite", data-bind="options: _diagnosisSiteList, optionsValue: 'val', optionsText: 'i18n', value: diagnosisSite, readOnly: diagnosisSite.readOnly, attr: { placeholder: diagnosisSiteI18n }")
+.row
+  #tableformKoTable.col-xs-12(data-bind="template: tableformKoTable.template")

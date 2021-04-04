@@ -1,0 +1,14 @@
+assets/**
+less/**
+mojits/**/assets/**
+src/**
+types/**
+var/**
+views/**
+yuidoc/**
+
+autoload/utils/utils-saveAs.client.js
+autoload/dcauth-obfuscated.client.js
+autoload/dcauthpub-obfuscated.common.js
+
+mojits/PfITASVSplitterMojit/**

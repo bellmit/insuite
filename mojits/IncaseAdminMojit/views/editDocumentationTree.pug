@@ -1,0 +1,55 @@
+.row
+    .col-md-6
+        div.panel.panel-default
+            div.panel-heading
+                strong(data-bind="text: TreeModel.navigationI18n")
+            div.panel-body.in
+                div.row
+                    table.table(style="table-layout: fixed;")
+                        colgroup
+                            col(style="width: 44px")
+                            col(style="width: 50%")
+                            col(style="width: 50%")
+                            col(style="width: 44px")
+                        thead
+                            tr
+                                th
+                                    button.btn.btn-default.btn-block.btn-sm(type="button", data-bind='click: function(data, event) { $root._addButton()}, attr: {title: TreeModel.newEntryBelowI18n}')
+                                        span.glyphicon.glyphicon-plus
+                                th
+                                    button.btn.btn-primary.btn-block.btn-sm(type="button", data-bind='click: TreeModel.getPreviousLevel, attr: {title: TreeModel.goLevelUpI18n}')
+                                        span.glyphicon.glyphicon-step-backward
+                                th
+                                    button.btn.btn-primary.btn-block.btn-sm(type="button", data-bind='click: TreeModel.getBaseButtons, attr: {title: TreeModel.goToTopLevelI18n}')
+                                        span.glyphicon.glyphicon-home
+                                th
+                        tbody(data-bind="foreach: TreeModel._buttons")
+                            tr
+                                td
+                                    button.btn.btn-default.btn-block.btn-sm(type="button", data-bind='click: function(data, event) { $root._addButton($index, data, event) }, attr: {title: $parent.TreeModel.newEntryBelowI18n}')
+                                        span.glyphicon.glyphicon-plus
+                                td(colspan="2")
+                                    button.btn.btn-default.btn-block.btn-sm.dc-btn-ellipsis(type="button", data-bind= 'click: function(data, event) { $root._getNextLevel($index, data, event); }, style: { background: isDocumentationNode() ? "white" : "dark-grey" }, attr: {title: $parent.TreeModel.clickTitleI18n}')
+                                        span(data-bind="text: text() ? text() : '\u00A0'")
+                                td
+                                    button.btn.btn-default.btn-block.btn-sm(type="button", data-bind='click: function(data, event) { $root._removeButton($index, data, event) }, attr: {title: $parent.TreeModel.deleteEntryI18n}')
+                                        span.glyphicon.glyphicon-trash
+    .col-md-6
+        div.panel.panel-default
+            div.panel-heading
+                strong(data-bind="text: TreeModel.textBlockI18n")
+            div.panel-body.in
+                div.row
+                    ul.breadcrumb(data-bind='foreach: TreeModel._breadcrumbs')
+                        li(data-bind='text: $data')
+                div.row
+                    table.table(style="table-layout: fixed;")
+                        colgroup
+                            col(style="width: 100%")
+                            col(style="width: 44px")
+                        tbody(data-bind="foreach: TreeModel._buttons")
+                            tr
+                                td(style="padding-right: 0;")
+                                    textarea.form-control(data-bind='value: text, valueUpdate: "afterkeydown", attr: {placeholder: $parent.TreeModel.entryTextI18n}')
+                                td(style="vertical-align: middle; text-align: center;")
+                                    input(name="DocumentationNodeBox", type="checkbox", data-bind="checked: isDocumentationNode, attr: {title: $parent.TreeModel.checkedI18n}")

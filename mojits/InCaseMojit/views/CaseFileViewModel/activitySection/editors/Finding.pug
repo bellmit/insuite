@@ -1,0 +1,30 @@
+div.row(data-bind="notifyBind: { method: 'contentEditableReady', namespace: $data }")
+  // ko if: hasInPacsModule
+  div.col-sm-12.col-md-8
+    div.form-group
+      // ko foreach: _enabledModalitiesList
+      button.btn.btn-default(type="button" data-bind="text: type, click: $parent.onModalitySelected.bind($parent, type), readOnly: $parent.studyId", style="margin-right: 5px;")
+      // /ko
+      button.btn.btn-default(type="button", data-bind="click: onPreviewDCM, readOnly: !isPreviewEnabled(), text: titlePreviewI18n")
+  div.col-sm-12.col-md-4.pull-right
+    div.form-group.pull-right
+      .btn-group(role="group")
+        // ko foreach: availableLaunchers
+        button.btn.btn-default(type="button", data-bind="text: title, click: $parent.triggerLauncher.bind($parent, _id)")
+        // /ko
+
+  // /ko
+
+div.row
+  div.form-group
+    div(data-bind="visible: showMarkdownEditor")
+      div(data-bind="with: wyswyg")
+        include ../../../../../FormEditorMojit/views/WYSWYG.pug
+
+        div.markdown-editor.form-control(style="height: 300px; overflow: auto;",data-bind="contentEditable: isEditable, htmlLazy: htmlContent")#simpleActivityEditableDiv
+
+    textarea.form-control(name="userContent", data-bind="caretPosition: userContent.caretPosition, attr: {rows: '10'}, value: userContent, valueUpdate: 'afterkeydown', hasFocus: textEditorFocus, readOnly: userContent.readOnly, visible: showTextEditor")
+
+  div.col-sm-12.col-md-12
+    div.form-group(data-bind="visible: selectActivityFlowButtonVisible")
+      button.btn.btn-default(type="button", name="selectActivityFlowFlowButton", data-bind="click: selectActivityFlowButtonClick, text: selectActivityFlowButtonI18n")

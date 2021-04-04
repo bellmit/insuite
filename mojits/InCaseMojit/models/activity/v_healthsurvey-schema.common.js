@@ -1,0 +1,94 @@
+/**
+ * User: rrrw
+ * Date: 19/11/2015  15:45
+ * (c) 2015, Doc Cirrus GmbH, Berlin
+ */
+
+/*global YUI*/
+YUI.add( 'v_healthsurvey-schema', function( Y, NAME ) {
+
+        'use strict';
+
+        var
+        // ------- Schema definitions  -------
+            i18n = Y.doccirrus.i18n,
+            types = {};
+
+        Y.log( 'Loading Schema ' + NAME, 'debug', NAME );
+
+        NAME = Y.doccirrus.schemaloader.deriveSchemaName( NAME );
+
+        /**
+         * MOJ-5065 this is a virtual schema and
+         * does not actually have a collection related
+         * to it in the DB.
+         */
+        types = Y.mix( types,
+            {
+                "root": {
+                    "base": {
+                        "complex": "ext",
+                        "type": "VHealthsurvey_T",
+                        "lib": types
+                    }
+                },
+                "HealthsurveyActType_E": {
+                    "type": "String",
+                    "default": "HEALTHSURVEY",
+                    "apiv": { v:2, queryParam: true },
+                    "list": [
+                        {
+                            "val": "HEALTHSURVEY",
+                            "-de": "health survey",
+                            i18n: i18n( 'activity-schema.Activity_E.HEALTHSURVEY' ),
+                            "-en": "health survey"
+                        }
+
+                    ]
+                },
+                "VHealthsurvey_T": {
+                    "actType": {
+                        "complex": "eq",
+                        "type": "HealthsurveyActType_E",
+                        "lib": types,
+                        "apiv": { v:2, queryParam: false },
+                        "required": true
+                    },
+                    status: { // overridden for doc purposes
+                        "type": "String",
+                        "apiv": { v:2, queryParam: true },
+                        "-en": "The status of an activity is read-only. Using this parameter in POST / PUT has no effect."
+                    },
+                    "activityBase": {
+                        "complex": "ext",
+                        "type": "Activity_T",
+                        "lib": "activity"
+                    },
+                    "Base": {
+                        "complex": "ext",
+                        "type": "HealthExaminationSurvey_T",
+                        "lib": "activity"
+                    }
+                }
+            }
+        );
+
+        Y.namespace( 'doccirrus.schemas' )[NAME] = {
+
+            /* MANDATORY */
+            name: NAME,
+
+            /* MANDATORY */
+            types: types
+
+        };
+
+        Y.doccirrus.schemaloader.mixSchema( Y.doccirrus.schemas[NAME], true );
+    },
+    '0.0.1', {
+        requires: [
+            'dcschemaloader',
+            'activity-schema'
+        ]
+    }
+);

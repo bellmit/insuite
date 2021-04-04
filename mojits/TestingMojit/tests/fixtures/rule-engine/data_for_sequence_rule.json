@@ -1,0 +1,783 @@
+{
+  "rules": [
+    {
+      "_id" : "5eb4569f1aa18e307448647c",
+      "parent" : "000000000000000000000002",
+      "isDirectory" : false,
+      "isLocked" : false,
+      "isActive" : true,
+      "caseFolderType" : [
+        "PUBLIC"
+      ],
+      "metaActTypes" : [
+        "TREATMENT"
+      ],
+      "metaActCodes" : [
+        "23023"
+      ],
+      "metaCriterias" : [
+        "actType",
+        "code"
+      ],
+      "description" : "Entry rule test",
+      "referenceArea" : "ENTRY",
+      "periodType" : "MONTH",
+      "periodCount" : 1,
+      "periodReference" : "raum",
+      "rules" : [
+        {
+          "ruleId" : "5eb45687c6e86b182b000016",
+          "description" : "E L 23023",
+          "isActive" : true,
+          "validations" : {
+            "\\\\$and" : [
+              {
+                "context" : "ACTIVITY",
+                "criteria" : {
+                  "actType" : {
+                    "\\\\$eq" : "TREATMENT"
+                  },
+                  "code" : {
+                    "\\\\$eq" : "23023",
+                    "\\\\$catalogShort" : "EBM"
+                  }
+                }
+              }
+            ]
+          },
+          "actions" : [
+            {
+              "type" : "ERROR",
+              "template" : {
+                "urgency" : 2,
+                "details" : "",
+                "roles" : [],
+                "candidates" : [],
+                "locations" : [
+                  {
+                    "_id" : "000000000000000000000001",
+                    "locname" : "TestPraxis1"
+                  },
+                  {
+                    "_id" : "59955f5f66e8cf1fcc577754",
+                    "locname" : "SecondLocation"
+                  }
+                ],
+                "caseFolder" : "",
+                "diagnosisCert" : "NONE",
+                "toCreate" : 1,
+                "linkActivities" : false,
+                "autoCreate" : false,
+                "tempateID" : "5eb4569dc6e86b182b000017",
+                "markers" : [],
+                "type" : ""
+              }
+            }
+          ],
+          "metaCodes" : [
+            "23023"
+          ],
+          "metaActTypes" : [
+            "TREATMENT"
+          ]
+        }
+      ],
+      "metaFuzzy" : false,
+      "metaCaseOpen" : false,
+      "idStr" : "5eb4569f1aa18e307448647c"
+    },
+    {
+      "_id" : "5ebab502a594f8518b5ca2bf",
+      "parent" : "5e41257cdf27326f372d3431",
+      "isDirectory" : false,
+      "isLocked" : true,
+      "isActive" : true,
+      "caseFolderType" : [
+        "PUBLIC"
+      ],
+      "metaActTypes" : [
+        "TREATMENT"
+      ],
+      "metaActCodes" : [
+        "23023"
+      ],
+      "metaCriterias" : [
+        "actType",
+        "code",
+        "areTreatmentDiagnosesBillable"
+      ],
+      "rules" : [
+        {
+          "isActive" : true,
+          "description" : "Anzahlbedingungsliste 23023 (EBM) im Behandlungsfall",
+          "validations" : {
+            "\\\\$and" : [
+              [
+                {
+                  "context" : "ACTIVITY",
+                  "criteria" : {
+                    "actType" : "TREATMENT",
+                    "code" : "23023",
+                    "areTreatmentDiagnosesBillable" : "1",
+                    "\\\\$count" : {
+                      "\\\\$gt" : 1
+                    }
+                  }
+                }
+              ]
+            ]
+          },
+          "actions" : [
+            {
+              "type" : "ERROR"
+            }
+          ],
+          "metaCodes" : [
+            "23023"
+          ],
+          "metaActTypes" : [
+            "TREATMENT"
+          ],
+          "ruleId" : "5e41257cdf27326f372d3432"
+        }
+      ],
+      "description" : "EBM 23023 im Behandlungsfall",
+      "fromCatalog" : "DC-EBM-D-1580198939199.json",
+      "fromCatalogShort" : "EBM",
+      "referenceArea" : "PERIOD",
+      "periodType" : "QUARTER",
+      "periodCount" : 1,
+      "periodReference" : "raum",
+      "idStr" : "5e41257cdf27326f372d3434",
+      "metaFuzzy" : false,
+      "metaCaseOpen" : false
+    }
+  ],
+  "rulelogs": [
+    {
+      "caseFolderId" : "5ebe4c9667f9e11ee9c4ff81",
+      "factId" : "5ebe4c9967f9e11ee9c50031",
+      "message" : "E L 23023",
+      "patientId" : "5ebe4c9667f9e11ee9c4ff80",
+      "referenceArea" : "ENTRY",
+      "ruleLogType" : "ERROR",
+      "actCodes" : [
+        "23023"
+      ],
+      "actTypes" : [
+        "TREATMENT"
+      ],
+      "activitiesToCreate" : [],
+      "affectedActivities" : [
+        {
+          "id" : "5ebe4c9967f9e11ee9c50031",
+          "code" : "23023",
+          "actType" : "TREATMENT"
+        }
+      ],
+      "allCodes" : [],
+      "caseFolderType" : [
+        "PUBLIC"
+      ],
+      "locationId" : "5ebe4c9667f9e11ee9c4ff7e",
+      "requiredCodes" : [],
+      "ruleId" : "5eb45687c6e86b182b000016",
+      "ruleSetId" : "5ebe4c9767f9e11ee9c4ffc7"
+    },
+    {
+      "caseFolderId" : "5ebe4c9667f9e11ee9c4ff81",
+      "factId" : "5ebe4c9967f9e11ee9c50030",
+      "message" : "E L 23023",
+      "patientId" : "5ebe4c9667f9e11ee9c4ff80",
+      "referenceArea" : "ENTRY",
+      "ruleLogType" : "ERROR",
+      "actCodes" : [
+        "23023"
+      ],
+      "actTypes" : [
+        "TREATMENT"
+      ],
+      "activitiesToCreate" : [],
+      "affectedActivities" : [
+        {
+          "id" : "5ebe4c9967f9e11ee9c50030",
+          "code" : "23023",
+          "actType" : "TREATMENT"
+        }
+      ],
+      "allCodes" : [],
+      "caseFolderType" : [
+        "PUBLIC"
+      ],
+      "locationId" : "5ebe4c9667f9e11ee9c4ff7e",
+      "requiredCodes" : [],
+      "ruleId" : "5eb45687c6e86b182b000016",
+      "ruleSetId" : "5ebe4c9767f9e11ee9c4ffc7"
+    },
+    {
+      "caseFolderId" : "5ebe4c9667f9e11ee9c4ff81",
+      "message" : "Anzahlbedingungsliste 23023 (EBM) im Behandlungsfall",
+      "patientId" : "5ebe4c9667f9e11ee9c4ff80",
+      "referenceArea" : "PERIOD",
+      "ruleLogType" : "ERROR",
+      "actCodes" : [
+        "23023"
+      ],
+      "actTypes" : [
+        "TREATMENT"
+      ],
+      "activitiesToCreate" : [],
+      "affectedActivities" : [
+        {
+          "id" : "5ebe4c9967f9e11ee9c50031",
+          "code" : "23023",
+          "actType" : "TREATMENT",
+          "locationId" : "5ebe4c9667f9e11ee9c4ff7e"
+        },
+        {
+          "id" : "5ebe4c9967f9e11ee9c50030",
+          "code" : "23023",
+          "actType" : "TREATMENT",
+          "locationId" : "5ebe4c9667f9e11ee9c4ff7e"
+        }
+      ],
+      "allCodes" : [],
+      "caseFolderType" : [
+        "PUBLIC"
+      ],
+      "locationId" : "5ebe4c9667f9e11ee9c4ff7e",
+      "requiredCodes" : [],
+      "ruleId" : "5e41257cdf27326f372d3432",
+      "ruleSetId" : "5ebe4c9767f9e11ee9c4ffc9"
+    }
+  ],
+  "schein": {
+    "actType" : "SCHEIN",
+    "attachments" : [],
+    "subType" : "",
+    "time" : "",
+    "userContent" : "ambulante Behandlung (ambulante Behandlung)",
+    "partnerInfo" : "",
+    "explanations" : "",
+    "status" : "VALID",
+    "activities" : [],
+    "referencedBy" : [],
+    "formId" : "",
+    "formVersion" : "",
+    "formPdf" : "",
+    "formLang" : "de",
+    "formGender" : "m",
+    "apkState" : "IN_PROGRESS",
+    "forInsuranceType" : "",
+    "locationFeatures" : "",
+    "scheinRemittor" : "",
+    "scheinEstablishment" : "",
+    "scheinSpecialisation" : "",
+    "scheinOrder" : "",
+    "scheinDiagnosis" : "",
+    "scheinFinding" : "",
+    "scheinNotes" : "",
+    "scheinClinicalTreatmentFrom" : null,
+    "scheinClinicalTreatmentTo" : null,
+    "scheinNextTherapist" : "",
+    "fk4234" : false,
+    "fk4219" : "",
+    "continuousIcds" : [],
+    "icds" : [],
+    "icdsExtra" : [],
+    "scheinQuarter" : "1",
+    "scheinYear" : "2019",
+    "scheinBillingArea" : "00",
+    "scheinType" : "0101",
+    "scheinSubgroup" : "00",
+    "scheinTransferTypeInfo" : "",
+    "fk4124" : "",
+    "fk4126" : "",
+    "fk4125from" : null,
+    "fk4125to" : null,
+    "fk4123" : "",
+    "fk4206" : null,
+    "fk4236" : false,
+    "fk4241" : "",
+    "fk4217" : "",
+    "scheinSlipMedicalTreatment" : "",
+    "__t" : "SCHEIN",
+    "attachedMedia" : [],
+    "content" : "ambulante Behandlung (ambulante Behandlung)",
+    "debtCollection" : "",
+    "fk4235Set" : [],
+    "invoiceData" : [],
+    "scheinTransferType" : ""
+  },
+  "sequence": {
+    "_id" : "5e8d979b8656ee2974c39522",
+    "activities" : [
+      {
+        "_id": "5e8d96e28656ee2974c394f5",
+        "actType" : "TREATMENT",
+        "status" : "VALID",
+        "attachments" : [],
+        "activities" : [],
+        "icds" : [],
+        "icdsExtra" : [],
+        "subType" : "",
+        "userContent" : "ab Beginn des 19. bis zum vollendeten 54. Lebensjahr",
+        "areTreatmentDiagnosesBillable" : "1",
+        "catalog" : true,
+        "catalogRef" : "DC-EBM-D-1583833525695.json",
+        "catalogShort" : "EBM",
+        "code" : "23023"
+      },
+      {
+        "_id": "5e8d972b8656ee2974c3950e",
+        "actType" : "TREATMENT",
+        "status" : "VALID",
+        "attachments" : [],
+        "activities" : [],
+        "icds" : [],
+        "icdsExtra" : [],
+        "subType" : "",
+        "userContent" : "ab Beginn des 19. bis zum vollendeten 54. Lebensjahr",
+        "areTreatmentDiagnosesBillable" : "1",
+        "catalog" : true,
+        "catalogRef" : "DC-EBM-D-1583833525695.json",
+        "catalogShort" : "EBM",
+        "code" : "23023"
+      }
+
+    ],
+    "description" : "",
+    "useOriginalValues" : true,
+    "sequenceGroups" : [],
+    "title" : "L23023x2",
+    "order" : 1
+  },
+  "catalog": {
+    "seq" : "23023",
+    "unifiedSeq" : "000023023",
+    "title" : "ab Beginn des 19. bis zum vollendeten 54. Lebensjahr",
+    "l3" : {
+      "seq" : "3.2.1.1",
+      "title" : "Hausärztliche Versichertenpauschalen"
+    },
+    "l2" : {
+      "seq" : "2",
+      "title" : "Gebührenordnungspositionen der allgemeinen hausärztlichen Versorgung"
+    },
+    "l1" : {
+      "seq" : "III.a",
+      "title" : "Hausärztlicher Versorgungsbereich"
+    },
+    "u_extra" : {
+      "validfrom" : "2013-10-01..",
+      "quittungstext" : "Versichertenpauschale ab Beginn des 19. bis zum vollendeten 54. Lebensjahr",
+      "leistungserbringerart" : "1",
+      "leistungsgruppe" : "1",
+      "kv" : {
+        "kv" : "74",
+        "arztpraxis" : true
+      },
+      "gkv_kontenart" : [
+        {
+          "gkv_kontenart" : "400"
+        },
+        {
+          "gkv_kontenart" : "408"
+        },
+        {
+          "gkv_kontenart" : "409"
+        },
+        {
+          "gkv_kontenart" : "463"
+        },
+        {
+          "gkv_kontenart" : "570"
+        }
+      ],
+      "fachgruppe_liste" : {
+        "zulaessig" : true,
+        "liste" : [
+          {
+            "versorgungsbereich" : "1",
+            "fachgruppe" : [
+              "001",
+              "002",
+              "010",
+              "080",
+              "520",
+              "547"
+            ]
+          }
+        ]
+      },
+      "berichtspflicht" : false,
+      "genehmigungspflicht" : false,
+      "aop_115b" : false,
+      "begruendungen_liste" : {
+        "ops_liste" : [],
+        "ops_liste_include" : null,
+        "icd_liste" : [],
+        "gnr_liste" : []
+      },
+      "altersbedingung_liste" : [
+        {
+          "value" : "18",
+          "unit" : "8",
+          "type" : "MIN"
+        },
+        {
+          "value" : "53",
+          "unit" : "8",
+          "type" : "MAX"
+        }
+      ],
+      "anzahlbedingung_liste" : [
+        {
+          "bezugsraum" : {
+            "anzahl" : "1",
+            "value" : "1",
+            "unit" : "7",
+            "aussetzungsgrund_liste" : [],
+            "altersbedingung_liste" : []
+          }
+        }
+      ],
+      "ausschluss_liste" : [
+        {
+          "value" : "1",
+          "unit" : "1",
+          "gnr" : [
+            {
+              "seq" : "01436",
+              "hint" : "Konsultationspauschale"
+            },
+            {
+              "seq" : "01950",
+              "hint" : "Substitutionsgestützte Behandlung Opioidabhängiger"
+            },
+            {
+              "seq" : "01955",
+              "hint" : "Diamorphingestützte Behandlung Opioidabhängiger"
+            },
+            {
+              "seq" : "01960",
+              "hint" : "Konsiliarische Untersuchung und Beratung eines Patienten"
+            }
+          ]
+        },
+        {
+          "value" : "1",
+          "unit" : "14",
+          "gnr" : [
+            {
+              "seq" : "01420",
+              "hint" : "Prüfung der Notwendigkeit und Koordination der häuslichen Krankenpflege"
+            },
+            {
+              "seq" : "01422",
+              "hint" : "Erstverordnung von Behandlungsmaßnahmen zur psychiatrischen häuslichen Krankenpflege"
+            },
+            {
+              "seq" : "01424",
+              "hint" : "Folgeverordnung von Behandlungsmaßnahmen zur psychiatrischen häuslichen Krankenpflege"
+            },
+            {
+              "seq" : "01440",
+              "hint" : "Verweilen außerhalb der Praxis"
+            },
+            {
+              "seq" : "01510",
+              "hint" : "Ambulante Betreuung 2h"
+            },
+            {
+              "seq" : "01511",
+              "hint" : "Ambulante Betreuung 4h"
+            },
+            {
+              "seq" : "01512",
+              "hint" : "Ambulante Betreuung 6h"
+            },
+            {
+              "seq" : "01520",
+              "hint" : "Zusatzpauschale für Beobachtung nach diagnostischer Koronarangiografie"
+            },
+            {
+              "seq" : "01521",
+              "hint" : "Zusatzpauschale für Beobachtung nach therapeutischer Koronarangiografie"
+            },
+            {
+              "seq" : "01530",
+              "hint" : "Zusatzpauschale für Beobachtung nach diagnostischer Angiografie"
+            },
+            {
+              "seq" : "01531",
+              "hint" : "Zusatzpauschale für Beobachtung nach therapeutischer Angiografie"
+            },
+            {
+              "seq" : "01602",
+              "hint" : "Mehrfertigung (z. B. Kopie) eines Berichtes oder Briefes an den Hausarzt"
+            },
+            {
+              "seq" : "01612",
+              "hint" : "Konsiliarbericht vor Psychotherapie"
+            },
+            {
+              "seq" : "02100",
+              "hint" : "Infusion"
+            },
+            {
+              "seq" : "02101",
+              "hint" : "Infusion, Dauer mind. 60 Minuten"
+            },
+            {
+              "seq" : "02110",
+              "hint" : "Erst-Transfusion"
+            },
+            {
+              "seq" : "02111",
+              "hint" : "Folge-Transfusion"
+            },
+            {
+              "seq" : "02112",
+              "hint" : "Eigenblut-Retransfusion"
+            },
+            {
+              "seq" : "02120",
+              "hint" : "Erstprogrammierung einer Zytostatikapumpe"
+            },
+            {
+              "seq" : "02200",
+              "hint" : "Tuberkulintestung"
+            },
+            {
+              "seq" : "02320",
+              "hint" : "Magenverweilsonde"
+            },
+            {
+              "seq" : "02321",
+              "hint" : "Legen eines suprapubischen Harnblasenkatheter"
+            },
+            {
+              "seq" : "02322",
+              "hint" : "Wechsel/Entfernung suprapubischer Harnblasenkatheter"
+            },
+            {
+              "seq" : "02323",
+              "hint" : "Legen/Wechsel transurethraler Dauerkatheter"
+            },
+            {
+              "seq" : "02330",
+              "hint" : "Blutentnahme durch Arterienpunktion"
+            },
+            {
+              "seq" : "02331",
+              "hint" : "Intraarterielle Injektion"
+            },
+            {
+              "seq" : "02340",
+              "hint" : "Punktion I"
+            },
+            {
+              "seq" : "02341",
+              "hint" : "Punktion II"
+            },
+            {
+              "seq" : "02342",
+              "hint" : "Lumbalpunktion"
+            },
+            {
+              "seq" : "02343",
+              "hint" : "Entlastungspunktion des Pleuraraums und/oder Pleuradrainage"
+            },
+            {
+              "seq" : "02350",
+              "hint" : "Fixierender Verband"
+            },
+            {
+              "seq" : "02360",
+              "hint" : "Anwendung von Lokalanästhetika"
+            },
+            {
+              "seq" : "02400",
+              "hint" : "¹³C-Harnstoff-Atemtest"
+            },
+            {
+              "seq" : "02401",
+              "hint" : "H2-Atemtest"
+            }
+          ]
+        },
+        {
+          "value" : "1",
+          "unit" : "7",
+          "gnr" : [
+            {
+              "seq" : "01420",
+              "hint" : "Prüfung der Notwendigkeit und Koordination der häuslichen Krankenpflege"
+            },
+            {
+              "seq" : "01422",
+              "hint" : "Erstverordnung von Behandlungsmaßnahmen zur psychiatrischen häuslichen Krankenpflege"
+            },
+            {
+              "seq" : "01424",
+              "hint" : "Folgeverordnung von Behandlungsmaßnahmen zur psychiatrischen häuslichen Krankenpflege"
+            },
+            {
+              "seq" : "01440",
+              "hint" : "Verweilen außerhalb der Praxis"
+            },
+            {
+              "seq" : "01510",
+              "hint" : "Ambulante Betreuung 2h"
+            },
+            {
+              "seq" : "01511",
+              "hint" : "Ambulante Betreuung 4h"
+            },
+            {
+              "seq" : "01512",
+              "hint" : "Ambulante Betreuung 6h"
+            },
+            {
+              "seq" : "01520",
+              "hint" : "Zusatzpauschale für Beobachtung nach diagnostischer Koronarangiografie"
+            },
+            {
+              "seq" : "01521",
+              "hint" : "Zusatzpauschale für Beobachtung nach therapeutischer Koronarangiografie"
+            },
+            {
+              "seq" : "01530",
+              "hint" : "Zusatzpauschale für Beobachtung nach diagnostischer Angiografie"
+            },
+            {
+              "seq" : "01531",
+              "hint" : "Zusatzpauschale für Beobachtung nach therapeutischer Angiografie"
+            },
+            {
+              "seq" : "01600",
+              "hint" : "Ärztlicher Bericht nach Untersuchung"
+            },
+            {
+              "seq" : "01601",
+              "hint" : "Individueller Arztbrief"
+            },
+            {
+              "seq" : "01602",
+              "hint" : "Mehrfertigung (z. B. Kopie) eines Berichtes oder Briefes an den Hausarzt"
+            },
+            {
+              "seq" : "01610",
+              "hint" : "Bescheinigung zur Belastungsgrenze"
+            },
+            {
+              "seq" : "01612",
+              "hint" : "Konsiliarbericht vor Psychotherapie"
+            },
+            {
+              "seq" : "02100",
+              "hint" : "Infusion"
+            },
+            {
+              "seq" : "02101",
+              "hint" : "Infusion, Dauer mind. 60 Minuten"
+            },
+            {
+              "seq" : "02110",
+              "hint" : "Erst-Transfusion"
+            },
+            {
+              "seq" : "02111",
+              "hint" : "Folge-Transfusion"
+            },
+            {
+              "seq" : "02112",
+              "hint" : "Eigenblut-Retransfusion"
+            },
+            {
+              "seq" : "02120",
+              "hint" : "Erstprogrammierung einer Zytostatikapumpe"
+            },
+            {
+              "seq" : "02200",
+              "hint" : "Tuberkulintestung"
+            },
+            {
+              "seq" : "02320",
+              "hint" : "Magenverweilsonde"
+            },
+            {
+              "seq" : "02321",
+              "hint" : "Legen eines suprapubischen Harnblasenkatheter"
+            },
+            {
+              "seq" : "02322",
+              "hint" : "Wechsel/Entfernung suprapubischer Harnblasenkatheter"
+            },
+            {
+              "seq" : "02323",
+              "hint" : "Legen/Wechsel transurethraler Dauerkatheter"
+            },
+            {
+              "seq" : "02330",
+              "hint" : "Blutentnahme durch Arterienpunktion"
+            },
+            {
+              "seq" : "02331",
+              "hint" : "Intraarterielle Injektion"
+            },
+            {
+              "seq" : "02340",
+              "hint" : "Punktion I"
+            },
+            {
+              "seq" : "02341",
+              "hint" : "Punktion II"
+            },
+            {
+              "seq" : "02342",
+              "hint" : "Lumbalpunktion"
+            },
+            {
+              "seq" : "02343",
+              "hint" : "Entlastungspunktion des Pleuraraums und/oder Pleuradrainage"
+            },
+            {
+              "seq" : "02350",
+              "hint" : "Fixierender Verband"
+            },
+            {
+              "seq" : "02360",
+              "hint" : "Anwendung von Lokalanästhetika"
+            },
+            {
+              "seq" : "02400",
+              "hint" : "¹³C-Harnstoff-Atemtest"
+            },
+            {
+              "seq" : "02401",
+              "hint" : "H2-Atemtest"
+            },
+            {
+              "seq" : "03030",
+              "hint" : "Versichertenpauschale bei unvorhergesehener Inanspruchnahme"
+            }
+          ]
+        }
+      ],
+      "zeitbedarfsliste" : [
+        {
+          "zeitbedarf" : "12",
+          "leistung_typ" : "AL"
+        }
+      ],
+      "pruefzeit" : {
+        "quartal" : 9
+      }
+    },
+    "value" : "114",
+    "unit" : "Punkte",
+    "catalog" : "DC-EBM-D-1583833525695.json"
+  }
+}

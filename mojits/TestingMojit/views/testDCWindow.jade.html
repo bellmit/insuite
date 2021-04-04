@@ -1,0 +1,37 @@
+div(id=mojit_view_id)
+  .container.container-fullscreen(style="padding-top: 30px")
+    h1 DCWindow.notice
+    hr
+    .row.form-inline
+      div.col-xs-3.text-right
+        button.btn.btn-default.btn-block.btn-primary(type="button", data-bind="click: showNoticeDefault") showNoticeDefault
+      div.col-xs-9
+        pre(data-bind="text: showNoticeDefault.toString()", style="max-height: 200px; overflow-y: auto;")
+      div.col-xs-3.text-right
+        button.btn.btn-default.btn-block.btn-primary(type="button", data-bind="click: showNoticeFullFeatured") showNoticeFullFeatured
+      div.col-xs-9
+        pre(data-bind="text: showNoticeFullFeatured.toString()", style="max-height: 200px; overflow-y: auto;")
+    h1 DCWindow
+    hr
+    .row.form-inline
+      div.col-xs-3.text-right
+        button.btn.btn-default.btn-block.btn-primary(type="button", data-bind="click: showDefault") showDefault
+      div.col-xs-9
+        pre(data-bind="text: showDefault.toString()", style="max-height: 200px; overflow-y: auto;")
+      div.col-xs-3.text-right
+        button.btn.btn-default.btn-block.btn-primary(type="button", data-bind="click: showMaximizable") showMaximizable
+      div.col-xs-9
+        pre(data-bind="text: showMaximizable.toString()", style="max-height: 200px; overflow-y: auto;")
+    h1 DCWindow.manager
+    hr
+    .row.form-inline
+      div.col-xs-3.text-right
+        label text: &nbsp;
+          input.form-control(type="text", data-bind="value: text, valueUpdate: 'afterkeydown'", style="width: 70%;")
+        button.btn.btn-default.btn-block.btn-primary(type="button", data-bind="click: makeOnTopWindowEditable") makeOnTopWindowEditable
+      div.col-xs-9
+        pre(data-bind="text: makeOnTopWindowEditable.toString()", style="max-height: 200px; overflow-y: auto;")
+    h1 Tests
+    hr
+    include runTests
+

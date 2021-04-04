@@ -1,0 +1,1830 @@
+#%RAML 0.8
+title: DC REST German
+baseUri: https://&lt;tenantId&gt;.&lt;partner-domain-name&gt;/2
+version: 11.0.4
+documentation:
+  - title: Doc Cirrus REST API /2, /3
+    content: |
+      This file documents all releases of the externally available Doc Cirrus inSuite REST API.  It provides a complete set of allowed resources and the
+      methods to access them.
+      <hr/>
+      <h2>Useful resources</h2>
+      <h4><a href="./changelog.txt">Changelog</a></h4>
+      <h4><a href="./dc-api-2-de.raml">RAML Doc</a></h4>
+      <h4><a href="./dc-schema-2-de.raml">JS Schema</a></h4>
+      <hr/>
+
+      <h2>Endpoint versions</h2>
+
+      <h3>/2 Low-level API</h3>
+      Here fine grained control of many resources in Doc Cirrus are made available.
+
+      <h3>/3 Public API</h3>
+      Here the resources do not need any authentication. Currently only for VoIP / PBX integration.
+
+      <h2>Introduction</h2>
+
+      <h4>_Types_</h4>
+
+      Types are Javascript Types.
+      *  “Date”  (also written “date”)  is always a “datetime” - "2019-05-28T12:26:00.000Z" as known from other languages like Java.
+      *  Number is a double float, but can be denoted as an integer.
+
+      The other structures are standard Javascript Object Notation (JSON) structures:
+      *  String
+      *  Array
+      *  Object
+
+      <h4>_Notes_:</h4>
+      * For multi-tenant systems, the REST server determines which tenant is being addressed by the tenantId in the hostname that the request is sent to.
+      * Regular Expression operators are available for all "string" type parameters. Use
+      * &lt;paramname&gt;_regex  (matches /^val/) OR &lt;paramname&gt;_iregex (matches  /val/, "i")
+
+      <h4>_API "Activity" Endpoints_:</h4>
+      * The Doc Cirrus workflow requires that a valid contract be created, before another activity can be created. The contract and activities are related by their location, case folder and patient references.
+      * When creating a '0102' type PUBLIC contract, the system will create a DIAGNOSIS of type 'UUU' automatically.  This is because specialists such as radiologists, or laboratories only analyse without diagnosing the patient in some situations.
+      * Different kinds of utility are specified through the subType field, which can be used in the other Activity endpoints for user specified categorisation.
+      * Contract type activities have restrictions on where they can be moved (e.g. changing case folder, or changing the time of the activity).  Illegal changes are cancelled by the system and an error is returned.
+
+      Activity endpoints are the following:
+      *   labdata
+      *   complexprescription
+      *   contract
+      *   assistive
+      *   meddata
+      *   medication
+      *   treatment
+      *   diagnosis
+      *   invoice
+      *   utility
+
+
+      <h4>_API "Simple Activity" Endpoints_:</h4>
+      * Simple activities all have a common Schema.
+      * You can POST, or PUT them in the usual manner( as mentioned below ).
+      * If requesting only simple activities of a specific type, the caller must always add a query parameter to the REST interface in the following manner: /2/simple_activity?actType=THERAPY
+
+      Simple activity endpoints are always up to date in the RAML Schema, and currently the following:
+      *   THERAPY
+      *   CAVE
+      *   HISTORY
+      *   EXTERNAL
+      *   FINDING
+      *   PREVENTION
+      *   PROCEDERE
+      *   REMINDER
+      *   CREDITNOTE
+      *   WARNING1
+      *   WARNING2
+      *   COMMUNICATION
+      *   PROCESS
+      *   CONTACT
+      *   FROMPATIENT
+      *   FROMPATIENTMEDIA
+      *   TELECONSULT
+      *   MEDICATIONPLAN
+      *   GRAVIDOGRAMM
+      *   DOCLETTERDIAGNOSIS
+      *   DOCLETTER
+      *   PRIVPRESCR
+      *   PUBPRESCR
+      *   FORM
+      *   THERAPYSTEP
+
+      <h4>_Operators_</h4>
+      Search parameters also allows operators.
+      *   DCQuery.GT_OPERATOR = 'gt'
+      *   DCQuery.LT_OPERATOR = 'lt'
+      *   DCQuery.EQ_OPERATOR = 'eq'
+      *   DCQuery.EQ_OPERATOR_FOR_NUMBER = 'eqNumber'
+      *   DCQuery.EQ_BOOL_OPERATOR = 'bool_eq'
+      *   DCQuery.EQDATE_OPERATOR = 'eqDate'
+      *   DCQuery.GTE_OPERATOR = 'gte'
+      *   DCQuery.LTE_OPERATOR = 'lte'
+      *   DCQuery.IREGEX_OPERATOR = 'iregex'
+      *   DCQuery.REGEX_OPERATOR = 'regex'
+      *   DCQuery.IN_OPERATOR = 'in'
+      *   DCQuery.ENUM_OPERATOR = 'enum'
+      *   DCQuery.NOT_IREGEX_OPERATOR = 'notiregex'
+      *   DCQuery.NIN_OPERATOR = 'nin'
+
+      <h4>_Testing the API_:</h4>
+      * Create a user for REST access in your tenant or appliance. (e.g. "user", "password")
+      * Create a testfile for an endpoint, by copying a response JSON from this documentation and saving it (name it e.g. "test_data.json").
+      * Then make the REST call. The following example uses the command line utility "curl".
+      *  curl -k -X POST -H "Content-Type:application/json"  --user user:"password" https://&lt;host_address&gt;/2/diagnosis -d @test_data.json
+      * The Doc Cirrus test cases demonstrate on a high level the kind of algorithm you need to implement to add activities to the system: <br/><img src='TestSuiteAlgorithm.png'/>
+
+
+securitySchemes:
+  - basic:
+       type: Basic Authentication
+  - JWT:
+        description: Solutions have the possibility of using a JWT based authentication mechanism to interact with /2.  A token is issued by DC and has to be activated by each individual datasafe.
+        type: x-{other}
+        describedBy:
+          headers:
+            Authorization:
+                description: X-DC-App-Name
+                type: string
+                required: true
+          responses:
+            401:
+              description: |
+                        Bad or expired token. This can happen if the user revokes
+                        the solution's access. The user
+  - oauth2:
+        description: |
+            Doc Cirrus supports OAuth 2.0 for authenticating all API requests. Authorisation service is provided by partner.
+        type: OAuth 2.0
+        describedBy:
+            headers:
+                Authorization:
+                    description: |
+                       Used to send a valid OAuth 2 access token. Do not use
+                       with the "access_token" query string parameter.
+                    type: string
+            queryParameters:
+                access_token:
+                    description: |
+                       Used to send a valid OAuth 2 access token. Do not use together with
+                       the "Authorization" header
+                    type: string
+            responses:
+                401:
+                    description: |
+                        Bad or expired token. This can happen if the user or Doc Cirrus
+                        revoked or expired an access token. To fix, you should re-
+                        authenticate the user.
+                403:
+                    description: |
+                        Bad OAuth request (wrong consumer key, bad nonce, expired
+                        timestamp...). Unfortunately, re-authenticating the user won't help here.
+        settings:
+            authorizationUri: https://www.<partner-domain-name>/2/oauth2/authorize
+            accessTokenUri: https://api.<partner-domain-name>/2/oauth2/token
+            authorizationGrants: [ code, token ]
+schemas: !include dc-schema-2-de.raml
+
+#
+#
+# these are default actions for the REST interface...
+#
+#
+resourceTypes:
+  - custom-function:
+      get:
+        securedBy: [basic, oauth2]
+        responses:
+          200:
+            description: either of the following
+            body:
+              application/json:
+                example: <<exampleData>>
+          400:
+            body:
+              application/json:
+                example: |
+
+          404:
+            body:
+              application/json:
+                example: |
+
+
+  - subdocument-collection-item:
+      description: Access an individual <<resourcePathName|!singularize>>
+            within a parent document. The parent document must be specified by Id before using the sub-document (collection).
+
+             Use this to either update the individual sub-document, or to delete it.
+      put:
+        description: Update a specific <<resourcePathName|!singularize>>. You must use the ID of the record.
+        securedBy: [basic, oauth2]
+        responses:
+          200:
+            body:
+              application/json:
+                example: |
+                  Similar response as for <<parentName>> PUT, with additonal metadata.
+          400:
+            body:
+              application/json:
+                example: |
+
+          404:
+            body:
+              application/json:
+                example: |
+
+      delete:
+        description: Delete a specific <<resourcePathName|!singularize>>.
+        securedBy: [basic, oauth2]
+        responses:
+          200:
+            body:
+              application/json:
+                example: |
+                  [{
+                      "meta": {
+                          "errors": [],
+                          "warnings": [],
+                          "model": <<parentName>>,
+                          "query": {
+                               "_id": <mongo_id_of_parent>,
+                               "<<resourcePathName>>._id": <mongo_id_of subdoc>
+                          }
+                          "itemsPerPage": null,
+                          "totalItems": 1,
+                          "page": null,
+                          "replyCode": 200
+                    },
+                    "data": <<exampleSub>>
+                  ]
+          400:
+            body:
+              application/json:
+                example: |
+
+          404:
+            body:
+              application/json:
+                example: |
+
+
+  - subdocument-collection:
+      description: Sub-documents description.  <b>Note that you cannot actually make calls to this model.</b> Collection of available <<resourcePathName>> which are sub-documents within a <<parentName>> document in a collection. The parent document must be specified before using the sub-document (collection).
+      post:
+        description: Update a specific <<resourcePathName|!singularize>>. You should use the ID of the record. If you use a query and several records match, only the first will be updated (default mongoDB behaviour).
+        securedBy: [basic, oauth2]
+        responses:
+          200:
+            body:
+              application/json:
+                example: |
+                  {
+                      "meta": {
+                          "errors": [],
+                          "warnings": [],
+                          "model": <<parentName>>,
+                          "query": {
+                              "_id": "54be764fc404c1d77a286d4d"    },
+                          "itemsPerPage": null,
+                          "totalItems": 1,
+                          "page": null,
+                          "replyCode": 200
+                    }
+          400:
+            body:
+              application/json:
+                example: |
+
+          404:
+            body:
+              application/json:
+                example: |
+
+  - collection:
+      description: Collection of available <<resourcePathName|!pluralize>> via REST /2.
+      get:
+        description: Get a list of <<resourcePathName|!pluralize>>.
+        securedBy: [basic, oauth2, JWT]
+        responses:
+          200:
+            body:
+              application/json:
+                schema: <<resourcePathName>>
+                example: <<exampleCollection>>
+          400:
+            body:
+              application/json:
+                example: |
+
+      post:
+        description: |
+          Add a new <<resourcePathName|!singularize>>.
+        securedBy: [basic, oauth2]
+        body:
+          application/json:
+            schema: <<resourcePathName>>
+        responses:
+          200:
+            body:
+              application/json:
+                example: |
+                  {
+                      "meta": {
+                          "errors": [],
+                          "warnings": [],
+                          "model": <<resourcePathName>>,
+                          "query": null,
+                          "itemsPerPage": null,
+                          "totalItems": 1,
+                          "page": null,
+                          "replyCode": 200
+                    },
+                    "data": [
+                       "54be764fc404c1d77a286d4d"
+                     ]
+                   }
+
+          400:
+            body:
+              application/json:
+                example: |
+
+  - collection-item:
+      description: Entity representing a <<resourcePathName|!singularize>>
+      get:
+        description: |
+          Get the <<resourcePathName|!singularize>>
+          with <<resourcePathName|!singularize>>Id =
+          {<<resourcePathName|!singularize>>Id}
+        securedBy: [basic, oauth2]
+        responses:
+          200:
+            body:
+              application/json:
+                example: |
+                  <<exampleItem>>
+          400:
+            body:
+              application/json:
+                example: |
+
+          404:
+            body:
+              application/json:
+                example: |
+
+      put:
+        description: Update a specific <<resourcePathName|!singularize>> using the ID of the record.
+
+
+          _Notes_
+
+
+                * The entire resource must always be submitted with a put.
+
+
+                * For parts of the resource which are lists (JSON arrays) of information (e.g. addresses, communications, or opening times), you can remove members from the list by putting the entire new list.
+        securedBy: [basic, oauth2]
+        responses:
+          200:
+            body:
+              application/json:
+                example: |
+                   <<exampleItem>>
+          400:
+            body:
+              application/json:
+                example: |
+
+          404:
+            body:
+              application/json:
+                example: |
+
+      delete:
+        description: Delete a specific <<resourcePathName|!singularize>>.
+        securedBy: [basic, oauth2]
+        responses:
+          200:
+            body:
+              application/json:
+                example: |
+                  <<exampleItem>>
+          400:
+            body:
+              application/json:
+                example: |
+
+          403:
+            body:
+              application/json:
+                example: |
+
+          404:
+            body:
+              application/json:
+                example: |
+
+traits:
+  - sortable:
+      queryParameters:
+        sort:
+          description: |
+            Sort the result list by field: <<fieldsList>>. Fields are comma-separated and can accept a value if followed by a colon mark (see example).
+          required: false
+          example: |
+            'field1,field2:1'
+  - pageable:
+      queryParameters:
+        page:
+          description: Skip over a number of pages by specifying an offset value for the query
+          type: integer
+          required: false
+          example: 20
+          default: 0
+        itemsPerPage:
+          description: Limit the number of elements on the response
+          type: integer
+          required: false
+          example: 80
+          default: 1000
+        noCountLimit:
+          description: Pageable results return the totalItems field which is the count of collection which is limited to 2001. If this parameter is set to 'true', then the total count is returned.
+          type: string
+          required: false
+          example: 'true'
+          default: 'false'
+
+
+
+#
+#
+# these are actual paths allowed in the REST interface...
+#
+#
+
+/2/assistive:
+  type:
+    collection:
+      exampleCollection: !include assistive-sample.json
+  description: Assistive type activities represent 'Hilfsmittel', e.g. assId '100.99.0.2990'. These may be prescribed from a catalog. The REST API currently does not allow access to catalogs, and it is up to the caller to enter the correct prescriptions (assId code and descriptions).
+  get:
+    is: [
+        sortable: { fieldsList: 'status, subType, timestamp, patientId, locationId, mirrorCaseFolderType, partnerInfo, formId, formVersion, caseFolderId, patientName, apkState, assDescription, assDose, assPrescPeriod, code' },
+        pageable
+      ]
+    queryParameters:
+      status:
+        type: "string"
+      subType:
+        type: "string"
+      timestamp:
+        type: "date"
+      patientId:
+        type: "string"
+      locationId:
+        type: "string"
+      mirrorCaseFolderType:
+        type: "string"
+      partnerInfo:
+        type: "string"
+      formId:
+        type: "string"
+      formVersion:
+        type: "string"
+      caseFolderId:
+        type: "string"
+      patientName:
+        type: "string"
+      apkState:
+        type: "string"
+      assDescription:
+        type: "string"
+      assDose:
+        type: "string"
+      assPrescPeriod:
+        type: "string"
+      code:
+        type: "string"
+
+  /{_id}:
+    type:
+      collection-item:
+        exampleItem: !include assistive-sample.json
+/2/audit:
+  type:
+    collection:
+      exampleCollection: !include audit-sample.json
+  get:
+    is: [
+        sortable: { fieldsList: '' },
+        pageable
+      ]
+    queryParameters:
+
+  /{_id}:
+    type:
+      collection-item:
+        exampleItem: !include audit-sample.json
+/2/basecontact:
+  type:
+    collection:
+      exampleCollection: !include basecontact-sample.json
+  description: Provides access to the basecontacts collection. Query documents by _id, officialNo and bsnrs like /2/basecontact/?officialNo=999999900
+  get:
+    is: [
+        sortable: { fieldsList: 'baseContactType, firstname, lastname, officialNo' },
+        pageable
+      ]
+    queryParameters:
+      baseContactType:
+        type: "string"
+      firstname:
+        type: "string"
+      lastname:
+        type: "string"
+      officialNo:
+        type: "string"
+
+  /{_id}:
+    type:
+      collection-item:
+        exampleItem: !include basecontact-sample.json
+/2/billing:
+  type:
+    collection:
+      exampleCollection: !include billing-sample.json
+  description: Only for MTS systems. It gathers some information in master tenant
+  get:
+    is: [
+        sortable: { fieldsList: 'patientId, patientFirstName, patientLastName, patientAge, patientGender, employeeName, orderNo, invoiceNo, timestamp, status, content, billingCodes, treatCost, drugCost, matCost, totalCost' },
+        pageable
+      ]
+    queryParameters:
+      patientId:
+        type: "string"
+      patientFirstName:
+        type: "string"
+      patientLastName:
+        type: "string"
+      patientAge:
+        type: "number"
+      patientGender:
+        type: "string"
+      employeeName:
+        type: "string"
+      orderNo:
+        type: "string"
+      invoiceNo:
+        type: "string"
+      timestamp:
+        type: "date"
+      status:
+        type: "string"
+      content:
+        type: "string"
+      billingCodes:
+        type: "string"
+      treatCost:
+        type: "number"
+      drugCost:
+        type: "number"
+      matCost:
+        type: "number"
+      totalCost:
+        type: "number"
+
+  /{_id}:
+    type:
+      collection-item:
+        exampleItem: !include billing-sample.json
+/2/blob:
+  type:
+    collection:
+      exampleCollection: !include blob-sample.json
+  get:
+    is: [
+        sortable: { fieldsList: 'ownerCollection, ownerId, transform, patientId, activityId, mediaId, dataURI, mimeType' },
+        pageable
+      ]
+    queryParameters:
+      ownerCollection:
+        type: "string"
+      ownerId:
+        type: "string"
+      transform:
+        type: "string"
+      patientId:
+        type: "string"
+      activityId:
+        type: "string"
+      mediaId:
+        type: "string"
+      dataURI:
+        type: "string"
+      mimeType:
+        type: "string"
+
+  /{_id}:
+    type:
+      collection-item:
+        exampleItem: !include blob-sample.json
+/2/calendar:
+  type:
+    collection:
+      exampleCollection: !include calendar-sample.json
+  description: Calendars.
+  get:
+    is: [
+        sortable: { fieldsList: '' },
+        pageable
+      ]
+    queryParameters:
+
+  /{_id}:
+    type:
+      collection-item:
+        exampleItem: !include calendar-sample.json
+/2/casefolder:
+  type:
+    collection:
+      exampleCollection: !include casefolder-sample.json
+  description: Collection of available casefolders via REST /2. <br><br>The endpoint exposes special POST methods <ul><li>Copy activities to specific casefolder in scope of the same patient.It requires to hand over a activitiesIds and target casefolderId. Other query parameters are free to choose. E.g.<br><pre>/2/casefolder/:copyActivitiesToCaseFolder <br>POST { activityIds:["5dfd3210b832a21249999234", "5dfd3210b832a21249999432"], caseFolderId:"5afd4c40b83294c249999999" }</pre></li></ul>
+  get:
+    is: [
+        sortable: { fieldsList: 'patientId, type, additionalType, caseNumber, identity' },
+        pageable
+      ]
+    queryParameters:
+      patientId:
+        type: "string"
+      type:
+        type: "string"
+      additionalType:
+        type: "string"
+      caseNumber:
+        type: "string"
+      identity:
+        type: "string"
+
+  /{_id}:
+    type:
+      collection-item:
+        exampleItem: !include casefolder-sample.json
+/2/communication:
+  type:
+    collection:
+      exampleCollection: !include communication-sample.json
+  description: Send Email via /rest/2
+  get:
+    is: [
+        sortable: { fieldsList: '' },
+        pageable
+      ]
+    queryParameters:
+
+  /{_id}:
+    type:
+      collection-item:
+        exampleItem: !include communication-sample.json
+/2/company:
+  type:
+    collection:
+      exampleCollection: !include company-sample.json
+  get:
+    is: [
+        sortable: { fieldsList: 'cotype, deletedName, activeState' },
+        pageable
+      ]
+    queryParameters:
+      cotype:
+        type: "string"
+      deletedName:
+        type: "string"
+      activeState:
+        type: "boolean"
+
+  /{_id}:
+    type:
+      collection-item:
+        exampleItem: !include company-sample.json
+/2/configuration:
+  type:
+    collection:
+      exampleCollection: !include configuration-sample.json
+  description: Datasafe configuration. For v.2. we only allow get
+  get:
+    is: [
+        sortable: { fieldsList: '' },
+        pageable
+      ]
+    queryParameters:
+
+  /{_id}:
+    type:
+      collection-item:
+        exampleItem: !include configuration-sample.json
+/2/contract:
+  type:
+    collection:
+      exampleCollection: !include contract-sample.json
+  description: Collection of available contracts via REST /2. <br><br>The contract is needed for any sort of invoicing. The contract type provided specifies which insurance status of the patient is used    SCHEIN - PUBLIC |   PKVSCHEIN - PRIVATE |   SZSCHEIN - SELFPAYER |   BGSCHEIN - BG     Note -- The SZSCHEIN psuedo-activity type for contracts. When this type is used, a SELFPAYER casefolder is added, although the contract is of type PKVSCHEIN. <br><br>The endpoint exposes special POST methods <ul><li>Get all activities linked to a specific contract. It requires to hand over a patientId. Other query parameters are free to choose. E.g.<br><pre>/2/contract/:getLinkedActivities <br>POST { patientId:"5dfd3210b832a21249999234", _id:"5afd4c40b83294c249999999" }</pre></li></ul>
+  get:
+    is: [
+        sortable: { fieldsList: 'actType, status, activityId, subType, timestamp, patientId, locationId, mirrorCaseFolderType, partnerInfo, formId, formVersion, caseFolderId, patientName, apkState, invoiceLogId, invoiceLogType, caseNumber, checkProcessId' },
+        pageable
+      ]
+    queryParameters:
+      actType:
+        type: "string"
+      status:
+        type: "string"
+      activityId:
+        type: "string"
+      subType:
+        type: "string"
+      timestamp:
+        type: "date"
+      patientId:
+        type: "string"
+      locationId:
+        type: "string"
+      mirrorCaseFolderType:
+        type: "string"
+      partnerInfo:
+        type: "string"
+      formId:
+        type: "string"
+      formVersion:
+        type: "string"
+      caseFolderId:
+        type: "string"
+      patientName:
+        type: "string"
+      apkState:
+        type: "string"
+      invoiceLogId:
+        type: "string"
+      invoiceLogType:
+        type: "string"
+      caseNumber:
+        type: "string"
+      checkProcessId:
+        type: "string"
+
+  /{_id}:
+    type:
+      collection-item:
+        exampleItem: !include contract-sample.json
+/2/diagnosis:
+  type:
+    collection:
+      exampleCollection: !include diagnosis-sample.json
+  description: Collection of available diagnoses via REST /2. <br><br>The endpoint exposes special POST methods <ul><li>Get all diagnoses linked to a specific contract. It requires to hand over a patientId. Other query parameters are free to choose. E.g.<br><pre>/2/diagnosis/:getActivitiesLinkedToContract <br>POST { patientId:"5dfd3210b832a21249999234", _id:"5afd4c40b83294c249999999" }</pre></li></ul>
+  get:
+    is: [
+        sortable: { fieldsList: 'status, subType, timestamp, patientId, locationId, mirrorCaseFolderType, partnerInfo, formId, formVersion, caseFolderId, patientName, apkState, code' },
+        pageable
+      ]
+    queryParameters:
+      status:
+        type: "string"
+      subType:
+        type: "string"
+      timestamp:
+        type: "date"
+      patientId:
+        type: "string"
+      locationId:
+        type: "string"
+      mirrorCaseFolderType:
+        type: "string"
+      partnerInfo:
+        type: "string"
+      formId:
+        type: "string"
+      formVersion:
+        type: "string"
+      caseFolderId:
+        type: "string"
+      patientName:
+        type: "string"
+      apkState:
+        type: "string"
+      code:
+        type: "string"
+
+  /{_id}:
+    type:
+      collection-item:
+        exampleItem: !include diagnosis-sample.json
+/2/dispatchrequest:
+  type:
+    collection:
+      exampleCollection: !include dispatchrequest-sample.json
+  description: The dispatcher request sends a limited collection of activities to the dispatcher for further routing.The allowed types are listed in the JSON Schema definition. This API has no effect on data safes, or MVPRC servers.
+  get:
+    is: [
+        sortable: { fieldsList: 'bsnr, lanr' },
+        pageable
+      ]
+    queryParameters:
+      bsnr:
+        type: "string"
+      lanr:
+        type: "string"
+
+  /{_id}:
+    type:
+      collection-item:
+        exampleItem: !include dispatchrequest-sample.json
+    /dispatchActivities/{_id}:
+      type:
+        subdocument-collection-item:
+          parentName: "dispatchrequest"
+          exampleSub: !include dispatchActivities-sample.json
+    /activities/{_id}:
+      type:
+        subdocument-collection-item:
+          parentName: "dispatchrequest"
+          exampleSub: !include activities-sample.json
+/2/document:
+  type:
+    collection:
+      exampleCollection: !include document-sample.json
+  description: Provides access to the documents collection.
+  get:
+    is: [
+        sortable: { fieldsList: 'patientId, activityId, mediaId' },
+        pageable
+      ]
+    queryParameters:
+      patientId:
+        type: "string"
+      activityId:
+        type: "string"
+      mediaId:
+        type: "string"
+
+  /{_id}:
+    type:
+      collection-item:
+        exampleItem: !include document-sample.json
+/2/ingredientplan:
+  type:
+    collection:
+      exampleCollection: !include ingredientplan-sample.json
+  description: Create Ingredient Plan with some med data items
+  get:
+    is: [
+        sortable: { fieldsList: 'subType, timestamp, patientId, locationId, mirrorCaseFolderType, partnerInfo, status, formId, formVersion, caseFolderId, patientName, apkState' },
+        pageable
+      ]
+    queryParameters:
+      subType:
+        type: "string"
+      timestamp:
+        type: "date"
+      patientId:
+        type: "string"
+      locationId:
+        type: "string"
+      mirrorCaseFolderType:
+        type: "string"
+      partnerInfo:
+        type: "string"
+      status:
+        type: "string"
+      formId:
+        type: "string"
+      formVersion:
+        type: "string"
+      caseFolderId:
+        type: "string"
+      patientName:
+        type: "string"
+      apkState:
+        type: "string"
+
+  /{_id}:
+    type:
+      collection-item:
+        exampleItem: !include ingredientplan-sample.json
+/2/invoice:
+  type:
+    collection:
+      exampleCollection: !include invoice-sample.json
+  description: Returns all requested invoice activity types. When an invoice is posted into the system using this method in v.4.0, additional manual intervention is still required to create a PDF for the invoice and get an invoice number from the system.
+  get:
+    is: [
+        sortable: { fieldsList: 'status, subType, timestamp, patientId, locationId, mirrorCaseFolderType, partnerInfo, formId, formVersion, caseFolderId, patientName, apkState, invoiceDate, invoiceBilledDate' },
+        pageable
+      ]
+    queryParameters:
+      status:
+        type: "string"
+      subType:
+        type: "string"
+      timestamp:
+        type: "date"
+      patientId:
+        type: "string"
+      locationId:
+        type: "string"
+      mirrorCaseFolderType:
+        type: "string"
+      partnerInfo:
+        type: "string"
+      formId:
+        type: "string"
+      formVersion:
+        type: "string"
+      caseFolderId:
+        type: "string"
+      patientName:
+        type: "string"
+      apkState:
+        type: "string"
+      invoiceDate:
+        type: "date"
+      invoiceBilledDate:
+        type: "date"
+
+  /{_id}:
+    type:
+      collection-item:
+        exampleItem: !include invoice-sample.json
+/2/kbvmedicationplan:
+  type:
+    collection:
+      exampleCollection: !include kbvmedicationplan-sample.json
+  description: Medicationplan activity
+  get:
+    is: [
+        sortable: { fieldsList: 'subType, timestamp, patientId, locationId, mirrorCaseFolderType, partnerInfo, status, formId, formVersion, caseFolderId, patientName, apkState' },
+        pageable
+      ]
+    queryParameters:
+      subType:
+        type: "string"
+      timestamp:
+        type: "date"
+      patientId:
+        type: "string"
+      locationId:
+        type: "string"
+      mirrorCaseFolderType:
+        type: "string"
+      partnerInfo:
+        type: "string"
+      status:
+        type: "string"
+      formId:
+        type: "string"
+      formVersion:
+        type: "string"
+      caseFolderId:
+        type: "string"
+      patientName:
+        type: "string"
+      apkState:
+        type: "string"
+
+  /{_id}:
+    type:
+      collection-item:
+        exampleItem: !include kbvmedicationplan-sample.json
+/2/labdata:
+  type:
+    collection:
+      exampleCollection: !include labdata-sample.json
+  description: Collection of available labdata via REST /2. <br><br>The endpoint exposes special POST methods <ul><li>Get all labdata linked to a specific contract. It requires to hand over a patientId. Other query parameters are free to choose. E.g.<br><pre>/2/labdata/:getActivitiesLinkedToContract <br>POST { patientId:"5dfd3210b832a21249999234", _id:"5afd4c40b83294c249999999" }</pre></li></ul>
+  get:
+    is: [
+        sortable: { fieldsList: 'status, subType, timestamp, patientId, locationId, mirrorCaseFolderType, partnerInfo, formId, formVersion, caseFolderId, patientName, apkState, labLogTimestamp' },
+        pageable
+      ]
+    queryParameters:
+      status:
+        type: "string"
+      subType:
+        type: "string"
+      timestamp:
+        type: "date"
+      patientId:
+        type: "string"
+      locationId:
+        type: "string"
+      mirrorCaseFolderType:
+        type: "string"
+      partnerInfo:
+        type: "string"
+      formId:
+        type: "string"
+      formVersion:
+        type: "string"
+      caseFolderId:
+        type: "string"
+      patientName:
+        type: "string"
+      apkState:
+        type: "string"
+      labLogTimestamp:
+        type: "date"
+
+  /{_id}:
+    type:
+      collection-item:
+        exampleItem: !include labdata-sample.json
+/2/location:
+  type:
+    collection:
+      exampleCollection: !include location-sample.json
+  get:
+    is: [
+        sortable: { fieldsList: 'city, receiver, payerType, firstname, lastname, cantonCode' },
+        pageable
+      ]
+    queryParameters:
+      city:
+        type: "string"
+      receiver:
+        type: "string"
+      payerType:
+        type: "string"
+      firstname:
+        type: "string"
+      lastname:
+        type: "string"
+      cantonCode:
+        type: "string"
+
+  /{_id}:
+    type:
+      collection-item:
+        exampleItem: !include location-sample.json
+/2/meddata:
+  type:
+    collection:
+      exampleCollection: !include meddata-sample.json
+  description: Collection of activities of actType <code>MEDDATA</code> (or relatives of these) via REST /2.<br><br>Each activity contains an array of items inside <code>medData</code>, which may be used to store structured content under an item's <code>type</code>. An item provides a separate field for each generic data type, and can store a numeric value in <code>value</code>, a string value in <code>textValue</code>, a boolean value in <code>boolValue</code>, and a date value in <code>dateValue</code>. The content inside these properties is validated against the collection of tags of type <code>MEDDATA</code> (see /2/tag for further details). In case the <code>type</code> is not found among the existing tags or among the list of static tags, the first item of that type pushed to the interface will create a new tag. If this is not wanted the <code>noTagCreation</code> flag may be set on the item (i.e. if the type will likely not be re-used in the future). The new tag will contain a new validation configuration fixing the structure of any item of the same type being posted to the API in the future. I.e. if the new item contains only a <code>textValue</code>, any item of the same type which is pushed in the future needs to contain a <code>textValue</code>, or will get rejected.<br><br>Example 1<br>No <code>MEDDATA</code> tag exists with <code>title:'EXAMPLE1'</code>. The first request made to <code>/2/meddata</code> posts <pre>{actType:"MEDDATA", ..., medData:[{ type:"EXAMPLE1", textValue:"test" }]}</pre>A second requests tries to post <pre>{actType:"MEDDATA", ..., medData:[{ type:"EXAMPLE1", value:123456 }]}</pre>The second request will get rejected as no <code>textValue</code> is set on the item. A query to <code>/2/tag</code> will return a tag which prevents the second request to succeed.<pre>{type:"MEDDATA", title:"EXAMPLE1", ..., medDataItemConfig:[{ dataType:"STRING", validFromIncl:"DATE_OF_FIRST_REQUEST" }]}</pre><br><br>Example 2<br>No <code>MEDDATA</code> tag exists with <code>title:'EXAMPLE2'</code>. The first request made to <code>/2/meddata</code> posts <pre>{actType:"MEDDATA", ..., medData:[{ type:"EXAMPLE2", textValue:"test", noTagCreation:true }]}</pre>A second requests tries to post <pre>{actType:"MEDDATA", ..., medData:[{ type:"EXAMPLE2", value:123456, noTagCreation:true }]}</pre>The second request will succeed as the flag <code>noTagCreation</code> was set on the first item. Hence, a query to <code>/2/tag</code> returns <b>no</b> tag with <code>title:'EXAMPLE2'</code>, and the second request is not validated against any tag.<br><br>Additional functions exposed on this endpoint:<ul><li>Get all activities linked to a specific contract. Required parameters are <code>patientId</code> and <code>_id</code> of the contract. Other query parameters are free to choose. E.g.<br><pre>/2/meddata/:getActivitiesLinkedToContract <br>POST { patientId:"5dfd3210b832a21249999234", _id:"5afd4c40b83294c249999999" }</pre></li></ul>
+  get:
+    is: [
+        sortable: { fieldsList: 'subType, timestamp, patientId, locationId, mirrorCaseFolderType, partnerInfo, status, formId, formVersion, caseFolderId, patientName, apkState, medDataType' },
+        pageable
+      ]
+    queryParameters:
+      subType:
+        type: "string"
+      timestamp:
+        type: "date"
+      patientId:
+        type: "string"
+      locationId:
+        type: "string"
+      mirrorCaseFolderType:
+        type: "string"
+      partnerInfo:
+        type: "string"
+      status:
+        type: "string"
+      formId:
+        type: "string"
+      formVersion:
+        type: "string"
+      caseFolderId:
+        type: "string"
+      patientName:
+        type: "string"
+      apkState:
+        type: "string"
+      medDataType:
+        type: "string"
+        description: "Allows the request to filter by medData type"
+
+  /{_id}:
+    type:
+      collection-item:
+        exampleItem: !include meddata-sample.json
+/2/medication:
+  type:
+    collection:
+      exampleCollection: !include medication-sample.json
+  description: Collection of available medications via REST /2. <br><br>The endpoint exposes special POST methods <ul><li>Get all medications linked to a specific contract. It requires to hand over a patientId. Other query parameters are free to choose. E.g.<br><pre>/2/medication/:getActivitiesLinkedToContract <br>POST { patientId:"5dfd3210b832a21249999234", _id:"5afd4c40b83294c249999999" }</pre></li></ul>
+  get:
+    is: [
+        sortable: { fieldsList: 'subType, timestamp, patientId, locationId, mirrorCaseFolderType, partnerInfo, status, formId, formVersion, caseFolderId, patientName, apkState, restRequestId, code' },
+        pageable
+      ]
+    queryParameters:
+      subType:
+        type: "string"
+      timestamp:
+        type: "date"
+      patientId:
+        type: "string"
+      locationId:
+        type: "string"
+      mirrorCaseFolderType:
+        type: "string"
+      partnerInfo:
+        type: "string"
+      status:
+        type: "string"
+      formId:
+        type: "string"
+      formVersion:
+        type: "string"
+      caseFolderId:
+        type: "string"
+      patientName:
+        type: "string"
+      apkState:
+        type: "string"
+      restRequestId:
+        type: "string"
+      code:
+        type: "string"
+
+  /{_id}:
+    type:
+      collection-item:
+        exampleItem: !include medication-sample.json
+/2/partneridcatalog:
+  type:
+    collection:
+      exampleCollection: !include partneridcatalog-sample.json
+  description: Applications can register themselves in the patient care section. A typical workflow is as follows:<br/>* /2/partneridcatalog is extended with a new unique code<br/>* a license with this code is granted to the datasafe in question<br/>* now users see the section and name in the patient info, and the information flows into the patient.partnerIds array.
+  get:
+    is: [
+        sortable: { fieldsList: 'code, name' },
+        pageable
+      ]
+    queryParameters:
+      code:
+        type: "string"
+      name:
+        type: "string"
+
+  /{_id}:
+    type:
+      collection-item:
+        exampleItem: !include partneridcatalog-sample.json
+/2/patient:
+  type:
+    collection:
+      exampleCollection: !include patient-sample.json
+  description: The patient collection holds all data relevant to a patient, including all insurance data. <br/> The patient endpoint exposes a JSON RPC method for getting a patient from a specific cardreader instead of the DB. e.g. <pre> /2/patient/:readCard?_id=5afd4c40b83294c249999999 </pre> See also <a href='#_2_cardreader'>/2/cardreader</a> 
+  get:
+    is: [
+        sortable: { fieldsList: 'firstname, lastname, activeState, dob, patientNo, socialSecurityNo, amtsSelectiveContractInsuranceId' },
+        pageable
+      ]
+    queryParameters:
+      firstname:
+        type: "string"
+      lastname:
+        type: "string"
+      activeState:
+        type: "boolean"
+      dob:
+        type: "date"
+      patientNo:
+        type: "string"
+      socialSecurityNo:
+        type: "string"
+      amtsSelectiveContractInsuranceId:
+        type: "string"
+
+  /{_id}:
+    type:
+      collection-item:
+        exampleItem: !include patient-sample.json
+    /addresses/{_id}:
+      type:
+        subdocument-collection-item:
+          parentName: "patient"
+          exampleSub: !include addresses-sample.json
+    /communications/{_id}:
+      type:
+        subdocument-collection-item:
+          parentName: "patient"
+          exampleSub: !include communications-sample.json
+    /insuranceStatus/{_id}:
+      type:
+        subdocument-collection-item:
+          parentName: "patient"
+          exampleSub: !include insuranceStatus-sample.json
+    /partnerIds/{_id}:
+      type:
+        subdocument-collection-item:
+          parentName: "patient"
+          exampleSub: !include partnerIds-sample.json
+/2/physician:
+  type:
+    collection:
+      exampleCollection: !include physician-sample.json
+  get:
+    is: [
+        sortable: { fieldsList: 'baseContactType, firstname, lastname, officialNo' },
+        pageable
+      ]
+    queryParameters:
+      baseContactType:
+        type: "string"
+      firstname:
+        type: "string"
+      lastname:
+        type: "string"
+      officialNo:
+        type: "string"
+
+  /{_id}:
+    type:
+      collection-item:
+        exampleItem: !include physician-sample.json
+/2/role:
+  type:
+    collection:
+      exampleCollection: !include role-sample.json
+  description: Roles available for the Praxis. For v.2. we only allow get
+  get:
+    is: [
+        sortable: { fieldsList: '' },
+        pageable
+      ]
+    queryParameters:
+
+  /{_id}:
+    type:
+      collection-item:
+        exampleItem: !include role-sample.json
+/2/rulenode:
+  type:
+    collection:
+      exampleCollection: !include rulenode-sample.json
+  description: The rulenode API allows update rules inside existed rule set.
+  get:
+    is: [
+        sortable: { fieldsList: '' },
+        pageable
+      ]
+    queryParameters:
+
+  /{_id}:
+    type:
+      collection-item:
+        exampleItem: !include rulenode-sample.json
+/2/schedule:
+  type:
+    collection:
+      exampleCollection: !include schedule-sample.json
+  description: Schedules are the individual appointments in the system calendars. Each schedule must refer to a calendar and have a scheduletype.
+  get:
+    is: [
+        sortable: { fieldsList: 'start, end, calendar, patient, scheduled, isReadOnly, resourceBased' },
+        pageable
+      ]
+    queryParameters:
+      start:
+        type: "date"
+      end:
+        type: "date"
+      calendar:
+        type: "string"
+      patient:
+        type: "string"
+      scheduled:
+        type: "number"
+        description: "(-2 = unconfirmed, -1 = no-show; 0 = default; 1 = in progress; 2 = completed / in the past)"
+      isReadOnly:
+        type: "boolean"
+      resourceBased:
+        type: "boolean"
+
+  /{_id}:
+    type:
+      collection-item:
+        exampleItem: !include schedule-sample.json
+/2/scheduletype:
+  type:
+    collection:
+      exampleCollection: !include scheduletype-sample.json
+  description: Schedule types define what types of schedules can be added in the system.
+  get:
+    is: [
+        sortable: { fieldsList: '' },
+        pageable
+      ]
+    queryParameters:
+
+  /{_id}:
+    type:
+      collection-item:
+        exampleItem: !include scheduletype-sample.json
+/2/simple_activity:
+  type:
+    collection:
+      exampleCollection: !include simple_activity-sample.json
+  description: Collection of available simple_activities via REST /2. <br><br>Simple_activities are defined already by the most basic set of parameters. These are, e.g., FINDING, HISTORY, EXTERNAL, COMMUNICATION, CONTACT, ... <br><br>The endpoint exposes special POST methods <ul><li>Get get all activities linked to a specific contract. It requires to hand over a patientId. Other query parameters are free to choose. E.g.<br><pre>/2/simple_activity/:getActivitiesLinkedToContract <br>POST { patientId:"5dfd3210b832a21249999234", _id:"5afd4c40b83294c249999999" }</pre></li><li>Initialize a form for any given activity. It requires to hand over an activityId. The activity needs to exist, and either have a default form defined for the specific activity type, or a formId and optionally a formVersion set. E.g.<br><pre>/2/simple_activity/:initializeFormForActivity <br>POST { _id:"5afd4c40b83294c249123456" }</pre></li></ul>
+  get:
+    is: [
+        sortable: { fieldsList: 'actType, subType, timestamp, patientId, locationId, mirrorCaseFolderType, partnerInfo, status, formId, formVersion, caseFolderId, patientName, apkState' },
+        pageable
+      ]
+    queryParameters:
+      actType:
+        type: "string"
+      subType:
+        type: "string"
+      timestamp:
+        type: "date"
+      patientId:
+        type: "string"
+      locationId:
+        type: "string"
+      mirrorCaseFolderType:
+        type: "string"
+      partnerInfo:
+        type: "string"
+      status:
+        type: "string"
+      formId:
+        type: "string"
+      formVersion:
+        type: "string"
+      caseFolderId:
+        type: "string"
+      patientName:
+        type: "string"
+      apkState:
+        type: "string"
+
+  /{_id}:
+    type:
+      collection-item:
+        exampleItem: !include simple_activity-sample.json
+/2/tag:
+  type:
+    collection:
+      exampleCollection: !include tag-sample.json
+  description: Exposing CRUD methods for tag-objects via REST/2.<br><br>Tags of type <code>MEDDATA</code> play a crucial role for activities of <code>actType:'MEDDATA'</code>. The tag of a given <code>title</code> provides a configuration object for all items stored inside a <code>MEDDATA</code> activity, valid for all items whose <code>type</code> match the tag's <code>title</code>. The configuration is stored inside the tag within the array <code>medDataItemConfig</code>. It contains a list of configurations being valid from a given point in time <code>validFromIncl</code> until the chronological next entry. It is highly recommended to <b>never</b> change an existing configuration, but instead append new configurations with the current date to the list. Any <code>MEDDATA</code> items get validated against the configuration being valid at the specific point in time of the activity. Hence, changing existing configurations may cause old activities to become invalid. To get an overview of the available fields, see the example below. <pre>{
+      "category":["BIOMETRICS"],
+      "sampleNormalValueText":[],
+      "type":"MEDDATA",
+      "title":"Example Item",
+      "unit":"",
+      "medDataItemConfig":[
+        {
+          "dataType":"STRING",
+          "validFromIncl":"2020-11-02T16:08:39.261Z",
+          "validForUnit":null,
+          "isOptional":false,
+          "textValueMinLength":0,
+          "textValueMaxLength":100,
+          "textValueValidationRegExp":"(?:)",
+          "enumValueCollection":[],
+          "valueMinValue":0,
+          "valueMaxValue":21,
+          "valueDigits":2,
+          "valueRoundingMethod":0,
+          "valueLeadingZeros":0,
+          "valueFormulaExpression":"(h * h)",
+          "valueFormulaScope":[{
+              "id":"HEIGHT",
+              "testValue":"60",
+              "scopeName":"h"
+            }],
+          "manualCalculation":true,
+          "dateValueFormat":"DD.MM.YYYY",
+          "dateValueMinDate":null,
+          "dateValueMaxDate":null
+        }
+      ]
+    }</pre><br>Additional functions exposed on this endpoint:<ul><li>Provides a special method <code>:getAllAvailableLabDataTags</code> which gets all the LABDATA tagged items from the DB plus all the items from the labtest API.</li></ul>
+  get:
+    is: [
+        sortable: { fieldsList: 'type, title, unit, testLabel' },
+        pageable
+      ]
+    queryParameters:
+      type:
+        type: "string"
+      title:
+        type: "string"
+      unit:
+        type: "string"
+      testLabel:
+        type: "string"
+
+  /{_id}:
+    type:
+      collection-item:
+        exampleItem: !include tag-sample.json
+/2/task:
+  type:
+    collection:
+      exampleCollection: !include task-sample.json
+  get:
+    is: [
+        sortable: { fieldsList: 'patientId' },
+        pageable
+      ]
+    queryParameters:
+      patientId:
+        type: "string"
+
+  /{_id}:
+    type:
+      collection-item:
+        exampleItem: !include task-sample.json
+/2/tenant:
+  type:
+    collection:
+      exampleCollection: !include tenant-sample.json
+  description: Tenants can only be added in REST by addressing the master tenant.  Regular Datasafes will ignore requests to this endpoint.  MongoDB takes a while to add or remove databases, depending on the amount of data and overall system load. Do not expect changes to be made immediately and allow enough time for background processes to complete.
+  get:
+    is: [
+        sortable: { fieldsList: '' },
+        pageable
+      ]
+    queryParameters:
+
+  /{_id}:
+    type:
+      collection-item:
+        exampleItem: !include tenant-sample.json
+/2/treatment:
+  type:
+    collection:
+      exampleCollection: !include treatment-sample.json
+  description: Treatment type activities vary according to the contract (SCHEIN) they belong to. They can be either Private or Public and this reflects which catalog is used when a code is supplied. Currently the REST interface requires the user to supply the matching <code>catalogShort</code> field. <br><br>When a POST request contains <code>catalogShort</code> and <code>code</code> all other catalog information will be added. For this to work required parameters are <ul><li><code>patientId</code></li><li><code>employeeId</code></li><li><code>locationId</code></li><li><code>caseFolderId</code></li></ul>Currently this works for EBM and GOÄ only.The endpoint exposes special POST methods <ul><li>Get all treatments linked to a specific contract. It requires to hand over a patientId. Other query parameters are free to choose. E.g.<br><pre>/2/diagnosis/:getActivitiesLinkedToContract <br>POST { patientId:"5dfd3210b832a21249999234", _id:"5afd4c40b83294c249999999" }</pre></li></ul>
+  get:
+    is: [
+        sortable: { fieldsList: 'status, subType, timestamp, patientId, locationId, mirrorCaseFolderType, partnerInfo, formId, formVersion, caseFolderId, patientName, apkState, code' },
+        pageable
+      ]
+    queryParameters:
+      status:
+        type: "string"
+      subType:
+        type: "string"
+      timestamp:
+        type: "date"
+      patientId:
+        type: "string"
+      locationId:
+        type: "string"
+      mirrorCaseFolderType:
+        type: "string"
+      partnerInfo:
+        type: "string"
+      formId:
+        type: "string"
+      formVersion:
+        type: "string"
+      caseFolderId:
+        type: "string"
+      patientName:
+        type: "string"
+      apkState:
+        type: "string"
+      code:
+        type: "string"
+
+  /{_id}:
+    type:
+      collection-item:
+        exampleItem: !include treatment-sample.json
+/2/user:
+  type:
+    collection:
+      exampleCollection: !include user-sample.json
+  description: The user API allows one to manipulate employees, including all functions on the Employee Settings page. Use the username field to set the login username, set groups for access rights, as well as any other information for an employee.
+  get:
+    is: [
+        sortable: { fieldsList: 'type, department, employeeNo, talk, gender, firstname, lastname, activeState, officialNo, username, initials' },
+        pageable
+      ]
+    queryParameters:
+      type:
+        type: "string"
+      department:
+        type: "string"
+      employeeNo:
+        type: "string"
+      talk:
+        type: "string"
+      gender:
+        type: "string"
+      firstname:
+        type: "string"
+      lastname:
+        type: "string"
+      activeState:
+        type: "boolean"
+      officialNo:
+        type: "string"
+      username:
+        type: "string"
+      initials:
+        type: "string"
+
+  /{_id}:
+    type:
+      collection-item:
+        exampleItem: !include user-sample.json
+/2/utility:
+  type:
+    collection:
+      exampleCollection: !include utility-sample.json
+  description: Utility type activities represent 'Heilmittelverordnung'. Utilities are ergotherapy, physiotherapy and logopaedia. The REST API currently does not allow access to these catalogs, but the API tries to sanitize and checks validity of transmitted data accoding to the catalog.  The value of 'utIndicationCode' will then be moved to 'comment'. Utility activities are thus saved with status 'VALID', although the entry cannot produce a valid Prescription (Verordnung).  This ensures that the user must open the activity and confirm it and thus remains KBV compliant. This is an exception in the Doc Cirrus inSuite system that caters for REST manipulation of the Utilities.<ul><li>'utIndicationCode' must be a valid entry of the 'Heilmittel' catalog, otherwise post will be rejected. </li><li>Selected utilities (heilmittel) must match catalog entry of 'utIndicationCode' or will be removed and a warning will be produced. </li><li>Primary and secondary ICD-10 codes are checked against ICD-10 catalog and will be removed if not found. A warning will also be produced. </li><li>Furthermore there are checks if an approval for the selected 'utAgreement' type is needed.</li></ul> 
+  get:
+    is: [
+        sortable: { fieldsList: 'catalogShort, subType, timestamp, patientId, locationId, mirrorCaseFolderType, partnerInfo, status, formId, formVersion, caseFolderId, patientName, apkState, code' },
+        pageable
+      ]
+    queryParameters:
+      catalogShort:
+        type: "string"
+      subType:
+        type: "string"
+      timestamp:
+        type: "date"
+      patientId:
+        type: "string"
+      locationId:
+        type: "string"
+      mirrorCaseFolderType:
+        type: "string"
+      partnerInfo:
+        type: "string"
+      status:
+        type: "string"
+      formId:
+        type: "string"
+      formVersion:
+        type: "string"
+      caseFolderId:
+        type: "string"
+      patientName:
+        type: "string"
+      apkState:
+        type: "string"
+      code:
+        type: "string"
+
+  /{_id}:
+    type:
+      collection-item:
+        exampleItem: !include utility-sample.json
+
+/2/drug:
+  type:
+    custom-function:
+      exampleData: !include drug-sample.json
+  description: |
+    Provides READ-ONLY access to medical products if MMI license is available (inScribe).
+
+    **GET** (/2/drug) is only allowed with **query string parameters** and will return a list of drugs i.e. medication products.
+    * Required parameter:
+        * `catalogShort` e.g. ?catalogShort=MMI
+    * Filter parameters, used to filter the results according to product name (brand), molecule name (generic), ICD10 code, etc. Click on the requests bellow for more information.
+    * Flag parameters, used to include extra data in the response:
+        * `fetchProductInfo`
+        * `fetchPackageDetails`
+        * `originalResult`
+
+    **POST** calls are used to call the path parameters: `:getMoleculesByName`, `:getATCCatalogEntries` and `:getShortCodeMap`.
+    The **query parameters** of these POST calls are to be **included inside the body**.
+  get:
+    description: |
+        Returns a list of drugs i.e. medication products.
+    queryParameters:
+      catalogShort:
+        description: "Short-code for the medication catalog type (for Germany: MMI)"
+        type: "string"
+        required: true
+      atc:
+        description: ATC code (to filter)
+        type: "string"
+      productName:
+        description: Product or brand name (to filter)
+        type: "string"
+      pzn:
+        description: PZN code (to filter)
+        type: "string"
+      moleculeName:
+        description: Molecule or generic name (to filter)
+        type: "string"
+      fetchProductInfo:
+        description: |
+            Add complete product information to response (slower response).
+            When set to *true* this will add a list of product information text blocks in HTML under the `documents` field.
+            If `originalResult` is set to *true* the original MMI response is also added.
+        type: "boolean"
+      fetchPackageDetails:
+        description: |
+            Add package details such as price history to response (slower response).
+            When set to *true* this will add the price history to the `packageList` response field.
+        type: "boolean"
+      icd10:
+        description: ICD10 code (to filter)
+        type: "string"
+      maxResult:
+        description: Limit the reponse length (to filter)
+        type: "string"
+      originalResult:
+        description: |
+            Add original MMI reponse to response (larger reponse).
+            This will include ALL the original responses from MMI (including product information and package information if either `fetchProductInfo` or `fetchPackageDetails` are set to *true*)
+        type: "boolean"
+
+  /:getMoleculesByName:
+    description: Provides a list of molecules with name and ID.
+    post:
+      description: |
+            Provides a list of molecules with name and ID.
+      securedBy: [basic, oauth2]
+      queryParameters:
+          name:
+            description: Molecule name
+            type: "string"
+          maxResult:
+            type: "number"
+      body:
+        application/json:
+          schema: !include drug-molecule-call-sample.json
+      responses:
+        200:
+          body:
+            application/json:
+              example: !include drug-molecule-ids-sample.json
+
+  /:getATCCatalogEntries:
+    description: Provides the ATC tree for a given ATC code.
+    post:
+      description: |
+            Provides the ATC tree for a given ATC code. The structure has two variations:
+            * **Tree**: when using an anatomical level ATC code with 2 or more children.
+            * **List**: when using any other ATC level or with an anatomical level ATC code with less than 2 children.
+      securedBy: [basic, oauth2]
+      queryParameters:
+          atc:
+            description: "ATC code: if using an anatomical level code (e.g. 'J'), with 2 or more children, the response will have a tree structure"
+            type: "string"
+          parents:
+            description: Number of parents for ATC code to include
+            type: "string"
+          children:
+            description: Number of children for ATC code to include
+            type: "string"
+      body:
+        application/json:
+          schema: !include drug-atc-call-sample.json
+      responses:
+        200:
+          body:
+            application/json:
+              example: !include drug-atc-tree-sample.json
+
+  /:getShortCodeMap:
+    description: Returns the short-code dictionary for ATC and ICD10 code levels, drug information types and molecule types.
+    post:
+      description: |
+            Returns the short-code dictionary for ATC and IDC10 code levels, drug information types and molecule types.
+      securedBy: [basic, oauth2]
+      body:
+        application/json:
+          schema: |
+              {}
+      responses:
+        200:
+          body:
+            application/json:
+              example: !include drug-shortcode-map-sample.json
+
+/2/cardreader:
+  type:
+    custom-function:
+      exampleData: !include cardreader-sample.json
+  description: The card reader delivers you a list of all registered cardreaders' details, including, _id, name, and type. Specifying a name query parameter, with a valid name will trigger the cardread process at the cardreader. Please refer to the sample responses. To query, the caller must use the RPC syntax call to the patient API, passing the _id of the cardreader e.g. <pre> /2/cardreader  //  list all cardreaders, one of which has _id 5afd4c40b83294c249999999</pre>Then call the patient API to get the patient info from a card:<pre> /2/patient/:readCard?_id=5afd4c40b83294c249999999 </pre> See also <a href='#_2_patient'>/2/patient</a>
+  get:
+    securedBy: [basic, oauth2]
+    is: [
+        sortable: { fieldsList: 'name' },
+        pageable
+      ]
+    queryParameters:
+
+      name:
+        type: "string"
+
+/2/formportal:
+  description: Formportal. For v.2. exposing /:getActivePortalList and /:sendUrl methods.
+
+  /:getActivePortalList:
+    post:
+      description: Returns array of active form portals of user tenant.
+      securedBy: [basic, oauth2]
+      responses:
+          200:
+            body:
+              application/json:
+                example: !include formportal-sample.json
+
+  /:sendUrl:
+    post:
+      description: Checks restricted portal by portal ID, if found it updates activeUrl and emits socket event for client.
+      securedBy: [basic, oauth2]
+      queryParameters:
+        portalId:
+          type: "string"
+        activeUrl:
+          type: "string"
+        force:
+          type: "boolean"
+
+/2/printer:
+  type:
+    custom-function:
+      exampleData: !include printer-sample.json
+  description: The printer call delivers you a list of all registered printers in the CUPS system. You can get further information about each printer via its ipp URI, e.g. ipp://datasafe-ip-address:631/printers/printer-name-attribute. There are no parameters available for this endpoint.
+  get:
+    securedBy: [basic, oauth2]
+
+/2/complexprescription:
+  description: Create Prescriptions and Medications using one single complexprescription REST /2 POST.
+  post:
+    description: |
+      Add a new complexprescription.
+    securedBy: [basic, oauth2]
+    body:
+      application/json:
+        schema: !include complexprescription-sample.json
+    responses:
+      200:
+        body:
+          application/json:
+            example: |
+              {
+                "meta": {
+                  "errors": [],
+                  "warnings": [],
+                  "model": "complexprescription",
+                  "query": null,
+                  "itemsPerPage": null,
+                  "totalItems": 1,
+                  "page": null,
+                  "replyCode": 200
+                },
+                "data": :[
+                  {"requestId":"5c3dc019fb615730f859ec4c"}
+                ]
+              }
+
+/2/catalog:
+  description: |
+    Provides READ-ONLY access to ICD10 catalog.
+
+    **POST** calls are used to call the path parameter: `:getIcd10Catalog`.
+    The **query parameters** of these POST calls are to be **included inside the body**.
+  /:getIcd10Catalog:
+    description: Provides a list of ICD10 catalogs.
+    post:
+      description: |
+        Provides a list of ICD10 catalogs.
+        Matching results for the provided title in properties:
+        * **seq**
+        * **title**
+        * **infos**
+      securedBy: [basic, oauth2]
+      queryParameters:
+          title:
+            type: "string"
+      body:
+        application/json:
+          schema: !include icd10catalog-call-sample.json
+      responses:
+        200:
+          body:
+            application/json:
+              example: !include icd10catalog-sample.json
+
+/3/inphone:
+  type:
+    custom-function:
+      exampleData: !include inphone-sample.json
+  description: The /3/inphone endpoint is a facility for the integration of VoIP / PBX systems. There is no authentication. It must be called with the RPC extension "inboundphonecall", as <pre>/3/inphone/:inboundphonecall?caller=0049306352676&callee=620&extension=true</pre>
+               With the "extension" flag, you can prevent the interpretation of the callee number. In inSuite 3.9 this will match against the extension (Nebenstelle/Durchwahl) type of communication.
+  get:
+    is: [
+        sortable: { fieldsList: 'name' },
+        pageable
+      ]
+    queryParameters:
+      caller:
+        type: "string"
+        required: "true"
+      callee:
+        type: "string"
+        required: "true"
+      callername:
+        type: "string"
+      calleename:
+        type: "string"
+      extension:
+        type: "boolean"
+
+/3/statuscheck:
+  type:
+    custom-function:
+      exampleData: !include statuscheck-sample.json
+  description: The /3/statuscheck endpoint is a facility for remote monitoring of the datasafe in a simple manner (without auth). It returns stats like mem usage, load, etc.
+  get:
+    is: [
+      ]
+    queryParameters:

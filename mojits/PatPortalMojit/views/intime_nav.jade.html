@@ -1,0 +1,38 @@
+div(id=mojit_view_id)
+  div(style="background-color: #ffffff; width: 100%; height: 100%")#divFullScreenParent
+    block#mainIntimeNavigation
+      .navbar.navbar-default.margin-bottom-small(role="navigation")
+        .container.container-fullscreen
+          .navbar-header
+            button(type="button", title="Menü", data-toggle="collapse", data-target=".navbar-ex1-collapse").navbar-toggle
+              span.sr-only
+              span.icon-bar
+              span.icon-bar
+              span.icon-bar
+            //a.navbar-brand(href="", data-bind="click: openInNewTab") Ihr Gesundheitsportal
+            a.navbar-brand(data-bind="attr:{ href: '/intime#/waitingtime', title:'Aktuelle Wartezeit ohne Termin'}") Ihr Gesundheitsportal
+            a.pull-right.navbar-brand(data-toggle="tooltip", title="Vollbildmodus", href="", data-bind="click: openInNewTab")
+              span &nbsp;
+                img( src="/static/dcbaseapp/assets/img/doccirrus/fullscreen20x20.png" )
+              span &nbsp;
+          .navbar-collapse.collapse.navbar-ex1-collapse
+            ul.nav.navbar-nav( data-bind="foreach: elements", style="border-bottom: none;" )
+              li(data-bind="css: { active: isActive, disabled: isDisabled, hasImg: imgSrc }")
+                a(data-bind="attr:{ href: url }, visible: !isHidden() && !isDisabled(), click: $parent.collapseNavigation")
+                 span( data-bind="text: title" )
+                 span( data-bind="if: imgSrc")
+                  img( data-bind="attr: { src: imgSrc }", role='button' )
+    .container.container-fullscreen
+      #upperDiv
+        block content
+
+    block footer
+      nav.navbar.navbar-default.navbar-fixed-bottom(role="navigation")
+        #footer
+          .container.container-fullscreen
+            .col-xs-8
+              em powered by
+              //#practiceBrand
+            .col-xs-4
+              a(href="http://doc-cirrus.com",target="_blank").pull-right
+                #logoContainer

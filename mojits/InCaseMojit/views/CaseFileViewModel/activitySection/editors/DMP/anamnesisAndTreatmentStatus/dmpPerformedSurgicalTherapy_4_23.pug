@@ -1,0 +1,8 @@
+div.form-group(data-bind="visible: dmpPerformedSurgicalTherapy_4_23Visible()")
+    div.col-xs-2
+        strong(data-bind="text: dmpPerformedSurgicalTherapy_4_23.i18n")
+        span(data-bind="dmpField: { field: dmpPerformedSurgicalTherapy_4_23 }")
+    div.col-xs-10(data-bind="foreach: dmpPerformedSurgicalTherapy_4_23.list, hasFeedback: { field: dmpPerformedSurgicalTherapy_4_23, toggle: dmpPerformedSurgicalTherapy_4_23.hasError, messages: dmpPerformedSurgicalTherapy_4_23.validationMessages }")
+        label.checkbox-inline
+            span(data-bind="text: i18n")
+            input(type="checkbox", name="dmpPerformedSurgicalTherapy_4_23", data-bind="value: val, checked: $parent.dmpPerformedSurgicalTherapy_4_23, readOnly: $parent.dmpPerformedSurgicalTherapy_4_23.readOnly, attr: { name: $element.name + '-' + val }")

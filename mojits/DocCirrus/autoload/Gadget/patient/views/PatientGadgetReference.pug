@@ -1,0 +1,6 @@
+div.PatientGadgetReference
+  h4.PatientGadget-headline
+    a(data-bind="text: patientGadgetReferenceI18n")
+  div(data-bind="visible: referenceInfoVisible")
+    ul(data-bind="foreach: referenceInfo").list-unstyled
+      li(data-bind="html: $data")

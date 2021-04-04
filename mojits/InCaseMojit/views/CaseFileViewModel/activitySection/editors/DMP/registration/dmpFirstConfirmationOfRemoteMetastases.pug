@@ -1,0 +1,9 @@
+div(data-bind="visible: dmpFirstConfirmationOfRemoteMetastasesVisible()")
+    div(data-bind='hasFeedback: { field: dmpFirstConfirmationOfRemoteMetastases, toggle: dmpFirstConfirmationOfRemoteMetastases.hasError, messages: dmpFirstConfirmationOfRemoteMetastases.validationMessages }')
+        div.col-xs-6
+            div.form-group
+                label.control-label
+                    span(data-bind="text: dmpFirstConfirmationOfRemoteMetastases.i18n")
+                    span(data-bind="dmpField: { field: dmpFirstConfirmationOfRemoteMetastases }")
+        div.col-xs-5.date-picker.input-group
+            input.form-control(name="dmpFirstConfirmationOfRemoteMetastases", data-bind="datetimepicker: { value: dmpFirstConfirmationOfRemoteMetastases, options: { parseInputDate: parseInputDateBK } }, readOnly: dmpFirstConfirmationOfRemoteMetastases.readOnly")

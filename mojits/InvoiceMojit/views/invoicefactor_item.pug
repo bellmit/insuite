@@ -1,0 +1,28 @@
+h4(data-bind="text: groupEBMI18n")
+div.table-responsive
+  table.table.table-bordered
+    colgroup
+      col(width="50%")
+      col(width="25%")
+      col(width="25%")
+      col(width="32")
+    thead
+      tr
+        th(data-bind="text: pointValueI18n")
+        th(data-bind="text: yearLabelI18n")
+        th(data-bind="text: quarterLabelI18n")
+    tbody(data-bind="foreach: invoicefactors")
+      tr
+        td
+          div(data-bind="hasFeedback: { field: factor, toggle: factor.hasError, messages: factor.validationMessages }")
+            input.form-control(name='factor', data-bind='value: factor, valueUpdate: "afterkeydown", attr: {placeholder: $parent.factorPlaceholderI18n}', disabled="true")
+        td
+          div(data-bind="hasFeedback: { field: year, toggle: year.hasError, messages: year.validationMessages }")
+            input.form-control(name='year', data-bind='value: year, valueUpdate: "afterkeydown", event: { change: $parent._sortInvoiceFactors }', disabled="true")
+        td
+          div(data-bind="hasFeedback: { field: quarter, toggle: quarter.hasError, messages: quarter.validationMessages }")
+            select.form-control(name='quarter', data-bind='value: quarter, event: { change: $parent._sortInvoiceFactors }', disabled="true")
+              option 1
+              option 2
+              option 3
+              option 4

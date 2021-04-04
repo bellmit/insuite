@@ -1,0 +1,111 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "http://www.doc-cirrus.com/in-suite/eraser-tasks",
+  "type": "array",
+  "title": "Eraser task",
+  "description": "Task to clean up inSuite data.",
+  "definitions": {
+    "meta": {
+      "type": "object",
+      "title": "Eraser task meta",
+      "description": "Metadata of a eraser task.",
+      "required": [
+        "name"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "title": "Task name",
+          "description": "A short name of the task."
+        },
+        "description": {
+          "type": "string",
+          "title": "Task description",
+          "description": "A brief description of the task.",
+          "default": ""
+        },
+        "type": {
+          "type": "string",
+          "title": "Task type",
+          "description": "Type of a eraser task.",
+          "default": "mongo/collection"
+        }
+      }
+    },
+    "mongo": {
+      "collection": {
+        "type": "object",
+        "allOf": [{ "$ref": "#/definitions/meta" }],
+        "title": "MongoDB collection eraser",
+        "description": "Erase a MongoDB collection.",
+        "examples": [
+          {
+            "name": "Foos",
+            "description": "Foos need to be deleted after 3 months in line with bar.",
+            "model": "foo",
+            "expiration": {
+              "field": "baz.qux",
+              "time": "P3M"
+            },
+            "selection": {
+              "bar": {
+                "$eq": "baz"
+              }
+            }
+          }
+        ],
+        "required": [
+          "model",
+          "expiration"
+        ],
+        "properties": {
+          "model": {
+            "type": "string",
+            "title": "Model name",
+            "description": "Name of the MongoDB model to erase."
+          },
+          "expiration": {
+            "type": "object",
+            "title": "Expiration definition",
+            "description": "Defines the expiration of an MongoDB document within the given collection.",
+            "required": [
+              "time"
+            ],
+            "properties": {
+              "field": {
+                "type": "string",
+                "title": "Expiration field",
+                "description": "Field within the MongoDB document which defines its lifetime. If not set the timestamp of the object identifier will be used."
+              },
+              "time": {
+                "type": "string",
+                "title": "Expiration time",
+                "description": "Duration in ISO8601 after which an document has expired.",
+                "examples": [
+                  "P3M"
+                ]
+              }
+            }
+          },
+          "selection": {
+            "type": "object",
+            "title": "Deletion criteria",
+            "description": "Additional MongoDB deletion criteria to narrow down further the affected documents.",
+            "examples": [
+              {
+                "bar": {
+                  "$eq": "baz"
+                }
+              }
+            ]
+          }
+        }
+      }
+    }
+  },
+  "items": {
+    "anyOf": [
+      { "$ref": "#/definitions/mongo/collection" }
+    ]
+  }
+}

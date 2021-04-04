@@ -1,0 +1,24 @@
+[Unit]
+Description=Doc Cirrus inSuite
+After=syslog.target mongod.service redis.service
+
+[Service]
+Type=simple
+User=puc
+Group=puc
+WorkingDirectory=/var/lib/puc
+EnvironmentFile=-/etc/environment
+EnvironmentFile=-/etc/sysconfig/puc
+ExecStart=/var/lib/puc/runtime/bin/node --experimental-modules --experimental-specifier-resolution=node $NODEJS_OPTIONS /var/lib/puc/server.js start 8000 --context environment:production
+Restart=always
+RestartSec=5
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=puc
+UMask=0027
+PIDFile=/var/run/puc/puc.pid
+LimitNOFILE=8000
+LimitNPROC=8000
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,58 @@
+div#tab_import
+  //ko if: isSwiss
+  h3(data-bind="text: importHeadlineHl7I18n")
+  form#hl7Form(enctype="multipart/form-data")
+    input(type="hidden", name="ignoreHashExists", value="ignoreHashExists", data-bind="enable: ignoreHashExistsEnabled")
+    input(type="hidden", name="respondimmediately", value="true")
+    input#hl7.btn.btn-default(type="file", name="ldtFile", style="display: inline-block;", data-bind="enable: fileEnabled, event: { change: fileChange }")
+    span &nbsp;
+    input.btn.btn-primary#uploadHL7(type="button", style="display: inline-block;", data-bind="click: uploadHL7, enable: uploadHL7Enabled, attr: {value: importSubmitTextI18n}")
+    div.checkbox
+      label
+        span(data-bind="text: hl7CreateTreatmentsI18n")
+        input(type="checkbox", name="hl7CreateTreatments", data-bind="checked: hl7CreateTreatments")
+  // /ko
+  div.clearfix
+  h3(data-bind="text: importHeadlineI18n")
+  form#ldtForm(enctype="multipart/form-data")
+    input(type="hidden", name="ignoreHashExists", value="ignoreHashExists", data-bind="enable: ignoreHashExistsEnabled")
+    input(type="hidden", name="respondimmediately", value="true")
+    input.btn.btn-default(type="file", name="ldtFile", style="display: inline-block;", data-bind="enable: fileEnabled, event: { change: fileChange }")
+    span &nbsp;
+    input.btn.btn-primary#uploadLDT(type="button", style="display: inline-block;", data-bind="click: upload, enable: uploadEnabled, attr: {value: importSubmitTextI18n}")
+    div.checkbox(style="margin-bottom:-5px;")
+      label
+        input(type="checkbox", name="useAddInfoForId", data-bind="checked: useAddInfoForId")
+        div.form-group(style="display: inline-block;")
+          input(name="useAddInfoForIdFK", type="radio", style="width:20px; display: inline-block;", value="8310", data-bind="enable: useAddInfoForId(), checked: useAddInfoForIdFK")
+          strong(style="margin-right:5px;", data-bind="text: recordRequestIdI18n")
+          input(name="useAddInfoForIdFK", type="radio", style="width:20px; display: inline-block;", value="8311", data-bind="enable: useAddInfoForId(), checked: useAddInfoForIdFK")
+          strong(style="margin-right:5px;", data-bind="text: labReqIdI18n")
+          input(name="useAddInfoForIdFK", type="radio", style="width:20px; display: inline-block;", value="8405", data-bind="enable: useAddInfoForId(), checked: useAddInfoForIdFK")
+          strong(style="margin-right:5px;", data-bind="text: patientIdI18n")
+          strong(data-bind="text: useAddInfoForIdI18n")
+      i.dc-info-icon(data-toggle="popover", data-bind="attr: {'data-original-title': useAddInfoForIdPopoverTitle, 'data-content': useAddInfoForIdPopover }", data-html="true", rel="popover", data-placement="auto left", data-trigger="click")
+    div.checkbox
+      label
+        span(data-bind="text: ldtBillingFlagI18n")
+        input(type="checkbox", name="ldtBillingFlag", data-bind="checked: ldtBillingFlag")
+    //ko if: ldtBillingFlag()
+    div.checkbox(style="margin-left:15px;")
+      label
+        span(data-bind="text: ldtDisallowGkvBillingI18n")
+        input(type="checkbox", name="ldtDisallowGkvBilling", data-bind="enable: !ldtAllowGkvBilling(), checked: ldtDisallowGkvBilling")
+    // /ko
+    div.checkbox
+      label
+        span(data-bind="text: ldtAllowGkvBillingI18n")
+        input(type="checkbox", name="ldtAllowGkvBilling", data-bind="enable: !ldtDisallowGkvBilling(), checked: ldtAllowGkvBilling")
+    span.checkbox
+      label.control-label
+        strong(data-bind="text: useDataFromLabrequestIfPresentI18n")
+        input(type="checkbox", name="useDataFromLabrequestIfPresent", data-bind="checked: useDataFromLabrequestIfPresent")
+    div.checkbox
+      label
+        span(data-bind="text: checkFilesWithLdkPmI18n")
+        input(type="checkbox", name="checkFilesWithLdkPm", data-bind="checked: checkFilesWithLdkPm")
+    .alert.alert-warning(role="alert", data-bind="visible: !checkFilesWithLdkPm(), text: i18n.LDK_PM_DISABLED_WARNING ")
+  div#ldtResult(style="white-space: pre;")

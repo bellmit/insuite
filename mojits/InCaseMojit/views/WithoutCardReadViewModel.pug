@@ -1,0 +1,8 @@
+div.WithoutCardReadViewModel
+  h3(data-bind="text: withoutCardReadHeadlineI18n")
+  div.row
+    div.col-xs-12.col-xs-offset-0.col-md-8.col-md-offset-4
+      div.form-group.clearfix
+        .col-sm-6.pull-right
+          input#tab_withoutCardRead-field-locations.form-control(name="locations", type="text",data-bind="select2: select2LocationConfig")
+  div(data-bind="template: withoutCardReadTable.template")

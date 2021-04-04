@@ -1,0 +1,22 @@
+div.row
+  p(data-bind="text: descriptionText")
+
+  div#divUploadedDocs(data-bind="foreach: uploadedFiles")
+    div.row(style="margin-top: 10px")
+      div.col-sm-10
+        p(data-bind="text: filename")
+      div.col-sm-2
+        button.btn(data-bind="click: $parent.deleteAttachmentClick, visible: deleteable, readonly: deleteable")
+          i.fa.fa-trash-o
+  div(style="margin-top: 10px")#divUploadContainer
+    // ko template: { name:'fineViewModel', data: fineViewModel }
+    // /ko
+
+  div.checkbox
+    label.control-label
+      span(data-bind="text: bsnrText")
+      input(type="checkbox", name="keepBsnr", data-bind="checked: keepBsnr")
+  div.checkbox
+    label.control-label
+      span(data-bind="text: flatfeeText")
+      input(type="checkbox", name="flatfee", data-bind="checked: flatfee")

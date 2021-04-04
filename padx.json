@@ -1,0 +1,81 @@
+{
+  "xmlSchemaNamespace": "http://padinfo.de/ns/pad",
+  "xmlSchemaAdl": "http://www.padinfo.de/ns/pad/padx_adl_v2.12.xsd",
+  "xmlSchemaAuf": "http://www.padinfo.de/ns/pad/padx_auf_v2.12.xsd",
+
+  "specVersion": "02.12",
+  "messageType": "ADL",
+  "tempSubdir": "PADX",
+
+  "certSourcePath": "https://webservice.padline.de/zertifikat/v1/?id=",
+  "jarPath": "lib/dc-padnext/dc-padnext.jar",
+
+  "validRZIDs": [
+    "100","101","102","200","201","202","203","204","205","206","207","208","209","210","300","400","500","600","601",
+    "602","603","700","800","801","802","900","901","902","1000","1100","2000","2001","2002","2003","2100","2101","2102",
+    "2103","2104","2105","2106","2107","2108","2109","2110","2140","2150","2200","2300","2301","3000","4000","4020",
+    "4030","4040","4050","4060","4070","4080","4090","4100","4120","4130","4140","4150","4160","4170","4180","4200",
+    "4210","4250","4300","4350","4400","4500","4600","4610","4620","4650","4700","4710","4720","4730","4740","4750",
+    "4760","4770","4780","4790","9999"
+  ],
+  "catalogMap": {
+    "EBM":"EBM",
+    "GOÄ":"GOAE",
+    "GebüH": "GEBUEH",
+    "UVGOÄ":"UVGOAE"
+  },
+  "talkMap": {
+    "MR": "Herr",
+    "MS": "Frau",
+    "MALE": "Herr",
+    "FEMALE": "Frau"
+  },
+  "genderMap": {
+    "MALE": "m",
+    "FEMALE": "w",
+    "UNKNOWN": "u",
+    "UNDEFINED": "u"
+  },
+  "contacttypeMap": {
+    "PHONEPRIV": "privat",
+    "FAXPRIV": "privat",
+    "MOBILEPRIV": "privat",
+    "EMAILPRIV": "privat",
+    "PHONEJOB": "beruflich",
+    "FAXJOB": "beruflich",
+    "MOBILEJOB": "beruflich",
+    "EMAILJOB": "beruflich"
+  },
+  "contactkindMap": {
+    "PHONEPRIV": "telefonnr",
+    "PHONEJOB": "telefonnr",
+    "FAXPRIV": "faxnr",
+    "FAXJOB": "faxnr",
+    "MOBILEPRIV": "mobilnr",
+    "MOBILEJOB": "mobilnr",
+    "EMAILPRIV": "email",
+    "EMAILJOB": "email"
+  },
+  "diagnosisCertMap": {
+    "CONFIRM":"G",
+    "TENTATIVE":"V",
+    "ASYMPTOMATIC":"Z",
+    "EXCLUDE":"A"
+  },
+  "diagnosisSiteMap": {
+    "LEFT":"L",
+    "RIGHT":"R",
+    "BOTH":"B"
+  },
+  "fachbereiche": [
+    "","Anästhesiologie","Anatomie","Arbeitsmedizin","Augenheilkunde","Biochemie","Chirurgie",
+    "Frauenheilkunde und Geburtshilfe","Hals- Nasen- Ohrenheilkunde","Haut- und Geschlechtskrankheiten","Humangenetik",
+    "Hygiene und Umweltmedizin","Innere Medizin und Allgemeinmedizin","Kinder- und Jugendmedizin",
+    "Kinder- und Jugendpsychiatrie und - psychotherapie","Laboratoriumsmedizin",
+    "Mikrobiologie, Virologie und Infektionsepidemiologie","Mund-Kiefer-Gesichtschirurgie","Neurochirurgie",
+    "Neurologie","Nuklearmedizin","Öffentliches Gesundheitswesen","Pathologie","Pharmakologie",
+    "Physikalische und Rehabilitative Medizin","Physiologie","Psychiatrie und Psychotherapie",
+    "Psychosomatische Medizin und Psychotherapie","Radiologie","Rechtsmedizin","Strahlentherapie","Transfusionsmedizin",
+    "Urologie","Zahnärzte"
+  ]
+}

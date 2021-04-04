@@ -1,0 +1,20 @@
+div.PatientGadgetConfigurableTableBase(data-bind="with: table")
+  table.table.table-bordered.table-striped.table-condensed(style="font-size: 11px; margin: 0;")
+    columns(data-bind="foreach: columns")
+      col
+    thead(data-bind="if: columnHeaderVisible")
+      tr(data-bind="foreach: columns")
+        // ko with: tableHeader
+        th(data-bind="text: label, attr: { title: label }")
+        // /ko
+    tbody
+      // ko foreach: { data: items, as: 'item' }
+      tr(data-bind="foreach: { data: $parent.columns, as: 'column' }, click: $parent.onRowClick")
+        // ko with: item[column.key()]()
+        td(data-bind="html: html, attr: { title: title() }")
+        // /ko
+      // /ko
+      // ko if: !items().length
+      tr
+        td.text-center(data-bind="attr: { colspan: columns().length}, text: noDataI18n")
+      // /ko

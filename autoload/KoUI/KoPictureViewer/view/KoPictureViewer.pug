@@ -1,0 +1,22 @@
+div(data-bind="attr: {class: containerClass}", style="height: 100%;")
+  //div.col-xs-12(style="height: 100%;")
+  // ko if: $parent.showCaption
+  h4(data-bind="text: displayedSource() && displayedSource().caption")
+  // /ko
+  div.text-center(data-bind="with: displayedSource", style="height: 100%; align-items: center; justify-content: center; text-align: center; display: flex;")
+    img(style="margin: 0 auto;", src="/static/DocCirrus/assets/images/ajax-loader-menu.gif", data-bind="visible: $parent.isLoading")
+    // ko ifnot: $data.link
+    img(class="img-responsive", style="margin: 0 auto; max-height: 100%;", data-bind="event: { load: $parent.onImageLoad.bind($parent) }, attr: { src: src }, visible: !$parent.isLoading(), style: {'border-radius': $parent.borderRadius}")
+    // /ko
+    // ko if: $data.link
+    a(data-bind="attr: {href: $data.link}" target="_blank")
+      img(class="img-responsive", style="margin: 0 auto; max-height: 100%;", data-bind="event: { load: $parent.onImageLoad.bind($parent) }, attr: { src: src }, visible: !$parent.isLoading(), style: {'border-radius': $parent.borderRadius}")
+    // /ko
+  // ko if: isMultiPicturePreview
+  a.dc-carousel-control.right(href="#", data-bind="click: nextPicture, visible: showNextPictureButton")
+    span(data-bind="attr: {class: controlSizeClass}")
+      span.glyphicon.glyphicon-chevron-right
+  a.dc-carousel-control.left(href="#", data-bind="click: lastPicture, visible: showLastPictureButton")
+    span(data-bind="attr: {class: controlSizeClass}")
+      span.glyphicon.glyphicon-chevron-left
+  // /ko

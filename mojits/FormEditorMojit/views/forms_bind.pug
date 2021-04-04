@@ -1,0 +1,22 @@
+div(style="border: 1px; border-color: black;")#divFormsComposeFrame
+            div(style='background-color:#555555;padding:10px;')#divFormButtons
+                span#spanFillButtons
+                    button.btn(type="button")#btnPDF
+                        i.fa.fa-print
+                        | &nbsp;
+                        span(data-bind="text: btnExportPDFI18n")
+                    span &nbsp;
+
+                    button.btn(type="button", style="display:none;")#btnTest
+                        i.fa.fa-bolt
+                        | &nbsp;
+                        span(data-bind="text: btnTestI18n")
+                    span &nbsp;
+
+                span#spanContextButtons
+
+                span(style="float:right;color:#aaaaaa;")
+                    span(style="position: relative; top: 5px;")#spanStatus
+                    img(src="/static/FormEditorMojit/assets/images/throbber.gif",style="float:right;position:relative;top:5px;")#imgThrobber
+
+            div#divFormsCompose

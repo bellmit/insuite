@@ -1,0 +1,18 @@
+div(id=mojit_view_id)
+  block navigation
+    .navbar.navbar-default.margin-bottom-small(role="navigation")
+      .container.container-fullscreen#nav
+        .navbar-header
+          span.navbar-brand(data-bind="text: patientPortalTitleI18n")
+  .container.container-fullscreen
+    div#container
+      p(data-bind="text: text")
+block footer
+  nav.navbar.navbar-default.navbar-fixed-bottom(role="navigation")
+    #footer
+      .container.container-fullscreen
+        .col-xs-8
+          #practiceBrand
+        .col-xs-4
+          a(href="http://doc-cirrus.com",target="_blank").pull-right
+            #logoContainer

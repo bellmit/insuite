@@ -1,0 +1,133 @@
+mixin FilterDropdown(textBinding)
+  h4(style="margin-top: 0;", data-bind="text: " + textBinding)
+  div.form-group
+    input.form-control(name="filterResult", type="hidden", data-bind="select2: select2filterResult, valueUpdate: 'afterkeydown'")
+
+div.PatientGadgetConfigurableTableBaseConfigDialog
+  // ko if: isLastDLDiagnosis
+  div.form-group
+    div.checkbox-inline
+      span(data-bind="text: onlyLastDLDiagnosisI18n")
+      input(type='checkbox', data-bind='checked: onlyLastDLDiagnosis')
+  // /ko
+  // ko ifnot: onlyLastDLDiagnosis
+  // ko ifnot: isLatestVaccination
+  h4(style="margin-top: 0;", data-bind="text: labelLimitI18n")
+  div.form-group
+    input.form-control(data-bind="textInput: limit")
+  // /ko
+  // ko if: isLatestLabdata
+  +FilterDropdown("labelLabtestFilterResultI18n")
+  // /ko
+  // ko if: isLatestMeddata
+  +FilterDropdown("labelMedDataFilterResultI18n")
+  // /ko
+  // ko if: isInvoice
+  .row
+    .col-xs-7
+      .row.form-inline
+        .col-xs-6
+          div.checkbox-inline
+            span(data-bind="text: invoiceI18n")
+            input(type='checkbox', data-bind='checked: invoice')
+        .col-xs-6
+          div.checkbox-inline
+            span(data-bind="text: warning2I18n")
+            input(type='checkbox', data-bind='checked: warning2')
+      .row.form-inline
+        .col-xs-6
+          div.checkbox-inline
+            span(data-bind="text: reminderI18n")
+            input(type='checkbox', data-bind='checked: reminder')
+        .col-xs-6
+          div.checkbox-inline
+            span(data-bind="text: creditNoteI18n")
+            input(type='checkbox', data-bind='checked: creditNote')
+      .row.form-inline
+        .col-xs-6
+          div.checkbox-inline
+            span(data-bind="text: warning1I18n")
+            input(type='checkbox', data-bind='checked: warning1')
+        .col-xs-6
+          div.checkbox-inline
+            span(data-bind="text: receiptI18n")
+            input(type='checkbox', data-bind='checked: receipt')
+  .row: .col-xs-12: .form-group: .checkbox: label
+    span(data-bind="text: showOnlyOverdueI18n")
+    input(type='checkbox', data-bind='checked: showOnlyOverdue')
+  // /ko
+  // ko ifnot: isLatestVaccination
+  h4(style="margin-top: 20px;", data-bind="text: labelCollumnsI18n")
+  table.table
+    thead
+      tr
+        th
+        th(data-bind="text: labelVisibilityI18n")
+        th(data-bind="text: labelDescriptionI18n")
+    tbody(data-bind="foreach: columns")
+      tr
+        td
+          span.PatientGadgetConfigurableTableBaseConfigDialog-dragHandle(style="display: inline-block; width: 10px; margin-top: 4px; cursor: ns-resize; color: #ccc;")
+            span.fa.fa-ellipsis-v
+            span.fa.fa-ellipsis-v(style="margin-left: 1px")
+        td.text-center
+          input(type="checkbox", data-bind="checkedValue: $data, checked: $parent.chosenColumns")
+        td(style="width: 100%")
+          span(data-bind="text: i18n", style="display: inline-block; width: 10px; margin-top: 4px;")
+  // /ko
+  // ko if: isLatestLabdata
+  .row: .col-xs-12
+    .form-group: .checkbox: label
+      span(data-bind="text: showPathologicalOnlyI18n")
+      input(type='checkbox', data-bind='checked: showPathologicalOnly')
+    .form-group: .checkbox: label
+      span(data-bind="text: showHighLowI18n")
+      input(type='checkbox', data-bind='checked: showHighLow')
+    .form-group: .checkbox: label
+      span(data-bind="text: showNotesI18n")
+      input(type='checkbox', data-bind='checked: showNotes')
+  // /ko
+  // ko if: isMedication
+  .row: .col-xs-12
+    .form-group: .checkbox: label
+      span(data-bind="text: showOnlyPrescribedI18n")
+      input(type='checkbox', data-bind='checked: showOnlyPrescribed')
+    .form-group: .checkbox: label
+      span(data-bind="text: showOnlyContinuousMedI18n")
+      input(type='checkbox', name='showOnlyContinuousMed', data-bind='checked: showOnlyContinuousMed')
+  // /ko
+  // ko if: isLatestVaccination
+
+  div.panel.panel-default
+    div.panel-heading
+      div.row
+        div.col-sm-4
+          span(data-bind="text: serverI18n")
+    div.panel-body
+      div.row
+        div.col-sm-12
+          div.form-group
+            span(style="margin-top: 0;", data-bind="text: serverUrlI18n")
+            input.form-control(data-bind="textInput: serverUrl")
+          div.form-group
+            span(style="margin-top: 0;", data-bind="text: serverPortI18n")
+            input.form-control(data-bind="textInput: serverPort")
+  div.panel.panel-default
+    div.panel-heading
+      div.row
+        div.col-sm-4
+          span(data-bind="text: serverUserI18n")
+    div.panel-body
+      div.row
+        div.col-sm-12
+          div.form-group
+            span(style="margin-top: 0;", data-bind="text: serverLocationI18n")
+            input.form-control(data-bind="textInput: serverLocation")
+          div.form-group
+            span(style="margin-top: 0;", data-bind="text: serverUserFirstNameI18n")
+            input.form-control(data-bind="textInput: serverUserFirstName")
+          div.form-group
+            span(style="margin-top: 0;", data-bind="text: serverUserLastNameI18n")
+            input.form-control(data-bind="textInput: serverUserLastName")
+  // /ko
+  // /ko

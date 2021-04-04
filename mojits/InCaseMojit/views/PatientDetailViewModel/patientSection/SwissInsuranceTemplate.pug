@@ -1,0 +1,132 @@
+div.panel-body.form-horizontal
+  div.row
+    div.col-md-6
+      div.form-group
+        label.col-sm-4.control-label(data-bind="text: type.i18n")
+        div.col-sm-8
+          select.form-control(name="type", data-bind="options: _filteredTypeList, optionsValue: 'val', optionsText: 'i18n', value: type, valueAllowUnset: true, readOnly: type.readOnly")
+    div.col-md-6
+      div.form-group(data-bind="hasFeedback: { field: locationId, toggle: locationId.hasError, messages: locationId.validationMessages }")
+        label.col-sm-4.control-label(data-bind="text: locationId.i18n")
+        div.col-sm-8
+          select.form-control(name="locationId", data-bind="options: _locationList, optionsValue: '_id', optionsText: 'locname', value: locationId, readOnly: locationId.readOnly")
+  div.row
+    div.col-md-6
+      div.form-group(data-bind="hasFeedback: { field: insuranceId, toggle: insuranceId.hasError, messages: insuranceId.validationMessages }")
+        label.col-sm-4.control-label(data-bind="text: insuranceName.i18n")
+        div.col-sm-8
+          div.input-group
+            span.input-group-btn
+              button.btn.btn-default(type="button", data-bind="click: _selectPayer, readOnly: insuranceName.readOnly")
+                span.glyphicon.glyphicon-search
+                span.sr-only(data-bind="text: insuranceOnlySearchI18n")
+            input.form-control(name="insuranceName", data-bind="value: insuranceName, readOnly: insuranceName.readOnly, valueUpdate: 'afterkeydown'")
+    div.col-md-6
+      div.form-group
+        label.col-sm-4.control-label(data-bind="text: employeeId.i18n")
+        div.col-sm-8
+          input.form-control(name="employeeId", data-bind="select2: _employeeIdSelect2Config, readOnly: employeeId.readOnly")
+  div.row
+    div.col-md-6
+      div.form-group
+        label.col-sm-4.control-label(data-bind="text: insurancePrintName.i18n")
+        div.col-sm-8
+          input.form-control(name="insurancePrintName", data-bind="value: insurancePrintName, readOnly: insurancePrintName.readOnly, valueUpdate: 'afterkeydown'")
+    div.col-md-6
+      div.form-group(data-bind="hasFeedback: { field: vekaCardNo, toggle: vekaCardNo.hasError, messages: vekaCardNo.validationMessages }")
+        label.col-sm-4.control-label(data-bind="text: vekaCardNo.i18n")
+        div.col-sm-8
+          input.form-control(name="vekaCardNo", data-bind="value: vekaCardNo, readOnly: vekaCardNo.readOnly, valueUpdate: 'afterkeydown'")
+  div.row
+    div.col-md-6
+    div.col-md-6
+      div.form-group(data-bind="hasFeedback: { field: insuranceNo, toggle: insuranceNo.hasError, messages: insuranceNo.validationMessages }")
+        label.col-sm-4.control-label(data-bind="text: insuranceNo.i18n")
+        div.col-sm-8
+          input.form-control(name="insuranceNo", data-bind="value: insuranceNo, readOnly: insuranceNo.readOnly, valueUpdate: 'afterkeydown'")
+  div.row
+    div.col-md-6
+      div.form-group(data-bind="hasFeedback: { field: insuranceGLN, toggle: insuranceGLN.hasError, messages: insuranceGLN.validationMessages }")
+        label.col-sm-4.control-label(data-bind="text: insuranceGLN.i18n")
+        div.col-sm-8
+          input.form-control(name="insuranceGLN", data-bind="value: insuranceGLN, readOnly: insuranceGLN.readOnly, valueUpdate: 'afterkeydown'")
+    div.col-md-6
+      div.form-group(data-bind="hasFeedback: { field: recipientGLN, toggle: recipientGLN.hasError, messages: recipientGLN.validationMessages }")
+        label.col-sm-4.control-label(data-bind="text: recipientGLN.i18n")
+        div.col-sm-8
+          input.form-control(name="recipientGLN", data-bind="value: recipientGLN, readOnly: recipientGLN.readOnly, valueUpdate: 'afterkeydown'")
+  div.row
+    div.col-md-6
+      div.form-group(data-bind="hasFeedback: { field: address1, toggle: address1.hasError, messages: address1.validationMessages }")
+        label.col-sm-4.control-label(data-bind="text: address1.i18n")
+        div.col-sm-8
+          input.form-control(name="insuranceAddr1", data-bind="value: address1, readOnly: address1.readOnly, valueUpdate: 'afterkeydown'")
+    div.col-md-6
+      div.form-group(data-bind="hasFeedback: { field: address2, toggle: address2.hasError, messages: address2.validationMessages }")
+        label.col-sm-4.control-label(data-bind="text: address2.i18n")
+        div.col-sm-8
+          input.form-control(name="insuranceAddr1", data-bind="value: address2, readOnly: address2.readOnly, valueUpdate: 'afterkeydown'")
+  div.row
+    div.col-md-6
+      div.form-group(data-bind="hasFeedback: { field: zipcode, toggle: zipcode.hasError, messages: zipcode.validationMessages }")
+        label.col-sm-4.control-label(data-bind="text: zipcode.i18n")
+        div.col-sm-8
+          input.form-control(name="zipcode", data-bind="value: zipcode, readOnly: zipcode.readOnly, valueUpdate: 'afterkeydown'")
+    div.col-md-6
+      div.form-group(data-bind="hasFeedback: { field: city, toggle: city.hasError, messages: city.validationMessages }")
+        label.col-sm-4.control-label(data-bind="text: city.i18n")
+        div.col-sm-8
+          input.form-control(name="city", data-bind="value: city, readOnly: city.readOnly, valueUpdate: 'afterkeydown'")
+  div.row
+    div.col-md-6
+      div.form-group(data-bind="hasFeedback: { field: email, toggle: email.hasError, messages: email.validationMessages }")
+        label.col-sm-4.control-label(data-bind="text: email.i18n")
+        div.col-sm-8
+          input.form-control(name="email", data-bind="value: email, readOnly: email.readOnly, valueUpdate: 'afterkeydown'")
+    div.col-md-6
+      div.form-group(data-bind="hasFeedback: { field: insuranceLink, toggle: insuranceLink.hasError, messages: insuranceLink.validationMessages }")
+        label.col-sm-4.control-label(data-bind="text: insuranceLink.i18n")
+        div.col-sm-8
+          input.form-control(name="insuranceLink", data-bind="value: insuranceLink, readOnly: insuranceLink.readOnly, valueUpdate: 'afterkeydown'")
+  div.row
+    div.col-md-6
+      div.form-group(data-bind="hasFeedback: { field: phone, toggle: phone.hasError, messages: phone.validationMessages }")
+        label.col-sm-4.control-label(data-bind="text: phone.i18n")
+        div.col-sm-8
+          input.form-control(name="phone", data-bind="value: phone, readOnly: phone.readOnly, valueUpdate: 'afterkeydown'")
+  div.row
+    div.col-md-6.col-md-offset-2
+      div.form-group
+        div.checkbox(style="padding-left: 30px;")
+          label.control-label
+            input(name="mediport", type="checkbox", data-bind="checked: mediport, readOnly: true")
+            strong(data-bind="text: mediport.i18n")
+        div.checkbox(style="padding-left: 30px;")
+          label.control-label
+            input(name="doNotShowInsuranceInGadget", type="checkbox", data-bind="checked: doNotShowInsuranceInGadget, readOnly: doNotShowInsuranceInGadget.readOnly")
+            strong(data-bind="text: doNotShowInsuranceInGadget.i18n")
+        div.checkbox(style="padding-left: 30px;")
+          label.control-label
+            input(name="unknownInsurance", type="checkbox", data-bind="checked: unknownInsurance, readOnly: unknownInsurance.readOnly")
+            strong(data-bind="text: unknownInsurance.i18n")
+    div.col-md-4
+      div.form-group
+        div(style="padding-left: 9px;")
+          label.control-label
+            input(type="radio",  name='isTiers'  data-bind="checked: isTierSelected, value: 'isTiersGarant'" )
+            strong(style="padding-left: 5px; vertical-align: text-bottom", data-bind="text: isTiersGarantI18n")
+        div(style="padding-left: 9px;")
+          label.control-label
+            input(type="radio",  name='isTiers'  data-bind="checked: isTierSelected, value: 'isTiersPayant'")
+            strong(style="padding-left: 5px; vertical-align: text-bottom", data-bind="text: isTiersPayantI18n")
+  div.row
+    div.col-md-12
+      div.form-group(data-bind="hasFeedback: { field: notes, toggle: notes.hasError, messages: notes.validationMessages }")
+        label.col-sm-2.control-label(data-bind="text: notes.i18n")
+        div.col-sm-10
+          textarea.form-control(style="resize: vertical;", name="notes", data-bind="value: notes, readOnly: notes.readOnly, valueUpdate: 'afterkeydown'")
+div.panel-footer
+  div.row
+    div.col-md-12
+      button.pull-right.btn.btn-default(type="button", data-bind="click: removeItem, readOnly: insuranceName.readOnly, text: insuranceButtonDeleteI18n")
+      button.pull-right.btn.btn-default(type="button", style="margin-right: 4px;", data-bind="click: resetItem, readOnly: insuranceName.readOnly, text: insuranceButtonNewInsuranceI18n")

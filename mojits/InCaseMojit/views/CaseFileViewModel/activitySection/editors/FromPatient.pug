@@ -1,0 +1,147 @@
+div.row
+  div.col-md-12
+    div.form-group
+      textarea.form-control(name="userContent", data-bind="caretPosition: userContent.caretPosition, attr:{rows: d_extra()?'2':'10'}, value: userContent, valueUpdate: 'afterkeydown', readOnly: userContent.readOnly")
+
+div(data-bind="if: d_extra()")
+  div.row(data-bind="if: d_extra().meal")
+    div.col-xs-12
+      div.panel.panel-default(dc-panel="textform-sd1-panel-meal", dc-panel-actions="minimize")
+        div.panel-heading
+          a(href="#textform-sd1-panel-meal", data-toggle="collapse")
+            strong(data-bind="text: mealI18n")
+        div#textform-sd1-panel-meal.panel-collapse.collapse
+          div.panel-body
+            div.form-group
+              ul.list-group(data-bind="foreach: d_extra().meal.items")
+                li.list-group-item
+                  div.row
+                    div.col-xs-9
+                      span(data-bind="text: $parent.displayMeal($data)")
+                    div.col-xs-3
+                      span.pull-right(data-bind="text: $parent.displayMealCalories($data)")
+              div
+                p.pull-right
+                  b(data-bind="text: getCaloriesSumI18n + ':'")
+                  span(data-bind="text: ' +' + countMealCalories(d_extra().meal.items) + ' '")
+                  span(data-bind="text: caloriesI18n")
+  div.row(data-bind="if: d_extra().move")
+    div.col-xs-12
+      div.panel.panel-default(dc-panel="textform-sd1-panel-move", dc-panel-actions="minimize")
+        div.panel-heading
+          a(href="#textform-sd1-panel-move", data-toggle="collapse")
+            strong(data-bind="text: moveI18n")
+        div#textform-sd1-panel-move.panel-collapse.collapse
+          div.panel-body
+            h4(data-bind="text: d_extra().move.title")
+            div.row
+              div.col-xs-6
+                div(data-bind="with: d_extra().move")
+                  div.text-center
+                    img(data-bind="attr:{src: 'https://jawbone.com' + snapshot_image}", style="width-max:100%;")
+                  div
+                    span.pull-left(data-bind="text: $parent.unixDateToHumanTime(time_created)")
+                    span.pull-right(data-bind="text: $parent.unixDateToHumanTime(time_completed)")
+              div.col-xs-6
+                div(data-bind="with: d_extra().move")
+                  div.row
+                    div.col-xs-12
+                      p.pull-right
+                        span(data-bind="text: $parent.activeI18n + ':'")
+                        span(data-bind="text: ' ' + $parent.round(details.calories) + ' '")
+                        span(data-bind="text: $parent.caloriesI18n")
+                  div.row
+                    div.col-xs-12
+                      p.pull-right
+                        span(data-bind="text: $parent.inactiveI18n + ':'")
+                        span(data-bind="text: ' ' + $parent.round(details.bmr) + ' '")
+                        span(data-bind="text: $parent.caloriesI18n")
+                  div.row
+                    div.col-xs-12
+                      p.pull-right
+                        b(data-bind="text: $parent.burnedCaloriesSumI18n + ':'")
+                        span(data-bind="text: ' -' + $parent.countMoveCalories($data) + ' '")
+                        span(data-bind="text: $parent.caloriesI18n")
+                  h4(data-bind="text: workoutI18n + ':'")
+                  div.row
+                    div.col-xs-4
+                      span(data-bind="text: details.steps")
+                      | &nbsp;
+                      span(data-bind="text: $parent.stepsI18n")
+                    div.col-xs-4
+                      span(data-bind="text: $parent.getStepsCalories()")
+                      | &nbsp;
+                      span(data-bind="text: $parent.caloriesI18n")
+                div(data-bind="if: d_extra().workout")
+                  div(data-bind="foreach: d_extra().workout.items")
+                    div.row
+                      div.col-xs-4
+                        span(data-bind="text: $parent.getWorkoutTitle($data)")
+                      div.col-xs-4
+                        span(data-bind="text: $parent.countWorkoutCalories($data) + ' '")
+                        span(data-bind="text: caloriesI18n")
+  div.row(data-bind="if: d_extra().sleep")
+    div.col-xs-12
+      div.panel.panel-default(dc-panel="textform-sd1-panel-sleep", dc-panel-actions="minimize")
+        div.panel-heading
+          a(href="#textform-sd1-panel-sleep", data-toggle="collapse")
+            strong(data-bind="text: sleepI18n")
+        div#textform-sd1-panel-sleep.panel-collapse.collapse
+          div.panel-body
+            div(data-bind="foreach: d_extra().sleep.items")
+              h4(data-bind="text: title")
+              div.row
+                div.col-xs-6
+                  div.text-center
+                    img(data-bind="attr:{src: 'https://jawbone.com' + snapshot_image}", alt="kein Bild", style="width-max:100%;")
+                  div
+                    span.pull-left(data-bind="text: $parent.unixDateToHumanTime(details.asleep_time)")
+                    span.pull-right(data-bind="text: $parent.unixDateToHumanTime(details.awake_time)")
+                div.col-xs-6
+                  p
+                    i.fa.fa-square(style="color: #0099FF")
+                    | &nbsp;
+                    span(data-bind="text: $parent.deepSleepI18n + ':'")
+                    span(data-bind="text: ' ' + $parent.secondsToHours(details.sound)")
+                  p
+                    i.fa.fa-square(style="color: #00CCFF")
+                    | &nbsp;
+                    span(data-bind="text: $parent.lightSleepI18n + ':'")
+                    span(data-bind="text: ' ' + $parent.secondsToHours(details.light)")
+                  p
+                    i.fa.fa-square(style="color: #FF9900")
+                    | &nbsp;
+                    span(data-bind="text: $parent.awakeTimeI18n + ':'")
+                    span(data-bind="text: ' ' + $parent.secondsToHours(details.awake)")
+                    | &nbsp;(
+                    span(data-bind="text: ' ' + details.awakenings")
+                    | &nbsp;
+                    span(data-bind="text: $parent.awakeTimesI18n")
+                    | )
+  div.row(data-bind="if: d_extra().heartrate")
+    div.col-xs-12
+      div.panel.panel-default(dc-panel="textform-sd1-panel-heartrate", dc-panel-actions="minimize")
+        div.panel-heading
+          a(href="#textform-sd1-panel-heartrate", data-toggle="collapse")
+            strong(data-bind="text: heartRateI18n")
+        div#textform-sd1-panel-heartrate.panel-collapse.collapse
+          div.panel-body
+            ul.list-group(data-bind="foreach: d_extra().heartrate.items")
+              li.list-group-item
+                span(data-bind="text: resting_heartrate? resting_heartrate : ''")
+                = ' - '
+                span(data-bind="text: $parent.unixDateToHumanTime(time_created)")
+  div.row(data-bind="if: d_extra().weight")
+    div.col-xs-12
+      div.panel.panel-default(dc-panel="textform-sd1-panel-weight", dc-panel-actions="minimize")
+        div.panel-heading
+          a(href="#textform-sd1-panel-weight", data-toggle="collapse")
+            strong(data-bind="text: weightI18n")
+        div#textform-sd1-panel-weight.panel-collapse.collapse
+          div.panel-body
+            ul.list-group(data-bind="foreach: d_extra().weight.items")
+              li.list-group-item
+                span(data-bind="text: $parent.roundWeight(weight)")
+                span(data-bind="text: $parent.kilogramI18n")
+                = ' - '
+                span(data-bind="text: $parent.unixDateToHumanTime(time_created)")

@@ -1,0 +1,15 @@
+{
+  "luaScriptsVersion": "0.0.5",
+  "luaScripts": [
+    {
+      "description": "OnStoredInstance",
+      "content": "function OnStoredInstance(instanceId, tags, metadata, origin)\nlocal orthancConfig = GetOrthancConfiguration()\nlocal inSuiteURL = orthancConfig['InSuiteHostURL'] or 'http://localhost' \nif inSuiteURL == nil or inSuiteURL == '' then\nprint('Please specify InSuiteHostURL property.')\nreturn\nend\nif origin['RequestOrigin'] ~= 'Lua' then\n\nHttpGet(inSuiteURL .. '/1/inpacs/:getInstanceDcm?id=' .. instanceId )\nend\nend ",
+      "predefined": true
+    },
+    {
+      "description": "IncomingHttpRequestFilter",
+      "content":"function IncomingHttpRequestFilter(method, uri, ip, username, httpHeaders)\n  -- Do not allow DELETE requests via Explorer UI,\n  -- write attempt information to log file\n  if method == 'DELETE' then\n       print(\"ERROR #### ATTEMPT DO DELETE A RESOURCE (PATIENT/STUDY/SERIES/INSTANCE) VIA EXPLORER UI - protected by LUA script! ####\")\n       print(\"attempt for URI:\")\n       print(uri)\n       print(\"attempt from IP: \")\n       print(ip)\n       print(\"attempt from user: \")\n       print(username)\n       print(\"attempt from referer:\")\n       print(httpHeaders[\"referer\"])\n       if string.find(httpHeaders[\"referer\"] or \"\", \"/explorer.html\") ~= nil then\n           return false\n       else\n           return true\n       end\n   else\n      return true\n   end\nend",
+      "predefined": true
+    }
+  ]
+}

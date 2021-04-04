@@ -1,0 +1,10 @@
+div.StockListViewModel
+  .row.col-xs-12.col-sm-12.col-md-12
+    .col-xs-6.col-sm-6.col-md-6
+      div(data-bind="template: advancedFilter.template")
+  .row.col-xs-12.col-sm-12.col-md-12
+    div.col-md-12
+      div(data-bind="template: wareHouseTable.template")
+        div.panel-footer
+          script(type="text/html", id="WareHouseAdvancedFilterViewModel")
+            include WareHouseAdvancedFilterViewModel

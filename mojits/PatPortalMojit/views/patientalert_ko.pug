@@ -1,0 +1,20 @@
+div(id=mojit_view_id)
+  block navigation
+    .navbar.navbar-default.margin-bottom-small(role="navigation")
+      .container.container-fullscreen
+        .navbar-header
+          a.navbar-brand(href="/intime") Ihr Gesundheitsportal
+  .container.container-fullscreen
+    div#container
+      p(data-bind="text: text")
+      div(data-bind="if: btnNext")
+        a.btn.btn-primary(data-bind="text: btnNext", href='/intime')
+block footer
+  nav.navbar.navbar-default.navbar-fixed-bottom(role="navigation")
+    #footer
+      .container.container-fullscreen
+        .col-xs-8
+          #practiceBrand
+        .col-xs-4
+          a(href="http://doc-cirrus.com",target="_blank").pull-right
+            #logoContainer

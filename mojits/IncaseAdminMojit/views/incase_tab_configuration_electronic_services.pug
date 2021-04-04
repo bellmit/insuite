@@ -1,0 +1,38 @@
+h4
+  span(data-bind="text: electronicServicesI18n")
+div.panel.panel-default
+  div.panel-body
+    .row
+      .col-md-12
+        div.form-group(data-bind="hasFeedback: { field: incaseconfiguration.kimTreatmentAutoCreationOnEDocLetterSent, toggle: incaseconfiguration.kimTreatmentAutoCreationOnEDocLetterSent.hasError, messages: incaseconfiguration.kimTreatmentAutoCreationOnEDocLetterSent.validationMessages }")
+          div.checkbox
+            label.control-label
+              input(type="checkbox", data-bind="checked: incaseconfiguration.kimTreatmentAutoCreationOnEDocLetterSent")
+              strong(data-bind="text: incaseconfiguration.kimTreatmentAutoCreationOnEDocLetterSent.i18n")
+              i.dc-info-icon(data-bind="click: showKimTreatmentAutoCreationInfo")
+              input.form-control.input-sm#select2kimTreatmentAutoCreationOnEDocLetterSentLocations(type="hidden", multiple="multiple" data-bind="select2: select2kimTreatmentAutoCreationOnEDocLetterSentLocations", name="role")
+      .col-md-12
+        div.form-group(data-bind="hasFeedback: { field: incaseconfiguration.kimTreatmentAutoCreationOnEDocLetterReceived, toggle: incaseconfiguration.kimTreatmentAutoCreationOnEDocLetterReceived.hasError, messages: incaseconfiguration.kimTreatmentAutoCreationOnEDocLetterReceived.validationMessages }")
+          div.checkbox
+            label.control-label
+              input(type="checkbox", data-bind="checked: incaseconfiguration.kimTreatmentAutoCreationOnEDocLetterReceived")
+              strong(data-bind="text: incaseconfiguration.kimTreatmentAutoCreationOnEDocLetterReceived.i18n")
+              i.dc-info-icon(data-bind="click: showKimTreatmentAutoCreationInfo")
+              input.form-control.input-sm#select2kimTreatmentAutoCreationOnEDocLetterReceivedForLocations(type="hidden", multiple="multiple" data-bind="select2: select2kimTreatmentAutoCreationOnEDocLetterReceivedForLocations", name="role")
+      .col-md-10
+        div.form-group(data-bind="hasFeedback: { field: incaseconfiguration.kimMessagePollingIntervalEnabled, toggle: incaseconfiguration.kimMessagePollingIntervalEnabled.hasError, messages: incaseconfiguration.kimMessagePollingIntervalEnabled.validationMessages }")
+          div.checkbox
+            label.control-label
+              input(type="checkbox", data-bind="checked: incaseconfiguration.kimMessagePollingIntervalEnabled")
+              strong(data-bind="text: incaseconfiguration.kimMessagePollingIntervalEnabled.i18n + ': '")
+      .col-md-2
+        div.form-group(data-bind="hasFeedback: { field: incaseconfiguration.kimMessagePollingIntervalHours, toggle: incaseconfiguration.kimMessagePollingIntervalHours.hasError, messages: incaseconfiguration.kimMessagePollingIntervalHours.validationMessages }")
+          input.form-control.input-sm(type="text", data-bind="textInput: incaseconfiguration.kimMessagePollingIntervalHours")
+      .col-md-12
+        div.form-group(data-bind="hasFeedback: { field: incaseconfiguration.kimIncludeRevocationInfo, toggle: incaseconfiguration.kimIncludeRevocationInfo.hasError, messages: incaseconfiguration.kimIncludeRevocationInfo.validationMessages }")
+          div.checkbox
+            label.control-label
+              input(type="checkbox", data-bind="checked: incaseconfiguration.kimIncludeRevocationInfo")
+              strong(data-bind="text: incaseconfiguration.kimIncludeRevocationInfo.i18n")
+              i.dc-info-icon(data-bind="click: showkimIncludeRevocationInfo")
+

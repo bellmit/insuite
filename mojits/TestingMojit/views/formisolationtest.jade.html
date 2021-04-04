@@ -1,0 +1,17 @@
+br
+br
+.container.container-fullscreen.content(id=mojit_view_id)
+
+  h3 Isolated form example
+
+  div#divNoFormSpecified
+     span Please enter a form ID:
+     input.form-control(value="56950bca76fa1dd349600110")#txtFormId
+     button.btn#btnLoadForm Load form
+
+  br
+  br
+
+  div#divFormRender
+
+  div#divFormData(style="display: none;")=formpackage

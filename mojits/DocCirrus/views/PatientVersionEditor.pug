@@ -1,0 +1,84 @@
+div.PatientVersionEditor.container.container-fullscreen
+  .row
+    .col-xs-8.col-sm-9.col-md-10
+      .row
+        .col-sm-6.col-md-4
+          .form-group
+            label.control-label(data-bind="text: versionI18n")
+            input.form-control(data-bind="select2: versionAutocomplete")
+      .row
+        .col-sm-6.col-md-4
+          h4(data-bind="text: persDataI18n")
+          .panel.panel-default
+            div.panel-body
+              div.row
+                div.col-md-12
+                  .form-group(data-bind="hasFeedback: { field: title, toggle: title.hasError, messages: title.validationMessages }")
+                    label.control-label(data-bind="text: title.i18n")
+                    input.form-control(name="title", data-bind="value: title, readOnly: title.readOnly, valueUpdate: 'afterkeydown'")
+              div.row
+                div.col-md-12
+                  div.form-group(data-bind="hasFeedback: { field: firstname, toggle: firstname.hasError, messages: firstname.validationMessages }")
+                    label.control-label(data-bind="text: firstname.i18n")
+                    input.form-control(name="firstname", data-bind="value: firstname, readOnly: firstname.readOnly, valueUpdate: 'afterkeydown'")
+                  div.form-group(data-bind="hasFeedback: { field: nameaffix, toggle: nameaffix.hasError, messages: nameaffix.validationMessages }")
+                    label.control-label(data-bind="text: nameaffix.i18n")
+                    input.form-control(name="nameaffix", data-bind="value: nameaffix, readOnly: nameaffix.readOnly, valueUpdate: 'afterkeydown'")
+                  div.form-group(data-bind="hasFeedback: { field: fk3120, toggle: fk3120.hasError, messages: fk3120.validationMessages }")
+                    label.control-label(data-bind="text: fk3120.i18n")
+                    input.form-control(name="fk3120", data-bind="value: fk3120, readOnly: fk3120.readOnly, valueUpdate: 'afterkeydown'")
+                  div.form-group(data-bind="hasFeedback: { field: lastname, toggle: lastname.hasError, messages: lastname.validationMessages }")
+                    label.control-label(data-bind="text: lastname.i18n")
+                    input.form-control(name="lastname", data-bind="value: lastname, readOnly: lastname.readOnly, valueUpdate: 'afterkeydown'")
+                  div.form-group(data-bind="hasFeedback: { field: gender, toggle: gender.hasError, messages: gender.validationMessages }")
+                    label.control-label(data-bind="text: gender.i18n")
+                    select.form-control(name="gender", data-bind="options: gender.list, optionsValue: 'val', optionsText: '-de', value: gender, readOnly: gender.readOnly")
+                  div.form-group(data-bind="hasFeedback: { field: kbvDob, toggle: kbvDob.hasError, messages: kbvDob.validationMessages }")
+                    label.control-label(data-bind="text: kbvDob.i18n")
+                    .form-group
+                      input.form-control(name="kbvDob", data-bind="value: kbvDob, readOnly: kbvDob.readOnly, valueUpdate: 'afterkeydown', attr: { placeholder: kbvDobI18n }")#patientDob
+                  div.form-group
+                    label.control-label(data-bind="text: jobTitle.i18n")
+                    input.form-control(name="jobTitle", data-bind="value: jobTitle, readOnly: jobTitle.readOnly, valueUpdate: 'afterkeydown'")
+                  div.form-group
+                    label.control-label(data-bind="text: workingAt.i18n")
+                    input.form-control(name="workingAt", data-bind="value: workingAt, readOnly: workingAt.readOnly, valueUpdate: 'afterkeydown'")
+                  div.form-group
+                    .checkbox
+                      label
+                        span(data-bind="text: isPensioner.i18n")
+                        input(name="isPensioner", type="checkbox", data-bind="checked: isPensioner, readOnly: isPensioner.readOnly")
+                  div.form-group(data-bind="visible: sendPatientReceiptVisible")
+                    .checkbox
+                      label
+                        span(data-bind="text: sendPatientReceipt.i18n")
+                        input(name="sendPatientReceipt", type="checkbox", data-bind="checked: sendPatientReceipt, readOnly: sendPatientReceipt.readOnly")
+                  div.form-group
+                    label(data-bind="text: careDegree.i18n")
+                    select.form-control(name="careDegree", data-bind="options: careDegree.list, optionsValue: 'val', optionsText: '-de', value: careDegree, readOnly: careDegree.readOnly")
+        .col-sm-6.col-md-7.col-md-offset-1
+          .row
+            .col-md-12
+              h4
+                span(data-bind="text: addressesI18n")
+                | &nbsp;
+                small
+                  a.fa.fa-plus(href="javascript:;", data-bind="click: addNewAddress")
+              div(data-bind="template: { name: addressTemplate, foreach: addresses }")
+          .row
+            .col-md-12
+              h4
+                span(data-bind="text: titleComI18n")
+                | &nbsp;
+                small
+                  a.fa.fa-plus(href="javascript:;", data-bind="click: addNewCommunication")
+              div.row(data-bind="template: { name: 'PatientCommunicationEditorModel', foreach: communications }")
+  div.row
+    .col-xs-8.col-sm-9.col-md-10
+      h4
+        span(data-bind="text: insuranceStatusI18n")
+        | &nbsp;
+        small
+          a.fa.fa-plus(href="javascript:;", data-bind="click: addNewInsuranceStatus")
+      div(data-bind="foreach: { data: insuranceStatus }")
+        div(data-bind="template: { name: 'PatientInsuranceStatusEditorModel-' + type(), data: $data }")

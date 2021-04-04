@@ -1,0 +1,24 @@
+div#divFormsResize
+
+  table(noborder="noborder",width="100%")
+
+    tr
+      td(data-bind="text: lblWidthI18n + ' (mm)'")
+
+      td
+        div.form-group#txtGroupFormWidth
+          input.form-control(type="text")#txtNewFormWidth
+
+    tr
+      td(data-bind="text: lblHeightI18n + ' (mm)'")
+
+      td
+        div.form-group#txtGroupFormHeight
+          input.form-control(type="text")#txtNewFormHeight
+
+    tr
+      td
+        span(data-bind="text: lblPresetsI18n + ':'")
+        | &nbsp;
+      td
+        span#spnPaperSizesTo

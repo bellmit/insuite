@@ -1,0 +1,9 @@
+div.row.childs-bordered#PatientAndActivitySelectModal
+  div.row.patient-block
+    h4(data-bind="text: '1. ' + selectPatientI18n")
+    div#patientTable(data-bind="template: patientTable.template")
+  // ko if: selectedPatientId
+  div.row.activity-block
+    h4(data-bind="text: '2. ' + selectActivityI18n")
+    div#activityTable(data-bind="template: activityTable.template")
+  // /ko

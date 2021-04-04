@@ -1,0 +1,12 @@
+#edmpChooseAddresseeModal
+  div(data-bind="with: nav")
+    ul.nav.nav-tabs(data-bind="foreach: items")
+      li(data-bind="click: $parent.selectedItem, css: {active: $parent.selectedItem().id === id}")
+        a(href="#" data-bind="text: title")
+
+  div(data-bind="if: 'RECOMMENDATION' === nav.selectedId()")
+    div(data-bind="template: addresseeTable.template")
+  div(data-bind="if: 'CATALOG' === nav.selectedId()")
+    div(data-bind="template: sddaTable.template")
+  div(data-bind="if: 'CATALOGUSAGE' === nav.selectedId()")
+    div(data-bind="template: extSddaTable.template")

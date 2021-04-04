@@ -1,0 +1,74 @@
+//TRANSLATION INCOMPLETE!! MOJ-3201
+ul.nav.nav-tabs#kbverror-log-tabs
+  if nErrors
+    li.active
+      a(href="#kbvlog-errors")
+        | Fehler (
+        != nErrors
+        | )
+  if nWarnings
+    li(class=('nErrors' ? '' : 'active'))
+      a(href="#kbvlog-warnings")
+        | Warnungen (
+        != nWarnings
+        | )
+  if nInfo
+    li(class=(('nErrors' || 'nWarnings') ? '' : 'active'))
+      a(href="#kbvlog-info")
+        | Info (
+        != nInfo
+        | )
+div.tab-content
+  if nErrors
+    div#kbvlog-errors.tab-pane.active
+      each errorList, group in errors
+        if actType !== 'QDOCU'
+          h4!=group
+        div.table-responsive
+          table.table
+            thead
+              tr
+                th Nr.
+                th Meldung
+                th &nbsp;
+            tbody
+              each error, index in errorList
+                tr
+                  td!= index+1
+                  td
+                    p!= error.text
+  if nWarnings
+    div#kbvlog-warnings.tab-pane(class=('nErrors' ? '' : 'active'))
+      each warningList, group in warnings
+        if actType !== 'QDOCU'
+          h4!= group
+        div.table-responsive
+          table.table
+            thead
+              tr
+                th Nr.
+                th Meldung
+                th &nbsp;
+            tbody
+              each warning, index in warningList
+                tr
+                  td!= index+1
+                  td
+                    p!= warning.text
+  if nInfo
+    div#kbvlog-info.tab-pane(class=(('nErrors' || 'nWarnings') ? '' : 'active'))
+      each infoList, group in info
+        h4!= group
+        div.table-responsive
+          table.table
+            thead
+              tr
+                th Nr.
+                th Meldung
+                th &nbsp;
+            tbody
+              each _info, index in infoList
+                tr
+                  td!= index+1
+                  td
+                    p!= _info.text

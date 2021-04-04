@@ -1,0 +1,36 @@
+div.container.container-fullscreen(style="width: 100%;")#editFolderModalConteiner
+  div.row
+    div.col-sm-3
+      span(data-bind="text: LBL_TITLE")
+      span &nbsp;(en)
+    div.col-sm-9
+      input.form-control(type="text", data-bind="value: titleEn, disable: isDefault")
+  div.row
+    div.col-sm-3
+      span(data-bind="text: LBL_TITLE")
+      span &nbsp;(de)
+    div.col-sm-9
+      input.form-control(type="text", data-bind="value: titleDe, disable: isDefault")
+
+  br
+
+  //ko if: isMasterDCFormTenant
+  div.row
+    div.col-sm-3
+      span(data-bind="text: LBL_COUNTRY_MODE")
+    div.col-sm-9
+      label.checkbox-inline
+        input(type="checkbox", data-bind="checked: showInGermany, disable: isDefault")
+        span(data-bind="text: LBL_DE")
+      label.checkbox-inline
+        input(type="checkbox", data-bind="checked: showInSwitzerland, disable: isDefault")
+        span(data-bind="text: LBL_CH")
+
+  br
+
+  div.row
+    div.col-sm-3
+      span(data-bind="text: LBL_LICENCE")
+    div.col-sm-9
+      select.form-control(data-bind="disable: isDefault, options: allSpecialModulesNamed, optionsText: 'label', value: licenceObj")
+  // /ko

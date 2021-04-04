@@ -1,0 +1,28 @@
+div.panel.panel-default.widget-box
+  div.panel-heading Widget
+  div.panel-body
+    div.sub-navigation
+      div(data-bind="template: subViewManager.buttons.chart.template")
+      div(data-bind="template: subViewManager.buttons.table.template")
+      div(data-bind="template: subViewManager.buttons.config.template")
+
+    // ko if: subViewManager.state.chart
+    div.chart-root(data-bind="inSightChart: chartData")
+      svg
+    // /ko
+
+    // ko if: subViewManager.state.table
+    table.table.table-striped
+      thead
+        tr(data-bind="foreach: {data: $parent.chartColsForTable, as: 'key'}")
+          th(data-bind="text: $data")
+      tbody(data-bind="foreach: {data: $parent.chartDataForTable, as: 'singleValue'}")
+        tr(data-bind="foreach: {data: $parent.chartColsForTable, as: 'key'}")
+          td(data-bind="text: singleValue[key]")
+    // /ko
+
+    // ko if: subViewManager.state.config
+    h1 Config
+    div(data-bind="template: regenBtt.template")
+    
+    // /ko

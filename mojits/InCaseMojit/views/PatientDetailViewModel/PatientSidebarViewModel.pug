@@ -1,0 +1,6 @@
+div.panel.panel-default.PatientSidebarViewModel
+  div.panel-body
+    p.text-center
+      img(name="profilePicture", data-bind="mediaSetImgFromDefault: mediaSetImgFromDefaultProfilePicture, mediaAddEditor: mediaAddEditorProfilePicture")
+    p.text-center(data-bind="text: _personDisplay")
+    div(data-bind="template: patientNav.template")

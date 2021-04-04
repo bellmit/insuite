@@ -1,0 +1,130 @@
+div(id=mojit_view_id)
+  .container.container-fullscreen
+    div(style="position: relative")
+      div(style="position: absolute; right: 0; top: 0;")
+        button.btn.btn-sm.btn-default(
+        name="toggleFullScreen", type="button", data-bind="click: toggleFullScreenHandler, attr: { title: viewPortBtnI18n }",
+        style="margin-top: 5px; font-size:14px")
+          span.fa.fa-arrows-alt
+    #upperDiv(style="display: none;", data-bind="visible: $data")
+      h3
+        span(data-bind="text: 'KV-Connect ' + messageHistoryI18n")
+        span.badge(data-bind="if: nNewMsgs")
+          span(data-bind="text: nNewMsgs")
+      // ko ifnot: selectedMessage
+      div.row
+        dib.col-xs-4
+          div.form-group
+            label.control-label Dienst
+            input.form-control(type="hidden", name="kvcServiceType", data-bind="select2: kvcServiceTypeSelect2")
+        dib.col-xs-8
+          div.form-group
+            label.control-label Nach Abrechnungen filtern
+            i.dc-info-icon(data-bind="tooltip: {title: onlySentKBVLogsI18n}")
+            input.form-control(type="hidden", name="kbvlogFilter", data-bind="select2: selectKbvLogsSelect2")
+      // /ko
+      div.row
+        div.col-xs-12(data-bind="with: actionButtons")
+          #gkvBrowserMessageViewActionButtons.dc-action-buttons.dc-action-buttons-top.dc-action-buttons-left.clearfix
+            button.btn.btn-primary(type="button", data-bind="click: fetch.action, visible: fetch.visible, enable: fetch.enabled")
+              span.glyphicon.glyphicon-refresh
+              span(data-bind="text: ' ' + $parent.buttonFetchI18n")
+            button.btn.btn-primary(type="button", data-bind="click: deleteFromServer.action, visible: deleteFromServer.visible, enable: deleteFromServer.enabled")
+              span.glyphicon.glyphicon-trash
+              span(data-bind="text: ' ' + $parent.deleteFromServerI18n")
+            button.btn.btn-primary(type="button", data-bind="click: confirm.action, visible: confirm.visible, enable: confirm.enabled")
+              span.glyphicon.glyphicon-ok
+              span(data-bind="text: ' ' + $parent.buttonConfirmI18n")
+            button.btn.btn-primary.pull-right(type="button", data-bind="click: back.action, visible: back.visible, enable: back.enabled")
+              span.glyphicon.glyphicon-chevron-left
+              span &nbsp;Zurück
+        // ko if: progress.show
+        div.col-xs-12
+          div.progress
+            div.progress-bar(role="progressbar", aria-valuenow="0", aria-valuemin="0", aria-valuemax="100", data-bind="style: {width: progress.percentage}")
+                span(data-bind="text: progress.text")
+        // /ko
+        // ko ifnot: selectedMessage
+        div.col-xs-12(data-bind="with: messageListTable")
+          #kbvlogKvcMessageListTable.col-xs-12(data-bind="template: template")
+        // /ko
+        // ko if: selectedMessage
+        div.col-xs-12(data-bind="with: selectedMessage")
+          div.col-xs-6
+            dl.dl-horizontal
+              dt(data-bind="text: $parent.messageTypeI18n")
+              dd(data-bind="text: messageTypeDisplay")
+              dt(data-bind="text: $parent.messageStatusI18n")
+              dd(data-bind="text: messageStatusDisplay")
+              // ko if: serverStatus
+              dt(data-bind="text: $parent.serverStatusI18n")
+              dd(data-bind="text: serverStatusDisplay")
+              // /ko
+              // ko if: kvcServiceId
+              dt(data-bind="text: $parent.kvcServiceIdI18n")
+              dd(data-bind="text: kvcServiceId")
+              // /ko
+              // ko if: kvcTransmitterSystem
+              dt(data-bind="text: $parent.kvcTransmitterSystemI18n")
+              dd(data-bind="text: kvcTransmitterSystem")
+              // /ko
+              // ko if: dispositionNotificationTo
+              dt(data-bind="css: {'text-danger': !mdnSent(), 'text-success': mdnSent}, text: $parent.dispositionNotificationToI18n")
+              dd(data-bind="css: {'text-danger': !mdnSent(), 'text-success': mdnSent}")
+                span(data-bind="text: dispositionNotificationTo")
+                | &nbsp;
+                span(data-bind="css: {'glyphicon-remove': !mdnSent(), 'glyphicon-ok': mdnSent}").glyphicon
+              // /ko
+              // ko if: returnPath
+              dt(data-bind="text: $parent.returnPathI18n")
+              dd(data-bind="text: returnPath")
+              // /ko
+          div.col-xs-6
+            dl.dl-horizontal
+              dt(data-bind="text: $parent.fromI18n")
+              dd(data-bind="text: from")
+              dt(data-bind="text: $parent.sentAtI18n")
+              dd(data-bind="text: displayDate(sentAt())")
+              dt(data-bind="text: $parent.subjectI18n")
+              dd(data-bind="text: subject")
+              dt(data-bind="text: $parent.toI18n")
+              dd(data-bind="text: to")
+              // ko if: receivedAt
+              dt(data-bind="text: $parent.receivedAtI18n")
+              dd(data-bind="text: displayDate(receivedAt())")
+              // /ko
+          // TODOOO kvc show information from matched kbvlog btw link to kbvlog row
+            // ko if: kbvlogId
+            div.col-xs-12.alert.alert-success
+            // /ko
+          // ko if: 0 < _errors().length
+          div.col-xs-12.alert.alert-danger
+            div
+              strong Fehler
+            ul
+              // ko foreach: _errors
+              li(data-bind="text: (code() ? ('(' + code() + ') ') : '') + message()")
+              // /ko
+          // /ko
+          div.col-xs-12.well.well-sm(style="background-image: none;")
+            div(data-bind="html: text")
+            // ko if: 0 < attachments().length
+            hr
+            h5
+              span.glyphicon.glyphicon-paperclip &nbsp;
+              span(data-bind="text: $parent.attachmentsI18n")
+            // ko foreach: attachments
+            div(data-bind="if: contentFileId() || content() ")
+              span(data-bind="if: contentFileId")
+                a(data-bind="attr: {href: $parent.buildDownloadLink(contentFileId())}")
+                  span.glyphicon.glyphicon-download &nbsp;
+              span(data-bind="if: content ")
+                a(target="_blank", href="#", data-bind="click: $parent.toggleAttachmentContentIsShown.bind($parent, $index())")
+                  span.glyphicon.glyphicon-eye-open &nbsp;
+              span(data-bind="text: filename() || generatedFileName()")
+              span(data-bind="if: contentType")
+                span(data-bind="text: ' ('+contentType()+')'")
+              blockquote(style="font-size: 12px", data-bind="visible: -1 !== $parent.shownAttachments.indexOf($index()),text: content")
+            // /ko
+            // /ko
+        // /ko

@@ -1,0 +1,46 @@
+div.form-group.form-inline
+  div.form-group(data-bind="css: { 'has-error': fromPageError }")
+    label.control-label(data-bind="text: i18n('KoUI.KoTable.showExportCSVStart.fromPage.label')+':'")
+    input.form-control.input-sm(name="fromPage", type="text", data-bind="textInput: fromPage", style="width: 6em; margin: 0 1em;")
+  div.form-group(data-bind="css: { 'has-error': toPageError }")
+    label.control-label(data-bind="text: i18n('KoUI.KoTable.showExportCSVStart.toPage.label')+':'")
+    input.form-control.input-sm(name="toPage", type="text", data-bind="textInput: toPage", style="width: 6em; margin: 0 1em;")
+a(data-toggle="collapse", data-target="#KoTableExportCsvStart-options", style="cursor: pointer", data-bind="text: i18n('KoUI.KoTable.showExportCSVStart.furtherSettings.label')")
+div#KoTableExportCsvStart-options.collapse(style="padding-top: 8px;")
+  hr(style="margin-top: 0;")
+  table(style="width: 100%;")
+    colgroup
+      col(style="width: 1%")
+      col
+    tbody
+      tr
+        th(style="padding-right: 1em;")
+          div.form-group
+            strong(data-bind="text: i18n('KoUI.KoTable.showExportCSVStart.lineSeparators.label') + ':'")
+        td
+          div.form-group
+            // ko foreach: lineSeparators
+            label.radio-inline
+              input(type="radio", name="lineSeparator", data-bind="checkedValue: value, checked: $parent.lineSeparator")
+              span(data-bind="text: label")
+            // /ko
+      tr
+        th(style="padding-right: 1em;")
+          div.form-group
+            strong(data-bind="text: i18n('KoUI.KoTable.showExportCSVStart.dataSeparators.label') + ':'")
+        td
+          div.form-group.form-inline
+            input.form-control.input-sm(type="text", name="dataSeparator", data-bind="value: dataSeparatorText", style="width: 3em")
+            span(style="display: inline-block; margin: 0 1em;") oder
+            // ko foreach: dataSeparators
+            label.radio-inline
+              input(type="radio", name="dataSeparator", data-bind="checkedValue: value, checked: $parent.dataSeparator")
+              span(data-bind="text: label")
+            // /ko
+      tr
+        th(style="padding-right: 1em;")
+          div.form-group
+            strong(data-bind="text: i18n('KoUI.KoTable.showExportCSVStart.textSeparator.label') + ':'")
+        td
+          div.form-group.form-inline
+            input.form-control.input-sm(type="text", name="textSeparator", data-bind="value: textSeparator", style="width: 3em")

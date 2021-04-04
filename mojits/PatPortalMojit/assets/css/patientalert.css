@@ -1,0 +1,376 @@
+body {
+    padding-bottom: 80px;
+}
+
+h1, h2, h3 {
+    margin-top: 5px;
+}
+
+.margin-bottom-small {
+    margin-bottom: 10px;
+}
+
+#footer {
+    color: #ffffff;
+}
+
+.content {
+    overflow:auto;
+}
+
+.blue-intime {
+    color: #36A9E1;
+}
+
+.blue-doccirrus {
+    color: #36A9E1;
+}
+
+.color-white {
+    color: white;
+}
+
+.navbar-fixed-bottom {
+    z-index: 1500;
+    clear: both;
+}
+
+.inner-panel-entry {
+    margin-bottom: 5%;
+}
+
+.inner-panel-entry hr {
+    margin: 5px 0;
+}
+
+.google-maps {
+
+}
+
+#footer {
+    height: 10%;
+    background-color: #254061;
+    width: 100%;
+    position: relative;
+    padding-top: 5px;
+}
+
+#logoContainer {
+    height: 60px;
+    width: 120px;
+    background: url('/static/DocCirrus/assets/images/DC_logo_small_blue.png') no-repeat scroll center center;
+}
+
+#editDateBox p {
+    font-size: 140%;
+    margin-top: 5px;
+}
+
+#editDay {
+    margin-left: 8px;
+}
+
+#editMonth {
+    margin-left: 25px;
+}
+
+#confirmModal {
+    min-height: 250px;
+}
+
+#loadingDiv {
+    min-height: 250px;
+}
+
+#loadingDiv p {
+    margin-top: 20px;
+}
+
+#loadingDiv #loadingContainer {
+    padding-left: 30%;
+    position: relative;
+}
+
+#loadingDiv span {
+    top: 40%;
+    display: inline-block;
+    vertical-align: middle;
+    width: 10px;
+    height: 10px;
+    margin: 50px 5px 50px auto;
+    background: #888888;
+    border-radius: 10px;
+    -webkit-animation: loading 0.9s infinite alternate;
+    -moz-animation: loading 0.9s infinite alternate;
+    box-shadow:1px 1px 1px #444444;
+}
+
+#loadingDiv img {
+    margin-top: 30px;
+    margin-left: 95px;
+    width: 75px;
+}
+
+#loadingDiv .icon-ok {
+    margin-top: 30px;
+    color: darkgreen;
+}
+
+#loadingDiv .icon-remove {
+    margin-top: 30px;
+    color: #dd0000;
+}
+
+#loadingDiv span:nth-of-type(2) {
+    -webkit-animation-delay: 0.2s;
+    -moz-animation-delay: 0.2s;
+}
+
+#loadingDiv span:nth-of-type(3) {
+    -webkit-animation-delay: 0.4s;
+    -moz-animation-delay: 0.4s;
+}
+
+#loadingDiv span:nth-of-type(4) {
+    -webkit-animation-delay: 0.6s;
+    -moz-animation-delay: 0.6s;
+}
+
+#loadingDiv span:nth-of-type(5) {
+    -webkit-animation-delay: 0.8s;
+    -moz-animation-delay: 0.8s;
+}
+
+.modal-backdrop, .modal-backdrop.fade.in {
+    opacity: 0.5;
+}
+
+
+@-webkit-keyframes loading {
+
+    0% {
+        width: 10px;
+        height: 10px;
+        opacity: 0.1;
+        -webkit-transform: translateZ(21px);
+    }
+
+    100% {
+        width: 24px;
+        height: 24px;
+        opacity: 1.0;
+        -webkit-transform: translateZ(-21px);
+    }
+
+}
+
+@-moz-keyframes loading {
+
+    0% {
+        width: 10px;
+        height: 10px;
+        opacity: 0.1;
+        -moz-transform: translateZ(21px);
+    }
+
+    100% {
+        width: 24px;
+        height: 24px;
+        opacity: 1.0;
+        -moz-transform: translateZ(-21px);
+    }
+
+}
+
+#editDate {
+    margin-left: 30px;
+}
+
+#spinner {
+    padding-left: 50px;
+    padding-top: 10px;
+}
+
+.well-large {
+    padding: 12px 12px 16px;
+}
+
+.day-text {
+    position: absolute;
+    bottom: 82px;
+    left: 25px;
+}
+
+.date-text {
+    position: absolute;
+    left: 15px;
+    top: 45px;
+}
+
+.shadowed-box {
+    background-color: #FFFFFF;
+    border-radius: 5px 5px 5px 5px;
+    box-shadow: 0 0 2px 1px #B0B2AB;
+}
+
+.border-right {
+    border-right: 1px solid #CCCCCC;
+}
+
+li.circle-middle div {
+
+}
+
+#waitingtimeAnimation {
+    margin-left: 3%;
+}
+
+ul.resp-quad-list li.circle-middle {
+    border-radius: 50% 50% 50% 50%;
+    background: url("/static/DocCirrus/assets/images/praxis_icon.svg") no-repeat scroll center center / 60% auto #36A9E1;
+}
+
+ul.resp-quad-list li.circle {
+    border-radius: 50% 50% 50% 50%;
+    z-index: 96;
+    border: 8px solid #D2D2D2;
+}
+
+ul.resp-quad-list li.circle-timeleft {
+    border-color: #9C9C9B;
+}
+
+#timeleft {
+    marigin-left: 10%;
+}
+
+#btnSendReg { margin-bottom:20px; }
+
+.text-triangle {
+    width: 100%;
+    height: 77%;
+    padding-top: 15%;
+    padding-left: 7%;
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+.input-min-width {
+    min-width: 93.5%;
+}
+
+@media (max-width: 640px) and (max-device-width: 640px) {
+    h1, h2, h3 {
+        font-size: 110%;
+    }
+}
+
+/* set default styles */
+@media (max-width: 468px) {
+    .icon-5x {
+        font-size: 3em;
+    }
+    ul.resp-quad-list li.symbol {
+        background-size: 90%;
+    }
+}
+
+@media (max-width: 640px) {
+    .icon-5x {
+        font-size: 3em;
+    }
+    ul.resp-quad-list li.symbol {
+        background-size: 90%;
+    }
+
+}
+
+@media (max-width: 768px) {
+    .icon-5x {
+        font-size: 4em;
+    }
+    ul.resp-quad-list li.symbol {
+        background-size: 90%;
+    }
+
+    /*.text-triangle {
+        border-bottom: 150px solid #FFFFFF;
+        border-left: 80px solid transparent;
+        border-right: 80px solid transparent;
+    }*/
+}
+
+/***
+    Minimum size for desktop - iframes 300px!!!
+***/
+@media (min-device-width: 300px) and (min-width: 300px) {
+    .icon-5x {
+        font-size: 4em;
+    }
+    ul.resp-quad-list li.symbol {
+        background-size: 90%;
+    }
+}
+
+@media (min-device-width: 400px) and (min-width: 400px) {
+    .icon-5x {
+        font-size: 5em;
+    }
+    ul.resp-quad-list li.circle {
+        border-width: 13px;
+    }
+    ul.resp-quad-list li.symbol {
+        background-size: 90%;
+    }
+}
+
+@media (min-device-width: 500px) and (min-width: 500px) {
+    .icon-5x {
+        font-size: 6em;
+    }
+
+    ul.resp-quad-list li.circle {
+        border-width: 16px;
+    }
+    ul.resp-quad-list li.symbol {
+        background-size: 90%;
+    }
+}
+
+@media (min-device-width: 680px) and (min-width: 680px) {
+    .icon-5x {
+        font-size: 8em;
+    }
+    ul.resp-quad-list li.circle {
+        border-width: 20px;
+
+    }
+    #footer {
+        padding-top: 15px;
+    }
+}
+
+@media (min-device-width: 1024px) and (min-width: 1024px)  {
+    .icon-5x {
+        font-size: 10em;
+    }
+}
+
+@media (min-device-width: 1200px) and (min-width: 1200px)   {
+    .icon-5x {
+        font-size: 9em;
+    }
+    ul.resp-quad-list li.circle {
+        border-width: 25px;
+    }
+
+}
+
+@media (min-device-width: 1600px) and (min-width: 1600px) {
+    #footer {
+        min-height: 125px;
+    }
+}

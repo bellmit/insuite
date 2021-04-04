@@ -1,0 +1,220 @@
+[
+  {
+    "kapitel" : "IV. Maßnahmen der Ergotherapie",
+    "diagnosegruppe_name" : "Entwicklungs-, Verhaltens- und emotionale Störungen mit Beginn in Kindheit und Jugend",
+    "diagnosegruppe_value" : "PS1",
+    "diagnosegruppe_display" : "PS1 Entwicklungs-, Verhaltens- und emotionale Störungen mit Beginn in Kindheit und Jugend",
+    "patientenindividuelle_leitsymptomatik" : true,
+    "erlaeuterung" : null,
+    "hinweis_liste" : [
+      "Verordnung nur aufgrund einer kinder- und jugendpsychiatrischen, neuropädiatrischen oder kinder- und jugendlichenpsychotherapeutischen Eingangsdiagnostik.",
+      "Die Verordnungsmenge richtet sich nach dem medizinischen Erfordernis des Einzelfalls. Nicht bei jeder funktionellen oder strukturellen Schädigung ist es erforderlich, die Höchstverordnungsmenge je Verordnung bzw. die orientierende Behandlungsmenge auszuschöpfen.",
+      "Langfristiger Heilmittelbedarf gemäß § 32 Abs. 1a SGB V siehe Anlage 2"
+    ],
+    "erkrankung_liste_value" : "z. B.",
+    "erkrankung_liste" : [
+      "ADS/ADHS",
+      "frühkindlicher Autismus",
+      "Störung des Sozialverhaltens",
+      "Essstörung (z.B. Anorexie, Bulimie)",
+      "Emotionale Störung im Kindesalter"
+    ],
+    "leitsymptomatik" : [
+      {
+        "leitsymptomatik_name" : "Schädigung der globalen mentalen Funktionen",
+        "leitsymptomatik_value" : "a",
+        "erlaeuterung_liste" : [
+          "Psychosoziale Funktionen",
+          "Temperament und Persönlichkeit",
+          "Antrieb"
+        ]
+      },
+      {
+        "leitsymptomatik_name" : "Schädigung der spezifischen mentalen Funktionen",
+        "leitsymptomatik_value" : "b",
+        "erlaeuterung_liste" : [
+          "Aufmerksamkeit, Gedächtnis",
+          "Psychomotorik, Verhalten",
+          "emotionale Funktionen, Selbstwahrnehmung",
+          "Denken, höhere kognitive Funktionen"
+        ]
+      }
+    ],
+    "heilmittelverordnung" : {
+      "vorrangiges_heilmittel_liste" : [
+        {
+          "name" : "Psychisch-funkt. Beh.",
+          "positionsnr_liste" : [
+            "X4105",
+            "14105",
+            "24105",
+            "34105",
+            "44105",
+            "54105",
+            "64105",
+            "74105",
+            "84105",
+            "94105",
+            "A4105"
+          ],
+          "massagetechnik" : null,
+          "reihenfolge" : 1,
+          "mindestalter_jahre" : null,
+          "hoechstalter_jahre" : null
+        },
+        {
+          "name" : "Psychisch-funkt. Beh. Gruppe",
+          "positionsnr_liste" : [
+            "X4208",
+            "14208",
+            "24208",
+            "34208",
+            "44208",
+            "54208",
+            "64208",
+            "74208",
+            "84208",
+            "94208",
+            "A4208"
+          ],
+          "massagetechnik" : null,
+          "reihenfolge" : 2,
+          "mindestalter_jahre" : null,
+          "hoechstalter_jahre" : null
+        },
+        {
+          "name" : "Hirnleistungstraining/neuropsych. orientierte Beh.",
+          "positionsnr_liste" : [
+            "X4104",
+            "14104",
+            "24104",
+            "34104",
+            "44104",
+            "54104",
+            "64104",
+            "74104",
+            "84104",
+            "94104",
+            "A4104"
+          ],
+          "massagetechnik" : null,
+          "reihenfolge" : 3,
+          "mindestalter_jahre" : null,
+          "hoechstalter_jahre" : null
+        },
+        {
+          "name" : "Hirnleistungstraining Gruppe",
+          "positionsnr_liste" : [
+            "X4207",
+            "14207",
+            "24207",
+            "34207",
+            "44207",
+            "54207",
+            "64207",
+            "74207",
+            "84207",
+            "94207",
+            "A4207"
+          ],
+          "massagetechnik" : null,
+          "reihenfolge" : 4,
+          "mindestalter_jahre" : null,
+          "hoechstalter_jahre" : null
+        },
+        {
+          "name" : "Sensomotorisch-perz. Beh.",
+          "positionsnr_liste" : [
+            "X4103",
+            "14103",
+            "24103",
+            "34103",
+            "44103",
+            "54103",
+            "64103",
+            "74103",
+            "84103",
+            "94103",
+            "A4103"
+          ],
+          "massagetechnik" : null,
+          "reihenfolge" : 5,
+          "mindestalter_jahre" : null,
+          "hoechstalter_jahre" : null
+        },
+        {
+          "name" : "Sensomotorisch-perz. Beh. Gruppe",
+          "positionsnr_liste" : [
+            "X4206",
+            "14206",
+            "24206",
+            "34206",
+            "44206",
+            "54206",
+            "64206",
+            "74206",
+            "84206",
+            "94206",
+            "A4206"
+          ],
+          "massagetechnik" : null,
+          "reihenfolge" : 6,
+          "mindestalter_jahre" : null,
+          "hoechstalter_jahre" : null
+        }
+      ],
+      "ergaenzendes_heilmittel_liste" : [ ],
+      "standardisierte_heilmittel_kombination" : [ ],
+      "frequenzempfehlungstyp" : "einheiten_pro_woche",
+      "frequenzempfehlung_liste" : [
+        {
+          "minimale_anzahl" : 1,
+          "maximale_anzahl" : 3,
+          "richtlinie" : "true"
+        },
+        {
+          "minimale_anzahl" : 1,
+          "maximale_anzahl" : null,
+          "richtlinie" : null
+        },
+        {
+          "minimale_anzahl" : 1,
+          "maximale_anzahl" : 2,
+          "richtlinie" : null
+        },
+        {
+          "minimale_anzahl" : 2,
+          "maximale_anzahl" : null,
+          "richtlinie" : null
+        },
+        {
+          "minimale_anzahl" : 2,
+          "maximale_anzahl" : 3,
+          "richtlinie" : null
+        },
+        {
+          "minimale_anzahl" : 3,
+          "maximale_anzahl" : null,
+          "richtlinie" : null
+        }
+      ],
+      "verordnungsmenge" : {
+        "hoechstmenge_verordnung" : {
+          "value" : 10,
+          "orientierende_behandlungsmenge_hoechstalter" : null,
+          "hoechstalter_jahre" : null,
+          "orientierende_behandlungsmenge_icd_code" : null,
+          "icd_code_liste" : [ ]
+        },
+        "orientierende_behandlungsmenge" : {
+          "value" : 40,
+          "orientierende_behandlungsmenge_hoechstalter" : null,
+          "hoechstalter_jahre" : null,
+          "orientierende_behandlungsmenge_icd_code" : null,
+          "icd_code_liste" : [ ]
+        }
+      }
+    },
+    "catalog" : "DC-SDHM2-D-1607600832694.json"
+  }
+]

@@ -1,0 +1,30 @@
+{
+    "Medication_T": {
+        "version": 1.0,
+        "code": {
+            "schema": "activity",
+            "path": "code"
+        },
+        "pharmaId": {
+            "schema": "activity",
+            "path": "pharmaId"
+        },
+        "pharmaCompany": {
+            "schema": "activity",
+            "path": "pharmaCompany"
+        },
+        "format": {
+            "schema": "activity",
+            "path": "format"
+        },
+        "packSize": {
+            "schema": "activity",
+            "path": "packSize"
+        },
+        "comment": {
+            "schema": "activity",
+            "path": "comment"
+        }
+
+    }
+}

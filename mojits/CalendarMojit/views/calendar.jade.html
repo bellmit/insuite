@@ -1,0 +1,22 @@
+div(id=mojit_view_id, data-bind="attr: { 'class': 'CalendarMojit-' + currentViewName() + ' CalendarMojit-screenWidth-' + screenWidth() }")
+  .container.container-fullscreen.container.container-fullscreen-min-sm
+    div.dc-nav.dc-nav-flex-container
+      #mainCalendarNavigation.dc-nav-flex-left(data-bind="template: subNavigation.template, css: { 'frameViewHidden': isFrameView() }")
+      div.dc-nav-tools.dc-nav-flex-right.form-inline.text-right
+        div.form-group(style="margin-right: 4px;")
+          div.checkbox-inline(data-bind="visible: appointmentSearchVisible")
+            label.control-label
+              strong(data-bind="text: pastAppointmentsI18n")
+              input(name="showPastAppointments", type="checkbox", data-bind="checked: showPastAppointments")
+        div.appointmentSearch.text-left(style="display: none", data-bind="with: appointmentSearch, visible: Boolean(currentViewName())")
+          input.form-control.input-sm(name="appointmentSearch", data-bind="select2: select2SearchConfig")
+        select.form-control.input-sm(style="display: none", name="slotDuration", data-bind="visible: Boolean(currentViewName()), value: slotDuration, options: slotDurationList, optionsValue: 'val', optionsText: 'i18n', valueUpdate: 'afterkeydown', attr: { title: slotMinBtnI18n }")
+        button.btn.btn-sm.btn-default(name="toggleFullScreen", type="button", data-bind="click: toggleFullScreenHandler, attr: { title: titleViewPortBtnI18n }")
+          i.fa.fa-arrows-alt
+    #upperDiv
+script(type="text/html", id="template-appointment")
+  include template-appointment
+script(type="text/html", id="template-appointmentEventDropConfirm")
+  include template-appointmentEventDropConfirm
+
+include ../../../autoload/KoUI/KoSchemaValue/view/KoSchemaTemplates

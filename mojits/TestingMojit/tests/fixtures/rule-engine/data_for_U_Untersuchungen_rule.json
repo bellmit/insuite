@@ -1,0 +1,212 @@
+{
+  "rule": {
+    "isDirectory" : false,
+    "isLocked" : false,
+    "isActive" : true,
+    "caseFolderType" : [
+      "PUBLIC"
+    ],
+    "metaActTypes" : [
+      "HISTORY"
+    ],
+    "metaActCodes" : [],
+    "description" : "U-Untersuchungen GKV",
+    "referenceArea" : "ENTRY",
+    "periodType" : "MONTH",
+    "periodCount" : 1,
+    "periodReference" : "raum",
+    "rules" : [
+      {
+        "ruleId" : "5bb0e9040482a11fcf00000f",
+        "description" : "U3",
+        "isActive" : true,
+        "validations" : {
+          "\\\\$and" : [
+            {
+              "context" : "ACTIVITY",
+              "criteria" : {
+                "actType" : {
+                  "\\\\$eq" : "HISTORY"
+                },
+                "content" : {
+                  "\\\\$regex" : "U3",
+                  "\\\\$options" : ""
+                }
+              }
+            }
+          ]
+        },
+        "actions" : [
+          {
+            "type" : "ERROR",
+            "template" : {
+              "urgency" : 2,
+              "details" : "",
+              "roles" : [],
+              "candidates" : [],
+              "caseFolder" : "",
+              "diagnosisCert" : "NONE",
+              "toCreate" : 1,
+              "linkActivities" : false,
+              "autoCreate" : false,
+              "tempateID" : "5c41f878a453e447a3000016",
+              "markers" : [],
+              "type" : ""
+            }
+          }
+        ],
+        "metaActTypes" : [
+          "HISTORY"
+        ]
+      },
+      {
+        "ruleId" : "5bb0e9720482a11fcf000013",
+        "description" : "U4",
+        "isActive" : true,
+        "validations" : {
+          "\\\\$and" : [
+            {
+              "context" : "ACTIVITY",
+              "criteria" : {
+                "actType" : {
+                  "\\\\$eq" : "HISTORY"
+                },
+                "content" : {
+                  "\\\\$regex" : "U4",
+                  "\\\\$options" : "i"
+                }
+              }
+            }
+          ]
+        },
+        "actions" : [
+          {
+            "type" : "ERROR",
+            "template" : {
+              "urgency" : 2,
+              "details" : "",
+              "roles" : [],
+              "candidates" : [],
+              "caseFolder" : "",
+              "diagnosisCert" : "NONE",
+              "toCreate" : 1,
+              "linkActivities" : false,
+              "autoCreate" : false,
+              "tempateID" : "5c41f878a453e447a3000016",
+              "markers" : [],
+              "type" : ""
+            }
+          }
+        ],
+        "metaActTypes" : [
+          "HISTORY"
+        ]
+      }
+    ],
+    "metaFuzzy" : true
+  },
+  "schein": {
+    "actType" : "SCHEIN",
+    "attachments" : [],
+    "subType" : "",
+    "time" : "",
+    "userContent" : "ambulante Behandlung (ambulante Behandlung)",
+    "partnerInfo" : "",
+    "explanations" : "",
+    "status" : "VALID",
+    "activities" : [],
+    "referencedBy" : [],
+    "formId" : "",
+    "formVersion" : "",
+    "formPdf" : "",
+    "formLang" : "de",
+    "formGender" : "m",
+    "apkState" : "IN_PROGRESS",
+    "forInsuranceType" : "",
+    "locationFeatures" : "",
+    "scheinRemittor" : "",
+    "scheinEstablishment" : "",
+    "scheinSpecialisation" : "",
+    "scheinOrder" : "",
+    "scheinDiagnosis" : "",
+    "scheinFinding" : "",
+    "scheinNotes" : "U3",
+    "scheinClinicalTreatmentFrom" : null,
+    "scheinClinicalTreatmentTo" : null,
+    "scheinNextTherapist" : "",
+    "fk4234" : false,
+    "fk4219" : "",
+    "continuousIcds" : [],
+    "icds" : [],
+    "icdsExtra" : [],
+    "scheinQuarter" : "1",
+    "scheinYear" : "2019",
+    "scheinBillingArea" : "00",
+    "scheinType" : "0101",
+    "scheinSubgroup" : "00",
+    "scheinTransferTypeInfo" : "",
+    "fk4124" : "",
+    "fk4126" : "",
+    "fk4125from" : null,
+    "fk4125to" : null,
+    "fk4123" : "",
+    "fk4206" : null,
+    "fk4236" : false,
+    "fk4241" : "",
+    "fk4217" : "",
+    "scheinSlipMedicalTreatment" : "",
+    "__t" : "SCHEIN",
+    "attachedMedia" : [],
+    "content" : "U3",
+    "editor" : [
+      {
+        "name" : "A B",
+        "initials" : "AB"
+      }
+    ],
+    "debtCollection" : "",
+    "fk4235Set" : [],
+    "invoiceData" : [],
+    "scheinTransferType" : "",
+    "employeeName" : "B, A",
+    "employeeInitials" : "AB",
+    "patientLastName" : "a",
+    "patientFirstName" : "a",
+    "code" : null
+  },
+  "treatment": {
+    "attachments" : [],
+    "subType" : "",
+    "time" : "",
+    "partnerInfo" : "",
+    "explanations" : "",
+    "status" : "VALID",
+    "activities" : [],
+    "referencedBy" : [],
+    "formId" : "",
+    "formVersion" : "",
+    "formPdf" : "",
+    "formLang" : "de",
+    "formGender" : "m",
+    "apkState" : "IN_PROGRESS",
+    "__t" : "HISTORY",
+    "actType" : "HISTORY"
+  },
+  "ruleLogExpected": {
+      "message" : "U3",
+      "referenceArea" : "ENTRY",
+      "ruleLogType" : "ERROR",
+      "actCodes" : [],
+      "actTypes" : [
+        "HISTORY"
+      ],
+      "activitiesToCreate" : [],
+      "affectedActivities" : [],
+      "allCodes" : [],
+      "caseFolderType" : [
+        "PUBLIC"
+      ],
+      "requiredCodes" : [],
+      "ruleId" : "5bb0e9040482a11fcf00000f"
+  }
+}

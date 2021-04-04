@@ -1,0 +1,24 @@
+div.inCaseMojit(id=mojit_view_id)
+  .container.container-fullscreen
+    div(style="position: relative", data-bind="css: {'frameViewHidden': isFrameView }")
+      div(data-bind="template: navigation.template")
+      div.open-document-modal-tooltip(style="display: none;", data-bind="visible: openDocumentModalToolTip")
+        form.form-inline
+          div.form-group
+            input.form-control#select2Tags(name="select2Tags", type="hidden", data-bind="select2: select2DocumentSearch")
+          div.form-group
+            button.btn.btn-default(data-bind="click: openDocumentModal, tooltip: {title:  openDocumentModalToolTip}")
+              span.glyphicon.glyphicon-folder-open
+          div.form-group
+            button.btn.btn-default(
+            name="toggleFullScreen", type="button", data-bind="click: toggleFullScreenHandler, tooltip: {title:  viewPortBtnI18n}, attr: { title: viewPortBtnI18n }",
+            style="")
+              span.fa.fa-arrows-alt
+      //div(style="position: absolute; right: 0; top: 0;")
+    div.inCaseMojit-currentView(data-bind="with: currentView")
+      div(data-bind="template: template")
+include CaseFileViewModel/include
+include PatientDetailViewModel/include
+include ../../InSuiteAdminMojit/views/baseContactTemplates
+
+include ../../../autoload/KoUI/KoSchemaValue/view/KoSchemaTemplates

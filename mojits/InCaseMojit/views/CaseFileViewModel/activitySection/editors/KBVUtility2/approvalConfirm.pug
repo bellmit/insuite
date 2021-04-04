@@ -1,0 +1,74 @@
+div
+  .row
+    .col-xs-4
+      div.form-group(data-bind="hasFeedback: { field: approvalValidTo, toggle: approvalValidTo.hasError, messages: approvalValidTo.validationMessages }")
+        label(data-bind="text: approvalValidTo.i18n")
+        .date-picker.input-group
+          input.form-control(name="approvalValidTo", data-bind="datetimepicker: { value: approvalValidTo }, readOnly: approvalValidToReadOnly")
+    .col-xs-4
+      div.form-group(data-bind="hasFeedback: { field: unlimitedApproval, toggle: unlimitedApproval.hasError, messages: unlimitedApproval.validationMessages }")
+        div.checkbox(style="margin-top: 28px;")
+          label.control-label
+            strong(data-bind="text: unlimitedApproval.i18n")
+            input(type="checkbox", name="unlimitedApproval", data-bind="checked: unlimitedApproval, readOnly: unlimitedApproval.readOnly")
+    .col-xs-4
+      div.form-group(data-bind="hasFeedback: { field: insuranceId, toggle: insuranceId.hasError, messages: insuranceId.validationMessages }")
+        label(data-bind="text: insuranceId.i18n")
+        input.form-control(name="insuranceId", data-bind="textInput: insuranceId, readOnly: insuranceId.readOnly")
+  .row
+    .col-xs-12
+      div.form-group
+        textarea#textform-sd3-content.form-control(name="userContent", data-bind="textInput: userContent, readOnly: userContent.readOnly", placeholder="Freitext", rows="3")
+  // ko if: utIcdCode
+  .row
+    .col-xs-4
+      input(type='checkbox', name='confirmIcd1', data-bind="checked: confirmIcd1, disable: confirmIcdDisabled", style="margin-right: 4px;")
+      label(style="padding-top: 8px;")
+        span(data-bind="text: utIcdCode.i18n")
+    .col-xs-4
+      div.form-group
+        input.form-control(name="utIcdCode", placeholder="", data-bind="textInput: utIcdCode", disabled)
+  // /ko
+  // ko if: utSecondIcdCode
+  .row
+    .col-xs-4
+      input(type='checkbox', name='confirmIcd2', data-bind="checked: confirmIcd2, disable: confirmIcdDisabled", style="margin-right: 4px;")
+      label(style="padding-top: 8px;")
+        span(data-bind="text: utSecondIcdCode.i18n")
+    .col-xs-8
+      div.form-group
+        input.form-control(name="utSecondIcdCode", placeholder="", data-bind="textInput: utSecondIcdCode", disabled)
+  // /ko
+  .row
+    .col-xs-12
+      h4(data-bind="hasFeedback: { field: ut2DiagnosisGroupCode, toggle: ut2DiagnosisGroupCode.hasError, messages: ut2DiagnosisGroupCode.validationMessages }")
+        span(data-bind="text: displayDiagnosisGroup")
+
+
+  // ko if: ut2Remedy1List().length
+  .row
+    .col-xs-12
+      strong Heilmittel
+  // /ko
+
+  //ko with: standardizedCombination
+  include utRemedyApprovalRow
+  // /ko
+
+  //ko ifnot: standardizedCombination
+
+  // ko foreach: ut2Remedy1List
+  include utRemedyApprovalRow
+  // /ko
+
+  // ko if: ut2Remedy2List().length
+  .row
+    .col-xs-12
+      strong Ergänzendes Heilmittel
+  // /ko
+
+  // ko foreach: ut2Remedy2List
+  include utRemedyApprovalRow
+  // /ko
+
+  // /ko

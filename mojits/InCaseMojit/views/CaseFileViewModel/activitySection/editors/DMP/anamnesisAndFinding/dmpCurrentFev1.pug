@@ -1,0 +1,20 @@
+div.form-group
+  div.row
+    div.col-xs-4
+      div(data-bind="hasFeedback: { field: dmpCurrentFev1, toggle: dmpCurrentFev1.hasError, messages: dmpCurrentFev1.validationMessages }")
+        label.control-label(data-bind="text: dmpCurrentFev1.i18n")
+        span(data-bind="dmpField: { field: dmpCurrentFev1 }")
+        input.form-control(name="dmpCurrentFev1", type="text", data-bind="value: dmpCurrentFev1String, readOnly: dmpCurrentFev1.readOnly")
+    div.col-xs-2.form-horizontal
+      span &nbsp;
+      // ko if: isAfterQ42017
+      p.form-control-static(data-bind="text: dmpCurrentFev1UnitLabel400I18n")
+      // /ko
+      // ko ifnot: isAfterQ42017
+      p.form-control-static(data-bind="text: dmpCurrentFev1UnitLabelI18n")
+      // /ko
+    div.col-xs-6
+      span &nbsp;<br>
+      label.checkbox-inline
+        span(data-bind="text: dmpCurrentFev1NotDoneLabelI18n")
+        input(type="checkbox", name="dmpCurrentFev1NotDone", data-bind="checked: dmpCurrentFev1NotDone, readOnly: dmpCurrentFev1NotDone.readOnly")

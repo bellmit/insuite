@@ -1,0 +1,8 @@
+div.row
+  #partnerTable.col-xs-12(data-bind="template: template")
+div.row
+  .col-xs-12
+    #actionButtons.dc-action-buttons.dc-action-buttons-right
+      button#btn_prevldt.btn.btn-primary(name="partners-remove", type="button", data-bind="click: remove, enable: removeEnabled, text: buttonDeleteI18n")
+      button.btn.btn-primary(name="partners-add", type="button", data-bind="click: add, text: acceptInvitationI18n")
+      button.btn.btn-primary(name="partners-invite", type="button", data-bind="click: invite, text: inviteI18n")

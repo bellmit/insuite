@@ -1,0 +1,83 @@
+#tab_license
+  header
+    h3(data-bind="text: licenseHeaderI18n")
+
+  div.panel.panel-default
+    div.panel-heading
+      h4(data-bind="text: specialModulesTextI18n")
+    div.panel-body(style="padding-top: 0; padding-bottom: 0;")
+      div.row(data-bind="foreach: specialModules")
+        div.col-xs-6.col-sm-4.col-md-2
+          label.checkbox
+            input(type="checkbox", disabled="true", data-bind="checked: checked, attr: {name:val}")
+            span(data-bind="text: i18n")
+            i.dc-info-icon(data-toggle="popover", data-bind="attr: {'data-content': desc}", data-html="true", rel="popover", data-placement="auto top", data-trigger="hover", data-container= "#tab_license")
+
+  div.panel.panel-default
+    div.panel-heading
+      h4(data-bind="text: baseSystemLevelTextI18n")
+    div.panel-body
+      div.row#doctorsAmount
+        div.col-xs-12.col-sm-6.col-md-2
+          span(data-bind="text: baseSystemLevelI18n")
+          i.dc-info-icon(data-toggle="popover", data-bind="attr: {'data-content': baseSystemLevelNoteI18n}", data-html="true", rel="popover", data-placement="auto top", data-trigger="hover", data-container= "#doctorsAmount")
+        div.col-xs-3.col-sm-2.col-md-1
+          input.form-control(type="text", name="doctorsAmount", disabled="true", data-bind="value: doctorsAmount")
+
+  div.panel.panel-default
+    div.panel-heading
+      h4(data-bind="text: baseServicesTextI18n")
+    div.panel-body(style="padding-top: 0; padding-bottom: 0;")
+      div.row(data-bind="foreach: baseServices")
+        div.col-xs-6.col-sm-4.col-md-2
+          label.checkbox
+            input(type="checkbox", name="baseServices", disabled="true", data-bind="checked: checked, value: val")
+            span(data-bind="text: i18n")
+            i.dc-info-icon(data-toggle="popover", data-bind="attr: {'data-content': desc}", data-html="true", rel="popover", data-placement="auto top", data-trigger="hover", data-container= "#tab_license")
+
+  div.panel.panel-default
+    div.panel-heading
+      h4(data-bind="text: additionalServicesTextI18n")
+    div.panel-body(style="padding-top: 0; padding-bottom: 0;")
+      div.row(data-bind="foreach: additionalServices")
+        div.col-xs-6.col-sm-4.col-md-2
+          label.checkbox
+            input(type="checkbox", disabled="true", data-bind="checked: checked, attr: {name:val}")
+            span(data-bind="text: i18n")
+            i.dc-info-icon(data-toggle="popover", data-bind="attr: {'data-content': desc}", data-html="true", rel="popover", data-placement="auto top", data-trigger="hover", data-container= "#tab_license")
+  // ko if: hasInTi
+  div.panel.panel-default
+    div.panel-heading
+      h4(data-bind="text: telematikServicesTextI18n")
+    div.panel-body(style="padding-top: 0; padding-bottom: 0;")
+      div.row(data-bind="foreach: telematikServices")
+        div.col-xs-6.col-sm-4.col-md-2
+          label.checkbox
+            input(type="checkbox", disabled="true", data-bind="checked: checked, attr: {name:val}")
+            span(data-bind="text: i18n")
+            i.dc-info-icon(data-toggle="popover", data-bind="attr: {'data-content': desc}", data-html="true", rel="popover", data-placement="auto top", data-trigger="hover", data-container= "#tab_license")
+  // /ko
+  div.panel.panel-default
+    div.panel-heading
+      h4(data-bind="text: supportLevelTextI18n")
+    div.panel-body(style="padding-top: 0; padding-bottom: 0;")
+      div.row(data-bind="foreach: supportLevel")
+        div.col-xs-6.col-sm-4.col-md-2
+          label.radio
+            input(type="radio", name="supportLevel", disabled="true", data-bind="checked: checked, value: val")
+            span(data-bind="text: i18n")
+            i.dc-info-icon(data-toggle="popover", data-bind="attr: {'data-content': desc}", data-html="true", rel="popover", data-placement="auto top", data-trigger="hover", data-container= "#tab_license")
+
+  div.panel.panel-default
+    div.panel-heading
+      h4(data-bind="text: solutionsTextI18n")
+    div.panel-body(style="padding-top: 0; padding-bottom: 0;")
+      div(data-bind="if: !isSolsSupported")
+        span(data-bind="text: solsNotSupportedTextI18n")
+      div(data-bind="if: isSolsSupported")
+        div.row(data-bind="foreach: solutions")
+          div.col-xs-6.col-sm-4.col-md-2
+            label.checkbox
+              input(type="checkbox", disabled="true", data-bind="checked: true")
+              span(data-bind="text: title")
+              i.dc-info-icon(data-toggle="popover", data-bind="attr: {'data-content': desc}", data-html="true", rel="popover", data-placement="auto top", data-trigger="hover", data-container= "#tab_license")

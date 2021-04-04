@@ -1,0 +1,48 @@
+div#sourceModel
+  div.form-group(data-bind="hasFeedback: { field: fileType, toggle: fileType.hasError, messages: fileType.validationMessages }")
+    label(for="sourceFileFileType", data-bind="text: fileTypeI18n + ':'")
+    input.form-control.input-sm#sourceFileFileType(type="hidden", data-bind="select2: select2FileType")
+  div(data-bind="if: availableFileTypes.SMBSHARE === fileType()")
+    div.form-group(data-bind="hasFeedback: { field: smbShare, toggle: smbShare.hasError, messages: smbShare.validationMessages }")
+      label(for="sourceFileSmbShare", data-bind="text: smbShare.i18n + ':'")
+      input#sourceFileSmbShare.form-control(data-bind="value: smbShare, valueUpdate:'afterkeydown', attr: { placeholder: smbShareExampleI18n }")
+    div.form-group(data-bind="hasFeedback: { field: smbUser, toggle: smbUser.hasError, messages: smbUser.validationMessages }")
+      label(for="sourceFileSmbUser", data-bind="text: smbUser.i18n + ':'")
+      input#sourceFileSmbUser.form-control(data-bind="value: smbUser, valueUpdate:'afterkeydown'")
+    div.form-group(data-bind="hasFeedback: { field: smbPw, toggle: smbPw.hasError, messages: smbPw.validationMessages }")
+      label(for="sourceFileSmbPw", data-bind="text: smbPw.i18n + ':'")
+      input#sourceFileSmbPw.form-control(type="password", data-bind="value: smbPw, valueUpdate:'afterkeydown'")
+  div(data-bind="if: availableFileTypes.DEVICE_SERVER === fileType()")
+    div.form-group(data-bind="hasFeedback: { field: deviceServers, toggle: deviceServers.hasError, messages: deviceServers.validationMessages }")
+      label(for="multiDeviceServer", data-bind="text: deviceServerI18n + ':'")
+      input.form-control#multiDeviceServer(type="hidden", name="multiDeviceServer", data-bind="select2: select2MultiDeviceServer")
+  div.form-group(data-bind="hasFeedback: { field: filePath, toggle: filePath.hasError, messages: filePath.validationMessages }")
+    label(for="sourceFileFilePath")
+      span(data-bind="text: filePath.i18n + ':'")
+      i.dc-info-icon(data-toggle="popover", data-html="true", rel="popover", data-placement="auto left", data-trigger="hover", data-bind="attr: { 'data-content': pathExplanationI18n }")
+    input#sourceFileFilePath.form-control(data-bind="value: filePath, valueUpdate:'afterkeydown', attr: { placeholder: filePathSinkExampleI18n }")
+  div.form-group
+    div.checkbox
+      label.control-label
+        strong(data-bind="text: noFile.i18n")
+        input(type="checkbox", name="noFile", data-bind="checked: noFile, click: checkPath")
+  div.form-group
+    div.checkbox
+      label.control-label
+        strong(data-bind="text: overwriteFile.i18n")
+        input(type="checkbox", name="overwriteFile", data-bind="checked: overwriteFile")
+  div.form-group
+    div.checkbox
+      label.control-label
+        strong(data-bind="text: executeApp.i18n")
+        input(type="checkbox", name="executeApp", data-bind="checked: executeApp")
+  div(data-bind="if: executeApp")
+    div.form-group(data-bind="hasFeedback: { field: executeClient, toggle: executeClient.hasError, messages: executeClient.validationMessages }")
+      label(for="sourceFileExecuteClient", data-bind="text: executeClient.i18n + ':'")
+      input.form-control.input-sm#sourceFileExecuteClient(type="hidden", data-bind="select2: select2ExecuteClient")
+    div.form-group(data-bind="hasFeedback: { field: executePath, toggle: executePath.hasError, messages: executePath.validationMessages }")
+      label(for="sourceFileExecutePath", data-bind="text: executePath.i18n + ':'")
+      input#sourceFileExecutePath.form-control(data-bind="value: executePath, valueUpdate:'afterkeydown'")
+    div.form-group
+      label(for="sourceFileExecuteArgs", data-bind="text: executeArgs.i18n + ':'")
+      input#sourceFileExecuteArgs.form-control(data-bind="value: executeArgs")

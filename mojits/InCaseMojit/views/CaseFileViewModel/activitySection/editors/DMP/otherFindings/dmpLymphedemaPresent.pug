@@ -1,0 +1,7 @@
+div.col-xs-3.form-group
+    strong(data-bind="text: dmpLymphedemaPresent.i18n")
+    span(data-bind="dmpField: { field: dmpLymphedemaPresent }")
+    div(data-bind="foreach: dmpLymphedemaPresent.list, hasFeedback: { field: dmpLymphedemaPresent, toggle: dmpLymphedemaPresent.hasError, messages: dmpLymphedemaPresent.validationMessages }")
+        label.radio-inline
+            span(data-bind="text: i18n")
+            input(type="radio", name="dmpLymphedemaPresent", data-bind="value: val, checked: $parent.dmpLymphedemaPresent, readOnly: $parent.dmpLymphedemaPresent.readOnly, attr: { name: $element.name + '-' + val }")

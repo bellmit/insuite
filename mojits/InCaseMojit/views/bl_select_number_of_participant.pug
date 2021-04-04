@@ -1,0 +1,6 @@
+#bl_select_number_of_participant
+  div.row
+    div.col-sm-12(data-bind="foreach: numParticipants")
+      label.checkbox
+        span(data-bind="text: $data + ' Teilnehmer (' + $parent.substituteCode($data) + ')'")
+        input(type="checkbox", name="numParticipants", data-bind="value: $data, checked: $parent.selection")

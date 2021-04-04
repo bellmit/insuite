@@ -1,0 +1,37 @@
+// ko ifnot: menu
+li.KoNavItem(data-bind="visible: visible, css: css, disable: disabled, attr: { title: title }")
+  a(data-bind="click: bindClick( $context ), attr: { href: _attrHref, name: name }, css: {'KoNavItem-danger': hasDanger}")
+    span
+      // ko if: (icon && icon.iconName)
+      span.KoNavItem-icon(data-bind="template: $data.icon.template")
+      // /ko
+      // ko if: text
+      span.KoNavItem-text(data-bind="text: text")
+      // /ko
+      // ko if: html
+      span.KoNavItem-html(data-bind="html: html")
+      // /ko
+      // ko if: badge
+      span.KoNavItem-badge.badge(data-bind="text: badge, click: _onBadgeClick, css: badgeCss, attr: { title: badgeTitle }, event: { mousedown:_onBadgeMouseDown }")
+      // /ko
+// /ko
+// ko if: menu
+li.KoNavItem.dropdown(data-bind="visible: visible, css: css, disable: disabled, attr: { title: title }")
+  a.dropdown-toggle(data-bind="click: bindClick( $context ), attr: { href: _attrHref, name: name }", data-toggle="dropdown")
+    span
+      // ko if: (icon && icon.iconName)
+      span.KoNavItem-icon(data-bind="template: $data.icon.template")
+      // /ko
+      // ko if: text
+      span.KoNavItem-text(data-bind="text: text")
+      // /ko
+      // ko if: html
+      span.KoNavItem-html(data-bind="html: html")
+      // /ko
+      // ko if: badge
+      span.KoNavItem-badge.badge(data-bind="text: badge, click: _onBadgeClick, css: badgeCss, attr: { title: badgeTitle }, event: { mousedown:_onBadgeMouseDown }")
+      // /ko
+    b.caret
+  // ko template: menu.template
+  // /ko
+// /ko

@@ -1,0 +1,21 @@
+div(data-bind="if: configLoaded").reports-table-wrapper
+
+  // ko with: predefinedReportsListViewModel
+  div.predefined-reports(data-bind="sideBar: sideBarConfig", style="display: none;")
+    div#reportsListView(data-bind="template: template")
+  // /ko
+
+  div(data-bind="css: columnClassName")
+
+    div(data-bind="template: timeline.template")
+
+    div.row
+      div.col-lg-12
+        a(data-bind="click: addTableClick").btt-add
+          i.glyphicon.glyphicon-plus
+          span(data-bind="text: buttonAddNewI18n")
+
+    //ko if: table
+    div.row(data-bind="with: table")
+      div.col-lg-12(data-bind="template: template")
+    // /ko

@@ -1,0 +1,12 @@
+div(data-bind="visible: dmpManifestationOfContralateralBreastCancer_followingVisible()")
+    div.row.form-group(data-bind="hasFeedback: { field: dmpManifestationOfContralateralBreastCancer_following_date, toggle: dmpManifestationOfContralateralBreastCancer_following_date.hasError, messages: dmpManifestationOfContralateralBreastCancer_following_date.validationMessages }")
+        div.col-xs-6
+            label.control-label
+                span(data-bind="text: dmpManifestationOfContralateralBreastCancer_following_date.i18n")
+                span(data-bind="dmpField: { field: dmpManifestationOfContralateralBreastCancer_following_date }")
+            div(data-bind="foreach: dmpManifestationOfContralateralBreastCancer_following_text.list, hasFeedback: { field: dmpManifestationOfContralateralBreastCancer_following_text, toggle: dmpManifestationOfContralateralBreastCancer_following_text.hasError, messages: dmpManifestationOfContralateralBreastCancer_following_text.validationMessages }")
+                label.checkbox-inline
+                    span(data-bind="text: i18n")
+                    input(type="checkbox", name="dmpManifestationOfContralateralBreastCancer_following_text", data-bind="value: val, checked: $parent.dmpManifestationOfContralateralBreastCancer_following_text, readOnly: $parent.dmpManifestationOfContralateralBreastCancer_following_text.readOnly, attr: { name: $element.name + '-' + val }")
+        div.col-xs-5.date-picker.input-group
+            input.form-control(name="dmpManifestationOfContralateralBreastCancer_following_date", data-bind="datetimepicker: { value: dmpManifestationOfContralateralBreastCancer_following_date }, readOnly: dmpManifestationOfContralateralBreastCancer_following_date.readOnly")

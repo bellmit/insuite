@@ -1,0 +1,551 @@
+{
+  "catalogEntries": [
+    {
+      "seq": "86900",
+      "unifiedSeq": "000086900",
+      "title": "Versenden eines elektronischen Briefes je Empfänger-Praxis",
+      "l3": {
+        "seq": "87.9",
+        "title": "Vergütung für eArztbrief"
+      },
+      "l2": {
+        "seq": "9",
+        "title": "Vergütung für eArztbrief"
+      },
+      "l1": {
+        "seq": "IX",
+        "title": "Pseudo Leistungen"
+      },
+      "u_extra": {
+        "validfrom": "2017-01-01..",
+        "quittungstext": "Versenden eines elektronischen Briefes je Empfänger-Praxis",
+        "leistungserbringerart": "1",
+        "leistungsgruppe": "14",
+        "kv": {
+          "kv": "74",
+          "arztpraxis": true
+        },
+        "gkv_kontenart": [
+          {
+            "gkv_kontenart": "400"
+          },
+          {
+            "gkv_kontenart": "408"
+          },
+          {
+            "gkv_kontenart": "409"
+          },
+          {
+            "gkv_kontenart": "463"
+          },
+          {
+            "gkv_kontenart": "570"
+          }
+        ],
+        "fachgruppe_liste": {
+          "zulaessig": true,
+          "liste": [
+            {
+              "versorgungsbereich": "1",
+              "fachgruppe": [
+                "001",
+                "002",
+                "010",
+                "080",
+                "090",
+                "092",
+                "093",
+                "094",
+                "096",
+                "097",
+                "098",
+                "099",
+                "340",
+                "341",
+                "342",
+                "343",
+                "344",
+                "505",
+                "520",
+                "536",
+                "537",
+                "538",
+                "539",
+                "547",
+                "562",
+                "563",
+                "565"
+              ]
+            },
+            {
+              "versorgungsbereich": "2",
+              "fachgruppe": [
+                "020",
+                "022",
+                "030",
+                "040",
+                "041",
+                "042",
+                "043",
+                "044",
+                "045",
+                "046",
+                "047",
+                "048",
+                "050",
+                "060",
+                "061",
+                "062",
+                "070",
+                "080",
+                "081",
+                "082",
+                "083",
+                "084",
+                "085",
+                "086",
+                "087",
+                "088",
+                "089",
+                "091",
+                "095",
+                "100",
+                "102",
+                "110",
+                "111",
+                "112",
+                "120",
+                "130",
+                "131",
+                "140",
+                "141",
+                "142",
+                "144",
+                "145",
+                "146",
+                "147",
+                "148",
+                "149",
+                "150",
+                "160",
+                "161",
+                "170",
+                "171",
+                "190",
+                "191",
+                "192",
+                "194",
+                "195",
+                "196",
+                "197",
+                "199",
+                "200",
+                "220",
+                "271",
+                "291",
+                "303",
+                "304",
+                "309",
+                "310",
+                "314",
+                "315",
+                "320",
+                "321",
+                "322",
+                "324",
+                "326",
+                "327",
+                "330",
+                "357",
+                "470",
+                "471",
+                "501",
+                "504",
+                "506",
+                "510",
+                "511",
+                "512",
+                "513",
+                "514",
+                "515",
+                "516",
+                "517",
+                "518",
+                "521",
+                "522",
+                "523",
+                "524",
+                "525",
+                "526",
+                "527",
+                "528",
+                "529",
+                "530",
+                "531",
+                "532",
+                "533",
+                "534",
+                "535",
+                "542",
+                "544",
+                "545",
+                "546",
+                "548",
+                "549",
+                "550",
+                "551",
+                "552",
+                "553",
+                "554",
+                "555",
+                "556",
+                "557",
+                "558",
+                "559",
+                "560",
+                "561",
+                "564",
+                "566",
+                "567",
+                "568",
+                "570",
+                "571",
+                "572"
+              ]
+            }
+          ]
+        },
+        "berichtspflicht": false,
+        "genehmigungspflicht": false,
+        "aop_115b": false,
+        "begruendungen_liste": {
+          "ops_liste": [],
+          "ops_liste_include": null,
+          "icd_liste": [],
+          "gnr_liste": []
+        },
+        "ausschluss_liste": [
+          {
+            "value": "1",
+            "unit": "1",
+            "gnr": [
+              {
+                "seq": "40120",
+                "hint": "Transport von Briefen bis 20 g oder Telefax"
+              },
+              {
+                "seq": "40122",
+                "hint": "Transport von Briefen bis 50 g (Kompaktbrief)"
+              },
+              {
+                "seq": "40124",
+                "hint": "Transport von Briefen bis 500 g (Großbrief)"
+              },
+              {
+                "seq": "40126",
+                "hint": "Transport von Briefen 1000 g (Maxibrief)"
+              }
+            ]
+          }
+        ]
+      },
+      "value": "0.28",
+      "unit": "Euro",
+      "catalog": "DC-EBM72-D-1611297520697.json"
+    },
+    {
+      "seq": "86901",
+      "unifiedSeq": "000086901",
+      "title": "Empfangen eines elektronischen Briefes",
+      "l3": {
+        "seq": "87.9",
+        "title": "Vergütung für eArztbrief"
+      },
+      "l2": {
+        "seq": "9",
+        "title": "Vergütung für eArztbrief"
+      },
+      "l1": {
+        "seq": "IX",
+        "title": "Pseudo Leistungen"
+      },
+      "u_extra": {
+        "validfrom": "2017-01-01..",
+        "quittungstext": "Empfangen eines elektronischen Briefes",
+        "leistungserbringerart": "1",
+        "leistungsgruppe": "14",
+        "kv": {
+          "kv": "74",
+          "arztpraxis": true
+        },
+        "gkv_kontenart": [
+          {
+            "gkv_kontenart": "400"
+          },
+          {
+            "gkv_kontenart": "408"
+          },
+          {
+            "gkv_kontenart": "409"
+          },
+          {
+            "gkv_kontenart": "463"
+          },
+          {
+            "gkv_kontenart": "570"
+          }
+        ],
+        "fachgruppe_liste": {
+          "zulaessig": true,
+          "liste": [
+            {
+              "versorgungsbereich": "1",
+              "fachgruppe": [
+                "001",
+                "002",
+                "010",
+                "080",
+                "090",
+                "092",
+                "093",
+                "094",
+                "096",
+                "097",
+                "098",
+                "099",
+                "340",
+                "341",
+                "342",
+                "343",
+                "344",
+                "505",
+                "520",
+                "536",
+                "537",
+                "538",
+                "539",
+                "547",
+                "562",
+                "563",
+                "565"
+              ]
+            },
+            {
+              "versorgungsbereich": "2",
+              "fachgruppe": [
+                "020",
+                "022",
+                "030",
+                "040",
+                "041",
+                "042",
+                "043",
+                "044",
+                "045",
+                "046",
+                "047",
+                "048",
+                "050",
+                "060",
+                "061",
+                "062",
+                "070",
+                "080",
+                "081",
+                "082",
+                "083",
+                "084",
+                "085",
+                "086",
+                "087",
+                "088",
+                "089",
+                "091",
+                "095",
+                "100",
+                "102",
+                "110",
+                "111",
+                "112",
+                "120",
+                "130",
+                "131",
+                "140",
+                "141",
+                "142",
+                "144",
+                "145",
+                "146",
+                "147",
+                "148",
+                "149",
+                "150",
+                "160",
+                "161",
+                "170",
+                "171",
+                "190",
+                "191",
+                "192",
+                "194",
+                "195",
+                "196",
+                "197",
+                "199",
+                "200",
+                "220",
+                "271",
+                "291",
+                "303",
+                "304",
+                "309",
+                "310",
+                "314",
+                "315",
+                "320",
+                "321",
+                "322",
+                "324",
+                "326",
+                "327",
+                "330",
+                "357",
+                "470",
+                "471",
+                "501",
+                "504",
+                "506",
+                "510",
+                "511",
+                "512",
+                "513",
+                "514",
+                "515",
+                "516",
+                "517",
+                "518",
+                "521",
+                "522",
+                "523",
+                "524",
+                "525",
+                "526",
+                "527",
+                "528",
+                "529",
+                "530",
+                "531",
+                "532",
+                "533",
+                "534",
+                "535",
+                "542",
+                "544",
+                "545",
+                "546",
+                "548",
+                "549",
+                "550",
+                "551",
+                "552",
+                "553",
+                "554",
+                "555",
+                "556",
+                "557",
+                "558",
+                "559",
+                "560",
+                "561",
+                "564",
+                "566",
+                "567",
+                "568",
+                "570",
+                "571",
+                "572"
+              ]
+            }
+          ]
+        },
+        "berichtspflicht": false,
+        "genehmigungspflicht": false,
+        "aop_115b": false,
+        "begruendungen_liste": {
+          "ops_liste": [],
+          "ops_liste_include": null,
+          "icd_liste": [],
+          "gnr_liste": []
+        }
+      },
+      "value": "0.27",
+      "unit": "Euro",
+      "catalog": "DC-EBM72-D-1611297520697.json"
+    },
+    {
+      "sign": "D",
+      "country": "Deutschland",
+      "origin": "deutsch",
+      "schluessel": "0",
+      "valid": "true",
+      "catalog": "DC-SDCOUNTRIES-D-1611297520697.json"
+    }
+  ],
+  "familyDoctor": {
+    "talk": "MR",
+    "title": "",
+    "nameaffix": "",
+    "firstname": "Peter",
+    "lastname": "Meter",
+    "institutionType": "FAMILY_DOCTOR",
+    "bsnrs": [
+      "200002000"
+    ],
+    "expertise": [
+      "050"
+    ],
+    "ownZsrNumber": false,
+    "defaultFormId": null,
+    "sendElectronicOrder": false,
+    "contacts": [],
+    "baseContactType": "PHYSICIAN",
+    "addresses": [
+      {
+        "street": "sttrr",
+        "houseno": "1",
+        "zip": "10001",
+        "city": "Berlin",
+        "country": "Deutschland",
+        "countryCode": "D",
+        "addon": "",
+        "title": "",
+        "firstname": "",
+        "nameaffix": "",
+        "middlename": "",
+        "lastname": "",
+        "kind": "POSTAL"
+      }
+    ],
+    "communications": [
+      {
+        "signaling": true,
+        "confirmed": false,
+        "confirmNeeded": false,
+        "type": "EMAILPRIV",
+        "value": "do+contactPeterMeter@doc-cirrus.com"
+      }
+    ],
+    "officialNo": "100030468",
+    "nonStandardOfficialNo": false,
+    "content": "Peter Meter",
+    "asvTeamNumbers": [
+      "11231123",
+      "21412"
+    ],
+    "isMainSupplier": false,
+    "status": "ACTIVE"
+  }
+}
+
+
+

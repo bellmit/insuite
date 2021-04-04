@@ -1,0 +1,86 @@
+style(type="text/css").
+  .panel-heading{
+    background-color: #eeeeee;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+  .panel-heading a {
+    color: #005580;
+    text-decoration: none;
+  }
+  .panel-heading a:hover {
+    color: #005580;
+    text-decoration: underline;
+  }
+div(id=mojit_view_id)
+  .container.container-fullscreen
+    div(style="position: relative")
+      #fullScreenToggle(style="position: absolute; right: 0; top: 0;")
+        button.btn.btn-sm.btn-default(
+        name="toggleFullScreen", type="button", data-bind="click: toggleFullScreenHandler, attr: { title: viewPortBtnI18n }",
+        style="margin-top: 5px; font-size:14px")
+          span.fa.fa-arrows-alt
+  .container.container-fullscreen
+    ul.nav.nav-tabs(role="tablist", style="margin-bottom: 20px;")
+      li.active
+        a(href="#license", role="tab", data-toggle="tab") Lizenzbedingungen
+      li
+        a(href="#usage", role="tab", data-toggle="tab") Nutzungsbedingungen
+      li
+        a(href="#privacy", role="tab", data-toggle="tab") Datenschutzbedingungen
+      li
+        a(href="#agb", role="tab", data-toggle="tab") Allgemeine Geschäftsbedingungen
+
+  .container.container-fullscreen
+        .tab-content
+          div.tab-pane.fade.in.active.panel-group#license
+            .panel.panel-default
+              .panel-heading
+                h4.panel-title
+                  a(data-toggle="collapse", href="#collapseOne") 1. Lizenzbedingungen Doc Cirrus
+              .panel-collapse.collapse#collapseOne
+                .panel-body
+                  p Lizenzbedingungen für Produkte der Doc Cirrus GmbH (auf Anfrage)
+            .panel.panel-default
+              .panel-heading
+                h4.panel-title
+                  a(data-toggle="collapse", href="#collapseTwo") 2. Lizenzbedingungen MongoDB, Inc.
+              .panel-collapse.collapse.in#collapseTwo
+                .panel-body
+                  p Die Doc Cirrus inSuite nutzt die Datenbank Komponente <b>MongoDB</b> der Firma MongoDB, Inc. unverändert, d.h. ohne Modifikation oder Zusätze des Source Codes.
+                  p Diese Komponente unterliegt der <a href="https://www.gnu.org/licenses/agpl-3.0" target="_blank">AGPLv3 Lizenz</a> und kann <a href="https://www.mongodb.org/" target="_blank">hier</a> bei Bedarf vom Nutzer geladen werden.
+
+          div.tab-pane.fade.panel-group#usage
+            .panel.panel-default
+              .panel-heading
+                h4.panel-title
+                  a(data-toggle="collapse", href="#2collapseOne") 1. Nutzungsbedingungen Doc Cirrus inSuite
+              .panel-collapse.collapse.in#2collapseOne
+                .panel-body
+                  p Die Nutzungsbedingungen der Doc Cirrus inSuite Können <a href="/static/DocCirrus/assets/docs/Nutzungs-und_Servicebedingungen_Doc_Cirrus_GmbH-November_2017.pdf" target="_blank">hier</a> eingesehen werden.
+            .panel.panel-default
+              .panel-heading
+                h4.panel-title
+                  a(data-toggle="collapse", href="#2collapseTwo") 2. Nutzungsbedingungen Doc Cirrus Gesundheitsportal
+              .panel-collapse.collapse.in#2collapseTwo
+                .panel-body
+                  p Die Nutzungsbedingungen des Doc Cirrus Gesundheitsportals Können <a href="/static/DocCirrus/assets/docs/Nutzungsbedingungen_gp.pdf" target="_blank">hier</a> eingesehen werden.
+
+          div.tab-pane.fade.panel-group#privacy
+            .panel.panel-default
+              .panel-heading
+                h4.panel-title
+                  a(data-toggle="collapse", href="#3collapseOne") 1. Datenschutzbedingungen Doc Cirrus
+              .panel-collapse.collapse.in#3collapseOne
+                .panel-body
+                  p Die Datenschutzbedingungen der Doc Cirrus Gmbh Können <a href="/static/DocCirrus/assets/docs/Datenschutz.pdf" target="_blank">hier</a> eingesehen werden.
+
+          div.tab-pane.fade.panel-group#agb
+            .panel.panel-default
+              .panel-heading
+                h4.panel-title
+                  a(data-toggle="collapse", href="#4collapseOne") 1. Allgemeine Geschäftsbedingungen
+              .panel-collapse.collapse.in#4collapseOne
+                .panel-body
+                  p Die Allgemeinen Geschäftsbedingungen der Doc Cirrus GmbH Können <a href="/static/DocCirrus/assets/docs/AGBs_Doc_Cirrus_GmbH-November_2017.pdf" target="_blank">hier</a> eingesehen werden.
+

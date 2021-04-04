@@ -1,0 +1,23 @@
+div.InventotuViewModel
+    .row.col-xs-12.col-sm-12.col-md-12
+        .col-xs-6.col-sm-6.col-md-6
+            div(data-bind="template: advancedFilter.template")
+    .row.col-xs-12.col-sm-12.col-md-12
+        div.col-md-12(data-bind="css: {'col-md-6': displayDetails}")
+            div(data-bind="template: wareHouseTable.template")
+        div.col-xs-6.col-sm-6.col-md-6(data-bind="if: displayDetails")
+            div(data-bind="if: selectedItem")
+                 div(data-bind="with: selectedItem")
+                    .panel.panel-default
+                        .panel-heading
+                            .panel-title(data-bind="text: selectedArticle")
+                        .panel-body
+                            div(data-bind="template: template")
+                        div.panel-footer
+                            div.row
+                                div.col-md-12
+                                    button.pull-right.btn.btn-primary(type="button", style="margin-right: 4px;", data-bind="enable: $parent.enableSaveButton, text: $parent.buttonSaveI18n")
+                        script(type="text/html", id="WareHouseAdvancedFilterViewModel")
+                            include WareHouseAdvancedFilterViewModel
+                        script(type="text/html", id="SelectedWareHouseItemViewModel")
+                            include SelectedWareHouseItemViewModel

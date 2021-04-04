@@ -1,0 +1,17 @@
+div.col-md-8.InStockConfigurationViewModel
+  div.row
+    div.col-md-12
+      h4
+        span(data-bind="text: suppliersConfig.i18n")
+        | &nbsp;
+        small
+          a(name="addSupplierConfig", href="javascript:void(0);", data-bind="click: addSupplierConfig")
+            i.icon.fa.fa-plus
+        // /ko
+  div(data-bind="template: { name: 'template-SupplierConfigModel', foreach: suppliersConfig }")
+  hr
+
+.row
+  .col-md-8
+    .dc-action-buttons.dc-action-buttons-right#actionButtons
+      button.btn.btn-primary(type="button", data-bind="enable: buttonSaveEnabled, click: saveConfig, text: buttonSaveTextI18n")

@@ -1,0 +1,50 @@
+div.row#catalogUsageEntry
+  div.col-sm-12
+    div.row
+      div.col-xs-12
+        p(data-bind="text: mainText1I18n")
+        p(data-bind="text: mainText2I18n")
+    div.row.form-group
+      div.col-xs-12
+        label.control-label(data-bind="text: labelTagsI18n")
+        input.form-control(name="tags", data-bind="select2: _select2tags, valueUpdate:'afterkeydown'")
+    //ko if: isMMIEntry()
+    div.row.form-group
+      div.col-xs-3
+        label(data-bind="text: labelPZNI18n")
+        input.form-control(name="phPZN", data-bind="value: phPZN, readOnly: true")
+      div.col-xs-3
+        label(data-bind="text: labelAliasI18n")
+        input.form-control(name="", data-bind="value: seq, valueUpdate: 'afterkeydown' ")
+      div.col-xs-6
+        label(data-bind="text: labelLabelI18n")
+        input.form-control(name="phNLabel", data-bind="value: phNLabel, readOnly: true")
+    div.row.form-group
+      div.col-xs-6
+        label(data-bind="text: labelNoteI18n")
+        textarea.form-control(name="phNote", data-bind="value: phNote, valueUpdate: 'afterkeydown'")
+      div.col-xs-6
+        label(data-bind="text: labelReasonI18n")
+        textarea.form-control(name="phReason", data-bind="value: phReason, valueUpdate: 'afterkeydown'")
+    // /ko
+    //ko ifnot: isMMIEntry()
+    div.row.form-group(data-bind="if: showPrice")
+      div.col-xs-5(data-bind="hasFeedback: { field: value, toggle: value.hasError, messages: value.validationMessages }")
+        label(data-bind="text: priceI18n")
+        input.form-control(name="value", data-bind="value: value, readOnly: !changeEnabled, valueUpdate: 'afterkeydown'")
+      //ko if: showFactorAndTotal()
+      div.col-xs-5(data-bind="hasFeedback: { field: _displayBillingFactorValue, toggle: _displayBillingFactorValue.hasError, messages: _displayBillingFactorValue.validationMessages }")
+        label(data-bind="text: factorI18n")
+        input.form-control(name="", data-bind="value: _displayBillingFactorValue, readOnly: !changeEnabled, valueUpdate: 'afterkeydown' ")
+      div.col-xs-2
+        label(data-bind="text: totalI18n")
+        input.form-control(name="total", data-bind="value: total, readOnly: true")
+      // /ko
+    div.row.form-group
+      div.col-xs-6(data-bind="hasFeedback: { field: title, toggle: title.hasError, messages: title.validationMessages }")
+        label(data-bind="text: descriptionI18n")
+        textarea.form-control(name="title", data-bind="value: title, valueUpdate: 'afterkeydown'")
+      div.col-xs-6
+        label(data-bind="text: explanationsI18n")
+        textarea.form-control(name="explanations", data-bind="value: explanations, valueUpdate: 'afterkeydown'")
+    // /ko

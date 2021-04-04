@@ -1,0 +1,39 @@
+div.ApkInProgressViewModel
+  h3(data-bind="text: apkInProgressHeadLineI18n")
+  div.row
+    div.col-xs-12
+      div.form-group.clearfix
+        .col-sm-3.pull-right
+          input#tab_apkInProgress-field-insuranceType.form-control(name="insuranceType", type="text",data-bind="select2: select2InsuranceTypeConfig")
+        .col-sm-3.pull-right
+          input#tab_apkInProgress-field-locations.form-control(name="locations", type="text",data-bind="select2: select2LocationConfig")
+        .col-sm-3.pull-right
+          input#tab_apkInProgress-field-employees.form-control(name="employees", type="text",data-bind="select2: select2EmployeeConfig")
+        .col-sm-3.pull-right
+          select#tab_apkInProgress-field-apkState.form-control(name="apkState", type="text", data-bind="options: apkStateList, optionsText: 'i18n', optionsValue: 'val', value: apkState")
+        .col-sm-7
+          //select#tab_apkInProgress-field-period.form-control(name="period", type="text", data-bind="options: periodList, optionsText: 'i18n', optionsValue: 'val', value: period")
+          div(data-bind="template: dateSelector.template")
+  div.row
+    div.col-md-12(data-bind="css: {'col-md-6': null !== selectedAPKEntry()} ")
+      div(data-bind="template: apkInProgressTable.template")
+    div.col-md-6(data-bind="if: null !== selectedAPKEntry()")
+      div(data-bind="with: selectedAPKEntry")
+        h4
+          b(data-bind="html: patient")
+        div(data-bind="foreach: states")
+          div.panel.panel-default
+            div.panel-heading
+              h4.panel-title(data-bind="text: timestamp")
+            div.panel-body
+              div.row(data-bind="foreach: caseFolderGroups")
+                label.control-label(data-bind="text: caseFolder", style="margin-left: 10px")
+                div.row(data-bind="foreach: actTypeGroups", style="margin-left: 20px" )
+                  div.form-group
+                    label.control-label(data-bind="text: type", style="margin-left: 10px")
+                    ul(data-bind='foreach: activities')
+                      li(data-bind='html: text')
+                hr
+              div.row
+                div.col-md-3.pull-right
+                  button.btn.btn-block(name="apkStateButton", type="button", data-bind="click: onApkStateBtnClicked, css: _apkStateBtnCss, text: _apkStateBtnText")

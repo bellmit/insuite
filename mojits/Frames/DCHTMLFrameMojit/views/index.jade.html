@@ -1,0 +1,33 @@
+doctype html
+html(class="yui3-js-enabled")
+  //- div(id="yui3-css-stamp",style="position: absolute !important; visibility: hidden !important",class="")
+  head
+    = "\n"
+    meta(charset="utf-8")
+    meta(http-equiv="X-UA-Compatible", content="IE=edge")
+    meta(name="viewport", content="width=device-width, initial-scale=1, user-scalable=no")
+    noscript <meta http-equiv="Refresh" content="0;URL=noscript">
+    = "\n"
+    script.
+      var dcServerTime = #{dcServerTime};
+      var YUI_config = YUI_config || {};
+      YUI_config.doBeforeLoader = function( config ) { config.loadErrorFn = function( Y, cb, status/*, modules*/ ) { if( !status.success ) { throw status.msg; } }; };
+      YUI_config.doccirrus = !{JSON.stringify( doccirrus )};
+      (function(){ try { if ( !(JSON && localStorage)) { return; }
+      var initialClientDebugValue = JSON.parse( localStorage.getItem( 'initialClientDebugValue' ) );
+      if ( null === initialClientDebugValue ) { localStorage.setItem( 'initialClientDebugValue', JSON.stringify( #{initialClientDebugValue} ) ); initialClientDebugValue = #{initialClientDebugValue}; }
+      if ( initialClientDebugValue === false ) { YUI_config.debug = false; YUI_config.logLevel = 'none'; }
+      } catch(e) { return false; }})();
+    //- shaker
+    != prefetch
+    title= title
+    = "\n"
+    != shakerInlineCss
+    != top
+    != shakerTop
+  body
+    != child
+    != shakerInlineJs
+    != bottom
+    != postfetch
+    script if(!navigator.cookieEnabled) { sessionStorage.setItem( 'referer', document.location.href ); window.location.replace( 'noscript' ); }

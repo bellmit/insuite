@@ -1,0 +1,15 @@
+div.form-group
+  div.btn-group.btn-group-justified
+    div.btn-group
+      button.btn.btn-primary(type="button", name="documentationButtonsArea-goToPreviousLevel", data-bind="click: goToPreviousLevel")
+        span.glyphicon.glyphicon-step-backward
+    div.btn-group
+      button.btn.btn-primary(type="button", name="documentationButtonsArea-goToDocumentationTreeHome", data-bind="click: goToDocumentationTreeHome")
+        span.glyphicon.glyphicon-home
+    div.btn-group
+      button.btn.btn-primary(type="button", name="documentationButtonsArea-switchViewMode", data-bind="click: switchMode")
+        span(data-bind="visible: isFullViewMode()").glyphicon.glyphicon-chevron-up
+        span(data-bind="visible: !isFullViewMode()").glyphicon.glyphicon-chevron-down
+div.btn-group-vertical(data-bind = 'notifyBind: { method: setContainerHeight }, foreach: _buttons', style="width: 100%; margin-bottom: 10px; overflow-y: auto;")
+  button.btn.btn-default.btn-block.dc-btn-ellipsis.text-tree-element(type="button", name="documentationButtonsArea-button", style="overflow: hidden; text-overflow: ellipsis;", data-bind="text: text, click: function(data, event){$parent.onButtonClick(data, event, $index);}, style: { background: isDocumentationNode() ? 'white' : 'dark-grey' }, css: { isDocumentationNode: isDocumentationNode }, attr: { title: title }")
+ 

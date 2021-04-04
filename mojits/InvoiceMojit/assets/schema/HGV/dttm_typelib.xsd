@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- automatische Dokumentation, generiert durch Visual Source Safe 
+	$Workfile: dttm_typelib.xsd $  
+	$Modtime: 5.08.04 17:31 $  
+	$Revision: 4 $  
+-->
+<xs:schema targetNamespace="urn::hl7-org/kbv" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="urn::hl7-org/kbv" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<!-- ****************************** birth-dttm-typ ****************************** -->
+	<xs:simpleType name="birth_dttm_typ">
+		<xs:union memberTypes="xs:date">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:pattern value="((((1(8|9))|20)\d{2}-(0[0-9]|1[0-2])|0{4}-00)-00)"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:union>
+	</xs:simpleType>
+	<!-- ****************************** date-dttm-typ ****************************** -->
+	<xs:complexType name="date_dttm_typ">
+		<xs:attribute name="V" type="xs:date" use="required"/>
+	</xs:complexType>
+	<!-- ****************************** zeitraum-typ ****************************** -->
+	<xs:simpleType name="zeitraum_typ">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="([1,2][0-9]{3}-[0-1][0-9]-(([0-2][0-9])|([3][0-1]))\.\.[1,2][0-9]{3}-[0-1][0-9]-(([0-2][0-9])|([3][0-1])))|([1,2][0-9]{3}-[0-1][0-9]-(([0-2][0-9])|([3][0-1])))|(\.\.[1,2][0-9]{3}-[0-1][0-9]-(([0-2][0-9])|([3][0-1])))"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+
+	<!-- ****************************** year_date_dttm_typ (DMPs: DM1, DM2, KHK) ****************************** -->	
+	<!-- ** Dieser Datentyp wird sowohl für Jahresangaben (z.B. bei Einschreibug) als auch
+		** für vollständige Datumsangaben verwendet. Bei Jahresangabe ist "0" oder 19 bzw. 20 Jahrzent zugelassen.-->	
+	<xs:complexType name="year_date_dttm_typ">
+		<xs:attribute name="V" type="year_or_date_typ"  use="required">
+		</xs:attribute>
+	</xs:complexType>
+	<xs:simpleType name="year_or_date_typ">
+		<xs:union memberTypes="xs:date">
+			<xs:simpleType>
+				<xs:restriction base="xs:integer">
+					<xs:pattern value="0"/>
+					<xs:pattern value="(19|20)\d\d"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:union>
+	</xs:simpleType>
+	
+</xs:schema>

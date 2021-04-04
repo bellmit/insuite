@@ -1,0 +1,6 @@
+div#systemMessagesCounter(class="pull-right" data-bind="with: systemMessagesCounterModel")
+  button(type="button" class="btn system-messages-counter__btn" data-bind="text: successMessages.counter, click: successBtnClick, css: { 'btn-success': successMessages.enabled }, attr: { title: successMessages.title }, enable: successMessages.enabled, visible: successMessages.visible")
+  button(type="button" class="btn system-messages-counter__btn" data-bind="text: infoMessages.counter, click: infoBtnClick, css: { 'btn-info': infoMessages.enabled }, attr: { title: infoMessages.title }, enable: infoMessages.enabled, visible: infoMessages.visible")
+  button(type="button" class="btn system-messages-counter__btn" data-bind="text: warningMessages.counter, click: warningBtnClick, css: { 'btn-warning': warningMessages.enabled }, attr: { title: warningMessages.title }, enable: warningMessages.enabled, visible: warningMessages.visible")
+  button(type="button" class="btn system-messages-counter__btn" data-bind="text: dangerMessages.counter, click: dangerBtnClick, css: { 'btn-danger': dangerMessages.enabled }, attr: { title: dangerMessages.title }, enable: dangerMessages.enabled, visible: dangerMessages.visible")
+  button(type="button" class="btn system-messages-counter__btn glyphicon glyphicon-resize-full" data-bind="click: expandBtnClick, visible: showDisplayComponent")

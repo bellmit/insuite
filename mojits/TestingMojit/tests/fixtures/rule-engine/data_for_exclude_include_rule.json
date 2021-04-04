@@ -1,0 +1,361 @@
+{
+  "rules": {
+    "exclude": {
+      "isDirectory": false,
+      "isLocked": true,
+      "isActive": true,
+      "caseFolderType": [
+        "PRIVATE"
+      ],
+      "metaActTypes": [
+        "TREATMENT"
+      ],
+      "metaActCodes": [
+        "687",
+        "402",
+        "403"
+      ],
+      "metaCriterias": [
+        "actType",
+        "code",
+        "areTreatmentDiagnosesBillable"
+      ],
+      "rules": [
+        {
+          "isActive": true,
+          "description": "Ausschlussliste für 687 (GOÄ) in derselben Sitzung",
+          "validations": {
+            "\\\\$and": [
+              {
+                "context": "ACTIVITY",
+                "criteria": {
+                  "actType": "TREATMENT",
+                  "code": "687",
+                  "areTreatmentDiagnosesBillable": "1"
+                }
+              },
+              {
+                "context": "ACTIVITY",
+                "criteria": {
+                  "actType": "TREATMENT",
+                  "code": {
+                    "\\\\$in": [
+                      "402",
+                      "403"
+                    ]
+                  },
+                  "areTreatmentDiagnosesBillable": "1"
+                }
+              }
+            ]
+          },
+          "actions": [
+            {
+              "type": "ERROR"
+            }
+          ],
+          "metaCodes": [
+            "687",
+            "402",
+            "403"
+          ],
+          "metaActTypes": [
+            "TREATMENT"
+          ],
+          "ruleId": "5f6e048cd7c59337ea8cc6ca"
+        }
+      ],
+      "description": "GOÄ 687 in derselben Sitzung",
+      "fromCatalog": "DC-GOÄ-D-1591102857465.json",
+      "fromCatalogShort": "GOÄ",
+      "referenceArea": "APK",
+      "idStr": "5f6e048cd7c59337ea8cc6cb",
+      "metaFuzzy": false,
+      "metaCaseOpen": false
+    },
+    "include": {
+      "isDirectory" : false,
+      "isLocked" : true,
+      "isActive" : true,
+      "caseFolderType" : [
+        "PRIVATE"
+      ],
+      "metaActTypes" : [
+        "TREATMENT"
+      ],
+      "metaActCodes" : [
+        "3",
+        "5",
+        "6",
+        "7",
+        "8",
+        "800",
+        "801",
+        "A",
+        "B",
+        "C",
+        "D",
+        "K1"
+      ],
+      "metaCriterias" : [
+        "actType",
+        "code",
+        "areTreatmentDiagnosesBillable"
+      ],
+      "rules" : [
+        {
+          "ruleId" : "5f6e0498d7c59337ea8ccb69",
+          "description" : "Einschlussliste für 3 (GOÄ) in derselben Sitzung",
+          "isActive" : true,
+          "validations" : {
+            "\\\\$and" : [
+              {
+                "context" : "ACTIVITY",
+                "criteria" : {
+                  "actType" : {
+                    "\\\\$eq" : "TREATMENT"
+                  },
+                  "code" : {
+                    "\\\\$eq" : "3"
+                  },
+                  "areTreatmentDiagnosesBillable" : {
+                    "\\\\$eq" : "1"
+                  }
+                }
+              },
+              {
+                "context" : "ACTIVITY",
+                "criteria" : {
+                  "actType" : {
+                    "\\\\$eq" : "TREATMENT"
+                  },
+                  "code" : {
+                    "\\\\$nin" : [
+                      "5",
+                      "6",
+                      "7",
+                      "8",
+                      "800",
+                      "801",
+                      "A",
+                      "B",
+                      "C",
+                      "D",
+                      "K1",
+                      "3"
+                    ]
+                  },
+                  "areTreatmentDiagnosesBillable" : {
+                    "\\\\$eq" : "1"
+                  }
+                }
+              }
+            ]
+          },
+          "actions" : [
+            {
+              "type" : "ERROR"
+            }
+          ],
+          "metaCodes" : [
+            "3",
+            "5",
+            "6",
+            "7",
+            "8",
+            "800",
+            "801",
+            "A",
+            "B",
+            "C",
+            "D",
+            "K1"
+          ],
+          "metaActTypes" : [
+            "TREATMENT"
+          ]
+        }
+      ],
+      "description" : "GOÄ 3 in derselben Sitzung ",
+      "fromCatalog" : "DC-GOÄ-D-1591102857465.json",
+      "fromCatalogShort" : "GOÄ",
+      "referenceArea" : "APK",
+      "metaFuzzy" : false,
+      "metaCaseOpen" : false,
+      "periodCount" : null
+    }
+  },
+  "patient": {
+    "localPracticeId" : "1012DQ2374",
+    "kbvDob" : "25.01.1991",
+    "careDegree" : "NO",
+    "dob" : "1991-01-25T09:00:00.000Z",
+    "dob_MM" : "01",
+    "dob_DD" : "25",
+    "patientSince" : "2017-09-03T07:13:13.278Z",
+    "crmCatalogShort" : "GOÄ",
+    "latestMedData" : [],
+    "edmpTypes" : [],
+    "crmTreatments" : [],
+    "crmTags" : [],
+    "attachedSeverity" : "NONE",
+    "patientNumber" : 2371,
+    "sendPatientReceipt" : false,
+    "gender" : "MALE",
+    "talk" : "MR",
+    "partnerIds" : [],
+    "accessPRC" : false,
+    "createPlanned" : false,
+    "devices" : [],
+    "markers" : [],
+    "physicians" : [],
+    "images" : [],
+    "affiliates" : [],
+    "insuranceStatus" : [
+      {
+        "fk4133" : null,
+        "fk4110" : null,
+        "insuranceKind" : "",
+        "costCarrierBillingSection" : "00",
+        "costCarrierBillingGroup" : "",
+        "feeSchedule" : "3",
+        "fused" : false,
+        "unzkv" : [],
+        "bgNumber" : "",
+        "address1" : "Hollerithstraße 11",
+        "address2" : "81829 München",
+        "insuranceId" : "168141121",
+        "insuranceName" : "ARAG",
+        "insurancePrintName" : "ARAG",
+        "type" : "PRIVATE",
+        "billingFactor" : "privatversicherte",
+        "cardSwipe" : null,
+        "persGroup" : "",
+        "dmp" : ""
+      }
+    ],
+    "addresses" : [
+      {
+        "street" : "Am Schloß",
+        "houseno" : "10a",
+        "zip" : "10585",
+        "city" : "Berlin",
+        "country" : "Deutschland",
+        "countryCode" : "D",
+        "addon" : "",
+        "kind" : "OFFICIAL"
+      }
+    ],
+    "communications" : [
+      {
+        "signaling" : true,
+        "confirmed" : false,
+        "confirmNeeded" : false,
+        "type" : "PHONEPRIV",
+        "value" : "030303"
+      }
+    ],
+    "accounts" : [],
+    "lastname" : "A001-PKV-DV",
+    "fk3120" : "",
+    "middlename" : "",
+    "nameaffix" : "",
+    "firstname" : "A001-PKV-DV",
+    "title" : "fefewf",
+    "activeCaseFolderId" : "59b13f1fd3471849e2a6505c",
+    "dataTransmissionToPVSApproved" : true,
+    "additionalContacts" : [],
+    "confirmedViewFromOtherLocations" : false,
+    "edmpNotifiedAboutStatementOfParticipationTypes" : [],
+    "ehksDocType" : "EHKSND",
+    "locationId" : "",
+    "scheinEmployeeIds" : [],
+    "countryMode": [ "D" ]
+  },
+  "casefolder": {
+    "type" : "PRIVATE",
+    "start" : "2017-09-07T12:44:15.798Z",
+    "title" : "PKV 1",
+    "disabled" : false,
+    "ruleActivities" : 0,
+    "ruleWarnings" : 0,
+    "ruleErrors" : 0
+  },
+  "schein": {
+    "actType" : "PKVSCHEIN",
+    "attachments" : [],
+    "attachedMediaTags" : [],
+    "subType" : "",
+    "backupEmployeeIds" : [],
+    "userContent" : "",
+    "mediaImportError" : "",
+    "partnerInfo" : "",
+    "explanations" : "",
+    "status" : "VALID",
+    "activities" : [],
+    "referencedBy" : [],
+    "apkState" : "IN_PROGRESS",
+    "continuousIcds" : [],
+    "continuousMedications" : [],
+    "icds" : [],
+    "icdsExtra" : [],
+    "isTiersGarant" : false,
+    "isTiersPayant" : true,
+    "docPrinted" : false,
+    "__t" : "PKVSCHEIN",
+    "attachedMedia" : [],
+    "treatmentType" : "AMBULANT",
+    "fk4235Set" : [],
+    "invoiceData" : [],
+    "content" : "Privat Schein"
+  },
+  "treatment": {
+    "actType" : "TREATMENT",
+    "status" : "VALID",
+    "attachments" : [],
+    "subType" : "",
+    "activities" : [],
+    "referencedBy" : [],
+    "apkState" : "IN_PROGRESS",
+    "areTreatmentDiagnosesBillable" : "1",
+    "catalog" : true,
+    "catalogRef" : "DC-GOÄ-D-1591102857465.json",
+    "icds" : [],
+    "icdsExtra" : [],
+    "__t" : "TREATMENT",
+    "catalogShort" : "GOÄ",
+    "content" : "some content"
+  },
+  "rulelogs": {
+    "exclude": {
+      "message": "Ausschlussliste für 687 (GOÄ) in derselben Sitzung",
+      "referenceArea": "APK",
+      "ruleLogType": "ERROR",
+      "actCodes": [ "687", "402", "403" ],
+      "actTypes": [ "TREATMENT" ],
+      "activitiesToCreate": [],
+      "allCodes": [],
+      "caseFolderType": [ "PRIVATE" ],
+      "requiredCodes": [],
+      "ruleId": "5f6e048cd7c59337ea8cc6ca"
+    },
+    "include": {
+      "message": "Einschlussliste für 3 (GOÄ) in derselben Sitzung",
+      "referenceArea": "APK",
+      "ruleLogType": "ERROR",
+      "actCodes": [
+        "3",   "5", "6",
+        "7",   "8", "800",
+        "801", "A", "B",
+        "C",   "D", "K1"
+      ],
+      "actTypes": [ "TREATMENT" ],
+      "activitiesToCreate": [],
+      "allCodes": [],
+      "caseFolderType": [ "PRIVATE" ],
+      "requiredCodes": [],
+      "ruleId": "5f6e0498d7c59337ea8ccb69"
+    }
+  }
+
+}

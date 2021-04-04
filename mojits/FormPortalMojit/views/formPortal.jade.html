@@ -1,0 +1,38 @@
+div.FormPortalMojit(id=mojit_view_id)
+  .container-fluid
+    div(data-bind="visible: formPortalModel, with: formPortalModel", style="display: none")
+      div
+        // ko ifnot: hasContentToShow
+        div(style="height: 170px; background: url('/static/MISMojit/assets/images/Homescreen_1_20151230.jpg') no-repeat center;")
+        div(style="height: 330px; overflow: hidden; background: url('/static/MISMojit/assets/images/Homescreen_2_20151230.jpg') no-repeat center;").text-center
+        // /ko
+        div(data-bind="if: hasForm")
+          div.text-right(style="margin: 20px 25px 0 0")
+            span(data-bind="template: saveBtn.template")
+          br
+          div.panel.panel-default(style="border: none; box-shadow: none")
+            div.panel-heading
+              div.row
+                div.col-sm-11
+                  h3.panel-title(data-bind="text: formPortalId")
+            div.panel-body(style="padding: 0")
+              div#divFormRender
+
+        // ko if: hasIframeUrl
+        iframe(style="width:100%; height: 500px; border: 0px;", data-bind="notifyBind: { method: notifyIframeBind }, attr: { src: iframeUrl }")
+        // /ko
+      // ko if: showDisconnected
+      div(style="margin-top: -80px").text-center
+        span.dc-red
+          strong(data-bind="text: disconnected", style="font-size: 80px")
+      // /ko
+      // ko ifnot: hasContentToShow
+      div.row(style="margin-bottom:30px;")
+        div.col-sm-4.text-left.text-muted
+          em(data-bind="text: status")
+        div.col-sm-4.text-center.text-muted
+          em(data-bind="text: formPortalId")
+        div.col-sm-4.text-right.text-muted
+          em Version #{data.version}
+      // /ko
+

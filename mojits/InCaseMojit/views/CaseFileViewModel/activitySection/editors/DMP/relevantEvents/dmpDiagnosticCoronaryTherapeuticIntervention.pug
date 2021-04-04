@@ -1,0 +1,7 @@
+div.form-group
+  strong(data-bind="text: dmpDiagnosticCoronaryTherapeuticIntervention.i18n")
+  span(data-bind="dmpField: { field: dmpDiagnosticCoronaryTherapeuticIntervention }")
+  div(data-bind="foreach: dmpDiagnosticCoronaryTherapeuticIntervention.list, hasFeedback: { field: dmpDiagnosticCoronaryTherapeuticIntervention, toggle: dmpDiagnosticCoronaryTherapeuticIntervention.hasError, messages: dmpDiagnosticCoronaryTherapeuticIntervention.validationMessages }")
+    label.checkbox-inline
+      span(data-bind="text: i18n")
+      input(type="checkbox", name="dmpDiagnosticCoronaryTherapeuticIntervention", data-bind="value: val, checked: $parent.dmpDiagnosticCoronaryTherapeuticIntervention, readOnly: $parent.dmpDiagnosticCoronaryTherapeuticIntervention.readOnly, attr: { name: $element.name + '-' + val }")

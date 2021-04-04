@@ -1,0 +1,11 @@
+// ko if: rows().length
+tbody.KoTable-rows(data-bind="template: { name: getTemplateNameRow, foreach: rows }, click: onBodyClick, event: { contextmenu: onBodyContextMenu }")
+// ko if: summaryRow() && !hideSummaryRow()
+tbody.KoTable-rows.KoTable-summary-rows(data-bind="template: { name: getTemplateNameSummaryRow, data: summaryDataRow }")
+// /ko
+// /ko
+// ko ifnot: rows().length
+tbody.KoTable-rows
+  tr.KoTable-row-noDataToShow
+    td.text-center(data-bind="attr: { colspan: columns().length }, text: i18n('KoUI.KoTable.body.noDataToShow')")
+// /ko

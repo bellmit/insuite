@@ -1,0 +1,58 @@
+br
+.container.container-fullscreen.content(id=mojit_view_id)
+
+    h3 SubForm Mapping Example
+
+    table(noborder="noborder")
+        tr
+            td(style="width:400px;",valign="top")
+
+                div.panel.panel-default
+                  div.panel-heading Mapped fields
+                  div.panel-body
+
+                    table(noborder="noborder",width="100%")
+                      tr
+                        td
+                          b ActivityID
+                        td
+                          input.form-control(type='text')#txtActivityId
+
+                      tr
+                        td
+                          b Total
+                        td
+                          input.form-control(type='text')#txtTotal
+
+                      tr
+                        td
+                          b Patient
+                        td
+                          div#divPatientMeta
+
+                    br
+                    button.btn.btn-default(type="button")#btnScale Scale
+                    button.btn.btn-default(type="button")#btnUnmap Unmap
+                    button.btn.btn-default(type="button")#btnMap Map
+
+
+                div.panel.panel-default
+                  div.panel-heading Select a patient
+                  div.panel-body
+                    div#divPatientList
+
+                div.panel.panel-default
+                  div.panel-heading Upload Test
+                  div.panel-body
+                    div#uploadarea
+
+            td(style="width:15px;",valign="top")
+
+            td(style="width:600px;",valign="top")
+                div#divFormsEmbed Loading...
+
+    br
+
+
+
+div#divFormsRender

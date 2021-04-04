@@ -1,0 +1,17 @@
+div#insuranceGroupModal
+  // ko ifnot: selected
+  div(data-bind="template: insuranceGroupTable.template")
+  // /ko
+  // ko if: selected
+  div(data-bind="with: selected")
+    h4 Kostenträgersuche
+    div(data-bind="template: $parent.insuranceGroupSearchTable.template")
+    div(data-bind="template: $parent.addInsurancesBtn.template")
+    hr
+    div
+      span(style="margin-right: 4px;", data-bind="template: $parent.removeInsurancesBtn.template")
+      span(style="margin-right: 4px;", data-bind="template: $parent.cancelEditBtn.template")
+      span(data-bind="template: $parent.saveBtn.template")
+    h4(data-bind="text: 'Gruppe: ' + name()")
+    div(data-bind="template: $parent.insuranceGroupItemTable.template")
+  // /ko
